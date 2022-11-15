@@ -12,6 +12,7 @@ struct palera1nLoaderApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark)
         }
     }
 }

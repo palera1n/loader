@@ -7,36 +7,129 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = AA95DB8A292050FA0055F1C0 /* bootstrap.tar */; };
+		AA95DBC92920590B0055F1C0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBC82920590B0055F1C0 /* main.swift */; };
+		AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCB292059980055F1C0 /* BitByteData */; };
+		AA95DBCF292059B60055F1C0 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCE292059B60055F1C0 /* SWCompression */; };
+		AA95DBD2292059DC0055F1C0 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBD1292059DC0055F1C0 /* ArgumentParser */; };
+		AA95DBD429205A1B0055F1C0 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBD329205A1B0055F1C0 /* SWCompression */; };
+		AA95DBD629205A1B0055F1C0 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBD529205A1B0055F1C0 /* ArgumentParser */; };
+		AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBD729205AB90055F1C0 /* CommandRunner.swift */; };
+		AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */; };
+		AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */; };
+		AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE32291F1AED000CD15B /* IrregularGradient */; };
+		AAC7DE36291F1EBD000CD15B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */; };
 		AAEF9D5C291ED9F90089149B /* palera1nLoaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */; };
 		AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5D291ED9F90089149B /* ContentView.swift */; };
 		AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEF9D5F291ED9FB0089149B /* Assets.xcassets */; };
-		AAEF9D63291ED9FB0089149B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEF9D62291ED9FB0089149B /* Preview Assets.xcassets */; };
+		AAEF9D6C291EDD7A0089149B /* ForegroundLinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D6A291EDD7A0089149B /* ForegroundLinearGradient.swift */; };
+		AAEF9D6D291EDD7A0089149B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D6B291EDD7A0089149B /* Color.swift */; };
+		AAEF9D71291EDDBB0089149B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D70291EDDBB0089149B /* Constants.swift */; };
+		AAEF9D73291EE2860089149B /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D72291EE2850089149B /* Console.swift */; };
+		AAEF9D75291EE9370089149B /* SysInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D74291EE9370089149B /* SysInfo.swift */; };
+		AAEF9D81291EEAC10089149B /* HostManager.c in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D77291EEAC10089149B /* HostManager.c */; };
+		AAEF9D82291EEAC10089149B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AAEF9D7C291EEAC10089149B /* README.md */; };
+		AAEF9D83291EEAC10089149B /* HostManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D7F291EEAC10089149B /* HostManagerBridge.m */; };
+		AAEF9D86291EEBF70089149B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEF9D85291EEBF70089149B /* IOKit.framework */; };
+		AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D8B291EEFF00089149B /* ViewFlip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA95DB8A292050FA0055F1C0 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
+		AA95DBBF292058EE0055F1C0 /* libpalera1nHelper.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpalera1nHelper.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AA95DBD729205AB90055F1C0 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
+		AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = palera1nBridging.h; sourceTree = "<group>"; };
+		AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsSheetView.swift; sourceTree = "<group>"; };
+		AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableGradients.swift; sourceTree = "<group>"; };
 		AAEF9D58291ED9F80089149B /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = palera1nLoaderApp.swift; sourceTree = "<group>"; };
 		AAEF9D5D291ED9F90089149B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AAEF9D5F291ED9FB0089149B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AAEF9D62291ED9FB0089149B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AAEF9D6A291EDD7A0089149B /* ForegroundLinearGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForegroundLinearGradient.swift; sourceTree = "<group>"; };
+		AAEF9D6B291EDD7A0089149B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		AAEF9D70291EDDBB0089149B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AAEF9D72291EE2850089149B /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
+		AAEF9D74291EE9370089149B /* SysInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysInfo.swift; sourceTree = "<group>"; };
+		AAEF9D77291EEAC10089149B /* HostManager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HostManager.c; sourceTree = "<group>"; };
+		AAEF9D7A291EEAC10089149B /* CoreFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFoundation.h; sourceTree = "<group>"; };
+		AAEF9D7B291EEAC10089149B /* IOKitLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitLib.h; sourceTree = "<group>"; };
+		AAEF9D7C291EEAC10089149B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		AAEF9D7D291EEAC10089149B /* HostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostManager.h; sourceTree = "<group>"; };
+		AAEF9D7F291EEAC10089149B /* HostManagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostManagerBridge.m; sourceTree = "<group>"; };
+		AAEF9D80291EEAC10089149B /* HostManagerBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostManagerBridge.h; sourceTree = "<group>"; };
+		AAEF9D85291EEBF70089149B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		AAEF9D8B291EEFF00089149B /* ViewFlip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFlip.swift; sourceTree = "<group>"; };
+		AAEF9D93291EF22A0089149B /* bridging or something.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bridging or something.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AA95DBBD292058EE0055F1C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA95DBD629205A1B0055F1C0 /* ArgumentParser in Frameworks */,
+				AA95DBD429205A1B0055F1C0 /* SWCompression in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAEF9D55291ED9F80089149B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA95DBD2292059DC0055F1C0 /* ArgumentParser in Frameworks */,
+				AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */,
+				AAC7DE36291F1EBD000CD15B /* SDWebImageSwiftUI in Frameworks */,
+				AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */,
+				AA95DBCF292059B60055F1C0 /* SWCompression in Frameworks */,
+				AAEF9D86291EEBF70089149B /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA95DB8929204FFC0055F1C0 /* Bootstrapping */ = {
+			isa = PBXGroup;
+			children = (
+				AA95DB8D292051060055F1C0 /* Support */,
+				AA95DBD729205AB90055F1C0 /* CommandRunner.swift */,
+			);
+			name = Bootstrapping;
+			sourceTree = "<group>";
+		};
+		AA95DB8D292051060055F1C0 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				AA95DB8A292050FA0055F1C0 /* bootstrap.tar */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		AA95DBC0292058EE0055F1C0 /* palera1nHelper */ = {
+			isa = PBXGroup;
+			children = (
+				AA95DBC82920590B0055F1C0 /* main.swift */,
+			);
+			path = palera1nHelper;
+			sourceTree = "<group>";
+		};
+		AAC7DE2C291F1203000CD15B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF9D5D291ED9F90089149B /* ContentView.swift */,
+				AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		AAEF9D4F291ED9F80089149B = {
 			isa = PBXGroup;
 			children = (
 				AAEF9D5A291ED9F80089149B /* palera1nLoader */,
+				AA95DBC0292058EE0055F1C0 /* palera1nHelper */,
 				AAEF9D59291ED9F80089149B /* Products */,
+				AAEF9D84291EEBF70089149B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -44,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				AAEF9D58291ED9F80089149B /* palera1nLoader.app */,
+				AA95DBBF292058EE0055F1C0 /* libpalera1nHelper.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,25 +145,120 @@
 		AAEF9D5A291ED9F80089149B /* palera1nLoader */ = {
 			isa = PBXGroup;
 			children = (
+				AA95DB8929204FFC0055F1C0 /* Bootstrapping */,
 				AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */,
-				AAEF9D5D291ED9F90089149B /* ContentView.swift */,
+				AAC7DE2C291F1203000CD15B /* Views */,
+				AAEF9D6F291EDDAD0089149B /* Utilities */,
+				AAEF9D6E291EDD980089149B /* Class */,
+				AAEF9D69291EDD5E0089149B /* Extensions */,
 				AAEF9D5F291ED9FB0089149B /* Assets.xcassets */,
-				AAEF9D61291ED9FB0089149B /* Preview Content */,
 			);
 			path = palera1nLoader;
 			sourceTree = "<group>";
 		};
-		AAEF9D61291ED9FB0089149B /* Preview Content */ = {
+		AAEF9D69291EDD5E0089149B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AAEF9D62291ED9FB0089149B /* Preview Assets.xcassets */,
+				AAEF9D8B291EEFF00089149B /* ViewFlip.swift */,
+				AAEF9D6B291EDD7A0089149B /* Color.swift */,
+				AAEF9D6A291EDD7A0089149B /* ForegroundLinearGradient.swift */,
+				AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */,
 			);
-			path = "Preview Content";
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AAEF9D6E291EDD980089149B /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF9D72291EE2850089149B /* Console.swift */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		AAEF9D6F291EDDAD0089149B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF9D76291EEAC10089149B /* Zefram stolen code */,
+				AAEF9D70291EDDBB0089149B /* Constants.swift */,
+				AAEF9D74291EE9370089149B /* SysInfo.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		AAEF9D76291EEAC10089149B /* Zefram stolen code */ = {
+			isa = PBXGroup;
+			children = (
+				AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */,
+				AAEF9D93291EF22A0089149B /* bridging or something.h */,
+				AAEF9D77291EEAC10089149B /* HostManager.c */,
+				AAEF9D79291EEAC10089149B /* include */,
+				AAEF9D7C291EEAC10089149B /* README.md */,
+				AAEF9D7D291EEAC10089149B /* HostManager.h */,
+				AAEF9D7E291EEAC10089149B /* wrapped */,
+			);
+			path = "Zefram stolen code";
+			sourceTree = "<group>";
+		};
+		AAEF9D79291EEAC10089149B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF9D7A291EEAC10089149B /* CoreFoundation.h */,
+				AAEF9D7B291EEAC10089149B /* IOKitLib.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		AAEF9D7E291EEAC10089149B /* wrapped */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF9D7F291EEAC10089149B /* HostManagerBridge.m */,
+				AAEF9D80291EEAC10089149B /* HostManagerBridge.h */,
+			);
+			path = wrapped;
+			sourceTree = "<group>";
+		};
+		AAEF9D84291EEBF70089149B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAEF9D85291EEBF70089149B /* IOKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		AA95DBBB292058EE0055F1C0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		AA95DBBE292058EE0055F1C0 /* palera1nHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA95DBC5292058EE0055F1C0 /* Build configuration list for PBXNativeTarget "palera1nHelper" */;
+			buildPhases = (
+				AA95DBBB292058EE0055F1C0 /* Headers */,
+				AA95DBBC292058EE0055F1C0 /* Sources */,
+				AA95DBBD292058EE0055F1C0 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = palera1nHelper;
+			packageProductDependencies = (
+				AA95DBD329205A1B0055F1C0 /* SWCompression */,
+				AA95DBD529205A1B0055F1C0 /* ArgumentParser */,
+			);
+			productName = palera1nHelper;
+			productReference = AA95DBBF292058EE0055F1C0 /* libpalera1nHelper.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		AAEF9D57291ED9F80089149B /* palera1nLoader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAEF9D66291ED9FB0089149B /* Build configuration list for PBXNativeTarget "palera1nLoader" */;
@@ -83,6 +272,13 @@
 			dependencies = (
 			);
 			name = palera1nLoader;
+			packageProductDependencies = (
+				AAC7DE32291F1AED000CD15B /* IrregularGradient */,
+				AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */,
+				AA95DBCB292059980055F1C0 /* BitByteData */,
+				AA95DBCE292059B60055F1C0 /* SWCompression */,
+				AA95DBD1292059DC0055F1C0 /* ArgumentParser */,
+			);
 			productName = palera1nLoader;
 			productReference = AAEF9D58291ED9F80089149B /* palera1nLoader.app */;
 			productType = "com.apple.product-type.application";
@@ -97,6 +293,10 @@
 				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					AA95DBBE292058EE0055F1C0 = {
+						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
+					};
 					AAEF9D57291ED9F80089149B = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -111,11 +311,19 @@
 				Base,
 			);
 			mainGroup = AAEF9D4F291ED9F80089149B;
+			packageReferences = (
+				AAC7DE31291F1AED000CD15B /* XCRemoteSwiftPackageReference "IrregularGradient" */,
+				AAC7DE34291F1EBD000CD15B /* XCRemoteSwiftPackageReference "SDWebImageswiftui" */,
+				AA95DBCA292059980055F1C0 /* XCRemoteSwiftPackageReference "BitByteData" */,
+				AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */,
+				AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+			);
 			productRefGroup = AAEF9D59291ED9F80089149B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				AAEF9D57291ED9F80089149B /* palera1nLoader */,
+				AA95DBBE292058EE0055F1C0 /* palera1nHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -125,7 +333,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEF9D63291ED9FB0089149B /* Preview Assets.xcassets in Resources */,
+				AAEF9D82291EEAC10089149B /* README.md in Resources */,
+				AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */,
 				AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,18 +342,82 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AA95DBBC292058EE0055F1C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA95DBC92920590B0055F1C0 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AAEF9D54291ED9F80089149B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAEF9D71291EDDBB0089149B /* Constants.swift in Sources */,
+				AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */,
+				AAEF9D75291EE9370089149B /* SysInfo.swift in Sources */,
+				AAEF9D83291EEAC10089149B /* HostManagerBridge.m in Sources */,
+				AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */,
+				AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */,
+				AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */,
+				AAEF9D73291EE2860089149B /* Console.swift in Sources */,
+				AAEF9D6C291EDD7A0089149B /* ForegroundLinearGradient.swift in Sources */,
+				AAEF9D6D291EDD7A0089149B /* Color.swift in Sources */,
 				AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */,
 				AAEF9D5C291ED9F90089149B /* palera1nLoaderApp.swift in Sources */,
+				AAEF9D81291EEAC10089149B /* HostManager.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		AA95DBC6292058EE0055F1C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA95DBC7292058EE0055F1C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 566RT33SA2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		AAEF9D64291ED9FB0089149B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -195,7 +468,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -266,15 +539,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"palera1nLoader/Preview Content\"";
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -283,6 +559,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.palera1nLoader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "palera1nLoader/Zefram stolen code/bridging or something.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -295,15 +572,18 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"palera1nLoader/Preview Content\"";
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,6 +592,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.palera1nLoader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "palera1nLoader/Zefram stolen code/bridging or something.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -320,6 +601,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AA95DBC5292058EE0055F1C0 /* Build configuration list for PBXNativeTarget "palera1nHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA95DBC6292058EE0055F1C0 /* Debug */,
+				AA95DBC7292058EE0055F1C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AAEF9D53291ED9F80089149B /* Build configuration list for PBXProject "palera1nLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -339,6 +629,87 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA95DBCA292059980055F1C0 /* XCRemoteSwiftPackageReference "BitByteData" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/BitByteData";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tsolomko/SWCompression.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+		AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AAC7DE31291F1AED000CD15B /* XCRemoteSwiftPackageReference "IrregularGradient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/IrregularGradient";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		AAC7DE34291F1EBD000CD15B /* XCRemoteSwiftPackageReference "SDWebImageswiftui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageswiftui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA95DBCB292059980055F1C0 /* BitByteData */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBCA292059980055F1C0 /* XCRemoteSwiftPackageReference "BitByteData" */;
+			productName = BitByteData;
+		};
+		AA95DBCE292059B60055F1C0 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		AA95DBD1292059DC0055F1C0 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		AA95DBD329205A1B0055F1C0 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		AA95DBD529205A1B0055F1C0 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		AAC7DE32291F1AED000CD15B /* IrregularGradient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAC7DE31291F1AED000CD15B /* XCRemoteSwiftPackageReference "IrregularGradient" */;
+			productName = IrregularGradient;
+		};
+		AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAC7DE34291F1EBD000CD15B /* XCRemoteSwiftPackageReference "SDWebImageswiftui" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AAEF9D50291ED9F80089149B /* Project object */;
 }
