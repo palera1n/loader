@@ -298,6 +298,9 @@ struct ToolbarController: View {
                     .foregroundColor(.white)
                     .font(.largeTitle)
             }
+            .sheet(isPresented: $settingsIsOpen) {
+                SettingsSheetView(isOpen: $settingsIsOpen)
+            }
             
             Button {
                 self.bs()
@@ -356,9 +359,9 @@ struct ToolbarController: View {
     @ViewBuilder
     var respring: some View {
         Button {
-            fatalError()
+            ToolbarController.triggerRespring()
         } label: {
-            Text("Close")
+            Text("Respring")
                 .font(.body)
                 .foregroundLinearGradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")], startPoint: .leading, endPoint: .trailing)
                 .frame(maxWidth: .infinity)
@@ -373,6 +376,12 @@ struct ToolbarController: View {
         .frame(maxHeight: 30)
     }
     
+    static func triggerRespring() {
+        guard let window = UIApplication.shared.windows.first else { return }
+            while true {
+                window.snapshotView(afterScreenUpdates: false)
+            }
+    }
     
 }
 
