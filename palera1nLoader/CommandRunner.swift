@@ -19,14 +19,13 @@ import Darwin.POSIX
     pipe(&pipestderr)
 
     guard fcntl(pipestdout[0], F_SETFL, O_NONBLOCK) != -1 else {
-        NSLog("[POGO] Could not open stdout")
+        NSLog("[palera1n] Could not open stdout")
         return -1
     }
     guard fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1 else {
-        NSLog("[POGO] Could not open stderr")
+        NSLog("[palera1n] Could not open stderr")
         return -1
     }
-    
 
     let args: [String] = [String(command.split(separator: "/").last!)] + args
     let argv: [UnsafeMutablePointer<CChar>?] = args.map { $0.withCString(strdup) }
@@ -42,7 +41,6 @@ import Darwin.POSIX
         posix_spawn_file_actions_addclose(&fileActions, pipestdout[1])
         posix_spawn_file_actions_addclose(&fileActions, pipestderr[1])
     }
-    
     
     var attr: posix_spawnattr_t?
     posix_spawnattr_init(&attr)
@@ -61,7 +59,7 @@ import Darwin.POSIX
     var pid: pid_t = 0
     let spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], proenv + [nil])
     if spawnStatus != 0 {
-        NSLog("[POGO] Spawn Status = \(spawnStatus)")
+        NSLog("[palera1n] Spawn Status = \(spawnStatus)")
         return -1
     }
 
@@ -139,6 +137,6 @@ import Darwin.POSIX
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    NSLog("[POGO] \(status) \(stdoutStr) \(stderrStr)")
+    NSLog("[palera1n] \(status) \(stdoutStr) \(stderrStr)")
     return Int(status)
 }

@@ -11,7 +11,6 @@ import ArgumentParser
 import SWCompression
 
 struct Strap: ParsableCommand {
-    
     @Option(name: .shortAndLong, help: "The path to the .tar file you want to strap with")
     var input: String?
     

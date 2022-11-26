@@ -114,13 +114,102 @@ struct ContentView: View {
     @ViewBuilder
     var toolbar: some View {
         ToolbarController {
-            #warning("bootstrapping goes here")
+            console.log("[*] Starting bootstrap process")
+            strap()
         }
     }
+    
+    private func strap() -> Void {
+        guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
+            NSLog("[palera1n] Failed to find bootstrap")
+            return
+        }
+         
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "PogoHelper") else {
+            NSLog("[palera1n] Could not find helper?")
+            return
+        }
+         
+        guard let deb = Bundle.main.path(forResource: "org.coolstar.sileo_2.3_iphoneos-arm", ofType: "deb") else {
+            NSLog("[palera1n] Could not find deb")
+            return
+        }
+
+        guard let libswift = Bundle.main.path(forResource: "libswift", ofType: "deb") else {
+            NSLog("[palera1n] Could not find libswift")
+            return
+        }
+
+        guard let safemode = Bundle.main.path(forResource: "safemode", ofType: "deb") else {
+            NSLog("[palera1n] Could not find safemode")
+            return
+        }
+
+        guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
+            NSLog("[palera1n] Could not find preferenceloader")
+            return
+        }
+
+        guard let substitute = Bundle.main.path(forResource: "substitute", ofType: "deb") else {
+            NSLog("[palera1n] Could not find substitute")
+            return
+        }
+        
+        DispatchQueue.global(qos: .utility).async { [self] in
+            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+            
+            let ret = spawn(command: helper, args: ["-i", tar], root: true)
+            
+            spawn(command: "/usr/bin/chmod", args: ["4755", "/usr/bin/sudo"], root: true)
+            spawn(command: "/usr/bin/chown", args: ["root:wheel", "/usr/bin/sudo"], root: true)
+            
+            DispatchQueue.main.async {
+                if ret != 0 {
+                    console.log("[-] Error installing bootstrap. Status: \(ret)")
+                    return
+                }
+                
+                console.log("[*] Preparing Bootstrap")
+                DispatchQueue.global(qos: .utility).async {
+                    let ret = spawn(command: "/usr/bin/sh", args: ["/prep_bootstrap.sh"], root: true)
+                    DispatchQueue.main.async {
+                        if ret != 0 {
+                            console.log("[-] Failed to prepare bootstrap. Status: \(ret)")
+                            return
+                        }
+                        
+                        console.log("[*] Installing packages")
+                        DispatchQueue.global(qos: .utility).async {
+                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
+                            DispatchQueue.main.async {
+                                if ret != 0 {
+                                    console.log("[-] Failed to install packages. Status: \(ret)")
+                                    return
+                                }
+                                
+                                console.log("[*] Registering Sileo in uicache")
+                                DispatchQueue.global(qos: .utility).async {
+                                    let ret = spawn(command: "/usr/bin/uicache", args: ["-p", "/Applications/Sileo.app"], root: true)
+                                    DispatchQueue.main.async {
+                                        if ret != 0 {
+                                            console.log("[-] Failed to uicache. Status: \(ret)")
+                                            return
+                                        }
+                                        console.log("[*] Finished installing! Enjoy!")
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 struct ToolbarController: View {
-    
     var bs: () -> Void
     
     init(bootstrapAction: @escaping () -> Void) {
@@ -134,21 +223,20 @@ struct ToolbarController: View {
     
     var body: some View {
         HStack {
-            
             Button {
-                
+                self.settingsIsOpen.toggle()
             } label: {
-                Image(systemName: "arrow.down.right.circle.fill")
+                Image(systemName: "gearshape.circle.fill")
                     .foregroundColor(.white)
                     .font(.largeTitle)
             }
             
             Button {
-                
+                self.bs()
             } label: {
-                Image(systemName: "gearshape.circle.fill")
+                Text("Install")
                     .foregroundColor(.white)
-                    .font(.largeTitle)
+                    .font(.subheadline)
             }
             
             Button {
