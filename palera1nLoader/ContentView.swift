@@ -88,9 +88,15 @@ struct ContentView: View {
     var consoleview: some View {
         VStack {
             ScrollView {
-                ForEach(self.console.consoleData) { item in
-                    logItemView(item)
-                        .padding(.bottom, 1)
+                ScrollViewReader { scroll in
+                    ForEach(0..<self.console.consoleData.count, id: \.self) { i in
+                        let item = self.console.consoleData[i]
+                        logItemView(item)
+                            .padding(.bottom, 1)
+                    }
+                    .onChange(of: self.console.consoleData.count) { newValue in
+                        scroll.scrollTo(self.console.consoleData.count - 1)
+                    }
                 }
             }
         }
@@ -120,38 +126,63 @@ struct ContentView: View {
     }
     
     private func strap() -> Void {
+        
+        let tb = ToolbarStateMoment.s
+        tb.toolbarState = .disabled
+        
         guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
-            NSLog("[palera1n] Failed to find bootstrap")
+            let msg = "Failed to find bootstrap"
+            console.error(msg)
+            tb.toolbarState = .closeApp
+            print("[palera1n] "+msg)
             return
         }
          
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-            NSLog("[palera1n] Could not find helper?")
+            let msg = "Could not find Helper"
+            console.error(msg)
+            tb.toolbarState = .closeApp
+            print("[palera1n] "+msg)
             return
         }
          
         guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
-            NSLog("[palera1n] Could not find Sileo")
+            let msg = "Could not find Sileo"
+            console.error(msg)
+            tb.toolbarState = .closeApp
+            print("[palera1n] "+msg)
             return
         }
-
+        
         guard let libswift = Bundle.main.path(forResource: "libswift", ofType: "deb") else {
-            NSLog("[palera1n] Could not find libswift")
+            let msg = "Could not find libswift deb"
+            console.error(msg)
+            tb.toolbarState = .closeApp
+            print("[palera1n] "+msg)
             return
         }
-
+        
         guard let safemode = Bundle.main.path(forResource: "safemode", ofType: "deb") else {
-            NSLog("[palera1n] Could not find safemode")
+            let msg = "Could not find safemode"
+            console.error(msg)
+            tb.toolbarState = .closeApp
+            print("[palera1n] "+msg)
             return
         }
-
+        
         guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
-            NSLog("[palera1n] Could not find preferenceloader")
+            let msg = "Could not find preferenceloader"
+            console.error(msg)
+            tb.toolbarState = .closeApp
+            print("[palera1n] "+msg)
             return
         }
-
+        
         guard let substitute = Bundle.main.path(forResource: "substitute", ofType: "deb") else {
-            NSLog("[palera1n] Could not find substitute")
+            let msg = "Could not find substitute"
+            console.error(msg)
+            tb.toolbarState = .closeApp
+            print("[palera1n] "+msg)
             return
         }
         
@@ -167,6 +198,7 @@ struct ContentView: View {
             DispatchQueue.main.async {
                 if ret != 0 {
                     console.log("[-] Error installing bootstrap. Status: \(ret)")
+                    tb.toolbarState = .closeApp
                     return
                 }
                 
@@ -176,6 +208,7 @@ struct ContentView: View {
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.log("[-] Failed to prepare bootstrap. Status: \(ret)")
+                            tb.toolbarState = .closeApp
                             return
                         }
                         
@@ -185,6 +218,7 @@ struct ContentView: View {
                             DispatchQueue.main.async {
                                 if ret != 0 {
                                     console.log("[-] Failed to install packages. Status: \(ret)")
+                                    tb.toolbarState = .closeApp
                                     return
                                 }
                                 
@@ -194,9 +228,12 @@ struct ContentView: View {
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.log("[-] Failed to uicache. Status: \(ret)")
+                                            tb.toolbarState = .closeApp
                                             return
                                         }
                                         console.log("[*] Finished installing! Enjoy!")
+                                        
+                                        tb.toolbarState = .respring
                                     }
                                 }
                             }
@@ -206,7 +243,12 @@ struct ContentView: View {
             }
         }
     }
+}
 
+class ToolbarStateMoment: ObservableObject {
+    static let s = ToolbarStateMoment()
+    
+    @Published var toolbarState: ToolbarController.ToolbarState = .toolbar
 }
 
 struct ToolbarController: View {
@@ -221,7 +263,33 @@ struct ToolbarController: View {
     
     @State var buttonBounds: CGSize? = nil
     
+    @ObservedObject var state = ToolbarStateMoment.s
+    
+    public enum ToolbarState {
+        case toolbar
+        case disabled
+        case closeApp
+        case respring
+    }
+    
     var body: some View {
+        VStack {
+            switch state.toolbarState {
+            case .toolbar:
+                toolbar
+            case .disabled:
+                disabled
+            case .closeApp:
+                closeApp
+            case .respring:
+                respring
+            }
+        }
+        .animation(.easeInOut, value: state.toolbarState)
+    }
+    
+    @ViewBuilder
+    var toolbar: some View {
         HStack {
             Button {
                 self.settingsIsOpen.toggle()
@@ -235,9 +303,12 @@ struct ToolbarController: View {
                 self.bs()
             } label: {
                 Text("Install")
-                    .foregroundColor(.white)
-                    .font(.subheadline)
+                    .foregroundColor(.init(hex: "68431f"))
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .padding(8)
+                    .background(Capsule().foregroundColor(.white))
             }
+            .buttonStyle(.plain)
             
             Button {
                 self.infoIsOpen.toggle()
@@ -254,8 +325,55 @@ struct ToolbarController: View {
         .background(
             Capsule()
                 .foregroundColor(.init("CellBackground"))
-            )
+        )
     }
+    
+    @ViewBuilder
+    var disabled: some View {
+        EmptyView()
+    }
+    
+    @ViewBuilder
+    var closeApp: some View {
+        Button {
+            fatalError()
+        } label: {
+            Text("Close")
+                .font(.body)
+                .foregroundLinearGradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")], startPoint: .leading, endPoint: .trailing)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                }
+        }
+        .buttonStyle(.plain)
+        .padding()
+        .padding(.horizontal)
+        .frame(maxHeight: 30)
+    }
+    
+    @ViewBuilder
+    var respring: some View {
+        Button {
+            fatalError()
+        } label: {
+            Text("Close")
+                .font(.body)
+                .foregroundLinearGradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")], startPoint: .leading, endPoint: .trailing)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                }
+        }
+        .buttonStyle(.plain)
+        .padding()
+        .padding(.horizontal)
+        .frame(maxHeight: 30)
+    }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

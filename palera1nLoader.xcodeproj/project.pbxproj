@@ -20,6 +20,7 @@
 		AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */; };
 		AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE32291F1AED000CD15B /* IrregularGradient */; };
 		AAC7DE36291F1EBD000CD15B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */; };
+		AAD65B0B2932DCC300DF88E6 /* SettingsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */; };
 		AAEF9D5C291ED9F90089149B /* palera1nLoaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */; };
 		AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5D291ED9F90089149B /* ContentView.swift */; };
 		AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEF9D5F291ED9FB0089149B /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = palera1nBridging.h; sourceTree = "<group>"; };
 		AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsSheetView.swift; sourceTree = "<group>"; };
 		AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableGradients.swift; sourceTree = "<group>"; };
+		AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
 		AAEF9D58291ED9F80089149B /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = palera1nLoaderApp.swift; sourceTree = "<group>"; };
 		AAEF9D5D291ED9F90089149B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				AAEF9D5D291ED9F90089149B /* ContentView.swift */,
 				AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */,
+				AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */,
 				AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */,
 				AAEF9D73291EE2860089149B /* Console.swift in Sources */,
+				AAD65B0B2932DCC300DF88E6 /* SettingsSheetView.swift in Sources */,
 				AAEF9D6C291EDD7A0089149B /* ForegroundLinearGradient.swift in Sources */,
 				AAEF9D6D291EDD7A0089149B /* Color.swift in Sources */,
 				AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */,

@@ -3,4 +3,117 @@
    uuid = "5191F042-39FC-4A2B-BC93-7E3AC8F79ACD"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4A41AB2-67FD-4176-8992-8905910838F8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "palera1nLoader/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "strap()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E4A41AB2-67FD-4176-8992-8905910838F8 - a8c24a1713c7708f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "palera1nLoader.ContentView.strap() -&gt; ()"
+                  moduleName = "palera1nLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/llsc12/Documents/GitHub/palera1nLoader/palera1nLoader/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "3158">
+               </Location>
+               <Location
+                  uuid = "E4A41AB2-67FD-4176-8992-8905910838F8 - a8c24a1713c7708f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "palera1nLoader.ContentView.strap() -&gt; ()"
+                  moduleName = "palera1nLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/llsc12/Documents/GitHub/palera1nLoader/palera1nLoader/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "3446">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA27019A-19EC-4CE5-9B57-26756EBEFC29"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "palera1nLoader/CommandRunner.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "spawn(command:args:root:)"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "EA27019A-19EC-4CE5-9B57-26756EBEFC29 - 41d4cd46b0cb4ec0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "palera1nLoader.spawn(command: Swift.String, args: Swift.Array&lt;Swift.String&gt;, root: Swift.Bool) -&gt; Swift.Int"
+                  moduleName = "palera1nLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/llsc12/Documents/GitHub/palera1nLoader/palera1nLoader/CommandRunner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "567">
+               </Location>
+               <Location
+                  uuid = "EA27019A-19EC-4CE5-9B57-26756EBEFC29 - 9db66a093c86711"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 () -&gt; () in palera1nLoader.spawn(command: Swift.String, args: Swift.Array&lt;Swift.String&gt;, root: Swift.Bool) -&gt; Swift.Int"
+                  moduleName = "palera1nLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/llsc12/Documents/GitHub/palera1nLoader/palera1nLoader/CommandRunner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  uuid = "EA27019A-19EC-4CE5-9B57-26756EBEFC29 - a154275a5932c307"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 () -&gt; () in palera1nLoader.spawn(command: Swift.String, args: Swift.Array&lt;Swift.String&gt;, root: Swift.Bool) -&gt; Swift.Int"
+                  moduleName = "palera1nLoader"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/llsc12/Documents/GitHub/palera1nLoader/palera1nLoader/CommandRunner.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "105">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
