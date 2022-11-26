@@ -125,13 +125,13 @@ struct ContentView: View {
             return
         }
          
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "PogoHelper") else {
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
             NSLog("[palera1n] Could not find helper?")
             return
         }
          
-        guard let deb = Bundle.main.path(forResource: "org.coolstar.sileo_2.3_iphoneos-arm", ofType: "deb") else {
-            NSLog("[palera1n] Could not find deb")
+        guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
+            NSLog("[palera1n] Could not find Sileo")
             return
         }
 

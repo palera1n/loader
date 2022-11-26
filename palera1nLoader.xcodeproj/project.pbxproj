@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331E9B752932C42400363FA9 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 331E9B742932C42300363FA9 /* Makefile */; };
+		331E9B842932CBC000363FA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBC82920590B0055F1C0 /* main.swift */; };
+		331E9B862932CBED00363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B852932CBED00363FA9 /* SWCompression */; };
+		331E9B882932CBFB00363FA9 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B872932CBFB00363FA9 /* ArgumentParser */; };
+		331E9B8A2932CD1000363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B892932CD1000363FA9 /* SWCompression */; };
+		331E9B8C2932CD1700363FA9 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B8B2932CD1700363FA9 /* ArgumentParser */; };
 		AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = AA95DB8A292050FA0055F1C0 /* bootstrap.tar */; };
-		AA95DBC92920590B0055F1C0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBC82920590B0055F1C0 /* main.swift */; };
 		AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCB292059980055F1C0 /* BitByteData */; };
-		AA95DBCF292059B60055F1C0 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCE292059B60055F1C0 /* SWCompression */; };
-		AA95DBD2292059DC0055F1C0 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBD1292059DC0055F1C0 /* ArgumentParser */; };
-		AA95DBD429205A1B0055F1C0 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBD329205A1B0055F1C0 /* SWCompression */; };
-		AA95DBD629205A1B0055F1C0 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBD529205A1B0055F1C0 /* ArgumentParser */; };
 		AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBD729205AB90055F1C0 /* CommandRunner.swift */; };
 		AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */; };
 		AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */; };
@@ -34,9 +35,25 @@
 		AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D8B291EEFF00089149B /* ViewFlip.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		331E9B792932CABC00363FA9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		331E9B742932C42300363FA9 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		331E9B7B2932CABC00363FA9 /* palera1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = palera1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		331E9B822932CBAB00363FA9 /* SWCompression */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SWCompression; path = "/Users/nebula/Library/Developer/Xcode/DerivedData/palera1nLoader-ajgfxnltqjwucscvgkbewmhafndf/SourcePackages/checkouts/SWCompression"; sourceTree = "<absolute>"; };
+		331E9B832932CBAD00363FA9 /* swift-argument-parser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-argument-parser"; path = "/Users/nebula/Library/Developer/Xcode/DerivedData/palera1nLoader-ajgfxnltqjwucscvgkbewmhafndf/SourcePackages/checkouts/swift-argument-parser"; sourceTree = "<absolute>"; };
+		331E9B8D2932D07C00363FA9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA95DB8A292050FA0055F1C0 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
-		AA95DBBF292058EE0055F1C0 /* libpalera1nHelper.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libpalera1nHelper.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AA95DBD729205AB90055F1C0 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 		AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = palera1nBridging.h; sourceTree = "<group>"; };
@@ -64,12 +81,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AA95DBBD292058EE0055F1C0 /* Frameworks */ = {
+		331E9B782932CABC00363FA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA95DBD629205A1B0055F1C0 /* ArgumentParser in Frameworks */,
-				AA95DBD429205A1B0055F1C0 /* SWCompression in Frameworks */,
+				331E9B882932CBFB00363FA9 /* ArgumentParser in Frameworks */,
+				331E9B862932CBED00363FA9 /* SWCompression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,11 +94,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA95DBD2292059DC0055F1C0 /* ArgumentParser in Frameworks */,
+				331E9B8C2932CD1700363FA9 /* ArgumentParser in Frameworks */,
 				AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */,
 				AAC7DE36291F1EBD000CD15B /* SDWebImageSwiftUI in Frameworks */,
+				331E9B8A2932CD1000363FA9 /* SWCompression in Frameworks */,
 				AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */,
-				AA95DBCF292059B60055F1C0 /* SWCompression in Frameworks */,
 				AAEF9D86291EEBF70089149B /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,29 +106,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA95DB8929204FFC0055F1C0 /* Bootstrapping */ = {
-			isa = PBXGroup;
-			children = (
-				AA95DB8D292051060055F1C0 /* Support */,
-				AA95DBD729205AB90055F1C0 /* CommandRunner.swift */,
-			);
-			name = Bootstrapping;
-			sourceTree = "<group>";
-		};
-		AA95DB8D292051060055F1C0 /* Support */ = {
+		331E9B762932C51300363FA9 /* Required */ = {
 			isa = PBXGroup;
 			children = (
 				AA95DB8A292050FA0055F1C0 /* bootstrap.tar */,
 			);
-			name = Support;
+			path = Required;
 			sourceTree = "<group>";
 		};
-		AA95DBC0292058EE0055F1C0 /* palera1nHelper */ = {
+		331E9B7C2932CABD00363FA9 /* palera1nHelper */ = {
 			isa = PBXGroup;
 			children = (
 				AA95DBC82920590B0055F1C0 /* main.swift */,
 			);
 			path = palera1nHelper;
+			sourceTree = "<group>";
+		};
+		AA95DB8929204FFC0055F1C0 /* Bootstrapping */ = {
+			isa = PBXGroup;
+			children = (
+				AA95DBD729205AB90055F1C0 /* CommandRunner.swift */,
+			);
+			name = Bootstrapping;
 			sourceTree = "<group>";
 		};
 		AAC7DE2C291F1203000CD15B /* Views */ = {
@@ -126,8 +142,9 @@
 		AAEF9D4F291ED9F80089149B = {
 			isa = PBXGroup;
 			children = (
+				331E9B742932C42300363FA9 /* Makefile */,
 				AAEF9D5A291ED9F80089149B /* palera1nLoader */,
-				AA95DBC0292058EE0055F1C0 /* palera1nHelper */,
+				331E9B7C2932CABD00363FA9 /* palera1nHelper */,
 				AAEF9D59291ED9F80089149B /* Products */,
 				AAEF9D84291EEBF70089149B /* Frameworks */,
 			);
@@ -137,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				AAEF9D58291ED9F80089149B /* palera1nLoader.app */,
-				AA95DBBF292058EE0055F1C0 /* libpalera1nHelper.dylib */,
+				331E9B7B2932CABC00363FA9 /* palera1nHelper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,6 +162,8 @@
 		AAEF9D5A291ED9F80089149B /* palera1nLoader */ = {
 			isa = PBXGroup;
 			children = (
+				331E9B8D2932D07C00363FA9 /* Info.plist */,
+				331E9B762932C51300363FA9 /* Required */,
 				AA95DB8929204FFC0055F1C0 /* Bootstrapping */,
 				AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */,
 				AAC7DE2C291F1203000CD15B /* Views */,
@@ -220,6 +239,8 @@
 		AAEF9D84291EEBF70089149B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				331E9B832932CBAD00363FA9 /* swift-argument-parser */,
+				331E9B822932CBAB00363FA9 /* SWCompression */,
 				AAEF9D85291EEBF70089149B /* IOKit.framework */,
 			);
 			name = Frameworks;
@@ -227,24 +248,14 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		AA95DBBB292058EE0055F1C0 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		AA95DBBE292058EE0055F1C0 /* palera1nHelper */ = {
+		331E9B7A2932CABC00363FA9 /* palera1nHelper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA95DBC5292058EE0055F1C0 /* Build configuration list for PBXNativeTarget "palera1nHelper" */;
+			buildConfigurationList = 331E9B7F2932CABD00363FA9 /* Build configuration list for PBXNativeTarget "palera1nHelper" */;
 			buildPhases = (
-				AA95DBBB292058EE0055F1C0 /* Headers */,
-				AA95DBBC292058EE0055F1C0 /* Sources */,
-				AA95DBBD292058EE0055F1C0 /* Frameworks */,
+				331E9B772932CABC00363FA9 /* Sources */,
+				331E9B782932CABC00363FA9 /* Frameworks */,
+				331E9B792932CABC00363FA9 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -252,11 +263,11 @@
 			);
 			name = palera1nHelper;
 			packageProductDependencies = (
-				AA95DBD329205A1B0055F1C0 /* SWCompression */,
-				AA95DBD529205A1B0055F1C0 /* ArgumentParser */,
+				331E9B852932CBED00363FA9 /* SWCompression */,
+				331E9B872932CBFB00363FA9 /* ArgumentParser */,
 			);
 			productName = palera1nHelper;
-			productReference = AA95DBBF292058EE0055F1C0 /* libpalera1nHelper.dylib */;
+			productReference = 331E9B7B2932CABC00363FA9 /* palera1nHelper */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		AAEF9D57291ED9F80089149B /* palera1nLoader */ = {
@@ -276,8 +287,8 @@
 				AAC7DE32291F1AED000CD15B /* IrregularGradient */,
 				AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */,
 				AA95DBCB292059980055F1C0 /* BitByteData */,
-				AA95DBCE292059B60055F1C0 /* SWCompression */,
-				AA95DBD1292059DC0055F1C0 /* ArgumentParser */,
+				331E9B892932CD1000363FA9 /* SWCompression */,
+				331E9B8B2932CD1700363FA9 /* ArgumentParser */,
 			);
 			productName = palera1nLoader;
 			productReference = AAEF9D58291ED9F80089149B /* palera1nLoader.app */;
@@ -290,12 +301,11 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
-					AA95DBBE292058EE0055F1C0 = {
-						CreatedOnToolsVersion = 14.1;
-						LastSwiftMigration = 1410;
+					331E9B7A2932CABC00363FA9 = {
+						CreatedOnToolsVersion = 14.0;
 					};
 					AAEF9D57291ED9F80089149B = {
 						CreatedOnToolsVersion = 14.1;
@@ -323,7 +333,7 @@
 			projectRoot = "";
 			targets = (
 				AAEF9D57291ED9F80089149B /* palera1nLoader */,
-				AA95DBBE292058EE0055F1C0 /* palera1nHelper */,
+				331E9B7A2932CABC00363FA9 /* palera1nHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -342,11 +352,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AA95DBBC292058EE0055F1C0 /* Sources */ = {
+		331E9B772932CABC00363FA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA95DBC92920590B0055F1C0 /* main.swift in Sources */,
+				331E9B842932CBC000363FA9 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +376,7 @@
 				AAEF9D6D291EDD7A0089149B /* Color.swift in Sources */,
 				AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */,
 				AAEF9D5C291ED9F90089149B /* palera1nLoaderApp.swift in Sources */,
+				331E9B752932C42400363FA9 /* Makefile in Sources */,
 				AAEF9D81291EEAC10089149B /* HostManager.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,48 +384,37 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		AA95DBC6292058EE0055F1C0 /* Debug */ = {
+		331E9B802932CABD00363FA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 566RT33SA2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		AA95DBC7292058EE0055F1C0 /* Release */ = {
+		331E9B812932CABD00363FA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 566RT33SA2;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				EXECUTABLE_PREFIX = lib;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				DYLIB_COMPATIBILITY_VERSION = "";
+				DYLIB_CURRENT_VERSION = "";
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -542,6 +542,7 @@
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = palera1nLoader/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -576,6 +577,7 @@
 				DEVELOPMENT_TEAM = 566RT33SA2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = palera1nLoader/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -603,11 +605,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA95DBC5292058EE0055F1C0 /* Build configuration list for PBXNativeTarget "palera1nHelper" */ = {
+		331E9B7F2932CABD00363FA9 /* Build configuration list for PBXNativeTarget "palera1nHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA95DBC6292058EE0055F1C0 /* Debug */,
-				AA95DBC7292058EE0055F1C0 /* Release */,
+				331E9B802932CABD00363FA9 /* Debug */,
+				331E9B812932CABD00363FA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -676,30 +678,30 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		331E9B852932CBED00363FA9 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		331E9B872932CBFB00363FA9 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		331E9B892932CD1000363FA9 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
+		331E9B8B2932CD1700363FA9 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
 		AA95DBCB292059980055F1C0 /* BitByteData */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA95DBCA292059980055F1C0 /* XCRemoteSwiftPackageReference "BitByteData" */;
 			productName = BitByteData;
-		};
-		AA95DBCE292059B60055F1C0 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
-		AA95DBD1292059DC0055F1C0 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
-		};
-		AA95DBD329205A1B0055F1C0 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
-		AA95DBD529205A1B0055F1C0 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
 		};
 		AAC7DE32291F1AED000CD15B /* IrregularGradient */ = {
 			isa = XCSwiftPackageProductDependency;
