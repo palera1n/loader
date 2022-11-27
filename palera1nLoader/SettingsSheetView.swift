@@ -83,7 +83,6 @@ struct SettingsSheetView: View {
             self.isOpen.toggle()
         } label: {
             HStack {
-                
                 Image(systemName: "wrench")
                 
                 VStack(alignment: .leading) {
@@ -92,8 +91,6 @@ struct SettingsSheetView: View {
                     Text(tool.desc)
                         .font(.caption)
                 }
-                
-                Spacer()
             }
             .padding()
             .frame(maxWidth: .infinity)
