@@ -30,7 +30,6 @@
 		AAEF9D73291EE2860089149B /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D72291EE2850089149B /* Console.swift */; };
 		AAEF9D75291EE9370089149B /* SysInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D74291EE9370089149B /* SysInfo.swift */; };
 		AAEF9D81291EEAC10089149B /* HostManager.c in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D77291EEAC10089149B /* HostManager.c */; };
-		AAEF9D82291EEAC10089149B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AAEF9D7C291EEAC10089149B /* README.md */; };
 		AAEF9D83291EEAC10089149B /* HostManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D7F291EEAC10089149B /* HostManagerBridge.m */; };
 		AAEF9D86291EEBF70089149B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEF9D85291EEBF70089149B /* IOKit.framework */; };
 		AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D8B291EEFF00089149B /* ViewFlip.swift */; };
@@ -51,8 +50,6 @@
 /* Begin PBXFileReference section */
 		331E9B742932C42300363FA9 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		331E9B7B2932CABC00363FA9 /* palera1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = palera1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
-		331E9B822932CBAB00363FA9 /* SWCompression */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SWCompression; path = "/Users/nebula/Library/Developer/Xcode/DerivedData/palera1nLoader-ajgfxnltqjwucscvgkbewmhafndf/SourcePackages/checkouts/SWCompression"; sourceTree = "<absolute>"; };
-		331E9B832932CBAD00363FA9 /* swift-argument-parser */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "swift-argument-parser"; path = "/Users/nebula/Library/Developer/Xcode/DerivedData/palera1nLoader-ajgfxnltqjwucscvgkbewmhafndf/SourcePackages/checkouts/swift-argument-parser"; sourceTree = "<absolute>"; };
 		331E9B8D2932D07C00363FA9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA95DB8A292050FA0055F1C0 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
 		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -242,8 +239,6 @@
 		AAEF9D84291EEBF70089149B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				331E9B832932CBAD00363FA9 /* swift-argument-parser */,
-				331E9B822932CBAB00363FA9 /* SWCompression */,
 				AAEF9D85291EEBF70089149B /* IOKit.framework */,
 			);
 			name = Frameworks;
@@ -346,7 +341,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEF9D82291EEAC10089149B /* README.md in Resources */,
 				AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */,
 				AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */,
 			);
