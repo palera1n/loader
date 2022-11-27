@@ -20,6 +20,7 @@
 		AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE32291F1AED000CD15B /* IrregularGradient */; };
 		AAC7DE36291F1EBD000CD15B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */; };
 		AAD65B0B2932DCC300DF88E6 /* SettingsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */; };
+		AAD65B0D2932EBF000DF88E6 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = AAD65B0C2932EBF000DF88E6 /* ArgumentParser */; };
 		AAEF9D5C291ED9F90089149B /* palera1nLoaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */; };
 		AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5D291ED9F90089149B /* ContentView.swift */; };
 		AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEF9D5F291ED9FB0089149B /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAD65B0D2932EBF000DF88E6 /* ArgumentParser in Frameworks */,
 				331E9B862932CBED00363FA9 /* SWCompression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +267,7 @@
 			name = palera1nHelper;
 			packageProductDependencies = (
 				331E9B852932CBED00363FA9 /* SWCompression */,
+				AAD65B0C2932EBF000DF88E6 /* ArgumentParser */,
 			);
 			productName = palera1nHelper;
 			productReference = 331E9B7B2932CABC00363FA9 /* palera1nHelper */;
@@ -708,6 +711,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AAC7DE34291F1EBD000CD15B /* XCRemoteSwiftPackageReference "SDWebImageswiftui" */;
 			productName = SDWebImageSwiftUI;
+		};
+		AAD65B0C2932EBF000DF88E6 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
