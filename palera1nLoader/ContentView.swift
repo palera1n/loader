@@ -39,6 +39,7 @@ struct ContentView: View {
                     }
             }
         }
+        .environmentObject(console)
     }
     
     @State var splash = true

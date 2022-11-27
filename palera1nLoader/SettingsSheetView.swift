@@ -11,7 +11,7 @@ import IrregularGradient
 
 struct SettingsSheetView: View {
     @Binding var isOpen: Bool
-    @StateObject var console = Console()
+    @EnvironmentObject var console: Console
     
     var tools: [Tool] = [
         Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
