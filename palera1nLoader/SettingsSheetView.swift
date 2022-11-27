@@ -37,15 +37,11 @@ struct SettingsSheetView: View {
     @ViewBuilder
     var main: some View {
         ScrollView {
-            Text("Tools")
-
-            Spacer()
-
             ForEach(tools) { tool in
                 ToolsView(tool)
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle("Tools")
     }
 
     @ViewBuilder
@@ -87,22 +83,19 @@ struct SettingsSheetView: View {
             self.isOpen.toggle()
         } label: {
             HStack {
+                
+                Image(systemName: "wrench")
+                
                 VStack(alignment: .leading) {
                     Text(tool.name)
-                        .font(.title.bold())
+                        .font(.title2.bold())
                     Text(tool.desc)
-                        .font(.body)
+                        .font(.caption)
                 }
                 
                 Spacer()
-                
-                Image(systemName: "arrow.up.right.square")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 30)
-                    .padding()
             }
-            .padding(10)
+            .padding()
             .frame(maxWidth: .infinity)
             .background(Capsule().foregroundColor(.init("CellBackground")).background(.ultraThinMaterial))
             .clipShape(Capsule())
@@ -123,7 +116,7 @@ struct SettingsSheetView: View {
                     let ret = spawn(command: "/usr/bin/uicache", args: ["-p", "/Applications/\(app)"], root: true)
                     DispatchQueue.main.async {
                         if ret != 0 {
-                            console.error("[-] Failed to uicache. Status: \(ret)")
+                            console.error("[-] Failed to uicache \(app). Status: \(ret)")
                             return
                         }
                         console.log("[*] Registered apps in /Applications")
