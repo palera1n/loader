@@ -87,6 +87,8 @@ struct SettingsSheetView: View {
             self.isOpen.toggle()
         } label: {
             HStack {
+                Spacer()
+
                 VStack(alignment: .leading) {
                     Text(tool.name)
                         .font(.title.bold())
