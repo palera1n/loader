@@ -18,17 +18,17 @@ struct Strap: ParsableCommand {
     var remove: Bool = false
     
     mutating func run() throws {
-        NSLog("[POGO] Spawned!")
+        NSLog("[palera1n helper] Spawned!")
         guard getuid() == 0 else { fatalError() }
         
         if let input = input {
-            NSLog("[POGO] Attempting to install \(input)")
+            NSLog("[palera1n helper] Attempting to install \(input)")
             let dest = "/"
             do {
                 try autoreleasepool {
                     let data = try Data(contentsOf: URL(fileURLWithPath: input))
                     let container = try TarContainer.open(container: data)
-                    NSLog("[POGO] Opened Container")
+                    NSLog("[palera1n helper] Opened Container")
                     for entry in container {
                         do {
                             var path = entry.info.name
@@ -54,7 +54,7 @@ struct Strap: ParsableCommand {
                                 } else {
                                     linkName = linkName.replacingOccurrences(of: "", with: dest)
                                 }
-                                NSLog("[POGO] \(entry.info.linkName) at \(linkName) to \(path)")
+                                NSLog("[palera1n helper] \(entry.info.linkName) at \(linkName) to \(path)")
                                 try FileManager.default.createSymbolicLink(atPath: path, withDestinationPath: linkName)
                             case .directory:
                                 try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true)
@@ -62,7 +62,7 @@ struct Strap: ParsableCommand {
                                 guard let data = entry.data else { continue }
                                 try data.write(to: URL(fileURLWithPath: path))
                             default:
-                                NSLog("[POGO] Unknown Action for \(entry.info.type)")
+                                NSLog("[palera1n helper] Unknown Action for \(entry.info.type)")
                             }
                             var attributes = [FileAttributeKey: Any]()
                             attributes[.posixPermissions] = entry.info.permissions?.rawValue
@@ -78,15 +78,15 @@ struct Strap: ParsableCommand {
                                 continue
                             }
                         } catch {
-                            NSLog("[POGO] error \(error.localizedDescription)")
+                            NSLog("[palera1n helper] error \(error.localizedDescription)")
                         }
                     }
                 }
             } catch {
-                NSLog("[POGO] Failed with error \(error.localizedDescription)")
+                NSLog("[palera1n helper] Failed with error \(error.localizedDescription)")
                 return
             }
-            NSLog("[POGO] Strapped to \(dest)")
+            NSLog("[palera1n helper] Strapped to \(dest)")
             var attributes = [FileAttributeKey: Any]()
             attributes[.posixPermissions] = 0o755
             attributes[.ownerAccountName] = "mobile"
@@ -94,7 +94,7 @@ struct Strap: ParsableCommand {
             do {
                 try FileManager.default.setAttributes(attributes, ofItemAtPath: "/var/mobile")
             } catch {
-                NSLog("[POGO] thats wild")
+                NSLog("[palera1n helper] thats wild")
             }
         }
     }

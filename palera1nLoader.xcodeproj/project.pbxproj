@@ -12,6 +12,7 @@
 		331E9B862932CBED00363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B852932CBED00363FA9 /* SWCompression */; };
 		331E9B8A2932CD1000363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B892932CD1000363FA9 /* SWCompression */; };
 		331E9B8C2932CD1700363FA9 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B8B2932CD1700363FA9 /* ArgumentParser */; };
+		336B30D22933E35C004BE6AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B30D12933E35C004BE6AA /* Foundation.framework */; };
 		AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = AA95DB8A292050FA0055F1C0 /* bootstrap.tar */; };
 		AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCB292059980055F1C0 /* BitByteData */; };
 		AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBD729205AB90055F1C0 /* CommandRunner.swift */; };
@@ -51,6 +52,7 @@
 		331E9B742932C42300363FA9 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		331E9B7B2932CABC00363FA9 /* palera1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = palera1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		331E9B8D2932D07C00363FA9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		336B30D12933E35C004BE6AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AA95DB8A292050FA0055F1C0 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
 		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AA95DBD729205AB90055F1C0 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD65B0D2932EBF000DF88E6 /* ArgumentParser in Frameworks */,
+				336B30D22933E35C004BE6AA /* Foundation.framework in Frameworks */,
 				331E9B862932CBED00363FA9 /* SWCompression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +242,7 @@
 		AAEF9D84291EEBF70089149B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				336B30D12933E35C004BE6AA /* Foundation.framework */,
 				AAEF9D85291EEBF70089149B /* IOKit.framework */,
 			);
 			name = Frameworks;
@@ -390,10 +394,12 @@
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -407,10 +413,12 @@
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
