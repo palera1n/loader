@@ -10,7 +10,6 @@
 		331E9B752932C42400363FA9 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 331E9B742932C42300363FA9 /* Makefile */; };
 		331E9B842932CBC000363FA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBC82920590B0055F1C0 /* main.swift */; };
 		331E9B862932CBED00363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B852932CBED00363FA9 /* SWCompression */; };
-		331E9B882932CBFB00363FA9 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B872932CBFB00363FA9 /* ArgumentParser */; };
 		331E9B8A2932CD1000363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B892932CD1000363FA9 /* SWCompression */; };
 		331E9B8C2932CD1700363FA9 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B8B2932CD1700363FA9 /* ArgumentParser */; };
 		AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = AA95DB8A292050FA0055F1C0 /* bootstrap.tar */; };
@@ -87,7 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				331E9B882932CBFB00363FA9 /* ArgumentParser in Frameworks */,
 				331E9B862932CBED00363FA9 /* SWCompression in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +265,6 @@
 			name = palera1nHelper;
 			packageProductDependencies = (
 				331E9B852932CBED00363FA9 /* SWCompression */,
-				331E9B872932CBFB00363FA9 /* ArgumentParser */,
 			);
 			productName = palera1nHelper;
 			productReference = 331E9B7B2932CABC00363FA9 /* palera1nHelper */;
@@ -686,11 +683,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
 			productName = SWCompression;
-		};
-		331E9B872932CBFB00363FA9 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
 		};
 		331E9B892932CD1000363FA9 /* SWCompression */ = {
 			isa = XCSwiftPackageProductDependency;
