@@ -26,7 +26,6 @@ struct CreditsSheetView: View {
         Person(name: "xerub", icon: URL(string: "https://avatars.githubusercontent.com/u/12567734?v=4")!, role: "img4lib & restored_external", link: URL(string: "https://github.com/xerub")!),
         Person(name: "nyuszika7h", icon: URL(string: "https://avatars.githubusercontent.com/u/482367?v=4")!, role: "DFU script", link: URL(string: "https://github.com/nyuszika7h")!),
         Person(name: "Cryptic", icon: URL(string: "https://avatars.githubusercontent.com/u/27748705?v=4")!, role: "iBoot64Patcher fork", link: URL(string: "https://github.com/Cryptiiiic")!),
-        
     ]
     
     var body: some View {

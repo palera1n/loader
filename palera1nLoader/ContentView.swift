@@ -126,63 +126,62 @@ struct ContentView: View {
     }
     
     private func strap() -> Void {
-        
         let tb = ToolbarStateMoment.s
         tb.toolbarState = .disabled
         
         guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
             let msg = "Failed to find bootstrap"
-            console.error(msg)
+            console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
-            print("[palera1n] "+msg)
+            print("[palera1n] \(msg)")
             return
         }
          
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
             let msg = "Could not find Helper"
-            console.error(msg)
+            console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
-            print("[palera1n] "+msg)
+            print("[palera1n] \(msg)")
             return
         }
          
         guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
             let msg = "Could not find Sileo"
-            console.error(msg)
+            console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
-            print("[palera1n] "+msg)
+            print("[palera1n] \(msg)")
             return
         }
         
         guard let libswift = Bundle.main.path(forResource: "libswift", ofType: "deb") else {
             let msg = "Could not find libswift deb"
-            console.error(msg)
+            console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
-            print("[palera1n] "+msg)
+            print("[palera1n] \(msg)")
             return
         }
         
         guard let safemode = Bundle.main.path(forResource: "safemode", ofType: "deb") else {
             let msg = "Could not find safemode"
-            console.error(msg)
+            console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
-            print("[palera1n] "+msg)
+            print("[palera1n] \(msg)")
             return
         }
         
         guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
             let msg = "Could not find preferenceloader"
-            console.error(msg)
+            console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
-            print("[palera1n] "+msg)
+            print("[palera1n] \(msg)")
             return
         }
         
         guard let substitute = Bundle.main.path(forResource: "substitute", ofType: "deb") else {
             let msg = "Could not find substitute"
-            console.error(msg)
+            console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
-            print("[palera1n] "+msg)
+            print("[palera1n] \(msg)")
             return
         }
         
@@ -197,7 +196,7 @@ struct ContentView: View {
             
             DispatchQueue.main.async {
                 if ret != 0 {
-                    console.log("[-] Error installing bootstrap. Status: \(ret)")
+                    console.error("[-] Error installing bootstrap. Status: \(ret)")
                     tb.toolbarState = .closeApp
                     return
                 }
@@ -207,7 +206,7 @@ struct ContentView: View {
                     let ret = spawn(command: "/usr/bin/sh", args: ["/prep_bootstrap.sh"], root: true)
                     DispatchQueue.main.async {
                         if ret != 0 {
-                            console.log("[-] Failed to prepare bootstrap. Status: \(ret)")
+                            console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
                             tb.toolbarState = .closeApp
                             return
                         }
@@ -217,7 +216,7 @@ struct ContentView: View {
                             let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
-                                    console.log("[-] Failed to install packages. Status: \(ret)")
+                                    console.error("[-] Failed to install packages. Status: \(ret)")
                                     tb.toolbarState = .closeApp
                                     return
                                 }
@@ -227,7 +226,7 @@ struct ContentView: View {
                                     let ret = spawn(command: "/usr/bin/uicache", args: ["-p", "/Applications/Sileo.app"], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            console.log("[-] Failed to uicache. Status: \(ret)")
+                                            console.error("[-] Failed to uicache. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
@@ -382,7 +381,6 @@ struct ToolbarController: View {
                 window.snapshotView(afterScreenUpdates: false)
             }
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

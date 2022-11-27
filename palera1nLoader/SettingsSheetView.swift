@@ -10,8 +10,26 @@ import SwiftUI
 import IrregularGradient
 
 struct SettingsSheetView: View {
-    
     @Binding var isOpen: Bool
+    @StateObject var console = Console()
+
+    public enum ToolAction {
+        case uicache
+        case mntrw
+        case daemons
+        case respring
+        case tweaks
+        case all
+    }
+    
+    var tools: [Tool] = [
+        Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
+        Tool(name: "Remount r/w", desc: "Remounts the rootfs and preboot as read/write", action: ToolAction.mntrw),
+        Tool(name: "Launch Daemons", desc: "Start daemons using launchctl", action: ToolAction.daemons),
+        Tool(name: "Respring", desc: "Restart SpringBoard", action: ToolAction.respring),
+        Tool(name: "Activate Tweaks", desc: "Runs substitute-launcher to activate tweaks", action: ToolAction.tweaks),
+        Tool(name: "Do All", desc: "Do all of the above", action: ToolAction.all),
+    ]
     
     var body: some View {
         NavigationView {
@@ -28,10 +46,109 @@ struct SettingsSheetView: View {
     @ViewBuilder
     var main: some View {
         ScrollView {
-            Text("Pretend theres stuff here")
+            Text("Tools")
+
+            Spacer()
+
+            ForEach(tools) { tool in
+                ToolsView(tool)
+            }
         }
         .navigationTitle("Settings")
     }
+
+    @ViewBuilder
+    func ToolsView(_ tool: Tool) -> some View {
+        Button {
+            switch tool.action {
+                case .uicache:
+                    self.runUiCache()
+                case .mntrw:
+                    spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+                    spawn(command: "/sbin/mount", args: ["-uw", "/" ], root: true)
+                    console.log("[*] Remounted the rootfs and preboot as read/write")
+                case .daemons:
+                    spawn(command: "/bin/launchctl", args: ["bootstrap", "system", "/Library/LaunchDaemons"], root: true)
+                    console.log("[*] Launched daemons")
+                case .respring:
+                    spawn(command: "/usr/bin/sbreload", args: [], root: true)
+                    console.log("[*] Resprung the device... but you probably won't see this :)")
+                case .tweaks:
+                    spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
+                    console.log("[*] Started Substitute, respring to enable tweaks")
+                case .all:
+                    self.runUiCache()
+
+                    spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+                    spawn(command: "/sbin/mount", args: ["-uw", "/" ], root: true)
+                    console.log("[*] Remounted the rootfs and preboot as read/write")
+
+                    spawn(command: "/bin/launchctl", args: ["bootstrap", "system", "/Library/LaunchDaemons"], root: true)
+                    console.log("[*] Launched daemons")
+
+                    spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
+                    console.log("[*] Started Substitute, respring to enable tweaks")
+
+                    spawn(command: "/usr/bin/sbreload", args: [], root: true)
+                    console.log("[*] Resprung the device... but you probably won't see this :)")
+            }
+
+            self.isOpen.toggle()
+        } label: {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(tool.name)
+                        .font(.title.bold())
+                    Text(tool.desc)
+                        .font(.body)
+                }
+                
+                Spacer()
+                
+                Image(systemName: "arrow.up.right.square")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 30)
+                    .padding()
+            }
+            .padding(10)
+            .frame(maxWidth: .infinity)
+            .background(Capsule().foregroundColor(.init("CellBackground")).background(.ultraThinMaterial))
+            .clipShape(Capsule())
+            .padding(.horizontal)
+            .padding(.vertical, 4)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func runUiCache() {
+        DispatchQueue.global(qos: .utility).async {
+            // for every .app file in /Applications, run uicache -p
+            let fm = FileManager.default
+            let apps = try? fm.contentsOfDirectory(atPath: "/Applications")
+            let excludeApps: [String] = ["Xcode Previews.app", "Sidecar.app"]
+            for app in apps ?? [] {
+                if app.hasSuffix(".app") && !excludeApps.contains(app) {
+                    let ret = spawn(command: "/usr/bin/uicache", args: ["-p", "/Applications/\(app)"], root: true)
+                    DispatchQueue.main.async {
+                        if ret != 0 {
+                            console.error("[-] Failed to uicache. Status: \(ret)")
+                            return
+                        }
+                        console.log("[*] Registered apps in /Applications")
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+struct Tool: Identifiable {
+    var id: String { name.absoluteString }
+    let name: String
+    let desc: String
+    let action: ToolAction
 }
 
 struct SettingsSheetView_Previews: PreviewProvider {
