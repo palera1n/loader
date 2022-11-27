@@ -12,15 +12,6 @@ import IrregularGradient
 struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @StateObject var console = Console()
-
-    public enum ToolAction {
-        case uicache
-        case mntrw
-        case daemons
-        case respring
-        case tweaks
-        case all
-    }
     
     var tools: [Tool] = [
         Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
@@ -144,8 +135,17 @@ struct SettingsSheetView: View {
     }
 }
 
+public enum ToolAction {
+    case uicache
+    case mntrw
+    case daemons
+    case respring
+    case tweaks
+    case all
+}
+
 struct Tool: Identifiable {
-    var id: String { name.absoluteString }
+    var id: String { name }
     let name: String
     let desc: String
     let action: ToolAction
