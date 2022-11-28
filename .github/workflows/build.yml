@@ -14,13 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Dependecies
+      - name: Install dependencies
         run: brew install ldid
 
       - name: Compile
         run: make
       
-      - name: Upload artifact
+      - name: Upload IPA
         uses: actions/upload-artifact@v3
         with:
           name: palera1n
