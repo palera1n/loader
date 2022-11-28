@@ -91,6 +91,7 @@ struct SettingsSheetView: View {
                     Text(tool.desc)
                         .font(.caption)
                 }
+                Spacer()
             }
             .padding()
             .frame(maxWidth: .infinity)

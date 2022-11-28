@@ -55,12 +55,12 @@ struct ContentView: View {
                 .opacity(splash ? 0 : 1)
                 .frame(maxHeight: splash ? 0 : .infinity)
                 .padding([.top, .horizontal])
-                .padding(.bottom, 25)
+                .padding(.bottom, 20)
             
             Spacer()
                 .frame(maxHeight: !splash ? 0 : .infinity)
                 .padding([.top, .horizontal])
-                .padding(.bottom, 25)
+                .padding(.bottom, 20)
             
             toolbar
         }
@@ -312,6 +312,7 @@ struct ToolbarController: View {
                     .background(Capsule().foregroundColor(.white))
             }
             .buttonStyle(.plain)
+            .padding(.horizontal, 10)
             
             Button {
                 self.infoIsOpen.toggle()
