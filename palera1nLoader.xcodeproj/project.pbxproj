@@ -16,6 +16,7 @@
 		AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = AA95DB8A292050FA0055F1C0 /* bootstrap.tar */; };
 		AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCB292059980055F1C0 /* BitByteData */; };
 		AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBD729205AB90055F1C0 /* CommandRunner.swift */; };
+		AAC38B5929356A1F00796F04 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC38B5829356A1F00796F04 /* Utilities.swift */; };
 		AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */; };
 		AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */; };
 		AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE32291F1AED000CD15B /* IrregularGradient */; };
@@ -57,6 +58,8 @@
 		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AA95DBD729205AB90055F1C0 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 		AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = palera1nBridging.h; sourceTree = "<group>"; };
+		AAC38B5829356A1F00796F04 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		AAC38B5C29356B0700796F04 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsSheetView.swift; sourceTree = "<group>"; };
 		AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableGradients.swift; sourceTree = "<group>"; };
 		AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				AAEF9D72291EE2850089149B /* Console.swift */,
+				AAC38B5829356A1F00796F04 /* Utilities.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -200,6 +204,7 @@
 		AAEF9D6F291EDDAD0089149B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AAC38B5C29356B0700796F04 /* LSApplicationWorkspace.h */,
 				AAEF9D76291EEAC10089149B /* Zefram stolen code */,
 				AAEF9D70291EDDBB0089149B /* Constants.swift */,
 				AAEF9D74291EE9370089149B /* SysInfo.swift */,
@@ -371,6 +376,7 @@
 				AAEF9D83291EEAC10089149B /* HostManagerBridge.m in Sources */,
 				AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */,
 				AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */,
+				AAC38B5929356A1F00796F04 /* Utilities.swift in Sources */,
 				AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */,
 				AAEF9D73291EE2860089149B /* Console.swift in Sources */,
 				AAD65B0B2932DCC300DF88E6 /* SettingsSheetView.swift in Sources */,

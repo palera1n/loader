@@ -360,7 +360,7 @@ struct ToolbarController: View {
     @ViewBuilder
     var respring: some View {
         Button {
-            ToolbarController.triggerRespring()
+            utils.respring()
         } label: {
             Text("Respring")
                 .font(.body)
@@ -375,13 +375,6 @@ struct ToolbarController: View {
         .padding()
         .padding(.horizontal)
         .frame(maxHeight: 30)
-    }
-    
-    static func triggerRespring() {
-        guard let window = UIApplication.shared.windows.first else { return }
-            while true {
-                window.snapshotView(afterScreenUpdates: false)
-            }
     }
 }
 
