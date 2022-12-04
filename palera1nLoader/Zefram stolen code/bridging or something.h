@@ -10,6 +10,5 @@
 
 #import "wrapped/HostManagerBridge.h"
 #import "palera1nBridging.h"
-#import "../LSApplicationWorkspace.h"
 
 #endif /* bridging_or_something_h */

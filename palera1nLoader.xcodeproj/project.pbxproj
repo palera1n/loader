@@ -16,6 +16,8 @@
 		AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = AA95DB8A292050FA0055F1C0 /* bootstrap.tar */; };
 		AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCB292059980055F1C0 /* BitByteData */; };
 		AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBD729205AB90055F1C0 /* CommandRunner.swift */; };
+		AAA74201293D2DC6000243C2 /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA74200293D2DC6000243C2 /* TSUtil.m */; };
+		AAA74205293D339A000243C2 /* uicache.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA74203293D339A000243C2 /* uicache.m */; };
 		AAC38B5929356A1F00796F04 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC38B5829356A1F00796F04 /* Utilities.swift */; };
 		AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */; };
 		AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */; };
@@ -58,8 +60,16 @@
 		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AA95DBD729205AB90055F1C0 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 		AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = palera1nBridging.h; sourceTree = "<group>"; };
+		AAA741FB293D1CCA000243C2 /* palera1nLoader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = palera1nLoader.entitlements; sourceTree = "<group>"; };
+		AAA741FD293D2DC5000243C2 /* palera1nHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-Bridging-Header.h"; sourceTree = "<group>"; };
+		AAA741FE293D2DC6000243C2 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
+		AAA741FF293D2DC6000243C2 /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSUtil.h; sourceTree = "<group>"; };
+		AAA74200293D2DC6000243C2 /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtil.m; sourceTree = "<group>"; };
+		AAA74203293D339A000243C2 /* uicache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uicache.m; sourceTree = "<group>"; };
+		AAA74204293D339A000243C2 /* uicache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uicache.h; sourceTree = "<group>"; };
+		AAA74206293D4818000243C2 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../../../../theos/vendor/include/version.h; sourceTree = "<group>"; };
+		AAA74207293D4827000243C2 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		AAC38B5829356A1F00796F04 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		AAC38B5C29356B0700796F04 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
 		AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsSheetView.swift; sourceTree = "<group>"; };
 		AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableGradients.swift; sourceTree = "<group>"; };
 		AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
@@ -123,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				AA95DBC82920590B0055F1C0 /* main.swift */,
+				AAA741FD293D2DC5000243C2 /* palera1nHelper-Bridging-Header.h */,
+				AAA74202293D2DCC000243C2 /* TrollStoreCock */,
 			);
 			path = palera1nHelper;
 			sourceTree = "<group>";
@@ -133,6 +145,26 @@
 				AA95DBD729205AB90055F1C0 /* CommandRunner.swift */,
 			);
 			name = Bootstrapping;
+			sourceTree = "<group>";
+		};
+		AAA74202293D2DCC000243C2 /* TrollStoreCock */ = {
+			isa = PBXGroup;
+			children = (
+				AAA741FE293D2DC6000243C2 /* CoreServices.h */,
+				AAA741FF293D2DC6000243C2 /* TSUtil.h */,
+				AAA74200293D2DC6000243C2 /* TSUtil.m */,
+				AAA74204293D339A000243C2 /* uicache.h */,
+				AAA74203293D339A000243C2 /* uicache.m */,
+				AAA74207293D4827000243C2 /* version.h */,
+			);
+			path = TrollStoreCock;
+			sourceTree = "<group>";
+		};
+		AAA74208293D4D0A000243C2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		AAC7DE2C291F1203000CD15B /* Views */ = {
@@ -148,8 +180,9 @@
 		AAEF9D4F291ED9F80089149B = {
 			isa = PBXGroup;
 			children = (
-				331E9B742932C42300363FA9 /* Makefile */,
 				AAEF9D5A291ED9F80089149B /* palera1nLoader */,
+				AAA74208293D4D0A000243C2 /* Shared */,
+				331E9B742932C42300363FA9 /* Makefile */,
 				331E9B7C2932CABD00363FA9 /* palera1nHelper */,
 				AAEF9D59291ED9F80089149B /* Products */,
 				AAEF9D84291EEBF70089149B /* Frameworks */,
@@ -168,6 +201,7 @@
 		AAEF9D5A291ED9F80089149B /* palera1nLoader */ = {
 			isa = PBXGroup;
 			children = (
+				AAA741FB293D1CCA000243C2 /* palera1nLoader.entitlements */,
 				331E9B8D2932D07C00363FA9 /* Info.plist */,
 				331E9B762932C51300363FA9 /* Required */,
 				AA95DB8929204FFC0055F1C0 /* Bootstrapping */,
@@ -204,7 +238,7 @@
 		AAEF9D6F291EDDAD0089149B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				AAC38B5C29356B0700796F04 /* LSApplicationWorkspace.h */,
+				AAA74206293D4818000243C2 /* version.h */,
 				AAEF9D76291EEAC10089149B /* Zefram stolen code */,
 				AAEF9D70291EDDBB0089149B /* Constants.swift */,
 				AAEF9D74291EE9370089149B /* SysInfo.swift */,
@@ -313,6 +347,7 @@
 				TargetAttributes = {
 					331E9B7A2932CABC00363FA9 = {
 						CreatedOnToolsVersion = 14.0;
+						LastSwiftMigration = 1410;
 					};
 					AAEF9D57291ED9F80089149B = {
 						CreatedOnToolsVersion = 14.1;
@@ -362,6 +397,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA74205293D339A000243C2 /* uicache.m in Sources */,
+				AAA74201293D2DC6000243C2 /* TSUtil.m in Sources */,
 				331E9B842932CBC000363FA9 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,17 +432,25 @@
 		331E9B802932CABD00363FA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "palera1nHelper/palera1nHelper-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -414,17 +459,24 @@
 		331E9B812932CABD00363FA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				EXECUTABLE_PREFIX = "";
 				EXECUTABLE_SUFFIX = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "palera1nHelper/palera1nHelper-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -549,6 +601,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = palera1nLoader/palera1nLoader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 566RT33SA2;
@@ -584,6 +637,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = palera1nLoader/palera1nLoader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 566RT33SA2;

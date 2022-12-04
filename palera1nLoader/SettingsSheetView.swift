@@ -49,7 +49,7 @@ struct SettingsSheetView: View {
         Button {
             switch tool.action {
                 case .uicache:
-                    self.runUiCache()
+                break; #warning("this exists btw")
                 case .mntrw:
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                     spawn(command: "/sbin/mount", args: ["-uw", "/" ], root: true)
