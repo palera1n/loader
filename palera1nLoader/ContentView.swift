@@ -312,7 +312,6 @@ struct ToolbarController: View {
                     .background(Capsule().foregroundColor(.white))
             }
             .buttonStyle(.plain)
-            .padding(.horizontal, 10)
             
             Button {
                 self.infoIsOpen.toggle()
