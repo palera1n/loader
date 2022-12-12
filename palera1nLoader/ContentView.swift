@@ -214,7 +214,7 @@ struct ContentView: View {
                         
                         console.log("[*] Installing packages")
                         DispatchQueue.global(qos: .utility).async {
-                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
+                            let ret = spawn(command: "/usr/bin/dpkg.bak", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
                                     console.error("[-] Failed to install packages. Status: \(ret)")
