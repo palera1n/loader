@@ -222,9 +222,9 @@ struct ContentView: View {
                                     return
                                 }
                                 
-                                console.log("[*] Registering Sileo in uicache")
+                                console.log("[*] Running uicache")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/usr/bin/uicache", args: ["-p", "/Applications/Sileo.app"], root: true)
+                                    let ret = spawn(command: "/usr/bin/uicache", args: ["-a"], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.error("[-] Failed to uicache. Status: \(ret)")
