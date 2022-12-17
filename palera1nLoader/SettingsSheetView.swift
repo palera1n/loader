@@ -24,7 +24,7 @@ struct SettingsSheetView: View {
     
     var packagemanagers: [PackageManager] = [
         PackageManager(name: "Sileo", desc: "Modern package manager (recommended)", action: PackageManagers.sileo),
-        PackageManager(name: "Zebra", desc: "Cydia-ish look and feal with modern features", action: PackageManagers.zebra),
+        PackageManager(name: "Zebra", desc: "Cydia-ish look and feel with modern features", action: PackageManagers.zebra),
         PackageManager(name: "Cydia", desc: "Old and nostalgic package manager (not recommended, partially broken)", action: PackageManagers.cydia),
     ]
     
