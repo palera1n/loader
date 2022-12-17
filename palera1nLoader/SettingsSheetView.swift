@@ -174,7 +174,7 @@ struct SettingsSheetView: View {
                         return
                     }
 
-                    let ret = spawn(command: "/usr/bin/apt-get", args: ["install", "bzip2", "xz-utils", "zstd", "-y", "--allow-unauthenticated"], root: true)
+                    let ret = spawn(command: "/usr/bin/apt-get", args: ["install", "bzip2", "sed", "xz-utils", "zstd", "-y", "--allow-unauthenticated"], root: true)
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.error("[-] Failed to install Cydia. Status: \(ret)")

@@ -163,7 +163,7 @@ struct ContentView: View {
         }
         
         guard let safemode = Bundle.main.path(forResource: "safemode", ofType: "deb") else {
-            let msg = "Could not find safemode"
+            let msg = "Could not find SafeMode"
             console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
             print("[palera1n] \(msg)")
@@ -171,7 +171,7 @@ struct ContentView: View {
         }
         
         guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
-            let msg = "Could not find preferenceloader"
+            let msg = "Could not find PreferenceLoader"
             console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
             print("[palera1n] \(msg)")
@@ -179,7 +179,15 @@ struct ContentView: View {
         }
         
         guard let substitute = Bundle.main.path(forResource: "substitute", ofType: "deb") else {
-            let msg = "Could not find substitute"
+            let msg = "Could not find Substitute"
+            console.error("[-] \(msg)")
+            tb.toolbarState = .closeApp
+            print("[palera1n] \(msg)")
+            return
+        }
+        
+        guard let strapRepo = Bundle.main.path(forResource: "straprepo", ofType: "deb") else {
+            let msg = "Could not find strap repo deb"
             console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
             print("[palera1n] \(msg)")
@@ -231,9 +239,21 @@ struct ContentView: View {
                                             tb.toolbarState = .closeApp
                                             return
                                         }
-                                        console.log("[*] Finished installing! Enjoy!")
                                         
-                                        tb.toolbarState = .respring
+                                        console.log("[*] Installing palera1n strap repo")
+                                        DispatchQueue.global(qos: .utility).async {
+                                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", strapRepo], root: true)
+                                            DispatchQueue.main.async {
+                                                if ret != 0 {
+                                                    console.error("[-] Failed to install palera1n strap repo. Status: \(ret)")
+                                                    tb.toolbarState = .closeApp
+                                                    return
+                                                }
+
+                                                console.log("[*] Finished installing! Enjoy!")
+                                                tb.toolbarState = .respring
+                                            }
+                                        }
                                     }
                                 }
                             }
