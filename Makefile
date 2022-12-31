@@ -12,14 +12,11 @@ package:
 	# Deps
 	@rm -rf $(P1_REQUIRED)/*.deb
 	
-	curl -sL https://static.palera.in/libswift.deb -o $(P1_REQUIRED)/libswift.deb
-	curl -sL https://static.palera.in/substitute.deb -o $(P1_REQUIRED)/substitute.deb
-	curl -sL https://static.palera.in/safemode.deb -o $(P1_REQUIRED)/safemode.deb
-	curl -sL https://static.palera.in/preferenceloader.deb -o $(P1_REQUIRED)/preferenceloader.deb
-	curl -sL https://static.palera.in/sileo.deb -o $(P1_REQUIRED)/sileo.deb
-	curl -sL https://static.palera.in/zebra.deb -o $(P1_REQUIRED)/zebra.deb
-	curl -sL https://static.palera.in/cydia.deb -o $(P1_REQUIRED)/cydia.deb
-	curl -sL https://apt.itsnebula.net/pool/palecursus_1.0_iphoneos-arm.deb -o $(P1_REQUIRED)/straprepo.deb
+	curl -sL https://static.palera.in/rootless/ellekit.deb -o $(P1_REQUIRED)/ellekit.deb
+	curl -sL https://static.palera.in/rootless/preferenceloader.deb -o $(P1_REQUIRED)/preferenceloader.deb
+	curl -sL https://static.palera.in/rootless/sileo.deb -o $(P1_REQUIRED)/sileo.deb
+	curl -sL https://static.palera.in/rootless/dirtypatch.deb -o $(P1_REQUIRED)/dirtypatch.deb
+	curl -sL https://static.palera.in/rootless/bootstrap.tar -o $(P1_REQUIRED)/bootstrap.tar
 	
 	# Build
 	@set -o pipefail; \

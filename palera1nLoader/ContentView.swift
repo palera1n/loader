@@ -154,16 +154,8 @@ struct ContentView: View {
             return
         }
         
-        guard let libswift = Bundle.main.path(forResource: "libswift", ofType: "deb") else {
-            let msg = "Could not find libswift deb"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let safemode = Bundle.main.path(forResource: "safemode", ofType: "deb") else {
-            let msg = "Could not find SafeMode"
+        guard let ellekit = Bundle.main.path(forResource: "ellekit", ofType: "deb") else {
+            let msg = "Could not find ElleKit"
             console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
             print("[palera1n] \(msg)")
@@ -178,16 +170,8 @@ struct ContentView: View {
             return
         }
         
-        guard let substitute = Bundle.main.path(forResource: "substitute", ofType: "deb") else {
-            let msg = "Could not find Substitute"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let strapRepo = Bundle.main.path(forResource: "straprepo", ofType: "deb") else {
-            let msg = "Could not find strap repo deb"
+        guard let dirtypatch = Bundle.main.path(forResource: "dirtypatch", ofType: "deb") else {
+            let msg = "Could not find dirtypatch"
             console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
             print("[palera1n] \(msg)")
@@ -196,12 +180,11 @@ struct ContentView: View {
         
         DispatchQueue.global(qos: .utility).async { [self] in
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
             
             let ret = spawn(command: helper, args: ["-i", tar], root: true)
             
-            spawn(command: "/usr/bin/chmod", args: ["4755", "/usr/bin/sudo"], root: true)
-            spawn(command: "/usr/bin/chown", args: ["root:wheel", "/usr/bin/sudo"], root: true)
+            spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true)
+            spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true)
             
             DispatchQueue.main.async {
                 if ret != 0 {
@@ -212,7 +195,7 @@ struct ContentView: View {
                 
                 console.log("[*] Preparing Bootstrap")
                 DispatchQueue.global(qos: .utility).async {
-                    let ret = spawn(command: "/usr/bin/sh", args: ["/prep_bootstrap.sh"], root: true)
+                    let ret = spawn(command: "/var/jb/usr/bin/sh", args: ["/var/jb/prep_bootstrap.sh"], root: true)
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
@@ -222,7 +205,7 @@ struct ContentView: View {
                         
                         console.log("[*] Installing packages")
                         DispatchQueue.global(qos: .utility).async {
-                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
+                            let ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader, dirtypatch], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
                                     console.error("[-] Failed to install packages. Status: \(ret)")
@@ -232,28 +215,16 @@ struct ContentView: View {
                                 
                                 console.log("[*] Running uicache")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/usr/bin/uicache", args: ["-a"], root: true)
+                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.error("[-] Failed to uicache. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
-                                        
-                                        console.log("[*] Installing palera1n strap repo")
-                                        DispatchQueue.global(qos: .utility).async {
-                                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", strapRepo], root: true)
-                                            DispatchQueue.main.async {
-                                                if ret != 0 {
-                                                    console.error("[-] Failed to install palera1n strap repo. Status: \(ret)")
-                                                    tb.toolbarState = .closeApp
-                                                    return
-                                                }
 
-                                                console.log("[*] Finished installing! Enjoy!")
-                                                tb.toolbarState = .respring
-                                            }
-                                        }
+                                        console.log("[*] Finished installing! Enjoy!")
+                                        tb.toolbarState = .respring
                                     }
                                 }
                             }

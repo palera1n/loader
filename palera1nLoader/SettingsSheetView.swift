@@ -22,12 +22,6 @@ struct SettingsSheetView: View {
         Tool(name: "Do All", desc: "Do all of the above", action: ToolAction.all),
     ]
     
-    var packagemanagers: [PackageManager] = [
-        PackageManager(name: "Sileo", desc: "Modern package manager (recommended)", action: PackageManagers.sileo),
-        PackageManager(name: "Zebra", desc: "Cydia-ish look and feel with modern features", action: PackageManagers.zebra),
-        PackageManager(name: "Cydia", desc: "Old and nostalgic package manager (not recommended, partially broken)", action: PackageManagers.cydia),
-    ]
-    
     var openers: [Opener] = [
         Opener(name: "Sileo", desc: "Open the Sileo app", action: Openers.sileo),
         Opener(name: "TrollHelper", desc: "Open the TrollHelper app, clicking install will resolve iPad uicache issues", action: Openers.trollhelper),
@@ -52,15 +46,6 @@ struct SettingsSheetView: View {
                 ToolsView(tool)
             }
 
-            Text("Package Managers")
-                .fontWeight(.bold)
-                .font(.title)
-                .padding()
-
-            ForEach(packagemanagers) { pm in
-                PMView(pm)
-            }
-
             Text("Openers")
                 .fontWeight(.bold)
                 .font(.title)
@@ -83,36 +68,36 @@ struct SettingsSheetView: View {
 
             switch tool.action {
                 case .uicache:
-                    spawn(command: "/usr/bin/uicache", args: ["-a"], root: true)
+                    spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
                     console.log("[*] Ran uicache")
                 case .mntrw:
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                     spawn(command: "/sbin/mount", args: ["-uw", "/" ], root: true)
                     console.log("[*] Remounted the rootfs and preboot as read/write")
                 case .daemons:
-                    spawn(command: "/bin/launchctl", args: ["bootstrap", "system", "/Library/LaunchDaemons"], root: true)
+                    spawn(command: "/var/jb/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
                     console.log("[*] Launched daemons")
                 case .respring:
-                    spawn(command: "/usr/bin/sbreload", args: [], root: true)
+                    spawn(command: "/var/jb/usr/bin/sbreload", args: [], root: true)
                     console.log("[*] Resprung the device... but you probably won't see this :)")
                 case .tweaks:
-                    spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
+                    spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
                     console.log("[*] Started Substitute, respring to enable tweaks")
                 case .all:
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                     spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
                     console.log("[*] Remounted the rootfs and preboot as read/write")
 
-                    spawn(command: "/usr/bin/uicache", args: ["-a"], root: true)
+                    spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
                     console.log("[*] Ran uicache")
 
-                    spawn(command: "/bin/launchctl", args: ["bootstrap", "system", "/Library/LaunchDaemons"], root: true)
+                    spawn(command: "/var/jb/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
                     console.log("[*] Launched daemons")
 
-                    spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
-                    console.log("[*] Started Substitute, respring to enable tweaks")
+                    spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
+                    console.log("[*] Started tweaks, respring to enable tweaks")
 
-                    spawn(command: "/usr/bin/sbreload", args: [], root: true)
+                    spawn(command: "/var/jb/usr/bin/sbreload", args: [], root: true)
                     console.log("[*] Resprung the device... but you probably won't see this :)")
             }
         } label: {
@@ -138,108 +123,13 @@ struct SettingsSheetView: View {
     }
 
     @ViewBuilder
-    func PMView(_ pm: PackageManager) -> some View {
-        Button {
-            self.isOpen.toggle()
-
-            switch pm.action {
-                case .sileo:
-                    console.log("[*] Installing Sileo")
-
-                    guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
-                        let msg = "Could not find Sileo"
-                        console.error("[-] \(msg)")
-                        print("[palera1n] \(msg)")
-                        return
-                    }
-
-                    let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb], root: true)
-                    DispatchQueue.main.async {
-                        if ret != 0 {
-                            console.error("[-] Failed to install Sileo. Status: \(ret)")
-                            return
-                        }
-
-                        console.log("[*] Installed Sileo")
-                    }
-                case .zebra:
-                    console.log("[*] Installing Zebra")
-
-                    guard let deb = Bundle.main.path(forResource: "zebra", ofType: "deb") else {
-                        let msg = "Could not find Zebra"
-                        console.error("[-] \(msg)")
-                        print("[palera1n] \(msg)")
-                        return
-                    }
-
-                    let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb], root: true)
-                    DispatchQueue.main.async {
-                        if ret != 0 {
-                            console.error("[-] Failed to install Zebra. Status: \(ret)")
-                            return
-                        }
-
-                        console.log("[*] Installed Zebra")
-                    }
-                case .cydia:
-                    console.log("[*] Installing Cydia dependencies")
-
-                    guard let deb = Bundle.main.path(forResource: "cydia", ofType: "deb") else {
-                        let msg = "Could not find Cydia"
-                        console.error("[-] \(msg)")
-                        print("[palera1n] \(msg)")
-                        return
-                    }
-
-                    let ret = spawn(command: "/usr/bin/apt-get", args: ["install", "bzip2", "sed", "xz-utils", "zstd", "-y", "--allow-unauthenticated"], root: true)
-                    DispatchQueue.main.async {
-                        if ret != 0 {
-                            console.error("[-] Failed to install Cydia. Status: \(ret)")
-                            return
-                        }
-
-                        console.log("[*] Installing Cydia")
-                        let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb], root: true)
-                        DispatchQueue.main.async {
-                            if ret != 0 {
-                                console.error("[-] Failed to install Cydia. Status: \(ret)")
-                                return
-                            }
-
-                            console.log("[*] Installed Cydia")
-                        }
-                    }
-            }
-        } label: {
-            HStack {
-                Image(systemName: "wrench")
-                
-                VStack(alignment: .leading) {
-                    Text(pm.name)
-                        .font(.title2.bold())
-                    Text(pm.desc)
-                        .font(.caption)
-                }
-                Spacer()
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(Capsule().foregroundColor(.init("CellBackground")).background(.ultraThinMaterial))
-            .clipShape(Capsule())
-            .padding(.horizontal)
-            .padding(.vertical, 4)
-        }
-        .buttonStyle(.plain)
-    }
-
-    @ViewBuilder
     func OpenersView(_ opener: Opener) -> some View {
         Button {
             self.isOpen.toggle()
 
             switch opener.action {
                 case .sileo:
-                    let ret = spawn(command: "/usr/bin/uiopen", args: ["--path", "/Applications/Sileo.app"], root: true)
+                    let ret = spawn(command: "/var/jb/usr/bin/uiopen", args: ["--path", "/var/jb/Applications/Sileo-Nightly.app"], root: true)
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.error("[-] Failed to open Sileo. Status: \(ret)")
@@ -249,7 +139,7 @@ struct SettingsSheetView: View {
                         console.log("[*] Opened Sileo")
                     }
                 case .trollhelper:
-                    let ret = spawn(command: "/usr/bin/uiopen", args: ["--path", "/Applications/TrollStorePersistenceHelper.app"], root: true)
+                    let ret = spawn(command: "/var/jb/usr/bin/uiopen", args: ["--path", "/var/jb/Applications/TrollStorePersistenceHelper.app"], root: true)
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.error("[-] Failed to open TrollHelper. Status: \(ret)")
@@ -297,20 +187,6 @@ struct Tool: Identifiable {
     let name: String
     let desc: String
     let action: ToolAction
-}
-
-// package managers
-public enum PackageManagers {
-    case sileo
-    case zebra
-    case cydia
-}
-
-struct PackageManager: Identifiable {
-    var id: String { name }
-    let name: String
-    let desc: String
-    let action: PackageManagers
 }
 
 // openers

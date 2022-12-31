@@ -28,9 +28,10 @@ struct Strap: ParsableCommand {
             uicacheTool()
         } else if let input = input {
             strapTool(input)
+        } else if remove {
+            removeTool()
         }
     }
-    
     
     func uicacheTool() {
         
@@ -38,7 +39,17 @@ struct Strap: ParsableCommand {
     
     func strapTool(_ input: String) {
         NSLog("[palera1n helper] Attempting to install \(input)")
-        let dest = "/"
+        guard getuid() == 0 else { fatalError() }
+        
+        let active = "/private/preboot/active"
+        let uuid: String
+        do {
+            uuid = try String(contentsOf: URL(fileURLWithPath: active), encoding: .utf8)
+        } catch {
+            NSLog("[palera1n helper] Could not find active directory")
+            fatalError()
+        }
+        let dest = "/private/preboot/\(uuid)/procursus"
         do {
             try autoreleasepool {
                 let data = try Data(contentsOf: URL(fileURLWithPath: input))
@@ -53,7 +64,7 @@ struct Strap: ParsableCommand {
                         if path == "/" || path == "/var" {
                             continue
                         }
-                        path = path.replacingOccurrences(of: "", with: dest)
+                        path = path.replacingOccurrences(of: "/var/jb", with: dest)
                         switch entry.info.type {
                         case .symbolicLink:
                             var linkName = entry.info.linkName
@@ -65,9 +76,9 @@ struct Strap: ParsableCommand {
                                 if linkName.first != "/" {
                                     linkName = "/" + linkName
                                 }
-                                linkName = linkName.replacingOccurrences(of: "", with: dest)
+                                linkName = linkName.replacingOccurrences(of: "/var/jb", with: dest)
                             } else {
-                                linkName = linkName.replacingOccurrences(of: "", with: dest)
+                                linkName = linkName.replacingOccurrences(of: "/var/jb", with: dest)
                             }
                             NSLog("[palera1n helper] \(entry.info.linkName) at \(linkName) to \(path)")
                             try FileManager.default.createSymbolicLink(atPath: path, withDestinationPath: linkName)
@@ -102,14 +113,41 @@ struct Strap: ParsableCommand {
             return
         }
         NSLog("[palera1n helper] Strapped to \(dest)")
+        do {
+            if !FileManager.default.fileExists(atPath: "/var/jb") {
+                try FileManager.default.createSymbolicLink(atPath: "/var/jb", withDestinationPath: dest)
+            }
+        } catch {
+            NSLog("[palera1n helper] Failed to make link")
+            fatalError()
+        }
+        NSLog("[palera1n helper] Linked to /var/jb")
         var attributes = [FileAttributeKey: Any]()
         attributes[.posixPermissions] = 0o755
         attributes[.ownerAccountName] = "mobile"
         attributes[.groupOwnerAccountName] = "mobile"
         do {
-            try FileManager.default.setAttributes(attributes, ofItemAtPath: "/var/mobile")
+            try FileManager.default.setAttributes(attributes, ofItemAtPath: "/var/jb/var/mobile")
         } catch {
             NSLog("[palera1n helper] thats wild")
+        }
+    }
+
+    func removeTool() {
+        let active = "/private/preboot/active"
+        let uuid: String
+        do {
+            uuid = try String(contentsOf: URL(fileURLWithPath: active), encoding: .utf8)
+        } catch {
+            NSLog("[palera1n helper] Could not find active directory")
+            fatalError()
+        }
+        let dest = "/private/preboot/\(uuid)/procursus"
+        do {
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: dest))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb"))
+        } catch {
+            NSLog("[palera1n helper] Failed with error \(error.localizedDescription)")
         }
     }
 }
