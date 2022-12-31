@@ -12,6 +12,7 @@ package:
 	# Deps
 	@rm -rf $(P1_REQUIRED)/*.deb
 	
+	mkdir -p $(P1_REQUIRED)
 	curl -sL https://static.palera.in/rootless/ellekit.deb -o $(P1_REQUIRED)/ellekit.deb
 	curl -sL https://static.palera.in/rootless/preferenceloader.deb -o $(P1_REQUIRED)/preferenceloader.deb
 	curl -sL https://static.palera.in/rootless/sileo.deb -o $(P1_REQUIRED)/sileo.deb
