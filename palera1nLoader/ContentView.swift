@@ -170,14 +170,6 @@ struct ContentView: View {
             return
         }
         
-        guard let dirtypatch = Bundle.main.path(forResource: "dirtypatch", ofType: "deb") else {
-            let msg = "Could not find dirtypatch"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
         DispatchQueue.global(qos: .utility).async { [self] in
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             
@@ -205,47 +197,26 @@ struct ContentView: View {
                         
                         console.log("[*] Installing packages")
                         DispatchQueue.global(qos: .utility).async {
-                            let ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader, dirtypatch], root: true)
+                            let ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
                                     console.error("[-] Failed to install packages. Status: \(ret)")
                                     tb.toolbarState = .closeApp
                                     return
                                 }
+
+                                console.log("[*] Running uicache")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/var/jb/usr/bin/apt", args: ["update", "--allow-unauthenticated"], root: true)
+                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            console.error("[-] Failed to install packages. Status: \(ret)")
+                                            console.error("[-] Failed to uicache. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
-                                
-                                        DispatchQueue.global(qos: .utility).async {
-                                            let ret = spawn(command: "/var/jb/usr/bin/apt", args: ["install", "-y", "--allow-unauthenticated", "text-cmds", "ldid", "odcctools", "mawk", "file", "libplist3", "fakeroot"], root: true)
-                                            DispatchQueue.main.async {
-                                                if ret != 0 {
-                                                    console.error("[-] Failed to install packages. Status: \(ret)")
-                                                    tb.toolbarState = .closeApp
-                                                    return
-                                                }
 
-                                                console.log("[*] Running uicache")
-                                                DispatchQueue.global(qos: .utility).async {
-                                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
-                                                    DispatchQueue.main.async {
-                                                        if ret != 0 {
-                                                            console.error("[-] Failed to uicache. Status: \(ret)")
-                                                            tb.toolbarState = .closeApp
-                                                            return
-                                                        }
-
-                                                        console.log("[*] Finished installing! Enjoy!")
-                                                        tb.toolbarState = .respring
-                                                    }
-                                                }
-                                            }
-                                        }
+                                        console.log("[*] Finished installing! Enjoy!")
+                                        tb.toolbarState = .respring
                                     }
                                 }
                             }

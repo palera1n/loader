@@ -16,7 +16,6 @@ package:
 	curl -sL https://static.palera.in/rootless/ellekit.deb -o $(P1_REQUIRED)/ellekit.deb
 	curl -sL https://static.palera.in/rootless/preferenceloader.deb -o $(P1_REQUIRED)/preferenceloader.deb
 	curl -sL https://static.palera.in/rootless/sileo.deb -o $(P1_REQUIRED)/sileo.deb
-	curl -sL https://static.palera.in/rootless/dirtypatch.deb -o $(P1_REQUIRED)/dirtypatch.deb
 	curl -sL https://static.palera.in/rootless/bootstrap.tar -o $(P1_REQUIRED)/bootstrap.tar
 	
 	# Build
