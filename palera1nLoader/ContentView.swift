@@ -212,19 +212,40 @@ struct ContentView: View {
                                     tb.toolbarState = .closeApp
                                     return
                                 }
-                                
-                                console.log("[*] Running uicache")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
+                                    let ret = spawn(command: "/var/jb/usr/bin/apt", args: ["update", "--allow-unauthenticated"], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            console.error("[-] Failed to uicache. Status: \(ret)")
+                                            console.error("[-] Failed to install packages. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
+                                
+                                        DispatchQueue.global(qos: .utility).async {
+                                            let ret = spawn(command: "/var/jb/usr/bin/apt", args: ["install", "-y", "--allow-unauthenticated", "text-cmds", "ldid", "odcctools", "mawk", "file", "libplist3", "fakeroot"], root: true)
+                                            DispatchQueue.main.async {
+                                                if ret != 0 {
+                                                    console.error("[-] Failed to install packages. Status: \(ret)")
+                                                    tb.toolbarState = .closeApp
+                                                    return
+                                                }
 
-                                        console.log("[*] Finished installing! Enjoy!")
-                                        tb.toolbarState = .respring
+                                                console.log("[*] Running uicache")
+                                                DispatchQueue.global(qos: .utility).async {
+                                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
+                                                    DispatchQueue.main.async {
+                                                        if ret != 0 {
+                                                            console.error("[-] Failed to uicache. Status: \(ret)")
+                                                            tb.toolbarState = .closeApp
+                                                            return
+                                                        }
+
+                                                        console.log("[*] Finished installing! Enjoy!")
+                                                        tb.toolbarState = .respring
+                                                    }
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
