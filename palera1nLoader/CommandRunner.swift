@@ -49,10 +49,10 @@ import Darwin.POSIX
     posix_spawnattr_set_persona_gid_np(&attr, 0);
     
     /*
-     export PATH='/usr/local/sbin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/sbin:/usr/sbin:/usr/bin:/usr/bin:/sbin:/sbin:/bin:/bin:/usr/bin/X11:/usr/bin/X11:/usr/games:/usr/games'
+     export PATH='/usr/local/sbin:/var/jb/usr/local/sbin:/usr/local/bin:/var/jb/usr/local/bin:/usr/sbin:/var/jb/usr/sbin:/usr/bin:/var/jb/usr/bin:/sbin:/var/jb/sbin:/bin:/var/jb/bin:/usr/bin/X11:/var/jb/usr/bin/X11:/usr/games:/var/jb/usr/games'
      */
     
-    let env = [ "PATH=/usr/local/sbin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/sbin:/usr/sbin:/usr/bin:/usr/bin:/sbin:/sbin:/bin:/bin:/usr/bin/X11:/usr/bin/X11:/usr/games:/usr/games" ]
+    let env = [ "PATH=/usr/local/sbin:/var/jb/usr/local/sbin:/usr/local/bin:/var/jb/usr/local/bin:/usr/sbin:/var/jb/usr/sbin:/usr/bin:/var/jb/usr/bin:/sbin:/var/jb/sbin:/bin:/var/jb/bin:/usr/bin/X11:/var/jb/usr/bin/X11:/usr/games:/var/jb/usr/games"  ]
     let proenv: [UnsafeMutablePointer<CChar>?] = env.map { $0.withCString(strdup) }
     defer { for case let pro? in proenv { free(pro) } }
     
