@@ -19,9 +19,15 @@ jobs:
 
       - name: Compile
         run: make
-      
-      - name: Upload IPA
-        uses: actions/upload-artifact@v3
+          
+      - name: Upload artifact
+        uses: wangyucode/sftp-upload-action@v1.4.8
         with:
-          name: palera1n
-          path: packages/palera1n.ipa
+          host: ${{ secrets.STATIC_FTP_HOST }}
+          port: 6061
+          username: nebula
+          password: ${{ secrets.STATIC_FTP_PASS }}
+          forceUpload: true
+          dryRun: false
+          localDir: 'packages/'
+          remoteDir: '/upload/artifacts/loader/rootful'
