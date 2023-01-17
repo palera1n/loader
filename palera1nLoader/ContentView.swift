@@ -133,9 +133,9 @@ struct ContentView: View {
         try? FileManager.default.removeItem(at: fileURL)
     }
 
-    private func downloadFile(file: String) -> Void {
+    private func downloadFile(file: String, tb: ToolbarStateMoment) -> Void {
         console.log("[*] Downloading \(file)")
-        deleteFile(file)
+        deleteFile(file: file)
 
         let url = URL(string: "\(serverURL)/\(file)")!
         let task = URLSession.shared.downloadTask(with: url) { location, response, error in
@@ -170,10 +170,10 @@ struct ContentView: View {
             return
         }
 
-        downloadFile("bootstrap.tar")
-        downloadFile("sileo.deb")
-        downloadFile("preferenceloader.deb")
-        downloadFile("ellekit.deb")
+        downloadFile(file: "bootstrap.tar", tb: tb)
+        downloadFile(file: "sileo.deb", tb: tb)
+        downloadFile(file: "preferenceloader.deb", tb: tb)
+        downloadFile(file: "ellekit.deb", tb: tb)
 
         guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
             let msg = "Failed to find bootstrap"
@@ -182,7 +182,7 @@ struct ContentView: View {
             print("[palera1n] \(msg)")
             return
         }
-        
+
         guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
             let msg = "Could not find Sileo"
             console.error("[-] \(msg)")
