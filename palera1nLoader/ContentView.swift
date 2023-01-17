@@ -10,8 +10,9 @@ import SDWebImageSwiftUI
 
 struct ContentView: View {
     @StateObject var console = Console()
-    
     @State var bounds: CGSize? = nil
+
+    private var serverURL = "https://static.palera.in/rootless"
     
     var body: some View {
         GeometryReader { geo in
@@ -125,11 +126,55 @@ struct ContentView: View {
             strap()
         }
     }
+
+    private func deleteFile(file: String) -> Void {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(file)
+        try? FileManager.default.removeItem(at: fileURL)
+    }
+
+    private func downloadFile(file: String) -> Void {
+        console.log("[*] Downloading \(file)")
+        deleteFile(file)
+
+        let url = URL(string: "\(serverURL)/\(file)")!
+        let task = URLSession.shared.downloadTask(with: url) { location, response, error in
+        guard let location = location, error == nil else { return }
+            do {
+                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                let fileURL = documentsURL.appendingPathComponent(file)
+                try FileManager.default.moveItem(at: location, to: fileURL)
+                let tar = fileURL.path
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                }
+            } catch {
+                console.error("[-] Failed to download \(file): \(error)")
+                NSLog("[palera1n] Failed to download \(file): \(error)")
+                tb.toolbarState = .closeApp
+            }
+        }
+        task.resume()
+    }
     
     private func strap() -> Void {
         let tb = ToolbarStateMoment.s
         tb.toolbarState = .disabled
-        
+         
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+            let msg = "Could not find helper?"
+            console.error("[-] \(msg)")
+            tb.toolbarState = .closeApp
+            print("[palera1n] \(msg)")
+            return
+        }
+
+        downloadFile("bootstrap.tar")
+        downloadFile("sileo.deb")
+        downloadFile("preferenceloader.deb")
+        downloadFile("ellekit.deb")
+
         guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
             let msg = "Failed to find bootstrap"
             console.error("[-] \(msg)")
@@ -137,15 +182,7 @@ struct ContentView: View {
             print("[palera1n] \(msg)")
             return
         }
-         
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-            let msg = "Could not find Helper"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-         
+        
         guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
             let msg = "Could not find Sileo"
             console.error("[-] \(msg)")
