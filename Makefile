@@ -37,7 +37,5 @@ package:
 	@rm -rf packages
 	@mkdir -p packages
 
-	@cp -r $(P1_REQUIRED)/* $(P1_STAGE_DIR)/Payload/palera1nLoader.app
-
 	@zip -r9 packages/palera1n.ipa Payload
 	@rm -rf Payload
