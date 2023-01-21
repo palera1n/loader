@@ -169,91 +169,95 @@ struct ContentView: View {
             print("[palera1n] \(msg)")
             return
         }
-
-        downloadFile(file: "bootstrap.tar", tb: tb)
-        downloadFile(file: "sileo.deb", tb: tb)
-        downloadFile(file: "preferenceloader.deb", tb: tb)
-        downloadFile(file: "ellekit.deb", tb: tb)
-
-        guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
-            let msg = "Failed to find bootstrap"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-
-        guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
-            let msg = "Could not find Sileo"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let ellekit = Bundle.main.path(forResource: "ellekit", ofType: "deb") else {
-            let msg = "Could not find ElleKit"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
-            let msg = "Could not find PreferenceLoader"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
         
         DispatchQueue.global(qos: .utility).async { [self] in
-            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            
-            let ret = spawn(command: helper, args: ["-i", tar], root: true)
-            
-            spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true)
-            spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true)
-            
+            downloadFile(file: "bootstrap.tar", tb: tb)
+            downloadFile(file: "sileo.deb", tb: tb)
+            downloadFile(file: "preferenceloader.deb", tb: tb)
+            downloadFile(file: "ellekit.deb", tb: tb)
+
             DispatchQueue.main.async {
-                if ret != 0 {
-                    console.error("[-] Error installing bootstrap. Status: \(ret)")
+                guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
+                    let msg = "Failed to find bootstrap"
+                    console.error("[-] \(msg)")
                     tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+
+                guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
+                    let msg = "Could not find Sileo"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
                     return
                 }
                 
-                console.log("[*] Preparing Bootstrap")
+                guard let ellekit = Bundle.main.path(forResource: "ellekit", ofType: "deb") else {
+                    let msg = "Could not find ElleKit"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+                
+                guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
+                    let msg = "Could not find PreferenceLoader"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+
                 DispatchQueue.global(qos: .utility).async {
-                    let ret = spawn(command: "/var/jb/usr/bin/sh", args: ["/var/jb/prep_bootstrap.sh"], root: true)
+                    spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+                    
+                    let ret = spawn(command: helper, args: ["-i", tar], root: true)
+                    
+                    spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true)
+                    spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true)
+                    
                     DispatchQueue.main.async {
                         if ret != 0 {
-                            console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
+                            console.error("[-] Error installing bootstrap. Status: \(ret)")
                             tb.toolbarState = .closeApp
                             return
                         }
                         
-                        console.log("[*] Installing packages")
+                        console.log("[*] Preparing Bootstrap")
                         DispatchQueue.global(qos: .utility).async {
-                            let ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader], root: true)
+                            let ret = spawn(command: "/var/jb/usr/bin/sh", args: ["/var/jb/prep_bootstrap.sh"], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
-                                    console.error("[-] Failed to install packages. Status: \(ret)")
+                                    console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
                                     tb.toolbarState = .closeApp
                                     return
                                 }
-
-                                console.log("[*] Running uicache")
+                                
+                                console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
+                                    let ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            console.error("[-] Failed to uicache. Status: \(ret)")
+                                            console.error("[-] Failed to install packages. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
 
-                                        console.log("[*] Finished installing! Enjoy!")
-                                        tb.toolbarState = .respring
+                                        console.log("[*] Running uicache")
+                                        DispatchQueue.global(qos: .utility).async {
+                                            let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
+                                            DispatchQueue.main.async {
+                                                if ret != 0 {
+                                                    console.error("[-] Failed to uicache. Status: \(ret)")
+                                                    tb.toolbarState = .closeApp
+                                                    return
+                                                }
+
+                                                console.log("[*] Finished installing! Enjoy!")
+                                                tb.toolbarState = .respring
+                                            }
+                                        }
                                     }
                                 }
                             }
