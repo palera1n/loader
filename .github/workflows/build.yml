@@ -14,20 +14,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Set up Procursus
-        uses: beerpiss/procursus-action@v2.0.1
-        with:
-          packages: make ldid
-          mirror: https://procursus.itsnebula.net
+      - name: Install dependencies
+        run: brew install ldid
 
       - name: Compile
-        run: gmake
-      
-      #- name: Upload IPA
-      #  uses: actions/upload-artifact@v3
-      #  with:
-      #    name: palera1n
-      #    path: packages/palera1n.ipa
+        run: make
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
