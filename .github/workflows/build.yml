@@ -14,8 +14,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Install dependencies
-        run: brew install ldid
+      - name: Install dependencies (packages)
+        run: |
+          curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
+          sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
 
       - name: Compile
         run: make
