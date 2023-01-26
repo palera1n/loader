@@ -32,4 +32,4 @@ jobs:
           forceUpload: true
           dryRun: false
           localDir: 'packages/'
-          remoteDir: '/upload/artifacts/loader/rootless'
+          remoteDir: '/uploads/palera1n/artifacts/loader/rootless'
