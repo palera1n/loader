@@ -136,26 +136,31 @@ struct ContentView: View {
     private func downloadFile(file: String, tb: ToolbarStateMoment) -> Void {
         console.log("[*] Downloading \(file)")
         deleteFile(file: file)
-
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(file)
         let url = URL(string: "\(serverURL)/\(file)")!
-        let task = URLSession.shared.downloadTask(with: url) { location, response, error in
-        guard let location = location, error == nil else { return }
-            do {
-                let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                let fileURL = documentsURL.appendingPathComponent(file)
-                try FileManager.default.moveItem(at: location, to: fileURL)
-                let tar = fileURL.path
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        let semaphore = DispatchSemaphore(value: 0)
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let task = session.downloadTask(with: url) { tempLocalUrl, response, error in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                do {
+                    try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
+                    self.console.log("[*] Downloaded \(file)")
+                    semaphore.signal()
+                } catch (let writeError) {
+                    self.console.error("[-] Could not copy file to disk: \(writeError)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] Could not copy file to disk: \(writeError)")
                 }
-            } catch {
-                console.error("[-] Failed to download \(file): \(error)")
-                NSLog("[palera1n] Failed to download \(file): \(error)")
+            } else {
+                self.console.error("[-] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
                 tb.toolbarState = .closeApp
+                print("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
             }
         }
         task.resume()
+        semaphore.wait()
     }
     
     private func strap() -> Void {
@@ -177,7 +182,7 @@ struct ContentView: View {
             downloadFile(file: "ellekit.deb", tb: tb)
 
             DispatchQueue.main.async {
-                guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
+                guard let tar = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("bootstrap.tar").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                     let msg = "Failed to find bootstrap"
                     console.error("[-] \(msg)")
                     tb.toolbarState = .closeApp
@@ -185,7 +190,7 @@ struct ContentView: View {
                     return
                 }
 
-                guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
+                guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                     let msg = "Could not find Sileo"
                     console.error("[-] \(msg)")
                     tb.toolbarState = .closeApp
@@ -193,7 +198,7 @@ struct ContentView: View {
                     return
                 }
                 
-                guard let ellekit = Bundle.main.path(forResource: "ellekit", ofType: "deb") else {
+                guard let ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                     let msg = "Could not find ElleKit"
                     console.error("[-] \(msg)")
                     tb.toolbarState = .closeApp
@@ -201,7 +206,7 @@ struct ContentView: View {
                     return
                 }
                 
-                guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
+                guard let preferenceloader = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("preferenceloader.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                     let msg = "Could not find PreferenceLoader"
                     console.error("[-] \(msg)")
                     tb.toolbarState = .closeApp
