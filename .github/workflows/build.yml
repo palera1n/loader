@@ -13,27 +13,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: brew install ldid
+      
+      - name: Install dependencies (packages)
+        run: |
+          curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
+          sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
 
       - name: Compile
         run: make
-      
-      #- name: Upload IPA
-      #  uses: actions/upload-artifact@v3
-      #  with:
-      #    name: palera1n
-      #    path: packages/palera1n.ipa
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
         with:
-          host: ${{ secrets.STATIC_FTP_HOST }}
-          port: 6061
-          username: nebula
-          password: ${{ secrets.STATIC_FTP_PASS }}
+          host: ${{ secrets.MINEEK_FTP_HOST }}
+          port: 22
+          username: mineekfiles
+          password: ${{ secrets.MINEEK_FTP_PASS }}
           forceUpload: true
           dryRun: false
           localDir: 'packages/'
-          remoteDir: '/upload/artifacts/loader/rootless'
+          remoteDir: '/uploads/palera1n/artifacts/loader/rootless'

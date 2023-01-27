@@ -28,11 +28,10 @@ package:
 	@echo $(P1_STAGE_DIR)
 
 	@mv $(P1_HELPER_PATH) $(P1_STAGE_DIR)/Payload/palera1nLoader.app/palera1nHelper
-	@$(LDID) -Sentitlements.plist $(P1_STAGE_DIR)/Payload/palera1nLoader.app/
-	@$(LDID) -Sentitlements.plist $(P1_STAGE_DIR)/Payload/palera1nLoader.app/palera1nHelper
-	
 	@$(STRIP) $(P1_STAGE_DIR)/Payload/palera1nLoader.app/palera1nLoader
 	@$(STRIP) $(P1_STAGE_DIR)/Payload/palera1nLoader.app/palera1nHelper
+	@$(LDID) -Sentitlements.plist $(P1_STAGE_DIR)/Payload/palera1nLoader.app/
+	@$(LDID) -Sentitlements.plist $(P1_STAGE_DIR)/Payload/palera1nLoader.app/palera1nHelper
 	
 	@rm -rf $(P1_STAGE_DIR)/Payload/palera1nLoader.app/_CodeSignature
 
