@@ -281,7 +281,10 @@ class ToolbarStateMoment: ObservableObject {
     @Published var toolbarState: ToolbarController.ToolbarState = .toolbar
     
     init() {
-        let fileExists = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+        var fileExists: Bool {
+            FileManager.default.fileExists(atPath: "/.procursus_strapped") ||
+            FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+        }
         if fileExists { self.toolbarState = .alreadyBootstrapped }
     }
 }
