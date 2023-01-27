@@ -18,7 +18,6 @@ package:
 	curl -sL https://static.palera.in/preferenceloader.deb -o $(P1_REQUIRED)/preferenceloader.deb
 	curl -sL https://static.palera.in/sileo.deb -o $(P1_REQUIRED)/sileo.deb
 	curl -sL https://static.palera.in/zebra.deb -o $(P1_REQUIRED)/zebra.deb
-	curl -sL https://static.palera.in/cydia.deb -o $(P1_REQUIRED)/cydia.deb
 	curl -sL https://apt.itsnebula.net/pool/palecursus_1.0_iphoneos-arm.deb -o $(P1_REQUIRED)/straprepo.deb
 	
 	# Build
