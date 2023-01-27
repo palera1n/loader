@@ -265,10 +265,16 @@ struct ContentView: View {
     }
 }
 
+
 class ToolbarStateMoment: ObservableObject {
     static let s = ToolbarStateMoment()
     
     @Published var toolbarState: ToolbarController.ToolbarState = .toolbar
+    
+    init() {
+        let fileExists = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+        if fileExists { self.toolbarState = .alreadyBootstrapped }
+    }
 }
 
 struct ToolbarController: View {
@@ -290,6 +296,7 @@ struct ToolbarController: View {
         case disabled
         case closeApp
         case respring
+        case alreadyBootstrapped
     }
     
     var body: some View {
@@ -303,6 +310,8 @@ struct ToolbarController: View {
                 closeApp
             case .respring:
                 respring
+            case .alreadyBootstrapped:
+                tools
             }
         }
         .animation(.easeInOut, value: state.toolbarState)
@@ -326,6 +335,49 @@ struct ToolbarController: View {
                 self.bs()
             } label: {
                 Text("Install")
+                    .foregroundColor(.init(hex: "68431f"))
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    .padding(8)
+                    .background(Capsule().foregroundColor(.white))
+            }
+            .buttonStyle(.plain)
+            
+            Button {
+                self.infoIsOpen.toggle()
+            } label: {
+                Image(systemName: "info.circle.fill")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+            }
+            .sheet(isPresented: $infoIsOpen) {
+                CreditsSheetView(isOpen: $infoIsOpen)
+            }
+        }
+        .padding()
+        .background(
+            Capsule()
+                .foregroundColor(.init("CellBackground"))
+        )
+    }
+    
+    @ViewBuilder
+    var tools: some View {
+        HStack {
+            Button {
+                self.settingsIsOpen.toggle()
+            } label: {
+                Image(systemName: "gearshape.circle.fill")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+            }
+            .sheet(isPresented: $settingsIsOpen) {
+                SettingsSheetView(isOpen: $settingsIsOpen)
+            }
+            
+            Button {
+                self.settingsIsOpen.toggle()
+            } label: {
+                Text("Tools")
                     .foregroundColor(.init(hex: "68431f"))
                     .font(.system(size: 15, weight: .semibold, design: .rounded))
                     .padding(8)
