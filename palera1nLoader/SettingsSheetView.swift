@@ -37,6 +37,16 @@ struct SettingsSheetView: View {
                 main
             }
         }
+        .alert("Warning", isPresented: $showAlert) {
+            Button("Re-bootstrap anyway") {
+                console.log("[*] Starting re-bootstrap process")
+                strap()
+            }
+            Button("Cancel (Recommended)") {
+            }
+        } message: {
+            Text("Your device already has the bootstrap installed. Re-bootstrapping most times is not needed, and may cause problems.")
+        }
     }
     
     @ViewBuilder
@@ -67,30 +77,35 @@ struct SettingsSheetView: View {
         .navigationTitle("Tools")
     }
 
-    @State var showAlert: Bool = false
+    @State private var showAlert: Bool = false
     @ViewBuilder
     func ToolsView(_ tool: Tool) -> some View {
         Button {
-            self.isOpen.toggle()
 
             switch tool.action {
                 case .uicache:
+                    self.isOpen.toggle()
                     spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
                     console.log("[*] Ran uicache")
                 case .mntrw:
+                    self.isOpen.toggle()
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                     spawn(command: "/sbin/mount", args: ["-uw", "/" ], root: true)
                     console.log("[*] Remounted the rootfs and preboot as read/write")
                 case .daemons:
+                    self.isOpen.toggle()
                     spawn(command: "/var/jb/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
                     console.log("[*] Launched daemons")
                 case .respring:
+                    self.isOpen.toggle()
                     spawn(command: "/var/jb/usr/bin/sbreload", args: [], root: true)
                     console.log("[*] Resprung the device... but you probably won't see this :)")
                 case .tweaks:
+                    self.isOpen.toggle()
                     spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
                     console.log("[*] Started Substitute, respring to enable tweaks")
                 case .all:
+                    self.isOpen.toggle()
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                     spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
                     console.log("[*] Remounted the rootfs and preboot as read/write")
@@ -106,7 +121,8 @@ struct SettingsSheetView: View {
 
                     spawn(command: "/var/jb/usr/bin/sbreload", args: [], root: true)
                     console.log("[*] Resprung the device... but you probably won't see this :)")
-                case .bootstrap : break
+                case .bootstrap :
+                    console.log("[*] Starting bootstrap process")
                     strap()
                 case .rebootstrap :
                     showAlert = true
@@ -131,16 +147,7 @@ struct SettingsSheetView: View {
             .padding(.vertical, 4)
         }
         .buttonStyle(.plain)
-        .alert("Warning", isPresented: $showAlert) {
-            Button("Re-bootstrap anyway") {
-                console.log("[*] Starting re-bootstrap process")
-                strap()
-            }
-            Button("Cancel (Recommended)") {
-            }
-        } message: {
-            Text("Your device already has the bootstrap installed. Re-bootstrapping most times is not needed, and may cause problems.")
-        }
+        
     }
 
     @ViewBuilder
@@ -277,6 +284,12 @@ struct SettingsSheetView: View {
                     print("[palera1n] \(msg)")
                     return
                 }
+                
+                let msg = "Emergency error!!!"
+                console.error("[-] \(msg)")
+                tb.toolbarState = .closeApp
+                print("[palera1n] \(msg)")
+                return
 
                 DispatchQueue.global(qos: .utility).async {
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
