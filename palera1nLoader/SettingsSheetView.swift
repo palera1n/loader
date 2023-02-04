@@ -34,7 +34,7 @@ public struct SettingsSheetView: View {
         Opener(name: "TrollHelper", desc: "Open the TrollHelper app, clicking install will resolve iPad uicache issues", action: Openers.trollhelper),
     ]
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             ZStack {
                 Rectangle()
