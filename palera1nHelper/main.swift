@@ -19,6 +19,9 @@ struct Strap: ParsableCommand {
     
     @Flag(name: .shortAndLong, help: "Does trollstore uicache")
     var uicache: Bool = false
+    
+    @Flag(name: .shortAndLong, help: "Get filesystem")
+    var fs: Bool = false
 
     mutating func run() throws {
         NSLog("[palera1n helper] Spawned!")
@@ -26,6 +29,8 @@ struct Strap: ParsableCommand {
         
         if uicache {
             uicacheTool()
+        } else if fs {
+            return get_rootful()
         } else if let input = input {
             if get_rootful() == 1 {
                 strapToolRootful(input)
@@ -33,7 +38,9 @@ struct Strap: ParsableCommand {
                 strapTool(input)
             }
         } else if remove {
-            removeTool()
+            if get_rootful == 0 {
+                removeTool()
+            }
         }
     }
     
