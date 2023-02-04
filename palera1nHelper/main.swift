@@ -35,13 +35,13 @@ struct Strap: ParsableCommand {
                 fatalError()
            }
         } else if let input = input {
-            if rootful == 1 {
+            if rootful {
                 strapToolRootful(input)
             } else {
                 strapTool(input)
             }
         } else if remove {
-            if rootful == 0 {
+            if rootful {
                 removeTool()
             }
         }
