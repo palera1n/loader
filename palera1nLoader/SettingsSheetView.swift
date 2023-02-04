@@ -183,7 +183,6 @@ struct SettingsSheetView: View {
                     guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Failed to find Sileo"
                         console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
                         print("[palera1n] \(msg)")
                         return
                     }
@@ -204,7 +203,6 @@ struct SettingsSheetView: View {
                     guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Failed to find Sileo"
                         console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
                         print("[palera1n] \(msg)")
                         return
                     }
