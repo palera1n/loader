@@ -13,7 +13,6 @@
 		331E9B8A2932CD1000363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B892932CD1000363FA9 /* SWCompression */; };
 		331E9B8C2932CD1700363FA9 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B8B2932CD1700363FA9 /* ArgumentParser */; };
 		336B30D22933E35C004BE6AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B30D12933E35C004BE6AA /* Foundation.framework */; };
-		AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */ = {isa = PBXBuildFile; fileRef = AA95DB8A292050FA0055F1C0 /* bootstrap.tar */; };
 		AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCB292059980055F1C0 /* BitByteData */; };
 		AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBD729205AB90055F1C0 /* CommandRunner.swift */; };
 		AAA74201293D2DC6000243C2 /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA74200293D2DC6000243C2 /* TSUtil.m */; };
@@ -56,7 +55,6 @@
 		331E9B7B2932CABC00363FA9 /* palera1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = palera1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		331E9B8D2932D07C00363FA9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		336B30D12933E35C004BE6AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AA95DB8A292050FA0055F1C0 /* bootstrap.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = bootstrap.tar; sourceTree = "<group>"; };
 		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AA95DBD729205AB90055F1C0 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 		AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = palera1nBridging.h; sourceTree = "<group>"; };
@@ -121,14 +119,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		331E9B762932C51300363FA9 /* Required */ = {
-			isa = PBXGroup;
-			children = (
-				AA95DB8A292050FA0055F1C0 /* bootstrap.tar */,
-			);
-			path = Required;
-			sourceTree = "<group>";
-		};
 		331E9B7C2932CABD00363FA9 /* palera1nHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,7 +375,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA95DB8B292050FA0055F1C0 /* bootstrap.tar in Resources */,
 				AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
