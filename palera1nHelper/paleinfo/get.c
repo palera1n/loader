@@ -9,6 +9,8 @@
 #define palerain_option_setup_rootful        (1 << 2) /* create fakefs */
 #define palerain_option_setup_rootful_forced (1 << 3) /* create fakefs over an existing one */
 
+typedef uint32_t checkrain_option_t, *checkrain_option_p;
+
 struct paleinfo {
     uint32_t magic;
     int version;
