@@ -25,13 +25,13 @@ struct Strap: ParsableCommand {
 
     mutating func run() throws {
         NSLog("[palera1n helper] Spawned!")
-        let rootful = get_rootful()
+        let rootful = get_rootful() == 1 ? true : false
         guard getuid() == 0 else { fatalError() }
         
         if uicache {
             uicacheTool()
         } else if fs {
-            if rootful {
+           if rootful {
                 fatalError()
            }
         } else if let input = input {
