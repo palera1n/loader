@@ -1,7 +1,6 @@
 TARGET_CODESIGN = $(shell command -v ldid)
 
 P1TMP          = $(TMPDIR)/palera1nloader
-P1_REQUIRED    = palera1nLoader/Required
 P1_STAGE_DIR   = $(P1TMP)/stage
 P1_APP_DIR 	   = $(P1TMP)/Build/Products/Release-iphoneos/palera1nLoader.app
 P1_HELPER_PATH = $(P1TMP)/Build/Products/Release-iphoneos/palera1nHelper
@@ -9,12 +8,6 @@ P1_HELPER_PATH = $(P1TMP)/Build/Products/Release-iphoneos/palera1nHelper
 .PHONY: package
 
 package:
-	# Deps
-	@rm -rf $(P1_REQUIRED)/*.deb
-
-	curl -sL https://static.palera.in/sileo.deb -o $(P1_REQUIRED)/sileo.deb
-	curl -sL https://static.palera.in/zebra.deb -o $(P1_REQUIRED)/zebra.deb
-	curl -sL https://apt.itsnebula.net/pool/palecursus_1.0_iphoneos-arm.deb -o $(P1_REQUIRED)/straprepo.deb
 	
 	# Build
 	@set -o pipefail; \
@@ -44,8 +37,6 @@ package:
 
 	@rm -rf packages
 	@mkdir -p packages
-
-	@cp -r $(P1_REQUIRED)/* $(P1_STAGE_DIR)/Payload/palera1nLoader.app
 
 	@zip -r9 packages/palera1n.ipa Payload
 	@rm -rf Payload
