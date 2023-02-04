@@ -21,8 +21,8 @@ static inline bool checkrain_option_enabled(checkrain_option_t flags, checkrain_
     return (flags & opt) != 0;
 }
 
-int is_rootful() {
-    FILE *rd = fopen("/dev/rmd", "rb");
+inline int is_rootful() {
+    FILE *rd = fopen("/dev/rmd0", "rb");
     assert(rd != NULL);
 
     char *sizeBytes = malloc(sizeof(char) * 4);
