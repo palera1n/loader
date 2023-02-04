@@ -217,10 +217,20 @@ struct ContentView: View {
                 DispatchQueue.global(qos: .utility).async {
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                     
+                    let ret = spawn(command: helper, args: ["-f"], root: true)
+                    
+                    let rootful = ret == 0 ? false : true
+                    
+                    let inst_prefix = rootful ? "/" : "/var/jb"
+                    
+                    if rootful {
+                        spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+                    }
+                    
                     let ret = spawn(command: helper, args: ["-i", tar], root: true)
                     
-                    spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true)
-                    spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true)
+                    spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
+                    spawn(command: "\(inst_prefix)/usr/bin/chown", args: ["root:wheel", "\(inst_prefix)/usr/bin/sudo"], root: true)
                     
                     DispatchQueue.main.async {
                         if ret != 0 {
@@ -231,7 +241,7 @@ struct ContentView: View {
                         
                         console.log("[*] Preparing Bootstrap")
                         DispatchQueue.global(qos: .utility).async {
-                            let ret = spawn(command: "/var/jb/usr/bin/sh", args: ["/var/jb/prep_bootstrap.sh"], root: true)
+                            let ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
                                     console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
@@ -241,7 +251,7 @@ struct ContentView: View {
                                 
                                 console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader], root: true)
+                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.error("[-] Failed to install packages. Status: \(ret)")
@@ -251,7 +261,7 @@ struct ContentView: View {
 
                                         console.log("[*] Running uicache")
                                         DispatchQueue.global(qos: .utility).async {
-                                            let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
+                                            let ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
                                             DispatchQueue.main.async {
                                                 if ret != 0 {
                                                     console.error("[-] Failed to uicache. Status: \(ret)")
