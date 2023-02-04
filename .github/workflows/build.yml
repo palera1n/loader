@@ -20,8 +20,14 @@ jobs:
       - name: Compile
         run: make
           
-      - name: Upload Loader
-        uses: actions/upload-artifact@v3.1.1
+      - name: Upload artifact
+        uses: wangyucode/sftp-upload-action@v1.4.8
         with:
-          name: loader
-          path: packages
+          host: ${{ secrets.STATIC_FTP_HOST }}
+          port: 6061
+          username: nebula
+          password: ${{ secrets.STATIC_FTP_PASS }}
+          forceUpload: true
+          dryRun: false
+          localDir: 'packages/'
+          remoteDir: '/upload/artifacts/loader/rootful'
