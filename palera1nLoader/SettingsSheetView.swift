@@ -13,7 +13,7 @@ struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @EnvironmentObject var console: Console
     
-    private var serverURL = "https://static.palera.in"
+    var serverURL = "https://static.palera.in"
     
     var tools: [Tool] = [
         Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
