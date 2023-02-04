@@ -223,7 +223,7 @@ struct ContentView: View {
                 
                 if rootful {
                     substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard substitute else {
+                    guard substitute != nil else {
                         let msg = "Could not find Substitute"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
@@ -232,7 +232,7 @@ struct ContentView: View {
                     }
 
                     strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard strapRepo else {
+                    guard strapRepo != nil else {
                         let msg = "Could not find strap repo deb"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
@@ -241,7 +241,7 @@ struct ContentView: View {
                     }
                     
                     libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard libswift else {
+                    guard libswift != nil else {
                         let msg = "Could not find libswift deb"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
@@ -250,7 +250,7 @@ struct ContentView: View {
                     }
 
                     safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard safemode else {
+                    guard safemode != nil else {
                         let msg = "Could not find SafeMode"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
