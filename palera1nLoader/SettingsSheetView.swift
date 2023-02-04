@@ -135,6 +135,40 @@ struct SettingsSheetView: View {
         }
         .buttonStyle(.plain)
     }
+    
+    private func deleteFile(file: String) -> Void {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(file)
+        try? FileManager.default.removeItem(at: fileURL)
+    }
+    
+    private func downloadFile(file: String) -> Void {
+        console.log("[*] Downloading \(file)")
+        deleteFile(file: file)
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(file)
+        let url = URL(string: "\(server)/\(file)")!
+        let semaphore = DispatchSemaphore(value: 0)
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let task = session.downloadTask(with: url) { tempLocalUrl, response, error in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                do {
+                    try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
+                    self.console.log("[*] Downloaded \(file)")
+                    semaphore.signal()
+                } catch (let writeError) {
+                    self.console.error("[-] Could not copy file to disk: \(writeError)")
+                    print("[palera1n] Could not copy file to disk: \(writeError)")
+                }
+            } else {
+                self.console.error("[-] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                print("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+            }
+        }
+        task.resume()
+        semaphore.wait()
+    }
 
     @ViewBuilder
     func PMView(_ pm: PackageManager) -> some View {
@@ -144,10 +178,12 @@ struct SettingsSheetView: View {
             switch pm.action {
                 case .sileo:
                     console.log("[*] Installing Sileo")
+                    downloadFile("sileo.deb")
 
-                    guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
-                        let msg = "Could not find Sileo"
+                    guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                        let msg = "Failed to find Sileo"
                         console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
                         print("[palera1n] \(msg)")
                         return
                     }
@@ -163,10 +199,12 @@ struct SettingsSheetView: View {
                     }
                 case .zebra:
                     console.log("[*] Installing Zebra")
+                    downloadFile("sileo.deb")
 
-                    guard let deb = Bundle.main.path(forResource: "zebra", ofType: "deb") else {
-                        let msg = "Could not find Zebra"
+                    guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                        let msg = "Failed to find Sileo"
                         console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
                         print("[palera1n] \(msg)")
                         return
                     }
