@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import IrregularGradient
 
-public struct SettingsSheetView: View {
+struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @EnvironmentObject var console: Console
     
@@ -34,7 +34,7 @@ public struct SettingsSheetView: View {
         Opener(name: "TrollHelper", desc: "Open the TrollHelper app, clicking install will resolve iPad uicache issues", action: Openers.trollhelper),
     ]
     
-    public var body: some View {
+    var body: some View {
         NavigationView {
             ZStack {
                 Rectangle()
@@ -138,13 +138,13 @@ public struct SettingsSheetView: View {
         .buttonStyle(.plain)
     }
     
-    private func deleteFile(file: String) -> Void {
+    func deleteFile(file: String) -> Void {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
         try? FileManager.default.removeItem(at: fileURL)
     }
     
-    private func downloadFile(file: String) -> Void {
+    func downloadFile(file: String) -> Void {
         console.log("[*] Downloading \(file)")
         deleteFile(file: file)
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
