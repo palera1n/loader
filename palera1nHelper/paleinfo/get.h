@@ -1,1 +1,1 @@
-int is_rootful();
+#include "get.c"
