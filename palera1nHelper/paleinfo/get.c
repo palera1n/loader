@@ -23,7 +23,7 @@ static inline bool checkrain_option_enabled(checkrain_option_t flags, checkrain_
     return (flags & opt) != 0;
 }
 
-inline int get_rootful() {
+extern int get_rootful() {
     FILE *rd = fopen("/dev/rmd0", "rb");
     assert(rd != NULL);
 
