@@ -215,11 +215,11 @@ struct ContentView: View {
                     return
                 }
                 
-                var substitute
-                var strapRepo
-                var libswift
-                var safemode
-                var ellekit
+                var substitute : String
+                var strapRepo : String
+                var libswift : String
+                var safemode : String
+                var ellekit : String
                 
                 if rootful {
                     guard substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -302,7 +302,7 @@ struct ContentView: View {
                                 
                                 console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    var ret
+                                    var ret = 0
                                     if rootful {
                                         ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
                                     } else {
