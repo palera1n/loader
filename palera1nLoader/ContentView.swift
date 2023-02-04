@@ -13,6 +13,8 @@ struct ContentView: View {
     
     @State var bounds: CGSize? = nil
     
+    private var serverURL = "https://static.palera.in"
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -126,68 +128,42 @@ struct ContentView: View {
         }
     }
     
+    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = serverURL) -> Void {
+        console.log("[*] Downloading \(file)")
+        deleteFile(file: file)
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(file)
+        let url = URL(string: "\(server)/\(file)")!
+        let semaphore = DispatchSemaphore(value: 0)
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let task = session.downloadTask(with: url) { tempLocalUrl, response, error in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                do {
+                    try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
+                    self.console.log("[*] Downloaded \(file)")
+                    semaphore.signal()
+                } catch (let writeError) {
+                    self.console.error("[-] Could not copy file to disk: \(writeError)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] Could not copy file to disk: \(writeError)")
+                }
+            } else {
+                self.console.error("[-] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                tb.toolbarState = .closeApp
+                print("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+            }
+        }
+        task.resume()
+        semaphore.wait()
+    }
+    
     private func strap() -> Void {
         let tb = ToolbarStateMoment.s
         tb.toolbarState = .disabled
         
-        guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
-            let msg = "Failed to find bootstrap"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-         
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-            let msg = "Could not find Helper"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-         
-        guard let deb = Bundle.main.path(forResource: "sileo", ofType: "deb") else {
-            let msg = "Could not find Sileo"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let libswift = Bundle.main.path(forResource: "libswift", ofType: "deb") else {
-            let msg = "Could not find libswift deb"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let safemode = Bundle.main.path(forResource: "safemode", ofType: "deb") else {
-            let msg = "Could not find SafeMode"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let preferenceloader = Bundle.main.path(forResource: "preferenceloader", ofType: "deb") else {
-            let msg = "Could not find PreferenceLoader"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let substitute = Bundle.main.path(forResource: "substitute", ofType: "deb") else {
-            let msg = "Could not find Substitute"
-            console.error("[-] \(msg)")
-            tb.toolbarState = .closeApp
-            print("[palera1n] \(msg)")
-            return
-        }
-        
-        guard let strapRepo = Bundle.main.path(forResource: "straprepo", ofType: "deb") else {
-            let msg = "Could not find strap repo deb"
+            let msg = "Could not find Helper?"
             console.error("[-] \(msg)")
             tb.toolbarState = .closeApp
             print("[palera1n] \(msg)")
@@ -195,63 +171,131 @@ struct ContentView: View {
         }
         
         DispatchQueue.global(qos: .utility).async { [self] in
-            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-            
-            let ret = spawn(command: helper, args: ["-i", tar], root: true)
-            
-            spawn(command: "/usr/bin/chmod", args: ["4755", "/usr/bin/sudo"], root: true)
-            spawn(command: "/usr/bin/chown", args: ["root:wheel", "/usr/bin/sudo"], root: true)
+            downloadFile(file: "libswift.deb", tb: tb)
+            downloadFile(file: "substitute.deb", tb: tb)
+            downloadFile(file: "safemode.deb", tb: tb)
+            downloadFile(file: "preferenceloader.deb", tb: tb)
+            downloadFile(file: "sileo.deb", tb: tb)
+            downloadFile(file: "bootstrap.tar", tb: tb)
+            downloadFile(file: "straprepo.deb", tb: tb, "https://guacaplushy.github.io/static")
             
             DispatchQueue.main.async {
-                if ret != 0 {
-                    console.error("[-] Error installing bootstrap. Status: \(ret)")
+                guard let tar = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("bootstrap.tar").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                     let msg = "Failed to find bootstrap"
+                     console.error("[-] \(msg)")
+                     tb.toolbarState = .closeApp
+                     print("[palera1n] \(msg)")
+                     return
+                }
+
+                guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    let msg = "Failed to find Sileo"
+                    console.error("[-] \(msg)")
                     tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
                     return
                 }
-                
-                console.log("[*] Preparing Bootstrap")
-                DispatchQueue.global(qos: .utility).async {
-                    let ret = spawn(command: "/usr/bin/sh", args: ["/prep_bootstrap.sh"], root: true)
+
+                guard let libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    let msg = "Could not find libswift deb"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+
+                guard let safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    let msg = "Could not find SafeMode"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+
+                guard let preferenceloader = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("preferenceloader.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    let msg = "Could not find PreferenceLoader"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+
+                guard let substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    let msg = "Could not find Substitute"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+
+                guard let strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    let msg = "Could not find strap repo deb"
+                    console.error("[-] \(msg)")
+                    tb.toolbarState = .closeApp
+                    print("[palera1n] \(msg)")
+                    return
+                }
+
+                DispatchQueue.global(qos: .utility).async { [self] in
+                    spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+                    spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+
+                    let ret = spawn(command: helper, args: ["-i", tar], root: true)
+
+                    spawn(command: "/usr/bin/chmod", args: ["4755", "/usr/bin/sudo"], root: true)
+                    spawn(command: "/usr/bin/chown", args: ["root:wheel", "/usr/bin/sudo"], root: true)
+
                     DispatchQueue.main.async {
                         if ret != 0 {
-                            console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
+                            console.error("[-] Error installing bootstrap. Status: \(ret)")
                             tb.toolbarState = .closeApp
                             return
                         }
-                        
-                        console.log("[*] Installing packages")
+
+                        console.log("[*] Preparing Bootstrap")
                         DispatchQueue.global(qos: .utility).async {
-                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
+                            let ret = spawn(command: "/usr/bin/sh", args: ["/prep_bootstrap.sh"], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
-                                    console.error("[-] Failed to install packages. Status: \(ret)")
+                                    console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
                                     tb.toolbarState = .closeApp
                                     return
                                 }
-                                
-                                console.log("[*] Running uicache")
+
+                                console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/usr/bin/uicache", args: ["-a"], root: true)
+                                    let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift, safemode, preferenceloader, substitute], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            console.error("[-] Failed to uicache. Status: \(ret)")
+                                            console.error("[-] Failed to install packages. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
-                                        
-                                        console.log("[*] Installing palera1n strap repo")
+
+                                        console.log("[*] Running uicache")
                                         DispatchQueue.global(qos: .utility).async {
-                                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", strapRepo], root: true)
+                                            let ret = spawn(command: "/usr/bin/uicache", args: ["-a"], root: true)
                                             DispatchQueue.main.async {
                                                 if ret != 0 {
-                                                    console.error("[-] Failed to install palera1n strap repo. Status: \(ret)")
+                                                    console.error("[-] Failed to uicache. Status: \(ret)")
                                                     tb.toolbarState = .closeApp
                                                     return
                                                 }
 
-                                                console.log("[*] Finished installing! Enjoy!")
-                                                tb.toolbarState = .respring
+                                                console.log("[*] Installing palera1n strap repo")
+                                                DispatchQueue.global(qos: .utility).async {
+                                                    let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", strapRepo], root: true)
+                                                    DispatchQueue.main.async {
+                                                        if ret != 0 {
+                                                            console.error("[-] Failed to install palera1n strap repo. Status: \(ret)")
+                                                            tb.toolbarState = .closeApp
+                                                            return
+                                                        }
+
+                                                        console.log("[*] Finished installing! Enjoy!")
+                                                        tb.toolbarState = .respring
+                                                    }
+                                                }
                                             }
                                         }
                                     }
