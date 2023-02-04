@@ -13,8 +13,6 @@ struct ContentView: View {
     
     @State var bounds: CGSize? = nil
     
-    private var serverURL = "https://static.palera.in"
-    
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -134,7 +132,7 @@ struct ContentView: View {
         try? FileManager.default.removeItem(at: fileURL)
     }
     
-    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = serverURL) -> Void {
+    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = "https://static.palera.in") -> Void {
         console.log("[*] Downloading \(file)")
         deleteFile(file: file)
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -183,7 +181,7 @@ struct ContentView: View {
             downloadFile(file: "preferenceloader.deb", tb: tb)
             downloadFile(file: "sileo.deb", tb: tb)
             downloadFile(file: "bootstrap.tar", tb: tb)
-            downloadFile(file: "straprepo.deb", tb: tb, "https://guacaplushy.github.io/static")
+            downloadFile(file: "straprepo.deb", tb: tb, server: "https://guacaplushy.github.io/static")
             
             DispatchQueue.main.async {
                 guard let tar = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("bootstrap.tar").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
