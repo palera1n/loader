@@ -215,8 +215,14 @@ struct ContentView: View {
                     return
                 }
                 
+                var substitute
+                var strapRepo
+                var libswift
+                var safemode
+                var ellekit
+                
                 if rootful {
-                    guard let substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    guard substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Could not find Substitute"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
@@ -224,7 +230,7 @@ struct ContentView: View {
                         return
                     }
 
-                    guard let strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    guard strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Could not find strap repo deb"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
@@ -232,7 +238,7 @@ struct ContentView: View {
                         return
                     }
                     
-                    guard let libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    guard libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Could not find libswift deb"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
@@ -240,7 +246,7 @@ struct ContentView: View {
                         return
                     }
 
-                    guard let safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    guard safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Could not find SafeMode"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
@@ -248,7 +254,7 @@ struct ContentView: View {
                         return
                     }
                 } else {
-                    guard let ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    guard ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Could not find ElleKit"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
