@@ -128,6 +128,12 @@ struct ContentView: View {
         }
     }
     
+    private func deleteFile(file: String) -> Void {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(file)
+        try? FileManager.default.removeItem(at: fileURL)
+    }
+    
     private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = serverURL) -> Void {
         console.log("[*] Downloading \(file)")
         deleteFile(file: file)
