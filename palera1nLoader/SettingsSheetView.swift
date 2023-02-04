@@ -13,6 +13,8 @@ struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @EnvironmentObject var console: Console
     
+    private var serverURL = "https://static.palera.in"
+    
     var tools: [Tool] = [
         Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
         Tool(name: "Remount r/w", desc: "Remounts the rootfs and preboot as read/write", action: ToolAction.mntrw),
@@ -147,7 +149,7 @@ struct SettingsSheetView: View {
         deleteFile(file: file)
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
-        let url = URL(string: "\(server)/\(file)")!
+        let url = URL(string: "\(serverURL)/\(file)")!
         let semaphore = DispatchSemaphore(value: 0)
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -178,7 +180,7 @@ struct SettingsSheetView: View {
             switch pm.action {
                 case .sileo:
                     console.log("[*] Installing Sileo")
-                    downloadFile("sileo.deb")
+                    downloadFile(file: "sileo.deb")
 
                     guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Failed to find Sileo"
@@ -198,7 +200,7 @@ struct SettingsSheetView: View {
                     }
                 case .zebra:
                     console.log("[*] Installing Zebra")
-                    downloadFile("sileo.deb")
+                    downloadFile(file: "sileo.deb")
 
                     guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Failed to find Sileo"
