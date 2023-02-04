@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import IrregularGradient
 
-struct SettingsSheetView: View {
+public struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @EnvironmentObject var console: Console
     
