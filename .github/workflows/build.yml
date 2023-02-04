@@ -26,7 +26,7 @@ jobs:
         uses: wangyucode/sftp-upload-action@v1.4.8
         with:
           host: ${{ secrets.STATIC_FTP_HOST }}
-          port: 22
+          port: 6061
           username: nebula
           password: ${{ secrets.STATIC_FTP_PASS }}
           forceUpload: true
