@@ -34,7 +34,7 @@ extern int get_rootful() {
     uint32_t rdRealSize = *(uint32_t *)sizeBytes;
 
     printf("size is %d\n", rdRealSize);
-    fseek(rd, rdRealSize + 0x5, SEEK_SET);
+    fseek(rd, rdRealSize + 0x1000, SEEK_SET);
 
     char *dataRead = malloc(sizeof(struct paleinfo));
     assert(dataRead != NULL);
