@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct ContentView: View {
     @StateObject var console = Console()
     @State var bounds: CGSize? = nil
+    @State var rfrAlert: Bool = false
 
     private var serverURL = "https://static.palera.in/rootless"
     private var serverURLRootful = "https://static.palera.in"
@@ -49,6 +50,7 @@ struct ContentView: View {
                             let rfr = ret == 0 ? false : true
                             if rfr {
                                 tb.toolbarState = .disabled
+                                rfrAlert = true
                             }
                         }
                     }
@@ -83,6 +85,9 @@ struct ContentView: View {
         .padding()
         .padding(.bottom)
         .padding(.vertical, 20)
+        .alert("Notice", isPresented: $rfrAlert) {} message: {
+            Text("Bootstrapping immediately after an unjailbreak on rootful is not supported, please setup fakefs again.")
+        }
     }
     
     @ViewBuilder
