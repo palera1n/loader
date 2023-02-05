@@ -258,7 +258,8 @@ struct ContentView: View {
                         return
                     }
                 } else {
-                    guard ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    guard ellekit != nil else {
                         let msg = "Could not find ElleKit"
                         console.error("[-] \(msg)")
                         tb.toolbarState = .closeApp
