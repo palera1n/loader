@@ -59,13 +59,21 @@ struct SettingsSheetView: View {
     
     @ViewBuilder
     var main: some View {
-        let ret = spawn(command: helper, args: ["-f"], root: true)
-                    
-        rootful = ret == 0 ? false : true
-                    
-        inst_prefix = rootful ? "" : "/var/jb"
-        
         ScrollView {
+            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                let msg = "Could not find helper?"
+                console.error("[-] \(msg)")
+                tb.toolbarState = .closeApp
+                print("[palera1n] \(msg)")
+                return
+            }
+
+            let ret = spawn(command: helper, args: ["-f"], root: true)
+                    
+            rootful = ret == 0 ? false : true
+
+            inst_prefix = rootful ? "" : "/var/jb"
+        
             ForEach(tools) { tool in
                 ToolsView(tool)
             }
@@ -307,7 +315,7 @@ struct SettingsSheetView: View {
 
             switch opener.action {
                 case .sileo:
-                    var ret
+                    var ret: Int = 0
                     if rootful {
                         ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo.app"], root: true)
                     } else {
