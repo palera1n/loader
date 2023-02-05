@@ -60,17 +60,19 @@ struct SettingsSheetView: View {
     @ViewBuilder
     var main: some View {
         ScrollView {
-            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                let msg = "Could not find helper?"
-                console.error("[-] \(msg)")
-                print("[palera1n] \(msg)")
+            ForEach([""]) {
+                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                    let msg = "Could not find helper?"
+                    console.error("[-] \(msg)")
+                    print("[palera1n] \(msg)")
+                }
+
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
             }
-
-            let ret = spawn(command: helper, args: ["-f"], root: true)
-                    
-            rootful = ret == 0 ? false : true
-
-            inst_prefix = rootful ? "" : "/var/jb"
         
             ForEach(tools) { tool in
                 ToolsView(tool)
