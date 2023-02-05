@@ -99,19 +99,17 @@ struct SettingsSheetView: View {
     @ViewBuilder
     func ToolsView(_ tool: Tool) -> some View {
         Button {
-            if (inst_prefix == "unset") {
-                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                    let msg = "Could not find helper?"
-                    console.error("[-] \(msg)")
-                    print("[palera1n] \(msg)")
-                }
-
-                let ret = spawn(command: helper, args: ["-f"], root: true)
-
-                rootful = ret == 0 ? false : true
-
-                inst_prefix = rootful ? "" : "/var/jb"
+            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                let msg = "Could not find helper?"
+                console.error("[-] \(msg)")
+                print("[palera1n] \(msg)")
             }
+
+            let ret = spawn(command: helper, args: ["-f"], root: true)
+
+            rootful = ret == 0 ? false : true
+
+            inst_prefix = rootful ? "" : "/var/jb"
                 
             switch tool.action {
                 case .uicache:
@@ -234,19 +232,17 @@ struct SettingsSheetView: View {
             
             self.isOpen.toggle()
             
-            if (inst_prefix == "unset") {
-                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                    let msg = "Could not find helper?"
-                    console.error("[-] \(msg)")
-                    print("[palera1n] \(msg)")
-                }
-
-                let ret = spawn(command: helper, args: ["-f"], root: true)
-
-                rootful = ret == 0 ? false : true
-
-                inst_prefix = rootful ? "" : "/var/jb"
+            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                let msg = "Could not find helper?"
+                console.error("[-] \(msg)")
+                print("[palera1n] \(msg)")
             }
+
+            let ret = spawn(command: helper, args: ["-f"], root: true)
+
+            rootful = ret == 0 ? false : true
+
+            inst_prefix = rootful ? "" : "/var/jb"
 
             switch pm.action {
                 case .sileo:
@@ -329,19 +325,17 @@ struct SettingsSheetView: View {
         Button {
             self.isOpen.toggle()
             
-            if (inst_prefix == "unset") {
-                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                    let msg = "Could not find helper?"
-                    console.error("[-] \(msg)")
-                    print("[palera1n] \(msg)")
-                }
-
-                let ret = spawn(command: helper, args: ["-f"], root: true)
-
-                rootful = ret == 0 ? false : true
-
-                inst_prefix = rootful ? "" : "/var/jb"
+            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                let msg = "Could not find helper?"
+                console.error("[-] \(msg)")
+                print("[palera1n] \(msg)")
             }
+
+            let ret = spawn(command: helper, args: ["-f"], root: true)
+
+            rootful = ret == 0 ? false : true
+
+            inst_prefix = rootful ? "" : "/var/jb"
 
             switch opener.action {
                 case .sileo:
@@ -406,13 +400,11 @@ struct SettingsSheetView: View {
         
         
         DispatchQueue.global(qos: .utility).async { [self] in
-            if (inst_prefix == "unset") {
-                let ret = spawn(command: helper, args: ["-f"], root: true)
+            let ret = spawn(command: helper, args: ["-f"], root: true)
 
-                rootful = ret == 0 ? false : true
+            rootful = ret == 0 ? false : true
 
-                inst_prefix = rootful ? "" : "/var/jb"
-            }
+            inst_prefix = rootful ? "" : "/var/jb"
             
             if rootful {
                 downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in")
