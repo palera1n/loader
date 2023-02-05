@@ -22,10 +22,14 @@ struct Strap: ParsableCommand {
     
     @Flag(name: .shortAndLong, help: "Get filesystem")
     var fs: Bool = false
+    
+    @Flag(name: .shortAndLong, help: "Do force revert stop")
+    var noFrRf: Bool = false
 
     mutating func run() throws {
         NSLog("[palera1n helper] Spawned!")
         let rootful = get_rootful() == 1 ? true : false
+        let fr = get_fr() == 1 ? true : false
         guard getuid() == 0 else { fatalError() }
         
         if uicache {
@@ -34,6 +38,10 @@ struct Strap: ParsableCommand {
            if rootful {
                 fatalError()
            }
+        } else if noFrRf {
+            if rootful && fr {
+                fatalError()
+            }
         } else if let input = input {
             if rootful {
                 strapToolRootful(input)
