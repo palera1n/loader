@@ -215,11 +215,11 @@ struct ContentView: View {
                     return
                 }
                 
-                var substitute : String?
-                var strapRepo : String?
-                var libswift : String?
-                var safemode : String?
-                var ellekit : String?
+                var substitute : String
+                var strapRepo : String
+                var libswift : String
+                var safemode : String
+                var ellekit : String
                 
                 if rootful {
                     substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
