@@ -204,12 +204,13 @@ struct SettingsSheetView: View {
         let fileURL = documentsURL.appendingPathComponent(file)
         try? FileManager.default.removeItem(at: fileURL)
     }
-    private func downloadFile(file: String, tb: ToolbarStateMoment) -> Void {
+    
+    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = "https://strap.palera.in/rootless") -> Void {
         console.log("[*] Downloading \(file)")
         deleteFile(file: file)
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
-        let url = URL(string: "\(serverURL)/\(file)")!
+        let url = URL(string: "\(server)/\(file)")!
         let semaphore = DispatchSemaphore(value: 0)
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
