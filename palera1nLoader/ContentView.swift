@@ -37,6 +37,19 @@ struct ContentView: View {
                             console.log("Welcome to palera1n loader")
                             console.log(uname())
                             console.log("\(machinename) running \(platformname) \(platformver) (\(modelarch))")
+                            let tb = ToolbarStateMoment.s
+                            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                                let msg = "Could not find Helper?"
+                                console.error("[-] \(msg)")
+                                tb.toolbarState = .closeApp
+                                print("[palera1n] \(msg)")
+                                return
+                            }
+                            let ret = spawn(command: helper, args: ["-n"], root: true)
+                            let rfr = ret == 0 ? false : true
+                            if rfr {
+                                tb.toolbarState = .disabled
+                            }
                         }
                     }
             }
