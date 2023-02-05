@@ -13,7 +13,7 @@ struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @EnvironmentObject var console: Console
     
-    var rootful : bool = false
+    var rootful : Bool = false
     var inst_prefix: String = "/var/jb"
     
     var tools: [Tool] = [
@@ -64,7 +64,6 @@ struct SettingsSheetView: View {
                 let msg = "Could not find helper?"
                 console.error("[-] \(msg)")
                 print("[palera1n] \(msg)")
-                return
             }
 
             let ret = spawn(command: helper, args: ["-f"], root: true)
