@@ -104,6 +104,7 @@ struct SettingsSheetView: View {
                     let msg = "Could not find helper?"
                     console.error("[-] \(msg)")
                     print("[palera1n] \(msg)")
+                    return
                 }
 
                 let ret = spawn(command: helper, args: ["-f"], root: true)
@@ -239,6 +240,7 @@ struct SettingsSheetView: View {
                     let msg = "Could not find helper?"
                     console.error("[-] \(msg)")
                     print("[palera1n] \(msg)")
+                    return
                 }
 
                 let ret = spawn(command: helper, args: ["-f"], root: true)
@@ -334,6 +336,7 @@ struct SettingsSheetView: View {
                     let msg = "Could not find helper?"
                     console.error("[-] \(msg)")
                     print("[palera1n] \(msg)")
+                    return
                 }
 
                 let ret = spawn(command: helper, args: ["-f"], root: true)
