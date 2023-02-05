@@ -25,7 +25,17 @@ static inline bool checkrain_option_enabled(checkrain_option_t flags, checkrain_
 
 extern int get_rootful() {
     FILE *rd = fopen("/dev/rmd0", "rb");
-    assert(rd != NULL);
+    if (rd == NULL) {
+        return 1;
+    }
+
+    fseek(rd, 0, SEEK_END);
+    long size = ftell(fp);
+    fseek(rd, 0, SEEK_SET);
+    
+    if (size < 0x1004) {
+        return 1;
+    }
 
     char *sizeBytes = malloc(sizeof(char) * 4);
     assert(sizeBytes != NULL);
