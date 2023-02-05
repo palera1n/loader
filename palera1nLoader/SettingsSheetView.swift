@@ -14,7 +14,7 @@ struct SettingsSheetView: View {
     @EnvironmentObject var console: Console
     
     var rootful : Bool = false
-    var inst_prefix: String = "/var/jb"
+    var inst_prefix: String = "unset"
     
     var tools: [Tool] = [
         Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
@@ -60,19 +60,6 @@ struct SettingsSheetView: View {
     @ViewBuilder
     var main: some View {
         ScrollView {
-            ForEach([""]) {
-                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                    let msg = "Could not find helper?"
-                    console.error("[-] \(msg)")
-                    print("[palera1n] \(msg)")
-                }
-
-                let ret = spawn(command: helper, args: ["-f"], root: true)
-
-                rootful = ret == 0 ? false : true
-
-                inst_prefix = rootful ? "" : "/var/jb"
-            }
         
             ForEach(tools) { tool in
                 ToolsView(tool)
@@ -114,7 +101,20 @@ struct SettingsSheetView: View {
     @ViewBuilder
     func ToolsView(_ tool: Tool) -> some View {
         Button {
+            if (inst_prefix == "unset") {
+                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                    let msg = "Could not find helper?"
+                    console.error("[-] \(msg)")
+                    print("[palera1n] \(msg)")
+                }
 
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
+            }
+                
             switch tool.action {
                 case .uicache:
                     self.isOpen.toggle()
@@ -235,6 +235,20 @@ struct SettingsSheetView: View {
             tb.toolbarState = .disabled
             
             self.isOpen.toggle()
+            
+            if (inst_prefix == "unset") {
+                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                    let msg = "Could not find helper?"
+                    console.error("[-] \(msg)")
+                    print("[palera1n] \(msg)")
+                }
+
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
+            }
 
             switch pm.action {
                 case .sileo:
@@ -312,6 +326,20 @@ struct SettingsSheetView: View {
     func OpenersView(_ opener: Opener) -> some View {
         Button {
             self.isOpen.toggle()
+            
+            if (inst_prefix == "unset") {
+                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                    let msg = "Could not find helper?"
+                    console.error("[-] \(msg)")
+                    print("[palera1n] \(msg)")
+                }
+
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
+            }
 
             switch opener.action {
                 case .sileo:
@@ -376,6 +404,14 @@ struct SettingsSheetView: View {
         
         
         DispatchQueue.global(qos: .utility).async { [self] in
+            if (inst_prefix == "unset") {
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
+            }
+            
             if rootful {
                 downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "substitute.deb", tb: tb, server: "https://static.palera.in")
