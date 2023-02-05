@@ -2,7 +2,9 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 #include <stdint.h>
+#include <assert.h>
 
 #define checkrain_option_safemode            (1 << 0)
 #define checkrain_option_bind_mount          (1 << 1)
@@ -35,7 +37,7 @@ static inline bool checkrain_option_enabled(checkrain_option_t flags, checkrain_
     return (flags & opt) != 0;
 }
 
-extern int get_fr() {
+int get_fr(void) {
     FILE *rd = fopen("/dev/rmd0", "rb");
     if (rd == NULL) {
         return 1;
@@ -64,12 +66,16 @@ extern int get_fr() {
 
     struct kerninfo *readStruct = (struct kerninfo *)dataRead;
 
+    int fr_enabled = checkrain_option_enabled(readStruct->flags, checkrain_option_force_revert) ? 1 : 0;
+
     fclose(rd);
+    free(dataRead);
+    free(sizeBytes);
   
-    return checkrain_option_enabled(readStruct->flags, checkrain_option_force_revert) ? 1 : 0;
+    return fr_enabled;
 }
 
-extern int get_rootful() {
+int get_rootful(void) {
     FILE *rd = fopen("/dev/rmd0", "rb");
     if (rd == NULL) {
         return 1;
@@ -98,7 +104,11 @@ extern int get_rootful() {
 
     struct paleinfo *readStruct = (struct paleinfo *)dataRead;
 
+    int rootful_enabled = checkrain_option_enabled(readStruct->flags, palerain_option_rootful) ? 1 : 0;
+
     fclose(rd);
+    free(sizeBytes);
+    free(dataRead);
   
-    return checkrain_option_enabled(readStruct->flags, palerain_option_rootful) ? 1 : 0;
+    return rootful_enabled;
 }

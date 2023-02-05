@@ -32,6 +32,8 @@ struct Strap: ParsableCommand {
         let fr = get_fr() == 1 ? true : false
         guard getuid() == 0 else { fatalError() }
         
+        NSLog("rootful: \(rootful), fr: \(fr)");
+
         if uicache {
             uicacheTool()
         } else if fs {

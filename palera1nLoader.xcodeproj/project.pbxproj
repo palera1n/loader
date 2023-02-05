@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01306E77298FC7530013202B /* get.c in Sources */ = {isa = PBXBuildFile; fileRef = 01306E76298FC7530013202B /* get.c */; };
 		331E9B752932C42400363FA9 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 331E9B742932C42300363FA9 /* Makefile */; };
 		331E9B842932CBC000363FA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBC82920590B0055F1C0 /* main.swift */; };
 		331E9B862932CBED00363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B852932CBED00363FA9 /* SWCompression */; };
@@ -51,6 +52,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01306E74298FC6A80013202B /* paleinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = paleinfo; sourceTree = "<group>"; };
+		01306E76298FC7530013202B /* get.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = get.c; path = palera1nHelper/paleinfo/get.c; sourceTree = "<group>"; };
 		331E9B742932C42300363FA9 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		331E9B7B2932CABC00363FA9 /* palera1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = palera1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
 		331E9B8D2932D07C00363FA9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		331E9B7C2932CABD00363FA9 /* palera1nHelper */ = {
 			isa = PBXGroup;
 			children = (
+				01306E74298FC6A80013202B /* paleinfo */,
 				AA95DBC82920590B0055F1C0 /* main.swift */,
 				AAA741FD293D2DC5000243C2 /* palera1nHelper-Bridging-Header.h */,
 				AAA74202293D2DCC000243C2 /* TrollStoreCock */,
@@ -170,6 +174,7 @@
 		AAEF9D4F291ED9F80089149B = {
 			isa = PBXGroup;
 			children = (
+				01306E76298FC7530013202B /* get.c */,
 				AAEF9D5A291ED9F80089149B /* palera1nLoader */,
 				AAA74208293D4D0A000243C2 /* Shared */,
 				331E9B742932C42300363FA9 /* Makefile */,
@@ -193,7 +198,6 @@
 			children = (
 				AAA741FB293D1CCA000243C2 /* palera1nLoader.entitlements */,
 				331E9B8D2932D07C00363FA9 /* Info.plist */,
-				331E9B762932C51300363FA9 /* Required */,
 				AA95DB8929204FFC0055F1C0 /* Bootstrapping */,
 				AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */,
 				AAC7DE2C291F1203000CD15B /* Views */,
@@ -386,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01306E77298FC7530013202B /* get.c in Sources */,
 				AAA74205293D339A000243C2 /* uicache.m in Sources */,
 				AAA74201293D2DC6000243C2 /* TSUtil.m in Sources */,
 				331E9B842932CBC000363FA9 /* main.swift in Sources */,
