@@ -230,9 +230,6 @@ struct SettingsSheetView: View {
     @ViewBuilder
     func PMView(_ pm: PackageManager) -> some View {
         Button {
-            let tb = ToolbarStateMoment.s
-            tb.toolbarState = .disabled
-            
             self.isOpen.toggle()
             
             if (inst_prefix == "unset") {
