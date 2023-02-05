@@ -13,7 +13,7 @@ struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @EnvironmentObject var console: Console
     
-    var rootful
+    var rootful : bool = false
     var inst_prefix: String = "/var/jb"
     
     var tools: [Tool] = [
@@ -63,7 +63,6 @@ struct SettingsSheetView: View {
             guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
                 let msg = "Could not find helper?"
                 console.error("[-] \(msg)")
-                tb.toolbarState = .closeApp
                 print("[palera1n] \(msg)")
                 return
             }
@@ -230,10 +229,10 @@ struct SettingsSheetView: View {
     
     @ViewBuilder
     func PMView(_ pm: PackageManager) -> some View {
-        let tb = ToolbarStateMoment.s
-        tb.toolbarState = .disabled
-        
         Button {
+            let tb = ToolbarStateMoment.s
+            tb.toolbarState = .disabled
+            
             self.isOpen.toggle()
 
             switch pm.action {
