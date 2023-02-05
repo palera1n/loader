@@ -13,8 +13,8 @@ struct ContentView: View {
     @State var bounds: CGSize? = nil
     @State var rfrAlert: Bool = false
 
-    private var serverURL = "https://static.palera.in/rootless"
-    private var serverURLRootful = "https://static.palera.in"
+    private var serverURL = "https://static.palera.in/rootless/"
+    private var serverURLRootful = "https://static.palera.in/"
     
     var body: some View {
         GeometryReader { geo in
@@ -152,7 +152,7 @@ struct ContentView: View {
         try? FileManager.default.removeItem(at: fileURL)
     }
 
-    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = "https://strap.palera.in/rootless") -> Void {
+    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = "https://static.palera.in/rootless/") -> Void {
         console.log("[*] Downloading \(file)")
         deleteFile(file: file)
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -202,13 +202,13 @@ struct ContentView: View {
         
         DispatchQueue.global(qos: .utility).async { [self] in
             if rootful {
-                downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "substitute.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "safemode.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "preferenceloader.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "straprepo.deb", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "substitute.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "safemode.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "preferenceloader.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "straprepo.deb", tb: tb, server: "https://static.palera.in/")
             } else {
                 downloadFile(file: "bootstrap.tar", tb: tb)
                 downloadFile(file: "sileo.deb", tb: tb)

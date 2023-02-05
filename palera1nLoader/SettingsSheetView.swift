@@ -190,14 +190,14 @@ struct SettingsSheetView: View {
         
     }
     
-    var serverURL = "https://static.palera.in/rootless"
+    var serverURL = "https://static.palera.in/rootless/"
     private func deleteFile(file: String) -> Void {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
         try? FileManager.default.removeItem(at: fileURL)
     }
     
-    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = "https://strap.palera.in/rootless") -> Void {
+    private func downloadFile(file: String, tb: ToolbarStateMoment, server: String = "https://static.palera.in/rootless/") -> Void {
         console.log("[*] Downloading \(file)")
         deleteFile(file: file)
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -253,7 +253,7 @@ struct SettingsSheetView: View {
                     if (rootful) {
                         console.log("[*] Installing Sileo")
                         DispatchQueue.global(qos: .utility).async { [self] in
-                            downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
+                            downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in/")
 
                             DispatchQueue.global(qos: .utility).async { [self] in
                                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -279,7 +279,7 @@ struct SettingsSheetView: View {
                     if (rootful) {
                         console.log("[*] Installing Zebra")
                         DispatchQueue.global(qos: .utility).async { [self] in
-                            downloadFile(file: "zebra.deb", tb: tb, server: "https://static.palera.in")
+                            downloadFile(file: "zebra.deb", tb: tb, server: "https://static.palera.in/")
 
                             DispatchQueue.global(qos: .utility).async { [self] in
                                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -416,13 +416,13 @@ struct SettingsSheetView: View {
             }
             
             if rootful {
-                downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "substitute.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "safemode.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "preferenceloader.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "straprepo.deb", tb: tb, server: "https://guacaplushy.github.io/static")
+                downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "substitute.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "safemode.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "preferenceloader.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in/")
+                downloadFile(file: "straprepo.deb", tb: tb, server: "https://guacaplushy.github.io/static/")
             } else {
                 downloadFile(file: "bootstrap.tar", tb: tb)
                 downloadFile(file: "sileo.deb", tb: tb)
