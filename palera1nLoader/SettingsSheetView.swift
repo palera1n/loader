@@ -231,6 +231,7 @@ struct SettingsSheetView: View {
     func PMView(_ pm: PackageManager) -> some View {
         Button {
             self.isOpen.toggle()
+            let tb = ToolbarStateMoment.s
             
             if (inst_prefix == "unset") {
                 guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
