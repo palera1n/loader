@@ -13,8 +13,8 @@ struct SettingsSheetView: View {
     @Binding var isOpen: Bool
     @EnvironmentObject var console: Console
     
-    var rootful : Bool = false
-    var inst_prefix: String = "unset"
+    @State var rootful : Bool = false
+    @State var inst_prefix: String = "unset"
     
     var tools: [Tool] = [
         Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
@@ -97,7 +97,7 @@ struct SettingsSheetView: View {
 
     @State private var showAlert: Bool = false
     @ViewBuilder
-    mutating func ToolsView(_ tool: Tool) -> some View {
+    func ToolsView(_ tool: Tool) -> some View {
         Button {
             if (inst_prefix == "unset") {
                 guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
@@ -227,7 +227,7 @@ struct SettingsSheetView: View {
     }
     
     @ViewBuilder
-    mutating func PMView(_ pm: PackageManager) -> some View {
+    func PMView(_ pm: PackageManager) -> some View {
         Button {
             let tb = ToolbarStateMoment.s
             tb.toolbarState = .disabled
@@ -325,7 +325,7 @@ struct SettingsSheetView: View {
     }
 
     @ViewBuilder
-    mutating func OpenersView(_ opener: Opener) -> some View {
+    func OpenersView(_ opener: Opener) -> some View {
         Button {
             self.isOpen.toggle()
             
@@ -392,7 +392,7 @@ struct SettingsSheetView: View {
         .buttonStyle(.plain)
     }
     
-    private mutating func strap() -> Void {
+    private func strap() -> Void {
         let tb = ToolbarStateMoment.s
         tb.toolbarState = .disabled
          
