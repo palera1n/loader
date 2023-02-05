@@ -181,7 +181,7 @@ struct ContentView: View {
             downloadFile(file: "preferenceloader.deb", tb: tb)
             downloadFile(file: "sileo.deb", tb: tb)
             downloadFile(file: "bootstrap.tar", tb: tb)
-            downloadFile(file: "straprepo.deb", tb: tb, server: "https://guacaplushy.github.io/static")
+            downloadFile(file: "straprepo.deb", tb: tb")
             
             DispatchQueue.main.async {
                 guard let tar = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("bootstrap.tar").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
