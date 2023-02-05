@@ -190,7 +190,7 @@ struct ContentView: View {
                 downloadFile(file: "preferenceloader.deb", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "straprepo.deb", tb: tb, server: "https://guacaplushy.github.io/static")
+                downloadFile(file: "straprepo.deb", tb: tb, server: "https://static.palera.in")
             } else {
                 downloadFile(file: "bootstrap.tar", tb: tb)
                 downloadFile(file: "sileo.deb", tb: tb)
