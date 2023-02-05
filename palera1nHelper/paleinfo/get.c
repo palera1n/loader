@@ -30,7 +30,7 @@ extern int get_rootful() {
     }
 
     fseek(rd, 0, SEEK_END);
-    long size = ftell(fp);
+    long size = ftell(rd);
     fseek(rd, 0, SEEK_SET);
     
     if (size < 0x1004) {
