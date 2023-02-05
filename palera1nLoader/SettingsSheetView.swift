@@ -14,6 +14,7 @@ struct SettingsSheetView: View {
     @EnvironmentObject var console: Console
     
     var rootful
+    var inst_prefix: String = "/var/jb"
     
     var tools: [Tool] = [
         Tool(name: "UICache", desc: "Refresh icon cache of jailbreak apps", action: ToolAction.uicache),
@@ -22,6 +23,11 @@ struct SettingsSheetView: View {
         Tool(name: "Respring", desc: "Restart SpringBoard", action: ToolAction.respring),
         Tool(name: "Activate Tweaks", desc: "Runs substitute-launcher to activate tweaks", action: ToolAction.tweaks),
         Tool(name: "Do All", desc: "Do all of the above", action: ToolAction.all),
+    ]
+    
+    var packagemanagers: [PackageManager] = [
+        PackageManager(name: "Sileo", desc: "Modern package manager (recommended)", action: PackageManagers.sileo),
+        PackageManager(name: "Zebra", desc: "Cydia-ish look and feel with modern features", action: PackageManagers.zebra),
     ]
     
     var openers: [Opener] = [
@@ -57,7 +63,7 @@ struct SettingsSheetView: View {
                     
         rootful = ret == 0 ? false : true
                     
-        let inst_prefix = rootful ? "" : "/var/jb"
+        inst_prefix = rootful ? "" : "/var/jb"
         
         ScrollView {
             ForEach(tools) { tool in
@@ -99,7 +105,6 @@ struct SettingsSheetView: View {
     @State private var showAlert: Bool = false
     @ViewBuilder
     func ToolsView(_ tool: Tool) -> some View {
-        let inst_prefix = rootful ? "" : "/var/jb"
         Button {
 
             switch tool.action {
@@ -217,6 +222,9 @@ struct SettingsSheetView: View {
     
     @ViewBuilder
     func PMView(_ pm: PackageManager) -> some View {
+        let tb = ToolbarStateMoment.s
+        tb.toolbarState = .disabled
+        
         Button {
             self.isOpen.toggle()
 
@@ -224,7 +232,7 @@ struct SettingsSheetView: View {
                 case .sileo:
                     console.log("[*] Installing Sileo")
                     DispatchQueue.global(qos: .utility).async { [self] in
-                        downloadFile(file: "sileo.deb", server: "https://static.palera.in")
+                        downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
                                                                
                         DispatchQueue.global(qos: .utility).async { [self] in
                             guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -248,7 +256,7 @@ struct SettingsSheetView: View {
                 case .zebra:
                     console.log("[*] Installing Zebra")
                     DispatchQueue.global(qos: .utility).async { [self] in
-                        downloadFile(file: "zebra.deb", server: "https://static.palera.in")
+                        downloadFile(file: "zebra.deb", tb: tb, server: "https://static.palera.in")
                                                                
                         DispatchQueue.global(qos: .utility).async { [self] in
                             guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -294,7 +302,6 @@ struct SettingsSheetView: View {
 
     @ViewBuilder
     func OpenersView(_ opener: Opener) -> some View {
-        let inst_prefix = rootful ? "" : "/var/jb"
         Button {
             self.isOpen.toggle()
 
