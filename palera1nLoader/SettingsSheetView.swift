@@ -70,16 +70,14 @@ struct SettingsSheetView: View {
             } else {
                 ToolsView(Tool(name: "Install", desc: "Install the bootstrap", action: ToolAction.bootstrap))
             }
-            
-            if rootful {
-                Text("Package Managers")
-                    .fontWeight(.bold)
-                    .font(.title)
-                    .padding()
+              
+            Text("Package Managers")
+                .fontWeight(.bold)
+                .font(.title)
+                .padding()
 
-                ForEach(packagemanagers) { pm in
-                    PMView(pm)
-                }
+            ForEach(packagemanagers) { pm in
+                PMView(pm)
             }
 
             Text("Openers")
@@ -252,50 +250,54 @@ struct SettingsSheetView: View {
 
             switch pm.action {
                 case .sileo:
-                    console.log("[*] Installing Sileo")
-                    DispatchQueue.global(qos: .utility).async { [self] in
-                        downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
-                                                               
+                    if (rootful) {
+                        console.log("[*] Installing Sileo")
                         DispatchQueue.global(qos: .utility).async { [self] in
-                            guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                                let msg = "Failed to find Sileo"
-                                console.error("[-] \(msg)")
-                                print("[palera1n] \(msg)")
-                                return
-                            }
+                            downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
 
-                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb], root: true)
-                            DispatchQueue.main.async {
-                                if ret != 0 {
-                                    console.error("[-] Failed to install Sileo. Status: \(ret)")
+                            DispatchQueue.global(qos: .utility).async { [self] in
+                                guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                                    let msg = "Failed to find Sileo"
+                                    console.error("[-] \(msg)")
+                                    print("[palera1n] \(msg)")
                                     return
                                 }
 
-                                console.log("[*] Installed Sileo")
+                                let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb], root: true)
+                                DispatchQueue.main.async {
+                                    if ret != 0 {
+                                        console.error("[-] Failed to install Sileo. Status: \(ret)")
+                                        return
+                                    }
+
+                                    console.log("[*] Installed Sileo")
+                                }
                             }
                         }
                     }
                 case .zebra:
-                    console.log("[*] Installing Zebra")
-                    DispatchQueue.global(qos: .utility).async { [self] in
-                        downloadFile(file: "zebra.deb", tb: tb, server: "https://static.palera.in")
-                                                               
+                    if (rootful) {
+                        console.log("[*] Installing Zebra")
                         DispatchQueue.global(qos: .utility).async { [self] in
-                            guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                                let msg = "Failed to find Sileo"
-                                console.error("[-] \(msg)")
-                                print("[palera1n] \(msg)")
-                                return
-                            }
+                            downloadFile(file: "zebra.deb", tb: tb, server: "https://static.palera.in")
 
-                            let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb], root: true)
-                            DispatchQueue.main.async {
-                                if ret != 0 {
-                                    console.error("[-] Failed to install Zebra. Status: \(ret)")
+                            DispatchQueue.global(qos: .utility).async { [self] in
+                                guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                                    let msg = "Failed to find Sileo"
+                                    console.error("[-] \(msg)")
+                                    print("[palera1n] \(msg)")
                                     return
                                 }
 
-                                console.log("[*] Installed Zebra")
+                                let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb], root: true)
+                                DispatchQueue.main.async {
+                                    if ret != 0 {
+                                        console.error("[-] Failed to install Zebra. Status: \(ret)")
+                                        return
+                                    }
+
+                                    console.log("[*] Installed Zebra")
+                                }
                             }
                         }
                     }
