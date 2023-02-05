@@ -97,19 +97,21 @@ struct SettingsSheetView: View {
 
     @State private var showAlert: Bool = false
     @ViewBuilder
-    func ToolsView(_ tool: Tool) -> some View {
+    mutating func ToolsView(_ tool: Tool) -> some View {
         Button {
-            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                let msg = "Could not find helper?"
-                console.error("[-] \(msg)")
-                print("[palera1n] \(msg)")
+            if (inst_prefix == "unset") {
+                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                    let msg = "Could not find helper?"
+                    console.error("[-] \(msg)")
+                    print("[palera1n] \(msg)")
+                }
+
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
             }
-
-            let ret = spawn(command: helper, args: ["-f"], root: true)
-
-            rootful = ret == 0 ? false : true
-
-            inst_prefix = rootful ? "" : "/var/jb"
                 
             switch tool.action {
                 case .uicache:
@@ -225,24 +227,26 @@ struct SettingsSheetView: View {
     }
     
     @ViewBuilder
-    func PMView(_ pm: PackageManager) -> some View {
+    mutating func PMView(_ pm: PackageManager) -> some View {
         Button {
             let tb = ToolbarStateMoment.s
             tb.toolbarState = .disabled
             
             self.isOpen.toggle()
             
-            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                let msg = "Could not find helper?"
-                console.error("[-] \(msg)")
-                print("[palera1n] \(msg)")
+            if (inst_prefix == "unset") {
+                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                    let msg = "Could not find helper?"
+                    console.error("[-] \(msg)")
+                    print("[palera1n] \(msg)")
+                }
+
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
             }
-
-            let ret = spawn(command: helper, args: ["-f"], root: true)
-
-            rootful = ret == 0 ? false : true
-
-            inst_prefix = rootful ? "" : "/var/jb"
 
             switch pm.action {
                 case .sileo:
@@ -321,21 +325,23 @@ struct SettingsSheetView: View {
     }
 
     @ViewBuilder
-    func OpenersView(_ opener: Opener) -> some View {
+    mutating func OpenersView(_ opener: Opener) -> some View {
         Button {
             self.isOpen.toggle()
             
-            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                let msg = "Could not find helper?"
-                console.error("[-] \(msg)")
-                print("[palera1n] \(msg)")
+            if (inst_prefix == "unset") {
+                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                    let msg = "Could not find helper?"
+                    console.error("[-] \(msg)")
+                    print("[palera1n] \(msg)")
+                }
+
+                let ret = spawn(command: helper, args: ["-f"], root: true)
+
+                rootful = ret == 0 ? false : true
+
+                inst_prefix = rootful ? "" : "/var/jb"
             }
-
-            let ret = spawn(command: helper, args: ["-f"], root: true)
-
-            rootful = ret == 0 ? false : true
-
-            inst_prefix = rootful ? "" : "/var/jb"
 
             switch opener.action {
                 case .sileo:
@@ -386,7 +392,7 @@ struct SettingsSheetView: View {
         .buttonStyle(.plain)
     }
     
-    private func strap() -> Void {
+    private mutating func strap() -> Void {
         let tb = ToolbarStateMoment.s
         tb.toolbarState = .disabled
          
@@ -400,11 +406,13 @@ struct SettingsSheetView: View {
         
         
         DispatchQueue.global(qos: .utility).async { [self] in
-            let ret = spawn(command: helper, args: ["-f"], root: true)
+            if (inst_prefix == "unset") {
+                let ret = spawn(command: helper, args: ["-f"], root: true)
 
-            rootful = ret == 0 ? false : true
+                rootful = ret == 0 ? false : true
 
-            inst_prefix = rootful ? "" : "/var/jb"
+                inst_prefix = rootful ? "" : "/var/jb"
+            }
             
             if rootful {
                 downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in")
