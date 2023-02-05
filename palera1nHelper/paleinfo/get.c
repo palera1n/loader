@@ -4,6 +4,8 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <assert.h>
 
 #define checkrain_option_safemode            (1 << 0)
@@ -15,6 +17,8 @@
 #define palerain_option_jbinit_log_to_file   (1 << 1) /* log to /cores/jbinit.log */
 #define palerain_option_setup_rootful        (1 << 2) /* create fakefs */
 #define palerain_option_setup_rootful_forced (1 << 3) /* create fakefs over an existing one */
+
+#define PALEINFO_MAGIC 'PLSH'
 
 typedef uint32_t checkrain_option_t, *checkrain_option_p;
 
@@ -37,78 +41,59 @@ static inline bool checkrain_option_enabled(checkrain_option_t flags, checkrain_
     return (flags & opt) != 0;
 }
 
+int get_kerninfo(struct kerninfo *info, char *rd)
+{
+  uint32_t size = sizeof(struct kerninfo);
+  uint32_t ramdisk_size_actual;
+  int fd = open(rd, O_RDONLY, 0);
+  read(fd, &ramdisk_size_actual, 4);
+  lseek(fd, (long)(ramdisk_size_actual), SEEK_SET);
+  int64_t didread = read(fd, info, sizeof(struct kerninfo));
+  if ((unsigned long)didread != sizeof(struct kerninfo) || info->size != (uint64_t)sizeof(struct kerninfo))
+  {
+    return -1;
+  }
+  if (info->size != size) return -1;
+  close(fd);
+  return 0;
+}
+
+int get_paleinfo(struct paleinfo *info, char *rd)
+{
+  uint32_t ramdisk_size_actual;
+  int fd = open(rd, O_RDONLY, 0);
+  read(fd, &ramdisk_size_actual, 4);
+  lseek(fd, (long)(ramdisk_size_actual) + 0x1000L, SEEK_SET);
+  int64_t didread = read(fd, info, sizeof(struct paleinfo));
+  if ((unsigned long)didread != sizeof(struct paleinfo))
+  {
+    return -1;
+  }
+  if (info->magic != PALEINFO_MAGIC)
+  {
+    printf("Detected corrupted paleinfo!\n");
+    return -1;
+  }
+  if (info->version != 1)
+  {
+    printf("Unsupported paleinfo %u (expected 1)\n", info->version);
+    return -1;
+  }
+  close(fd);
+  return 0;
+}
+
+
 int get_fr(void) {
-    FILE *rd = fopen("/dev/rmd0", "rb");
-    if (rd == NULL) {
-        return 1;
-    }
-
-    fseek(rd, 0, SEEK_END);
-    long size = ftell(rd);
-    fseek(rd, 0, SEEK_SET);
-    
-    if (size < 0x1004) {
-        return 1;
-    }
-
-    char *sizeBytes = malloc(sizeof(char) * 4);
-    assert(sizeBytes != NULL);
-    fread(sizeBytes, 1, 4, rd);
-
-    uint32_t rdRealSize = *(uint32_t *)sizeBytes;
-
-    printf("size is %d\n", rdRealSize);
-    fseek(rd, rdRealSize, SEEK_SET);
-
-    char *dataRead = malloc(sizeof(struct kerninfo));
-    assert(dataRead != NULL);
-    fread(dataRead, 1, sizeof(struct kerninfo), rd);
-
-    struct kerninfo *readStruct = (struct kerninfo *)dataRead;
-
-    int fr_enabled = checkrain_option_enabled(readStruct->flags, checkrain_option_force_revert) ? 1 : 0;
-
-    fclose(rd);
-    free(dataRead);
-    free(sizeBytes);
-  
-    return fr_enabled;
+    struct kerninfo info;
+    int ret = get_kerninfo(&info, "/dev/rmd0");
+    if (ret != 0) return 0;
+    return checkrain_option_enabled(info.flags, checkrain_option_force_revert);
 }
 
 int get_rootful(void) {
-    FILE *rd = fopen("/dev/rmd0", "rb");
-    if (rd == NULL) {
-        return 1;
-    }
-
-    fseek(rd, 0, SEEK_END);
-    long size = ftell(rd);
-    fseek(rd, 0, SEEK_SET);
-    
-    if (size < 0x1004) {
-        return 1;
-    }
-
-    char *sizeBytes = malloc(sizeof(char) * 4);
-    assert(sizeBytes != NULL);
-    fread(sizeBytes, 1, 4, rd);
-
-    uint32_t rdRealSize = *(uint32_t *)sizeBytes;
-
-    printf("size is %d\n", rdRealSize);
-    fseek(rd, rdRealSize + 0x1000, SEEK_SET);
-
-    char *dataRead = malloc(sizeof(struct paleinfo));
-    assert(dataRead != NULL);
-    fread(dataRead, 1, sizeof(struct paleinfo), rd);
-
-    struct paleinfo *readStruct = (struct paleinfo *)dataRead;
-
-    int rootful_enabled = checkrain_option_enabled(readStruct->flags, palerain_option_rootful) ? 1 : 0;
-
-    fclose(rd);
-    free(sizeBytes);
-    free(dataRead);
-  
-    return rootful_enabled;
+    struct paleinfo pinfo;
+    int ret = get_paleinfo(&pinfo, "/dev/rmd0");
+    if (ret != 0) return 1;
+    return checkrain_option_enabled(pinfo.flags, palerain_option_rootful);
 }
