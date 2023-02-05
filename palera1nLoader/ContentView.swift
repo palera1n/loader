@@ -222,7 +222,7 @@ struct ContentView: View {
                 var ellekit : String
                 
                 if rootful {
-                    substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path!.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
                     guard substitute != nil else {
                         let msg = "Could not find Substitute"
                         console.error("[-] \(msg)")
@@ -231,7 +231,7 @@ struct ContentView: View {
                         return
                     }
 
-                    strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path!.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
                     guard strapRepo != nil else {
                         let msg = "Could not find strap repo deb"
                         console.error("[-] \(msg)")
@@ -240,7 +240,7 @@ struct ContentView: View {
                         return
                     }
                     
-                    libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path!.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
                     guard libswift != nil else {
                         let msg = "Could not find libswift deb"
                         console.error("[-] \(msg)")
@@ -249,7 +249,7 @@ struct ContentView: View {
                         return
                     }
 
-                    safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path!.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
                     guard safemode != nil else {
                         let msg = "Could not find SafeMode"
                         console.error("[-] \(msg)")
@@ -258,7 +258,7 @@ struct ContentView: View {
                         return
                     }
                 } else {
-                    ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path!.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
                     guard ellekit != nil else {
                         let msg = "Could not find ElleKit"
                         console.error("[-] \(msg)")
