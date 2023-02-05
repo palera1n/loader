@@ -246,11 +246,27 @@ struct SettingsSheetView: View {
             return
         }
         
+        let ret = spawn(command: helper, args: ["-f"], root: true)
+                    
+        let rootful = ret == 0 ? false : true
+                    
+        let inst_prefix = rootful ? "/" : "/var/jb"
+        
         DispatchQueue.global(qos: .utility).async { [self] in
-            downloadFile(file: "bootstrap.tar", tb: tb)
-            downloadFile(file: "sileo.deb", tb: tb)
-            downloadFile(file: "preferenceloader.deb", tb: tb)
-            downloadFile(file: "ellekit.deb", tb: tb)
+            if rootful {
+                downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "substitute.deb", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "safemode.deb", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "preferenceloader.deb", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "straprepo.deb", tb: tb, server: "https://guacaplushy.github.io/static")
+            } else {
+                downloadFile(file: "bootstrap.tar", tb: tb)
+                downloadFile(file: "sileo.deb", tb: tb)
+                downloadFile(file: "preferenceloader.deb", tb: tb)
+                downloadFile(file: "ellekit.deb", tb: tb)
+            }
 
             DispatchQueue.main.async {
                 guard let tar = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("bootstrap.tar").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -269,12 +285,57 @@ struct SettingsSheetView: View {
                     return
                 }
                 
-                guard let ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                    let msg = "Could not find ElleKit"
-                    console.error("[-] \(msg)")
-                    tb.toolbarState = .closeApp
-                    print("[palera1n] \(msg)")
-                    return
+                var substitute : String?
+                var strapRepo : String?
+                var libswift : String?
+                var safemode : String?
+                var ellekit : String?
+                
+                if rootful {
+                    substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    guard substitute != nil else {
+                        let msg = "Could not find Substitute"
+                        console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
+                        print("[palera1n] \(msg)")
+                        return
+                    }
+
+                    strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    guard strapRepo != nil else {
+                        let msg = "Could not find strap repo deb"
+                        console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
+                        print("[palera1n] \(msg)")
+                        return
+                    }
+                    
+                    libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    guard libswift != nil else {
+                        let msg = "Could not find libswift deb"
+                        console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
+                        print("[palera1n] \(msg)")
+                        return
+                    }
+
+                    safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    guard safemode != nil else {
+                        let msg = "Could not find SafeMode"
+                        console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
+                        print("[palera1n] \(msg)")
+                        return
+                    }
+                } else {
+                    ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    guard ellekit != nil else {
+                        let msg = "Could not find ElleKit"
+                        console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
+                        print("[palera1n] \(msg)")
+                        return
+                    }
                 }
                 
                 guard let preferenceloader = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("preferenceloader.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
@@ -284,20 +345,18 @@ struct SettingsSheetView: View {
                     print("[palera1n] \(msg)")
                     return
                 }
-                
-                let msg = "Emergency error!!!"
-                console.error("[-] \(msg)")
-                tb.toolbarState = .closeApp
-                print("[palera1n] \(msg)")
-                return
 
                 DispatchQueue.global(qos: .utility).async {
                     spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                     
+                    if rootful {
+                        spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+                    }
+                    
                     let ret = spawn(command: helper, args: ["-i", tar], root: true)
                     
-                    spawn(command: "/var/jb/usr/bin/chmod", args: ["4755", "/var/jb/usr/bin/sudo"], root: true)
-                    spawn(command: "/var/jb/usr/bin/chown", args: ["root:wheel", "/var/jb/usr/bin/sudo"], root: true)
+                    spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
+                    spawn(command: "\(inst_prefix)/usr/bin/chown", args: ["root:wheel", "\(inst_prefix)/usr/bin/sudo"], root: true)
                     
                     DispatchQueue.main.async {
                         if ret != 0 {
@@ -308,7 +367,7 @@ struct SettingsSheetView: View {
                         
                         console.log("[*] Preparing Bootstrap")
                         DispatchQueue.global(qos: .utility).async {
-                            let ret = spawn(command: "/var/jb/usr/bin/sh", args: ["/var/jb/prep_bootstrap.sh"], root: true)
+                            let ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
                             DispatchQueue.main.async {
                                 if ret != 0 {
                                     console.error("[-] Failed to prepare bootstrap. Status: \(ret)")
@@ -318,7 +377,12 @@ struct SettingsSheetView: View {
                                 
                                 console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", deb, ellekit, preferenceloader], root: true)
+                                    var ret = 0
+                                    if rootful {
+                                        ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift!, safemode!, preferenceloader, substitute!], root: true)
+                                    } else {
+                                        ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, ellekit!, preferenceloader], root: true)
+                                    }
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.error("[-] Failed to install packages. Status: \(ret)")
@@ -328,16 +392,33 @@ struct SettingsSheetView: View {
 
                                         console.log("[*] Running uicache")
                                         DispatchQueue.global(qos: .utility).async {
-                                            let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-a"], root: true)
+                                            let ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
                                             DispatchQueue.main.async {
                                                 if ret != 0 {
                                                     console.error("[-] Failed to uicache. Status: \(ret)")
                                                     tb.toolbarState = .closeApp
                                                     return
                                                 }
+                                                
+                                                if rootful {
+                                                    console.log("[*] Installing palera1n strap repo")
+                                                    DispatchQueue.global(qos: .utility).async {
+                                                        let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", strapRepo!], root: true)
+                                                        DispatchQueue.main.async {
+                                                            if ret != 0 {
+                                                                console.error("[-] Failed to install palera1n strap repo. Status: \(ret)")
+                                                                tb.toolbarState = .closeApp
+                                                                return
+                                                            }
 
-                                                console.log("[*] Finished installing! Enjoy!")
-                                                tb.toolbarState = .respring
+                                                            console.log("[*] Finished installing! Enjoy!")
+                                                            tb.toolbarState = .respring
+                                                        }
+                                                    }
+                                                } else {
+                                                    console.log("[*] Finished installing! Enjoy!")
+                                                    tb.toolbarState = .respring
+                                                }
                                             }
                                         }
                                     }
