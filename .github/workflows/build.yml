@@ -22,6 +22,7 @@ jobs:
       - name: Compile
         run: make
 
+      
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
         with:
@@ -32,4 +33,4 @@ jobs:
           forceUpload: true
           dryRun: false
           localDir: 'packages/'
-          remoteDir: '/upload/artifacts/loader/rootless'
+          remoteDir: '/upload/artifacts/loader/universal'
