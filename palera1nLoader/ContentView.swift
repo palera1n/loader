@@ -204,7 +204,6 @@ struct ContentView: View {
             if rootful {
                 downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "palera1nrepo.deb", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "straprepo.deb", tb: tb, server: "https://static.palera.in")
             } else {
                 downloadFile(file: "bootstrap.tar", tb: tb)
@@ -240,14 +239,15 @@ struct ContentView: View {
                         print("[palera1n] \(msg)")
                         return
                     }
-                }
-                
-                guard let palera1nrepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("palera1nrepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                    let msg = "Could not find palera1n repo deb"
-                    console.error("[-] \(msg)")
-                    tb.toolbarState = .closeApp
-                    print("[palera1n] \(msg)")
-                    return
+                } else {
+                    strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("palera1nrepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
+                    guard strapRepo != nil else {
+                        let msg = "Could not find palera1n repo deb"
+                        console.error("[-] \(msg)")
+                        tb.toolbarState = .closeApp
+                        print("[palera1n] \(msg)")
+                        return
+                    }
                 }
 
                 DispatchQueue.global(qos: .utility).async {
@@ -281,7 +281,7 @@ struct ContentView: View {
                                 
                                 console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, palera1nrepo], root: true)
+                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, strapRepo], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.error("[-] Failed to install packages. Status: \(ret)")
@@ -298,26 +298,9 @@ struct ContentView: View {
                                                     tb.toolbarState = .closeApp
                                                     return
                                                 }
-                                                
-                                                if rootful {
-                                                    console.log("[*] Installing palera1n strap repo")
-                                                    DispatchQueue.global(qos: .utility).async {
-                                                        let ret = spawn(command: "/usr/bin/dpkg", args: ["-i", strapRepo!], root: true)
-                                                        DispatchQueue.main.async {
-                                                            if ret != 0 {
-                                                                console.error("[-] Failed to install palera1n strap repo. Status: \(ret)")
-                                                                tb.toolbarState = .closeApp
-                                                                return
-                                                            }
 
-                                                            console.log("[*] Finished installing! Enjoy!")
-                                                            tb.toolbarState = .respring
-                                                        }
-                                                    }
-                                                } else {
-                                                    console.log("[*] Finished installing! Enjoy!")
-                                                    tb.toolbarState = .respring
-                                                }
+                                                console.log("[*] Finished installing! Enjoy!")
+                                                tb.toolbarState = .respring
                                             }
                                         }
                                     }
