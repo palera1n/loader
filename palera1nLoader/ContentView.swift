@@ -202,18 +202,14 @@ struct ContentView: View {
         
         DispatchQueue.global(qos: .utility).async { [self] in
             if rootful {
-                downloadFile(file: "libswift.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "substitute.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "safemode.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "preferenceloader.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
+                downloadFile(file: "palera1nrepo.deb", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "straprepo.deb", tb: tb, server: "https://static.palera.in")
             } else {
                 downloadFile(file: "bootstrap.tar", tb: tb)
                 downloadFile(file: "sileo.deb", tb: tb)
-                downloadFile(file: "preferenceloader.deb", tb: tb)
-                downloadFile(file: "ellekit.deb", tb: tb)
+                downloadFile(file: "palera1nrepo.deb", tb: tb)
             }
 
             DispatchQueue.main.async {
@@ -233,22 +229,9 @@ struct ContentView: View {
                     return
                 }
                 
-                var substitute : String?
                 var strapRepo : String?
-                var libswift : String?
-                var safemode : String?
-                var ellekit : String?
                 
                 if rootful {
-                    substitute = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("substitute.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard substitute != nil else {
-                        let msg = "Could not find Substitute"
-                        console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
-                        print("[palera1n] \(msg)")
-                        return
-                    }
-
                     strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
                     guard strapRepo != nil else {
                         let msg = "Could not find strap repo deb"
@@ -257,37 +240,10 @@ struct ContentView: View {
                         print("[palera1n] \(msg)")
                         return
                     }
-                    
-                    libswift = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("libswift.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard libswift != nil else {
-                        let msg = "Could not find libswift deb"
-                        console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
-                        print("[palera1n] \(msg)")
-                        return
-                    }
-
-                    safemode = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("safemode.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard safemode != nil else {
-                        let msg = "Could not find SafeMode"
-                        console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
-                        print("[palera1n] \(msg)")
-                        return
-                    }
-                } else {
-                    ellekit = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("ellekit.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard ellekit != nil else {
-                        let msg = "Could not find ElleKit"
-                        console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
-                        print("[palera1n] \(msg)")
-                        return
-                    }
                 }
                 
-                guard let preferenceloader = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("preferenceloader.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                    let msg = "Could not find PreferenceLoader"
+                guard let palera1nrepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("palera1nrepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    let msg = "Could not find palera1n repo deb"
                     console.error("[-] \(msg)")
                     tb.toolbarState = .closeApp
                     print("[palera1n] \(msg)")
@@ -325,12 +281,7 @@ struct ContentView: View {
                                 
                                 console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    var ret = 0
-                                    if rootful {
-                                        ret = spawn(command: "/usr/bin/dpkg", args: ["-i", deb, libswift!, safemode!, preferenceloader, substitute!], root: true)
-                                    } else {
-                                        ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, ellekit!, preferenceloader], root: true)
-                                    }
+                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, palera1nrepo], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.error("[-] Failed to install packages. Status: \(ret)")
