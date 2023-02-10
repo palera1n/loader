@@ -74,8 +74,11 @@ struct SettingsSheetView: View {
             Text("Package Managers")
                 .fontWeight(.bold)
                 .font(.title)
-                .padding()
-
+            
+            Text("These options will (re)install your desired package manager.")
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: .infinity, alignment: .center)
+            
             ForEach(packagemanagers) { pm in
                 PMView(pm)
             }
@@ -247,7 +250,6 @@ struct SettingsSheetView: View {
 
                 inst_prefix = rootful ? "" : "/var/jb"
             }
-
             switch pm.action {
                 case .sileo:
                     if (rootful) {
@@ -283,7 +285,7 @@ struct SettingsSheetView: View {
 
                             DispatchQueue.global(qos: .utility).async { [self] in
                                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                                    let msg = "Failed to find Sileo"
+                                    let msg = "Failed to find Zebra"
                                     console.error("[-] \(msg)")
                                     print("[palera1n] \(msg)")
                                     return
@@ -351,16 +353,19 @@ struct SettingsSheetView: View {
                         ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo.app"], root: true)
                         if ret != 0 {
                             ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo-Nightly.app"], root: true)
+                            console.warn("[!] Sileo.app not found, opening Sileo-Nightly.app instead")
                         }
                     } else {
                         ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo.app"], root: true)
                         if ret != 0 {
                             ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo-Nightly.app"], root: true)
+                            console.warn("[!] Sileo.app not found, opening Sileo-Nightly.app instead")
                         }
                     }
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.error("[-] Failed to open Sileo. Status: \(ret)")
+                            console.warn("[!] Do you have it installed?")
                             return
                         }
 
@@ -371,6 +376,7 @@ struct SettingsSheetView: View {
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.error("[-] Failed to open TrollHelper. Status: \(ret)")
+                            console.warn("[!] Do you have it installed?")
                             return
                         }
 
