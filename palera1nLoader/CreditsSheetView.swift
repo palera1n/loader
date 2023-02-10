@@ -22,7 +22,7 @@ struct CreditsSheetView: View {
         Person(name: "llsc12", icon: URL(string: "https://avatars.githubusercontent.com/u/42747613?v=4")!, role: "palera1n Loader Developer", link: URL(string: "https://github.com/llsc12")!),
         Person(name: "sourcelocation", icon: URL(string: "https://avatars.githubusercontent.com/u/52459150?v=4")!, role: "Mockup Design and code", link: URL(string: "https://github.com/sourcelocation")!),
         Person(name: "Amy", icon: URL(string: "https://avatars.githubusercontent.com/u/26681721?v=4")!, role: "Pogo Developer", link: URL(string: "https://github.com/elihwyma")!),
-        Person(name: "Procursus", icon: URL(string: "https://cdn.discordapp.com/icons/715793185019920405/a617814cc8eb03ddef26911216008fa9.png?size=1024")!, role: "Bootstrap", link: URL(string: "https://github.com/ProcursusTeam")!),
+        Person(name: "Procursus", icon: URL(string: "https://cdn.discordapp.com/attachments/1017854329887129611/1073349517447008356/PNG_image_3.png")!, role: "Bootstrap", link: URL(string: "https://github.com/ProcursusTeam")!),
         Person(name: "xerub", icon: URL(string: "https://avatars.githubusercontent.com/u/12567734?v=4")!, role: "img4lib & restored_external", link: URL(string: "https://github.com/xerub")!),
         Person(name: "nyuszika7h", icon: URL(string: "https://avatars.githubusercontent.com/u/482367?v=4")!, role: "DFU script", link: URL(string: "https://github.com/nyuszika7h")!),
         Person(name: "Cryptic", icon: URL(string: "https://avatars.githubusercontent.com/u/27748705?v=4")!, role: "iBoot64Patcher fork", link: URL(string: "https://github.com/Cryptiiiic")!),
