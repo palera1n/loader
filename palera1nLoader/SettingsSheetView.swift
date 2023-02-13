@@ -420,6 +420,8 @@ struct SettingsSheetView: View {
             return
         }
         
+        let ret = spawn(command: helper, args: ["-f"], root: true)
+        
         let rootful = ret == 0 ? false : true
                     
         let inst_prefix = rootful ? "/" : "/var/jb"
@@ -597,6 +599,7 @@ public enum ToolAction {
     case all
     case bootstrap
     case rebootstrap
+    case nuke
 }
 
 struct Tool: Identifiable {
