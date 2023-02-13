@@ -438,6 +438,7 @@ struct SettingsSheetView: View {
                         DispatchQueue.main.async {
                             if ret != 0 {
                                 console.error("[-] Failed to unregister \(app): \(ret)")
+                                tb.toolbarState = .closeApp
                                 return
                             }
                         }                
@@ -449,9 +450,11 @@ struct SettingsSheetView: View {
                 DispatchQueue.main.async {
                     if ret != 0 {
                         console.error("[-] Failed to remove jailbreak: \(ret)")
+                        tb.toolbarState = .closeApp
                         return
                     }
                     console.log("[*] Jailbreak removed!")
+                    tb.toolbarState = .closeApp
                 }
             }
         }
