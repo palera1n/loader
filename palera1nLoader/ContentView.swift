@@ -85,8 +85,8 @@ struct ContentView: View {
         .padding()
         .padding(.bottom)
         .padding(.vertical, 20)
-        .alert("Notice", isPresented: $rfrAlert) {} message: {
-            Text("Bootstrapping immediately after an unjailbreak on rootful is not supported, please setup fakefs again.")
+        .alert("Error", isPresented: $rfrAlert) {} message: {
+            Text("Bootstrapping after using --force-revert is not supported, please recreate fakefs to be able to bootstrap again.")
         }
     }
     

@@ -23,6 +23,7 @@ struct SettingsSheetView: View {
         Tool(name: "Respring", desc: "Restart SpringBoard", action: ToolAction.respring),
         Tool(name: "Activate Tweaks", desc: "Runs substitute-launcher to activate tweaks", action: ToolAction.tweaks),
         Tool(name: "Do All", desc: "Do all of the above", action: ToolAction.all),
+        Tool(name: "Remove", desc: "Remove jailbreak (rootless only)", action: ToolAction.nuke),
     ]
     
     var packagemanagers: [PackageManager] = [
@@ -164,11 +165,13 @@ struct SettingsSheetView: View {
 
                     spawn(command: "\(inst_prefix)/usr/bin/sbreload", args: [], root: true)
                     console.log("[*] Resprung the device... but you probably won't see this :)")
-                case .bootstrap :
+                case .bootstrap:
                     console.log("[*] Starting bootstrap process")
                     strap()
-                case .rebootstrap :
+                case .rebootstrap:
                     showAlert = true
+                case .nuke:
+                    nuke()
             }
         } label: {
             HStack {
@@ -405,6 +408,55 @@ struct SettingsSheetView: View {
         .buttonStyle(.plain)
     }
     
+    private func nuke() {
+        let tb = ToolbarStateMoment.s
+        tb.toolbarState = .disabled
+        
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+            let msg = "Could not find helper?"
+            console.error("[-] \(msg)")
+            tb.toolbarState = .closeApp
+            print("[palera1n] \(msg)")
+            return
+        }
+        
+        let ret = spawn(command: helper, args: ["-f"], root: true)
+        
+        let rootful = ret == 0 ? false : true
+                    
+        let inst_prefix = rootful ? "/" : "/var/jb"
+        
+        if !rootful {
+            console.log("[*] Unregistering apps")
+            DispatchQueue.global(qos: .utility).async {
+                // remove all jb apps from uicache
+                let fm = FileManager.default
+                let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
+                for app in apps ?? [] {
+                    if app.hasSuffix(".app") {
+                        let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/var/jb/Applications/\(app)"], root: true)
+                        DispatchQueue.main.async {
+                            if ret != 0 {
+                                console.error("[-] Failed to unregister \(app): \(ret)")
+                                return
+                            }
+                        }                
+                    }
+                }
+                
+                console.log("[*] Removing jailbreak!")
+                let ret = spawn(command: helper, args: ["-r"], root: true)
+                DispatchQueue.main.async {
+                    if ret != 0 {
+                        console.error("[-] Failed to remove jailbreak: \(ret)")
+                        return
+                    }
+                    console.log("[*] Jailbreak removed!")
+                }
+            }
+        }
+    }
+    
     private func strap() -> Void {
         let tb = ToolbarStateMoment.s
         tb.toolbarState = .disabled
@@ -547,6 +599,7 @@ public enum ToolAction {
     case all
     case bootstrap
     case rebootstrap
+    case nuke
 }
 
 struct Tool: Identifiable {
