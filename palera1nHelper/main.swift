@@ -49,7 +49,7 @@ struct Strap: ParsableCommand {
                 strapTool(input)
             }
         } else if remove {
-            if rootful {
+            if !rootful {
                 removeTool()
             }
         }
