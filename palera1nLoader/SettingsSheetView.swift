@@ -23,7 +23,6 @@ struct SettingsSheetView: View {
         Tool(name: "Respring", desc: "Restart SpringBoard", action: ToolAction.respring),
         Tool(name: "Activate Tweaks", desc: "Runs substitute-launcher to activate tweaks", action: ToolAction.tweaks),
         Tool(name: "Do All", desc: "Do all of the above", action: ToolAction.all),
-        Tool(name: "Remove", desc: "Remove jailbreak (rootless only)", action: ToolAction.nuke),
     ]
     
     var packagemanagers: [PackageManager] = [
@@ -31,10 +30,18 @@ struct SettingsSheetView: View {
         PackageManager(name: "Zebra", desc: "Cydia-ish look and feel with modern features", action: PackageManagers.zebra),
     ]
     
-    var openers: [Opener] = [
-        Opener(name: "Sileo", desc: "Open the Sileo app", action: Openers.sileo),
-        Opener(name: "TrollHelper", desc: "Open the TrollHelper app, clicking install will resolve iPad uicache issues", action: Openers.trollhelper),
-    ]
+    var openers: [Opener] = {
+        if (FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
+            return [
+                Opener(name: "Sileo", desc: "Open the Sileo app", action: Openers.sileo),
+                Opener(name: "TrollHelper", desc: "Open the TrollHelper app, clicking install will resolve iPad uicache issues", action: Openers.trollhelper)
+            ]
+        } else {
+            return [
+                Opener(name: "TrollHelper", desc: "Open the TrollHelper app, clicking install will resolve iPad uicache issues", action: Openers.trollhelper)
+            ]
+        }
+    }()
     
     var body: some View {
         NavigationView {
@@ -54,7 +61,7 @@ struct SettingsSheetView: View {
             Button("Cancel (Recommended)") {
             }
         } message: {
-            Text("Your device already has the bootstrap installed. Re-bootstrapping most times is not needed, and may cause problems.")
+            Text("Your device already has the bootstrap installed. Re-bootstrapping most times is not needed, and may cause problems (SUCH AS, SILEO SOURCES NOT WORKING).")
         }
     }
     
@@ -62,27 +69,36 @@ struct SettingsSheetView: View {
     var main: some View {
         ScrollView {
         
-            ForEach(tools) { tool in
-                ToolsView(tool)
-            }
-            
             if (FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
-                ToolsView(Tool(name: "Re-Install", desc: "Re-Install the bootstrap", action: ToolAction.rebootstrap))
+                        ForEach(tools) { tool in
+                            ToolsView(tool)
+                        }
+                    }
+            
+            if (FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
+                ToolsView(Tool(name: "Remove", desc: "Remove jailbreak", action: ToolAction.nuke))
+                }
+            
+            if ( FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {                ToolsView(Tool(name: "Re-Install", desc: "Re-Install the bootstrap", action: ToolAction.rebootstrap))
             } else {
                 ToolsView(Tool(name: "Install", desc: "Install the bootstrap", action: ToolAction.bootstrap))
             }
-              
-            Text("Package Managers")
-                .fontWeight(.bold)
-                .font(.title)
             
-            Text("These options will (re)install your desired package manager.")
-                .multilineTextAlignment(.center)
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            ForEach(packagemanagers) { pm in
-                PMView(pm)
-            }
+            if ( FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
+                    
+                    Text("Package Managers")
+                        .fontWeight(.bold)
+                        .font(.title)
+                
+                    Text("These options will (re)install your desired package manager.")
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                
+                    ForEach(packagemanagers) { pm in
+                        PMView(pm)
+
+                    }
+                }
 
             Text("Openers")
                 .fontWeight(.bold)
