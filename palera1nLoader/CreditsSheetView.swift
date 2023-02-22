@@ -22,6 +22,7 @@ struct CreditsSheetView: View {
         Person(name: "Nick Chan", icon: URL(string: "https://avatars.githubusercontent.com/u/42699250?v=4")!, role: "C rewrite developer & patch work", link: URL(string: "https://github.com/asdfugil")!),
         Person(name: "Nathan", icon: URL(string: "https://avatars.githubusercontent.com/u/87825638?v=4")!, role: "palera1n Developer", link: URL(string: "https://github.com/verygenericname")!),
         Person(name: "llsc12", icon: URL(string: "https://avatars.githubusercontent.com/u/42747613?v=4")!, role: "palera1n Loader Developer", link: URL(string: "https://github.com/llsc12")!),
+        Person(name: "flower", icon: URL(string: "https://avatars.githubusercontent.com/u/97859147?v=4")!, role: "palera1n Icon Designer", link: URL(string: "https://github.com/flowerible")!),
         Person(name: "sourcelocation", icon: URL(string: "https://avatars.githubusercontent.com/u/52459150?v=4")!, role: "Mockup Design and code", link: URL(string: "https://github.com/sourcelocation")!),
         Person(name: "Amy", icon: URL(string: "https://avatars.githubusercontent.com/u/26681721?v=4")!, role: "Pogo Developer", link: URL(string: "https://github.com/elihwyma")!),
         Person(name: "Procursus", icon: URL(string: "https://cdn.discordapp.com/attachments/1017854329887129611/1073349517447008356/PNG_image_3.png")!, role: "Bootstrap", link: URL(string: "https://github.com/ProcursusTeam")!),

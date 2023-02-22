@@ -418,11 +418,9 @@ struct ToolbarController: View {
             Button {
                 self.settingsIsOpen.toggle()
             } label: {
-                Text("Tools")
-                    .foregroundColor(.init(hex: "68431f"))
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
-                    .padding(8)
-                    .background(Capsule().foregroundColor(.white))
+                Image(systemName: "gearshape.circle.fill")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
             }
             .sheet(isPresented: $settingsIsOpen) {
                 SettingsSheetView(isOpen: $settingsIsOpen)
