@@ -61,7 +61,7 @@ struct SettingsSheetView: View {
             Button("Cancel (Recommended)") {
             }
         } message: {
-            Text("Your device already has the bootstrap installed. Re-bootstrapping most times is not needed, and may cause problems (SUCH AS, SILEO SOURCES NOT WORKING).")
+            Text("Your device already has the bootstrap installed. Re-bootstrapping most times is not needed, and may cause problems.")
         }
     }
     
