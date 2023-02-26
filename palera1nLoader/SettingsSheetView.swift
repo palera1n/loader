@@ -229,6 +229,19 @@ struct SettingsSheetView: View {
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let task = session.downloadTask(with: url) { tempLocalUrl, response, error in
+            if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                if statusCode != 200 {
+                    if server.contains("cdn.nickchan.lol") {
+                        self.console.error("[-] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                        tb.toolbarState = .closeApp
+                        print("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                        return
+                    }
+                    self.console.log("[*] Trying mirror cdn.nickchan.lol/palera1n/loader/assets...")
+                    self.downloadFile(file: file, tb: tb, server: server.replacingOccurrences(of: "static.palera.in", with: "cdn.nickchan.lol/palera1n/loader/assets"))
+                    return
+                }
+            }
             if let tempLocalUrl = tempLocalUrl, error == nil {
                 do {
                     try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
