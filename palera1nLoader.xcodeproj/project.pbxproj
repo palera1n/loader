@@ -620,6 +620,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.palera1nLoader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External\n$(SRCROOT)/palera1nLoader/External\n";
 				SWIFT_OBJC_BRIDGING_HEADER = "palera1nLoader/Zefram stolen code/bridging or something.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -656,6 +657,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.palera1nLoader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External\n$(SRCROOT)/palera1nLoader/External\n";
 				SWIFT_OBJC_BRIDGING_HEADER = "palera1nLoader/Zefram stolen code/bridging or something.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

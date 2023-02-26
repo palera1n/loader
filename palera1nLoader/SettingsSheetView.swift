@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import IrregularGradient
+import LaunchServicesBridge
 
 struct SettingsSheetView: View {
     @Binding var isOpen: Bool
@@ -101,7 +102,7 @@ struct SettingsSheetView: View {
             } else {
                 ToolsView(Tool(name: "Install", desc: "Install the bootstrap", action: ToolAction.bootstrap))
             }
-            if (FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
+            if (FileManager.default.fileExists(atPath: "/.procursus_strapped")) {
                 Text("Package Managers")
                     .fontWeight(.bold)
                     .font(.title)
@@ -124,11 +125,18 @@ struct SettingsSheetView: View {
             Text("Openers")
                 .fontWeight(.bold)
                 .font(.title)
-
+                .gesture(
+                    TapGesture(count: 3)
+                        .onEnded {
+                            console.success("[+] Showing debug options")
+                            showDebugOptions = true
+                            showDebugAlert = true
+                        }
+                )
             Text("Mainly for iPads (and their uicache issues), specified app must be installed.")
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, alignment: .center)
-
+            
             ForEach(openers) { opener in
                 OpenersView(opener)
             }
@@ -258,7 +266,7 @@ struct SettingsSheetView: View {
                         print("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
                         return
                     }
-                    self.console.log("[*] Trying mirror cdn.nickchan.lol/palera1n/loader/assets...")
+                    self.console.warn("[!] Trying mirror cdn.nickchan.lol/palera1n/loader/assets...")
                     self.downloadFile(file: file, tb: tb, server: server.replacingOccurrences(of: "static.palera.in", with: "cdn.nickchan.lol/palera1n/loader/assets"))
                     return
                 }
@@ -383,57 +391,28 @@ struct SettingsSheetView: View {
     func OpenersView(_ opener: Opener) -> some View {
         Button {
             self.isOpen.toggle()
-            
-            if (inst_prefix == "unset") {
-                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                    let msg = "Could not find helper?"
-                    console.error("[-] \(msg)")
-                    print("[palera1n] \(msg)")
-                    return
-                }
-
-                let ret = spawn(command: helper, args: ["-f"], root: true)
-
-                rootful = ret == 0 ? false : true
-
-                inst_prefix = rootful ? "" : "/var/jb"
-            }
-
             switch opener.action {
                 case .sileo:
-                    var ret: Int = 0
-                    if rootful {
-                        ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo.app"], root: true)
-                        if ret != 0 {
-                            ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo-Nightly.app"], root: true)
-                            console.warn("[!] Sileo.app not found, opening Sileo-Nightly.app instead")
-                        }
+                    if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoStore") {
+                        console.success("[+] Opened Sileo")
                     } else {
-                        ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo.app"], root: true)
-                        if ret != 0 {
-                            ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/Sileo-Nightly.app"], root: true)
-                            console.warn("[!] Sileo.app not found, opening Sileo-Nightly.app instead")
-                        }
-                    }
-                    DispatchQueue.main.async {
-                        if ret != 0 {
-                            console.error("[-] Failed to open Sileo. Status: \(ret)")
-                            console.warn("[!] Do you have it installed?")
+                        if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoNightly") {
+                            console.warn("[!] Failed to open Sileo, opening Sileo Nightly instead")
+                            console.success("[+] Opened Sileo Nightly")
                             return
+                        } else {
+                            console.error("[-] Failed to open Sileo Nightly")
+                            console.warn("[!] Do you have it installed?")
                         }
-
-                        console.log("[*] Opened Sileo")
+                        console.error("[-] Failed to open Sileo")
+                        console.warn("[!] Do you have it installed?")
                     }
                 case .trollhelper:
-                    let ret = spawn(command: "\(inst_prefix)/usr/bin/uiopen", args: ["--path", "\(inst_prefix)/Applications/TrollStorePersistenceHelper.app"], root: true)
-                    DispatchQueue.main.async {
-                        if ret != 0 {
-                            console.error("[-] Failed to open TrollHelper. Status: \(ret)")
-                            console.warn("[!] Do you have it installed?")
-                            return
-                        }
-
-                        console.log("[*] Opened TrollHelper")
+                    if LSApplicationWorkspace.default().openApplication(withBundleID: "com.opa334.trollstorepersistencehelper") {
+                        console.success("[+] Opened TrollHelper")
+                    } else {
+                        console.error("[-] Failed to open TrollHelper")
+                        console.warn("[!] Do you have it installed?")
                     }
             }
         } label: {
@@ -502,6 +481,7 @@ struct SettingsSheetView: View {
                         return
                     }
                     console.success("[+] Jailbreak removed!")
+                    tb.toolbarState = .closeApp
                 }
             }
         }
@@ -625,7 +605,7 @@ struct SettingsSheetView: View {
                                                 }
 
                                                 console.success("[+] Finished installing! Enjoy!")
-                                                tb.toolbarState = .respring
+                                                tb.toolbarState = .closeApp
                                             }
                                         }
                                     }

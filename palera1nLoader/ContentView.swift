@@ -323,7 +323,7 @@ struct ContentView: View {
                                                 }
 
                                                 console.success("[+] Finished installing! Enjoy!")
-                                                tb.toolbarState = .respring
+                                                tb.toolbarState = .closeApp
                                             }
                                         }
                                     }
@@ -478,7 +478,9 @@ struct ToolbarController: View {
     @ViewBuilder
     var closeApp: some View {
         Button {
-            fatalError()
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            sleep(1)
+            exit(0)
         } label: {
             Text("Close")
                 .font(.body)
@@ -498,6 +500,8 @@ struct ToolbarController: View {
     @ViewBuilder
     var respring: some View {
         Button {
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            sleep(1)
             utils.respring()
         } label: {
             Text("Respring")
