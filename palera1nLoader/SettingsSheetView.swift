@@ -47,7 +47,7 @@ struct SettingsSheetView: View {
         NavigationView {
             ZStack {
                 Rectangle()
-                    .irregularGradient(colors: palera1nColorGradients, backgroundColor: palera1nColorGradients[1], animate: true, speed: 0.5)
+                    .irregularGradient(colors: palera1nColorGradients(), backgroundColor: palera1nColorGradients()[1], animate: true, speed: 0.5)
                     .blur(radius: 100)
                 
                 main
@@ -63,8 +63,17 @@ struct SettingsSheetView: View {
         } message: {
             Text("Your device already has the bootstrap installed. Re-bootstrapping most times is not needed, and may cause problems.")
         }
+        .alert(isPresented: $showDebugAlert) {
+                    Alert(
+                        title: Text("Debug"),
+                        message: Text("Currently showing debug options (note: these will disappear when you exit tools)."),
+                        dismissButton: .default(Text("OK"))
+                    )
+        }
     }
     
+    @State private var showDebugAlert = false
+    @State private var showDebugOptions = false
     @ViewBuilder
     var main: some View {
         ScrollView {
@@ -74,32 +83,44 @@ struct SettingsSheetView: View {
                             ToolsView(tool)
                         }
                     }
-            
             if (FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
                 ToolsView(Tool(name: "Remove", desc: "Remove jailbreak", action: ToolAction.nuke))
                 }
-            
-            if ( FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {                ToolsView(Tool(name: "Re-Install", desc: "Re-Install the bootstrap", action: ToolAction.rebootstrap))
+            if (FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
+                if showDebugOptions {
+                        Text("Debug")
+                            .fontWeight(.bold)
+                            .font(.title)
+                    
+                        Text("Extra options (that normal users) would not normally use. Use at your own risk.")
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    
+                        ToolsView(Tool(name: "Re-Install (Debug)", desc: "Re-Install the bootstrap", action: ToolAction.rebootstrap))
+                }
             } else {
                 ToolsView(Tool(name: "Install", desc: "Install the bootstrap", action: ToolAction.bootstrap))
             }
-            
-            if ( FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
-                    
-                    Text("Package Managers")
-                        .fontWeight(.bold)
-                        .font(.title)
+            if (FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")) {
+                Text("Package Managers")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .gesture(
+                        TapGesture(count: 3)
+                            .onEnded {
+                                console.success("[+] Showing debug options")
+                                showDebugOptions = true
+                                showDebugAlert = true
+                            }
+                    )
+                Text("These options will (re)install your desired package manager.")
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 
-                    Text("These options will (re)install your desired package manager.")
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                
-                    ForEach(packagemanagers) { pm in
-                        PMView(pm)
-
-                    }
+                ForEach(packagemanagers) { pm in
+                    PMView(pm)
                 }
-
+            }
             Text("Openers")
                 .fontWeight(.bold)
                 .font(.title)
@@ -232,7 +253,7 @@ struct SettingsSheetView: View {
             if let tempLocalUrl = tempLocalUrl, error == nil {
                 do {
                     try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
-                    self.console.log("[*] Downloaded \(file)")
+                    self.console.success("[+] Downloaded \(file)")
                     semaphore.signal()
                 } catch (let writeError) {
                     self.console.error("[-] Could not copy file to disk: \(writeError)")
@@ -291,7 +312,7 @@ struct SettingsSheetView: View {
                                         return
                                     }
 
-                                    console.log("[*] Installed Sileo")
+                                    console.success("[+] Installed Sileo")
                                 }
                             }
                         }
@@ -317,7 +338,7 @@ struct SettingsSheetView: View {
                                         return
                                     }
 
-                                    console.log("[*] Installed Zebra")
+                                    console.success("[+] Installed Zebra")
                                 }
                             }
                         }
@@ -454,7 +475,6 @@ struct SettingsSheetView: View {
                         DispatchQueue.main.async {
                             if ret != 0 {
                                 console.error("[-] Failed to unregister \(app): \(ret)")
-                                tb.toolbarState = .closeApp
                                 return
                             }
                         }                
@@ -466,11 +486,9 @@ struct SettingsSheetView: View {
                 DispatchQueue.main.async {
                     if ret != 0 {
                         console.error("[-] Failed to remove jailbreak: \(ret)")
-                        tb.toolbarState = .closeApp
                         return
                     }
-                    console.log("[*] Jailbreak removed!")
-                    tb.toolbarState = .closeApp
+                    console.success("[+] Jailbreak removed!")
                 }
             }
         }
@@ -578,7 +596,7 @@ struct SettingsSheetView: View {
                                     let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, strapRepo!], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            console.error("[-] Failed to install packages. Status: \(ret)")
+                                            console.warn("[!] Failed to install packages. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
@@ -593,7 +611,7 @@ struct SettingsSheetView: View {
                                                     return
                                                 }
 
-                                                console.log("[*] Finished installing! Enjoy!")
+                                                console.success("[+] Finished installing! Enjoy!")
                                                 tb.toolbarState = .respring
                                             }
                                         }
