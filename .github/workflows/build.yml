@@ -22,15 +22,14 @@ jobs:
       - name: Compile
         run: make
 
-      
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
         with:
           host: ${{ secrets.STATIC_FTP_HOST }}
-          port: 6061
+          port: 22
           username: nebula
           password: ${{ secrets.STATIC_FTP_PASS }}
           forceUpload: true
           dryRun: false
           localDir: 'packages/'
-          remoteDir: '/upload/artifacts/loader/universal'
+          remoteDir: '/artifacts/loader/universal'
