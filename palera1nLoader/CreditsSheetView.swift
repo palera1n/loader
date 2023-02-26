@@ -35,7 +35,7 @@ struct CreditsSheetView: View {
         NavigationView {
             ZStack {
                 Rectangle()
-                    .irregularGradient(colors: palera1nColorGradients, backgroundColor: palera1nColorGradients[1], animate: true, speed: 0.5)
+                    .irregularGradient(colors: palera1nColorGradients(), backgroundColor: palera1nColorGradients()[1], animate: true, speed: 0.5)
                     .blur(radius: 100)
                 
                 main

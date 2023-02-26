@@ -5,6 +5,7 @@
 //  Created by Lakhan Lothiyi on 11/11/2022.
 //
 
+import IrregularGradient
 import SwiftUI
 import SDWebImageSwiftUI
 
@@ -19,7 +20,9 @@ struct ContentView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")]), startPoint: .topTrailing, endPoint: .bottomLeading)
+                Rectangle()
+                    .irregularGradient(colors: palera1nColorGradients(), backgroundColor: palera1nColorGradients()[1], animate: true, speed: 0.5)
+                    .blur(radius: 50)
                     .ignoresSafeArea()
                 content
                     .onAppear {
@@ -46,6 +49,13 @@ struct ContentView: View {
                                 print("[palera1n] \(msg)")
                                 return
                             }
+                            let jbt = spawn(command: helper, args: ["-f"], root: true)
+                            var jb_type = jbt == 0 ? "Rootless" : "Rootful"
+                            if jb_type == "" {
+                                jb_type = "Unknown"
+                            }
+                            console.log("Type: \(jb_type)")
+                            
                             let ret = spawn(command: helper, args: ["-n"], root: true)
                             let rfr = ret == 0 ? false : true
                             if rfr {
@@ -178,7 +188,7 @@ struct ContentView: View {
             if let tempLocalUrl = tempLocalUrl, error == nil {
                 do {
                     try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
-                    self.console.log("[*] Downloaded \(file)")
+                    self.console.success("[+] Downloaded \(file)")
                     semaphore.signal()
                 } catch (let writeError) {
                     self.console.error("[-] Could not copy file to disk: \(writeError)")
@@ -297,7 +307,7 @@ struct ContentView: View {
                                     let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, strapRepo!], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            console.error("[-] Failed to install packages. Status: \(ret)")
+                                            console.warn("[!] Failed to install packages. Status: \(ret)")
                                             tb.toolbarState = .closeApp
                                             return
                                         }
@@ -312,7 +322,7 @@ struct ContentView: View {
                                                     return
                                                 }
 
-                                                console.log("[*] Finished installing! Enjoy!")
+                                                console.success("[+] Finished installing! Enjoy!")
                                                 tb.toolbarState = .respring
                                             }
                                         }
@@ -382,6 +392,8 @@ struct ToolbarController: View {
         .animation(.easeInOut, value: state.toolbarState)
     }
     
+    let hexCode = palera1nColorTB()
+    
     @ViewBuilder
     var toolbar: some View {
         HStack {
@@ -400,7 +412,7 @@ struct ToolbarController: View {
                 self.bs()
             } label: {
                 Text("Install")
-                    .foregroundColor(.init(hex: "68431f"))
+                    .foregroundColor(.init(hex: hexCode))
                     .font(.system(size: 15, weight: .semibold, design: .rounded))
                     .padding(8)
                     .background(Capsule().foregroundColor(.white))
@@ -470,7 +482,7 @@ struct ToolbarController: View {
         } label: {
             Text("Close")
                 .font(.body)
-                .foregroundLinearGradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")], startPoint: .leading, endPoint: .trailing)
+                .foregroundColor(.init(hex: hexCode))
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background {
@@ -490,7 +502,7 @@ struct ToolbarController: View {
         } label: {
             Text("Respring")
                 .font(.body)
-                .foregroundLinearGradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")], startPoint: .leading, endPoint: .trailing)
+                .foregroundColor(.init(hex: hexCode))
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background {
