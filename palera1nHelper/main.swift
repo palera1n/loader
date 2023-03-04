@@ -245,6 +245,14 @@ struct Strap: ParsableCommand {
         do {
             try FileManager.default.removeItem(at: URL(fileURLWithPath: dest))
             try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb"))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/bin"))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/local"))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/sbin"))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/ulb"))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/LIB"))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/ubi"))
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/LIY")) // xina :sob:
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/liy")) // xina :sob:
         } catch {
             NSLog("[palera1n helper] Failed with error \(error.localizedDescription)")
         }
