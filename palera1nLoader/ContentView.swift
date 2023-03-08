@@ -42,33 +42,37 @@ struct ContentView: View {
                             console.log(uname())
                             console.log("\(machinename) running \(platformname) \(platformver) (\(modelarch))")
                             let tb = ToolbarStateMoment.s
-                            if modelarch != "arm64" {
-                                let msg = "palera1n doesn't, and never will, work on non-checkm8 devices"
-                                console.error("[-] \(msg)")
-                                tb.toolbarState = .closeApp
-                                print("[palera1n] \(msg)")
-                                return
-                            }
-                            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
-                                let msg = "Could not find Helper?"
-                                console.error("[-] \(msg)")
-                                tb.toolbarState = .closeApp
-                                print("[palera1n] \(msg)")
-                                return
-                            }
-                            let jbt = spawn(command: helper, args: ["-f"], root: true)
-                            var jb_type = jbt == 0 ? "Rootless" : "Rootful"
-                            if jb_type == "" {
-                                jb_type = "Unknown"
-                            }
-                            console.log("Type: \(jb_type)")
-                            
-                            let ret = spawn(command: helper, args: ["-n"], root: true)
-                            let rfr = ret == 0 ? false : true
-                            if rfr {
-                                tb.toolbarState = .disabled
-                                rfrAlert = true
-                            }
+                            #if targetEnvironment(simulator)
+                                console.log("Type: Unknown (Simulator)")
+                            #else
+                                if modelarch != "arm64" {
+                                    let msg = "palera1n doesn't, and never will, work on non-checkm8 devices"
+                                    console.error("[-] \(msg)")
+                                    tb.toolbarState = .closeApp
+                                    print("[palera1n] \(msg)")
+                                    return
+                                }
+                                guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
+                                    let msg = "Could not find Helper?"
+                                    console.error("[-] \(msg)")
+                                    tb.toolbarState = .closeApp
+                                    print("[palera1n] \(msg)")
+                                    return
+                                }
+                                let jbt = spawn(command: helper, args: ["-f"], root: true)
+                                var jb_type = jbt == 0 ? "Rootless" : "Rootful"
+                                if jb_type == "" {
+                                    jb_type = "Unknown"
+                                }
+                                console.log("Type: \(jb_type)")
+
+                                let ret = spawn(command: helper, args: ["-n"], root: true)
+                                let rfr = ret == 0 ? false : true
+                                if rfr {
+                                    tb.toolbarState = .disabled
+                                    rfrAlert = true
+                                }
+                            #endif
                         }
                     }
             }
