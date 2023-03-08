@@ -39,6 +39,13 @@ struct ContentView: View {
                             console.log(uname())
                             console.log("\(machinename) running \(platformname) \(platformver) (\(modelarch))")
                             let tb = ToolbarStateMoment.s
+                            if modelarch != "arm64" {
+                                let msg = "palera1n doesn't, and never will, work on non-checkm8 devices"
+                                console.error("[-] \(msg)")
+                                tb.toolbarState = .closeApp
+                                print("[palera1n] \(msg)")
+                                return
+                            }
                             guard let helper = Bundle.main.path(forAuxiliaryExecutable: "palera1nHelper") else {
                                 let msg = "Could not find Helper?"
                                 console.error("[-] \(msg)")
