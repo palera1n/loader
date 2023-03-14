@@ -213,7 +213,7 @@ struct SettingsSheetView: View {
                     console.log("[*] Resprung the device... but you probably won't see this :)")
                 case.softreboot:
                     self.isOpen.toggle()
-                    spawn(command: "/usr/bin/launchctl", args: ["reboot", "userspace"], root: false)
+                    spawn(command: "\(inst_prefix)/usr/bin/launchctl", args: ["reboot", "userspace"], root: false)
                     console.log("[*] Reboot UserSpace... but you probably won't see this :)")
                 case .bootstrap:
                     console.log("[*] Starting bootstrap process")
