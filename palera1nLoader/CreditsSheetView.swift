@@ -54,7 +54,7 @@ struct CreditsSheetView: View {
                     Image("palera1n-white")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height: 26)
+                        .frame(height: 34)
                         .padding()
                         .opacity(0.8)
                     VStack(alignment: .leading) {
@@ -88,7 +88,7 @@ struct CreditsSheetView: View {
                     Image(systemName: "message.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height: 20)
+                        .frame(height: 28)
                         .padding()
                     VStack(alignment: .leading) {
                         Text("Discord")
@@ -121,7 +121,7 @@ struct CreditsSheetView: View {
                     Image(systemName: "person.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height: 20)
+                        .frame(height: 30)
                         .padding()
                     VStack(alignment: .leading) {
                         Text("Twitter")
