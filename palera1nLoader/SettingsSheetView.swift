@@ -24,6 +24,7 @@ struct SettingsSheetView: View {
         Tool(name: "Respring", desc: "Restart SpringBoard", action: ToolAction.respring),
         Tool(name: "Activate Tweaks", desc: "Runs substitute-launcher to activate tweaks", action: ToolAction.tweaks),
         Tool(name: "Do All", desc: "Do all of the above", action: ToolAction.all),
+        Tool(name: "UserSpace Reboot", desc: "Restart everything except Kernel", action: ToolAction.softreboot),
     ]
     
     var packagemanagers: [PackageManager] = [
@@ -210,6 +211,10 @@ struct SettingsSheetView: View {
 
                     spawn(command: "\(inst_prefix)/usr/bin/sbreload", args: [], root: true)
                     console.log("[*] Resprung the device... but you probably won't see this :)")
+                case.softreboot:
+                    self.isOpen.toggle()
+                    spawn(command: "\(inst_prefix)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
+                    console.log("[*] Reboot UserSpace... but you probably won't see this :)")
                 case .bootstrap:
                     console.log("[*] Starting bootstrap process")
                     strap()
@@ -627,6 +632,7 @@ public enum ToolAction {
     case respring
     case tweaks
     case all
+    case softreboot
     case bootstrap
     case rebootstrap
     case nuke
