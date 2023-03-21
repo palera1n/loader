@@ -114,15 +114,9 @@ struct ContentView: View {
     @ViewBuilder
     var titlebar: some View {
         VStack {
-            HStack {
-                Image("palera1n-white")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 64)
-                Text("palera1n")
-                    .font(.system(size: 48, weight: .bold))
-            }
-            .padding(8)
+            Text("palera1n")
+                .font(.system(size: 48, weight: .bold))
+                .padding(8)
         }
     }
     

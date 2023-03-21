@@ -37,7 +37,6 @@ struct CreditsSheetView: View {
                 Rectangle()
                     .irregularGradient(colors: palera1nColorGradients(), backgroundColor: palera1nColorGradients()[1], animate: true, speed: 0.5)
                     .blur(radius: 100)
-                
                 main
             }
         }
@@ -46,11 +45,119 @@ struct CreditsSheetView: View {
     @ViewBuilder
     var main: some View {
         ScrollView {
+            
+            Button {
+                guard let url = URL(string: "https://palera.in") else { return }
+                UIApplication.shared.open(url)
+            } label: {
+                HStack {
+                    Image("palera1n-white")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 26)
+                        .padding()
+                        .opacity(0.8)
+                    VStack(alignment: .leading) {
+                        Text("Website")
+                            .font(.title2.bold())
+                        Text("palera.in")
+                            .font(.caption)
+                    }
+                    Spacer()
+                    
+                    Image(systemName: "arrow.up.right.square")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 30)
+                        .padding(21)
+                }
+                .padding(5)
+                .frame(maxWidth: .infinity)
+                .background(Capsule().foregroundColor(.init("CellBackground")).background(.ultraThinMaterial))
+                .clipShape(Capsule())
+                .padding(.horizontal)
+                .padding(.vertical, 4)
+            }
+            .buttonStyle(.plain)
+            
+            Button {
+                guard let url = URL(string: "https://dsc.gg/palera1n") else { return }
+                UIApplication.shared.open(url)
+            } label: {
+                HStack {
+                    Image(systemName: "message.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
+                        .padding()
+                    VStack(alignment: .leading) {
+                        Text("Discord")
+                            .font(.title2.bold())
+                        Text("dsc.gg/palera1n")
+                            .font(.caption)
+                    }
+                    Spacer()
+                    
+                    Image(systemName: "arrow.up.right.square")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 30)
+                        .padding(21)
+                }
+                .padding(5)
+                .frame(maxWidth: .infinity)
+                .background(Capsule().foregroundColor(.init("CellBackground")).background(.ultraThinMaterial))
+                .clipShape(Capsule())
+                .padding(.horizontal)
+                .padding(.vertical, 4)
+            }
+            .buttonStyle(.plain)
+            
+            Button {
+                guard let url = URL(string: "https://twitter.com/palera1n") else { return }
+                UIApplication.shared.open(url)
+            } label: {
+                HStack {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 20)
+                        .padding()
+                    VStack(alignment: .leading) {
+                        Text("Twitter")
+                            .font(.title2.bold())
+                        Text("@palera1n")
+                            .font(.caption)
+                    }
+                    Spacer()
+                    
+                    Image(systemName: "arrow.up.right.square")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 30)
+                        .padding(21)
+                }
+                .padding(5)
+                .frame(maxWidth: .infinity)
+                .background(Capsule().foregroundColor(.init("CellBackground")).background(.ultraThinMaterial))
+                .clipShape(Capsule())
+                .padding(.horizontal)
+                .padding(.vertical, 4)
+            }
+            .buttonStyle(.plain)
+            
+            HStack {
+                Text("Credits")
+                    .font(.title.bold())
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer()
+            }
+            .padding([.horizontal, .top])
             ForEach(credits) { person in
                 PersonView(person)
             }
         }
-        .navigationTitle("Credits")
+        .navigationTitle("Socials")
     }
     
     @ViewBuilder
