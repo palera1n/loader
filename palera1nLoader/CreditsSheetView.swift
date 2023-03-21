@@ -56,7 +56,6 @@ struct CreditsSheetView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(height: 34)
                         .padding()
-                        .opacity(0.8)
                     VStack(alignment: .leading) {
                         Text("Website")
                             .font(.title2.bold())
