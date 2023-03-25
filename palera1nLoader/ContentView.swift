@@ -293,6 +293,12 @@ struct ContentView: View {
                     DispatchQueue.main.async {
                         if ret != 0 {
                             console.error("[-] Error installing bootstrap. Status: \(ret)")
+                            console.error("[-] Join the palera1n Discord server at https://dsc.gg/palera1n for support.")
+                            tb.toolbarState = .closeApp
+                            return
+                        }
+                        if ret == -1 {
+                            console.error("[-] Sideloading the loader by itself will not work.")
                             tb.toolbarState = .closeApp
                             return
                         }
