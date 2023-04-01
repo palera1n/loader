@@ -613,8 +613,7 @@ struct SettingsSheetView: View {
                                         
                                         spawn(command: "/var/jb/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
                                         console.success("[+] Added https://ellekit.space/ as a default source")
-                                        console.success("[+] Added https://strap.palera.in/ as a default source")
-                                        console.success("[+] Replaced strap repo")
+                                        console.success("[+] Added https://repo.palera.in/ as a default source")
                                     } else {
                                         let sourcesFilePath = "/etc/apt/sources.list.d/procursus.sources"
                                         var procursusSources = ""
@@ -648,7 +647,7 @@ struct SettingsSheetView: View {
                                         }
                                         
                                         spawn(command: "/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
-                                        console.success("[+] Added https://strap.palera.in/ as a default source")
+                                        console.success("[+] Added https://repo.palera.in/ as a default source")
                                         console.success("[+] Replaced strap repo")
                                     }
                                     
