@@ -514,11 +514,9 @@ struct SettingsSheetView: View {
             if rootful {
                 downloadFile(file: "bootstrap.tar", tb: tb, server: "https://static.palera.in")
                 downloadFile(file: "sileo.deb", tb: tb, server: "https://static.palera.in")
-                downloadFile(file: "straprepo.deb", tb: tb, server: "https://static.palera.in")
             } else {
                 downloadFile(file: "bootstrap.tar", tb: tb)
                 downloadFile(file: "sileo.deb", tb: tb)
-                downloadFile(file: "palera1nrepo.deb", tb: tb)
             }
 
             DispatchQueue.main.async {
@@ -536,28 +534,6 @@ struct SettingsSheetView: View {
                     tb.toolbarState = .closeApp
                     print("[palera1n] \(msg)")
                     return
-                }
-                
-                var strapRepo : String?
-                
-                if rootful {
-                    strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("straprepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard strapRepo != nil else {
-                        let msg = "Could not find strap repo deb"
-                        console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
-                        print("[palera1n] \(msg)")
-                        return
-                    }
-                } else {
-                    strapRepo = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("palera1nrepo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-                    guard strapRepo != nil else {
-                        let msg = "Could not find palera1n repo deb"
-                        console.error("[-] \(msg)")
-                        tb.toolbarState = .closeApp
-                        print("[palera1n] \(msg)")
-                        return
-                    }
                 }
 
                 DispatchQueue.global(qos: .utility).async {
@@ -591,7 +567,91 @@ struct SettingsSheetView: View {
                                 
                                 console.log("[*] Installing packages")
                                 DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb, strapRepo!], root: true)
+                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
+                                    
+                                    if !rootful {
+                                        let sourcesFilePath = "/var/jb/etc/apt/sources.list.d/procursus.sources"
+                                        var procursusSources = ""
+                                        
+                                        if UIDevice.current.systemVersion.contains("15") {
+                                            procursusSources = """
+                                                Types: deb
+                                                URIs: https://ellekit.space/
+                                                Suites: ./
+                                                Components:
+                                                
+                                                Types: deb
+                                                URIs: https://repo.palera.in/
+                                                Suites: ./
+                                                Components:
+                                                
+                                                Types: deb
+                                                URIs: https://apt.procurs.us/
+                                                Suites: 1800
+                                                Components: main
+                                                
+                                                """
+                                        } else if UIDevice.current.systemVersion.contains("16") {
+                                            procursusSources = """
+                                                Types: deb
+                                                URIs: https://ellekit.space/
+                                                Suites: ./
+                                                Components:
+                                                
+                                                Types: deb
+                                                URIs: https://repo.palera.in/
+                                                Suites: ./
+                                                Components:
+                                                
+                                                Types: deb
+                                                URIs: https://apt.procurs.us/
+                                                Suites: 1900
+                                                Components: main
+                                                
+                                                """
+                                        }
+                                        
+                                        spawn(command: "/var/jb/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
+                                        console.success("[+] Added https://ellekit.space/ as a default source")
+                                        console.success("[+] Added https://strap.palera.in/ as a default source")
+                                        console.success("[+] Replaced strap repo")
+                                    } else {
+                                        let sourcesFilePath = "/etc/apt/sources.list.d/procursus.sources"
+                                        var procursusSources = ""
+                                        
+                                        if UIDevice.current.systemVersion.contains("15") {
+                                            procursusSources = """
+                                                Types: deb
+                                                URIs: https://repo.palera.in/
+                                                Suites: ./
+                                                Components:
+                                                
+                                                Types: deb
+                                                URIs: https://strap.palera.in/
+                                                Suites: iphoneos-arm64/1800
+                                                Components: main
+                                                
+                                                """
+                                        } else if UIDevice.current.systemVersion.contains("16") {
+                                            procursusSources = """
+                                                Types: deb
+                                                URIs: https://repo.palera.in/
+                                                Suites: ./
+                                                Components:
+                                                
+                                                Types: deb
+                                                URIs: https://strap.palera.in/
+                                                Suites: iphoneos-arm64/1900
+                                                Components: main
+                                                
+                                                """
+                                        }
+                                        
+                                        spawn(command: "/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
+                                        console.success("[+] Added https://strap.palera.in/ as a default source")
+                                        console.success("[+] Replaced strap repo")
+                                    }
+                                    
                                     DispatchQueue.main.async {
                                         if ret != 0 {
                                             console.warn("[!] Failed to install packages. Status: \(ret)")
