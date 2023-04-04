@@ -32,4 +32,4 @@ jobs:
           forceUpload: true
           dryRun: false
           localDir: 'packages/'
-          remoteDir: '/artifacts/loader/universal'
+          remoteDir: '/artifacts/loader/universal_lite'
