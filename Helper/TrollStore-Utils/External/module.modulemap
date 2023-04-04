@@ -1,0 +1,3 @@
+module LaunchServicesBridge {
+  header "Bridge.h"
+}

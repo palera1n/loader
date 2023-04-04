@@ -24,7 +24,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             navigationItem.title = "palera1n"
         let hammerCircleImage = UIImage(systemName: "hammer.circle")
         let actionsButton = UIBarButtonItem(image: hammerCircleImage, style: .plain, target: self, action: #selector(actionsTapped))
+        let openersButton = UIBarButtonItem(image: hammerCircleImage, style: .plain, target: self, action: #selector(openersTapped))
             navigationItem.leftBarButtonItem = actionsButton
+            navigationItem.rightBarButtonItem = openersButton
         
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
             tableView.delegate = self
@@ -73,13 +75,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.selectionStyle = .none
             }
         } else if tableData[indexPath.section][indexPath.row] == "Sileo" || tableData[indexPath.section][indexPath.row] == "Zebra" {
-//            guard Bundle.main.path(forAuxiliaryExecutable: "Helper") != nil else {
-//                cell.isUserInteractionEnabled = false
-//                cell.accessoryType = .disclosureIndicator
-//                cell.textLabel?.textColor = .gray
-//                cell.selectionStyle = .default
-//                return cell
-//            };
+            guard Bundle.main.path(forAuxiliaryExecutable: "Helper") != nil else {
+                cell.isUserInteractionEnabled = false
+                cell.accessoryType = .disclosureIndicator
+                cell.textLabel?.textColor = .gray
+                cell.selectionStyle = .default
+                return cell
+            };
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
             cell.selectionStyle = .default
@@ -133,6 +135,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // MARK: - Actions action + actions for alertController
+    @objc func openersTapped() {
+        let alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
+        let respringAction = UIAlertAction(title: "Open Sileo", style: .default) { (_) in
+            if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoStore") {
+            } else {
+                if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoNightly") {
+                    return
+                }
+            }
+        }
+        let uicacheAction = UIAlertAction(title: "UICache", style: .default) { (_) in
+            if LSApplicationWorkspace.default().openApplication(withBundleID: "com.opa334.trollstorepersistencehelper") {
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+        }
+        alertController.addAction(respringAction)
+        alertController.addAction(uicacheAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
     @objc func actionsTapped() {
         var type = "Unknown"
         if rootful {
