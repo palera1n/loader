@@ -9,6 +9,7 @@
 import UIKit
 import Darwin
 import LaunchServicesBridge
+import CoreServices
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var rootful : Bool = false
