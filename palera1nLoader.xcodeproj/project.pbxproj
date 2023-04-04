@@ -3,44 +3,25 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01306E77298FC7530013202B /* get.c in Sources */ = {isa = PBXBuildFile; fileRef = 01306E76298FC7530013202B /* get.c */; };
-		331E9B752932C42400363FA9 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 331E9B742932C42300363FA9 /* Makefile */; };
-		331E9B842932CBC000363FA9 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBC82920590B0055F1C0 /* main.swift */; };
-		331E9B862932CBED00363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B852932CBED00363FA9 /* SWCompression */; };
-		331E9B8A2932CD1000363FA9 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B892932CD1000363FA9 /* SWCompression */; };
-		331E9B8C2932CD1700363FA9 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 331E9B8B2932CD1700363FA9 /* ArgumentParser */; };
-		336B30D22933E35C004BE6AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336B30D12933E35C004BE6AA /* Foundation.framework */; };
-		AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */ = {isa = PBXBuildFile; productRef = AA95DBCB292059980055F1C0 /* BitByteData */; };
-		AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA95DBD729205AB90055F1C0 /* CommandRunner.swift */; };
-		AAA74201293D2DC6000243C2 /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA74200293D2DC6000243C2 /* TSUtil.m */; };
-		AAA74205293D339A000243C2 /* uicache.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA74203293D339A000243C2 /* uicache.m */; };
-		AAC38B5929356A1F00796F04 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC38B5829356A1F00796F04 /* Utilities.swift */; };
-		AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */; };
-		AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */; };
-		AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE32291F1AED000CD15B /* IrregularGradient */; };
-		AAC7DE36291F1EBD000CD15B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */; };
-		AAD65B0B2932DCC300DF88E6 /* SettingsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */; };
-		AAD65B0D2932EBF000DF88E6 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = AAD65B0C2932EBF000DF88E6 /* ArgumentParser */; };
-		AAEF9D5C291ED9F90089149B /* palera1nLoaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */; };
-		AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D5D291ED9F90089149B /* ContentView.swift */; };
-		AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAEF9D5F291ED9FB0089149B /* Assets.xcassets */; };
-		AAEF9D6C291EDD7A0089149B /* ForegroundLinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D6A291EDD7A0089149B /* ForegroundLinearGradient.swift */; };
-		AAEF9D6D291EDD7A0089149B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D6B291EDD7A0089149B /* Color.swift */; };
-		AAEF9D71291EDDBB0089149B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D70291EDDBB0089149B /* Constants.swift */; };
-		AAEF9D73291EE2860089149B /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D72291EE2850089149B /* Console.swift */; };
-		AAEF9D75291EE9370089149B /* SysInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D74291EE9370089149B /* SysInfo.swift */; };
-		AAEF9D81291EEAC10089149B /* HostManager.c in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D77291EEAC10089149B /* HostManager.c */; };
-		AAEF9D83291EEAC10089149B /* HostManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D7F291EEAC10089149B /* HostManagerBridge.m */; };
-		AAEF9D86291EEBF70089149B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEF9D85291EEBF70089149B /* IOKit.framework */; };
-		AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAEF9D8B291EEFF00089149B /* ViewFlip.swift */; };
+		CED0FAF629DC8C8800106BEF /* get.c in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* get.c */; };
+		CED0FAFE29DC8D4800106BEF /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAFB29DC8D4800106BEF /* TSUtil.m */; };
+		CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0FB0129DC8DC200106BEF /* CoreServices.framework */; };
+		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
+		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
+		E17927D828D247B2009D8F83 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E17927D728D247B2009D8F83 /* SWCompression */; };
+		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
+		E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BADD28CF914300CD25A6 /* ViewController.swift */; };
+		E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE228CF914500CD25A6 /* Assets.xcassets */; };
+		E181BAE628CF914500CD25A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE428CF914500CD25A6 /* LaunchScreen.storyboard */; };
+		E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		331E9B792932CABC00363FA9 /* CopyFiles */ = {
+		E131378528CFA0BC00754132 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -52,387 +33,262 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01306E74298FC6A80013202B /* paleinfo */ = {isa = PBXFileReference; lastKnownFileType = folder; path = paleinfo; sourceTree = "<group>"; };
-		01306E76298FC7530013202B /* get.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = get.c; path = palera1nHelper/paleinfo/get.c; sourceTree = "<group>"; };
-		331E9B742932C42300363FA9 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		331E9B7B2932CABC00363FA9 /* palera1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = palera1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
-		331E9B8D2932D07C00363FA9 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
-		336B30D12933E35C004BE6AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		AA95DBC82920590B0055F1C0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		AA95DBD729205AB90055F1C0 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
-		AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = palera1nBridging.h; sourceTree = "<group>"; };
-		AAA741FB293D1CCA000243C2 /* palera1nLoader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = palera1nLoader.entitlements; sourceTree = "<group>"; };
-		AAA741FD293D2DC5000243C2 /* palera1nHelper-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-Bridging-Header.h"; sourceTree = "<group>"; };
-		AAA741FE293D2DC6000243C2 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
-		AAA741FF293D2DC6000243C2 /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSUtil.h; sourceTree = "<group>"; };
-		AAA74200293D2DC6000243C2 /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtil.m; sourceTree = "<group>"; };
-		AAA74203293D339A000243C2 /* uicache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uicache.m; sourceTree = "<group>"; };
-		AAA74204293D339A000243C2 /* uicache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uicache.h; sourceTree = "<group>"; };
-		AAA74206293D4818000243C2 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = ../../../../theos/vendor/include/version.h; sourceTree = "<group>"; };
-		AAA74207293D4827000243C2 /* version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		AAC38B5829356A1F00796F04 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsSheetView.swift; sourceTree = "<group>"; };
-		AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableGradients.swift; sourceTree = "<group>"; };
-		AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
-		AAEF9D58291ED9F80089149B /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = palera1nLoaderApp.swift; sourceTree = "<group>"; };
-		AAEF9D5D291ED9F90089149B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		AAEF9D5F291ED9FB0089149B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AAEF9D6A291EDD7A0089149B /* ForegroundLinearGradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForegroundLinearGradient.swift; sourceTree = "<group>"; };
-		AAEF9D6B291EDD7A0089149B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		AAEF9D70291EDDBB0089149B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		AAEF9D72291EE2850089149B /* Console.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
-		AAEF9D74291EE9370089149B /* SysInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysInfo.swift; sourceTree = "<group>"; };
-		AAEF9D77291EEAC10089149B /* HostManager.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HostManager.c; sourceTree = "<group>"; };
-		AAEF9D7A291EEAC10089149B /* CoreFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreFoundation.h; sourceTree = "<group>"; };
-		AAEF9D7B291EEAC10089149B /* IOKitLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOKitLib.h; sourceTree = "<group>"; };
-		AAEF9D7C291EEAC10089149B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		AAEF9D7D291EEAC10089149B /* HostManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostManager.h; sourceTree = "<group>"; };
-		AAEF9D7F291EEAC10089149B /* HostManagerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HostManagerBridge.m; sourceTree = "<group>"; };
-		AAEF9D80291EEAC10089149B /* HostManagerBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HostManagerBridge.h; sourceTree = "<group>"; };
-		AAEF9D85291EEBF70089149B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		AAEF9D8B291EEFF00089149B /* ViewFlip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewFlip.swift; sourceTree = "<group>"; };
-		AAEF9D93291EF22A0089149B /* bridging or something.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "bridging or something.h"; sourceTree = "<group>"; };
+		33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-BridgingHeader.h"; sourceTree = "<group>"; };
+		CED0FAF429DC8C8800106BEF /* get.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = get.c; sourceTree = "<group>"; };
+		CED0FAF529DC8C8800106BEF /* get.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = get.h; sourceTree = "<group>"; };
+		CED0FAF829DC8D4800106BEF /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		CED0FAF929DC8D4800106BEF /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSUtil.h; sourceTree = "<group>"; };
+		CED0FAFA29DC8D4800106BEF /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
+		CED0FAFB29DC8D4800106BEF /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtil.m; sourceTree = "<group>"; };
+		CED0FAFC29DC8D4800106BEF /* uicache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uicache.h; sourceTree = "<group>"; };
+		CED0FAFD29DC8D4800106BEF /* uicache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uicache.m; sourceTree = "<group>"; };
+		CED0FB0129DC8DC200106BEF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		E131378728CFA0BC00754132 /* Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Helper; sourceTree = BUILT_PRODUCTS_DIR; };
+		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E181BAD628CF914300CD25A6 /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E181BAD928CF914300CD25A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E181BADD28CF914300CD25A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E181BAE228CF914500CD25A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E181BAE528CF914500CD25A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E181BAE728CF914500CD25A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		331E9B782932CABC00363FA9 /* Frameworks */ = {
+		E131378428CFA0BC00754132 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAD65B0D2932EBF000DF88E6 /* ArgumentParser in Frameworks */,
-				336B30D22933E35C004BE6AA /* Foundation.framework in Frameworks */,
-				331E9B862932CBED00363FA9 /* SWCompression in Frameworks */,
+				E17927D828D247B2009D8F83 /* SWCompression in Frameworks */,
+				CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */,
+				E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAEF9D55291ED9F80089149B /* Frameworks */ = {
+		E181BAD328CF914300CD25A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				331E9B8C2932CD1700363FA9 /* ArgumentParser in Frameworks */,
-				AA95DBCC292059980055F1C0 /* BitByteData in Frameworks */,
-				AAC7DE36291F1EBD000CD15B /* SDWebImageSwiftUI in Frameworks */,
-				331E9B8A2932CD1000363FA9 /* SWCompression in Frameworks */,
-				AAC7DE33291F1AED000CD15B /* IrregularGradient in Frameworks */,
-				AAEF9D86291EEBF70089149B /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		331E9B7C2932CABD00363FA9 /* palera1nHelper */ = {
+		CED0FAF329DC8C7E00106BEF /* paleinfo */ = {
 			isa = PBXGroup;
 			children = (
-				01306E74298FC6A80013202B /* paleinfo */,
-				AA95DBC82920590B0055F1C0 /* main.swift */,
-				AAA741FD293D2DC5000243C2 /* palera1nHelper-Bridging-Header.h */,
-				AAA74202293D2DCC000243C2 /* TrollStoreCock */,
+				CED0FAF429DC8C8800106BEF /* get.c */,
+				CED0FAF529DC8C8800106BEF /* get.h */,
 			);
-			path = palera1nHelper;
+			path = paleinfo;
 			sourceTree = "<group>";
 		};
-		AA95DB8929204FFC0055F1C0 /* Bootstrapping */ = {
+		CED0FAF729DC8D3C00106BEF /* TrollStore-Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AA95DBD729205AB90055F1C0 /* CommandRunner.swift */,
+				CED0FAFA29DC8D4800106BEF /* CoreServices.h */,
+				CED0FAF929DC8D4800106BEF /* TSUtil.h */,
+				CED0FAFB29DC8D4800106BEF /* TSUtil.m */,
+				CED0FAFC29DC8D4800106BEF /* uicache.h */,
+				CED0FAFD29DC8D4800106BEF /* uicache.m */,
+				CED0FAF829DC8D4800106BEF /* version.h */,
 			);
-			name = Bootstrapping;
+			path = "TrollStore-Utils";
 			sourceTree = "<group>";
 		};
-		AAA74202293D2DCC000243C2 /* TrollStoreCock */ = {
+		CED0FB0029DC8DC100106BEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AAA741FE293D2DC6000243C2 /* CoreServices.h */,
-				AAA741FF293D2DC6000243C2 /* TSUtil.h */,
-				AAA74200293D2DC6000243C2 /* TSUtil.m */,
-				AAA74204293D339A000243C2 /* uicache.h */,
-				AAA74203293D339A000243C2 /* uicache.m */,
-				AAA74207293D4827000243C2 /* version.h */,
+				CED0FB0129DC8DC200106BEF /* CoreServices.framework */,
 			);
-			path = TrollStoreCock;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AAA74208293D4D0A000243C2 /* Shared */ = {
+		E131378828CFA0BC00754132 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				CED0FAF729DC8D3C00106BEF /* TrollStore-Utils */,
+				CED0FAF329DC8C7E00106BEF /* paleinfo */,
+				E131378E28CFA16B00754132 /* main.swift */,
+				33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */,
 			);
-			path = Shared;
+			path = Helper;
 			sourceTree = "<group>";
 		};
-		AAC7DE2C291F1203000CD15B /* Views */ = {
+		E181BACD28CF914300CD25A6 = {
 			isa = PBXGroup;
 			children = (
-				AAEF9D5D291ED9F90089149B /* ContentView.swift */,
-				AAC7DE2D291F1250000CD15B /* CreditsSheetView.swift */,
-				AAD65B0A2932DCC300DF88E6 /* SettingsSheetView.swift */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		AAEF9D4F291ED9F80089149B = {
-			isa = PBXGroup;
-			children = (
-				01306E76298FC7530013202B /* get.c */,
-				AAEF9D5A291ED9F80089149B /* palera1nLoader */,
-				AAA74208293D4D0A000243C2 /* Shared */,
-				331E9B742932C42300363FA9 /* Makefile */,
-				331E9B7C2932CABD00363FA9 /* palera1nHelper */,
-				AAEF9D59291ED9F80089149B /* Products */,
-				AAEF9D84291EEBF70089149B /* Frameworks */,
+				E181BAD828CF914300CD25A6 /* palera1nLoader */,
+				E131378828CFA0BC00754132 /* Helper */,
+				E181BAD728CF914300CD25A6 /* Products */,
+				CED0FB0029DC8DC100106BEF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		AAEF9D59291ED9F80089149B /* Products */ = {
+		E181BAD728CF914300CD25A6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAEF9D58291ED9F80089149B /* palera1nLoader.app */,
-				331E9B7B2932CABC00363FA9 /* palera1nHelper */,
+				E181BAD628CF914300CD25A6 /* palera1nLoader.app */,
+				E131378728CFA0BC00754132 /* Helper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AAEF9D5A291ED9F80089149B /* palera1nLoader */ = {
+		E181BAD828CF914300CD25A6 /* palera1nLoader */ = {
 			isa = PBXGroup;
 			children = (
-				AAA741FB293D1CCA000243C2 /* palera1nLoader.entitlements */,
-				331E9B8D2932D07C00363FA9 /* Info.plist */,
-				AA95DB8929204FFC0055F1C0 /* Bootstrapping */,
-				AAEF9D5B291ED9F90089149B /* palera1nLoaderApp.swift */,
-				AAC7DE2C291F1203000CD15B /* Views */,
-				AAEF9D6F291EDDAD0089149B /* Utilities */,
-				AAEF9D6E291EDD980089149B /* Class */,
-				AAEF9D69291EDD5E0089149B /* Extensions */,
-				AAEF9D5F291ED9FB0089149B /* Assets.xcassets */,
+				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
+				E181BADD28CF914300CD25A6 /* ViewController.swift */,
+				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
+				E181BAE428CF914500CD25A6 /* LaunchScreen.storyboard */,
+				E181BAE728CF914500CD25A6 /* Info.plist */,
+				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
 			);
 			path = palera1nLoader;
-			sourceTree = "<group>";
-		};
-		AAEF9D69291EDD5E0089149B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				AAEF9D8B291EEFF00089149B /* ViewFlip.swift */,
-				AAEF9D6B291EDD7A0089149B /* Color.swift */,
-				AAEF9D6A291EDD7A0089149B /* ForegroundLinearGradient.swift */,
-				AAC7DE2F291F17DE000CD15B /* AnimatableGradients.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		AAEF9D6E291EDD980089149B /* Class */ = {
-			isa = PBXGroup;
-			children = (
-				AAEF9D72291EE2850089149B /* Console.swift */,
-				AAC38B5829356A1F00796F04 /* Utilities.swift */,
-			);
-			name = Class;
-			sourceTree = "<group>";
-		};
-		AAEF9D6F291EDDAD0089149B /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				AAA74206293D4818000243C2 /* version.h */,
-				AAEF9D76291EEAC10089149B /* Zefram stolen code */,
-				AAEF9D70291EDDBB0089149B /* Constants.swift */,
-				AAEF9D74291EE9370089149B /* SysInfo.swift */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
-		AAEF9D76291EEAC10089149B /* Zefram stolen code */ = {
-			isa = PBXGroup;
-			children = (
-				AA95DBD929205B2E0055F1C0 /* palera1nBridging.h */,
-				AAEF9D93291EF22A0089149B /* bridging or something.h */,
-				AAEF9D77291EEAC10089149B /* HostManager.c */,
-				AAEF9D79291EEAC10089149B /* include */,
-				AAEF9D7C291EEAC10089149B /* README.md */,
-				AAEF9D7D291EEAC10089149B /* HostManager.h */,
-				AAEF9D7E291EEAC10089149B /* wrapped */,
-			);
-			path = "Zefram stolen code";
-			sourceTree = "<group>";
-		};
-		AAEF9D79291EEAC10089149B /* include */ = {
-			isa = PBXGroup;
-			children = (
-				AAEF9D7A291EEAC10089149B /* CoreFoundation.h */,
-				AAEF9D7B291EEAC10089149B /* IOKitLib.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		AAEF9D7E291EEAC10089149B /* wrapped */ = {
-			isa = PBXGroup;
-			children = (
-				AAEF9D7F291EEAC10089149B /* HostManagerBridge.m */,
-				AAEF9D80291EEAC10089149B /* HostManagerBridge.h */,
-			);
-			path = wrapped;
-			sourceTree = "<group>";
-		};
-		AAEF9D84291EEBF70089149B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				336B30D12933E35C004BE6AA /* Foundation.framework */,
-				AAEF9D85291EEBF70089149B /* IOKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		331E9B7A2932CABC00363FA9 /* palera1nHelper */ = {
+		E131378628CFA0BC00754132 /* Helper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 331E9B7F2932CABD00363FA9 /* Build configuration list for PBXNativeTarget "palera1nHelper" */;
+			buildConfigurationList = E131378B28CFA0BC00754132 /* Build configuration list for PBXNativeTarget "Helper" */;
 			buildPhases = (
-				331E9B772932CABC00363FA9 /* Sources */,
-				331E9B782932CABC00363FA9 /* Frameworks */,
-				331E9B792932CABC00363FA9 /* CopyFiles */,
+				E131378328CFA0BC00754132 /* Sources */,
+				E131378428CFA0BC00754132 /* Frameworks */,
+				E131378528CFA0BC00754132 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = palera1nHelper;
+			name = Helper;
 			packageProductDependencies = (
-				331E9B852932CBED00363FA9 /* SWCompression */,
-				AAD65B0C2932EBF000DF88E6 /* ArgumentParser */,
+				E131379C28CFB9B100754132 /* ArgumentParser */,
+				E17927D728D247B2009D8F83 /* SWCompression */,
 			);
-			productName = palera1nHelper;
-			productReference = 331E9B7B2932CABC00363FA9 /* palera1nHelper */;
+			productName = PogoHelper;
+			productReference = E131378728CFA0BC00754132 /* Helper */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
-		AAEF9D57291ED9F80089149B /* palera1nLoader */ = {
+		E181BAD528CF914300CD25A6 /* palera1nLoader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAEF9D66291ED9FB0089149B /* Build configuration list for PBXNativeTarget "palera1nLoader" */;
+			buildConfigurationList = E181BAEA28CF914500CD25A6 /* Build configuration list for PBXNativeTarget "palera1nLoader" */;
 			buildPhases = (
-				AAEF9D54291ED9F80089149B /* Sources */,
-				AAEF9D55291ED9F80089149B /* Frameworks */,
-				AAEF9D56291ED9F80089149B /* Resources */,
+				E181BAD228CF914300CD25A6 /* Sources */,
+				E181BAD328CF914300CD25A6 /* Frameworks */,
+				E181BAD428CF914300CD25A6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = palera1nLoader;
-			packageProductDependencies = (
-				AAC7DE32291F1AED000CD15B /* IrregularGradient */,
-				AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */,
-				AA95DBCB292059980055F1C0 /* BitByteData */,
-				331E9B892932CD1000363FA9 /* SWCompression */,
-				331E9B8B2932CD1700363FA9 /* ArgumentParser */,
-			);
-			productName = palera1nLoader;
-			productReference = AAEF9D58291ED9F80089149B /* palera1nLoader.app */;
+			productName = Pogo;
+			productReference = E181BAD628CF914300CD25A6 /* palera1nLoader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AAEF9D50291ED9F80089149B /* Project object */ = {
+		E181BACE28CF914300CD25A6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1410;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					331E9B7A2932CABC00363FA9 = {
-						CreatedOnToolsVersion = 14.0;
-						LastSwiftMigration = 1410;
+					E131378628CFA0BC00754132 = {
+						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
-					AAEF9D57291ED9F80089149B = {
-						CreatedOnToolsVersion = 14.1;
+					E181BAD528CF914300CD25A6 = {
+						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = AAEF9D53291ED9F80089149B /* Build configuration list for PBXProject "palera1nLoader" */;
-			compatibilityVersion = "Xcode 14.0";
+			buildConfigurationList = E181BAD128CF914300CD25A6 /* Build configuration list for PBXProject "palera1nLoader" */;
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = AAEF9D4F291ED9F80089149B;
+			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
-				AAC7DE31291F1AED000CD15B /* XCRemoteSwiftPackageReference "IrregularGradient" */,
-				AAC7DE34291F1EBD000CD15B /* XCRemoteSwiftPackageReference "SDWebImageswiftui" */,
-				AA95DBCA292059980055F1C0 /* XCRemoteSwiftPackageReference "BitByteData" */,
-				AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */,
-				AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
-			productRefGroup = AAEF9D59291ED9F80089149B /* Products */;
+			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAEF9D57291ED9F80089149B /* palera1nLoader */,
-				331E9B7A2932CABC00363FA9 /* palera1nHelper */,
+				E181BAD528CF914300CD25A6 /* palera1nLoader */,
+				E131378628CFA0BC00754132 /* Helper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AAEF9D56291ED9F80089149B /* Resources */ = {
+		E181BAD428CF914300CD25A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEF9D60291ED9FB0089149B /* Assets.xcassets in Resources */,
+				E181BAE628CF914500CD25A6 /* LaunchScreen.storyboard in Resources */,
+				E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		331E9B772932CABC00363FA9 /* Sources */ = {
+		E131378328CFA0BC00754132 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01306E77298FC7530013202B /* get.c in Sources */,
-				AAA74205293D339A000243C2 /* uicache.m in Sources */,
-				AAA74201293D2DC6000243C2 /* TSUtil.m in Sources */,
-				331E9B842932CBC000363FA9 /* main.swift in Sources */,
+				CED0FAF629DC8C8800106BEF /* get.c in Sources */,
+				E131378F28CFA16B00754132 /* main.swift in Sources */,
+				CED0FAFE29DC8D4800106BEF /* TSUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AAEF9D54291ED9F80089149B /* Sources */ = {
+		E181BAD228CF914300CD25A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AAEF9D71291EDDBB0089149B /* Constants.swift in Sources */,
-				AA95DBD829205AB90055F1C0 /* CommandRunner.swift in Sources */,
-				AAEF9D75291EE9370089149B /* SysInfo.swift in Sources */,
-				AAEF9D83291EEAC10089149B /* HostManagerBridge.m in Sources */,
-				AAC7DE30291F17DE000CD15B /* AnimatableGradients.swift in Sources */,
-				AAEF9D8C291EEFF00089149B /* ViewFlip.swift in Sources */,
-				AAC38B5929356A1F00796F04 /* Utilities.swift in Sources */,
-				AAC7DE2E291F1250000CD15B /* CreditsSheetView.swift in Sources */,
-				AAEF9D73291EE2860089149B /* Console.swift in Sources */,
-				AAD65B0B2932DCC300DF88E6 /* SettingsSheetView.swift in Sources */,
-				AAEF9D6C291EDD7A0089149B /* ForegroundLinearGradient.swift in Sources */,
-				AAEF9D6D291EDD7A0089149B /* Color.swift in Sources */,
-				AAEF9D5E291ED9F90089149B /* ContentView.swift in Sources */,
-				AAEF9D5C291ED9F90089149B /* palera1nLoaderApp.swift in Sources */,
-				331E9B752932C42400363FA9 /* Makefile in Sources */,
-				AAEF9D81291EEAC10089149B /* HostManager.c in Sources */,
+				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
+				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
+				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		E181BAE428CF914500CD25A6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E181BAE528CF914500CD25A6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		331E9B802932CABD00363FA9 /* Debug */ = {
+		E131378C28CFA0BC00754132 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
-				EXECUTABLE_PREFIX = "";
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_EXTENSION = "";
 				EXECUTABLE_SUFFIX = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -442,24 +298,24 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "palera1nHelper/palera1nHelper-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		331E9B812932CABD00363FA9 /* Release */ = {
+		E131378D28CFA0BC00754132 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
-				EXECUTABLE_PREFIX = "";
+				ENABLE_BITCODE = NO;
+				EXECUTABLE_EXTENSION = "";
 				EXECUTABLE_SUFFIX = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,20 +325,19 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "palera1nHelper/palera1nHelper-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		AAEF9D64291ED9FB0089149B /* Debug */ = {
+		E181BAE828CF914500CD25A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -526,7 +381,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -536,13 +391,13 @@
 			};
 			name = Debug;
 		};
-		AAEF9D65291ED9FB0089149B /* Release */ = {
+		E181BAE928CF914500CD25A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -580,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -590,75 +445,69 @@
 			};
 			name = Release;
 		};
-		AAEF9D67291ED9FB0089149B /* Debug */ = {
+		E181BAEB28CF914500CD25A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = palera1nLoader/palera1nLoader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 566RT33SA2;
-				ENABLE_PREVIEWS = YES;
+				DEVELOPMENT_TEAM = L9735M962H;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = palera1nLoader/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/palera1nLoader/Required",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.palera1nLoader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External\n$(SRCROOT)/palera1nLoader/External\n";
-				SWIFT_OBJC_BRIDGING_HEADER = "palera1nLoader/Zefram stolen code/bridging or something.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		AAEF9D68291ED9FB0089149B /* Release */ = {
+		E181BAEC28CF914500CD25A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = palera1nLoader/palera1nLoader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 566RT33SA2;
-				ENABLE_PREVIEWS = YES;
+				DEVELOPMENT_TEAM = L9735M962H;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = palera1nLoader/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/palera1nLoader/Required",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.llsc12.palera1nLoader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External\n$(SRCROOT)/palera1nLoader/External\n";
-				SWIFT_OBJC_BRIDGING_HEADER = "palera1nLoader/Zefram stolen code/bridging or something.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -667,29 +516,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		331E9B7F2932CABD00363FA9 /* Build configuration list for PBXNativeTarget "palera1nHelper" */ = {
+		E131378B28CFA0BC00754132 /* Build configuration list for PBXNativeTarget "Helper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				331E9B802932CABD00363FA9 /* Debug */,
-				331E9B812932CABD00363FA9 /* Release */,
+				E131378C28CFA0BC00754132 /* Debug */,
+				E131378D28CFA0BC00754132 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAEF9D53291ED9F80089149B /* Build configuration list for PBXProject "palera1nLoader" */ = {
+		E181BAD128CF914300CD25A6 /* Build configuration list for PBXProject "palera1nLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AAEF9D64291ED9FB0089149B /* Debug */,
-				AAEF9D65291ED9FB0089149B /* Release */,
+				E181BAE828CF914500CD25A6 /* Debug */,
+				E181BAE928CF914500CD25A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAEF9D66291ED9FB0089149B /* Build configuration list for PBXNativeTarget "palera1nLoader" */ = {
+		E181BAEA28CF914500CD25A6 /* Build configuration list for PBXNativeTarget "palera1nLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AAEF9D67291ED9FB0089149B /* Debug */,
-				AAEF9D68291ED9FB0089149B /* Release */,
+				E181BAEB28CF914500CD25A6 /* Debug */,
+				E181BAEC28CF914500CD25A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -697,23 +546,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AA95DBCA292059980055F1C0 /* XCRemoteSwiftPackageReference "BitByteData" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/BitByteData";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/SWCompression.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-		AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+		E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
 			requirement = {
@@ -721,61 +554,28 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		AAC7DE31291F1AED000CD15B /* XCRemoteSwiftPackageReference "IrregularGradient" */ = {
+		E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/joogps/IrregularGradient";
+			repositoryURL = "https://github.com/tsolomko/SWCompression.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		AAC7DE34291F1EBD000CD15B /* XCRemoteSwiftPackageReference "SDWebImageswiftui" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageswiftui";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = develop;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		331E9B852932CBED00363FA9 /* SWCompression */ = {
+		E131379C28CFB9B100754132 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
-		331E9B892932CD1000363FA9 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBCD292059B60055F1C0 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
-		331E9B8B2932CD1700363FA9 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			package = E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
 		};
-		AA95DBCB292059980055F1C0 /* BitByteData */ = {
+		E17927D728D247B2009D8F83 /* SWCompression */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AA95DBCA292059980055F1C0 /* XCRemoteSwiftPackageReference "BitByteData" */;
-			productName = BitByteData;
-		};
-		AAC7DE32291F1AED000CD15B /* IrregularGradient */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AAC7DE31291F1AED000CD15B /* XCRemoteSwiftPackageReference "IrregularGradient" */;
-			productName = IrregularGradient;
-		};
-		AAC7DE35291F1EBD000CD15B /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AAC7DE34291F1EBD000CD15B /* XCRemoteSwiftPackageReference "SDWebImageswiftui" */;
-			productName = SDWebImageSwiftUI;
-		};
-		AAD65B0C2932EBF000DF88E6 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AA95DBD0292059DC0055F1C0 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
+			package = E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = AAEF9D50291ED9F80089149B /* Project object */;
+	rootObject = E181BACE28CF914300CD25A6 /* Project object */;
 }

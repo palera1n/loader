@@ -10,33 +10,6 @@
       }
     },
     {
-      "identity" : "irregulargradient",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/joogps/IrregularGradient",
-      "state" : {
-        "revision" : "104d51be2eeb2b3c3db67c0aced7bda0f2239075",
-        "version" : "2.0.1"
-      }
-    },
-    {
-      "identity" : "sdwebimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage.git",
-      "state" : {
-        "revision" : "fb50c1d20f24db5322b2f8f379de3618f75fe08e",
-        "version" : "5.15.5"
-      }
-    },
-    {
-      "identity" : "sdwebimageswiftui",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImageswiftui",
-      "state" : {
-        "revision" : "61fefe9c284fd41ddef77d02749e88f00c305196",
-        "version" : "2.2.2"
-      }
-    },
-    {
       "identity" : "swcompression",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tsolomko/SWCompression.git",
