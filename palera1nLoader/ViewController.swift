@@ -24,8 +24,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.title = "palera1n"
         let hammerCircleImage = UIImage(systemName: "hammer.circle")
+        let squarecircle = UIImage(systemName: "square.circle")
         let actionsButton = UIBarButtonItem(image: hammerCircleImage, style: .plain, target: self, action: #selector(actionsTapped))
-        let openersButton = UIBarButtonItem(image: hammerCircleImage, style: .plain, target: self, action: #selector(openersTapped))
+        let openersButton = UIBarButtonItem(image: squarecircle, style: .plain, target: self, action: #selector(openersTapped))
             navigationItem.leftBarButtonItem = actionsButton
             navigationItem.rightBarButtonItem = openersButton
         
