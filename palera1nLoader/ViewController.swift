@@ -8,6 +8,7 @@
 
 import UIKit
 import Darwin
+import LaunchServicesBridge
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var rootful : Bool = false
