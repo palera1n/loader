@@ -140,7 +140,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Actions action + actions for alertController
     @objc func openersTapped() {
         let alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
-        let respringAction = UIAlertAction(title: "Open Sileo", style: .default) { (_) in
+        let openSAction = UIAlertAction(title: "Open Sileo", style: .default) { (_) in
             if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoStore") {
             } else {
                 if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoNightly") {
@@ -148,14 +148,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
-        let uicacheAction = UIAlertAction(title: "UICache", style: .default) { (_) in
+        let openZAction = UIAlertAction(title: "Open Zebra", style: .default) { (_) in
+            if LSApplicationWorkspace.default().openApplication(withBundleID: "xyz.willy.Zebra") {
+            }
+        }
+        let openTHAction = UIAlertAction(title: "Open TrollHelper", style: .default) { (_) in
             if LSApplicationWorkspace.default().openApplication(withBundleID: "com.opa334.trollstorepersistencehelper") {
             }
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
         }
-        alertController.addAction(respringAction)
-        alertController.addAction(uicacheAction)
+        alertController.addAction(openSAction)
+        alertController.addAction(openZAction)
+        alertController.addAction(openTHAction)
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
