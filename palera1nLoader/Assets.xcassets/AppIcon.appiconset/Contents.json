@@ -1,9 +1,10 @@
 {
   "images" : [
     {
+      "filename" : "palera1n.png",
       "idiom" : "universal",
       "platform" : "ios",
-      "size" : "1024x1024"
+      "size" : "256x256"
     }
   ],
   "info" : {
