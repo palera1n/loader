@@ -88,7 +88,6 @@
 		CED0FAF729DC8D3C00106BEF /* TrollStore-Utils */ = {
 			isa = PBXGroup;
 			children = (
-				33DE13AA29DCAD7800DF3D5E /* External */,
 				CED0FAFA29DC8D4800106BEF /* CoreServices.h */,
 				CED0FAF929DC8D4800106BEF /* TSUtil.h */,
 				CED0FAFB29DC8D4800106BEF /* TSUtil.m */,
@@ -140,12 +139,13 @@
 		E181BAD828CF914300CD25A6 /* palera1nLoader */ = {
 			isa = PBXGroup;
 			children = (
-				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
-				E181BADD28CF914300CD25A6 /* ViewController.swift */,
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
 				E181BAE428CF914500CD25A6 /* LaunchScreen.storyboard */,
 				E181BAE728CF914500CD25A6 /* Info.plist */,
+				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
+				E181BADD28CF914300CD25A6 /* ViewController.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+				33DE13AA29DCAD7800DF3D5E /* External */,
 			);
 			path = palera1nLoader;
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Helper/Trollstore-Utils/External";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,7 +510,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Helper/Trollstore-Utils/External";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
