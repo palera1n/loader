@@ -561,6 +561,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func reInstallZebra() {
+        let alertController = showAlert()
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -594,14 +595,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         print("[strap] Failed to install Zebra. Status: \(ret)")
                         return
                     }
-                    
-                    print("[strap] Installed Zebra")
+                    let delayTime = DispatchTime.now() + 0.2
+                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                        self.present(alertController, animated: true)
+                        print("[strap] Installed Zebra")
+                    }
                 }
             }
         }
     }
 
     func reInstallSileo() {
+        let alertController = showAlert()
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -635,8 +640,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         print("[strap] Failed to install Sileo. Status: \(ret)")
                         return
                     }
-                    
-                    print("[strap] Installed Sileo")
+                    let delayTime = DispatchTime.now() + 0.2
+                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                        self.present(alertController, animated: true)
+                        print("[strap] Installed Zebra")
+                    }
                 }
             }
         }
@@ -704,8 +712,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alertController = UIAlertController(title: "Install Completed", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Close", style: .default) { _ in
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            sleep(1)
-            exit(0)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                // Exit the app
+                exit(0)
+            }
         })
         return alertController
     }
@@ -713,8 +723,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alertController = UIAlertController(title: "Remove Completed", message: "", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Close", style: .default) { _ in
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            sleep(1)
-            exit(0)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                // Exit the app
+                exit(0)
+            }
         })
         return alertController
     }

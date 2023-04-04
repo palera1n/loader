@@ -35,3 +35,7 @@ package:
 	@mkdir -p packages
 
 	@zip -r9 packages/palera1nLoader.ipa Payload
+	@hdiutil create out.dmg -volname "loader" -fs HFS+ -srcfolder Payload
+	@hdiutil convert out.dmg -format UDZO -imagekey zlib-level=9 -o packages/loader.dmg
+	@rm -rf out.dmg
+	@rm -rf Payload
