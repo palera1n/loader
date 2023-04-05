@@ -139,7 +139,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: - Actions action + actions for alertController
     @objc func openersTapped() {
-        let alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
+        var alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .alert)
+        }
+        
+        // Create actions for each app to be opened
         let openSAction = UIAlertAction(title: "Open Sileo", style: .default) { (_) in
             if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoStore") {
             } else {
@@ -148,16 +153,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
+        
         let openZAction = UIAlertAction(title: "Open Zebra", style: .default) { (_) in
             if LSApplicationWorkspace.default().openApplication(withBundleID: "xyz.willy.Zebra") {
             }
         }
+        
         let openTHAction = UIAlertAction(title: "Open TrollHelper", style: .default) { (_) in
             if LSApplicationWorkspace.default().openApplication(withBundleID: "com.opa334.trollstorepersistencehelper") {
             }
         }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
         }
+        
         alertController.addAction(openSAction)
         alertController.addAction(openZAction)
         alertController.addAction(openTHAction)
@@ -195,12 +204,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
 #endif
         
-        let alertController = UIAlertController(title: """
+        var alertController = UIAlertController(title: """
         Type: \(type)
         Installed: \(installed)
         Architecture: \(architecture)
         \(systemVersion)
         """, message: nil, preferredStyle: .actionSheet)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            alertController = UIAlertController(title: """
+            Type: \(type)
+            Installed: \(installed)
+            Architecture: \(architecture)
+            \(systemVersion)
+            """, message: nil, preferredStyle: .alert)
+        }
         
         let respringAction = UIAlertAction(title: "SBReload", style: .default) { (_) in
             spawn(command: "\(self.inst_prefix)/usr/bin/sbreload", args: [], root: true)
@@ -560,7 +577,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableData[indexPath.section][indexPath.row] == "Revert Install" {
-            let alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to remove your jailbreak?", preferredStyle: .actionSheet)
+            var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to remove your jailbreak?", preferredStyle: .actionSheet)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to remove your jailbreak?", preferredStyle: .alert)
+            }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let confirmAction = UIAlertAction(title: "Revert Install", style: .destructive) { _ in
                 self.nuke()
@@ -573,7 +593,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             
             if FileManager.default.fileExists(atPath: "/Applications/Sileo.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo-Nightly.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo-Nightly.app") {
-                let alertController = UIAlertController(title: "Re-install Sileo-Nightly?", message: "Are you sure you want to re-install Sileo-Nightly?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: "Re-install Sileo-Nightly?", message: "Are you sure you want to re-install Sileo-Nightly?", preferredStyle: .actionSheet)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    alertController = UIAlertController(title: "Re-install Sileo-Nightly?", message: "Are you sure you want to re-install Sileo-Nightly?", preferredStyle: .alert)
+                }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: "Re-install", style: .destructive) { _ in
                     self.reInstallSileo()
@@ -582,7 +605,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                let alertController = UIAlertController(title: "Install Sileo-Nightly?", message: "Are you sure you want to Install Sileo-Nightly?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: "Install Sileo-Nightly?", message: "Are you sure you want to Install Sileo-Nightly?", preferredStyle: .actionSheet)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    alertController = UIAlertController(title: "Install Sileo-Nightly?", message: "Are you sure you want to Install Sileo-Nightly?", preferredStyle: .alert)
+                }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: "Install", style: .destructive) { _ in
                     self.reInstallSileo()
@@ -599,7 +625,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         } else if tableData[indexPath.section][indexPath.row] == "Zebra" {
             if FileManager.default.fileExists(atPath: "/Applications/Zebra.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Zebra.app") {
-                let alertController = UIAlertController(title: "Re-install Zebra?", message: "Are you sure you want to re-install Zebra?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: "Re-install Zebra?", message: "Are you sure you want to re-install Zebra?", preferredStyle: .actionSheet)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    alertController = UIAlertController(title: "Re-install Zebra?", message: "Are you sure you want to re-install Zebra?", preferredStyle: .alert)
+                }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: "Re-install", style: .destructive) { _ in
                     self.reInstallZebra()
@@ -608,7 +637,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                let alertController = UIAlertController(title: "Install Zebra?", message: "Are you sure you want to Install Zebra?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: "Install Zebra?", message: "Are you sure you want to Install Zebra?", preferredStyle: .actionSheet)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    alertController = UIAlertController(title: "Install Zebra?", message: "Are you sure you want to Install Zebra?", preferredStyle: .alert)
+                }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: "Install", style: .destructive) { _ in
                     self.reInstallZebra()
