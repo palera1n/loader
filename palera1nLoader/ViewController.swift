@@ -23,18 +23,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Navigation titles
         navigationController?.navigationBar.prefersLargeTitles = true
-            navigationItem.title = "palera1n"
+        navigationItem.title = "palera1n"
         let hammerCircleImage = UIImage(systemName: "hammer.circle")
         let squarecircle = UIImage(systemName: "square.circle")
         let actionsButton = UIBarButtonItem(image: hammerCircleImage, style: .plain, target: self, action: #selector(actionsTapped))
         let openersButton = UIBarButtonItem(image: squarecircle, style: .plain, target: self, action: #selector(openersTapped))
-            navigationItem.leftBarButtonItem = actionsButton
-            navigationItem.rightBarButtonItem = openersButton
+        navigationItem.leftBarButtonItem = actionsButton
+        navigationItem.rightBarButtonItem = openersButton
         
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
-            tableView.delegate = self
-            tableView.dataSource = self
-            view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
         
         if (inst_prefix == "unset") {
             guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
@@ -42,11 +42,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("[palera1n] \(msg)")
                 return
             }
-
+            
             let ret = spawn(command: helper, args: ["-f"], root: true)
-
+            
             rootful = ret == 0 ? false : true
-
+            
             inst_prefix = rootful ? "" : "/var/jb"
         }
     }
@@ -61,10 +61,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: - Viewtable for Cydia/Zebra/Restore Rootfs cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
-
+        
         if tableData[indexPath.section][indexPath.row] == "Revert Install" {
             if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
                 cell.isHidden = false
@@ -89,7 +89,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.accessoryType = .disclosureIndicator
             cell.selectionStyle = .default
         }
-
+        
         if tableData[indexPath.section][indexPath.row] == "Sileo" {
             let originalImage = UIImage(named: "Sileo_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
@@ -103,11 +103,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             cell.imageView?.image = resizedImage
         }
-
+        
         return cell
     }
-
-
+    
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
@@ -116,18 +116,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let systemVersion = UIDevice.current.systemVersion
         var architecture = ""
-
-        #if targetEnvironment(simulator)
-            architecture = "• Simulator"
-        #elseif targetEnvironment(macCatalyst)
-            architecture = "• Mac Catalyst"
-        #elseif os(iOS)
-            if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
-                architecture = "• arm64"
-            } else {
-                architecture = "• arm64e"
-            }
-        #endif
+        
+#if targetEnvironment(simulator)
+        architecture = "• Simulator"
+#elseif targetEnvironment(macCatalyst)
+        architecture = "• Mac Catalyst"
+#elseif os(iOS)
+        if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
+            architecture = "• arm64"
+        } else {
+            architecture = "• arm64e"
+        }
+#endif
         
         if section == tableData.count - 1 {
             return """
@@ -182,18 +182,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let processInfo = ProcessInfo()
         let systemVersion = processInfo.operatingSystemVersionString
         var architecture = ""
-
-        #if targetEnvironment(simulator)
-            architecture = "Simulator"
-        #elseif targetEnvironment(macCatalyst)
-            architecture = "Mac Catalyst"
-        #elseif os(iOS)
-            if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
-                architecture = "arm64"
-            } else {
-                architecture = "arm64e"
-            }
-        #endif
+        
+#if targetEnvironment(simulator)
+        architecture = "Simulator"
+#elseif targetEnvironment(macCatalyst)
+        architecture = "Mac Catalyst"
+#elseif os(iOS)
+        if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
+            architecture = "arm64"
+        } else {
+            architecture = "arm64e"
+        }
+#endif
         
         let alertController = UIAlertController(title: """
         Type: \(type)
@@ -250,7 +250,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         present(alertController, animated: true, completion: nil)
     }
-
+    
     // MARK: - Recognize if switches are togged + install action (WIP)
     
     private func deleteFile(file: String) -> Void {
@@ -260,7 +260,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func downloadFile(file: String, server: String = "https://static.palera.in/rootless") -> Void {
+        var loadingAlert: UIAlertController? = nil
+        
         deleteFile(file: file)
+        
+        DispatchQueue.main.async {
+            loadingAlert = UIAlertController(title: nil, message: "Downloading...", preferredStyle: .alert)
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.startAnimating()
+            
+            loadingAlert?.view.addSubview(loadingIndicator)
+            self.present(loadingAlert!, animated: true)
+        }
+        
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
         let url = URL(string: "\(server)/\(file)")!
@@ -271,7 +284,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if statusCode != 200 {
                     if server.contains("cdn.nickchan.lol") {
-                        print("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                        DispatchQueue.main.async {
+                            loadingAlert?.dismiss(animated: true, completion: nil)
+                            let alertController = self.errorAlert(title: "Could not download file", message: "\(error?.localizedDescription ?? "Unknown error")")
+                            self.present(alertController, animated: true, completion: nil)
+                            NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                        }
                         return
                     }
                     self.downloadFile(file: file, server: server.replacingOccurrences(of: "static.palera.in", with: "cdn.nickchan.lol/palera1n/loader/assets"))
@@ -282,11 +300,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 do {
                     try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
                     semaphore.signal()
+                    DispatchQueue.main.async {
+                        // Dismiss the loading alert controller
+                        loadingAlert?.dismiss(animated: true, completion: nil)
+                    }
                 } catch (let writeError) {
-                    print("[palera1n] Could not copy file to disk: \(writeError)")
+                    DispatchQueue.main.async {
+                        loadingAlert?.dismiss(animated: true, completion: nil)
+                        let delayTime = DispatchTime.now() + 0.2
+                        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                            let alertController = self.errorAlert(title: "Could not copy file to disk", message: "\(writeError)")
+                            if let presentedVC = self.presentedViewController {
+                                presentedVC.dismiss(animated: true) {
+                                    self.present(alertController, animated: true)
+                                }
+                            } else {
+                                self.present(alertController, animated: true)
+                            }
+                        }
+                        NSLog("[palera1n] Could not copy file to disk: \(error?.localizedDescription ?? "Unknown error")")
+                        return
+                    }
                 }
             } else {
-                print("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                DispatchQueue.main.async {
+                    loadingAlert?.dismiss(animated: true, completion: nil)
+                    let delayTime = DispatchTime.now() + 0.2
+                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                        let alertController = self.errorAlert(title: "Could not download file", message: "\(error?.localizedDescription ?? "Unknown error")")
+                        if let presentedVC = self.presentedViewController {
+                            presentedVC.dismiss(animated: true) {
+                                self.present(alertController, animated: true)
+                            }
+                        } else {
+                            self.present(alertController, animated: true)
+                        }
+                    }
+                    NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
             }
         }
         task.resume()
@@ -295,7 +347,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var InstallSileo = false
     var InstallZebra = false
-
+    
     private func strap() -> Void {
         let alertController = errorAlert(title: "Install Completed", message: "You may close the app.")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
@@ -305,54 +357,52 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let ret = spawn(command: helper, args: ["-f"], root: true)
-                    
+        
         let rootful = ret == 0 ? false : true
-                    
+        
         let inst_prefix = rootful ? "/" : "/var/jb"
         
-        let loadingAlert = UIAlertController(title: nil, message: "Installing...", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.startAnimating()
-
-        loadingAlert.view.addSubview(loadingIndicator)
-
-        present(loadingAlert, animated: true) {
-            DispatchQueue.global(qos: .userInitiated).async {
-                print("[strap] User initiated strap process...")
-                DispatchQueue.global(qos: .utility).async { [self] in
-                    if self.InstallSileo {
-                        if rootful {
-                            downloadFile(file: "bootstrap.tar", server: "https://static.palera.in")
-                            downloadFile(file: "sileo.deb", server: "https://static.palera.in")
-                        } else {
-                            downloadFile(file: "bootstrap.tar")
-                            downloadFile(file: "sileo.deb")
-                        }
-                    }
-                    if self.InstallZebra {
-                        if rootful {
-                            downloadFile(file: "bootstrap.tar", server: "https://static.palera.in")
-                            downloadFile(file: "zebra.deb", server: "https://static.palera.in")
-                        } else {
-                            downloadFile(file: "bootstrap.tar")
-                            downloadFile(file: "zebra.deb")
-                        }
+        DispatchQueue.global(qos: .userInitiated).async {
+            print("[strap] User initiated strap process...")
+            DispatchQueue.global(qos: .utility).async { [self] in
+                var debName = ""
+                if self.InstallSileo {
+                    debName = "sileo.deb"
+                }
+                if self.InstallZebra {
+                    debName = "zebra.deb"
+                }
+                
+                if rootful {
+                    downloadFile(file: "bootstrap.tar", server: "https://static.palera.in")
+                    downloadFile(file: debName, server: "https://static.palera.in")
+                } else {
+                    downloadFile(file: "bootstrap.tar")
+                    downloadFile(file: debName)
+                }
+                
+                DispatchQueue.main.async {
+                    guard let tar = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("bootstrap.tar").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                        let msg = "Failed to find bootstrap"
+                        print("[palera1n] \(msg)")
+                        return
                     }
                     
-                    DispatchQueue.main.async {
-                        guard let tar = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("bootstrap.tar").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                            let msg = "Failed to find bootstrap"
-                            print("[palera1n] \(msg)")
-                            return
-                        }
-
-                        guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                            let msg = "Could not find Sileo"
-                            print("[palera1n] \(msg)")
-                            return
-                        }
-                        
+                    guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(debName).path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                        let msg = "Could not find package manager"
+                        print("[palera1n] \(msg)")
+                        return
+                    }
+                    
+                    let loadingAlert = UIAlertController(title: nil, message: "Installing...", preferredStyle: .alert)
+                    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+                    loadingIndicator.hidesWhenStopped = true
+                    loadingIndicator.startAnimating()
+                    
+                    loadingAlert.view.addSubview(loadingIndicator)
+                    
+                    // Installing... Alert
+                    self.present(loadingAlert, animated: true) {
                         DispatchQueue.global(qos: .utility).async {
                             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
                             
@@ -367,20 +417,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             
                             DispatchQueue.main.async {
                                 if ret != 0 {
-                                    let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
-                                    self.present(alertController, animated: true, completion: nil)
-                                    print("[strap] Error installing bootstrap. Status: \(ret)")
-                                    return
+                                    loadingAlert.dismiss(animated: true) {
+                                        let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                        self.present(alertController, animated: true, completion: nil)
+                                        print("[strap] Error installing bootstrap. Status: \(ret)")
+                                        return
+                                    }
                                 }
                                 
                                 DispatchQueue.global(qos: .utility).async {
                                     let ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
-                                            let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
-                                            self.present(alertController, animated: true, completion: nil)
-                                            print("[strap] Error installing bootstrap. Status: \(ret)")
-                                            return
+                                            loadingAlert.dismiss(animated: true) {
+                                                let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                                self.present(alertController, animated: true, completion: nil)
+                                                print("[strap] Error installing bootstrap. Status: \(ret)")
+                                                return
+                                            }
                                         }
                                         
                                         DispatchQueue.global(qos: .utility).async {
@@ -471,7 +525,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                     print("[strap] Failed to install packages. Status: \(ret)")
                                                     return
                                                 }
-
+                                                
                                                 DispatchQueue.global(qos: .utility).async {
                                                     let ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
                                                     DispatchQueue.main.async {
@@ -484,7 +538,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                     }
                                                 }
                                             }
-                                    
+                                            
                                             DispatchQueue.main.async {
                                                 loadingAlert.dismiss(animated: true) {
                                                     let delayTime = DispatchTime.now() + 0.2
@@ -503,7 +557,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableData[indexPath.section][indexPath.row] == "Revert Install" {
             let alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to remove your jailbreak?", preferredStyle: .actionSheet)
@@ -569,7 +623,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     func reInstallZebra() {
         let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
@@ -579,9 +633,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let ret = spawn(command: helper, args: ["-f"], root: true)
-                    
+        
         let rootful = ret == 0 ? false : true
-                    
+        
         let inst_prefix = rootful ? "/" : "/var/jb"
         
         print("[strap] Installing Zebra")
@@ -617,7 +671,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-
+    
     func reInstallSileo() {
         let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
@@ -627,9 +681,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let ret = spawn(command: helper, args: ["-f"], root: true)
-                    
+        
         let rootful = ret == 0 ? false : true
-                    
+        
         let inst_prefix = rootful ? "/" : "/var/jb"
         
         print("[strap] Installing Sileo")
@@ -679,20 +733,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let ret = spawn(command: helper, args: ["-f"], root: true)
         
         let rootful = ret == 0 ? false : true
-                    
+        
         let inst_prefix = rootful ? "/" : "/var/jb"
         
         if !rootful {
+            
+            let loadingAlert = UIAlertController(title: nil, message: "Removing...", preferredStyle: .alert)
+            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.startAnimating()
+            
+            loadingAlert.view.addSubview(loadingIndicator)
             print("[nuke] Unregistering applications")
+            self.present(loadingAlert, animated: true)
             DispatchQueue.global(qos: .utility).async {
-                
-                let loadingAlert = UIAlertController(title: nil, message: "Removing...", preferredStyle: .alert)
-                let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-                loadingIndicator.hidesWhenStopped = true
-                loadingIndicator.startAnimating()
-
-                loadingAlert.view.addSubview(loadingIndicator)
-                
                 // remove all jb apps from uicache
                 let fm = FileManager.default
                 let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
