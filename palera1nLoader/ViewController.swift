@@ -15,32 +15,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var rootful : Bool = false
     var inst_prefix: String = "unset"
     // Viewtable options
-    var tableData = [["Sileo", "Zebra"], ["Revert Install"]]
-    let sectionTitles = ["Managers", "Miscellaneous"]
+    var tableData = [["Architecture", "iOS", "Revision"], ["Sileo", "Zebra"], ["Utilities", "Openers", "Revert Install"]]
+    let sectionTitles = ["", "Managers", "Miscellaneous"]
     var switchStates = [[Bool]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set navigation bar properties
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.navigationBar.prefersLargeTitles = false
 
-        // Set navigation item properties
-        navigationItem.title = "palera1n"
-        let hammerCircleImage = UIImage(systemName: "gearshape")
-        let squarecircle = UIImage(systemName: "arrow.up.forward.app")
-        let actionsButton = UIBarButtonItem(image: hammerCircleImage, style: .plain, target: self, action: #selector(actionsTapped))
-        let openersButton = UIBarButtonItem(image: squarecircle, style: .plain, target: self, action: #selector(openersTapped))
-        navigationItem.leftBarButtonItem = nil
-        navigationItem.rightBarButtonItems = [openersButton, actionsButton]
-        
         // Add table view to view
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+
+        // Icon in the middle
+        let headerView = UIView(frame: CGRect(x: 0, y: -50, width: view.frame.width, height: 0))
+        headerView.backgroundColor = .clear
+
+        let imageView = UIImageView(image: UIImage(named: "AppIcon"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+        imageView.center = headerView.center
+        imageView.layer.cornerRadius = imageView.frame.width / 4
+        imageView.clipsToBounds = true
+        headerView.addSubview(imageView)
+
+        tableView.tableHeaderView = headerView
+        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+
+
         
         // Check for root permissions
         if (inst_prefix == "unset") {
@@ -118,7 +123,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             cell.imageView?.image = resizedImage
         }
-        
+        if tableData[indexPath.section][indexPath.row] == "Utilities" || tableData[indexPath.section][indexPath.row] == "Openers"{
+            cell.isUserInteractionEnabled = true
+            cell.accessoryType = .disclosureIndicator
+            cell.textLabel?.textColor = .systemBlue
+            cell.selectionStyle = .default
+        }
+        if tableData[indexPath.section][indexPath.row] == "iOS" {
+        }
+
+
+
         return cell
     }
     
@@ -591,6 +606,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableData[indexPath.section][indexPath.row] == "Utilities" {
+                actionsTapped()
+            }
+        if tableData[indexPath.section][indexPath.row] == "Openers" {
+                openersTapped()
+            }
         if tableData[indexPath.section][indexPath.row] == "Revert Install" {
             var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to remove your jailbreak?", preferredStyle: .actionSheet)
             if UIDevice.current.userInterfaceIdiom == .pad {
