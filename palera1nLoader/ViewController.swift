@@ -21,21 +21,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Navigation titles
-        navigationController?.navigationBar.prefersLargeTitles = true
+        // Set navigation bar properties
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.prefersLargeTitles = false
+
+        // Set navigation item properties
         navigationItem.title = "palera1n"
-        let hammerCircleImage = UIImage(systemName: "hammer.circle")
-        let squarecircle = UIImage(systemName: "square.circle")
+        let hammerCircleImage = UIImage(systemName: "gearshape")
+        let squarecircle = UIImage(systemName: "arrow.up.forward.app")
         let actionsButton = UIBarButtonItem(image: hammerCircleImage, style: .plain, target: self, action: #selector(actionsTapped))
         let openersButton = UIBarButtonItem(image: squarecircle, style: .plain, target: self, action: #selector(openersTapped))
-        navigationItem.leftBarButtonItem = actionsButton
-        navigationItem.rightBarButtonItem = openersButton
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItems = [openersButton, actionsButton]
         
+        // Add table view to view
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         
+        // Check for root permissions
         if (inst_prefix == "unset") {
             guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
                 let msg = "Could not find helper?"
@@ -50,6 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             inst_prefix = rootful ? "" : "/var/jb"
         }
     }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
@@ -66,11 +74,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
         
         if tableData[indexPath.section][indexPath.row] == "Revert Install" {
-            if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
+            if FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
                 cell.isHidden = false
                 cell.isUserInteractionEnabled = true
                 cell.accessoryType = .disclosureIndicator
                 cell.textLabel?.textColor = .systemRed
+            } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
+                cell.isUserInteractionEnabled = false
+                cell.accessoryType = .disclosureIndicator
+                cell.textLabel?.textColor = .gray
+                cell.detailTextLabel?.text = "Rootful cannot use this button :("
+                cell.selectionStyle = .none
             } else {
                 cell.isUserInteractionEnabled = false
                 cell.accessoryType = .disclosureIndicator
@@ -87,6 +101,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             };
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
+            cell.detailTextLabel?.text = tableData[indexPath.section][indexPath.row] == "Sileo" ? "Modern package manager" : "Familiar looking package manager"
             cell.selectionStyle = .default
         }
         
