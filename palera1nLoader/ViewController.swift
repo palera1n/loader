@@ -15,34 +15,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var rootful : Bool = false
     var inst_prefix: String = "unset"
     // Viewtable options
-    var tableData = [["Architecture", "iOS", "Type"], ["Sileo", "Zebra"], ["Utilities", "Openers", "Revert Install"]]
-    let sectionTitles = ["", "Managers", "Miscellaneous"]
+    var tableData = [["Sileo", "Zebra"], ["Utilities", "Openers", "Revert Install"]]
+    let sectionTitles = ["Install", "Miscellaneous"]
     var switchStates = [[Bool]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "palera1n"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         // Add table view to view
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
 
-        // Icon in the middle
-        let headerView = UIView(frame: CGRect(x: 0, y: -50, width: view.frame.width, height: 0))
-        headerView.backgroundColor = .clear
-
-        let imageView = UIImageView(image: UIImage(named: "AppIcon"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-        imageView.center = headerView.center
-        imageView.layer.cornerRadius = imageView.frame.width / 4
-        imageView.clipsToBounds = true
-        headerView.addSubview(imageView)
-
-        tableView.tableHeaderView = headerView
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        // Icon in the middle
+//        let headerView = UIView(frame: CGRect(x: 0, y: -67, width: view.frame.width, height: 0))
+//        headerView.backgroundColor = .clear
+//
+//        let imageView = UIImageView(image: UIImage(named: "AppIcon"))
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+//        imageView.center = headerView.center
+//        imageView.layer.cornerRadius = imageView.frame.width / 4
+//        imageView.clipsToBounds = true
+//        headerView.addSubview(imageView)
+//
+//        tableView.tableHeaderView = headerView
+//        tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 20, right: 0)
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
 
 
 
@@ -75,7 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Viewtable for Cydia/Zebra/Restore Rootfs cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+        var cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
         
         if tableData[indexPath.section][indexPath.row] == "Revert Install" {
@@ -129,31 +132,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.textLabel?.textColor = .systemBlue
             cell.selectionStyle = .default
         }
-        if tableData[indexPath.section][indexPath.row] == "Architecture" {
-            let arch = String(cString: NXGetLocalArchInfo().pointee.name)
-            cell.textLabel?.text = "Architecture"
-            cell.detailTextLabel?.text = "\(arch)"
-            return cell
-        }
-        if tableData[indexPath.section][indexPath.row] == "iOS" {
-            cell.textLabel?.text = "iOS"
-            cell.detailTextLabel?.text = UIDevice.current.systemVersion
-            return cell
-        }
-        if tableData[indexPath.section][indexPath.row] == "Type" {
-            var type = "Unknown"
-            if rootful {
-                type = "Rootful"
-            } else if !rootful {
-                type = "Rootless"
-            }
-            cell.textLabel?.text = "Type"
-            cell.detailTextLabel?.text = "\(type)"
-            return cell
-        }
-
-
-
         return cell
     }
     
@@ -244,7 +222,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             """, message: nil, preferredStyle: .alert)
         }
         
-        let respringAction = UIAlertAction(title: "SBReload", style: .default) { (_) in
+        let respringAction = UIAlertAction(title: "Respring", style: .default) { (_) in
             spawn(command: "\(self.inst_prefix)/usr/bin/sbreload", args: [], root: true)
         }
         let softrebootAction = UIAlertAction(title: "Userspace Reboot", style: .default) { (_) in
@@ -267,18 +245,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
             }
         }
-        let allAction = UIAlertAction(title: "Do All", style: .default) { (_) in
-            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-            spawn(command: "\(self.inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
-            spawn(command: "\(self.inst_prefix)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
-            if self.rootful {
-                spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
-            } else {
-                spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
-            }
-            spawn(command: "\(self.inst_prefix)/usr/bin/sbreload", args: [], root: true)
-        }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
         }
         alertController.addAction(respringAction)
@@ -286,7 +252,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alertController.addAction(daemonAction)
         alertController.addAction(mountAction)
         alertController.addAction(enabletweaksAction)
-        alertController.addAction(allAction)
         alertController.addAction(softrebootAction)
         alertController.addAction(cancelAction)
         
