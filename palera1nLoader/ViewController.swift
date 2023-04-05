@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import Darwin
 import LaunchServicesBridge
 import CoreServices
+import MachO
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var rootful : Bool = false
     var inst_prefix: String = "unset"
     // Viewtable options
-    var tableData = [["Architecture", "iOS", "Revision"], ["Sileo", "Zebra"], ["Utilities", "Openers", "Revert Install"]]
+    var tableData = [["Architecture", "iOS", "Type"], ["Sileo", "Zebra"], ["Utilities", "Openers", "Revert Install"]]
     let sectionTitles = ["", "Managers", "Miscellaneous"]
     var switchStates = [[Bool]]()
     
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Viewtable for Cydia/Zebra/Restore Rootfs cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
         
         if tableData[indexPath.section][indexPath.row] == "Revert Install" {
@@ -129,7 +129,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.textLabel?.textColor = .systemBlue
             cell.selectionStyle = .default
         }
+        if tableData[indexPath.section][indexPath.row] == "Architecture" {
+            let arch = String(cString: NXGetLocalArchInfo().pointee.name)
+            cell.textLabel?.text = "Architecture"
+            cell.detailTextLabel?.text = "\(arch)"
+            return cell
+        }
         if tableData[indexPath.section][indexPath.row] == "iOS" {
+            cell.textLabel?.text = "iOS"
+            cell.detailTextLabel?.text = UIDevice.current.systemVersion
+            return cell
+        }
+        if tableData[indexPath.section][indexPath.row] == "Type" {
+            var type = "Unknown"
+            if rootful {
+                type = "Rootful"
+            } else if !rootful {
+                type = "Rootless"
+            }
+            cell.textLabel?.text = "Type"
+            cell.detailTextLabel?.text = "\(type)"
+            return cell
         }
 
 
@@ -143,28 +163,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        
-        let systemVersion = UIDevice.current.systemVersion
-        var architecture = ""
-        
-#if targetEnvironment(simulator)
-        architecture = "• Simulator"
-#elseif targetEnvironment(macCatalyst)
-        architecture = "• Mac Catalyst"
-#elseif os(iOS)
-        if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
-            architecture = "• arm64"
-        } else {
-            architecture = "• arm64e"
-        }
-#endif
-        
-        if section == tableData.count - 1 {
-            return """
-            palera1n • \(systemVersion) \(architecture)
-            """
+        let arch = String(cString: NXGetLocalArchInfo().pointee.name)
+        if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
+            if section == tableData.count - 1 {
+                return "palera1n • 1.0 (\(revision))"
+            }
         }
         return nil
+
     }
     
     // MARK: - Actions action + actions for alertController
@@ -220,31 +226,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let processInfo = ProcessInfo()
         let systemVersion = processInfo.operatingSystemVersionString
-        var architecture = ""
+        let arch = String(cString: NXGetLocalArchInfo().pointee.name)
         
-#if targetEnvironment(simulator)
-        architecture = "Simulator"
-#elseif targetEnvironment(macCatalyst)
-        architecture = "Mac Catalyst"
-#elseif os(iOS)
-        if MemoryLayout<Int>.size == MemoryLayout<Int64>.size {
-            architecture = "arm64"
-        } else {
-            architecture = "arm64e"
-        }
-#endif
         
         var alertController = UIAlertController(title: """
         Type: \(type)
         Installed: \(installed)
-        Architecture: \(architecture)
+        Architecture: \(arch)
         \(systemVersion)
         """, message: nil, preferredStyle: .actionSheet)
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController = UIAlertController(title: """
             Type: \(type)
             Installed: \(installed)
-            Architecture: \(architecture)
+            Architecture: \(arch)
             \(systemVersion)
             """, message: nil, preferredStyle: .alert)
         }
