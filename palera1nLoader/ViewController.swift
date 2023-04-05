@@ -297,7 +297,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var InstallZebra = false
 
     private func strap() -> Void {
-        let alertController = showAlert()
+        let alertController = errorAlert(title: "Install Completed", message: "You may close the app.")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -367,6 +367,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             
                             DispatchQueue.main.async {
                                 if ret != 0 {
+                                    let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                    self.present(alertController, animated: true, completion: nil)
                                     print("[strap] Error installing bootstrap. Status: \(ret)")
                                     return
                                 }
@@ -375,6 +377,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                     let ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
                                     DispatchQueue.main.async {
                                         if ret != 0 {
+                                            let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                            self.present(alertController, animated: true, completion: nil)
                                             print("[strap] Error installing bootstrap. Status: \(ret)")
                                             return
                                         }
@@ -462,6 +466,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                             
                                             DispatchQueue.main.async {
                                                 if ret != 0 {
+                                                    let alertController = self.errorAlert(title: "Failed to install packages", message: "Status: \(ret)")
+                                                    self.present(alertController, animated: true, completion: nil)
+                                                    print("[strap] Failed to install packages. Status: \(ret)")
                                                     return
                                                 }
 
@@ -469,6 +476,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                     let ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
                                                     DispatchQueue.main.async {
                                                         if ret != 0 {
+                                                            let alertController = self.errorAlert(title: "Failed to uicache", message: "Status: \(ret)")
+                                                            self.present(alertController, animated: true, completion: nil)
+                                                            print("[strap] Failed to uicache. Status: \(ret)")
                                                             return
                                                         }
                                                     }
@@ -561,7 +571,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func reInstallZebra() {
-        let alertController = showAlert()
+        let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -584,14 +594,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             DispatchQueue.global(qos: .utility).async { [self] in
                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                    let msg = "Failed to find Zebra"
-                    print("[strap] \(msg)")
+                    let alertController = self.errorAlert(title: "Failed to install Zebra", message: "")
+                    self.present(alertController, animated: true, completion: nil)
+                    print("[strap] Failed to find Zebra.")
                     return
                 }
                 
                 let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
                 DispatchQueue.main.async {
                     if ret != 0 {
+                        let alertController = self.errorAlert(title: "Failed to install Zebra", message: "Status: \(ret)")
+                        self.present(alertController, animated: true, completion: nil)
                         print("[strap] Failed to install Zebra. Status: \(ret)")
                         return
                     }
@@ -606,7 +619,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func reInstallSileo() {
-        let alertController = showAlert()
+        let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -629,14 +642,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             DispatchQueue.global(qos: .utility).async { [self] in
                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
-                    let msg = "Failed to find Sileo"
-                    print("[strap] \(msg)")
+                    let alertController = self.errorAlert(title: "Failed to install Sileo", message: "")
+                    self.present(alertController, animated: true, completion: nil)
+                    print("[strap] Failed to find Sileo.")
                     return
                 }
                 
                 let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
                 DispatchQueue.main.async {
                     if ret != 0 {
+                        let alertController = self.errorAlert(title: "Failed to install Sileo", message: "Status: \(ret)")
+                        self.present(alertController, animated: true, completion: nil)
                         print("[strap] Failed to install Sileo. Status: \(ret)")
                         return
                     }
@@ -651,15 +667,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func nuke() {
-        let loadingAlert = UIAlertController(title: nil, message: "Removing...", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.startAnimating()
-
-        loadingAlert.view.addSubview(loadingIndicator)
         
         print("[nuke] Starting nuke process...")
-        let alertController = nukeAlert()
+        let alertController = errorAlert(title: "Remove Completed", message: "You may close the app.")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -675,6 +685,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if !rootful {
             print("[nuke] Unregistering applications")
             DispatchQueue.global(qos: .utility).async {
+                
+                let loadingAlert = UIAlertController(title: nil, message: "Removing...", preferredStyle: .alert)
+                let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+                loadingIndicator.hidesWhenStopped = true
+                loadingIndicator.startAnimating()
+
+                loadingAlert.view.addSubview(loadingIndicator)
+                
                 // remove all jb apps from uicache
                 let fm = FileManager.default
                 let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
@@ -683,6 +701,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/var/jb/Applications/\(app)"], root: true)
                         DispatchQueue.main.async {
                             if ret != 0 {
+                                let alertController = self.errorAlert(title: "Failed to unregister \(app)", message: "Status: \(ret)")
+                                self.present(alertController, animated: true, completion: nil)
                                 print("[nuke] Failed to unregister \(app): \(ret)")
                                 return
                             }
@@ -694,6 +714,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let ret = spawn(command: helper, args: ["-r"], root: true)
                 DispatchQueue.main.async {
                     if ret != 0 {
+                        let alertController = self.errorAlert(title: "Failed to remove jailbreak", message: "Status: \(ret)")
+                        self.present(alertController, animated: true, completion: nil)
                         print("[nuke] Failed to remove jailbreak: \(ret)")
                         return
                     }
@@ -708,19 +730,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-    func showAlert() -> UIAlertController {
-        let alertController = UIAlertController(title: "Install Completed", message: "", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Close", style: .default) { _ in
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                // Exit the app
-                exit(0)
-            }
-        })
-        return alertController
-    }
-    func nukeAlert() -> UIAlertController {
-        let alertController = UIAlertController(title: "Remove Completed", message: "", preferredStyle: .alert)
+
+    func errorAlert(title: String, message: String) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Close", style: .default) { _ in
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
