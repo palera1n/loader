@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = "palera1n"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -52,9 +52,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return
             }
         }
-
+        
     }
-
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
@@ -136,7 +136,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         return nil
-
+        
     }
     
     // MARK: - Actions action + actions for alertController
@@ -246,7 +246,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         present(alertController, animated: true, completion: nil)
     }
     
-// MARK: - Main strapping process
+    // MARK: - Main strapping process
     private func deleteFile(file: String) -> Void {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
@@ -254,18 +254,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func downloadFile(file: String, server: String = "https://static.palera.in/rootless") -> Void {
-        var loadingAlert: UIAlertController? = nil
+        var downloadAlert: UIAlertController? = nil
         
         deleteFile(file: file)
         
         DispatchQueue.main.async {
-            loadingAlert = UIAlertController(title: nil, message: "Downloading...", preferredStyle: .alert)
-            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-            loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.startAnimating()
+            downloadAlert = UIAlertController(title: "Downloading...", message: "\(file)", preferredStyle: .alert)
+            let downloadIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            downloadIndicator.hidesWhenStopped = true
+            downloadIndicator.startAnimating()
             
-            loadingAlert?.view.addSubview(loadingIndicator)
-            self.present(loadingAlert!, animated: true)
+            downloadAlert?.view.addSubview(downloadIndicator)
+            self.present(downloadAlert!, animated: true)
         }
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -279,7 +279,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if statusCode != 200 {
                     if server.contains("cdn.nickchan.lol") {
                         DispatchQueue.main.async {
-                            loadingAlert?.dismiss(animated: true, completion: nil)
+                            downloadAlert?.dismiss(animated: true, completion: nil)
                             let alertController = self.errorAlert(title: "Could not download file", message: "\(error?.localizedDescription ?? "Unknown error")")
                             self.present(alertController, animated: true, completion: nil)
                             NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
@@ -296,11 +296,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     semaphore.signal()
                     DispatchQueue.main.async {
                         // Dismiss the loading alert controller
-                        loadingAlert?.dismiss(animated: true, completion: nil)
+                        downloadAlert?.dismiss(animated: true, completion: nil)
                     }
                 } catch (let writeError) {
                     DispatchQueue.main.async {
-                        loadingAlert?.dismiss(animated: true, completion: nil)
+                        downloadAlert?.dismiss(animated: true, completion: nil)
                         let delayTime = DispatchTime.now() + 0.2
                         DispatchQueue.main.asyncAfter(deadline: delayTime) {
                             let alertController = self.errorAlert(title: "Could not copy file to disk", message: "\(writeError)")
@@ -318,7 +318,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             } else {
                 DispatchQueue.main.async {
-                    loadingAlert?.dismiss(animated: true, completion: nil)
+                    downloadAlert?.dismiss(animated: true, completion: nil)
                     let delayTime = DispatchTime.now() + 0.2
                     DispatchQueue.main.asyncAfter(deadline: delayTime) {
                         let alertController = self.errorAlert(title: "Could not download file", message: "\(error?.localizedDescription ?? "Unknown error")")
@@ -350,6 +350,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         
+        let delayTime = DispatchTime.now() + 0.2
         let ret = spawn(command: helper, args: ["-f"], root: true)
         let rootful = ret == 0 ? false : true
         let inst_prefix = rootful ? "/" : "/var/jb"
@@ -390,54 +391,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
                     loadingIndicator.hidesWhenStopped = true
                     loadingIndicator.startAnimating()
-                    
-                    loadingAlert.view.addSubview(loadingIndicator)
-                    
-                    // Installing... Alert
-                    self.present(loadingAlert, animated: true) {
-                        DispatchQueue.global(qos: .utility).async {
-                            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-                            
-                            if rootful {
-                                spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-                            }
-                            
-                            let ret = spawn(command: helper, args: ["-i", tar], root: true)
-                            
-                            spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
-                            spawn(command: "\(inst_prefix)/usr/bin/chown", args: ["root:wheel", "\(inst_prefix)/usr/bin/sudo"], root: true)
-                            
-                            DispatchQueue.main.async {
-                                if ret != 0 {
-                                    loadingAlert.dismiss(animated: true) {
-                                        let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
-                                        self.present(alertController, animated: true, completion: nil)
-                                        print("[strap] Error installing bootstrap. Status: \(ret)")
-                                        return
-                                    }
+                    self.presentedViewController?.dismiss(animated: true) {
+                        loadingAlert.view.addSubview(loadingIndicator)
+                        // Installing... Alert
+                        self.present(loadingAlert, animated: true) {
+                            DispatchQueue.global(qos: .utility).async {
+                                spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+                                
+                                if rootful {
+                                    spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
                                 }
                                 
-                                DispatchQueue.global(qos: .utility).async {
-                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
-                                    DispatchQueue.main.async {
-                                        if ret != 0 {
-                                            loadingAlert.dismiss(animated: true) {
-                                                let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
-                                                self.present(alertController, animated: true, completion: nil)
-                                                print("[strap] Error installing bootstrap. Status: \(ret)")
-                                                return
-                                            }
+                                let ret = spawn(command: helper, args: ["-i", tar], root: true)
+                                
+                                spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
+                                spawn(command: "\(inst_prefix)/usr/bin/chown", args: ["root:wheel", "\(inst_prefix)/usr/bin/sudo"], root: true)
+                                
+                                DispatchQueue.main.async {
+                                    if ret != 0 {
+                                        loadingAlert.dismiss(animated: true) {
+                                            let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                            self.present(alertController, animated: true, completion: nil)
+                                            print("[strap] Error installing bootstrap. Status: \(ret)")
+                                            return
                                         }
-                                        
-                                        DispatchQueue.global(qos: .utility).async {
-                                            let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
+                                    }
+                                    
+                                    DispatchQueue.global(qos: .utility).async {
+                                        let ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
+                                        DispatchQueue.main.async {
+                                            if ret != 0 {
+                                                loadingAlert.dismiss(animated: true) {
+                                                    let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                                    self.present(alertController, animated: true, completion: nil)
+                                                    print("[strap] Error installing bootstrap. Status: \(ret)")
+                                                    return
+                                                }
+                                            }
                                             
-                                            if !rootful {
-                                                let sourcesFilePath = "/var/jb/etc/apt/sources.list.d/procursus.sources"
-                                                var procursusSources = ""
+                                            DispatchQueue.global(qos: .utility).async {
+                                                let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
                                                 
-                                                if UIDevice.current.systemVersion.contains("15") {
-                                                    procursusSources = """
+                                                if !rootful {
+                                                    let sourcesFilePath = "/var/jb/etc/apt/sources.list.d/procursus.sources"
+                                                    var procursusSources = ""
+                                                    
+                                                    if UIDevice.current.systemVersion.contains("15") {
+                                                        procursusSources = """
                                                         Types: deb
                                                         URIs: https://ellekit.space/
                                                         Suites: ./
@@ -454,8 +454,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                         Components: main
                                                         
                                                         """
-                                                } else if UIDevice.current.systemVersion.contains("16") {
-                                                    procursusSources = """
+                                                    } else if UIDevice.current.systemVersion.contains("16") {
+                                                        procursusSources = """
                                                         Types: deb
                                                         URIs: https://ellekit.space/
                                                         Suites: ./
@@ -472,15 +472,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                         Components: main
                                                         
                                                         """
-                                                }
-                                                
-                                                spawn(command: "/var/jb/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
-                                            } else {
-                                                let sourcesFilePath = "/etc/apt/sources.list.d/procursus.sources"
-                                                var procursusSources = ""
-                                                
-                                                if UIDevice.current.systemVersion.contains("15") {
-                                                    procursusSources = """
+                                                    }
+                                                    
+                                                    spawn(command: "/var/jb/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
+                                                } else {
+                                                    let sourcesFilePath = "/etc/apt/sources.list.d/procursus.sources"
+                                                    var procursusSources = ""
+                                                    
+                                                    if UIDevice.current.systemVersion.contains("15") {
+                                                        procursusSources = """
                                                         Types: deb
                                                         URIs: https://repo.palera.in/
                                                         Suites: ./
@@ -492,8 +492,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                         Components: main
                                                         
                                                         """
-                                                } else if UIDevice.current.systemVersion.contains("16") {
-                                                    procursusSources = """
+                                                    } else if UIDevice.current.systemVersion.contains("16") {
+                                                        procursusSources = """
                                                         Types: deb
                                                         URIs: https://repo.palera.in/
                                                         Suites: ./
@@ -505,37 +505,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                         Components: main
                                                         
                                                         """
+                                                    }
+                                                    
+                                                    spawn(command: "/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
                                                 }
                                                 
-                                                spawn(command: "/bin/sh", args: ["-c", "echo '\(procursusSources)' > \(sourcesFilePath)"], root: true)
-                                            }
-                                            
-                                            DispatchQueue.main.async {
-                                                if ret != 0 {
-                                                    let alertController = self.errorAlert(title: "Failed to install packages", message: "Status: \(ret)")
-                                                    self.present(alertController, animated: true, completion: nil)
-                                                    print("[strap] Failed to install packages. Status: \(ret)")
-                                                    return
-                                                }
-                                                
-                                                DispatchQueue.global(qos: .utility).async {
-                                                    let ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
-                                                    DispatchQueue.main.async {
-                                                        if ret != 0 {
-                                                            let alertController = self.errorAlert(title: "Failed to uicache", message: "Status: \(ret)")
-                                                            self.present(alertController, animated: true, completion: nil)
-                                                            print("[strap] Failed to uicache. Status: \(ret)")
-                                                            return
+                                                DispatchQueue.main.async {
+                                                    if ret != 0 {
+                                                        let alertController = self.errorAlert(title: "Failed to install packages", message: "Status: \(ret)")
+                                                        self.present(alertController, animated: true, completion: nil)
+                                                        print("[strap] Failed to install packages. Status: \(ret)")
+                                                        return
+                                                    }
+                                                    
+                                                    DispatchQueue.global(qos: .utility).async {
+                                                        let ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
+                                                        DispatchQueue.main.async {
+                                                            if ret != 0 {
+                                                                let alertController = self.errorAlert(title: "Failed to uicache", message: "Status: \(ret)")
+                                                                self.present(alertController, animated: true, completion: nil)
+                                                                print("[strap] Failed to uicache. Status: \(ret)")
+                                                                return
+                                                            }
                                                         }
                                                     }
                                                 }
-                                            }
-                                            
-                                            DispatchQueue.main.async {
-                                                loadingAlert.dismiss(animated: true) {
-                                                    let delayTime = DispatchTime.now() + 0.2
-                                                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                                                        self.present(alertController, animated: true)
+                                                
+                                                DispatchQueue.main.async {
+                                                    loadingAlert.dismiss(animated: true) {
+                                                        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                                                            self.present(alertController, animated: true)
+                                                        }
                                                     }
                                                 }
                                             }
@@ -550,15 +550,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-// MARK: - Main table cells
+    // MARK: - Main table cells
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableData[indexPath.section][indexPath.row] == "Utilities" {
-                actionsTapped()
-            }
-        if tableData[indexPath.section][indexPath.row] == "Openers" {
-                openersTapped()
-            }
-        if tableData[indexPath.section][indexPath.row] == "Revert Install" {
+        let itemTapped = tableData[indexPath.section][indexPath.row]
+        switch itemTapped {
+        case "Utilities":
+            actionsTapped()
+        case "Openers":
+            openersTapped()
+        case "Revert Install":
             var alertController = UIAlertController(title: "Confirm", message: "Wipes /var/jb and unregisters jailbreak applications, after that you will be prompt to close the loader.", preferredStyle: .actionSheet)
             if UIDevice.current.userInterfaceIdiom == .pad {
                 alertController = UIAlertController(title: "Confirm", message: "Wipes /var/jb and unregisters jailbreak applications, after that you will be prompt to close the loader.", preferredStyle: .alert)
@@ -570,7 +570,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)
-        } else if tableData[indexPath.section][indexPath.row] == "Sileo" {
+        case "Sileo":
             if FileManager.default.fileExists(atPath: "/Applications/Sileo.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo-Nightly.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo-Nightly.app") {
                 var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Sileo?", preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
@@ -599,7 +599,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.InstallSileo = true
                 self.strap()
             }
-        } else if tableData[indexPath.section][indexPath.row] == "Zebra" {
+        case "Zebra":
             if FileManager.default.fileExists(atPath: "/Applications/Zebra.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Zebra.app") {
                 var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Zebra?", preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
@@ -628,7 +628,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.InstallZebra = true
                 self.strap()
             }
+            
+        default:
+            break
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     // MARK: - Functions for (Re)installing Sileo/Zebra
@@ -785,7 +789,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-// MARK: - Main alerts used throughout
+    // MARK: - Main alerts used throughout
     func errorAlert(title: String, message: String) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Close", style: .default) { _ in
