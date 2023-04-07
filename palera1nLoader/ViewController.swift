@@ -30,40 +30,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-
-//        // Icon in the middle
-//        let headerView = UIView(frame: CGRect(x: 0, y: -67, width: view.frame.width, height: 0))
-//        headerView.backgroundColor = .clear
-//
-//        let imageView = UIImageView(image: UIImage(named: "AppIcon"))
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
-//        imageView.center = headerView.center
-//        imageView.layer.cornerRadius = imageView.frame.width / 4
-//        imageView.clipsToBounds = true
-//        headerView.addSubview(imageView)
-//
-//        tableView.tableHeaderView = headerView
-//        tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 20, right: 0)
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-
-
-
         
-        // Check for root permissions
+        // Check for root permissions // also include checks if user is able to use Loader
         if (inst_prefix == "unset") {
             guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-                let msg = "Could not find helper?"
-                print("[palera1n] \(msg)")
+                let alertController = errorAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
+                print("[palera1n] Could not find helper?")
+                self.present(alertController, animated: true, completion: nil)
                 return
             }
             
             let ret = spawn(command: helper, args: ["-f"], root: true)
-            
             rootful = ret == 0 ? false : true
-            
             inst_prefix = rootful ? "" : "/var/jb"
+            
+            let retRFR = spawn(command: helper, args: ["-n"], root: true)
+            let rfr = retRFR == 0 ? false : true
+            if rfr {
+                let alertController = errorAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please recreate fakefs to be able to bootstrap again.")
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
         }
+
     }
 
     
@@ -257,8 +246,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         present(alertController, animated: true, completion: nil)
     }
     
-    // MARK: - Recognize if switches are togged + install action (WIP)
-    
+// MARK: - Main strapping process
     private func deleteFile(file: String) -> Void {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
@@ -363,9 +351,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let ret = spawn(command: helper, args: ["-f"], root: true)
-        
         let rootful = ret == 0 ? false : true
-        
         let inst_prefix = rootful ? "/" : "/var/jb"
         
         DispatchQueue.global(qos: .userInitiated).async {
@@ -564,6 +550,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+// MARK: - Main table cells
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableData[indexPath.section][indexPath.row] == "Utilities" {
                 actionsTapped()
@@ -644,7 +631,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+    // MARK: - Functions for (Re)installing Sileo/Zebra
     func reInstallZebra() {
         let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
@@ -702,9 +689,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let ret = spawn(command: helper, args: ["-f"], root: true)
-        
         let rootful = ret == 0 ? false : true
-        
         let inst_prefix = rootful ? "/" : "/var/jb"
         
         print("[strap] Installing Sileo")
@@ -740,7 +725,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-    
+    // MARK: - NUKER!
     func nuke() {
         
         print("[nuke] Starting nuke process...")
@@ -752,11 +737,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let ret = spawn(command: helper, args: ["-f"], root: true)
-        
         let rootful = ret == 0 ? false : true
-        
-        let inst_prefix = rootful ? "/" : "/var/jb"
-        
         if !rootful {
             
             let loadingAlert = UIAlertController(title: nil, message: "Removing...", preferredStyle: .alert)
@@ -769,7 +750,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.present(loadingAlert, animated: true)
             DispatchQueue.global(qos: .utility).async {
                 // remove all jb apps from uicache
-                let fm = FileManager.default
                 let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
                 for app in apps ?? [] {
                     if app.hasSuffix(".app") {
@@ -805,7 +785,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-
+// MARK: - Main alerts used throughout
     func errorAlert(title: String, message: String) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Close", style: .default) { _ in
