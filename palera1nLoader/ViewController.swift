@@ -14,25 +14,56 @@ import MachO
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var rootful : Bool = false
     var inst_prefix: String = "unset"
-    // Viewtable options
+
     var tableData = [["Sileo", "Zebra"], ["Utilities", "Openers", "Revert Install"]]
-    let sectionTitles = ["Install", "Miscellaneous"]
-    var switchStates = [[Bool]]()
+    let sectionTitles = ["INSTALL", "DEBUG"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "palera1n"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // Add table view to view
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        customView.translatesAutoresizingMaskIntoConstraints = false
+
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        button.layer.cornerRadius = 6
+        button.clipsToBounds = true
+        button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
+        customView.addSubview(button)
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "palera1n"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        customView.addSubview(titleLabel)
+
+        button.leadingAnchor.constraint(equalTo: customView.leadingAnchor).isActive = true
+        button.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+
+        titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8).isActive = true
+        titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
+
+        let customBarButton = UIBarButtonItem(customView: customView)
+        navigationItem.leftBarButtonItems = [customBarButton]
+
+
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        
+
         // Check for root permissions // also include checks if user is able to use Loader
         if (inst_prefix == "unset") {
+        #if targetEnvironment(simulator)
+        #else
             guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
                 let alertController = errorAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
                 print("[palera1n] Could not find helper?")
@@ -47,12 +78,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let retRFR = spawn(command: helper, args: ["-n"], root: true)
             let rfr = retRFR == 0 ? false : true
             if rfr {
-                let alertController = errorAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please recreate fakefs to be able to bootstrap again.")
+                let alertController = errorAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please rejailbreak to be able to bootstrap again.")
                 self.present(alertController, animated: true, completion: nil)
                 return
             }
+        #endif
         }
-        
     }
     
     
@@ -78,27 +109,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.textLabel?.textColor = .systemRed
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
                 cell.isUserInteractionEnabled = false
-                cell.accessoryType = .disclosureIndicator
                 cell.textLabel?.textColor = .gray
                 cell.detailTextLabel?.text = "Rootful cannot use this button :("
                 cell.selectionStyle = .none
             } else {
                 cell.isUserInteractionEnabled = false
-                cell.accessoryType = .disclosureIndicator
                 cell.textLabel?.textColor = .gray
                 cell.selectionStyle = .none
             }
         } else if tableData[indexPath.section][indexPath.row] == "Sileo" || tableData[indexPath.section][indexPath.row] == "Zebra" {
             guard Bundle.main.path(forAuxiliaryExecutable: "Helper") != nil else {
                 cell.isUserInteractionEnabled = false
-                cell.accessoryType = .disclosureIndicator
                 cell.textLabel?.textColor = .gray
                 cell.selectionStyle = .default
                 return cell
             };
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-            cell.detailTextLabel?.text = tableData[indexPath.section][indexPath.row] == "Sileo" ? "Modern package manager" : "Familiar looking package manager"
+//            cell.detailTextLabel?.text = tableData[indexPath.section][indexPath.row] == "Sileo" ? "Modern package manager" : "Familiar looking package manager"
             cell.selectionStyle = .default
         }
         
@@ -118,7 +146,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if tableData[indexPath.section][indexPath.row] == "Utilities" || tableData[indexPath.section][indexPath.row] == "Openers"{
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.textColor = .systemBlue
+            cell.textLabel?.textColor = .systemOrange
             cell.selectionStyle = .default
         }
         return cell
@@ -133,12 +161,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
             if section == tableData.count - 1 {
                 return "palera1n Loader lite • 1.0 (\(revision))"
+            } else if section == 0 {
+                return "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new :)"
             }
         }
         return nil
-        
     }
-    
     // MARK: - Actions action + actions for alertController
     @objc func openersTapped() {
         var alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
@@ -259,7 +287,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         deleteFile(file: file)
         
         DispatchQueue.main.async {
-            downloadAlert = UIAlertController(title: "Downloading...", message: "\(file)", preferredStyle: .alert)
+            downloadAlert = UIAlertController(title: "Downloading...", message: "File: \(file)", preferredStyle: .alert)
             let downloadIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
             downloadIndicator.hidesWhenStopped = true
             downloadIndicator.startAnimating()
@@ -549,7 +577,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
-    
     // MARK: - Main table cells
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
@@ -577,7 +604,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Sileo?", preferredStyle: .alert)
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Re-install", style: .destructive) { _ in
+                let confirmAction = UIAlertAction(title: "Re-install", style: .default) { _ in
                     self.reInstallSileo()
                 }
                 alertController.addAction(cancelAction)
@@ -589,7 +616,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to Install Sileo?", preferredStyle: .alert)
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Install", style: .destructive) { _ in
+                let confirmAction = UIAlertAction(title: "Install", style: .default) { _ in
                     self.reInstallSileo()
                 }
                 alertController.addAction(cancelAction)
@@ -606,7 +633,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Zebra?", preferredStyle: .alert)
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Re-install", style: .destructive) { _ in
+                let confirmAction = UIAlertAction(title: "Re-install", style: .default) { _ in
                     self.reInstallZebra()
                 }
                 alertController.addAction(cancelAction)
@@ -618,7 +645,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to install Zebra?", preferredStyle: .alert)
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Install", style: .destructive) { _ in
+                let confirmAction = UIAlertAction(title: "Install", style: .default) { _ in
                     self.reInstallZebra()
                 }
                 alertController.addAction(cancelAction)
