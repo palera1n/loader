@@ -126,7 +126,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             };
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-            cell.detailTextLabel?.text = tableData[indexPath.section][indexPath.row] == "Sileo" ? "Modern package manager" : "Familiar looking package manager"
+//            cell.detailTextLabel?.text = tableData[indexPath.section][indexPath.row] == "Sileo" ? "Modern package manager" : "Familiar looking package manager"
             cell.selectionStyle = .default
         }
         
@@ -161,11 +161,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
             if section == tableData.count - 1 {
                 return "palera1n Loader lite • 1.0 (\(revision))"
+            } else if section == 0 {
+                return "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new :)"
             }
         }
         return nil
     }
-    
     // MARK: - Actions action + actions for alertController
     @objc func openersTapped() {
         var alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
