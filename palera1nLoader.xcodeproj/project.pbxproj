@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4528B16F29E1547500419481 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 4528B16E29E1547500419481 /* SWCompression */; };
 		CED0FAF629DC8C8800106BEF /* get.c in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* get.c */; };
 		CED0FAFE29DC8D4800106BEF /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAFB29DC8D4800106BEF /* TSUtil.m */; };
 		CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0FB0129DC8DC200106BEF /* CoreServices.framework */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
-		E17927D828D247B2009D8F83 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E17927D728D247B2009D8F83 /* SWCompression */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
 		E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BADD28CF914300CD25A6 /* ViewController.swift */; };
 		E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE228CF914500CD25A6 /* Assets.xcassets */; };
@@ -60,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E17927D828D247B2009D8F83 /* SWCompression in Frameworks */,
+				4528B16F29E1547500419481 /* SWCompression in Frameworks */,
 				CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */,
 				E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */,
 			);
@@ -168,7 +168,7 @@
 			name = Helper;
 			packageProductDependencies = (
 				E131379C28CFB9B100754132 /* ArgumentParser */,
-				E17927D728D247B2009D8F83 /* SWCompression */,
+				4528B16E29E1547500419481 /* SWCompression */,
 			);
 			productName = PogoHelper;
 			productReference = E131378728CFA0BC00754132 /* Helper */;
@@ -187,6 +187,8 @@
 			dependencies = (
 			);
 			name = palera1nLoader;
+			packageProductDependencies = (
+			);
 			productName = Pogo;
 			productReference = E181BAD628CF914300CD25A6 /* palera1nLoader.app */;
 			productType = "com.apple.product-type.application";
@@ -221,7 +223,7 @@
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
 				E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
-				E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */,
+				4528B16D29E1547500419481 /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
 			projectDirPath = "";
@@ -285,12 +287,14 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = "";
 				EXECUTABLE_SUFFIX = "";
+				GCC_OPTIMIZATION_LEVEL = z;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,6 +304,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = all;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -312,12 +317,14 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7J8FJX4SRX;
+				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				DYLIB_COMPATIBILITY_VERSION = "";
 				DYLIB_CURRENT_VERSION = "";
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = "";
 				EXECUTABLE_SUFFIX = "";
+				GCC_OPTIMIZATION_LEVEL = z;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,6 +334,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				STRIP_STYLE = all;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,6 +351,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -367,12 +376,13 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = z;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -403,6 +413,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -427,10 +438,12 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = z;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -453,9 +466,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L9735M962H;
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = palera1nLoader/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
@@ -489,9 +504,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L9735M962H;
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
+				GCC_OPTIMIZATION_LEVEL = z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = palera1nLoader/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
@@ -552,6 +569,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4528B16D29E1547500419481 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/staturnzz/SWCompression.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
@@ -560,26 +585,18 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/tsolomko/SWCompression.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4528B16E29E1547500419481 /* SWCompression */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4528B16D29E1547500419481 /* XCRemoteSwiftPackageReference "SWCompression" */;
+			productName = SWCompression;
+		};
 		E131379C28CFB9B100754132 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
-		};
-		E17927D728D247B2009D8F83 /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

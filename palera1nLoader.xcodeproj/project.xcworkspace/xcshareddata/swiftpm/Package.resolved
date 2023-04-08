@@ -12,10 +12,10 @@
     {
       "identity" : "swcompression",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tsolomko/SWCompression.git",
+      "location" : "https://github.com/staturnzz/SWCompression.git",
       "state" : {
         "branch" : "develop",
-        "revision" : "1e7393dc54c2ec0a698e6eb1d6b9989624104447"
+        "revision" : "37da48f3dafd0a1989110b26cea63f884a55022e"
       }
     },
     {
