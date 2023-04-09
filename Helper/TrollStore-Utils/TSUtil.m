@@ -35,8 +35,8 @@ void loadMCMFramework(void)
 	});
 }
 
-extern char*** _NSGetArgv();
-NSString* safe_getExecutablePath()
+extern char*** _NSGetArgv(void);
+NSString* safe_getExecutablePath(void)
 {
 	char* executablePathC = **_NSGetArgv();
 	return [NSString stringWithUTF8String:executablePathC];
@@ -311,7 +311,7 @@ void fetchLatestTrollStoreVersion(void (^completionHandler)(NSString* latestVers
 	[task resume];
 }
 
-NSArray* trollStoreInstalledAppContainerPaths()
+NSArray* trollStoreInstalledAppContainerPaths(void)
 {
 	NSMutableArray* appContainerPaths = [NSMutableArray new];
 
@@ -347,7 +347,7 @@ NSArray* trollStoreInstalledAppContainerPaths()
 	return appContainerPaths.copy;
 }
 
-NSArray* trollStoreInstalledAppBundlePaths()
+NSArray* trollStoreInstalledAppBundlePaths(void)
 {
 	NSMutableArray* appPaths = [NSMutableArray new];
 	for(NSString* containerPath in trollStoreInstalledAppContainerPaths())
@@ -366,7 +366,7 @@ NSArray* trollStoreInstalledAppBundlePaths()
 	return appPaths.copy;
 }
 
-NSString* trollStorePath()
+NSString* trollStorePath(void)
 {
 	loadMCMFramework();
 	NSError* mcmError;
@@ -375,7 +375,7 @@ NSString* trollStorePath()
 	return appContainer.url.path;
 }
 
-NSString* trollStoreAppPath()
+NSString* trollStoreAppPath(void)
 {
 	return [trollStorePath() stringByAppendingPathComponent:@"TrollStore.app"];
 }
