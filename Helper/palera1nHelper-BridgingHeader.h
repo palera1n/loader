@@ -3,7 +3,7 @@
 //
 
 #import "TrollStore-Utils/uicache.h"
-#import "paleinfo/get.h"
+#import "paleinfo/paleinfo.h"
 #include <spawn.h>
 
 #define POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE 1
