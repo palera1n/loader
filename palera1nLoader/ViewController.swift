@@ -156,11 +156,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
-    
+    // please change the actual version here too please
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
             if section == tableData.count - 1 {
-                return "palera1n Loader lite • 1.0 (\(revision))"
+                return "palera1n Loader 1.0 (\(revision))"
             } else if section == 0 {
                 return "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new :)"
             }
