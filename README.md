@@ -1,13 +1,22 @@
-don't use this if you don't know what ur doing. this isn't a jailbreak. this will merely strap procursus. as of now no tweaks will work. hardly any packages. hardly any repos. for developers to mess about with. have fun 
+## palera1nLoader (lite)
+Just like universal branch, this is supposed to be something that offers same functionality while also being around 90% smaller.
 
-all this code is dog shit, it's thrown together with a knife and fork because quite frankly i don't give a fuck and neither should you. queen of ui design
+### Building
 
-out of sheer laziness this uses [SWCompression](https://github.com/tsolomko/SWCompression) for opening up the tar file 
+For iOS
+```
+make ios=1
+```
 
-to build just run `make` in root, needs xcode and other shittery
+For tvOS (in development)
+```
+make tv=1
+```
+### Downloads
+Don't use unless you know what you're doing.
 
-if u can't build ipa, use [nightly.link](https://nightly.link/elihwyma/Pogo/workflows/build/main/Pogo) or the artifact.
-
-to install, boot ios with a modified kernel that disables amfi, open this ipa in trollstore and then press install
-
-if u want a repo, add mineek.github.io/repo, it's not signed atm so make sure to do apt update --allow-insecure-repositories (if using sileo it works already, make sure to NOT open issues at procursus when using rootless.)
+https://static.palera.in/artifacts/loader/universal_lite/palera1nLoader.ipa
+https://static.palera.in/artifacts/loader/universal_lite/loader.dmg
+(These links may not be accessible)
+https://static.palera.in/artifacts/loader/universal_lite/palera1nTVLoader.ipa
+https://static.palera.in/artifacts/loader/universal_lite/tvloader.dmg

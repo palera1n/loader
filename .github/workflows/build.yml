@@ -20,7 +20,7 @@ jobs:
           sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
 
       - name: Compile
-        run: make
+        run: make ios=1
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
