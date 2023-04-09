@@ -1,5 +1,7 @@
 Payload
 .DS_Store
 packages
-palera1nLoader.xcodeproj/project.xcworkspace/xcuserdata/
-palera1nLoader.xcodeproj/xcuserdata/
+loader/palera1nLoader.xcodeproj/project.xcworkspace/xcuserdata/
+loader/palera1nLoader.xcodeproj/xcuserdata/
+tvloader/palera1nLoader.xcodeproj/project.xcworkspace/xcuserdata/
+tvloader/palera1nLoader.xcodeproj/xcuserdata/

@@ -12,11 +12,12 @@ For tvOS (in development)
 ```
 make tv=1
 ```
-### Downloads
+## Downloads
 Don't use unless you know what you're doing.
 
 https://static.palera.in/artifacts/loader/universal_lite/palera1nLoader.ipa
 https://static.palera.in/artifacts/loader/universal_lite/loader.dmg
+
 (These links may not be accessible)
 https://static.palera.in/artifacts/loader/universal_lite/palera1nTVLoader.ipa
 https://static.palera.in/artifacts/loader/universal_lite/tvloader.dmg
