@@ -288,7 +288,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         DispatchQueue.main.async {
             downloadAlert = UIAlertController(title: "Downloading...", message: "File: \(file)", preferredStyle: .alert)
-            let downloadIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+            let downloadIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 15, width: 50, height: 50))
             downloadIndicator.hidesWhenStopped = true
             downloadIndicator.startAnimating()
             
@@ -664,6 +664,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     // MARK: - Functions for (Re)installing Sileo/Zebra
     func reInstallZebra() {
+        var installingAlert: UIAlertController? = nil
         let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
@@ -685,8 +686,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 downloadFile(file: "zebra.deb")
             }
             
+            DispatchQueue.main.async {
+                installingAlert = UIAlertController(title: "Installing...", message: nil, preferredStyle: .alert)
+                let installingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+                installingIndicator.hidesWhenStopped = true
+                installingIndicator.startAnimating()
+                
+                installingAlert?.view.addSubview(installingIndicator)
+                self.present(installingAlert!, animated: true)
+            }
+            
             DispatchQueue.global(qos: .utility).async { [self] in
                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    installingAlert?.dismiss(animated: true, completion: nil)
                     let alertController = self.errorAlert(title: "Failed to install Zebra", message: "")
                     self.present(alertController, animated: true, completion: nil)
                     print("[strap] Failed to find Zebra.")
@@ -696,6 +708,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
                 DispatchQueue.main.async {
                     if ret != 0 {
+                        installingAlert?.dismiss(animated: true, completion: nil)
                         let alertController = self.errorAlert(title: "Failed to install Zebra", message: "Status: \(ret)")
                         self.present(alertController, animated: true, completion: nil)
                         print("[strap] Failed to install Zebra. Status: \(ret)")
@@ -703,6 +716,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     let delayTime = DispatchTime.now() + 0.2
                     DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                        installingAlert?.dismiss(animated: true, completion: nil)
                         self.present(alertController, animated: true)
                         print("[strap] Installed Zebra")
                     }
@@ -712,6 +726,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func reInstallSileo() {
+        var installingAlert: UIAlertController? = nil
         let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
@@ -731,8 +746,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 downloadFile(file: "sileo.deb")
             }
             
+            DispatchQueue.main.async {
+                installingAlert = UIAlertController(title: "Installing...", message: nil, preferredStyle: .alert)
+                let installingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+                installingIndicator.hidesWhenStopped = true
+                installingIndicator.startAnimating()
+                
+                installingAlert?.view.addSubview(installingIndicator)
+                self.present(installingAlert!, animated: true)
+            }
+            
             DispatchQueue.global(qos: .utility).async { [self] in
                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
+                    installingAlert?.dismiss(animated: true, completion: nil)
                     let alertController = self.errorAlert(title: "Failed to install Sileo", message: "")
                     self.present(alertController, animated: true, completion: nil)
                     print("[strap] Failed to find Sileo.")
@@ -742,6 +768,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
                 DispatchQueue.main.async {
                     if ret != 0 {
+                        installingAlert?.dismiss(animated: true, completion: nil)
                         let alertController = self.errorAlert(title: "Failed to install Sileo", message: "Status: \(ret)")
                         self.present(alertController, animated: true, completion: nil)
                         print("[strap] Failed to install Sileo. Status: \(ret)")
@@ -749,8 +776,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     let delayTime = DispatchTime.now() + 0.2
                     DispatchQueue.main.asyncAfter(deadline: delayTime) {
+                        installingAlert?.dismiss(animated: true, completion: nil)
                         self.present(alertController, animated: true)
-                        print("[strap] Installed Zebra")
+                        print("[strap] Installed Sileo")
                     }
                 }
             }

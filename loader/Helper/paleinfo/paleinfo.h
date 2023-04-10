@@ -1,5 +1,5 @@
-#ifndef PALEINFO_GET_H
-#define PALEINFO_GET_H
+#ifndef PALEINFO_H
+#define PALEINFO_H
 
 int check_forcerevert(void);
 int check_rootful(void);

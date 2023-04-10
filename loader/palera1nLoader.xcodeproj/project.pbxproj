@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
 		CED0FAF629DC8C8800106BEF /* paleinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.c */; };
-		CED0FAFE29DC8D4800106BEF /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAFB29DC8D4800106BEF /* TSUtil.m */; };
 		CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0FB0129DC8DC200106BEF /* CoreServices.framework */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
@@ -35,12 +34,6 @@
 		33DE13AA29DCAD7800DF3D5E /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; path = External; sourceTree = "<group>"; };
 		CED0FAF429DC8C8800106BEF /* paleinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = paleinfo.c; sourceTree = "<group>"; };
 		CED0FAF529DC8C8800106BEF /* paleinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paleinfo.h; sourceTree = "<group>"; };
-		CED0FAF829DC8D4800106BEF /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		CED0FAF929DC8D4800106BEF /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSUtil.h; sourceTree = "<group>"; };
-		CED0FAFA29DC8D4800106BEF /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
-		CED0FAFB29DC8D4800106BEF /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtil.m; sourceTree = "<group>"; };
-		CED0FAFC29DC8D4800106BEF /* uicache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uicache.h; sourceTree = "<group>"; };
-		CED0FAFD29DC8D4800106BEF /* uicache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uicache.m; sourceTree = "<group>"; };
 		CED0FB0129DC8DC200106BEF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		E131378728CFA0BC00754132 /* Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Helper; sourceTree = BUILT_PRODUCTS_DIR; };
 		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -81,19 +74,6 @@
 			path = paleinfo;
 			sourceTree = "<group>";
 		};
-		CED0FAF729DC8D3C00106BEF /* TrollStore-Utils */ = {
-			isa = PBXGroup;
-			children = (
-				CED0FAFA29DC8D4800106BEF /* CoreServices.h */,
-				CED0FAF929DC8D4800106BEF /* TSUtil.h */,
-				CED0FAFB29DC8D4800106BEF /* TSUtil.m */,
-				CED0FAFC29DC8D4800106BEF /* uicache.h */,
-				CED0FAFD29DC8D4800106BEF /* uicache.m */,
-				CED0FAF829DC8D4800106BEF /* version.h */,
-			);
-			path = "TrollStore-Utils";
-			sourceTree = "<group>";
-		};
 		CED0FB0029DC8DC100106BEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,7 +85,6 @@
 		E131378828CFA0BC00754132 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				CED0FAF729DC8D3C00106BEF /* TrollStore-Utils */,
 				CED0FAF329DC8C7E00106BEF /* paleinfo */,
 				E131378E28CFA16B00754132 /* main.swift */,
 				33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */,
@@ -246,7 +225,6 @@
 			files = (
 				CED0FAF629DC8C8800106BEF /* paleinfo.c in Sources */,
 				E131378F28CFA16B00754132 /* main.swift in Sources */,
-				CED0FAFE29DC8D4800106BEF /* TSUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
