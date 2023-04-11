@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
+		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		CED0FAF629DC8C8800106BEF /* paleinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.c */; };
 		CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0FB0129DC8DC200106BEF /* CoreServices.framework */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-BridgingHeader.h"; sourceTree = "<group>"; };
 		33DE13AA29DCAD7800DF3D5E /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; path = External; sourceTree = "<group>"; };
+		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		CED0FAF429DC8C8800106BEF /* paleinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = paleinfo.c; sourceTree = "<group>"; };
 		CED0FAF529DC8C8800106BEF /* paleinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paleinfo.h; sourceTree = "<group>"; };
 		CED0FB0129DC8DC200106BEF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
@@ -118,6 +120,7 @@
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
 				E181BADD28CF914300CD25A6 /* ViewController.swift */,
+				45E7E0F229E4EC5B0057741A /* Common.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
 			);
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,

@@ -38,6 +38,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         customView.addSubview(button)
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        
+        let aboutBtn: UIButton = UIButton(type: UIButton.ButtonType.custom)
+        aboutBtn.setImage(UIImage(systemName: "info.circle"), for: UIControl.State.normal)
+        aboutBtn.addTarget(self, action: #selector(self.aboutTapped), for: UIControl.Event.touchUpInside)
+        let navRight = UIBarButtonItem(customView: aboutBtn)
+        self.navigationItem.rightBarButtonItem = navRight
 
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -54,38 +60,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let customBarButton = UIBarButtonItem(customView: customView)
         navigationItem.leftBarButtonItems = [customBarButton]
 
-
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
 
         // Check for root permissions // also include checks if user is able to use Loader
-        if (inst_prefix == "unset") {
-        #if targetEnvironment(simulator)
-        #else
-            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-                let alertController = errorAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
-                print("[palera1n] Could not find helper?")
-                self.present(alertController, animated: true, completion: nil)
-                return
-            }
-            
-            let ret = spawn(command: helper, args: ["-f"], root: true)
-            rootful = ret == 0 ? false : true
-            inst_prefix = rootful ? "" : "/var/jb"
-            
-            let retRFR = spawn(command: helper, args: ["-n"], root: true)
-            let rfr = retRFR == 0 ? false : true
-            if rfr {
-                let alertController = errorAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please rejailbreak to be able to bootstrap again.")
-                self.present(alertController, animated: true, completion: nil)
-                return
-            }
-        #endif
-        }
+        if (inst_prefix == "unset") { deviceCheck()}
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
@@ -94,6 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData[section].count
     }
+    
     
     // MARK: - Viewtable for Cydia/Zebra/Restore Rootfs cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -168,6 +151,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return nil
     }
     // MARK: - Actions action + actions for alertController
+    @objc func aboutTapped() {
+        let revision = Bundle.main.infoDictionary?["REVISION"] as? String
+        let alert = UIAlertController(title: "About palera1n", message: "version 1.0 • (\(revision ?? ""))", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Discord", style: UIAlertAction.Style.default, handler: { action in
+            UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
+        }))
+        alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertAction.Style.default, handler: { action in
+            UIApplication.shared.open(URL(string: "https://twitter.com/palera1n")!)
+        }))
+        alert.addAction(UIAlertAction(title: "Website", style: UIAlertAction.Style.default, handler: { action in
+            UIApplication.shared.open(URL(string: "https://palera.in/")!)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @objc func openersTapped() {
         var alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -175,53 +176,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         // Create actions for each app to be opened
-        let openSAction = UIAlertAction(title: "Open Sileo", style: .default) { (_) in
-            if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoStore") {
-            } else {
-                if LSApplicationWorkspace.default().openApplication(withBundleID: "org.coolstar.SileoNightly") {
-                    return
-                }
-            }
-        }
-        
-        let openZAction = UIAlertAction(title: "Open Zebra", style: .default) { (_) in
-            if LSApplicationWorkspace.default().openApplication(withBundleID: "xyz.willy.Zebra") {
-            }
-        }
-        
-        let openTHAction = UIAlertAction(title: "Open TrollHelper", style: .default) { (_) in
-            if LSApplicationWorkspace.default().openApplication(withBundleID: "com.opa334.trollstorepersistencehelper") {
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-        }
-        
-        alertController.addAction(openSAction)
-        alertController.addAction(openZAction)
-        alertController.addAction(openTHAction)
-        alertController.addAction(cancelAction)
-        
+        alertController.addAction(UIAlertAction(title: "Open Sileo", style: .default) { (_) in
+            if (openApp("org.coolstar.SileoStore")){}else{_=openApp("org.coolstar.SileoStore")}})
+        alertController.addAction(UIAlertAction(title: "Open Zebra", style: .default) { (_) in _=openApp("xyz.willy.Zebra")})
+        alertController.addAction(UIAlertAction(title: "Open TrollHelper", style: .default) { (_) in _=openApp("com.opa334.trollstorepersistencehelper")})
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in})
         present(alertController, animated: true, completion: nil)
     }
     
     @objc func actionsTapped() {
         var type = "Unknown"
-        if rootful {
-            type = "Rootful"
-        } else if !rootful {
-            type = "Rootless"
-        }
-        
+        if rootful { type = "Rootful" }
+        else if !rootful { type = "Rootless" }
         var installed = "False"
-        if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-            installed = "True"
-        }
+        if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = "True"}
         
         let processInfo = ProcessInfo()
         let systemVersion = processInfo.operatingSystemVersionString
         let arch = String(cString: NXGetLocalArchInfo().pointee.name)
-        
         
         var alertController = UIAlertController(title: """
         Type: \(type)
@@ -238,39 +210,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             """, message: nil, preferredStyle: .alert)
         }
         
-        let respringAction = UIAlertAction(title: "Respring", style: .default) { (_) in
+        alertController.addAction(UIAlertAction(title: "Respring", style: .default) { (_) in
             spawn(command: "\(self.inst_prefix)/usr/bin/sbreload", args: [], root: true)
-        }
-        let softrebootAction = UIAlertAction(title: "Userspace Reboot", style: .default) { (_) in
+        })
+        alertController.addAction(UIAlertAction(title: "Userspace Reboot", style: .default) { (_) in
             spawn(command: "\(self.inst_prefix)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
-        }
-        let uicacheAction = UIAlertAction(title: "UICache", style: .default) { (_) in
+        })
+        alertController.addAction(UIAlertAction(title: "UICache", style: .default) { (_) in
             spawn(command: "\(self.inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
-        }
-        let daemonAction = UIAlertAction(title: "Launch Daemons", style: .default) { (_) in
+        })
+        alertController.addAction(UIAlertAction(title: "Launch Daemons", style: .default) { (_) in
             spawn(command: "\(self.inst_prefix)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
-        }
-        let mountAction = UIAlertAction(title: "Mount Directories", style: .default) { (_) in
+        })
+        alertController.addAction(UIAlertAction(title: "Mount Directories", style: .default) { (_) in
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-        }
-        let enabletweaksAction = UIAlertAction(title: "Enable Tweaks", style: .default) { (_) in
-            if self.rootful {
-                spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
-            } else {
-                spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
-            }
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-        }
-        alertController.addAction(respringAction)
-        alertController.addAction(uicacheAction)
-        alertController.addAction(daemonAction)
-        alertController.addAction(mountAction)
-        alertController.addAction(enabletweaksAction)
-        alertController.addAction(softrebootAction)
-        alertController.addAction(cancelAction)
-        
+        })
+        alertController.addAction(UIAlertAction(title: "Enable Tweaks", style: .default) { (_) in
+            if self.rootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
+            else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
+        })
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in})
         present(alertController, animated: true, completion: nil)
     }
     
@@ -333,12 +293,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         DispatchQueue.main.asyncAfter(deadline: delayTime) {
                             let alertController = self.errorAlert(title: "Could not copy file to disk", message: "\(writeError)")
                             if let presentedVC = self.presentedViewController {
-                                presentedVC.dismiss(animated: true) {
-                                    self.present(alertController, animated: true)
-                                }
-                            } else {
-                                self.present(alertController, animated: true)
-                            }
+                                presentedVC.dismiss(animated: true) {self.present(alertController, animated: true)}
+                            } else {self.present(alertController, animated: true)}
                         }
                         NSLog("[palera1n] Could not copy file to disk: \(error?.localizedDescription ?? "Unknown error")")
                         return
@@ -351,12 +307,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     DispatchQueue.main.asyncAfter(deadline: delayTime) {
                         let alertController = self.errorAlert(title: "Could not download file", message: "\(error?.localizedDescription ?? "Unknown error")")
                         if let presentedVC = self.presentedViewController {
-                            presentedVC.dismiss(animated: true) {
-                                self.present(alertController, animated: true)
-                            }
-                        } else {
-                            self.present(alertController, animated: true)
-                        }
+                            presentedVC.dismiss(animated: true) {self.present(alertController, animated: true)}
+                        } else {self.present(alertController, animated: true)}
                     }
                     NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
                     return
@@ -387,12 +339,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print("[strap] User initiated strap process...")
             DispatchQueue.global(qos: .utility).async { [self] in
                 var debName = ""
-                if self.InstallSileo {
-                    debName = "sileo.deb"
-                }
-                if self.InstallZebra {
-                    debName = "zebra.deb"
-                }
+                if self.InstallSileo { debName = "sileo.deb" }
+                if self.InstallZebra { debName = "zebra.deb" }
                 
                 if rootful {
                     downloadFile(file: "bootstrap.tar", server: "https://static.palera.in")
@@ -425,13 +373,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         self.present(loadingAlert, animated: true) {
                             DispatchQueue.global(qos: .utility).async {
                                 spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-                                
-                                if rootful {
-                                    spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-                                }
-                                
+                                if rootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)}
                                 let ret = spawn(command: helper, args: ["-i", tar], root: true)
-                                
                                 spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
                                 spawn(command: "\(inst_prefix)/usr/bin/chown", args: ["root:wheel", "\(inst_prefix)/usr/bin/sudo"], root: true)
                                 
@@ -673,9 +616,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         let ret = spawn(command: helper, args: ["-f"], root: true)
-        
         let rootful = ret == 0 ? false : true
-        
         let inst_prefix = rootful ? "/" : "/var/jb"
         
         print("[strap] Installing Zebra")
@@ -751,7 +692,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let installingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
                 installingIndicator.hidesWhenStopped = true
                 installingIndicator.startAnimating()
-                
                 installingAlert?.view.addSubview(installingIndicator)
                 self.present(installingAlert!, animated: true)
             }
