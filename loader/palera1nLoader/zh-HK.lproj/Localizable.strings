@@ -1,0 +1,62 @@
+/*
+Localizable.strings
+palera1nLoader
+Chinese (Hong Kong)
+*/
+
+"INSTALL" = "安裝";
+"DEBUG" = "除錯";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"UTIL_CELL" = "工具";
+"OPEN_CELL" = "開啟器";
+"REVERT_CELL" = "還原系統";
+"PM_SUBTEXT" = "在這裏選擇你最喜愛的套件包管理器，建議新手使用Sileo。:)";
+"RESPRING" = "重啟主畫面";
+"US_REBOOT" = "重啟用戶空間";
+"UICACHE" = "重建圖示快取";
+"DAEMONS" = "載入守護進程";
+"MOUNT" = "掛載資料夾";
+"TWEAKS" = "載入插件";
+"TYPE_INFO" = "類型：";
+"INSTALL_INFO" = "已安裝：";
+"ARCH_INFO" = "架構：";
+"VERSION_INFO" = "版本：";
+"TRUE" = "是";
+"FALSE" = "否";
+"OPENER_MSG" = "開啟應用程式";
+"OPENER_SILEO" = "開啟 Sileo";
+"OPENER_ZEBRA" = "開啟 Zebra";
+"OPENER_TH" = "開啟 TrollHelper";
+"DISCORD" = "Discord";
+"TWITTER" = "Twitter";
+"WEBSITE" = "網站";
+"ROOTFUL" = "有根";
+"ROOTLESS" = "無根";
+"REVERT_SUBTEXT" = "這個按鈕不能在有根上使用";
+"ABOUT" = "關於 palera1n";
+"CANCEL" = "取消";
+"DOWNLOADING" = "下載中⋯⋯";
+"INSTALLING" = "安裝中⋯⋯";
+"DOWNLOAD_FAIL" = "無法下載檔案";
+"DOWNLOAD_ERROR" = "未知的錯誤";
+"SAVE_FAIL" = "無法把檔案複製到磁碟上";
+"INSTALL_DONE" = "安裝完成";
+"INSTALL_DONE_SUB" = "你現在可以關閉此應用程式";
+"STRAP_ERROR" = "安裝底層越獄檔案時發生錯誤。";
+"STATUS" = "狀態";
+"DPKG_ERROR" = "套件安裝失敗";
+"UICACHE_ERROR" = "重建圖示快取失敗";
+"CONFIRM" = "確定";
+"REVERT_WARNING" = "刪除/var/jb及取消註冊越獄應用程式，然後會提示關閉這個安裝器。";
+"SILEO_REINSTALL" = "你確定你要重新安裝Sileo嗎？";
+"ZEBRA_REINSTALL" = "你確定你要重新安裝Zebra嗎？";
+"REINSTALL" = "重新安裝";
+"ENJOY" = "請慢用！";
+"SILEO_FAIL" = "安裝Sileo失敗";
+"ZEBRA_FAIL" = "安裝Zebra失敗";
+"REVERT_FAIL" = "移除越獄失敗";
+"CLOSE_APP" = "你現在可關閉這個應用程式。";
+"REVERT_DONE" = "完成移除";
+"UNREGISTER_FAIL" = "取消註冊失敗";
+"CLOSE" = "關閉";

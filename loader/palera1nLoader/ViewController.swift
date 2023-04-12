@@ -15,11 +15,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var rootful : Bool = false
     var inst_prefix: String = "unset"
 
-    var tableData = [["Sileo", "Zebra"], ["Utilities", "Openers", "Revert Install"]]
-    let sectionTitles = ["INSTALL", "DEBUG"]
+    var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
+    let sectionTitles = [local("INSTALL"), local("DEBUG")]
+    
+    private func deviceCheck() -> Void {
+    #if targetEnvironment(simulator)
+        print("[palera1n] Running in simulator")
+    #else
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
+            let alertController = errorAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
+            print("[palera1n] Could not find helper?")
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        let ret = spawn(command: helper, args: ["-f"], root: true)
+        print("RET TEST: \(ret)")
+        rootful = ret == 0 ? false : true
+        inst_prefix = rootful ? "/" : "/var/jb"
+        print("ROOTFULL: \(rootful)")
+        print("PREIX: \(inst_prefix)")
+
+        let retRFR = spawn(command: helper, args: ["-n"], root: true)
+        print("retRFR: \(retRFR)")
+
+        let rfr = retRFR == 0 ? false : true
+        print("rfr: \(rfr)")
+
+        if rfr {
+            let alertController = ViewController().errorAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please rejailbreak to be able to bootstrap again.")
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+    #endif
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (inst_prefix == "unset") { deviceCheck()}
         
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
@@ -39,12 +73,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         
-        let aboutBtn: UIButton = UIButton(type: UIButton.ButtonType.custom)
-        aboutBtn.setImage(UIImage(systemName: "info.circle"), for: UIControl.State.normal)
-        aboutBtn.addTarget(self, action: #selector(self.aboutTapped), for: UIControl.Event.touchUpInside)
-        let navRight = UIBarButtonItem(customView: aboutBtn)
-        self.navigationItem.rightBarButtonItem = navRight
-
+        let discord = UIAction(title: local("DISCORD"), image: UIImage(named: "discord-fill")) { (_) in
+            UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
+        }
+        let twitter = UIAction(title: local("TWITTER"), image: UIImage(named: "twitter-fill")) { (_) in
+            UIApplication.shared.open(URL(string: "https://twitter.com/palera1n")!)
+        }
+        let website = UIAction(title: local("WEBSITE"), image: UIImage(systemName: "globe.europe.africa")) { (_) in
+            UIApplication.shared.open(URL(string: "https://palera.in")!)
+        }
+ 
+        var type = "Unknown"
+        if rootful { type = local("ROOTFUL") }
+        else if !rootful { type = local("ROOTLESS") }
+        var installed = local("FALSE")
+        if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = local("TRUE")}
+        let processInfo = ProcessInfo()
+        let systemVersion = processInfo.operatingSystemVersionString
+        let arch = String(cString: NXGetLocalArchInfo().pointee.name)
+        
+        let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [discord, twitter, website])
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "info.circle"), primaryAction: nil, menu: menu)
+        
+        
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "palera1n"
@@ -63,10 +114,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
+
         view.addSubview(tableView)
 
         // Check for root permissions // also include checks if user is able to use Loader
-        if (inst_prefix == "unset") { deviceCheck()}
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,11 +132,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: - Viewtable for Cydia/Zebra/Restore Rootfs cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
         
-        if tableData[indexPath.section][indexPath.row] == "Revert Install" {
+        if tableData[indexPath.section][indexPath.row] == local("REVERT_CELL") {
             if FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
                 cell.isHidden = false
                 cell.isUserInteractionEnabled = true
@@ -93,14 +144,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
-                cell.detailTextLabel?.text = "Rootful cannot use this button :("
+                cell.detailTextLabel?.text = local("REVERT_SUBTEXT")
                 cell.selectionStyle = .none
             } else {
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
                 cell.selectionStyle = .none
             }
-        } else if tableData[indexPath.section][indexPath.row] == "Sileo" || tableData[indexPath.section][indexPath.row] == "Zebra" {
+        } else if tableData[indexPath.section][indexPath.row] == local("SILEO") || tableData[indexPath.section][indexPath.row] == local("ZEBRA") {
             guard Bundle.main.path(forAuxiliaryExecutable: "Helper") != nil else {
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
@@ -113,23 +164,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.selectionStyle = .default
         }
         
-        if tableData[indexPath.section][indexPath.row] == "Sileo" {
+        if tableData[indexPath.section][indexPath.row] == local("SILEO") {
             let originalImage = UIImage(named: "Sileo_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
                 originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
-        } else if tableData[indexPath.section][indexPath.row] == "Zebra" {
+        } else if tableData[indexPath.section][indexPath.row] == local("ZEBRA") {
             let originalImage = UIImage(named: "Zebra_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
                 originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
         }
-        if tableData[indexPath.section][indexPath.row] == "Utilities" || tableData[indexPath.section][indexPath.row] == "Openers"{
+        if tableData[indexPath.section][indexPath.row] == local("UTIL_CELL") || tableData[indexPath.section][indexPath.row] == local("OPEN_CELL"){
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.textColor = .systemOrange
+            cell.textLabel?.textColor = UIColor(red: 0.89, green: 0.52, blue: 0.43, alpha: 1.00)
             cell.selectionStyle = .default
         }
         return cell
@@ -145,109 +196,106 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if section == tableData.count - 1 {
                 return "palera1n Loader lite • 1.0 (\(revision))"
             } else if section == 0 {
-                return "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new :)"
+                return local("PM_SUBTEXT")
             }
         }
         return nil
     }
     // MARK: - Actions action + actions for alertController
-    @objc func aboutTapped() {
-        let revision = Bundle.main.infoDictionary?["REVISION"] as? String
-        let alert = UIAlertController(title: "About palera1n", message: "version 1.0 • (\(revision ?? ""))", preferredStyle: UIAlertController.Style.alert)
-        
-        alert.addAction(UIAlertAction(title: "Discord", style: UIAlertAction.Style.default, handler: { action in
-            UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
-        }))
-        alert.addAction(UIAlertAction(title: "Twitter", style: UIAlertAction.Style.default, handler: { action in
-            UIApplication.shared.open(URL(string: "https://twitter.com/palera1n")!)
-        }))
-        alert.addAction(UIAlertAction(title: "Website", style: UIAlertAction.Style.default, handler: { action in
-            UIApplication.shared.open(URL(string: "https://palera.in/")!)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+
     
     @objc func openersTapped() {
-        var alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .actionSheet)
+        var alertController = UIAlertController(title: local("OPENER_MSG"), message: nil, preferredStyle: .actionSheet)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            alertController = UIAlertController(title: "Open an application", message: nil, preferredStyle: .alert)
+            alertController = UIAlertController(title: local("OPENER_MSG"), message: nil, preferredStyle: .alert)
         }
         
         // Create actions for each app to be opened
-        alertController.addAction(UIAlertAction(title: "Open Sileo", style: .default) { (_) in
-            if (openApp("org.coolstar.SileoStore")){}else{_=openApp("org.coolstar.SileoStore")}})
-        alertController.addAction(UIAlertAction(title: "Open Zebra", style: .default) { (_) in _=openApp("xyz.willy.Zebra")})
-        alertController.addAction(UIAlertAction(title: "Open TrollHelper", style: .default) { (_) in _=openApp("com.opa334.trollstorepersistencehelper")})
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in})
+        let sileo = UIAlertAction(title: local("OPENER_SILEO"), style: .default) { (_) in
+            if (openApp("org.coolstar.SileoStore")){}else{_=openApp("org.coolstar.SileoStore")}}
+        let zebra = UIAlertAction(title: local("OPENER_ZEBRA"), style: .default) { (_) in _=openApp("xyz.willy.Zebra")}
+        let trollhelper = UIAlertAction(title: local("OPENER_TH"), style: .default) { (_) in _=openApp("com.opa334.trollstorepersistencehelper")}
+        
+        sileo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        sileo.setValue(UIImage(systemName: "shippingbox.circle.fill"), forKey: "image")
+        zebra.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        zebra.setValue(UIImage(systemName: "arrow.down.circle"), forKey: "image")
+        trollhelper.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        trollhelper.setValue(UIImage(systemName: "iphone.circle"), forKey: "image")
+        alertController.addAction(sileo)
+        alertController.addAction(zebra)
+        alertController.addAction(trollhelper)
+        alertController.addAction(UIAlertAction(title: local("CANCE:"), style: .cancel) { (_) in})
         present(alertController, animated: true, completion: nil)
     }
     
     @objc func actionsTapped() {
-        var type = "Unknown"
-        if rootful { type = "Rootful" }
-        else if !rootful { type = "Rootless" }
-        var installed = "False"
-        if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = "True"}
-        
-        let processInfo = ProcessInfo()
-        let systemVersion = processInfo.operatingSystemVersionString
-        let arch = String(cString: NXGetLocalArchInfo().pointee.name)
-        
-        var alertController = UIAlertController(title: """
-        Type: \(type)
-        Installed: \(installed)
-        Architecture: \(arch)
-        \(systemVersion)
-        """, message: nil, preferredStyle: .actionSheet)
+        var pre = "/var/jb"
+        if rootful { pre = "/"}
+
+        var alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .actionSheet)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            alertController = UIAlertController(title: """
-            Type: \(type)
-            Installed: \(installed)
-            Architecture: \(arch)
-            \(systemVersion)
-            """, message: nil, preferredStyle: .alert)
+            alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .alert)
         }
-        
-        alertController.addAction(UIAlertAction(title: "Respring", style: .default) { (_) in
-            spawn(command: "\(self.inst_prefix)/usr/bin/sbreload", args: [], root: true)
-        })
-        alertController.addAction(UIAlertAction(title: "Userspace Reboot", style: .default) { (_) in
-            spawn(command: "\(self.inst_prefix)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
-        })
-        alertController.addAction(UIAlertAction(title: "UICache", style: .default) { (_) in
-            spawn(command: "\(self.inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
-        })
-        alertController.addAction(UIAlertAction(title: "Launch Daemons", style: .default) { (_) in
-            spawn(command: "\(self.inst_prefix)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
-        })
-        alertController.addAction(UIAlertAction(title: "Mount Directories", style: .default) { (_) in
+        let respring = UIAlertAction(title: local("RESPRING"), style: .default) { (_) in
+            spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)
+        }
+        let usReboot = UIAlertAction(title: local("US_REBOOT"), style: .default) { (_) in
+            spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
+        }
+        let uicache = UIAlertAction(title: local("UICACHE"), style: .default) { (_) in
+            spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)
+        }
+        let daemons = UIAlertAction(title: local("DAEMONS"), style: .default) { (_) in
+            spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
+        }
+        let mount = UIAlertAction(title: local("MOUNT"), style: .default) { (_) in
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-        })
-        alertController.addAction(UIAlertAction(title: "Enable Tweaks", style: .default) { (_) in
+        }
+        let tweaks = UIAlertAction(title: local("TWEAKS"), style: .default) { (_) in
             if self.rootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
             else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
-        })
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in})
+        }
+        respring.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        usReboot.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        uicache.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        daemons.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        mount.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        tweaks.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        respring.setValue(UIImage(systemName: "arrow.clockwise.circle"), forKey: "image")
+        usReboot.setValue(UIImage(systemName: "power.circle"), forKey: "image")
+        uicache.setValue(UIImage(systemName: "xmark.circle"), forKey: "image")
+        daemons.setValue(UIImage(systemName: "play.circle"), forKey: "image")
+        mount.setValue(UIImage(systemName: "folder.circle"), forKey: "image")
+        tweaks.setValue(UIImage(systemName: "iphone.circle"), forKey: "image")
+
+        alertController.addAction(respring)
+        alertController.addAction(usReboot)
+        alertController.addAction(uicache)
+        alertController.addAction(daemons)
+        alertController.addAction(mount)
+        alertController.addAction(tweaks)
+
+        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
         present(alertController, animated: true, completion: nil)
     }
     
+
     // MARK: - Main strapping process
-    private func deleteFile(file: String) -> Void {
+     func deleteFile(file: String) -> Void {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
         try? FileManager.default.removeItem(at: fileURL)
     }
-    
-    private func downloadFile(file: String, server: String = "https://static.palera.in/rootless") -> Void {
+
+     func downloadFile(file: String, server: String = "https://static.palera.in/rootless") -> Void {
         var downloadAlert: UIAlertController? = nil
         
         deleteFile(file: file)
         
         DispatchQueue.main.async {
-            downloadAlert = UIAlertController(title: "Downloading...", message: "File: \(file)", preferredStyle: .alert)
+            downloadAlert = UIAlertController(title: local("DOWNLOADING"), message: "File: \(file)", preferredStyle: .alert)
             let downloadIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 15, width: 50, height: 50))
             downloadIndicator.hidesWhenStopped = true
             downloadIndicator.startAnimating()
@@ -268,7 +316,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if server.contains("cdn.nickchan.lol") {
                         DispatchQueue.main.async {
                             downloadAlert?.dismiss(animated: true, completion: nil)
-                            let alertController = self.errorAlert(title: "Could not download file", message: "\(error?.localizedDescription ?? "Unknown error")")
+                            let alertController = self.errorAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
                             self.present(alertController, animated: true, completion: nil)
                             NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")")
                         }
@@ -291,7 +339,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         downloadAlert?.dismiss(animated: true, completion: nil)
                         let delayTime = DispatchTime.now() + 0.2
                         DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                            let alertController = self.errorAlert(title: "Could not copy file to disk", message: "\(writeError)")
+                            let alertController = self.errorAlert(title: local("SAVE_FAIL"), message: "\(writeError)")
                             if let presentedVC = self.presentedViewController {
                                 presentedVC.dismiss(animated: true) {self.present(alertController, animated: true)}
                             } else {self.present(alertController, animated: true)}
@@ -305,7 +353,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     downloadAlert?.dismiss(animated: true, completion: nil)
                     let delayTime = DispatchTime.now() + 0.2
                     DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                        let alertController = self.errorAlert(title: "Could not download file", message: "\(error?.localizedDescription ?? "Unknown error")")
+                        let alertController = self.errorAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
                         if let presentedVC = self.presentedViewController {
                             presentedVC.dismiss(animated: true) {self.present(alertController, animated: true)}
                         } else {self.present(alertController, animated: true)}
@@ -318,12 +366,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         task.resume()
         semaphore.wait()
     }
-    
+
     var InstallSileo = false
     var InstallZebra = false
-    
-    private func strap() -> Void {
-        let alertController = errorAlert(title: "Install Completed", message: "You may close the app.")
+
+     func strap() -> Void {
+        let alertController = errorAlert(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -359,11 +407,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(debName).path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                         let msg = "Could not find package manager"
-                        print("[palera1n] \(msg)")
+                        print("[palera1n] \(msg)")    // MARK: - Main strapping process
                         return
                     }
                     
-                    let loadingAlert = UIAlertController(title: nil, message: "Installing...", preferredStyle: .alert)
+                    let loadingAlert = UIAlertController(title: nil, message: local("INSTALLING"), preferredStyle: .alert)
                     let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
                     loadingIndicator.hidesWhenStopped = true
                     loadingIndicator.startAnimating()
@@ -372,7 +420,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         // Installing... Alert
                         self.present(loadingAlert, animated: true) {
                             DispatchQueue.global(qos: .utility).async {
-                                spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+                                spawn(command: "/sbin/mount", args: ["-uw", "//preboot"], root: true)
                                 if rootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)}
                                 let ret = spawn(command: helper, args: ["-i", tar], root: true)
                                 spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
@@ -381,7 +429,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 DispatchQueue.main.async {
                                     if ret != 0 {
                                         loadingAlert.dismiss(animated: true) {
-                                            let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                            let alertController = self.errorAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
                                             self.present(alertController, animated: true, completion: nil)
                                             print("[strap] Error installing bootstrap. Status: \(ret)")
                                             return
@@ -393,7 +441,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                         DispatchQueue.main.async {
                                             if ret != 0 {
                                                 loadingAlert.dismiss(animated: true) {
-                                                    let alertController = self.errorAlert(title: "Error installing bootstrap", message: "Status: \(ret)")
+                                                    let alertController = self.errorAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
                                                     self.present(alertController, animated: true, completion: nil)
                                                     print("[strap] Error installing bootstrap. Status: \(ret)")
                                                     return
@@ -483,7 +531,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                 
                                                 DispatchQueue.main.async {
                                                     if ret != 0 {
-                                                        let alertController = self.errorAlert(title: "Failed to install packages", message: "Status: \(ret)")
+                                                        let alertController = self.errorAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
                                                         self.present(alertController, animated: true, completion: nil)
                                                         print("[strap] Failed to install packages. Status: \(ret)")
                                                         return
@@ -493,7 +541,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                         let ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
                                                         DispatchQueue.main.async {
                                                             if ret != 0 {
-                                                                let alertController = self.errorAlert(title: "Failed to uicache", message: "Status: \(ret)")
+                                                                let alertController = self.errorAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
                                                                 self.present(alertController, animated: true, completion: nil)
                                                                 print("[strap] Failed to uicache. Status: \(ret)")
                                                                 return
@@ -520,46 +568,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+
     // MARK: - Main table cells
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case "Utilities":
+        case local("UTIL_CELL"):
             actionsTapped()
-        case "Openers":
+        case local("OPEN_CELL"):
             openersTapped()
-        case "Revert Install":
-            var alertController = UIAlertController(title: "Confirm", message: "Wipes /var/jb and unregisters jailbreak applications, after that you will be prompt to close the loader.", preferredStyle: .actionSheet)
+        case local("REVERT_CELL"):
+            var alertController = UIAlertController(title: local("CONFIRM"), message: local("REVERT_WARNING"), preferredStyle: .actionSheet)
             if UIDevice.current.userInterfaceIdiom == .pad {
-                alertController = UIAlertController(title: "Confirm", message: "Wipes /var/jb and unregisters jailbreak applications, after that you will be prompt to close the loader.", preferredStyle: .alert)
+                alertController = UIAlertController(title: local("CONFIRM"), message: local("REVERT_WARNING"), preferredStyle: .alert)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: "Revert Install", style: .destructive) { _ in
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in
                 self.nuke()
             }
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)
-        case "Sileo":
+        case local("SILEO"):
             if FileManager.default.fileExists(atPath: "/Applications/Sileo.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo-Nightly.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Sileo-Nightly.app") {
-                var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Sileo?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_REINSTALL"), preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Sileo?", preferredStyle: .alert)
+                    alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_REINSTALL"), preferredStyle: .alert)
                 }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Re-install", style: .default) { _ in
+                let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+                let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
                     self.reInstallSileo()
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to Install Sileo?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_REINSTALL"), preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to Install Sileo?", preferredStyle: .alert)
+                    alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_REINSTALL"), preferredStyle: .alert)
                 }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Install", style: .default) { _ in
+                let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+                let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
                     self.reInstallSileo()
                 }
                 alertController.addAction(cancelAction)
@@ -569,26 +618,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.InstallSileo = true
                 self.strap()
             }
-        case "Zebra":
+        case local("ZEBRA"):
             if FileManager.default.fileExists(atPath: "/Applications/Zebra.app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/Zebra.app") {
-                var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Zebra?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"), preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to re-install Zebra?", preferredStyle: .alert)
+                    alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"), preferredStyle: .alert)
                 }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Re-install", style: .default) { _ in
+                let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+                let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
                     self.reInstallZebra()
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                var alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to install Zebra?", preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"), preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    alertController = UIAlertController(title: "Confirm", message: "Are you sure you want to install Zebra?", preferredStyle: .alert)
+                    alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"), preferredStyle: .alert)
                 }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: "Install", style: .default) { _ in
+                let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+                let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
                     self.reInstallZebra()
                 }
                 alertController.addAction(cancelAction)
@@ -608,7 +657,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Functions for (Re)installing Sileo/Zebra
     func reInstallZebra() {
         var installingAlert: UIAlertController? = nil
-        let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
+        let alertController = errorAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -628,7 +677,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
             DispatchQueue.main.async {
-                installingAlert = UIAlertController(title: "Installing...", message: nil, preferredStyle: .alert)
+                installingAlert = UIAlertController(title: local("INSTALLING"), message: nil, preferredStyle: .alert)
                 let installingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
                 installingIndicator.hidesWhenStopped = true
                 installingIndicator.startAnimating()
@@ -640,7 +689,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.global(qos: .utility).async { [self] in
                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("zebra.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                     installingAlert?.dismiss(animated: true, completion: nil)
-                    let alertController = self.errorAlert(title: "Failed to install Zebra", message: "")
+                    let alertController = self.errorAlert(title: local("ZEBRA_FAIL"), message: "")
                     self.present(alertController, animated: true, completion: nil)
                     print("[strap] Failed to find Zebra.")
                     return
@@ -650,7 +699,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 DispatchQueue.main.async {
                     if ret != 0 {
                         installingAlert?.dismiss(animated: true, completion: nil)
-                        let alertController = self.errorAlert(title: "Failed to install Zebra", message: "Status: \(ret)")
+                        let alertController = self.errorAlert(title: local("ZEBRA_FAIL"), message: "Status: \(ret)")
                         self.present(alertController, animated: true, completion: nil)
                         print("[strap] Failed to install Zebra. Status: \(ret)")
                         return
@@ -668,7 +717,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func reInstallSileo() {
         var installingAlert: UIAlertController? = nil
-        let alertController = errorAlert(title: "Install Completed", message: "Enjoy!")
+        let alertController = errorAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -688,7 +737,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
             DispatchQueue.main.async {
-                installingAlert = UIAlertController(title: "Installing...", message: nil, preferredStyle: .alert)
+                installingAlert = UIAlertController(title: local("INSTALLING"), message: nil, preferredStyle: .alert)
                 let installingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
                 installingIndicator.hidesWhenStopped = true
                 installingIndicator.startAnimating()
@@ -699,7 +748,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.global(qos: .utility).async { [self] in
                 guard let deb = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("sileo.deb").path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) else {
                     installingAlert?.dismiss(animated: true, completion: nil)
-                    let alertController = self.errorAlert(title: "Failed to install Sileo", message: "")
+                    let alertController = self.errorAlert(title: local("SILEO_FAIL"), message: "")
                     self.present(alertController, animated: true, completion: nil)
                     print("[strap] Failed to find Sileo.")
                     return
@@ -709,7 +758,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 DispatchQueue.main.async {
                     if ret != 0 {
                         installingAlert?.dismiss(animated: true, completion: nil)
-                        let alertController = self.errorAlert(title: "Failed to install Sileo", message: "Status: \(ret)")
+                        let alertController = self.errorAlert(title: local("SILEO_FAIL"), message: "Status: \(ret)")
                         self.present(alertController, animated: true, completion: nil)
                         print("[strap] Failed to install Sileo. Status: \(ret)")
                         return
@@ -728,7 +777,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func nuke() {
         
         print("[nuke] Starting nuke process...")
-        let alertController = errorAlert(title: "Remove Completed", message: "You may close the app.")
+        let alertController = errorAlert(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -768,7 +817,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let ret = spawn(command: helper, args: ["-r"], root: true)
                 DispatchQueue.main.async {
                     if ret != 0 {
-                        let alertController = self.errorAlert(title: "Failed to remove jailbreak", message: "Status: \(ret)")
+                        let alertController = self.errorAlert(title: local("REVERT_FAIL"), message: "Status: \(ret)")
                         self.present(alertController, animated: true, completion: nil)
                         print("[nuke] Failed to remove jailbreak: \(ret)")
                         return
@@ -787,7 +836,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Main alerts used throughout
     func errorAlert(title: String, message: String) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Close", style: .default) { _ in
+        alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 // Exit the app

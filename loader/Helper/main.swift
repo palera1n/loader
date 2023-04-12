@@ -111,9 +111,9 @@ func main() {
             rm("/var/jb")
         }
     } else if (args[1] == "-f") {
-        if rootfulCheck { fatalError() }
+        if rootfulCheck {  exit(1)  }
     } else if (args[1] == "-n") {
-        if rootfulCheck && forceRevertCheck { fatalError() }
+        if rootfulCheck && forceRevertCheck { exit(1) }
     } else {
         NSLog("[palera1n helper] Invalid argument")
     }

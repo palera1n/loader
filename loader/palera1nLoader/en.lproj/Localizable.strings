@@ -1,0 +1,62 @@
+/* 
+Localizable.strings
+palera1nLoader
+English
+*/
+
+"INSTALL" = "INSTALL";
+"DEBUG" = "DEBUG";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"UTIL_CELL" = "Utilities";
+"OPEN_CELL" = "Openers";
+"REVERT_CELL" = "Revert Install";
+"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new :)";
+"RESPRING" = "Respring";
+"US_REBOOT" = "Userspace Reboot";
+"UICACHE" = "UICache";
+"DAEMONS" = "Launch Daemons";
+"MOUNT" = "Mount Directories";
+"TWEAKS" = "Enable Tweaks";
+"TYPE_INFO" = "Type:";
+"INSTALL_INFO" = "Installed:";
+"ARCH_INFO" = "Architecture:";
+"VERSION_INFO" = "Version:";
+"TRUE" = "True";
+"FALSE" = "False";
+"OPENER_MSG" = "Open an application";
+"OPENER_SILEO" = "Open Sileo";
+"OPENER_ZEBRA" = "Open Zebra";
+"OPENER_TH" = "Open TrollHelper";
+"DISCORD" = "Discord";
+"TWITTER" = "Twitter";
+"WEBSITE" = "Website";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
+"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
+"ABOUT" = "About palera1n";
+"CANCEL" = "Cancel";
+"DOWNLOADING" = "Downloading...";
+"INSTALLING" = "Installing...";
+"DOWNLOAD_FAIL" = "Could not download file";
+"DOWNLOAD_ERROR" = "Unknown error";
+"SAVE_FAIL" = "Could not copy file to disk";
+"INSTALL_DONE" = "Install Completed";
+"INSTALL_DONE_SUB" = "You may close the app.";
+"STRAP_ERROR" = "Error installing bootstrap";
+"STATUS" = "Status";
+"DPKG_ERROR" = "Failed to install packages";
+"UICACHE_ERROR" = "Failed to run UICache";
+"CONFIRM" = "Confirm";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after that you will be prompt to close the loader.";
+"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
+"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
+"REINSTALL" = "Re-install";
+"ENJOY" = "Enjoy!";
+"SILEO_FAIL" = "Failed to install Sileo";
+"ZEBRA_FAIL" = "Failed to install Zebra";
+"REVERT_FAIL" = "Failed to remove jailbreak";
+"CLOSE_APP" = "You may close the app.";
+"REVERT_DONE" = "Remove Completed";
+"UNREGISTER_FAIL" = "Failed to unregister";
+"CLOSE" = "Close";

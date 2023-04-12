@@ -1,0 +1,62 @@
+/*
+Localizable.strings
+palera1nLoader
+Japanese
+*/
+
+"INSTALL" = "インストール";
+"DEBUG" = "DEBUG";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"UTIL_CELL" = "ユーティリティ";
+"OPEN_CELL" = "アプリケーションを開く";
+"REVERT_CELL" = "Revert Install";
+"PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
+"RESPRING" = "Respring";
+"US_REBOOT" = "Userspace Reboot";
+"UICACHE" = "UICache";
+"DAEMONS" = "Launch Daemons";
+"MOUNT" = "Mount Directories";
+"TWEAKS" = "Enable Tweaks";
+"TYPE_INFO" = "種類:";
+"INSTALL_INFO" = "インストール状況:";
+"ARCH_INFO" = "アーキテクチャ:";
+"VERSION_INFO" = "バージョン:";
+"TRUE" = "済";
+"FALSE" = "未";
+"OPENER_MSG" = "アプリケーションを開く";
+"OPENER_SILEO" = "Sileoを開く";
+"OPENER_ZEBRA" = "Zebraを開く";
+"OPENER_TH" = "TrollHelperを開く";
+"DISCORD" = "Discord";
+"TWITTER" = "Twitter";
+"WEBSITE" = "Webサイト";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
+"REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
+"ABOUT" = "palera1nについて";
+"CANCEL" = "キャンセル";
+"DOWNLOADING" = "ダウンロード中...";
+"INSTALLING" = "インストール中...";
+"DOWNLOAD_FAIL" = "ファイルをダウンロードできませんでした";
+"DOWNLOAD_ERROR" = "不明なエラー";
+"SAVE_FAIL" = "ファイルをディスクにコピーできませんでした";
+"INSTALL_DONE" = "インストール完了";
+"INSTALL_DONE_SUB" = "アプリを終了します。";
+"STRAP_ERROR" = "bootstrapのインストールに失敗しました";
+"STATUS" = "ステータス";
+"DPKG_ERROR" = "パッケージのインストールに失敗しました";
+"UICACHE_ERROR" = "UICacheの実行に失敗しました";
+"CONFIRM" = "確認";
+"REVERT_WARNING" = "この作業を続行すると、/var/jb以下にあるファイルは削除され、jailbreakアプリケーションの登録は全て消去されます。作業か完了すると、loaderの終了を促すメッセージが表示されます。";
+"SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
+"ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
+"REINSTALL" = "再インストール";
+"ENJOY" = "Enjoy!";
+"SILEO_FAIL" = "Sileoのインストールに失敗しました";
+"ZEBRA_FAIL" = "Zebraのインストールに失敗しました";
+"REVERT_FAIL" = "jailbreakの解除に失敗しました。";
+"CLOSE_APP" = "アプリを終了します。";
+"REVERT_DONE" = "削除完了";
+"UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
+"CLOSE" = "閉じる";
