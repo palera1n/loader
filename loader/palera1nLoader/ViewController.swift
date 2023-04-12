@@ -777,7 +777,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func nuke() {
         
         print("[nuke] Starting nuke process...")
-        let alertController = errorAlert(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             let msg = "Could not find helper?"
             print("[palera1n] \(msg)")
@@ -824,10 +823,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     print("[nuke] Jailbreak removed!")
                     loadingAlert.dismiss(animated: true) {
-                        let delayTime = DispatchTime.now() + 0.2
-                        DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                            self.present(alertController, animated: true)
-                        }
+                        spawn(command: "/cores/binpack/sbin/reboot", args: [""], root: true)
                     }
                 }
             }

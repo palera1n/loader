@@ -48,7 +48,7 @@ English
 "DPKG_ERROR" = "Failed to install packages";
 "UICACHE_ERROR" = "Failed to run UICache";
 "CONFIRM" = "Confirm";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after that you will be prompt to close the loader.";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
 "SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
 "ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
 "REINSTALL" = "Re-install";
