@@ -158,7 +158,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
-            fallthrough
+            cell.isUserInteractionEnabled = true
+            cell.accessoryType = .disclosureIndicator
+            cell.selectionStyle = .default
         case local("ZEBRA"):
             let originalImage = UIImage(named: "Zebra_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
