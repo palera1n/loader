@@ -135,13 +135,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
         
-        if tableData[indexPath.section][indexPath.row] == local("REVERT_CELL") {
+        switch tableData[indexPath.section][indexPath.row] {
+        case local("REVERT_CELL"):
             if FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
                 cell.isHidden = false
                 cell.isUserInteractionEnabled = true
                 cell.accessoryType = .disclosureIndicator
                 cell.textLabel?.textColor = .systemRed
-            } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
+            } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") {
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
                 cell.detailTextLabel?.text = local("REVERT_SUBTEXT")
@@ -151,40 +152,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.textLabel?.textColor = .gray
                 cell.selectionStyle = .none
             }
-        } else if tableData[indexPath.section][indexPath.row] == local("SILEO") || tableData[indexPath.section][indexPath.row] == local("ZEBRA") {
+        case local("SILEO"), local("ZEBRA"):
             guard Bundle.main.path(forAuxiliaryExecutable: "Helper") != nil else {
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
                 cell.selectionStyle = .default
                 return cell
-            };
+            }
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-//            cell.detailTextLabel?.text = tableData[indexPath.section][indexPath.row] == "Sileo" ? "Modern package manager" : "Familiar looking package manager"
             cell.selectionStyle = .default
-        }
-        
-        if tableData[indexPath.section][indexPath.row] == local("SILEO") {
+        case local("SILEO"):
             let originalImage = UIImage(named: "Sileo_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
                 originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
-        } else if tableData[indexPath.section][indexPath.row] == local("ZEBRA") {
+        case local("ZEBRA"):
             let originalImage = UIImage(named: "Zebra_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
                 originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
-        }
-        if tableData[indexPath.section][indexPath.row] == local("UTIL_CELL") || tableData[indexPath.section][indexPath.row] == local("OPEN_CELL"){
+        case local("UTIL_CELL"), local("OPEN_CELL"):
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.textColor = UIColor(red: 0.89, green: 0.52, blue: 0.43, alpha: 1.00)
             cell.selectionStyle = .default
+        default:
+            break
         }
         return cell
     }
+
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
