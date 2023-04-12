@@ -48,7 +48,7 @@ Japanese
 "DPKG_ERROR" = "パッケージのインストールに失敗しました";
 "UICACHE_ERROR" = "UICacheの実行に失敗しました";
 "CONFIRM" = "確認";
-"REVERT_WARNING" = "この作業を続行すると、/var/jb以下にあるファイルは削除され、jailbreakアプリケーションの登録は全て消去されます。作業か完了すると、loaderの終了を促すメッセージが表示されます。";
+"REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるファイルは全て削除され、jailbreakアプリケーションは消去されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
 "SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
 "ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
 "REINSTALL" = "再インストール";
