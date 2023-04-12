@@ -52,7 +52,7 @@ Chinese (Traditional)
 "SILEO_REINSTALL" = "你確定你要重新安裝Sileo嗎？";
 "ZEBRA_REINSTALL" = "你確定你要重新安裝Zebra嗎？";
 "REINSTALL" = "重新安裝";
-"ENJOY" = "請慢用！"
+"ENJOY" = "請慢用！";
 "SILEO_FAIL" = "安裝Sileo失敗";
 "ZEBRA_FAIL" = "安裝Zebra失敗";
 "REVERT_FAIL" = "移除越獄失敗";
