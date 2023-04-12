@@ -73,13 +73,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         
-        let discord = UIAction(title: local("DISCORD"), image: UIImage(named: "discord-fill")) { (_) in
+        let discord = UIAction(title: local("DISCORD"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
             UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
         }
-        let twitter = UIAction(title: local("TWITTER"), image: UIImage(named: "twitter-fill")) { (_) in
+        let twitter = UIAction(title: local("TWITTER"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
             UIApplication.shared.open(URL(string: "https://twitter.com/palera1n")!)
         }
-        let website = UIAction(title: local("WEBSITE"), image: UIImage(systemName: "globe.europe.africa")) { (_) in
+        let website = UIAction(title: local("WEBSITE"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
             UIApplication.shared.open(URL(string: "https://palera.in")!)
         }
  
@@ -194,7 +194,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
             if section == tableData.count - 1 {
-                return "palera1n Loader lite • 1.0 (\(revision))"
+                return "universal_lite • 1.0 (\(revision))"
             } else if section == 0 {
                 return local("PM_SUBTEXT")
             }
@@ -217,11 +217,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let trollhelper = UIAlertAction(title: local("OPENER_TH"), style: .default) { (_) in _=openApp("com.opa334.trollstorepersistencehelper")}
         
         sileo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        sileo.setValue(UIImage(systemName: "shippingbox.circle.fill"), forKey: "image")
+        sileo.setValue(UIImage(systemName: "arrow.up.forward.app"), forKey: "image")
         zebra.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        zebra.setValue(UIImage(systemName: "arrow.down.circle"), forKey: "image")
+        zebra.setValue(UIImage(systemName: "arrow.up.forward.app"), forKey: "image")
         trollhelper.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        trollhelper.setValue(UIImage(systemName: "iphone.circle"), forKey: "image")
+        trollhelper.setValue(UIImage(systemName: "arrow.up.forward.app"), forKey: "image")
         alertController.addAction(sileo)
         alertController.addAction(zebra)
         alertController.addAction(trollhelper)
