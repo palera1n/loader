@@ -134,7 +134,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
-        
+
         switch tableData[indexPath.section][indexPath.row] {
         case local("REVERT_CELL"):
             if FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
@@ -142,7 +142,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.isUserInteractionEnabled = true
                 cell.accessoryType = .disclosureIndicator
                 cell.textLabel?.textColor = .systemRed
-            } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") {
+            } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
                 cell.detailTextLabel?.text = local("REVERT_SUBTEXT")
@@ -152,28 +152,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.textLabel?.textColor = .gray
                 cell.selectionStyle = .none
             }
-        case local("SILEO"), local("ZEBRA"):
-            guard Bundle.main.path(forAuxiliaryExecutable: "Helper") != nil else {
-                cell.isUserInteractionEnabled = false
-                cell.textLabel?.textColor = .gray
-                cell.selectionStyle = .default
-                return cell
-            }
-            cell.isUserInteractionEnabled = true
-            cell.accessoryType = .disclosureIndicator
-            cell.selectionStyle = .default
         case local("SILEO"):
             let originalImage = UIImage(named: "Sileo_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
                 originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
+            fallthrough
         case local("ZEBRA"):
             let originalImage = UIImage(named: "Zebra_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
                 originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
+            cell.isUserInteractionEnabled = true
+            cell.accessoryType = .disclosureIndicator
+            cell.selectionStyle = .default
         case local("UTIL_CELL"), local("OPEN_CELL"):
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
@@ -182,6 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         default:
             break
         }
+
         return cell
     }
 
