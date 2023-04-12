@@ -823,7 +823,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                     print("[nuke] Jailbreak removed!")
                     loadingAlert.dismiss(animated: true) {
-                        spawn(command: "/cores/binpack/sbin/reboot", args: [""], root: true)
+                        spawn(command: helper, args: ["-d"], root: true)
                     }
                 }
             }

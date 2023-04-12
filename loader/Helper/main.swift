@@ -114,6 +114,8 @@ func main() {
         if rootfulCheck {  exit(1)  }
     } else if (args[1] == "-n") {
         if rootfulCheck && forceRevertCheck { exit(1) }
+    } else if (args[1] == "-d") {
+        reboot(0)
     } else {
         NSLog("[palera1n helper] Invalid argument")
     }
