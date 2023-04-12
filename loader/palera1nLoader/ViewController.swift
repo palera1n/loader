@@ -225,7 +225,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alertController.addAction(sileo)
         alertController.addAction(zebra)
         alertController.addAction(trollhelper)
-        alertController.addAction(UIAlertAction(title: local("CANCE:"), style: .cancel) { (_) in})
+        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
         present(alertController, animated: true, completion: nil)
     }
     
