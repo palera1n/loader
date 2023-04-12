@@ -38,6 +38,7 @@
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45F1F1AF29E70189008C21B0 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		45F3AD7029E70E3500ADF163 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CED0FAF429DC8C8800106BEF /* paleinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = paleinfo.c; sourceTree = "<group>"; };
 		CED0FAF529DC8C8800106BEF /* paleinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paleinfo.h; sourceTree = "<group>"; };
 		CED0FB0129DC8DC200106BEF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
@@ -202,6 +203,7 @@
 				ja,
 				"zh-HK",
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
@@ -259,6 +261,7 @@
 				45E7E0F929E650C30057741A /* en */,
 				45E7E0FB29E650CB0057741A /* ja */,
 				45F1F1AF29E70189008C21B0 /* zh-HK */,
+				45F3AD7029E70E3500ADF163 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
