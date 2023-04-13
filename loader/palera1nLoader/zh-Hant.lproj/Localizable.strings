@@ -51,8 +51,8 @@ Chinese (Traditional)
 "REVERT_WARNING" = "移除 /var/jb 及取消注冊越獄應用程式，然後重啟到末越獄狀態。";
 "SILEO_REINSTALL" = "你確定你要重新安裝Sileo嗎？";
 "ZEBRA_REINSTALL" = "你確定你要重新安裝Zebra嗎？";
-"SILEO_INSTALL" = "你確定你要重新安裝Sileo嗎？"; // may need fix
-"ZEBRA_INSTALL" = "你確定你要重新安裝Zebra嗎？"; // may need fix 
+"SILEO_INSTALL" = "你確定你想安裝Sileo嗎？";
+"ZEBRA_INSTALL" = "你確定你想安裝Zebra嗎？";
 "REINSTALL" = "重新安裝";
 "ENJOY" = "請慢用！";
 "SILEO_FAIL" = "安裝Sileo失敗";
