@@ -221,15 +221,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             (title: local("OPENER_SILEO"), imageName: "arrow.up.forward.app", handler: {
                 if (openApp("org.coolstar.SileoStore")) {
                 } else {
-                    _ = openApp("org.coolstar.SileoStore")
+                    _ = openApp("org.coolstar.SileoNightly")
                 }
             }),
-            (title: local("OPENER_ZEBRA"), imageName: "arrow.up.forward.app", handler: {
-                _ = openApp("xyz.willy.Zebra")
-            }),
-            (title: local("OPENER_TH"), imageName: "arrow.up.forward.app", handler: {
-                _ = openApp("com.opa334.trollstorepersistencehelper")
-            })
+            (title: local("OPENER_ZEBRA"), imageName: "arrow.up.forward.app", handler: { _ = openApp("xyz.willy.Zebra")}),
+            (title: local("OPENER_TH"), imageName: "arrow.up.forward.app", handler: { _ = openApp("com.opa334.trollstorepersistencehelper")})
         ]
         
         for action in actions {
@@ -260,19 +256,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             (title: local("RESPRING"), imageName: "arrow.clockwise.circle", handler: {
                 spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)
             }),
-            (title: local("US_REBOOT"), imageName: "power.circle", handler: {
-                spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
-            }),
-            (title: local("UICACHE"), imageName: "xmark.circle", handler: {
-                spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)
-            }),
-            (title: local("DAEMONS"), imageName: "play.circle", handler: {
-                spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
-            }),
-            (title: local("MOUNT"), imageName: "folder.circle", handler: {
-                spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-                spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-            }),
+            (title: local("US_REBOOT"), imageName: "power.circle", handler: { spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)}),
+            (title: local("UICACHE"), imageName: "xmark.circle", handler: { spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)}),
+            (title: local("DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
+            (title: local("MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
             (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
                 if self.rootful {
                     spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
