@@ -605,12 +605,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                var alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_REINSTALL"), preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_INSTALL"), preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_REINSTALL"), preferredStyle: .alert)
+                    alertController = UIAlertController(title: local("CONFIRM"), message: local("SILEO_INSTALL"), preferredStyle: .alert)
                 }
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
+                let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
                     self.reInstallSileo()
                 }
                 alertController.addAction(cancelAction)
@@ -634,12 +634,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                var alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"), preferredStyle: .actionSheet)
+                var alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_INSTALL"), preferredStyle: .actionSheet)
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"), preferredStyle: .alert)
+                    alertController = UIAlertController(title: local("CONFIRM"), message: local("ZEBRA_INSTALL"), preferredStyle: .alert)
                 }
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
+                let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
                     self.reInstallZebra()
                 }
                 alertController.addAction(cancelAction)

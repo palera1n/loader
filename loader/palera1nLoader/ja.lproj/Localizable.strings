@@ -51,6 +51,8 @@ Japanese
 "REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるファイルは全て削除され、jailbreakアプリケーションは消去されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
 "SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
 "ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
+"SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
+"ZEBRA_INSTALL" = "Zebraをインストールしてもよろしいですか？";
 "REINSTALL" = "再インストール";
 "ENJOY" = "Enjoy!";
 "SILEO_FAIL" = "Sileoのインストールに失敗しました";

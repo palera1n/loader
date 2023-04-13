@@ -4,7 +4,7 @@ palera1nLoader
 English
 */
 
-"INSTALL" = "INSTALL";
+"INSTALL" = "Install";
 "DEBUG" = "DEBUG";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
@@ -51,6 +51,8 @@ English
 "REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
 "SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
 "ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
+"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
+"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
 "REINSTALL" = "Re-install";
 "ENJOY" = "Enjoy!";
 "SILEO_FAIL" = "Failed to install Sileo";
