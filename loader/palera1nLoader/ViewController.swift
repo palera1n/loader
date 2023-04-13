@@ -82,19 +82,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let website = UIAction(title: local("WEBSITE"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
             UIApplication.shared.open(URL(string: "https://palera.in")!)
         }
- 
+
         var type = "Unknown"
         if rootful { type = local("ROOTFUL") }
         else if !rootful { type = local("ROOTLESS") }
         var installed = local("FALSE")
         if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = local("TRUE")}
         let processInfo = ProcessInfo()
-        let systemVersion = processInfo.operatingSystemVersionString
+        let operatingSystemVersion = processInfo.operatingSystemVersion
+        let systemVersion = "\(local("VERSION_INFO")) \(operatingSystemVersion.majorVersion).\(operatingSystemVersion.minorVersion)"
         let arch = String(cString: NXGetLocalArchInfo().pointee.name)
-        
+
         let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [discord, twitter, website])
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "info.circle"), primaryAction: nil, menu: menu)
-        
         
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -115,10 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
 
-        view.addSubview(tableView)
-
-        // Check for root permissions // also include checks if user is able to use Loader
-        
+        view.addSubview(tableView)        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -178,11 +175,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         default:
             break
         }
-
         return cell
     }
-
-    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
@@ -199,29 +193,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return nil
     }
     // MARK: - Actions action + actions for alertController
-
-    
     @objc func openersTapped() {
-        var alertController = UIAlertController(title: local("OPENER_MSG"), message: nil, preferredStyle: .actionSheet)
+        var alertController: UIAlertController
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController = UIAlertController(title: local("OPENER_MSG"), message: nil, preferredStyle: .alert)
+        } else {
+            alertController = UIAlertController(title: local("OPENER_MSG"), message: nil, preferredStyle: .actionSheet)
         }
         
         // Create actions for each app to be opened
-        let sileo = UIAlertAction(title: local("OPENER_SILEO"), style: .default) { (_) in
-            if (openApp("org.coolstar.SileoStore")){}else{_=openApp("org.coolstar.SileoStore")}}
-        let zebra = UIAlertAction(title: local("OPENER_ZEBRA"), style: .default) { (_) in _=openApp("xyz.willy.Zebra")}
-        let trollhelper = UIAlertAction(title: local("OPENER_TH"), style: .default) { (_) in _=openApp("com.opa334.trollstorepersistencehelper")}
+        let actions: [(title: String, imageName: String, handler: () -> Void)] = [
+            (title: local("OPENER_SILEO"), imageName: "arrow.up.forward.app", handler: {
+                if (openApp("org.coolstar.SileoStore")) {
+                } else {
+                    _ = openApp("org.coolstar.SileoStore")
+                }
+            }),
+            (title: local("OPENER_ZEBRA"), imageName: "arrow.up.forward.app", handler: {
+                _ = openApp("xyz.willy.Zebra")
+            }),
+            (title: local("OPENER_TH"), imageName: "arrow.up.forward.app", handler: {
+                _ = openApp("com.opa334.trollstorepersistencehelper")
+            })
+        ]
         
-        sileo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        sileo.setValue(UIImage(systemName: "arrow.up.forward.app"), forKey: "image")
-        zebra.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        zebra.setValue(UIImage(systemName: "arrow.up.forward.app"), forKey: "image")
-        trollhelper.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        trollhelper.setValue(UIImage(systemName: "arrow.up.forward.app"), forKey: "image")
-        alertController.addAction(sileo)
-        alertController.addAction(zebra)
-        alertController.addAction(trollhelper)
+        for action in actions {
+            let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in
+                action.handler()
+            }
+            alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            if let image = UIImage(systemName: action.imageName) {
+                alertAction.setValue(image, forKey: "image")
+            }
+            alertController.addAction(alertAction)
+        }
+        
         alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
         present(alertController, animated: true, completion: nil)
     }
@@ -230,54 +236,52 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var pre = "/var/jb"
         if rootful { pre = "/"}
 
-        var alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .actionSheet)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .alert)
+            alertController.popoverPresentationController?.sourceView = self.view
+            alertController.popoverPresentationController?.sourceRect = self.view.bounds
         }
-        let respring = UIAlertAction(title: local("RESPRING"), style: .default) { (_) in
-            spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)
-        }
-        let usReboot = UIAlertAction(title: local("US_REBOOT"), style: .default) { (_) in
-            spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
-        }
-        let uicache = UIAlertAction(title: local("UICACHE"), style: .default) { (_) in
-            spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)
-        }
-        let daemons = UIAlertAction(title: local("DAEMONS"), style: .default) { (_) in
-            spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
-        }
-        let mount = UIAlertAction(title: local("MOUNT"), style: .default) { (_) in
-            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-        }
-        let tweaks = UIAlertAction(title: local("TWEAKS"), style: .default) { (_) in
-            if self.rootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
-            else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
-        }
-        respring.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        usReboot.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        uicache.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        daemons.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        mount.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        tweaks.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-        respring.setValue(UIImage(systemName: "arrow.clockwise.circle"), forKey: "image")
-        usReboot.setValue(UIImage(systemName: "power.circle"), forKey: "image")
-        uicache.setValue(UIImage(systemName: "xmark.circle"), forKey: "image")
-        daemons.setValue(UIImage(systemName: "play.circle"), forKey: "image")
-        mount.setValue(UIImage(systemName: "folder.circle"), forKey: "image")
-        tweaks.setValue(UIImage(systemName: "iphone.circle"), forKey: "image")
 
-        alertController.addAction(respring)
-        alertController.addAction(usReboot)
-        alertController.addAction(uicache)
-        alertController.addAction(daemons)
-        alertController.addAction(mount)
-        alertController.addAction(tweaks)
+        let actions: [(title: String, imageName: String, handler: () -> Void)] = [
+            (title: local("RESPRING"), imageName: "arrow.clockwise.circle", handler: {
+                spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)
+            }),
+            (title: local("US_REBOOT"), imageName: "power.circle", handler: {
+                spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
+            }),
+            (title: local("UICACHE"), imageName: "xmark.circle", handler: {
+                spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)
+            }),
+            (title: local("DAEMONS"), imageName: "play.circle", handler: {
+                spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
+            }),
+            (title: local("MOUNT"), imageName: "folder.circle", handler: {
+                spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+                spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+            }),
+            (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
+                if self.rootful {
+                    spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
+                } else {
+                    spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
+                }
+            })
+        ]
+
+        for action in actions {
+            let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in
+                action.handler()
+            }
+            alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            if let image = UIImage(systemName: action.imageName) {
+                alertAction.setValue(image, forKey: "image")
+            }
+            alertController.addAction(alertAction)
+        }
 
         alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
         present(alertController, animated: true, completion: nil)
     }
-    
 
     // MARK: - Main strapping process
      func deleteFile(file: String) -> Void {
