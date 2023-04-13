@@ -59,20 +59,43 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
 
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-        customView.translatesAutoresizingMaskIntoConstraints = false
+        let customView: UIView = {
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+            view.translatesAutoresizingMaskIntoConstraints = false
+            
+            let button: UIButton = {
+                let button = UIButton(type: .custom)
+                button.translatesAutoresizingMaskIntoConstraints = false
+                button.widthAnchor.constraint(equalToConstant: 25).isActive = true
+                button.heightAnchor.constraint(equalToConstant: 25).isActive = true
+                button.layer.cornerRadius = 6
+                button.clipsToBounds = true
+                button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
+                button.layer.borderWidth = 0.5
+                button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+                return button
+            }()
+            view.addSubview(button)
+            
+            let titleLabel: UILabel = {
+                let label = UILabel()
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.text = "palera1n"
+                label.font = UIFont.boldSystemFont(ofSize: 17)
+                return label
+            }()
+            view.addSubview(titleLabel)
+            
+            NSLayoutConstraint.activate([
+                button.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8),
+                titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+            
+            return view
+        }()
 
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        button.layer.cornerRadius = 6
-        button.clipsToBounds = true
-        button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
-        customView.addSubview(button)
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-        
         let discord = UIAction(title: local("DISCORD"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
             UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
         }
@@ -90,30 +113,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = local("TRUE")}
         let processInfo = ProcessInfo()
         let operatingSystemVersion = processInfo.operatingSystemVersion
-        let systemVersion = "\(local("VERSION_INFO")) \(operatingSystemVersion.majorVersion).\(operatingSystemVersion.minorVersion)"
+        let systemVersion = "\(local("VERSION_INFO")) \(operatingSystemVersion.majorVersion).\(operatingSystemVersion.minorVersion).\(operatingSystemVersion.patchVersion)"
         let arch = String(cString: NXGetLocalArchInfo().pointee.name)
 
         let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [discord, twitter, website])
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "info.circle"), primaryAction: nil, menu: menu)
-        
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "palera1n"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        customView.addSubview(titleLabel)
-
-        button.leadingAnchor.constraint(equalTo: customView.leadingAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-
-        titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor).isActive = true
-
-        let customBarButton = UIBarButtonItem(customView: customView)
-        navigationItem.leftBarButtonItems = [customBarButton]
+        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
 
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
+
 
         view.addSubview(tableView)        
     }
@@ -130,6 +141,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Viewtable for Cydia/Zebra/Restore Rootfs cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.imageView?.layer.cornerRadius = 6
+        cell.imageView?.clipsToBounds = true
+        cell.imageView?.layer.borderWidth = 0.5
+        cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
 
         switch tableData[indexPath.section][indexPath.row] {
@@ -236,10 +251,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var pre = "/var/jb"
         if rootful { pre = "/"}
 
-        let alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .actionSheet)
+        var alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .actionSheet)
         if UIDevice.current.userInterfaceIdiom == .pad {
-            alertController.popoverPresentationController?.sourceView = self.view
-            alertController.popoverPresentationController?.sourceRect = self.view.bounds
+            alertController = UIAlertController(title: local("UTIL_CELL"), message: nil, preferredStyle: .alert)
         }
 
         let actions: [(title: String, imageName: String, handler: () -> Void)] = [
