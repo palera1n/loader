@@ -62,3 +62,5 @@ Japanese
 "REVERT_DONE" = "削除完了";
 "UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
 "CLOSE" = "閉じる";
+"REMOVING" = "Removing...";
+

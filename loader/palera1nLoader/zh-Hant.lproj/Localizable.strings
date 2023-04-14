@@ -62,3 +62,4 @@ Chinese (Traditional)
 "REVERT_DONE" = "完成移除";
 "UNREGISTER_FAIL" = "取消註冊失敗";
 "CLOSE" = "關閉";
+"REMOVING" = "Removing...";

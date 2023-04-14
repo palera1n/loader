@@ -37,6 +37,9 @@ English
 "ABOUT" = "About palera1n";
 "CANCEL" = "Cancel";
 "DOWNLOADING" = "Downloading...";
+"DL_STRAP" = "Downloading Bootstrap";
+"DL_SILEO" = "Downloading Sileo";
+"DL_ZEBRA" = "Downloading Zebra";
 "INSTALLING" = "Installing...";
 "DOWNLOAD_FAIL" = "Could not download file";
 "DOWNLOAD_ERROR" = "Unknown error";
@@ -62,3 +65,4 @@ English
 "REVERT_DONE" = "Remove Completed";
 "UNREGISTER_FAIL" = "Failed to unregister";
 "CLOSE" = "Close";
+"REMOVING" = "Removing...";
