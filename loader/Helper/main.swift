@@ -91,8 +91,6 @@ func strap(_ input: String,_ rootless: Bool) {
     catch { NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)") }
 }
 
-
-
 func main() {
     NSLog("[palera1n helper] Spawned!")
     guard getuid() == 0 else { fatalError() }
@@ -118,61 +116,6 @@ func main() {
     } else if (args[1] == "-d") {
         reboot(0)
     } else if (args[1] == "-s") {
-        var rootless = String()
-        var rootful = String()
-        let version = ProcessInfo().operatingSystemVersion.majorVersion
-        let CF = version == 16 ? 1900 : 1800
-        if (args[2] == "sileo") {
-            rootless = """
-            Types: deb
-            URIs: https://ellekit.space/
-            Suites: ./
-            Components:
-            
-            Types: deb
-            URIs: https://repo.palera.in/
-            Suites: ./
-            Components:
-            
-            Types: deb
-            URIs: https://apt.procurs.us/
-            Suites: \(CF)
-            Components: main
-            """
-            
-            rootful = """
-            Types: deb
-            URIs: https://repo.palera.in/
-            Suites: ./
-            Components:
-            
-            Types: deb
-            URIs: https://strap.palera.in/
-            Suites: iphoneos-arm64/\(CF)
-            Components: main
-            """
-        } else {
-            rootless = """
-            deb https://apt.procurs.us/ \(CF) main
-            deb https://repo.palera.in/ ./
-            deb https://ellekit.space/ ./
-            """
-            
-            rootful = """
-            deb https://strap.palera.in/ iphoneos-arm64/\(CF) main
-            deb https://repo.palera.in/ ./
-            """
-        }
-  
-        if let sourceFile = try? FileHandle(forUpdating: URL(string: args[3])!) {
-            sourceFile.seekToEndOfFile()
-            if (rootfulCheck) {
-                sourceFile.write(rootful.data(using: .utf8)!)
-            } else {
-                sourceFile.write(rootless.data(using: .utf8)!)
-            }
-            sourceFile.closeFile()
-        }
     } else {
         NSLog("[palera1n helper] Invalid argument")
     }

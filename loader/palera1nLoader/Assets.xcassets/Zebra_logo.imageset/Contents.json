@@ -19,6 +19,6 @@
     "version" : 1
   },
   "properties" : {
-    "compression-type" : "automatic"
+    "compression-type" : "gpu-optimized-smallest"
   }
 }

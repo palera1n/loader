@@ -10,10 +10,6 @@ import UIKit
 
 
 func installDeb(_ file: String,_ rootful: Bool) {
-    guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-        print("[palera1n] Could not find helper?")
-        return
-    }
     let group = DispatchGroup()
     group.enter()
     DispatchQueue.global(qos: .default).async {
@@ -23,14 +19,6 @@ func installDeb(_ file: String,_ rootful: Bool) {
     group.wait()
     spinnerAlert("INSTALLING", start: true)
     let inst_prefix = rootful ? "" : "/var/jb"
-    var sourceFile = ""
-    if (file == "sileo") {
-        sourceFile = "\(inst_prefix)/etc/apt/sources.list.d/procursus.sources"
-    } else {
-        sourceFile = "/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list"
-    }
-    
-
     let deb = "\(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).deb").path)" // gross
     
     var ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
@@ -48,13 +36,6 @@ func installDeb(_ file: String,_ rootful: Bool) {
         
     }
     
-    ret = spawn(command: helper, args: ["-s", file, sourceFile], root: true)
-    if (ret != 0) {
-        spinnerAlert("INSTALLING", start: false)
-        errAlert(title: local("STRAP_ERROR"), message: "Status22: \(ret)")
-        return
-    }
-    
     sleep(1)
     spinnerAlert("INSTALLING", start: false)
     errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
@@ -67,7 +48,6 @@ func bootstrap(_ rootful: Bool) -> Void {
         return
     }
     let inst_prefix = rootful ? "/" : "/var/jb"
-    let sourceFile = "\(inst_prefix)/etc/apt/sources.list.d/procursus.sources"
     let tar = "\(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("bootstrap.tar").path)"
 
     let group = DispatchGroup()

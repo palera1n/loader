@@ -11,8 +11,8 @@
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
+		45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F091F229E9A30700F4770A /* CoreServices.framework */; };
 		CED0FAF629DC8C8800106BEF /* paleinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.c */; };
-		CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0FB0129DC8DC200106BEF /* CoreServices.framework */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
 		E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BADD28CF914300CD25A6 /* ViewController.swift */; };
@@ -39,6 +39,7 @@
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		45F091F229E9A30700F4770A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		45F1F1AF29E70189008C21B0 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		45F3AD7029E70E3500ADF163 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CED0FAF429DC8C8800106BEF /* paleinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = paleinfo.c; sourceTree = "<group>"; };
@@ -59,8 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */,
 				453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */,
+				45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +87,7 @@
 		CED0FB0029DC8DC100106BEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45F091F229E9A30700F4770A /* CoreServices.framework */,
 				CED0FB0129DC8DC200106BEF /* CoreServices.framework */,
 			);
 			name = Frameworks;
@@ -276,7 +278,11 @@
 		E131378C28CFA0BC00754132 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CLANG_MODULES_AUTOLINK = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
@@ -291,11 +297,17 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LLVM_LTO = YES;
+				LOCALIZATION_EXPORT_SUPPORTED = NO;
+				LOCALIZED_STRING_MACRO_NAMES = "";
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = all;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
@@ -306,7 +318,11 @@
 		E131378D28CFA0BC00754132 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CLANG_MODULES_AUTOLINK = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
@@ -321,11 +337,17 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LLVM_LTO = YES;
+				LOCALIZATION_EXPORT_SUPPORTED = NO;
+				LOCALIZED_STRING_MACRO_NAMES = "";
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = all;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
@@ -455,14 +477,15 @@
 		E181BAEB28CF914500CD25A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
 				GCC_OPTIMIZATION_LEVEL = z;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -498,14 +521,15 @@
 		E181BAEC28CF914500CD25A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
 				GCC_OPTIMIZATION_LEVEL = z;
 				GENERATE_INFOPLIST_FILE = YES;

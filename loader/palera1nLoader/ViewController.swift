@@ -173,7 +173,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        var installed = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+        let installed = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
         if (indexPath.section == 1 && indexPath.row == 2 && !rootful && installed) {
             return UIContextMenuConfiguration(previewProvider: nil) { [self] _ in
                 let doReboot = UIAction(title: "Reboot after revert", image: UIImage(systemName: "power.circle"), state: rebootAfter ? .on : .off ) { _ in

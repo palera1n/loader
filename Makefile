@@ -1,20 +1,20 @@
 TARGET_CODESIGN = $(shell which ldid)
 GIT_REV=$(shell git rev-parse --short HEAD)
 
-ifeq ($(ios),1)
+ifeq ($(IOS),1)
 	PLATFORM = iphoneos
 	NAME = palera1nLoader
 	VOLNAME = loader
 	RELEASE = Release-iphoneos
 	ARG = ios=1
-else ifeq ($(tv),1)
+else ifeq ($(TVOS),1)
 	PLATFORM = appletvos
 	NAME = palera1nTVLoader
 	VOLNAME = tvloader
 	RELEASE = Release-tvos
 	ARG = tv=1
 else
-$(error Please specify either ios=1 or tv=1)
+$(error Please specify either IOS=1 or TVOS=1)
 endif
 
 POGOTMP             = $(TMPDIR)/$(NAME)
@@ -35,7 +35,6 @@ package:
 	@rm -rf $(POGO_STAGE_DIR)/
 	@mkdir -p $(POGO_STAGE_DIR)/Payload
 	@mv $(POGO_APP_DIR) $(POGO_STAGE_DIR)/Payload/$(NAME).app
-
 	@echo $(POGOTMP)
 	@echo $(POGO_STAGE_DIR)
 
@@ -44,15 +43,27 @@ package:
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(POGO_STAGE_DIR)/Payload/$(NAME).app//Helper
 	
 	@rm -rf $(POGO_STAGE_DIR)/Payload/$(NAME).app/_CodeSignature
-
 	@ln -sf $(POGO_STAGE_DIR)/Payload Payload
-
 	@rm -rf packages
 	@mkdir -p packages
 
+ifeq ($(TIPA),1)
+	@zip -r9 packages/$(NAME).tipa Payload
+else
 	@zip -r9 packages/$(NAME).ipa Payload
+endif
+ifneq ($(NO_DMG),1)
 	@hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
 	@hdiutil convert out.dmg -format UDZO -imagekey zlib-level=9 -o packages/$(VOLNAME).dmg
 	@rm -rf out.dmg
+endif
 	@rm -rf Payload
 	@rm -rf $(POGOTMP)
+
+clean:
+	@rm -rf $(POGO_STAGE_DIR)
+	@rm -rf packages
+	@rm -rf out.dmg
+	@rm -rf Payload
+	@rm -rf $(POGOTMP)
+
