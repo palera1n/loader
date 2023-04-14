@@ -8,8 +8,26 @@
 import Foundation
 import UIKit
 
+func cleanUp() -> Void {
+    deleteFile(file: "sileo.deb")
+    deleteFile(file: "zebra.deb")
+    deleteFile(file: "bootstrap.tar")
+    
+    URLCache.shared.removeAllCachedResponses()
+    URLCache.shared.diskCapacity = 0
+    URLCache.shared.memoryCapacity = 0
+    
+    do {
+        let tmp = URL(string: NSTemporaryDirectory())!
+        let tmpFile = try FileManager.default.contentsOfDirectory(at: tmp, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        for url in tmpFile {try FileManager.default.removeItem(at: url)}}
+    catch {
+        NSLog("[palera1n] Error removing temp files: \(error)")
+        return
+    }
+}
 
-func installDeb(_ file: String,_ rootful: Bool) {
+func installDeb(_ file: String,_ rootful: Bool) -> Void {
     let group = DispatchGroup()
     group.enter()
     DispatchQueue.global(qos: .default).async {
@@ -35,7 +53,6 @@ func installDeb(_ file: String,_ rootful: Bool) {
         return
         
     }
-    
     sleep(1)
     spinnerAlert("INSTALLING", start: false)
     errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
@@ -83,7 +100,7 @@ func bootstrap(_ rootful: Bool) -> Void {
     spinnerAlert("INSTALLING", start: false)
 }
 
-func combo(_ file: String,_ rootful: Bool) {
+func combo(_ file: String,_ rootful: Bool) -> Void {
     DispatchQueue.global(qos: .utility).async { [] in
         let group = DispatchGroup()
         group.enter()
@@ -96,7 +113,7 @@ func combo(_ file: String,_ rootful: Bool) {
     }
 }
 
-func revert(_ reboot: Bool) {
+func revert(_ reboot: Bool) -> Void {
     guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
         print("[palera1n] Could not find helper?");return
     }

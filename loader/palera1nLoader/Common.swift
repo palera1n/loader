@@ -19,11 +19,11 @@ func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
 }
 
-
 func errAlert(title: String, message: String) {
     DispatchQueue.main.async {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
+            cleanUp()
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
         })
@@ -33,7 +33,6 @@ func errAlert(title: String, message: String) {
         global.present(alertController, animated: true, completion: nil)
     }
 }
-
 
 func whichAlert(title: String, message: String? = nil) -> UIAlertController {
     if UIDevice.current.userInterfaceIdiom == .pad {
@@ -48,7 +47,7 @@ func openApp(_ bundle: String) -> Bool {
 }
 
 
-func deleteFile2(file: String) -> Void {
+func deleteFile(file: String) -> Void {
    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
    let fileURL = documentsURL.appendingPathComponent(file)
    try? FileManager.default.removeItem(at: fileURL)
@@ -84,7 +83,7 @@ func spinnerAlert(_ str: String.LocalizationValue, start: Bool) {
 
 
 func download(_ file: String,_ rootful: Bool) -> Void {
-    deleteFile2(file: file)
+    deleteFile(file: file)
     switch (file) {
         case "bootstrap.tar": spinnerAlert("DL_STRAP", start: true)
         case "sileo.deb": spinnerAlert("DL_SILEO", start: true)
