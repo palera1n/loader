@@ -5,12 +5,12 @@ Japanese
 */
 
 "INSTALL" = "インストール";
-"DEBUG" = "DEBUG";
+"DEBUG" = "デバッグ";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "UTIL_CELL" = "ユーティリティ";
 "OPEN_CELL" = "アプリケーションを開く";
-"REVERT_CELL" = "Revert Install";
+"REVERT_CELL" = "jailbreakを削除";
 "PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
 "RESPRING" = "Respring";
 "US_REBOOT" = "Userspace Reboot";
@@ -54,13 +54,13 @@ Japanese
 "SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
 "ZEBRA_INSTALL" = "Zebraをインストールしてもよろしいですか？";
 "REINSTALL" = "再インストール";
-"ENJOY" = "Enjoy!";
+"ENJOY" = "Enjoy!"; 
 "SILEO_FAIL" = "Sileoのインストールに失敗しました";
 "ZEBRA_FAIL" = "Zebraのインストールに失敗しました";
-"REVERT_FAIL" = "jailbreakの解除に失敗しました。";
+"REVERT_FAIL" = "jailbreakの削除に失敗しました。";
 "CLOSE_APP" = "アプリを終了します。";
 "REVERT_DONE" = "削除完了";
 "UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
 "CLOSE" = "閉じる";
-"REMOVING" = "Removing...";
+"REMOVING" = "削除中...";
 
