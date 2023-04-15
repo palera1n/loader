@@ -117,7 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 cell.isHidden = false
                 cell.isUserInteractionEnabled = true
                 cell.accessoryType = .disclosureIndicator
-                cell.textLabel?.textColor = .systemRed
+                cell.textLabel?.textColor = UIColor(red: 0.90, green: 0.29, blue: 0.29, alpha: 1.00)
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray

@@ -33,7 +33,6 @@ func defaultSources(_ pm: String,_ rootful: Bool) -> Void {
     let zebraSources = "/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list"
     let sileoSources = "\(inst_prefix)/etc/apt/sources.list.d/procursus.sources"
     let sileoLine = "Types: deb\nURIs: https://repo.getsileo.app/\nSuites: ./\nComponents:\n"
-    let zebraLine = "deb https://getzbra.com/repo/ ./\n"
     
     let version = ProcessInfo().operatingSystemVersion.majorVersion
     let CF = version == 16 ? "1900" : "1800"
@@ -54,7 +53,7 @@ func defaultSources(_ pm: String,_ rootful: Bool) -> Void {
         ellekitLine = "deb https://ellekit.space/ ./\n"
         palera1nLine = "deb https://repo.palera.in/ ./\n"
         procursusLine = "deb https://apt.procurs.us/ \(CF) main\n"
-        palestrapLine = "deb https://strap.palera.in// iphoneos-arm64/\(CF) main\n"
+        palestrapLine = "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
     }
     
     guard let fd = fopen(readPath, "r") else { return }
@@ -154,7 +153,7 @@ func bootstrap(_ rootful: Bool) -> Void {
     group.wait()
     
     spinnerAlert("INSTALLING", start: true)
-    spawn(command: "/sbin/mount", args: ["-uw", "/preboot"], root: true)
+    spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
     if rootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)}
     var ret = spawn(command: helper, args: ["-i", tar], root: true)
     spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)

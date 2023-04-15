@@ -20,6 +20,14 @@ func local(_ str: String.LocalizationValue) -> String {
 }
 
 func errAlert(title: String, message: String) {
+    if (global.presentedViewController != nil) {
+        DispatchQueue.main.async {
+            global.presentedViewController!.dismiss(animated: true)
+            ViewController().presentedViewController?.dismiss(animated: true)
+        }
+    }
+    
+    usleep(100)
     DispatchQueue.main.async {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
@@ -55,6 +63,14 @@ func deleteFile(file: String) -> Void {
 
 
 func spinnerAlert(_ str: String.LocalizationValue, start: Bool) {
+    if (global.presentedViewController != nil) {
+        DispatchQueue.main.async {
+            global.presentedViewController!.dismiss(animated: true)
+            ViewController().presentedViewController?.dismiss(animated: true)
+        }
+    }
+    
+    usleep(100)
     DispatchQueue.main.async {
         let loadingAlert = UIAlertController(title: nil, message: local(str), preferredStyle: .alert)
         if (start) {
