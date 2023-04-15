@@ -3,14 +3,18 @@ Just like universal branch, this is supposed to be something that offers same fu
 
 ### Building
 
+Optional Flags:
+- TIPA=1 (outputs as .tipa)
+- NO_DMG=1 (does not build dmg)
+
 For iOS
 ```
-make ios=1
+make IOS=1
 ```
 
 For tvOS (in development)
 ```
-make tv=1
+make TVOS=1
 ```
 ## Downloads
 Don't use unless you know what you're doing.
