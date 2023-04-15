@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = local("TRUE")}
         let processInfo = ProcessInfo()
         let operatingSystemVersion = processInfo.operatingSystemVersion
-        let systemVersion = "\(local("VERSION_INFO")) \(operatingSystemVersion.majorVersion).\(operatingSystemVersion.minorVersion).\(operatingSystemVersion.patchVersion)"
+        let systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
         let arch = String(cString: NXGetLocalArchInfo().pointee.name)
         let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [discord, twitter, website])
         
