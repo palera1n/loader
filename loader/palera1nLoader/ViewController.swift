@@ -14,7 +14,32 @@ import MachO
 var rootful : Bool = false
 var inst_prefix: String = "unset"
 
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    func deviceCheck() -> Void {
+#if targetEnvironment(simulator)
+        print("[palera1n] Running in simulator")
+#else
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
+            errAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
+            return
+        }
+        
+        let ret = spawn(command: helper, args: ["-f"], root: true)
+        rootful = ret == 0 ? false : true
+        inst_prefix = rootful ? "/" : "/var/jb"
+        let retRFR = spawn(command: helper, args: ["-n"], root: true)
+        let rfr = retRFR == 0 ? false : true
+        
+        if rfr {
+            errAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please rejailbreak to be able to bootstrap again.")
+            return
+        }
+#endif
+    }
+    var observation: NSKeyValueObservation?
+    let progressDownload : UIProgressView = UIProgressView(progressViewStyle: .default)
     var rebootAfter: Bool = true
     var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
@@ -79,8 +104,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         else if !rootful { type = local("ROOTLESS") }
         var installed = local("FALSE")
         if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = local("TRUE")}
-        let processInfo = ProcessInfo()
-        let operatingSystemVersion = processInfo.operatingSystemVersion
         let systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
         let arch = String(cString: NXGetLocalArchInfo().pointee.name)
         let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [discord, twitter, website])
@@ -91,6 +114,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)        
+    }
+    
+    func spinnerAlert(_ str: String.LocalizationValue) {
+        DispatchQueue.main.async {
+            let loadingAlert = UIAlertController(title: nil, message: local(str), preferredStyle: .alert)
+            if (str != "INSTALLING" && str != "REMOVING") {
+                let constraintHeight = NSLayoutConstraint(
+                    item: loadingAlert.view!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
+                        NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 75)
+                loadingAlert.view.addConstraint(constraintHeight)
+                self.progressDownload.setProgress(0.0/1.0, animated: true)
+                self.progressDownload.frame = CGRect(x: 25, y: 55, width: 220, height: 0)
+                loadingAlert.view.addSubview(self.progressDownload)
+            } else {
+                let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+                loadingAlert.view.addSubview(loadingIndicator)
+                loadingIndicator.hidesWhenStopped = true
+                loadingIndicator.startAnimating()
+            }
+            self.present(loadingAlert, animated: true, completion: nil)
+        }
+    }
+    
+    func closeAllAlerts() {
+        if (self.presentedViewController != nil) {
+            DispatchQueue.main.async {self.presentedViewController!.dismiss(animated: true)}
+        }
+    }
+
+    func errAlert(title: String, message: String) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
+                cleanUp()
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
+            })
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -249,7 +311,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("REVERT_CELL"):
             let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in revert(self.rebootAfter) }
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in self.revert(self.rebootAfter) }
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)
@@ -259,7 +321,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("SILEO_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async { installDeb("sileo", rootful) }
+                    DispatchQueue.global(qos: .default).async { self.installDeb("sileo", rootful) }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
@@ -268,7 +330,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("SILEO_INSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async { installDeb("sileo", rootful) }
+                    DispatchQueue.global(qos: .default).async { self.installDeb("sileo", rootful) }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
@@ -276,7 +338,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else {
                 DispatchQueue.global(qos: .userInitiated).async {
                     print("[strap] User initiated strap process...")
-                    combo("sileo", false)
+                    self.bootstrap("sileo", rootful)
                 }
             }
         case local("ZEBRA"):
@@ -285,7 +347,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async { installDeb("zebra", rootful) }
+                    DispatchQueue.global(qos: .default).async { self.installDeb("zebra", rootful) }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
@@ -294,7 +356,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("ZEBRA_INSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async { installDeb("zebra", rootful) }
+                    DispatchQueue.global(qos: .default).async { self.installDeb("zebra", rootful) }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
@@ -302,14 +364,194 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else {
                 DispatchQueue.global(qos: .userInitiated).async {
                     print("[strap] User initiated strap process...")
-                    combo("zebra", rootful)
+                    self.bootstrap("zebra", rootful)
                 }
             }
-            
         default:
             break
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func download(_ file: String,_ rootful: Bool) -> Void {
+        deleteFile(file: file)
+        let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
+        let server = rootful == true ? "https://static.palera.in" : "https://static.palera.in/rootless"
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentsURL.appendingPathComponent(file)
+        var url = URL(string: "\(server)/\(file)")!
+        if (file == "bootstrap.tar" && !rootful) {url = URL(string: "\(server)/bootstrap-\(CF).tar")!}
+        let semaphore = DispatchSemaphore(value: 0)
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        let task = session.downloadTask(with: url) { tempLocalUrl, response, error in
+            if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                if statusCode != 200 {
+                    if server.contains("cdn.nickchan.lol") {
+                        self.presentedViewController?.dismiss(animated: true)
+                        self.errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
+                        NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")");return
+                    };return
+                }
+            }
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                do {
+                    try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
+                    semaphore.signal()
+                } catch (let writeError) {
+                    self.presentedViewController?.dismiss(animated: true)
+                    self.errAlert(title: local("SAVE_FAIL"), message: "\(writeError)")
+                    NSLog("[palera1n] Could not copy file to disk: \(error?.localizedDescription ?? "Unknown error")");return
+                }
+            } else {
+                self.presentedViewController?.dismiss(animated: true)
+                self.errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
+                NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")");return
+            }
+        }
+        observation = task.progress.observe(\.fractionCompleted) { progress, _ in
+            print("progress: ", progress.fractionCompleted)
+            DispatchQueue.main.async {
+                if (file == "bootstrap.tar") {
+                    self.progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
+                }
+            }
+        }
+        task.resume()
+        semaphore.wait()
+    }
+    
+    func installDeb(_ file: String,_ rootful: Bool) -> Void {
+        spinnerAlert("INSTALLING")
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.global(qos: .default).async {
+            self.download("\(file).deb", rootful)
+            group.leave()
+        }
+        group.wait()
+        let inst_prefix = rootful ? "" : "/var/jb"
+        let deb = "\(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).deb").path)" // gross
+        
+        var ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            return
+        }
+        
+        ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
+            return
+            
+        }
+        defaultSources(file, rootful)
+        self.closeAllAlerts()
+        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
+    }
+            
+    func bootstrap(_ pm: String,_ rootful: Bool) -> Void {
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
+            print("[palera1n] Could not find helper?")
+            return
+        }
+        if (!rootful && FileManager.default.fileExists(atPath: "/var/jb")) {
+            let ret = spawn(command: helper, args: ["-r"], root: true)
+            if (ret != 0) {
+                self.closeAllAlerts()
+                errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+                return
+            }
+        }
+        let inst_prefix = rootful ? "/" : "/var/jb"
+        let tar = docsFile(file: "bootstrap.tar")
+        let deb = docsFile(file: "\(pm).deb")
+
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.global(qos: .default).async {
+            self.spinnerAlert("DOWNLOADING")
+            self.download("bootstrap.tar", rootful)
+            self.download("\(pm).deb", rootful)
+            self.closeAllAlerts()
+            group.leave()
+        }
+        group.wait()
+        
+        spinnerAlert("INSTALLING")
+        spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+        if rootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)}
+        var ret = spawn(command: helper, args: ["-i", tar], root: true)
+        spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
+        spawn(command: "\(inst_prefix)/usr/bin/chown", args: ["root:wheel", "\(inst_prefix)/usr/bin/sudo"], root: true)
+        
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+            return
+        }
+        
+        ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+            return
+        }
+        
+        ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            return
+        }
+        
+        ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
+            return
+        }
+        defaultSources(pm, rootful)
+        self.closeAllAlerts()
+        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
+    }
+
+    
+    func revert(_ reboot: Bool) -> Void {
+        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
+            print("[palera1n] Could not find helper?");return
+        }
+        
+        let ret = spawn(command: helper, args: ["-f"], root: true)
+        let rootful = ret == 0 ? false : true
+        if !rootful {
+            spinnerAlert("REMOVING")
+            DispatchQueue.global(qos: .utility).async {
+                let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
+                for app in apps ?? [] {
+                    if app.hasSuffix(".app") {
+                        let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/var/jb/Applications/\(app)"], root: true)
+                        if ret != 0 {self.errAlert(title: "Failed to unregister \(app)", message: "Status: \(ret)"); return}
+                    }
+                }
+                
+                let ret = spawn(command: helper, args: ["-r"], root: true)
+                if ret != 0 {
+                    self.errAlert(title: local("REVERT_FAIL"), message: "Status: \(ret)")
+                    print("[revert] Failed to remove jailbreak: \(ret)")
+                    return
+                }
+                    
+                if (reboot) {
+                    spawn(command: helper, args: ["-d"], root: true)
+                } else {
+                    self.closeAllAlerts()
+                    self.errAlert(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
+                }
+            }
+        }
     }
 }
