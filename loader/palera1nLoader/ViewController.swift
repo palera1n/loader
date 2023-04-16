@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 button.layer.cornerRadius = 6
                 button.clipsToBounds = true
                 button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
-                button.layer.borderWidth = 0.5
+                button.layer.borderWidth = 0.7
                 button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
                 return button
             }()
@@ -168,10 +168,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: - Viewtable for Sileo/Zebra/Revert/Etc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.imageView?.layer.cornerRadius = 6
+        cell.imageView?.layer.cornerRadius = 7
         cell.imageView?.clipsToBounds = true
-        cell.imageView?.layer.borderWidth = 0.5
-        cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        cell.imageView?.layer.borderWidth = 1
+        cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
 
         switch tableData[indexPath.section][indexPath.row] {
@@ -194,7 +194,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("SILEO"):
             let originalImage = UIImage(named: "Sileo_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
-                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30), blendMode: .normal, alpha: 0.5)
             }
             cell.imageView?.image = resizedImage
             cell.isUserInteractionEnabled = true
@@ -203,7 +203,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("ZEBRA"):
             let originalImage = UIImage(named: "Zebra_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
-                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30), blendMode: .normal, alpha: 0.5)
+                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
             cell.isUserInteractionEnabled = false
