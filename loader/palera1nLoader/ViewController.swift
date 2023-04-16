@@ -390,9 +390,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if statusCode != 200 {
                     if server.contains("cdn.nickchan.lol") {
-                        self.presentedViewController?.dismiss(animated: true)
-                        self.errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
-                        NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")");return
+                        self.presentedViewController?.dismiss(animated: true) {
+                            self.errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
+                            NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")");return
+                        }
                     };return
                 }
             }
@@ -401,14 +402,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
                     semaphore.signal()
                 } catch (let writeError) {
-                    self.presentedViewController?.dismiss(animated: true)
-                    self.errAlert(title: local("SAVE_FAIL"), message: "\(writeError)")
-                    NSLog("[palera1n] Could not copy file to disk: \(error?.localizedDescription ?? "Unknown error")");return
+                    self.presentedViewController?.dismiss(animated: true) {
+                        self.errAlert(title: local("SAVE_FAIL"), message: "\(writeError)")
+                        NSLog("[palera1n] Could not copy file to disk: \(error?.localizedDescription ?? "Unknown error")");return
+                    }
                 }
             } else {
-                self.presentedViewController?.dismiss(animated: true)
-                self.errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
-                NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")");return
+                self.presentedViewController?.dismiss(animated: true) {
+                    self.errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
+                    NSLog("[palera1n] Could not download file: \(error?.localizedDescription ?? "Unknown error")");return
+                }
             }
         }
         observation = task.progress.observe(\.fractionCompleted) { progress, _ in
