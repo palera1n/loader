@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
+		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
+		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
+		45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F091F229E9A30700F4770A /* CoreServices.framework */; };
 		CED0FAF629DC8C8800106BEF /* paleinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.c */; };
-		CED0FAFE29DC8D4800106BEF /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAFB29DC8D4800106BEF /* TSUtil.m */; };
-		CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED0FB0129DC8DC200106BEF /* CoreServices.framework */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
 		E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BADD28CF914300CD25A6 /* ViewController.swift */; };
@@ -33,14 +35,15 @@
 /* Begin PBXFileReference section */
 		33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-BridgingHeader.h"; sourceTree = "<group>"; };
 		33DE13AA29DCAD7800DF3D5E /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; path = External; sourceTree = "<group>"; };
+		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
+		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		45F091F229E9A30700F4770A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		45F1F1AF29E70189008C21B0 /* zh-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-HK"; path = "zh-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		45F3AD7029E70E3500ADF163 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		CED0FAF429DC8C8800106BEF /* paleinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = paleinfo.c; sourceTree = "<group>"; };
 		CED0FAF529DC8C8800106BEF /* paleinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paleinfo.h; sourceTree = "<group>"; };
-		CED0FAF829DC8D4800106BEF /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		CED0FAF929DC8D4800106BEF /* TSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSUtil.h; sourceTree = "<group>"; };
-		CED0FAFA29DC8D4800106BEF /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
-		CED0FAFB29DC8D4800106BEF /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtil.m; sourceTree = "<group>"; };
-		CED0FAFC29DC8D4800106BEF /* uicache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = uicache.h; sourceTree = "<group>"; };
-		CED0FAFD29DC8D4800106BEF /* uicache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = uicache.m; sourceTree = "<group>"; };
 		CED0FB0129DC8DC200106BEF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		E131378728CFA0BC00754132 /* Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Helper; sourceTree = BUILT_PRODUCTS_DIR; };
 		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -57,8 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CED0FB0229DC8DC200106BEF /* CoreServices.framework in Frameworks */,
 				453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */,
+				45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,22 +84,10 @@
 			path = paleinfo;
 			sourceTree = "<group>";
 		};
-		CED0FAF729DC8D3C00106BEF /* TrollStore-Utils */ = {
-			isa = PBXGroup;
-			children = (
-				CED0FAFA29DC8D4800106BEF /* CoreServices.h */,
-				CED0FAF929DC8D4800106BEF /* TSUtil.h */,
-				CED0FAFB29DC8D4800106BEF /* TSUtil.m */,
-				CED0FAFC29DC8D4800106BEF /* uicache.h */,
-				CED0FAFD29DC8D4800106BEF /* uicache.m */,
-				CED0FAF829DC8D4800106BEF /* version.h */,
-			);
-			path = "TrollStore-Utils";
-			sourceTree = "<group>";
-		};
 		CED0FB0029DC8DC100106BEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45F091F229E9A30700F4770A /* CoreServices.framework */,
 				CED0FB0129DC8DC200106BEF /* CoreServices.framework */,
 			);
 			name = Frameworks;
@@ -105,7 +96,6 @@
 		E131378828CFA0BC00754132 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				CED0FAF729DC8D3C00106BEF /* TrollStore-Utils */,
 				CED0FAF329DC8C7E00106BEF /* paleinfo */,
 				E131378E28CFA16B00754132 /* main.swift */,
 				33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */,
@@ -139,8 +129,11 @@
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
 				E181BADD28CF914300CD25A6 /* ViewController.swift */,
+				4509BACB29E7970300D36328 /* Bootstrap.swift */,
+				45E7E0F229E4EC5B0057741A /* Common.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
+				45E7E0FA29E650C30057741A /* Localizable.strings */,
 			);
 			path = palera1nLoader;
 			sourceTree = "<group>";
@@ -212,7 +205,10 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ja,
+				"zh-HK",
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
@@ -234,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */,
+				45E7E0F829E650C30057741A /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +243,6 @@
 			files = (
 				CED0FAF629DC8C8800106BEF /* paleinfo.c in Sources */,
 				E131378F28CFA16B00754132 /* main.swift in Sources */,
-				CED0FAFE29DC8D4800106BEF /* TSUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,19 +250,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
+				4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		45E7E0FA29E650C30057741A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45E7E0F929E650C30057741A /* en */,
+				45E7E0FB29E650CB0057741A /* ja */,
+				45F1F1AF29E70189008C21B0 /* zh-HK */,
+				45F3AD7029E70E3500ADF163 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		E131378C28CFA0BC00754132 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CLANG_MODULES_AUTOLINK = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
@@ -281,11 +297,17 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LLVM_LTO = YES;
+				LOCALIZATION_EXPORT_SUPPORTED = NO;
+				LOCALIZED_STRING_MACRO_NAMES = "";
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = all;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
@@ -296,7 +318,11 @@
 		E131378D28CFA0BC00754132 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULE_DEBUGGING = NO;
+				CLANG_MODULES_AUTOLINK = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
@@ -311,11 +337,17 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LLVM_LTO = YES;
+				LOCALIZATION_EXPORT_SUPPORTED = NO;
+				LOCALIZED_STRING_MACRO_NAMES = "";
+				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
 				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = all;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
@@ -379,9 +411,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
 			name = Debug;
 		};
@@ -435,9 +468,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = appletvos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 15.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -445,11 +479,15 @@
 		E181BAEB28CF914500CD25A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
 				GCC_OPTIMIZATION_LEVEL = z;
@@ -458,8 +496,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -470,8 +508,9 @@
 					"$(PROJECT_DIR)/palera1nLoader/Required",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.tvloader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -489,11 +528,15 @@
 		E181BAEC28CF914500CD25A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
 				GCC_OPTIMIZATION_LEVEL = z;
@@ -502,8 +545,8 @@
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -514,8 +557,9 @@
 					"$(PROJECT_DIR)/palera1nLoader/Required",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.tvloader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

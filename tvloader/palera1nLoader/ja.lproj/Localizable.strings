@@ -1,0 +1,69 @@
+/*
+Localizable.strings
+palera1nLoader
+Japanese
+*/
+
+"INSTALL" = "インストール";
+"DEBUG" = "デバッグ";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"UTIL_CELL" = "ユーティリティ";
+"OPEN_CELL" = "アプリケーションを開く";
+"REVERT_CELL" = "Jailbreakを削除";
+"PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
+"RESPRING" = "Respring";
+"US_REBOOT" = "Userspace Reboot";
+"UICACHE" = "UICache";
+"DAEMONS" = "Launch Daemons";
+"MOUNT" = "Mount Directories";
+"TWEAKS" = "Enable Tweaks";
+"TYPE_INFO" = "種類:";
+"INSTALL_INFO" = "インストール状況:";
+"ARCH_INFO" = "アーキテクチャ:";
+"VERSION_INFO" = "バージョン:";
+"TRUE" = "済";
+"FALSE" = "未";
+"OPENER_MSG" = "アプリケーションを開く";
+"OPENER_SILEO" = "Sileoを開く";
+"OPENER_ZEBRA" = "Zebraを開く";
+"OPENER_TH" = "TrollHelperを開く";
+"DISCORD" = "Discord";
+"TWITTER" = "Twitter";
+"WEBSITE" = "Webサイト";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
+"REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
+"ABOUT" = "palera1nについて";
+"CANCEL" = "キャンセル";
+"DOWNLOADING" = "ダウンロード中...";
+"DL_STRAP" = "Bootstrapをダウンロード中";
+"DL_SILEO" = "Sileoをダウンロード中";
+"DL_ZEBRA" = "Zebraをダウンロード中";
+"INSTALLING" = "インストール中...";
+"DOWNLOAD_FAIL" = "ファイルをダウンロードできませんでした";
+"DOWNLOAD_ERROR" = "不明なエラー";
+"SAVE_FAIL" = "ファイルをディスクにコピーできませんでした";
+"INSTALL_DONE" = "インストール完了";
+"INSTALL_DONE_SUB" = "アプリを終了します。";
+"STRAP_ERROR" = "Bootstrapのインストールに失敗しました";
+"STATUS" = "ステータス";
+"DPKG_ERROR" = "パッケージのインストールに失敗しました";
+"UICACHE_ERROR" = "UICacheの実行に失敗しました";
+"CONFIRM" = "確認";
+"REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるjailbreak関連ファイルや、jailbreakアプリケーションなどは全て削除されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
+"SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
+"ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
+"SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
+"ZEBRA_INSTALL" = "Zebraをインストールしてもよろしいですか？";
+"REINSTALL" = "再インストール";
+"ENJOY" = "Enjoy!"; 
+"SILEO_FAIL" = "Sileoのインストールに失敗しました";
+"ZEBRA_FAIL" = "Zebraのインストールに失敗しました";
+"REVERT_FAIL" = "Jailbreakの削除に失敗しました。";
+"CLOSE_APP" = "アプリを終了します。";
+"REVERT_DONE" = "削除完了";
+"UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
+"CLOSE" = "閉じる";
+"REMOVING" = "削除中...";
+

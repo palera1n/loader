@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
-        window?.tintColor = UIColor.systemOrange
+        window?.tintColor = UIColor(red: 0.54, green: 0.63, blue: 0.94, alpha: 1.00)
         
         return true
     }
