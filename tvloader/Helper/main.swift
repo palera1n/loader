@@ -30,7 +30,6 @@ func strap(_ input: String,_ rootless: Bool) {
     var replace = ""
     
     if (rootless) {
-        let active = "/private/preboot/active"
         let uuid: String
         do {uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8) }
         catch { fatalError() }
@@ -97,7 +96,7 @@ func main() {
     guard getuid() == 0 else { fatalError() }
     let rootfulCheck = check_rootful() == 1 ? true : false
     let forceRevertCheck = check_forcerevert() == 1 ? true : false
-    var args = CommandLine.arguments
+    let args = CommandLine.arguments
 
     if (args[1] == "-i") {
         if (!rootfulCheck) {strap(args[2], true)}
@@ -111,9 +110,11 @@ func main() {
             rm("/var/jb")
         }
     } else if (args[1] == "-f") {
-        if rootfulCheck { fatalError() }
+        if rootfulCheck {  exit(1)  }
     } else if (args[1] == "-n") {
-        if rootfulCheck && forceRevertCheck { fatalError() }
+        if rootfulCheck && forceRevertCheck { exit(1) }
+    } else if (args[1] == "-d") {
+        reboot(0)
     } else {
         NSLog("[palera1n helper] Invalid argument")
     }
