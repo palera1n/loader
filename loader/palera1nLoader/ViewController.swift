@@ -194,7 +194,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("SILEO"):
             let originalImage = UIImage(named: "Sileo_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
-                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30), blendMode: .normal, alpha: 0.5)
+                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
             }
             cell.imageView?.image = resizedImage
             cell.isUserInteractionEnabled = true
@@ -203,7 +203,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("ZEBRA"):
             let originalImage = UIImage(named: "Zebra_logo")
             let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
-                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30), blendMode: .normal, alpha: 0.5)
             }
             cell.imageView?.image = resizedImage
             cell.isUserInteractionEnabled = false
