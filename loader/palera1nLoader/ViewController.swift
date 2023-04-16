@@ -18,9 +18,9 @@ var inst_prefix: String = "unset"
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func deviceCheck() -> Void {
-#if targetEnvironment(simulator)
+        #if targetEnvironment(simulator)
         print("[palera1n] Running in simulator")
-#else
+        #else
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             errAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
             return
@@ -31,12 +31,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         inst_prefix = rootful ? "/" : "/var/jb"
         let retRFR = spawn(command: helper, args: ["-n"], root: true)
         let rfr = retRFR == 0 ? false : true
-        
-        if rfr {
-            errAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please rejailbreak to be able to bootstrap again.")
-            return
+        if rootful {
+            if rfr {
+                errAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please rejailbreak to be able to bootstrap again.")
+                return
+            }
         }
-#endif
+        #endif
     }
     var observation: NSKeyValueObservation?
     let progressDownload : UIProgressView = UIProgressView(progressViewStyle: .default)
