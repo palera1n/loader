@@ -528,6 +528,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let ret = spawn(command: helper, args: ["-f"], root: true)
         let rootful = ret == 0 ? false : true
         if !rootful {
+            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             spinnerAlert("REMOVING")
             DispatchQueue.global(qos: .utility).async {
                 let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")

@@ -33,7 +33,24 @@ func strap(_ input: String,_ rootless: Bool) {
         let uuid: String
         do {uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8) }
         catch { fatalError() }
-        dest = "/private/preboot/\(uuid)/procursus"
+        
+        var randomString = ""
+
+        for _ in 0..<8 {
+            let randomValue = Int.random(in: 1...3)
+            let char: String
+            switch randomValue {
+            case 1:
+                char = String(UnicodeScalar(Int.random(in: 65...90))!)
+            case 2:
+                char = String(UnicodeScalar(Int.random(in: 97...122))!)
+            default:
+                char = String(Int.random(in: 0...9))
+            }
+            randomString.append(char)
+        }
+        
+        dest = "/private/preboot/\(uuid)/jb-\(randomString)/procursus"
         replace = "/var/jb"
     }
     
@@ -104,10 +121,33 @@ func main() {
     } else if (args[1] == "-r") {
         if !rootfulCheck {
             let uuid: String
-            do {uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8)
-            } catch {fatalError()}
-            rm("/private/preboot/\(uuid)/procursus")
+            do {
+                uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8)
+            } catch {
+                fatalError("Failed to retrieve UUID: \(error.localizedDescription)")
+            }
+
+            let directoryPath = "/private/preboot/\(uuid)"
+            let fileManager = FileManager.default
+            do {
+                let files = try fileManager.contentsOfDirectory(atPath: directoryPath)
+                for file in files {
+                    if file.hasPrefix("jb-") {
+                        let folderToDelete = "\(directoryPath)/\(file)"
+                        do {
+                            try fileManager.removeItem(atPath: folderToDelete)
+                            NSLog("[palera1n helper] Folder deleted successfully: \(folderToDelete)")
+                        } catch {
+                            NSLog("[palera1n helper] Failed to delete folder: \(error.localizedDescription)")
+                        }
+                    }
+                }
+            } catch {
+                NSLog("[palera1n helper] Failed to retrieve contents of directory: \(error.localizedDescription)")
+            }
+
             rm("/var/jb")
+            rm("/private/preboot/\(uuid)/procursus") // old installs
         }
     } else if (args[1] == "-f") {
         if rootfulCheck {  exit(1)  }
