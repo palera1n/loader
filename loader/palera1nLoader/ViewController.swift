@@ -201,13 +201,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.selectionStyle = .default
         case local("ZEBRA"):
             let originalImage = UIImage(named: "Zebra_logo")
-            let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
-                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+            let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
+                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30), blendMode: .normal, alpha: 0.5)
             }
             cell.imageView?.image = resizedImage
-            cell.isUserInteractionEnabled = true
+            cell.isUserInteractionEnabled = false
             cell.accessoryType = .disclosureIndicator
-            cell.selectionStyle = .default
+            cell.textLabel?.textColor = .gray
+            cell.selectionStyle = .none
         case local("UTIL_CELL"), local("OPEN_CELL"):
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
