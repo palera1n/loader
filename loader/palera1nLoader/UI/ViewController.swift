@@ -16,8 +16,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var rebootAfter: Bool = true
     var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
-    var observation: NSKeyValueObservation?
-    var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .default)
     
     override func viewDidLoad() {
         super.viewDidLoad()
