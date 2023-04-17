@@ -8,10 +8,44 @@
 import Foundation
 import UIKit
 import Toast
+import MachO
 
 class Utils {
     
-    
+    static func InfoMenu(rootful: Bool) -> UIBarButtonItem {
+        let discord = UIAction(title: local("DISCORD"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
+            UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
+        }
+        
+        let twitter = UIAction(title: local("TWITTER"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
+            UIApplication.shared.open(URL(string: "https://twitter.com/palera1n")!)
+        }
+        
+        let website = UIAction(title: local("WEBSITE"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
+            UIApplication.shared.open(URL(string: "https://palera.in")!)
+        }
+        
+        var type = "Unknown"
+        if rootful {
+            type = local("ROOTFUL")
+        } else if !rootful {
+            type = local("ROOTLESS")
+        }
+        
+        var installed = local("FALSE")
+        if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
+            installed = local("TRUE")
+        }
+        
+        let systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
+        let arch = String(cString: NXGetLocalArchInfo().pointee.name)
+        
+        let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [discord, twitter, website])
+        
+        let infoButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "info.circle"), primaryAction: nil, menu: menu)
+        
+        return infoButton
+    }
     // Presents our toast alert
     func showToast(_ isError: Bool,_ title: String,_ subtitle: String = "") {
         let toastConfig = ToastConfiguration(
@@ -23,8 +57,8 @@ class Utils {
         )
         
         DispatchQueue.main.async {
-            let check = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 48)))!.withTintColor(UIColor(red: 0.00, green: 0.65, blue: 0.81, alpha: 1.00), renderingMode: .alwaysOriginal)
-            let cross = UIImage(systemName: "xmark.circle", withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 48)))!.withTintColor(UIColor(red: 0.96, green: 0.28, blue: 0.25, alpha: 1.00), renderingMode: .alwaysOriginal)
+            let check = UIImage(systemName: "checkmark.circle", withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 48)))!.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+            let cross = UIImage(systemName: "xmark.circle", withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 48)))!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
             let image: UIImage = isError ? cross : check
             
             if (global.presentedViewController != nil) {
@@ -56,9 +90,9 @@ class Utils {
     
     // Checks if device is compatable
     func deviceCheck() -> Void {
-#if targetEnvironment(simulator)
+        #if targetEnvironment(simulator)
         print("[palera1n] Running in simulator")
-#else
+    #else
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
             //errAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
             return
@@ -75,10 +109,8 @@ class Utils {
                 return
             }
         }
-#endif
+    #endif
     }
-    
-    
     // Opens an alert controller with actions to open an app
     @objc func openersTapped() {
         let alertController = whichAlert(title: local("OPENER_MSG"))

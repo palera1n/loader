@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MachO
 import CoreServices
 
 var rootful : Bool = false
@@ -17,19 +16,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var rebootAfter: Bool = true
     var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
-
+    var observation: NSKeyValueObservation?
+    var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .default)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (inst_prefix == "unset") { Utils().deviceCheck()}
-        
+        if (inst_prefix == "unset") { Utils().deviceCheck() }
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-
+        
         let customView: UIView = {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
             view.translatesAutoresizingMaskIntoConstraints = false
-            
+
             let button: UIButton = {
                 let button = UIButton(type: .custom)
                 button.translatesAutoresizingMaskIntoConstraints = false
@@ -63,26 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return view
         }()
 
-        let discord = UIAction(title: local("DISCORD"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
-            UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
-        }
-        let twitter = UIAction(title: local("TWITTER"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
-            UIApplication.shared.open(URL(string: "https://twitter.com/palera1n")!)
-        }
-        let website = UIAction(title: local("WEBSITE"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
-            UIApplication.shared.open(URL(string: "https://palera.in")!)
-        }
-
-        var type = "Unknown"
-        if rootful { type = local("ROOTFUL") }
-        else if !rootful { type = local("ROOTLESS") }
-        var installed = local("FALSE")
-        if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {installed = local("TRUE")}
-        let systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
-        let arch = String(cString: NXGetLocalArchInfo().pointee.name)
-        let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [discord, twitter, website])
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "info.circle"), primaryAction: nil, menu: menu)
+        navigationItem.rightBarButtonItem = Utils.InfoMenu(rootful: rootful)
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
@@ -98,57 +79,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return tableData[section].count
     }
     
-    
-    // MARK: - Viewtable for Sileo/Zebra/Revert/Etc
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+    func applyImageModifications(to cell: UITableViewCell, with originalImage: UIImage) {
+        let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
+            originalImage.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+        }
+        cell.imageView?.image = resizedImage
         cell.imageView?.layer.cornerRadius = 7
         cell.imageView?.clipsToBounds = true
         cell.imageView?.layer.borderWidth = 1
         cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+    }
+    
+    // MARK: - Viewtable for Sileo/Zebra/Revert/Etc
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
-
+        
         switch tableData[indexPath.section][indexPath.row] {
         case local("REVERT_CELL"):
             if FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                cell.isHidden = false
                 cell.isUserInteractionEnabled = true
                 cell.accessoryType = .disclosureIndicator
-                cell.textLabel?.textColor = UIColor(red: 0.90, green: 0.29, blue: 0.29, alpha: 1.00)
+                cell.textLabel?.textColor = .systemRed
             } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
                 cell.detailTextLabel?.text = local("REVERT_SUBTEXT")
-                cell.selectionStyle = .none
             } else {
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
-                cell.selectionStyle = .none
             }
         case local("SILEO"):
-            let originalImage = UIImage(named: "Sileo_logo")
-            let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
-                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+            if let originalImage = UIImage(named: "Sileo_logo") {
+                applyImageModifications(to: cell, with: originalImage)
             }
-            cell.imageView?.image = resizedImage
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-            cell.selectionStyle = .default
         case local("ZEBRA"):
-            let originalImage = UIImage(named: "Zebra_logo")
-            let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
-                originalImage?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30), blendMode: .normal, alpha: 0.5)
+            if let originalImage = UIImage(named: "Zebra_logo") {
+                applyImageModifications(to: cell, with: originalImage)
             }
-            cell.imageView?.image = resizedImage
             cell.isUserInteractionEnabled = false
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.textColor = .gray
-            cell.selectionStyle = .none
         case local("UTIL_CELL"), local("OPEN_CELL"):
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.textColor = UIColor(red: 0.89, green: 0.52, blue: 0.43, alpha: 1.00)
-            cell.selectionStyle = .default
+            cell.textLabel?.textColor = UIColor(red: 0.3, green: 0.5, blue: 0.9, alpha: 1.0)
         default:
             break
         }
@@ -159,7 +136,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
-    
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {

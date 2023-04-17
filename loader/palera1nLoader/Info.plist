@@ -3,10 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>REVISION</key>
-	<string>3fe474e</string>
+	<string>128adc7</string>
+	<key>Scene Configuration</key>
+	<dict/>
 	<key>TSRootBinaries</key>
 	<array>
 		<string>Helper</string>
 	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict/>
+	</dict>
 </dict>
 </plist>

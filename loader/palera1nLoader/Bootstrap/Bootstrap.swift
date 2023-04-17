@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 
 class bootstrap {
-    var observation: NSKeyValueObservation?
-    var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .default)
-    
+
     // Ran after bootstrap/deb install
     func cleanUp() -> Void {
         deleteFile(file: "sileo.deb")
@@ -137,12 +135,12 @@ class bootstrap {
                 return
             }
         }
-        
-        self.observation = task.progress.observe(\.fractionCompleted) { progress, _ in
+        let viewController = ViewController()
+        viewController.observation = task.progress.observe(\.fractionCompleted) { progress, _ in
             print("progress: ", progress.fractionCompleted)
             DispatchQueue.main.async {
                 if (file == "bootstrap.tar") {
-                    self.progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
+                    viewController.progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
                 }
             }
         }
@@ -214,14 +212,15 @@ class bootstrap {
         downloadGroup.enter()
         DispatchQueue.global(qos: .default).async {
             DispatchQueue.main.async {
+                let viewController = ViewController()
                 let loadingAlert = UIAlertController(title: nil, message: local("DOWNLOADING"), preferredStyle: .alert)
                 let constraintHeight = NSLayoutConstraint(item: loadingAlert.view!, attribute: NSLayoutConstraint.Attribute.height,
                                                           relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
                                                             NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 75)
                 loadingAlert.view.addConstraint(constraintHeight)
-                self.progressDownload.setProgress(0.0/1.0, animated: true)
-                self.progressDownload.frame = CGRect(x: 25, y: 55, width: 220, height: 0)
-                loadingAlert.view.addSubview(self.progressDownload)
+                viewController.progressDownload.setProgress(0.0/1.0, animated: true)
+                viewController.progressDownload.frame = CGRect(x: 25, y: 55, width: 220, height: 0)
+                loadingAlert.view.addSubview(viewController.progressDownload)
                 global.present(loadingAlert, animated: true, completion: nil)
             }
 
@@ -273,6 +272,7 @@ class bootstrap {
         }
         
         defaultSources(pm, rootful)
+        cleanUp()
         Utils().showToast(false, local("INSTALL_DONE"))
     }
     

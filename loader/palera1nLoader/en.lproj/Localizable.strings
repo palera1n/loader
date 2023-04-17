@@ -41,7 +41,7 @@ English
 "DL_SILEO" = "Downloading Sileo";
 "DL_ZEBRA" = "Downloading Zebra";
 "INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Could not download file";
+"DOWNLOAD_FAIL" = "Unable to fetch file";
 "DOWNLOAD_ERROR" = "Unknown error";
 "SAVE_FAIL" = "Could not copy file to disk";
 "INSTALL_DONE" = "Install Completed";

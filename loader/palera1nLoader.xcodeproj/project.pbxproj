@@ -79,6 +79,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3313A75629ECE2690021665E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E181BADD28CF914300CD25A6 /* ViewController.swift */,
+				45E7E0F229E4EC5B0057741A /* Common.swift */,
+				452A308629ECAF9900EB8CAC /* Utilities.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3313A75729ECE2710021665E /* Bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				4509BACB29E7970300D36328 /* Bootstrap.swift */,
+				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+			);
+			path = Bootstrap;
+			sourceTree = "<group>";
+		};
 		CED0FAF329DC8C7E00106BEF /* paleinfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,11 +151,8 @@
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
-				E181BADD28CF914300CD25A6 /* ViewController.swift */,
-				4509BACB29E7970300D36328 /* Bootstrap.swift */,
-				452A308629ECAF9900EB8CAC /* Utilities.swift */,
-				45E7E0F229E4EC5B0057741A /* Common.swift */,
-				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+				3313A75629ECE2690021665E /* UI */,
+				3313A75729ECE2710021665E /* Bootstrap */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
 				45E7E0FA29E650C30057741A /* Localizable.strings */,
 			);
