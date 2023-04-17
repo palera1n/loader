@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
+		452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A308629ECAF9900EB8CAC /* Utilities.swift */; };
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
+		45D894BD29ECCA6800BDD21B /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 45D894BC29ECCA6800BDD21B /* Toast */; };
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
 		45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F091F229E9A30700F4770A /* CoreServices.framework */; };
@@ -36,6 +38,7 @@
 		33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-BridgingHeader.h"; sourceTree = "<group>"; };
 		33DE13AA29DCAD7800DF3D5E /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; path = External; sourceTree = "<group>"; };
 		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
+		452A308629ECAF9900EB8CAC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D894BD29ECCA6800BDD21B /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,7 @@
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
 				E181BADD28CF914300CD25A6 /* ViewController.swift */,
 				4509BACB29E7970300D36328 /* Bootstrap.swift */,
+				452A308629ECAF9900EB8CAC /* Utilities.swift */,
 				45E7E0F229E4EC5B0057741A /* Common.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
@@ -175,6 +180,7 @@
 			);
 			name = palera1nLoader;
 			packageProductDependencies = (
+				45D894BC29ECCA6800BDD21B /* Toast */,
 			);
 			productName = Pogo;
 			productReference = E181BAD628CF914300CD25A6 /* palera1nLoader.app */;
@@ -213,6 +219,7 @@
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
 				453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */,
+				45D894BB29ECCA6800BDD21B /* XCRemoteSwiftPackageReference "toast-swift" */,
 			);
 			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
 			projectDirPath = "";
@@ -250,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
@@ -603,6 +611,14 @@
 				kind = branch;
 			};
 		};
+		45D894BB29ECCA6800BDD21B /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -610,6 +626,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */;
 			productName = SWCompression;
+		};
+		45D894BC29ECCA6800BDD21B /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45D894BB29ECCA6800BDD21B /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
