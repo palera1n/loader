@@ -24,6 +24,11 @@ func rm(_ at: String) {
     catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
 }
 
+func touch(atPath path: String) {
+    let fileData = Data()
+    fm.createFile(atPath: path, contents: fileData, attributes: nil)
+}
+
 func strap(_ input: String,_ rootless: Bool) {
     NSLog("[palera1n helper] Attempting to install \(input)")
     var dest = "/"
@@ -106,6 +111,9 @@ func strap(_ input: String,_ rootless: Bool) {
     attrib[.groupOwnerAccountName] = "mobile"
     do { try fm.setAttributes(attrib, ofItemAtPath: "\(replace)/var/mobile")}
     catch { NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)") }
+    let filePath: String
+    if rootless { filePath = "/var/jb/.palecursus_strapped" } else { filePath = "/.palecursus_strapped" }
+    touch(atPath: filePath)
 }
 
 func main() {
