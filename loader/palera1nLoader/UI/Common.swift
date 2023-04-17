@@ -37,3 +37,21 @@ func deleteFile(file: String) -> Void {
    try? FileManager.default.removeItem(at: fileURL)
 }
 
+func errAlert(title: String, message: String) {
+    DispatchQueue.main.async {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
+            bootstrap().cleanUp()
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
+        })
+        
+        if (global.presentedViewController != nil) {
+            global.presentedViewController!.dismiss(animated: true) {
+                global.present(alertController, animated: true, completion: nil)
+            }
+        } else {
+            global.present(alertController, animated: true, completion: nil)
+        }
+    }
+}

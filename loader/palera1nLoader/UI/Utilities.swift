@@ -7,11 +7,9 @@
 
 import Foundation
 import UIKit
-import Toast
 import MachO
 
 class Utils {
-    
     static func InfoMenu(rootful: Bool) -> UIBarButtonItem {
         let discord = UIAction(title: local("DISCORD"), image: UIImage(systemName: "arrow.up.forward.app")) { (_) in
             UIApplication.shared.open(URL(string: "https://discord.gg/palera1n")!)
@@ -46,47 +44,7 @@ class Utils {
         
         return infoButton
     }
-    // Presents our toast alert
-    func showToast(_ isError: Bool,_ title: String,_ subtitle: String = "") {
-        let toastConfig = ToastConfiguration(
-            direction: .top,
-            autoHide: true,
-            enablePanToClose: false,
-            displayTime: 2.5,
-            animationTime: 0.2
-        )
-        
-        DispatchQueue.main.async {
-            let check = UIImage(systemName: "checkmark.circle", withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 48)))!.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-            let cross = UIImage(systemName: "xmark.circle", withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 48)))!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
-            let image: UIImage = isError ? cross : check
-            
-            if (global.presentedViewController != nil) {
-                global.presentedViewController!.dismiss(animated: true) {
-                    if (subtitle != "") {
-                        let toast = Toast.default(image: image, title: title, subtitle: subtitle, config: toastConfig)
-                        toast.enableTapToClose()
-                        toast.show()
-                    } else {
-                        let toast = Toast.default(image: image, title: title, config: toastConfig)
-                        toast.enableTapToClose()
-                        toast.show()
-                    }
-                }
-            } else {
-                if (subtitle != "") {
-                    let toast = Toast.default(image: image, title: title, subtitle: subtitle, config: toastConfig)
-                    toast.enableTapToClose()
-                    toast.show()
-                } else {
-                    let toast = Toast.default(image: image, title: title, config: toastConfig)
-                    toast.enableTapToClose()
-                    toast.show()
-                }
-            }
-        }
-    }
-    
+
     
     // Checks if device is compatable
     func deviceCheck() -> Void {
@@ -111,71 +69,61 @@ class Utils {
         }
     #endif
     }
+    
     // Opens an alert controller with actions to open an app
     @objc func openersTapped() {
-        let alertController = whichAlert(title: local("OPENER_MSG"))
-        let actions: [(title: String, imageName: String, handler: () -> Void)] = [
-            (title: local("OPENER_SILEO"), imageName: "arrow.up.forward.app", handler: {
-                if (openApp("org.coolstar.SileoStore")){}else{
-                    let ret = openApp("org.coolstar.SileoNightly")
-                    if (!ret) {
-                        self.showToast(true, "Failed to open Sileo")
-                    }
-                }
-            }),
-            (title: local("OPENER_ZEBRA"), imageName: "arrow.up.forward.app", handler: {
-                let ret = openApp("xyz.willy.Zebra")
-                if (!ret) {
-                    self.showToast(true, "Failed to open Zebra")
-                }
-            }),
-            (title: local("OPENER_TH"), imageName: "arrow.up.forward.app", handler: {
-                let ret = openApp("com.opa334.trollstorepersistencehelper")
-                if (!ret) {
-                    self.showToast(true, "Failed to open TrollHelper")
-                }
-            })
-        ]
-
-        for action in actions {
-            let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
-            alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
-            alertController.addAction(alertAction)
+        DispatchQueue.main.async {
+            let alertController = whichAlert(title: local("OPENER_MSG"))
+            let actions: [(title: String, imageName: String, handler: () -> Void)] = [
+                (title: local("OPENER_SILEO"), imageName: "arrow.up.forward.app", handler: {
+                    if (openApp("org.coolstar.SileoStore")){}else{_ = openApp("org.coolstar.SileoNightly")}
+                }),
+                (title: local("OPENER_ZEBRA"), imageName: "arrow.up.forward.app", handler: {_ = openApp("xyz.willy.Zebra")}),
+                (title: local("OPENER_TH"), imageName: "arrow.up.forward.app", handler: {_ = openApp("com.opa334.trollstorepersistencehelper")})
+            ]
+            
+            for action in actions {
+                let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
+                alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
+                alertController.addAction(alertAction)
+            }
+            
+            alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
+            global.present(alertController, animated: true, completion: nil)
         }
-        
-        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
-        global.present(alertController, animated: true, completion: nil)
     }
     
     
     // Opens an alert controller with actions to useful functions
     @objc func actionsTapped() {
-        var pre = "/var/jb"
-        if rootful { pre = "/"}
-        let alertController = whichAlert(title: local("UTIL_CELL"))
-
-        let actions: [(title: String, imageName: String, handler: () -> Void)] = [
-            (title: local("RESPRING"), imageName: "arrow.clockwise.circle", handler: { spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)}),
-            (title: local("US_REBOOT"), imageName: "power.circle", handler: { spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)}),
-            (title: local("UICACHE"), imageName: "xmark.circle", handler: { spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)}),
-            (title: local("DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
-            (title: local("MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
-            (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
-                if rootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
-                else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
-            })
-        ]
-
-        for action in actions {
-            let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
-            alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-            if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
-            alertController.addAction(alertAction)
+        DispatchQueue.main.async {
+            var pre = "/var/jb"
+            if rootful { pre = "/"}
+            let alertController = whichAlert(title: local("UTIL_CELL"))
+            
+            let actions: [(title: String, imageName: String, handler: () -> Void)] = [
+                (title: local("RESPRING"), imageName: "arrow.clockwise.circle", handler: { spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)}),
+                (title: local("US_REBOOT"), imageName: "power.circle", handler: { spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)}),
+                (title: local("UICACHE"), imageName: "xmark.circle", handler: { spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)}),
+                (title: local("DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
+                (title: local("MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
+                (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
+                    if rootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
+                    else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
+                })
+            ]
+            
+            for action in actions {
+                let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
+                alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+                if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
+                alertController.addAction(alertAction)
+            }
+            
+            alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
+            global.present(alertController, animated: true, completion: nil)
         }
-
-        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
-        global.present(alertController, animated: true, completion: nil)
     }
     
 }

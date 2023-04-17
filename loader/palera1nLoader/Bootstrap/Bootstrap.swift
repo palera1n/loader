@@ -116,7 +116,7 @@ class bootstrap {
             if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                 if statusCode != 200 {
                     if server.contains("cdn.nickchan.lol") {
-                        Utils().showToast(true, local("DOWNLOAD_FAIL"))
+                        errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
                         return
                     }
                     return
@@ -126,12 +126,12 @@ class bootstrap {
                 do {
                     try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
                     semaphore.signal()
-                } catch {
-                    Utils().showToast(true, local("SAVE_FAIL"))
+                } catch (let writeError) {
+                    errAlert(title: local("SAVE_FAIL"), message: "\(writeError)")
                     return
                 }
             } else {
-                Utils().showToast(true, local("DOWNLOAD_FAIL"))
+                errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
                 return
             }
         }
@@ -149,7 +149,6 @@ class bootstrap {
         semaphore.wait()
     }
 
-    
     // Installs a given deb file
     func installDeb(_ file: String,_ rootful: Bool) -> Void {
         DispatchQueue.main.async {
@@ -174,18 +173,18 @@ class bootstrap {
         
         var ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
-            Utils().showToast(true, local("DPKG_ERROR"))
+            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
-            Utils().showToast(true, local("UICACHE_ERROR"))
+            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
             return
         }
         
         defaultSources(file, rootful)
-        Utils().showToast(false, local("INSTALL_DONE"))
+        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
     }
     
     
@@ -199,7 +198,7 @@ class bootstrap {
         if (!rootful && FileManager.default.fileExists(atPath: "/var/jb")) {
             let ret = spawn(command: helper, args: ["-r"], root: true)
             if (ret != 0) {
-                Utils().showToast(true, local("STRAP_ERROR"))
+                errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
                 return
             }
         }
@@ -246,7 +245,7 @@ class bootstrap {
         
         var ret = spawn(command: helper, args: ["-i", tar], root: true)
         if (ret != 0) {
-            Utils().showToast(true, local("STRAP_ERROR"))
+            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
             return
         }
         
@@ -255,25 +254,25 @@ class bootstrap {
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
         if (ret != 0) {
-            Utils().showToast(true, local("STRAP_ERROR"))
+            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
-            Utils().showToast(true, local("DPKG_ERROR"))
+            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
-            Utils().showToast(true, local("UICACHE_ERROR"))
+            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
             return
         }
         
         defaultSources(pm, rootful)
         cleanUp()
-        Utils().showToast(false, local("INSTALL_DONE"))
+        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
     }
     
     
@@ -304,20 +303,20 @@ class bootstrap {
                 for app in apps ?? [] {
                     if app.hasSuffix(".app") {
                         let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/var/jb/Applications/\(app)"], root: true)
-                        if ret != 0 {Utils().showToast(true, local("REVERT_FAIL")); return}
+                        if ret != 0 {errAlert(title: "Failed to unregister \(app)", message: "Status: \(ret)"); return}
                     }
                 }
                 
                 let ret = spawn(command: helper, args: ["-r"], root: true)
                 if ret != 0 {
-                    Utils().showToast(true, local("REVERT_FAIL"))
+                    errAlert(title: local("REVERT_FAIL"), message: "Status: \(ret)")
                     return
                 }
                     
                 if (reboot) {
                     spawn(command: helper, args: ["-d"], root: true)
                 } else {
-                    Utils().showToast(false, local("REVERT_DONE"))
+                    errAlert(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
                 }
             }
         }
