@@ -9,11 +9,37 @@ import Foundation
 import LaunchServicesBridge
 import UIKit
 
+struct envInfo {
+    static var isRootful: Bool = false
+    static var isSimulator: Bool = false
+    static var installPrefix: String = "unset"
+    static var rebootAfter: Bool = true
+    static var hasHelper: Bool = false
+    static var helperPath: String = "unset"
+    static var envType: Int = -1
+    static var systemVersion: String = "unset"
+    static var systemArch: String = "unset"
+    static var isInstalled: Bool = false
+    static var hasForceReverted: Bool = false
+    static var sileoInstalled: Bool = false
+    static var zebraInstalled: Bool = false
+    static var hasChecked: Bool = false
+}
+
 let global = (UIApplication.shared.connectedScenes.filter { $0.activationState == .foregroundActive }
     .first(where: { $0 is UIWindowScene }).flatMap({ $0 as? UIWindowScene })?.windows.first(where: \.isKeyWindow)?.rootViewController!)!
 
 func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
+}
+
+func helperCmd(_ args: [String]) -> Int {
+    return spawn(command: envInfo.helperPath, args: args, root: true)
+}
+
+
+func fileExists(_ path: String) -> Bool {
+    return FileManager.default.fileExists(atPath: path)
 }
 
 func docsFile(file: String) -> String {

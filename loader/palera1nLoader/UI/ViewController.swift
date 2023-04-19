@@ -9,32 +9,30 @@
 import UIKit
 import CoreServices
 
-var rootful : Bool = false
-var inst_prefix: String = "unset"
-var rebootAfter: Bool = true
+//var rootful : Bool = false
+//var inst_prefix: String = "unset"
+//var rebootAfter: Bool = true
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
     override func viewDidAppear(_ animated: Bool) {
-        if (inst_prefix == "unset") { Utils().deviceCheck() }
         super.viewDidAppear(animated)
-        if !rootful {
-            if let strapValue = Utils().strapCheck() {
-                if strapValue == 2 {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                        warningAlert(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder.", destructiveButtonTitle: "Proceed", destructiveHandler: {
-                            print("BALL")
-                        })
-                    }
-                    return
+        if (!envInfo.isRootful) {
+            if envInfo.envType == 2 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    warningAlert(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder.", destructiveButtonTitle: "Proceed", destructiveHandler: {
+                    })
                 }
+                return
             }
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (!envInfo.hasChecked) { Utils().prerequisiteChecks() }
 
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
@@ -76,7 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             return view
         }()
-        let infoButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "staroflife.circle"), primaryAction: nil, menu: Utils().InfoMenu(rootful: rootful, viewController: self))
+        let infoButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "staroflife.circle"), primaryAction: nil, menu: Utils().InfoMenu(viewController: self))
         navigationItem.rightBarButtonItem = infoButton
 
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
@@ -174,7 +172,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("REVERT_CELL"):
             let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in bootstrap().revert(rebootAfter) }
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in bootstrap().revert() }
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)
@@ -184,7 +182,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("SILEO_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async {  bootstrap().installDeb("sileo", rootful) }
+                    DispatchQueue.global(qos: .default).async {  bootstrap().installDeb("sileo") }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
@@ -193,13 +191,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("SILEO_INSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async { bootstrap().installDeb("sileo", rootful) }
+                    DispatchQueue.global(qos: .default).async { bootstrap().installDeb("sileo") }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                DispatchQueue.global(qos: .userInitiated).async { bootstrap().installStrap("sileo", rootful) }
+                DispatchQueue.global(qos: .userInitiated).async { bootstrap().installStrap("sileo") }
             }
         case local("ZEBRA"):
             let zebraInstalled = UIApplication.shared.canOpenURL(URL(string: "zbra://")!)
@@ -207,7 +205,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async {  bootstrap().installDeb("zebra", rootful) }
+                    DispatchQueue.global(qos: .default).async {  bootstrap().installDeb("zebra") }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
@@ -216,13 +214,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("ZEBRA_INSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
-                    DispatchQueue.global(qos: .default).async {  bootstrap().installDeb("zebra", rootful) }
+                    DispatchQueue.global(qos: .default).async {  bootstrap().installDeb("zebra") }
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                DispatchQueue.global(qos: .userInitiated).async { bootstrap().installStrap("zebra", rootful) }
+                DispatchQueue.global(qos: .userInitiated).async { bootstrap().installStrap("zebra") }
             }
         default:
             break

@@ -36,10 +36,9 @@ class bootstrap {
     
     
     // Appends new defaults sources for Sileo and Zebra
-    func defaultSources(_ pm: String,_ rootful: Bool) -> Void {
-        let inst_prefix = rootful ? "" : "/var/jb"
+    func defaultSources(_ pm: String) -> Void {
         let zebraSources = "/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list"
-        let sileoSources = "\(inst_prefix)/etc/apt/sources.list.d/procursus.sources"
+        let sileoSources = "\(envInfo.installPrefix)/etc/apt/sources.list.d/procursus.sources"
         let sileoLine = "Types: deb\nURIs: https://repo.getsileo.app/\nSuites: ./\nComponents:\n"
         let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
         
@@ -82,7 +81,7 @@ class bootstrap {
         dataToWrite = try! String(contentsOfFile: readPath)
         dataToWrite = dataToWrite.replacingOccurrences(of: "\n\n", with: "\n") // format fix
 
-        if (rootful) {
+        if (envInfo.isRootful) {
             if (!palera1nStrap) {dataToWrite = "\(dataToWrite)\n\(palestrapLine)"}
             if (!palera1nRepo) {dataToWrite = "\(dataToWrite)\n\(palera1nLine)"}
         } else {
@@ -96,20 +95,20 @@ class bootstrap {
         let docUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let tempFile = docUrl.appendingPathComponent("sources")
         try? dataToWrite.write(to: tempFile, atomically: true, encoding: String.Encoding.utf8)
-        _ = spawn(command: "\(inst_prefix)/usr/bin/mv", args: [tempFile.path, readPath], root: true)
+        _ = spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempFile.path, readPath], root: true)
     }
     
     
     // File downloader for debs and strap
-    func download(_ file: String,_ rootful: Bool) -> Void {
+    func download(_ file: String) -> Void {
         deleteFile(file: file)
         let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
-        let server = rootful == true ? "https://static.palera.in" : "https://static.palera.in/rootless"
+        let server = envInfo.isRootful == true ? "https://static.palera.in" : "https://static.palera.in/rootless"
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let fileURL = documentsURL.appendingPathComponent(file)
         var url = URL(string: "\(server)/\(file)")!
-        if (file == "bootstrap.tar" && !rootful) {url = URL(string: "\(server)/bootstrap-\(CF).tar")!}
+        if (file == "bootstrap.tar" && !envInfo.isRootful) {url = URL(string: "\(server)/bootstrap-\(CF).tar")!}
         
         let semaphore = DispatchSemaphore(value: 0)
         let config = URLSessionConfiguration.default
@@ -152,7 +151,7 @@ class bootstrap {
     }
 
     // Installs a given deb file
-    func installDeb(_ file: String,_ rootful: Bool) -> Void {
+    func installDeb(_ file: String) -> Void {
         DispatchQueue.main.async {
             let loadingAlert = UIAlertController(title: nil, message: local("INSTALLING"), preferredStyle: .alert)
             let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
@@ -165,47 +164,40 @@ class bootstrap {
         let downloadGroup = DispatchGroup()
         downloadGroup.enter()
         DispatchQueue.global(qos: .default).async {
-            self.download("\(file).deb", rootful)
+            self.download("\(file).deb")
             downloadGroup.leave()
         }
         downloadGroup.wait()
         
-        let inst_prefix = rootful ? "" : "/var/jb"
         let deb = "\(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).deb").path)" // gross
         
-        var ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
+        var ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
             errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
             return
         }
         
-        ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
             return
         }
         
-        defaultSources(file, rootful)
+        defaultSources(file)
         errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
     }
     
     
     // Main bootstrap install
-    func installStrap(_ pm: String,_ rootful: Bool) -> Void {
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-            print("[palera1n] Could not find helper?")
-            return
-        }
-        
-        if (!rootful && FileManager.default.fileExists(atPath: "/var/jb")) {
-            let ret = spawn(command: helper, args: ["-r"], root: true)
+    func installStrap(_ pm: String) -> Void {
+        if (!envInfo.isRootful && fileExists("/var/jb")) {
+            let ret = helperCmd(["-r"])
             if (ret != 0) {
                 errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
                 return
             }
         }
         
-        let inst_prefix = rootful ? "/" : "/var/jb"
         let tar = docsFile(file: "bootstrap.tar")
         let deb = docsFile(file: "\(pm).deb")
 
@@ -224,8 +216,8 @@ class bootstrap {
                 global.present(loadingAlert, animated: true, completion: nil)
             }
 
-            self.download("bootstrap.tar", rootful)
-            self.download("\(pm).deb", rootful)
+            self.download("bootstrap.tar")
+            self.download("\(pm).deb")
             downloadGroup.leave()
         }
         downloadGroup.wait()
@@ -242,51 +234,44 @@ class bootstrap {
         }
         
         spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-        if rootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)}
+        if envInfo.isRootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)}
         
-        var ret = spawn(command: helper, args: ["-i", tar], root: true)
+        var ret = helperCmd(["-i", tar])
         if (ret != 0) {
             errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
             return
         }
         
-        spawn(command: "\(inst_prefix)/usr/bin/chmod", args: ["4755", "\(inst_prefix)/usr/bin/sudo"], root: true)
-        spawn(command: "\(inst_prefix)/usr/bin/chown", args: ["root:wheel", "\(inst_prefix)/usr/bin/sudo"], root: true)
+        spawn(command: "\(envInfo.installPrefix)/usr/bin/chmod", args: ["4755", "\(envInfo.installPrefix)/usr/bin/sudo"], root: true)
+        spawn(command: "\(envInfo.installPrefix)/usr/bin/chown", args: ["root:wheel", "\(envInfo.installPrefix)/usr/bin/sudo"], root: true)
         
-        ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/sh", args: ["\(envInfo.installPrefix)/prep_bootstrap.sh"], root: true)
         if (ret != 0) {
             errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
             return
         }
         
-        ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
             errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
             return
         }
         
-        ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
             return
         }
         
-        defaultSources(pm, rootful)
+        defaultSources(pm)
         cleanUp()
         errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
     }
     
     
     // Reverting/Removing jailbreak, wipes /var/jb
-    func revert(_ reboot: Bool) -> Void {
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-            print("[palera1n] Could not find helper?")
-            return
-        }
-        
-        let ret = spawn(command: helper, args: ["-f"], root: true)
-        let rootful = ret == 0 ? false : true
-        if !rootful {
+    func revert() -> Void {
+        if !envInfo.isRootful {
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             DispatchQueue.main.async {
                 global.presentedViewController!.dismiss(animated: true) {
@@ -308,14 +293,14 @@ class bootstrap {
                     }
                 }
                 
-                let ret = spawn(command: helper, args: ["-r"], root: true)
+                let ret = helperCmd(["-r"])
                 if ret != 0 {
                     errAlert(title: local("REVERT_FAIL"), message: "Status: \(ret)")
                     return
                 }
                     
-                if (reboot) {
-                    spawn(command: helper, args: ["-d"], root: true)
+                if (envInfo.rebootAfter) {
+                    _ = helperCmd(["-d"])
                 } else {
                     errAlert(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
                 }

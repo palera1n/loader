@@ -9,7 +9,7 @@
 import Foundation
 import Darwin.POSIX
 
-@discardableResult func spawn(command: String, args: [String], root: Bool) -> Int {
+@discardableResult func spawn(command: String, args: [String], root: Bool = true) -> Int {
     var pipestdout: [Int32] = [0, 0]
     var pipestderr: [Int32] = [0, 0]
 

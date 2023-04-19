@@ -8,33 +8,25 @@
 import Foundation
 import UIKit
 import MachO
+
+
 class Utils {
-    func InfoMenu(rootful: Bool, viewController: UIViewController) -> UIMenu {
+    
+    func InfoMenu(viewController: UIViewController) -> UIMenu {
+        let type = envInfo.isRootful ? local("ROOTFUL") : local("ROOTLESS")
+        let installed = envInfo.isInstalled ? local("TRUE") : local("FALSE")
+        let systemVersion = envInfo.systemVersion
+        let arch = envInfo.systemArch
+        let strapValue = envInfo.envType
         
-        var type = "Unknown"
-        if rootful {
-            type = local("ROOTFUL")
-        } else if !rootful {
-            type = local("ROOTLESS")
-        }
-
-        var installed = local("FALSE")
-        if FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-            installed = local("TRUE")
-        }
-
-        let systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
-        let arch = String(cString: NXGetLocalArchInfo().pointee.name)
-        let strapValue = Utils().strapCheck()
-        
-        let doReboot = UIAction(title: "Reboot after revert", image: UIImage(systemName: "power.circle"), state: rebootAfter ? .on : .off) { _ in
-            rebootAfter.toggle()
-            let infoButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "staroflife.circle"), primaryAction: nil, menu: Utils().InfoMenu(rootful: rootful, viewController: viewController))
+        let doReboot = UIAction(title: "Reboot after revert", image: UIImage(systemName: "power.circle"), state: envInfo.rebootAfter ? .on : .off) { _ in
+            envInfo.rebootAfter.toggle()
+            let infoButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "staroflife.circle"), primaryAction: nil, menu: Utils().InfoMenu(viewController: viewController))
             viewController.navigationItem.rightBarButtonItem = infoButton
         }
         
         let hideinstall = UIAction(title: local("HIDE"), image: UIImage(systemName: "eye.slash.circle")) { (_) in
-            if !rootful {
+            if !envInfo.isRootful {
                 if let strapValue = Utils().strapCheck() {
                     switch strapValue {
                     case 1:
@@ -45,7 +37,7 @@ class Utils {
                                 return
                             }
                             
-                            if (!rootful && FileManager.default.fileExists(atPath: "/var/jb")) {
+                            if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
                                 do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
                                 catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
                             }
@@ -58,7 +50,6 @@ class Utils {
                     default:
                         #if targetEnvironment(simulator)
                         warningAlert(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveButtonTitle: "Proceed", destructiveHandler: {
-                            print("HELLOOOOOO!!!")
                         })
                         #else
                         errAlert(title: "Unable to proceed", message: "\(local("STRAP_INFO")) \(strapValue)")
@@ -91,34 +82,11 @@ class Utils {
         let divider = UIMenu(title: "", options: .displayInline, children: [doReboot, hideinstall])
         
         let socialsMenu = UIMenu(title: local("SOCIALS"), children: [discordSubMenu, twitterSubMenu, websiteSubMenu])
-        let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("STRAP_INFO")) \(strapValue ?? -1)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [divider, socialsMenu])
+        let menu = UIMenu(title: "\(local("TYPE_INFO")) \(type)\n\(local("INSTALL_INFO")) \(installed)\n\(local("STRAP_INFO")) \(strapValue)\n\(local("ARCH_INFO")) \(arch)\n\(systemVersion)", children: [divider, socialsMenu])
 
         return menu
     }
-
-    // Checks if device is compatable
-    func deviceCheck() -> Void {
-    #if targetEnvironment(simulator)
-        print("[palera1n] Running in simulator")
-    #else
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-            errAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
-            return
-        }
-        
-        let ret = spawn(command: helper, args: ["-f"], root: true)
-        rootful = ret == 0 ? false : true
-        inst_prefix = rootful ? "/" : "/var/jb"
-        let retRFR = spawn(command: helper, args: ["-n"], root: true)
-        let rfr = retRFR == 0 ? false : true
-        if rootful {
-            if rfr {
-                errAlert(title: "Unable to continue", message: "Bootstrapping after using --force-revert is not supported, please rejailbreak to be able to bootstrap again.")
-                return
-            }
-        }
-    #endif
-    }
+    
     
     func strapCheck() -> Int? {
         #if targetEnvironment(simulator)
@@ -189,8 +157,7 @@ class Utils {
     // Opens an alert controller with actions to useful functions
     @objc func actionsTapped() {
         DispatchQueue.main.async {
-            var pre = "/var/jb"
-            if rootful { pre = "/"}
+            let pre = envInfo.installPrefix
             let alertController = whichAlert(title: local("UTIL_CELL"))
             
             let actions: [(title: String, imageName: String, handler: () -> Void)] = [
@@ -200,7 +167,7 @@ class Utils {
                 (title: local("DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
                 (title: local("MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
                 (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
-                    if rootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
+                    if envInfo.isRootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
                     else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
                 })
             ]
@@ -217,4 +184,66 @@ class Utils {
         }
     }
     
+    
+    func prerequisiteChecks() -> Void {
+        #if targetEnvironment(simulator)
+            envInfo.isSimulator = true
+            print("[palera1n] Running in simulator")
+        #endif
+        
+        /// root helper check
+        if let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") {
+            envInfo.hasHelper = true
+            envInfo.helperPath = helper
+        } else {
+            //errAlert(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
+        }
+       
+        /// rootless/rootful check
+        envInfo.isRootful = helperCmd(["-f"]) == 0 ? false : true
+        envInfo.installPrefix = envInfo.isRootful ? "/" : "/var/jb"
+        
+        /// force revert check
+        envInfo.hasForceReverted = helperCmd(["-n"]) == 0 ? false : true
+
+        /// is installed check
+        if fileExists("/.procursus_strapped") || fileExists("/var/jb/.procursus_strapped") {
+            envInfo.isInstalled = true
+        }
+        
+        /// device info
+        envInfo.systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
+        envInfo.systemArch = String(cString: NXGetLocalArchInfo().pointee.name)
+        
+        /// jb-XXXXXXXX and /var/jb checks
+        envInfo.envType = strapCheck()!
+        
+        /// sileo installed check
+        if (fileExists("/Applications/Sileo.app") || fileExists("/var/jb/Applications/Sileo.app") ||
+            fileExists("/Applications/Sileo-Nightly.app") || fileExists("/var/jb/Applications/Sileo-Nightly.app")) {
+            envInfo.sileoInstalled = true
+        }
+        
+        /// zebra installed check
+        if (fileExists("/Applications/Zebra.app") || fileExists("/var/jb/Applications/Zebra.app")) {
+            envInfo.zebraInstalled = true
+        }
+        
+        envInfo.hasChecked = true
+        
+        /// for debugging will remove later
+        print("installPrefix: \(envInfo.installPrefix)")
+        print("envType: \(envInfo.envType)")
+        print("systemArch: \(envInfo.systemArch)")
+        print("systemVersion: \(envInfo.systemVersion)")
+        print("isRootful: \(envInfo.isRootful)")
+        print("isInstalled: \(envInfo.isInstalled)")
+        print("isSimulator: \(envInfo.isSimulator)")
+        print("zebraInstalled: \(envInfo.zebraInstalled)")
+        print("sileoInstalled: \(envInfo.sileoInstalled)")
+        print("helperPath: \(envInfo.helperPath)")
+        print("hasHelper: \(envInfo.hasHelper)")
+        print("hasChecked: \(envInfo.hasChecked)")
+        print("hasForceReverted: \(envInfo.hasForceReverted)")
+    }
 }
