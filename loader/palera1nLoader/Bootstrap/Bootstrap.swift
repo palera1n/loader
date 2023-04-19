@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class bootstrap {
-
     var observation: NSKeyValueObservation?
     var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .default)
     
@@ -33,7 +32,6 @@ class bootstrap {
             return
         }
     }
-    
     
     // Appends new defaults sources for Sileo and Zebra
     func defaultSources(_ pm: String) -> Void {
@@ -97,7 +95,6 @@ class bootstrap {
         try? dataToWrite.write(to: tempFile, atomically: true, encoding: String.Encoding.utf8)
         _ = spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempFile.path, readPath], root: true)
     }
-    
     
     // File downloader for debs and strap
     func download(_ file: String) -> Void {
@@ -268,7 +265,6 @@ class bootstrap {
         errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
     }
     
-    
     // Reverting/Removing jailbreak, wipes /var/jb
     func revert() -> Void {
         if !envInfo.isRootful {
@@ -308,8 +304,3 @@ class bootstrap {
         }
     }
 }
-
-
-
-
-

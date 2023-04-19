@@ -22,7 +22,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (!envInfo.isRootful) {
             if envInfo.envType == 2 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    warningAlert(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder.", destructiveButtonTitle: "Proceed", destructiveHandler: {
+                    warningAlert(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder. You may need to run uicache in utilities after proceeding.", destructiveButtonTitle: "Proceed", destructiveHandler: {
+                        let procursus = "\(Utils().strapCheck().jbFolder)/procursus"
+
+                        let ret = helperCmd(["-e", procursus])
+                        if (ret == 0) {
+                            spawn(command: "/var/jb/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
+                        } else {
+                            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+                        }
                     })
                 }
                 return
@@ -144,7 +152,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]

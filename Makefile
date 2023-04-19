@@ -17,33 +17,33 @@ else
 $(error Please specify either IOS=1 or TVOS=1)
 endif
 
-POGOTMP             = $(TMPDIR)/$(NAME)
-POGO_STAGE_DIR      = $(POGOTMP)/stage
-POGO_APP_DIR 	    = $(POGOTMP)/Build/Products/$(RELEASE)/$(NAME).app
-POGO_HELPER_PATH 	= $(POGOTMP)/Build/Products/$(RELEASE)/Helper
+P1_TMP         = $(TMPDIR)/$(NAME)
+P1_STAGE_DIR   = $(P1_TMP)/stage
+P1_APP_DIR 	   = $(P1_TMP)/Build/Products/$(RELEASE)/$(NAME).app
+P1_HELPER_PATH = $(P1_TMP)/Build/Products/$(RELEASE)/Helper
 
 package:
 	/usr/libexec/PlistBuddy -c "Set :REVISION ${GIT_REV}" "loader/palera1nLoader/Info.plist"
 
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme palera1nLoader -configuration Release -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(POGOTMP) \
-		CODE_SIGNING_ALLOWED=NO DSTROOT=$(POGOTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme palera1nLoader -configuration Release -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
+		CODE_SIGNING_ALLOWED=NO DSTROOT=$(P1_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme Helper -configuration Release -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(POGOTMP) \
-		CODE_SIGNING_ALLOWED=NO DSTROOT=$(POGOTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme Helper -configuration Release -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
+		CODE_SIGNING_ALLOWED=NO DSTROOT=$(P1_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf Payload
-	@rm -rf $(POGO_STAGE_DIR)/
-	@mkdir -p $(POGO_STAGE_DIR)/Payload
-	@mv $(POGO_APP_DIR) $(POGO_STAGE_DIR)/Payload/$(NAME).app
-	@echo $(POGOTMP)
-	@echo $(POGO_STAGE_DIR)
+	@rm -rf $(P1_STAGE_DIR)/
+	@mkdir -p $(P1_STAGE_DIR)/Payload
+	@mv $(P1_APP_DIR) $(P1_STAGE_DIR)/Payload/$(NAME).app
+	@echo $(P1_TMP)
+	@echo $(P1_STAGE_DIR)
 
-	@mv $(POGO_HELPER_PATH) $(POGO_STAGE_DIR)/Payload/$(NAME).app//Helper
-	@$(TARGET_CODESIGN) -Sentitlements.xml $(POGO_STAGE_DIR)/Payload/$(NAME).app/
-	@$(TARGET_CODESIGN) -Sentitlements.xml $(POGO_STAGE_DIR)/Payload/$(NAME).app//Helper
+	@mv $(P1_HELPER_PATH) $(P1_STAGE_DIR)/Payload/$(NAME).app//Helper
+	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app/
+	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app//Helper
 	
-	@rm -rf $(POGO_STAGE_DIR)/Payload/$(NAME).app/_CodeSignature
-	@ln -sf $(POGO_STAGE_DIR)/Payload Payload
+	@rm -rf $(P1_STAGE_DIR)/Payload/$(NAME).app/_CodeSignature
+	@ln -sf $(P1_STAGE_DIR)/Payload Payload
 	@rm -rf packages
 	@mkdir -p packages
 
@@ -58,12 +58,12 @@ ifneq ($(NO_DMG),1)
 	@rm -rf out.dmg
 endif
 	@rm -rf Payload
-	@rm -rf $(POGOTMP)
+	@rm -rf $(P1_TMP)
 
 clean:
-	@rm -rf $(POGO_STAGE_DIR)
+	@rm -rf $(P1_STAGE_DIR)
 	@rm -rf packages
 	@rm -rf out.dmg
 	@rm -rf Payload
-	@rm -rf $(POGOTMP)
+	@rm -rf $(P1_TMP)
 

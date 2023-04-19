@@ -159,10 +159,12 @@ func main() {
         }
     } else if (args[1] == "-e") {
         if !rootfulCheck {
-            // todo
+            if !fm.fileExists(atPath: "/var/jb") {
+                ln("/var/jb", args[2])
+            }
         }
     } else if (args[1] == "-f") {
-        if rootfulCheck {  exit(1)  }
+        if rootfulCheck { exit(1) }
     } else if (args[1] == "-n") {
         if rootfulCheck && forceRevertCheck { exit(1) }
     } else if (args[1] == "-d") {

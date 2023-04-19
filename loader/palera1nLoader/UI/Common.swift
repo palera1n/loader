@@ -37,7 +37,6 @@ func helperCmd(_ args: [String]) -> Int {
     return spawn(command: envInfo.helperPath, args: args, root: true)
 }
 
-
 func fileExists(_ path: String) -> Bool {
     return FileManager.default.fileExists(atPath: path)
 }

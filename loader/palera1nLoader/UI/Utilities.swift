@@ -9,9 +9,7 @@ import Foundation
 import UIKit
 import MachO
 
-
 class Utils {
-    
     func InfoMenu(viewController: UIViewController) -> UIMenu {
         let type = envInfo.isRootful ? local("ROOTFUL") : local("ROOTLESS")
         let installed = envInfo.isInstalled ? local("TRUE") : local("FALSE")
@@ -27,35 +25,33 @@ class Utils {
         
         let hideinstall = UIAction(title: local("HIDE"), image: UIImage(systemName: "eye.slash.circle")) { (_) in
             if !envInfo.isRootful {
-                if let strapValue = Utils().strapCheck() {
-                    switch strapValue {
-                    case 1:
-                        warningAlert(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveButtonTitle: "Proceed", destructiveHandler: {
-                            
-                            guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-                                errAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
-                                return
-                            }
-                            
-                            if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
-                                do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
-                                catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
-                            }
-                            
-                            let ret = spawn(command: helper, args: ["-d"], root: true)
-                            if (ret != 0) {
-                                return
-                            }
-                        })
-                    default:
-                        #if targetEnvironment(simulator)
-                        warningAlert(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveButtonTitle: "Proceed", destructiveHandler: {
-                        })
-                        #else
-                        errAlert(title: "Unable to proceed", message: "\(local("STRAP_INFO")) \(strapValue)")
-                        #endif
-                        return
-                    }
+                let strapValue = Utils().strapCheck().env 
+                switch strapValue {
+                case 1:
+                    warningAlert(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveButtonTitle: "Proceed", destructiveHandler: {
+                        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
+                            errAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
+                            return
+                        }
+                        
+                        if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
+                            do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
+                            catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
+                        }
+                        
+                        let ret = spawn(command: helper, args: ["-d"], root: true)
+                        if (ret != 0) {
+                            return
+                        }
+                    })
+                default:
+                    #if targetEnvironment(simulator)
+                    warningAlert(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveButtonTitle: "Proceed", destructiveHandler: {
+                    })
+                    #else
+                    errAlert(title: "Unable to proceed", message: "\(local("STRAP_INFO")) \(strapValue)")
+                    #endif
+                    return
                 }
             } else {
                 errAlert(title: "Unable to proceed", message: "You may not use this button if you're on a non rootless jailbreak.")
@@ -87,10 +83,9 @@ class Utils {
         return menu
     }
     
-    
-    func strapCheck() -> Int? {
+    func strapCheck() -> (env: Int, jbFolder: String) {
         #if targetEnvironment(simulator)
-            return (-1)
+            return (-1, "")
         #else
         let uuid: String
         do {
@@ -101,11 +96,12 @@ class Utils {
         let directoryPath = "/private/preboot/\(uuid)"
         let fileManager = FileManager.default
         
-        var value: Int?
+        var value: Int
+        let jbFolders: [String]
         
         do {
             let contents = try fileManager.contentsOfDirectory(atPath: directoryPath)
-            let jbFolders = contents.filter { $0.hasPrefix("jb-") }
+            jbFolders = contents.filter { $0.hasPrefix("jb-") }
             let jbFolderExists = !jbFolders.isEmpty
             let jbSymlinkPath = "/var/jb"
             let jbSymlinkExists = fileManager.fileExists(atPath: jbSymlinkPath)
@@ -124,8 +120,8 @@ class Utils {
             fatalError("Failed to get contents of directory: \(error.localizedDescription)")
         }
         
-        NSLog("[palera1n helper] Strap value: Status: \(value ?? -1)") // -1 is a default value in case `value` is nil
-        return value
+        NSLog("[palera1n helper] Strap value: Status: \(value)")
+        return (value, "\(directoryPath)/\(jbFolders[0])") // TODO: this probably shouldnt always use 0
         #endif
     }
     
@@ -152,7 +148,6 @@ class Utils {
             global.present(alertController, animated: true, completion: nil)
         }
     }
-    
     
     // Opens an alert controller with actions to useful functions
     @objc func actionsTapped() {
@@ -183,7 +178,6 @@ class Utils {
             global.present(alertController, animated: true, completion: nil)
         }
     }
-    
     
     func prerequisiteChecks() -> Void {
         #if targetEnvironment(simulator)
@@ -216,7 +210,7 @@ class Utils {
         envInfo.systemArch = String(cString: NXGetLocalArchInfo().pointee.name)
         
         /// jb-XXXXXXXX and /var/jb checks
-        envInfo.envType = strapCheck()!
+        envInfo.envType = strapCheck().env
         
         /// sileo installed check
         if (fileExists("/Applications/Sileo.app") || fileExists("/var/jb/Applications/Sileo.app") ||
