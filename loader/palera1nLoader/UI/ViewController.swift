@@ -22,9 +22,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if !rootful {
             if let strapValue = Utils().strapCheck() {
                 if strapValue == 2 {
-                    warningAlert(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder.", destructiveButtonTitle: "Proceed", destructiveHandler: {
-                        print("BALL")
-                    })
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        warningAlert(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder.", destructiveButtonTitle: "Proceed", destructiveHandler: {
+                            print("BALL")
+                        })
+                    }
                     return
                 }
             }
