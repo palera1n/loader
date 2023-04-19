@@ -55,3 +55,27 @@ func errAlert(title: String, message: String) {
         }
     }
 }
+
+func warningAlert(title: String, message: String, destructiveButtonTitle: String?, destructiveHandler: (() -> Void)?) {
+    DispatchQueue.main.async {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        if let destructiveTitle = destructiveButtonTitle, let handler = destructiveHandler {
+            alertController.addAction(UIAlertAction(title: destructiveTitle, style: .destructive) { _ in
+                handler()
+            })
+        }
+        
+        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { _ in
+            return
+        })
+        
+        if (global.presentedViewController != nil) {
+            global.presentedViewController!.dismiss(animated: true) {
+                global.present(alertController, animated: true, completion: nil)
+            }
+        } else {
+            global.present(alertController, animated: true, completion: nil)
+        }
+    }
+}

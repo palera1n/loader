@@ -28,6 +28,10 @@ English
 "OPENER_SILEO" = "Open Sileo";
 "OPENER_ZEBRA" = "Open Zebra";
 "OPENER_TH" = "Open TrollHelper";
+"HIDE" = "Hide Environment";
+"SOCIALS" = "Social Media";
+"STRAP_INFO" = "Environment:";
+
 "DISCORD" = "Discord";
 "TWITTER" = "Twitter";
 "WEBSITE" = "Website";
@@ -65,4 +69,5 @@ English
 "REVERT_DONE" = "Remove Completed";
 "UNREGISTER_FAIL" = "Failed to unregister";
 "CLOSE" = "Close";
+"CANCEL" = "Cancel";
 "REMOVING" = "Removing...";

@@ -157,6 +157,10 @@ func main() {
             rm("/var/jb")
             rm("/private/preboot/\(uuid)/procursus") // old installs
         }
+    } else if (args[1] == "-e") {
+        if !rootfulCheck {
+            // todo
+        }
     } else if (args[1] == "-f") {
         if rootfulCheck {  exit(1)  }
     } else if (args[1] == "-n") {

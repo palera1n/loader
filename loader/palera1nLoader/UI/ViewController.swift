@@ -11,15 +11,29 @@ import CoreServices
 
 var rootful : Bool = false
 var inst_prefix: String = "unset"
+var rebootAfter: Bool = true
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var rebootAfter: Bool = true
     var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !rootful {
+            if let strapValue = Utils().strapCheck() {
+                if strapValue == 2 {
+                    warningAlert(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder.", destructiveButtonTitle: "Proceed", destructiveHandler: {
+                        print("BALL")
+                    })
+                    return
+                }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if (inst_prefix == "unset") { Utils().deviceCheck() }
+
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -60,13 +74,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             return view
         }()
+        let infoButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "staroflife.circle"), primaryAction: nil, menu: Utils().InfoMenu(rootful: rootful, viewController: self))
+        navigationItem.rightBarButtonItem = infoButton
 
-        navigationItem.rightBarButtonItem = Utils.InfoMenu(rootful: rootful)
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
-        view.addSubview(tableView)        
+        view.addSubview(tableView)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -145,21 +160,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return nil
     }
-    
-    
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let installed = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
-        if (indexPath.section == 1 && indexPath.row == 2 && !rootful && installed) {
-            return UIContextMenuConfiguration(previewProvider: nil) { [self] _ in
-                let doReboot = UIAction(title: "Reboot after revert", image: UIImage(systemName: "power.circle"), state: rebootAfter ? .on : .off ) { _ in
-                    if(!self.rebootAfter){self.rebootAfter = true}else{self.rebootAfter = false}
-                }
-                return UIMenu(title: "", image: nil, identifier: .none, options: .singleSelection, children: [doReboot])
-            }
-        }
-        return nil
-    }
-
 
     // MARK: - Main table cells
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -172,7 +172,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("REVERT_CELL"):
             let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in bootstrap().revert(self.rebootAfter) }
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in bootstrap().revert(rebootAfter) }
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)
