@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
     override func viewDidAppear(_ animated: Bool) {
+        if (inst_prefix == "unset") { Utils().deviceCheck() }
         super.viewDidAppear(animated)
         if !rootful {
             if let strapValue = Utils().strapCheck() {
@@ -34,7 +35,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (inst_prefix == "unset") { Utils().deviceCheck() }
 
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
