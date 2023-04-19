@@ -28,6 +28,10 @@ Japanese
 "OPENER_SILEO" = "Sileoを開く";
 "OPENER_ZEBRA" = "Zebraを開く";
 "OPENER_TH" = "TrollHelperを開く";
+"HIDE" = "Hide Environment";
+"SOCIALS" = "Social Media";
+"STRAP_INFO" = "環境:";
+
 "DISCORD" = "Discord";
 "TWITTER" = "Twitter";
 "WEBSITE" = "Webサイト";
