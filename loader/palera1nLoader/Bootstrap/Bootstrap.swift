@@ -49,7 +49,7 @@ class bootstrap {
             ellekitLine = "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n"
             palera1nLine = "Types: deb\nURIs: https://repo.palera.in/\nSuites: ./\nComponents:\n"
             procursusLine = "Types: deb\nURIs: https://apt.procurs.us/\nSuites: \(CF)\nComponents: main\n"
-            palestrapLine = "Types: deb\n URIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n"
+            palestrapLine = "Types: deb\nURIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n"
         } else {
             readPath = zebraSources
             ellekitLine = "deb https://ellekit.space/ ./\n"
