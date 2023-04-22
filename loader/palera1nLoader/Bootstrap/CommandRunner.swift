@@ -56,7 +56,7 @@ import Darwin.POSIX
     let spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], proenv + [nil])
     if spawnStatus != 0 {
         NSLog("[palera1n] Spawn Status = \(spawnStatus)")
-        return -1
+        return Int(spawnStatus)
     }
 
     close(pipestdout[1])

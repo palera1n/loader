@@ -95,9 +95,11 @@ func strap(_ input: String,_ rootless: Bool) {
             var attrib = [FileAttributeKey: Any]()
             attrib[.posixPermissions] = entry.info.permissions?.rawValue
             attrib[.ownerAccountName] = entry.info.ownerUserName
+            
             var ownerGroupName = entry.info.ownerGroupName
             if ownerGroupName == "staff" && entry.info.ownerUserName == "root" { ownerGroupName = "wheel" }
             attrib[.groupOwnerAccountName] = ownerGroupName
+            
             do { try fm.setAttributes(attrib, ofItemAtPath: path) }
             catch { continue }
         } catch { NSLog("[palera1n helper] Error: \(error.localizedDescription)") }}}
@@ -106,14 +108,51 @@ func strap(_ input: String,_ rootless: Bool) {
     NSLog("[palera1n helper] Strapped to \(dest)")
     if (rootless) {if !fm.fileExists(atPath: "/var/jb") { ln("/var/jb", dest )}}
     var attrib = [FileAttributeKey: Any]()
+    
     attrib[.posixPermissions] = 0o755
     attrib[.ownerAccountName] = "mobile"
     attrib[.groupOwnerAccountName] = "mobile"
+    
     do { try fm.setAttributes(attrib, ofItemAtPath: "\(replace)/var/mobile")}
     catch { NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)") }
+    
     let filePath: String
     if rootless { filePath = "/var/jb/.palecursus_strapped" } else { filePath = "/.palecursus_strapped" }
     touch(atPath: filePath)
+}
+
+func revert() -> Void {
+    let rootfulCheck = check_rootful() == 1 ? true : false
+    if !rootfulCheck {
+        let uuid: String
+        do {
+            uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8)
+        } catch {
+            fatalError("Failed to retrieve UUID: \(error.localizedDescription)")
+        }
+
+        let directoryPath = "/private/preboot/\(uuid)"
+        let fileManager = FileManager.default
+        do {
+            let files = try fileManager.contentsOfDirectory(atPath: directoryPath)
+            for file in files {
+                if file.hasPrefix("jb-") {
+                    let folderToDelete = "\(directoryPath)/\(file)"
+                    do {
+                        try fileManager.removeItem(atPath: folderToDelete)
+                        NSLog("[palera1n helper] Folder deleted successfully: \(folderToDelete)")
+                    } catch {
+                        NSLog("[palera1n helper] Failed to delete folder: \(error.localizedDescription)")
+                    }
+                }
+            }
+        } catch {
+            NSLog("[palera1n helper] Failed to retrieve contents of directory: \(error.localizedDescription)")
+        }
+
+        rm("/var/jb")
+        rm("/private/preboot/\(uuid)/procursus") // old installs
+    }
 }
 
 func main() {
@@ -123,54 +162,26 @@ func main() {
     let forceRevertCheck = check_forcerevert() == 1 ? true : false
     let args = CommandLine.arguments
 
-    if (args[1] == "-i") {
+    switch (args[1]) {
+    case "-i":
         if (!rootfulCheck) {strap(args[2], true)}
         else {strap(args[2], false)}
-    } else if (args[1] == "-r") {
-        if !rootfulCheck {
-            let uuid: String
-            do {
-                uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8)
-            } catch {
-                fatalError("Failed to retrieve UUID: \(error.localizedDescription)")
-            }
-
-            let directoryPath = "/private/preboot/\(uuid)"
-            let fileManager = FileManager.default
-            do {
-                let files = try fileManager.contentsOfDirectory(atPath: directoryPath)
-                for file in files {
-                    if file.hasPrefix("jb-") {
-                        let folderToDelete = "\(directoryPath)/\(file)"
-                        do {
-                            try fileManager.removeItem(atPath: folderToDelete)
-                            NSLog("[palera1n helper] Folder deleted successfully: \(folderToDelete)")
-                        } catch {
-                            NSLog("[palera1n helper] Failed to delete folder: \(error.localizedDescription)")
-                        }
-                    }
-                }
-            } catch {
-                NSLog("[palera1n helper] Failed to retrieve contents of directory: \(error.localizedDescription)")
-            }
-
-            rm("/var/jb")
-            rm("/private/preboot/\(uuid)/procursus") // old installs
-        }
-    } else if (args[1] == "-e") {
+    case "-r":
+        revert()
+    case "-e":
         if !rootfulCheck {
             if !fm.fileExists(atPath: "/var/jb") {
                 ln("/var/jb", args[2])
             }
         }
-    } else if (args[1] == "-f") {
+    case "-f":
         if rootfulCheck { exit(1) }
-    } else if (args[1] == "-n") {
+    case "-n":
         if rootfulCheck && forceRevertCheck { exit(1) }
-    } else if (args[1] == "-d") {
+    case "-d":
         reboot(0)
-    } else {
-        NSLog("[palera1n helper] Invalid argument")
+    default:
+        print("[Helper] Unknown Argument")
     }
 }
 

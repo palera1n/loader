@@ -9,16 +9,12 @@ import Foundation
 import UIKit
 
 class bootstrap {
-    var observation: NSKeyValueObservation?
-    var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .default)
-    
+
     // Ran after bootstrap/deb install
     func cleanUp() -> Void {
         deleteFile(file: "sileo.deb")
         deleteFile(file: "zebra.deb")
-        deleteFile(file: "libkrw0-tfp0.deb")
         deleteFile(file: "bootstrap.tar")
-        //deleteFile(file: "sources")
         
         URLCache.shared.removeAllCachedResponses()
         URLCache.shared.diskCapacity = 0
@@ -34,210 +30,72 @@ class bootstrap {
         }
     }
     
-    // Appends new defaults sources for Sileo and Zebra
-    func defaultSources(_ pm: String) -> Void {
-        let zebraSources = "/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list"
-        let sileoSources = "\(envInfo.installPrefix)/etc/apt/sources.list.d/procursus.sources"
-        let sileoLine = "Types: deb\nURIs: https://repo.getsileo.app/\nSuites: ./\nComponents:\n"
-        let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
-        
-        var (readPath,dataToWrite) = ("","")
-        var (ellekitRepo,palera1nRepo,palera1nStrap,procursusStap,sileoRepo,zebraRepo) = (false,false,false,false,false,false)
-        var (ellekitLine,procursusLine,palera1nLine,palestrapLine) = ("","","","")
-
-        if (pm == "sileo") {
-            readPath = sileoSources
-            ellekitLine = "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n"
-            palera1nLine = "Types: deb\nURIs: https://repo.palera.in/\nSuites: ./\nComponents:\n"
-            procursusLine = "Types: deb\nURIs: https://apt.procurs.us/\nSuites: \(CF)\nComponents: main\n"
-            palestrapLine = "Types: deb\nURIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n"
-        } else {
-            readPath = zebraSources
-            ellekitLine = "deb https://ellekit.space/ ./\n"
-            palera1nLine = "deb https://repo.palera.in/ ./\n"
-            procursusLine = "deb https://apt.procurs.us/ \(CF) main\n"
-            palestrapLine = "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
-        }
-        
-        guard let fd = fopen(readPath, "r") else { return }
-        defer { fclose(fd) }
-
-        while let line = readLine() {
-            if (pm == "sileo") {
-                if (line.hasPrefix("URIs: https://apt.procurs.us")) {procursusStap = true}
-                if (line.hasPrefix("URIs: https://repo.palera.in/")) {palera1nRepo = true}
-                if (line.hasPrefix("URIs: https://ellekit.space/")) {ellekitRepo = true}
-                if (line.hasPrefix("URIs: https://strap.palera.in/")) {palera1nStrap = true}
-                if (line.hasPrefix("URIs: https://repo.getsileo.app/")) {sileoRepo = true}
-            } else {
-                if (line.hasPrefix("deb https://apt.procurs.us")) {procursusStap = true}
-                if (line.hasPrefix("deb https://repo.palera.in/")) {palera1nRepo = true}
-                if (line.hasPrefix("deb https://ellekit.space/")) {ellekitRepo = true}
-                if (line.hasPrefix("deb https://strap.palera.in/")) {palera1nStrap = true}
-                if (line.hasPrefix("deb https://getzbra.com/repo/")) {zebraRepo = true}
-            }
-        }
-        dataToWrite = try! String(contentsOfFile: readPath)
-        dataToWrite = dataToWrite.replacingOccurrences(of: "\n\n", with: "\n") // format fix
-
-        if (envInfo.isRootful) {
-            if (!palera1nStrap) {dataToWrite = "\(dataToWrite)\n\(palestrapLine)"}
-            if (!palera1nRepo) {dataToWrite = "\(dataToWrite)\n\(palera1nLine)"}
-        } else {
-            if (!procursusStap) {dataToWrite = "\(dataToWrite)\n\(procursusLine)"}
-            if (!palera1nRepo) {dataToWrite = "\(dataToWrite)\n\(palera1nLine)"}
-            if (!ellekitRepo) {dataToWrite = "\(dataToWrite)\n\(ellekitLine)"}
-        }
-        
-        if (pm == "sileo") {if (!sileoRepo) {dataToWrite = "\(dataToWrite)\n\(sileoLine)"}}
-        else {if (!zebraRepo) {dataToWrite = "\(dataToWrite)\n\(zebraRepo)"}}
-        let docUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let tempFile = docUrl.appendingPathComponent("sources")
-        try? dataToWrite.write(to: tempFile, atomically: true, encoding: String.Encoding.utf8)
-        _ = spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempFile.path, readPath], root: true)
-    }
-    
-    // File downloader for debs and strap
-    func download(_ file: String) -> Void {
-        deleteFile(file: file)
-        let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
-        let server = envInfo.isRootful == true ? "https://static.palera.in" : "https://static.palera.in/rootless"
+    // Created palera1n defaults sources file for Sileo/Zebra
+    func defaultSources(_ packageManager: String) -> Void {
+        let zebraPath = URL(string: "/var/mobile/Library/Application Support/xyz.willy.Zebra/palera1n.list")!
+        let sileoPath = URL(string: envInfo.installPrefix)!.appendingPathComponent("etc/apt/sources.list.d/palera1n.sources")
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentsURL.appendingPathComponent(file)
-        var url = URL(string: "\(server)/\(file)")!
-        if (file == "bootstrap.tar" && !envInfo.isRootful) {url = URL(string: "\(server)/bootstrap-\(CF).tar")!}
+        let tempURL = documentsURL.appendingPathComponent("temp_sources")
         
-        let semaphore = DispatchSemaphore(value: 0)
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let task = session.downloadTask(with: url) { tempLocalUrl, response, error in
-            if let statusCode = (response as? HTTPURLResponse)?.statusCode {
-                if statusCode != 200 {
-                    if server.contains("cdn.nickchan.lol") {
-                        errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
-                        return
-                    }
-                    return
-                }
-            }
-            if let tempLocalUrl = tempLocalUrl, error == nil {
-                do {
-                    try FileManager.default.copyItem(at: tempLocalUrl, to: fileURL)
-                    semaphore.signal()
-                } catch (let writeError) {
-                    errAlert(title: local("SAVE_FAIL"), message: "\(writeError)")
-                    return
-                }
-            } else {
-                errAlert(title: local("DOWNLOAD_FAIL"), message: "\(error?.localizedDescription ?? local("DOWNLOAD_ERROR"))")
-                return
-            }
-        }
-        self.observation = task.progress.observe(\.fractionCompleted) { progress, _ in
-            print("progress: ", progress.fractionCompleted)
-            DispatchQueue.main.async {
-                if (file == "bootstrap.tar") {
-                    self.progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
-                }
-            }
-        }
-        
-        task.resume()
-        semaphore.wait()
-    }
+        let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
 
-    // Installs a given deb file
-    func installDeb(_ file: String) -> Void {
-        DispatchQueue.main.async {
-            let loadingAlert = UIAlertController(title: nil, message: local("INSTALLING"), preferredStyle: .alert)
-            let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-            loadingAlert.view.addSubview(loadingIndicator)
-            loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.startAnimating()
-            global.present(loadingAlert, animated: true, completion: nil)
+        var zebraSourcesFile = "deb https://repo.palera.in/\n"
+        var sileoSourcesFile = """
+        Types: deb\nURIs: https://repo.getsileo.app/\nSuites: ./\nComponents:\n
+        Types: deb\nURIs: https://repo.palera.in/\nSuites: ./\nComponents:\n\n
+        """
+        
+        if (envInfo.isRootful) {
+            sileoSourcesFile += "Types: deb\nURIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n\n"
+            zebraSourcesFile += "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
+        } else {
+            sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites:\nComponents: ./\n\n"
+            zebraSourcesFile += "deb https://ellekit.space/ ./\n"
         }
         
-        let downloadGroup = DispatchGroup()
-        downloadGroup.enter()
-        DispatchQueue.global(qos: .default).async {
-            self.download("\(file).deb")
-            downloadGroup.leave()
+        switch(packageManager) {
+        case "sileo.deb":
+            try? sileoSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
+            spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, sileoPath.path], root: true)
+        case "zebra.deb":
+            try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
+            spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
+        default:
+            print("[palera1n] Unknown or Unsupported Package Manager")
         }
-        downloadGroup.wait()
-        
-        let deb = "\(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("\(file).deb").path)" // gross
-        
+    }
+    
+
+    func installDebian(deb: String, withStrap: Bool, completion: @escaping (String?, Int?) -> Void) {
         var ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
-            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            completion(local("DPKG_ERROR"), ret)
             return
         }
         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
-            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
+            completion(local("UICACHE_ERROR"), ret)
             return
         }
         
-        defaultSources(file)
-        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
+        defaultSources(URL(string: deb)!.lastPathComponent)
+        cleanUp()
+        completion(local("INSTALL_DONE"), 0)
+        return
     }
     
-    // Main bootstrap install
-    func installStrap(_ pm: String) -> Void {
-        if (!envInfo.isRootful && fileExists("/var/jb")) {
-            let ret = helperCmd(["-r"])
-            if (ret != 0) {
-                errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
-                return
-            }
-        }
-        
-        let tar = docsFile(file: "bootstrap.tar")
-        let deb = docsFile(file: "\(pm).deb")
-        let libkrw = docsFile(file: "libkrw0-tfp0.deb")
-
-        let downloadGroup = DispatchGroup()
-        downloadGroup.enter()
-        DispatchQueue.global(qos: .default).async {
-            DispatchQueue.main.async {
-                let loadingAlert = UIAlertController(title: nil, message: local("DOWNLOADING"), preferredStyle: .alert)
-                let constraintHeight = NSLayoutConstraint(item: loadingAlert.view!, attribute: NSLayoutConstraint.Attribute.height,
-                                                          relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
-                                                            NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 75)
-                loadingAlert.view.addConstraint(constraintHeight)
-                self.progressDownload.setProgress(0.0/1.0, animated: true)
-                self.progressDownload.frame = CGRect(x: 25, y: 55, width: 220, height: 0)
-                loadingAlert.view.addSubview(self.progressDownload)
-                global.present(loadingAlert, animated: true, completion: nil)
-            }
-
-            self.download("bootstrap.tar")
-            self.download("\(pm).deb")
-            self.download("libkrw0-tfp0.deb")
-            downloadGroup.leave()
-        }
-        downloadGroup.wait()
-        
-        DispatchQueue.main.async {
-            global.presentedViewController!.dismiss(animated: true) {
-                let loadingAlert = UIAlertController(title: nil, message: local("INSTALLING"), preferredStyle: .alert)
-                let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-                loadingAlert.view.addSubview(loadingIndicator)
-                loadingIndicator.hidesWhenStopped = true
-                loadingIndicator.startAnimating()
-                global.present(loadingAlert, animated: true, completion: nil)
-            }
-        }
-        
+    
+    func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
         spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-        if envInfo.isRootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)}
+        if envInfo.isRootful {
+            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+        }
         
         var ret = helperCmd(["-i", tar])
         if (ret != 0) {
-            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+            completion(local("STRAP_ERROR"), ret)
             return
         }
         
@@ -246,32 +104,14 @@ class bootstrap {
         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/sh", args: ["\(envInfo.installPrefix)/prep_bootstrap.sh"], root: true)
         if (ret != 0) {
-            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
-            return
-        }
-
-        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", libkrw], root: true)
-        if (ret != 0) {
-            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            completion(local("STRAP_ERROR"), ret)
             return
         }
         
-        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
-        if (ret != 0) {
-            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
-            return
-        }
-
-        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
-        if (ret != 0) {
-            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
-            return
-        }
-        
-        defaultSources(pm)
-        cleanUp()
-        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
+        completion(local("INSTALL_DONE"), 0)
+        return
     }
+    
     
     // Reverting/Removing jailbreak, wipes /var/jb
     func revert() -> Void {
@@ -312,3 +152,4 @@ class bootstrap {
         }
     }
 }
+

@@ -31,7 +31,6 @@ Japanese
 "HIDE" = "Hide Environment";
 "SOCIALS" = "Social Media";
 "STRAP_INFO" = "環境:";
-
 "DISCORD" = "Discord";
 "TWITTER" = "Twitter";
 "WEBSITE" = "Webサイト";
@@ -70,4 +69,3 @@ Japanese
 "UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
 "CLOSE" = "閉じる";
 "REMOVING" = "削除中...";
-

@@ -10,6 +10,7 @@ import UIKit
 import MachO
 
 class Utils {
+    
     func InfoMenu(viewController: UIViewController) -> UIMenu {
         let type = envInfo.isRootful ? local("ROOTFUL") : local("ROOTLESS")
         let installed = envInfo.isInstalled ? local("TRUE") : local("FALSE")
@@ -24,37 +25,37 @@ class Utils {
         }
         
         let hideinstall = UIAction(title: local("HIDE"), image: UIImage(systemName: "eye.slash.circle")) { (_) in
-            if !envInfo.isRootful {
-                let strapValue = Utils().strapCheck().env 
+            if (!envInfo.isRootful) {
+                let strapValue = envInfo.envType
                 switch strapValue {
                 case 1:
-                    warningAlert(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveButtonTitle: "Proceed", destructiveHandler: {
-                        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") else {
-                            errAlert(title: "Could not find helper?", message: "If you've sideloaded this loader app unfortunately you aren't able to use this, please jailbreak with palera1n before proceeding.")
-                            return
-                        }
-                        
-                        if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
-                            do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
-                            catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
-                        }
-                        
-                        let ret = spawn(command: helper, args: ["-d"], root: true)
-                        if (ret != 0) {
-                            return
+                    let alert = UIAlertController.warning(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveBtnTitle: "Proceed", destructiveHandler: {
+                        if (envInfo.hasHelper) {
+                            if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
+                                do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
+                                catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
+                            }
+                            
+                            let ret = spawn(command: envInfo.helperPath, args: ["-d"], root: true)
+                            if (ret != 0) {
+                                return
+                            }
                         }
                     })
+                    viewController.present(alert, animated: true)
                 default:
-                    #if targetEnvironment(simulator)
-                    warningAlert(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveButtonTitle: "Proceed", destructiveHandler: {
-                    })
-                    #else
-                    errAlert(title: "Unable to proceed", message: "\(local("STRAP_INFO")) \(strapValue)")
-                    #endif
-                    return
+                    if (envInfo.isSimulator) {
+                        let alert = UIAlertController.warning(title: "Hide Environment", message: "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back.", destructiveBtnTitle: "Proceed", destructiveHandler: {
+                        })
+                        viewController.present(alert, animated: true)
+                    } else {
+                        let errorAlert = UIAlertController.error(title: "Unable to proceed", message: "\(local("STRAP_INFO")) \(strapValue)")
+                        viewController.present(errorAlert, animated: true)
+                    }
                 }
             } else {
-                errAlert(title: "Unable to proceed", message: "You may not use this button if you're on a non rootless jailbreak.")
+                let errorAlert = UIAlertController.error(title: "Unable to proceed", message: "You may not use this button if you're on a non rootless jailbreak.")
+                viewController.present(errorAlert, animated: true)
                 return
             }
         }
@@ -82,6 +83,7 @@ class Utils {
 
         return menu
     }
+    
     
     func strapCheck() -> (env: Int, jbFolder: String) {
         #if targetEnvironment(simulator)
@@ -124,6 +126,7 @@ class Utils {
         // if the jb-XXXXXXXX folder does not exist, jbFolders will be an empty array
         // so when we try to access jbFolders[0], we try to read something that does not exist
         // this will prevent it from crashing
+        
         if value == 0 {
             return (0, "")
         } else {
@@ -133,57 +136,54 @@ class Utils {
     }
     
     // Opens an alert controller with actions to open an app
-    @objc func openersTapped() {
-        DispatchQueue.main.async {
-            let alertController = whichAlert(title: local("OPENER_MSG"))
-            let actions: [(title: String, imageName: String, handler: () -> Void)] = [
-                (title: local("OPENER_SILEO"), imageName: "arrow.up.forward.app", handler: {
-                    if (openApp("org.coolstar.SileoStore")){}else{_ = openApp("org.coolstar.SileoNightly")}
-                }),
-                (title: local("OPENER_ZEBRA"), imageName: "arrow.up.forward.app", handler: {_ = openApp("xyz.willy.Zebra")}),
-                (title: local("OPENER_TH"), imageName: "arrow.up.forward.app", handler: {_ = openApp("com.opa334.trollstorepersistencehelper")})
-            ]
-            
-            for action in actions {
-                let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
-                alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-                if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
-                alertController.addAction(alertAction)
-            }
-            
-            alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
-            global.present(alertController, animated: true, completion: nil)
+    @objc func openersTapped(viewController: UIViewController) {
+        let alertController = whichAlert(title: local("OPENER_MSG"))
+        let actions: [(title: String, imageName: String, handler: () -> Void)] = [
+            (title: local("OPENER_SILEO"), imageName: "arrow.up.forward.app", handler: {
+                if (openApp("org.coolstar.SileoStore")){}else{_ = openApp("org.coolstar.SileoNightly")}
+            }),
+            (title: local("OPENER_ZEBRA"), imageName: "arrow.up.forward.app", handler: {_ = openApp("xyz.willy.Zebra")}),
+            (title: local("OPENER_TH"), imageName: "arrow.up.forward.app", handler: {_ = openApp("com.opa334.trollstorepersistencehelper")})
+        ]
+        
+        for action in actions {
+            let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
+            alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
+            alertController.addAction(alertAction)
         }
+        
+        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
+        viewController.present(alertController, animated: true, completion: nil)
     }
     
+    
     // Opens an alert controller with actions to useful functions
-    @objc func actionsTapped() {
-        DispatchQueue.main.async {
-            let pre = envInfo.installPrefix
-            let alertController = whichAlert(title: local("UTIL_CELL"))
-            
-            let actions: [(title: String, imageName: String, handler: () -> Void)] = [
-                (title: local("RESPRING"), imageName: "arrow.clockwise.circle", handler: { spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)}),
-                (title: local("US_REBOOT"), imageName: "power.circle", handler: { spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)}),
-                (title: local("UICACHE"), imageName: "xmark.circle", handler: { spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)}),
-                (title: local("DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
-                (title: local("MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
-                (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
-                    if envInfo.isRootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
-                    else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
-                })
-            ]
-            
-            for action in actions {
-                let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
-                alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-                if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
-                alertController.addAction(alertAction)
-            }
-            
-            alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
-            global.present(alertController, animated: true, completion: nil)
+    @objc func actionsTapped(viewController: UIViewController) {
+        let pre = envInfo.installPrefix
+        let alertController = whichAlert(title: local("UTIL_CELL"))
+        
+        let actions: [(title: String, imageName: String, handler: () -> Void)] = [
+            (title: local("RESPRING"), imageName: "arrow.clockwise.circle", handler: { spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)}),
+            (title: local("US_REBOOT"), imageName: "power.circle", handler: { spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)}),
+            (title: local("UICACHE"), imageName: "xmark.circle", handler: { spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)}),
+            (title: local("DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
+            (title: local("MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
+            (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
+                if envInfo.isRootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
+                else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
+            })
+        ]
+        
+        for action in actions {
+            let alertAction = UIAlertAction(title: action.title, style: .default) { (_) in action.handler() }
+            alertAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            if let image = UIImage(systemName: action.imageName) { alertAction.setValue(image, forKey: "image") }
+            alertController.addAction(alertAction)
         }
+        
+        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { (_) in})
+        viewController.present(alertController, animated: true, completion: nil)
     }
     
     func prerequisiteChecks() -> Void {

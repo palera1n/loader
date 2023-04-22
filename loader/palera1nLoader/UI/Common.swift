@@ -26,6 +26,7 @@ struct envInfo {
     static var hasChecked: Bool = false
 }
 
+// will be removed
 let global = (UIApplication.shared.connectedScenes.filter { $0.activationState == .foregroundActive }
     .first(where: { $0 is UIWindowScene }).flatMap({ $0 as? UIWindowScene })?.windows.first(where: \.isKeyWindow)?.rootViewController!)!
 
@@ -62,6 +63,7 @@ func deleteFile(file: String) -> Void {
    try? FileManager.default.removeItem(at: fileURL)
 }
 
+// will be removed
 func errAlert(title: String, message: String) {
     DispatchQueue.main.async {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -69,30 +71,6 @@ func errAlert(title: String, message: String) {
             bootstrap().cleanUp()
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
-        })
-        
-        if (global.presentedViewController != nil) {
-            global.presentedViewController!.dismiss(animated: true) {
-                global.present(alertController, animated: true, completion: nil)
-            }
-        } else {
-            global.present(alertController, animated: true, completion: nil)
-        }
-    }
-}
-
-func warningAlert(title: String, message: String, destructiveButtonTitle: String?, destructiveHandler: (() -> Void)?) {
-    DispatchQueue.main.async {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        if let destructiveTitle = destructiveButtonTitle, let handler = destructiveHandler {
-            alertController.addAction(UIAlertAction(title: destructiveTitle, style: .destructive) { _ in
-                handler()
-            })
-        }
-        
-        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { _ in
-            return
         })
         
         if (global.presentedViewController != nil) {
