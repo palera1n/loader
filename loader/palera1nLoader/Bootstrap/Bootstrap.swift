@@ -50,7 +50,7 @@ class bootstrap {
             sileoSourcesFile += "Types: deb\nURIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n\n"
             zebraSourcesFile += "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
         } else {
-            sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites:\nComponents: ./\n\n"
+            sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n\n"
             zebraSourcesFile += "deb https://ellekit.space/ ./\n"
         }
         
