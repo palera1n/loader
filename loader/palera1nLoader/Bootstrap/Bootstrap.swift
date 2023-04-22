@@ -16,6 +16,7 @@ class bootstrap {
     func cleanUp() -> Void {
         deleteFile(file: "sileo.deb")
         deleteFile(file: "zebra.deb")
+        deleteFile(file: "libkrw0-tfp0.deb")
         deleteFile(file: "bootstrap.tar")
         //deleteFile(file: "sources")
         
@@ -184,7 +185,6 @@ class bootstrap {
         errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
     }
     
-    
     // Main bootstrap install
     func installStrap(_ pm: String) -> Void {
         if (!envInfo.isRootful && fileExists("/var/jb")) {
@@ -197,6 +197,7 @@ class bootstrap {
         
         let tar = docsFile(file: "bootstrap.tar")
         let deb = docsFile(file: "\(pm).deb")
+        let libkrw = docsFile(file: "libkrw0-tfp0.deb")
 
         let downloadGroup = DispatchGroup()
         downloadGroup.enter()
@@ -215,6 +216,7 @@ class bootstrap {
 
             self.download("bootstrap.tar")
             self.download("\(pm).deb")
+            self.download("libkrw0-tfp0.deb")
             downloadGroup.leave()
         }
         downloadGroup.wait()
@@ -247,13 +249,19 @@ class bootstrap {
             errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
             return
         }
+
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", libkrw], root: true)
+        if (ret != 0) {
+            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            return
+        }
         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
             errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
             return
         }
-        
+
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
