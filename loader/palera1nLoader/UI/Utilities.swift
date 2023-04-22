@@ -121,7 +121,14 @@ class Utils {
         }
         
         NSLog("[palera1n helper] Strap value: Status: \(value)")
-        return (value, "\(directoryPath)/\(jbFolders[0])") // TODO: this probably shouldnt always use 0
+        // if the jb-XXXXXXXX folder does not exist, jbFolders will be an empty array
+        // so when we try to access jbFolders[0], we try to read something that does not exist
+        // this will prevent it from crashing
+        if value == 0 {
+            return (0, "")
+        } else {
+            return (value, "\(directoryPath)/\(jbFolders[0])") // TODO: this probably shouldnt always use 0
+        }
         #endif
     }
     
