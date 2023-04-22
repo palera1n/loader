@@ -299,9 +299,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let originalImage = UIImage(named: "Zebra_logo") {
                 applyImageModifications(to: cell, with: originalImage)
             }
-            cell.isUserInteractionEnabled = false
+//            cell.isUserInteractionEnabled = false
             cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.textColor = .gray
+//            cell.textLabel?.textColor = .gray
         case local("UTIL_CELL"), local("OPEN_CELL"):
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
