@@ -14,6 +14,7 @@ class bootstrap {
     func cleanUp() -> Void {
         deleteFile(file: "sileo.deb")
         deleteFile(file: "zebra.deb")
+        deleteFile(file: "libkrw0-tfp0.deb")
         deleteFile(file: "bootstrap.tar")
         
         URLCache.shared.removeAllCachedResponses()
@@ -73,6 +74,12 @@ class bootstrap {
             completion(local("DPKG_ERROR"), ret)
             return
         }
+
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
+        if (ret != 0) {
+            completion(local("DPKG_ERROR"), ret)
+            return
+        }
         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
@@ -87,7 +94,7 @@ class bootstrap {
     }
     
     
-    func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
+    func installBootstrap(tar: String, completion: @escaping (String?, Int?) -> Void) {
         spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
         if envInfo.isRootful {
             spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)

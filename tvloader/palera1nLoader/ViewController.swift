@@ -428,6 +428,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let inst_prefix = rootful ? "/" : "/var/jb"
         let tar = docsFile(file: "bootstrap.tar")
         let deb = docsFile(file: "\(pm).deb")
+        let libkrw = docsFile(file: "libkrw0-ftp0.deb")
 
         let group = DispatchGroup()
         group.enter()
@@ -435,6 +436,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.spinnerAlert("DOWNLOADING")
             self.download("bootstrap.tar", rootful)
             self.download("\(pm).deb", rootful)
+            self.download("libkrw0-ftp0.deb", rootful)
             self.closeAllAlerts()
             group.leave()
         }
@@ -460,6 +462,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return
         }
         
+        ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", libkrw], root: true)
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            return
+        }
+        
+        ret = spawn(command: "\(inst_prefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
+        if (ret != 0) {
+            self.closeAllAlerts()
+            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            return
+        }
+        
         ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
@@ -473,6 +489,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
             return
         }
+
         defaultSources(pm, rootful)
         self.closeAllAlerts()
         errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))

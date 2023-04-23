@@ -152,7 +152,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if (error == nil) {
                         let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
                         self.present(installingAlert, animated: true) {
-                            bootstrap().installBootstrap(tar: path!, deb: "sileo.deb", completion:{(msg:String?, error:Int?) in
+                            bootstrap().installBootstrap(tar: path!, completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
                                         completion()
@@ -364,6 +364,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 present(alertController, animated: true, completion: nil)
             } else {
                 self.installStrap(file: "bootstrap.tar", completion: {
+                    self.installDebFile(file: "libkrw0-tfp0.deb")
                     self.installDebFile(file: "sileo.deb")
                 })
             }
@@ -389,6 +390,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 present(alertController, animated: true, completion: nil)
             } else {
                 self.installStrap(file: "bootstrap.tar", completion: {
+                    self.installDebFile(file: "libkrw0-tfp0.deb")
                     self.installDebFile(file: "zebra.deb")
                 })
             }

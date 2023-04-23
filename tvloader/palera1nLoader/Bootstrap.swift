@@ -11,6 +11,7 @@ import UIKit
 func cleanUp() -> Void {
     deleteFile(file: "sileo.deb")
     deleteFile(file: "zebra.deb")
+    deleteFile(file: "libkrw0-tfp0.deb")
     deleteFile(file: "bootstrap.tar")
     //deleteFile(file: "sources")
     
