@@ -172,7 +172,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         } else {
                             let errStr = String(cString: strerror(Int32(ret)))
                             let alert = UIAlertController.error(title: "Failed to link", message: errStr)
-                            self.present(alert, animated: true)                            
+                            self.present(alert, animated: true)
                         }
                     })
                     self.present(alert, animated: true)
@@ -270,11 +270,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
         case local("ACTIONS"):
-            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemBlue)
+            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
         case local("JBINIT_LOG"):
-            applySymbolModifications(to: cell, with: "terminal", backgroundColor: .systemBlue)
+            applySymbolModifications(to: cell, with: "terminal", backgroundColor: .systemPurple)
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
         default:

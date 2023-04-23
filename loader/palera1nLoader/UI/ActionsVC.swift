@@ -49,7 +49,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
-        
+        cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .default
         
         switch tableData[indexPath.section][indexPath.row] {
@@ -64,33 +64,26 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("HIDE"):
             applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
             cell.textLabel?.text = local("HIDE")
-            cell.accessoryType = .disclosureIndicator
             
         case local("OPENER_SILEO"):
-            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemBlue)
+            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = "Open Sileo"
-            cell.textLabel?.textColor = .systemBlue
         case local("OPENER_ZEBRA"):
-            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemBlue)
+            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = "Open Zebra"
-            cell.textLabel?.textColor = .systemBlue
         case local("OPENER_TH"):
-            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemBlue)
+            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = "Open Trollhelper"
-            cell.textLabel?.textColor = .systemBlue
             
         case local("RESPRING"):
             applySymbolModifications(to: cell, with: "arrow.counterclockwise.circle", backgroundColor: .systemBlue)
             cell.textLabel?.text = local("RESPRING")
-            cell.textLabel?.textColor = .systemBlue
         case local("UICACHE"):
-            applySymbolModifications(to: cell, with: "iphone.circle", backgroundColor: .systemBlue)
+            applySymbolModifications(to: cell, with: "iphone.circle", backgroundColor: .systemPurple)
             cell.textLabel?.text = local("UICACHE")
-            cell.textLabel?.textColor = .systemBlue
         case local("TWEAKS"):
-            applySymbolModifications(to: cell, with: "hammer.circle", backgroundColor: .systemBlue)
+            applySymbolModifications(to: cell, with: "hammer.circle", backgroundColor: .systemPink)
             cell.textLabel?.text = local("TWEAKS")
-            cell.textLabel?.textColor = .systemBlue
             
         case local("US_REBOOT"):
             applySymbolModifications(to: cell, with: "bolt.circle", backgroundColor: .systemOrange)
