@@ -94,7 +94,7 @@ class bootstrap {
     }
     
     
-    func installBootstrap(tar: String, completion: @escaping (String?, Int?) -> Void) {
+    func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
         spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
         if envInfo.isRootful {
             spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
@@ -114,7 +114,35 @@ class bootstrap {
             completion(local("STRAP_ERROR"), ret)
             return
         }
+        let libkrwPath = docsFile(file: "libkrw0-tfp0.deb")
+        let debPath = docsFile(file: deb)
         
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", libkrwPath], root: true)
+        if (ret != 0) {
+            completion(local("DPKG_ERROR"), ret)
+            return
+        }
+        
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", debPath], root: true)
+        if (ret != 0) {
+            completion(local("DPKG_ERROR"), ret)
+            return
+        }
+
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
+        if (ret != 0) {
+            completion(local("DPKG_ERROR"), ret)
+            return
+        }
+        
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
+        if (ret != 0) {
+            completion(local("UICACHE_ERROR"), ret)
+            return
+        }
+        
+        defaultSources(URL(string: deb)!.lastPathComponent)
+        cleanUp()
         completion(local("INSTALL_DONE"), 0)
         return
     }

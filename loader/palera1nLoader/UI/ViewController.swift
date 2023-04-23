@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
-    func downloadFile(url: URL, completion: @escaping (String?, Error?) -> Void) {
+    func downloadFile(url: URL, forceBar: Bool = false, completion: @escaping (String?, Error?) -> Void) {
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
 
@@ -85,12 +85,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 completion(destinationUrl.path, error) // unknown error
             }
         })
-        observation = task.progress.observe(\.fractionCompleted) { progress, _ in
-            print("progress: ", progress.fractionCompleted) // remove after testing
-            DispatchQueue.main.async {
-                progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
+        if (url.pathExtension == "tar" || forceBar) {
+            observation = task.progress.observe(\.fractionCompleted) { progress, _ in
+                print("progress: ", progress.fractionCompleted) // remove after testing
+                DispatchQueue.main.async {
+                    progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
+                }
             }
         }
+
         task.resume()
     }
 
@@ -103,7 +106,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let downloadUrl = server.appendingPathComponent(file)
         deleteFile(file: file)
         
-        downloadFile(url: downloadUrl, completion:{(path:String?, error:Error?) in
+        downloadFile(url: downloadUrl, forceBar: true, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
                     if (error == nil) {
@@ -138,23 +141,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
         let server = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
         let downloadUrl: URL?
+        let pmUrl: URL?
+        let libkrw0Url: URL?
+
         deleteFile(file: file)
         
         if (!envInfo.isRootful) {
             downloadUrl = server.appendingPathComponent("bootstrap-\(CF).tar")
+            deleteFile(file: "bootstrap-\(CF).tar")
         } else {
-            downloadUrl = server.appendingPathComponent(file)
+            downloadUrl = server.appendingPathComponent("bootstrap.tar")
+            deleteFile(file: "bootstrap.tar")
         }
         
-        downloadFile(url: downloadUrl!, completion:{(path:String?, error:Error?) in
+        pmUrl = server.appendingPathComponent(file)
+        libkrw0Url = server.appendingPathComponent("libkrw0-tfp0.deb")
+        
+        downloadFile(url: libkrw0Url!, completion:{(path:String?, error:Error?) in})
+        downloadFile(url: pmUrl!, completion:{(path:String?, error:Error?) in })
+
+        self.downloadFile(url: downloadUrl!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
                     if (error == nil) {
                         let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
                         self.present(installingAlert, animated: true) {
-                            bootstrap().installBootstrap(tar: path!, completion:{(msg:String?, error:Int?) in
+                            bootstrap().installBootstrap(tar: path!, deb: file, completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
+                                        let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
+                                        self.present(alert, animated: true)
                                         completion()
                                     } else {
                                         let errStr = String(cString: strerror(Int32(error!)))
@@ -363,9 +379,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                self.installStrap(file: "bootstrap.tar", completion: {
-                    self.installDebFile(file: "libkrw0-tfp0.deb")
-                    self.installDebFile(file: "sileo.deb")
+                self.installStrap(file: "sileo.deb", completion: {
+                   // self.installDebFile(file: "libkrw0-tfp0.deb")
+                    //self.installDebFile(file: "sileo.deb")
                 })
             }
         case local("ZEBRA"):
