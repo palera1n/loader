@@ -319,8 +319,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)
         case local("SILEO"):
-            let sileoInstalled = UIApplication.shared.canOpenURL(URL(string: "sileo://")!)
-            if (sileoInstalled) {
+            if (envInfo.sileoInstalled) {
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("SILEO_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
@@ -344,8 +343,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 })
             }
         case local("ZEBRA"):
-            let zebraInstalled = UIApplication.shared.canOpenURL(URL(string: "zbra://")!)
-            if (zebraInstalled) {
+            if (envInfo.zebraInstalled) {
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in

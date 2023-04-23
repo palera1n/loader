@@ -86,8 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				E181BADD28CF914300CD25A6 /* ViewController.swift */,
-				45E7E0F229E4EC5B0057741A /* Common.swift */,
-				452A308629ECAF9900EB8CAC /* Utilities.swift */,
 				33E15DB029F4F03A00D2770A /* LogViewVC.swift */,
 				33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */,
 				33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */,
@@ -98,6 +96,8 @@
 		3313A75729ECE2710021665E /* Bootstrap */ = {
 			isa = PBXGroup;
 			children = (
+				45E7E0F229E4EC5B0057741A /* Common.swift */,
+				452A308629ECAF9900EB8CAC /* Utilities.swift */,
 				4509BACB29E7970300D36328 /* Bootstrap.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
 			);
