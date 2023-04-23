@@ -50,7 +50,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
         
-        cell.selectionStyle = .none
+        cell.selectionStyle = .default
         
         switch tableData[indexPath.section][indexPath.row] {
         case local("FR_SWITCH"):
@@ -60,6 +60,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             switchControl.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
             cell.accessoryView = switchControl
             cell.textLabel?.text = "Reboot on revert"
+            cell.selectionStyle = .none
         case local("HIDE"):
             applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
             cell.textLabel?.text = local("HIDE")
@@ -106,7 +107,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        cell.selectionStyle = .default
         return cell
     }
 
@@ -114,8 +114,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let prefix = envInfo.installPrefix
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case local("FR_SWITCH"):
-            spawn(command: "\(prefix)/usr/bin/sbreload", args: [], root: true)
         case local("HIDE"):
             HideEnv(viewController: self)
         case local("OPENER_SILEO"):
