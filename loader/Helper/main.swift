@@ -116,9 +116,23 @@ func strap(_ input: String,_ rootless: Bool) {
     do { try fm.setAttributes(attrib, ofItemAtPath: "\(replace)/var/mobile")}
     catch { NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)") }
     
+    // create files if needed
     let filePath: String
     if rootless { filePath = "/var/jb/.palecursus_strapped" } else { filePath = "/.palecursus_strapped" }
     touch(atPath: filePath)
+    // Taken from: https://github.com/opa334/Dopamine/blob/master/Packages/Fugu15KernelExploit/Sources/Fugu15KernelExploit/Bootstrapper.swift#L222-L230
+    do {
+        if !FileManager.default.fileExists(atPath: "/var/jb/var/mobile/Library/Preferences") && rootless {
+            let attributes: [FileAttributeKey: Any] = [
+                .posixPermissions: 0o755,
+                .ownerAccountID: 501,
+                .groupOwnerAccountID: 501
+            ]
+            try FileManager.default.createDirectory(atPath: "/var/jb/var/mobile/Library/Preferences", withIntermediateDirectories: true, attributes: attributes)
+        }
+    } catch {
+        NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)")
+    }
 }
 
 func revert() -> Void {
