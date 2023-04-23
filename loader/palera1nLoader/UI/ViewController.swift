@@ -314,7 +314,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("REVERT_CELL"):
             let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in bootstrap().revert() }
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in bootstrap().revert(viewController: self) }
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)

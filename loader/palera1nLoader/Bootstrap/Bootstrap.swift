@@ -149,39 +149,41 @@ class bootstrap {
     
     
     // Reverting/Removing jailbreak, wipes /var/jb
-    func revert() -> Void {
+    func revert(viewController: UIViewController) -> Void {
         if !envInfo.isRootful {
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            DispatchQueue.main.async {
-                global.presentedViewController!.dismiss(animated: true) {
-                    let loadingAlert = UIAlertController(title: nil, message: local("REMOVING"), preferredStyle: .alert)
-                    let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-                    loadingAlert.view.addSubview(loadingIndicator)
-                    loadingIndicator.hidesWhenStopped = true
-                    loadingIndicator.startAnimating()
-                    global.present(loadingAlert, animated: true, completion: nil)
+            let alert = UIAlertController.spinnerAlert("REMOVING")
+            viewController.present(alert, animated: true)
+            
+            let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
+            for app in apps ?? [] {
+                if app.hasSuffix(".app") {
+                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/var/jb/Applications/\(app)"], root: true)
+                    if ret != 0 {
+                        let errorAlert = UIAlertController.error(title: "Failed to unregister \(app)", message: "Status: \(ret)");
+                        alert.dismiss(animated: true) {
+                            viewController.present(errorAlert, animated: true)
+                        }
+                        return
+                    }
                 }
             }
             
-            DispatchQueue.global(qos: .utility).async {
-                let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
-                for app in apps ?? [] {
-                    if app.hasSuffix(".app") {
-                        let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/var/jb/Applications/\(app)"], root: true)
-                        if ret != 0 {errAlert(title: "Failed to unregister \(app)", message: "Status: \(ret)"); return}
-                    }
+            let ret = helperCmd(["-r"])
+            if ret != 0 {
+                let errorAlert = UIAlertController.error(title: local("REVERT_FAIL"), message: "Status: \(ret)")
+                alert.dismiss(animated: true) {
+                    viewController.present(errorAlert, animated: true)
                 }
+                return
+            }
                 
-                let ret = helperCmd(["-r"])
-                if ret != 0 {
-                    errAlert(title: local("REVERT_FAIL"), message: "Status: \(ret)")
-                    return
-                }
-                    
-                if (envInfo.rebootAfter) {
-                    _ = helperCmd(["-d"])
-                } else {
-                    errAlert(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
+            if (envInfo.rebootAfter) {
+                _ = helperCmd(["-d"])
+            } else {
+                let errorAlert = UIAlertController.error(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
+                alert.dismiss(animated: true) {
+                    viewController.present(errorAlert, animated: true)
                 }
             }
         }

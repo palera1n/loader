@@ -63,25 +63,6 @@ func deleteFile(file: String) -> Void {
    try? FileManager.default.removeItem(at: fileURL)
 }
 
-// will be removed
-func errAlert(title: String, message: String) {
-    DispatchQueue.main.async {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
-            bootstrap().cleanUp()
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
-        })
-        
-        if (global.presentedViewController != nil) {
-            global.presentedViewController!.dismiss(animated: true) {
-                global.present(alertController, animated: true, completion: nil)
-            }
-        } else {
-            global.present(alertController, animated: true, completion: nil)
-        }
-    }
-}
 // image mods
 func applySymbolModifications(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
     let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
@@ -116,6 +97,7 @@ func applyImageModifications(to cell: UITableViewCell, with originalImage: UIIma
     cell.imageView?.layer.borderWidth = 1
     cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 }
+
 extension UIAlertController {
     static func warning(title: String, message: String, destructiveBtnTitle: String?, destructiveHandler: (() -> Void)?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
