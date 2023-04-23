@@ -60,6 +60,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func installDebFile(file: String) {
+        if (envInfo.isSimulator) {
+            return
+        }
         let title: String.LocalizationValue = file == "sileo.deb" ? "DL_SILEO" : "DL_ZEBRA"
         let downloadAlert = UIAlertController.downloading(title)
         present(downloadAlert, animated: true)
@@ -97,6 +100,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func installStrap(file: String, completion: @escaping () -> Void) {
+        if (envInfo.isSimulator) {
+            completion()
+            return
+        }
         let downloadAlert = UIAlertController.downloading("DL_STRAP")
         present(downloadAlert, animated: true)
 

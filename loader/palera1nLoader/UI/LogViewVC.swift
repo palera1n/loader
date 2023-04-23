@@ -9,6 +9,8 @@
 //
 
 import UIKit
+import Foundation
+import ObjectiveC
 
 class LogViewer: UIViewController {
     
