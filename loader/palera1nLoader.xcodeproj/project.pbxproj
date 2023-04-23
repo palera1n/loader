@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */; };
+		33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */; };
+		33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DB029F4F03A00D2770A /* LogViewVC.swift */; };
+		33E15DB429F4F1F400D2770A /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 33E15DB329F4F1F400D2770A /* Runestone */; };
 		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
 		452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A308629ECAF9900EB8CAC /* Utilities.swift */; };
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
@@ -36,6 +40,9 @@
 /* Begin PBXFileReference section */
 		33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-BridgingHeader.h"; sourceTree = "<group>"; };
 		33DE13AA29DCAD7800DF3D5E /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; path = External; sourceTree = "<group>"; };
+		33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsVC.swift; sourceTree = "<group>"; };
+		33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsVC.swift; sourceTree = "<group>"; };
+		33E15DB029F4F03A00D2770A /* LogViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewVC.swift; sourceTree = "<group>"; };
 		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		452A308629ECAF9900EB8CAC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -70,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E15DB429F4F1F400D2770A /* Runestone in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +90,9 @@
 				E181BADD28CF914300CD25A6 /* ViewController.swift */,
 				45E7E0F229E4EC5B0057741A /* Common.swift */,
 				452A308629ECAF9900EB8CAC /* Utilities.swift */,
+				33E15DB029F4F03A00D2770A /* LogViewVC.swift */,
+				33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */,
+				33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -193,6 +204,7 @@
 			);
 			name = palera1nLoader;
 			packageProductDependencies = (
+				33E15DB329F4F1F400D2770A /* Runestone */,
 			);
 			productName = Pogo;
 			productReference = E181BAD628CF914300CD25A6 /* palera1nLoader.app */;
@@ -231,6 +243,7 @@
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
 				453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */,
+				33E15DB229F4F1F400D2770A /* XCRemoteSwiftPackageReference "Runestone" */,
 			);
 			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
 			projectDirPath = "";
@@ -268,9 +281,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */,
+				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
+				33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */,
@@ -613,6 +629,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		33E15DB229F4F1F400D2770A /* XCRemoteSwiftPackageReference "Runestone" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simonbs/Runestone";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/staturnzz/SWCompression.git";
@@ -624,6 +648,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		33E15DB329F4F1F400D2770A /* Runestone */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33E15DB229F4F1F400D2770A /* XCRemoteSwiftPackageReference "Runestone" */;
+			productName = Runestone;
+		};
 		453D1A5C29E27A9C00F357BB /* SWCompression */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */;

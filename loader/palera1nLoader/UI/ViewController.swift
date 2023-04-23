@@ -55,7 +55,11 @@ extension UIAlertController {
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var tableData = [[local("SILEO"), local("ZEBRA")], [local("UTIL_CELL"), local("OPEN_CELL"), local("REVERT_CELL")]]
+    var tableData = [
+        [local("SILEO"), local("ZEBRA")],
+        
+        [local("ACTIONS"), local("DIAGNOSTICS"), local("JBINIT_LOG"), local("REVERT_CELL")]
+    ]
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
     func downloadFile(url: URL, forceBar: Bool = false, completion: @escaping (String?, Error?) -> Void) {
@@ -194,7 +198,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (!envInfo.isRootful) {
             if envInfo.envType == 2 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    let alert = UIAlertController.warning(title: "Hide Environment", message: "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder. You may need to run uicache in utilities after proceeding.", destructiveBtnTitle: "Proceed", destructiveHandler: {
+                    let alert = UIAlertController.warning(title: local("HIDDEN"), message: local("HIDDEN_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                         let procursus = "\(Utils().strapCheck().jbFolder)/procursus"
 
                         let ret = helperCmd(["-e", procursus])
@@ -257,8 +261,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             return view
         }()
-        let infoButton = UIBarButtonItem(title: nil, image: UIImage(systemName: "staroflife.circle"), primaryAction: nil, menu: Utils().InfoMenu(viewController: self))
-        navigationItem.rightBarButtonItem = infoButton
 
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
@@ -286,6 +288,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     }
     
+    func applySymbolModifications(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
+        let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?
+            .withTintColor(.white, renderingMode: .alwaysOriginal)
+        let symbolSize = symbolImage?.size ?? .zero
+        let imageSize = CGSize(width: 30, height: 30)
+        let scale = min((imageSize.width - 6) / symbolSize.width, (imageSize.height - 6) / symbolSize.height)
+        let adjustedSymbolSize = CGSize(width: symbolSize.width * scale, height: symbolSize.height * scale)
+        let coloredBackgroundImage = UIGraphicsImageRenderer(size: imageSize).image { context in
+            backgroundColor.setFill()
+            UIBezierPath(roundedRect: CGRect(origin: .zero, size: imageSize), cornerRadius: 7).fill()
+        }
+        let mergedImage = UIGraphicsImageRenderer(size: imageSize).image { context in
+            coloredBackgroundImage.draw(in: CGRect(origin: .zero, size: imageSize))
+            symbolImage?.draw(in: CGRect(x: (imageSize.width - adjustedSymbolSize.width) / 2, y: (imageSize.height - adjustedSymbolSize.height) / 2, width: adjustedSymbolSize.width, height: adjustedSymbolSize.height))
+        }
+        cell.imageView?.image = mergedImage
+        cell.imageView?.layer.cornerRadius = 7
+        cell.imageView?.clipsToBounds = true
+        cell.imageView?.layer.borderWidth = 1
+        cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+    }
+
+
+
+    
     // MARK: - Viewtable for Sileo/Zebra/Revert/Etc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
@@ -293,35 +321,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         switch tableData[indexPath.section][indexPath.row] {
         case local("REVERT_CELL"):
-            if FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
-                cell.isUserInteractionEnabled = true
-                cell.accessoryType = .disclosureIndicator
-                cell.textLabel?.textColor = .systemRed
-            } else if FileManager.default.fileExists(atPath: "/.procursus_strapped"){
-                cell.isUserInteractionEnabled = false
-                cell.textLabel?.textColor = .gray
-                cell.detailTextLabel?.text = local("REVERT_SUBTEXT")
-            } else {
-                cell.isUserInteractionEnabled = false
-                cell.textLabel?.textColor = .gray
-            }
+            let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+            let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+            
+            applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+            cell.isUserInteractionEnabled = isProcursusStrapped || isOldProcursusStrapped
+            cell.textLabel?.textColor = isProcursusStrapped || isOldProcursusStrapped ? .systemRed : .gray
+            cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
+            cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
+            cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
         case local("SILEO"):
-            if let originalImage = UIImage(named: "Sileo_logo") {
-                applyImageModifications(to: cell, with: originalImage)
-            }
+            applyImageModifications(to: cell, with: UIImage(named: "Sileo_logo")!)
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
         case local("ZEBRA"):
-            if let originalImage = UIImage(named: "Zebra_logo") {
-                applyImageModifications(to: cell, with: originalImage)
-            }
-//            cell.isUserInteractionEnabled = false
+            applyImageModifications(to: cell, with: UIImage(named: "Zebra_logo")!)
             cell.accessoryType = .disclosureIndicator
-//            cell.textLabel?.textColor = .gray
-        case local("UTIL_CELL"), local("OPEN_CELL"):
+        case local("DIAGNOSTICS"):
+            applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.textColor = UIColor(red: 0.3, green: 0.5, blue: 0.9, alpha: 1.0)
+        case local("ACTIONS"):
+            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemBlue)
+            cell.isUserInteractionEnabled = true
+            cell.accessoryType = .disclosureIndicator
+        case local("JBINIT_LOG"):
+            applySymbolModifications(to: cell, with: "terminal", backgroundColor: .systemBlue)
+            cell.isUserInteractionEnabled = true
+            cell.accessoryType = .disclosureIndicator
         default:
             break
         }
@@ -347,10 +374,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case local("UTIL_CELL"):
-            Utils().actionsTapped(viewController: self)
-        case local("OPEN_CELL"):
-            Utils().openersTapped(viewController: self)
+        case local("DIAGNOSTICS"):
+            let diagnosticsVC = DiagnosticsVC()
+            navigationController?.pushViewController(diagnosticsVC, animated: true)
+        case local("JBINIT_LOG"):
+            let logviewVC = LogViewer()
+            navigationController?.pushViewController(logviewVC, animated: true)
+        case local("ACTIONS"):
+            let actionsVC = ActionsVC()
+            navigationController?.pushViewController(actionsVC, animated: true)
         case local("REVERT_CELL"):
             let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
