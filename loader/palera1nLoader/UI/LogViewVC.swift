@@ -46,7 +46,7 @@ class LogViewer: UIViewController {
             let logFileContents = try String(contentsOfFile: logFilePath, encoding: .utf8)
             textView.text = logFileContents
         } catch {
-            print("[-] Error Reading ElleKit Log File")
+            print("[-] Error Reading JBinit Log File")
             #if targetEnvironment(simulator)
             textView.text = "Error: Simulator"
             #else
