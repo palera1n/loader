@@ -82,3 +82,74 @@ func errAlert(title: String, message: String) {
         }
     }
 }
+// image mods
+func applySymbolModifications(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
+    let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium)
+    let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?
+        .withTintColor(.white, renderingMode: .alwaysOriginal)
+    let coloredBackgroundImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
+        backgroundColor.setFill()
+        UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 30, height: 30), cornerRadius: 7).fill()
+    }
+    let mergedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
+        coloredBackgroundImage.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+        symbolImage?.draw(in: CGRect(x: 5, y: 5, width: 20, height: 20)) // adjust the x and y values as needed
+    }
+    cell.imageView?.image = mergedImage
+    cell.imageView?.layer.cornerRadius = 7
+    cell.imageView?.clipsToBounds = true
+    cell.imageView?.layer.borderWidth = 1
+    cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+}
+
+func applyImageModifications(to cell: UITableViewCell, with originalImage: UIImage) {
+    let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
+        originalImage.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+    }
+    cell.imageView?.image = resizedImage
+    cell.imageView?.layer.cornerRadius = 7
+    cell.imageView?.clipsToBounds = true
+    cell.imageView?.layer.borderWidth = 1
+    cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+}
+extension UIAlertController {
+    static func warning(title: String, message: String, destructiveBtnTitle: String?, destructiveHandler: (() -> Void)?) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        if let destructiveTitle = destructiveBtnTitle, let handler = destructiveHandler {
+            alertController.addAction(UIAlertAction(title: destructiveTitle, style: .destructive) { _ in handler() })
+        }
+        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { _ in return })
+        return alertController
+    }
+    
+    static func error(title: String, message: String) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
+            bootstrap().cleanUp()
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
+        })
+        return alertController
+    }
+    
+    static func downloading(_ msg: String.LocalizationValue) -> UIAlertController {
+        let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
+        let constraintHeight = NSLayoutConstraint(item: alertController.view!, attribute: NSLayoutConstraint.Attribute.height,
+                                                  relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
+                                                    NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 75)
+        alertController.view.addConstraint(constraintHeight)
+        progressDownload.setProgress(0.0/1.0, animated: true)
+        progressDownload.frame = CGRect(x: 25, y: 55, width: 220, height: 0)
+        alertController.view.addSubview(progressDownload)
+        return alertController
+    }
+    
+    static func spinnerAlert(_ msg: String.LocalizationValue) -> UIAlertController {
+        let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        alertController.view.addSubview(loadingIndicator)
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.startAnimating()
+        return alertController
+    }
+}

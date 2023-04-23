@@ -12,48 +12,6 @@ import CoreServices
 var observation: NSKeyValueObservation?
 var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .default)
 
-extension UIAlertController {
-    static func warning(title: String, message: String, destructiveBtnTitle: String?, destructiveHandler: (() -> Void)?) -> UIAlertController {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        if let destructiveTitle = destructiveBtnTitle, let handler = destructiveHandler {
-            alertController.addAction(UIAlertAction(title: destructiveTitle, style: .destructive) { _ in handler() })
-        }
-        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { _ in return })
-        return alertController
-    }
-    
-    static func error(title: String, message: String) -> UIAlertController {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
-            bootstrap().cleanUp()
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
-        })
-        return alertController
-    }
-    
-    static func downloading(_ msg: String.LocalizationValue) -> UIAlertController {
-        let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
-        let constraintHeight = NSLayoutConstraint(item: alertController.view!, attribute: NSLayoutConstraint.Attribute.height,
-                                                  relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
-                                                    NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 75)
-        alertController.view.addConstraint(constraintHeight)
-        progressDownload.setProgress(0.0/1.0, animated: true)
-        progressDownload.frame = CGRect(x: 25, y: 55, width: 220, height: 0)
-        alertController.view.addSubview(progressDownload)
-        return alertController
-    }
-    
-    static func spinnerAlert(_ msg: String.LocalizationValue) -> UIAlertController {
-        let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        alertController.view.addSubview(loadingIndicator)
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.startAnimating()
-        return alertController
-    }
-}
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData = [
         [local("SILEO"), local("ZEBRA")],
@@ -277,43 +235,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return tableData[section].count
     }
     
-    func applyImageModifications(to cell: UITableViewCell, with originalImage: UIImage) {
-        let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
-            originalImage.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
-        }
-        cell.imageView?.image = resizedImage
-        cell.imageView?.layer.cornerRadius = 7
-        cell.imageView?.clipsToBounds = true
-        cell.imageView?.layer.borderWidth = 1
-        cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-    }
-    
-    func applySymbolModifications(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
-        let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?
-            .withTintColor(.white, renderingMode: .alwaysOriginal)
-        let symbolSize = symbolImage?.size ?? .zero
-        let imageSize = CGSize(width: 30, height: 30)
-        let scale = min((imageSize.width - 6) / symbolSize.width, (imageSize.height - 6) / symbolSize.height)
-        let adjustedSymbolSize = CGSize(width: symbolSize.width * scale, height: symbolSize.height * scale)
-        let coloredBackgroundImage = UIGraphicsImageRenderer(size: imageSize).image { context in
-            backgroundColor.setFill()
-            UIBezierPath(roundedRect: CGRect(origin: .zero, size: imageSize), cornerRadius: 7).fill()
-        }
-        let mergedImage = UIGraphicsImageRenderer(size: imageSize).image { context in
-            coloredBackgroundImage.draw(in: CGRect(origin: .zero, size: imageSize))
-            symbolImage?.draw(in: CGRect(x: (imageSize.width - adjustedSymbolSize.width) / 2, y: (imageSize.height - adjustedSymbolSize.height) / 2, width: adjustedSymbolSize.width, height: adjustedSymbolSize.height))
-        }
-        cell.imageView?.image = mergedImage
-        cell.imageView?.layer.cornerRadius = 7
-        cell.imageView?.clipsToBounds = true
-        cell.imageView?.layer.borderWidth = 1
-        cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-    }
-
-
-
-    
     // MARK: - Viewtable for Sileo/Zebra/Revert/Etc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
@@ -325,8 +246,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
             
             applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-            cell.isUserInteractionEnabled = isProcursusStrapped || isOldProcursusStrapped
-            cell.textLabel?.textColor = isProcursusStrapped || isOldProcursusStrapped ? .systemRed : .gray
+            cell.isUserInteractionEnabled = isProcursusStrapped
+            cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
             cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
             cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
             cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil

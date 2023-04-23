@@ -51,25 +51,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return UIMenu(image: nil, identifier: nil, options: [], children: [copyAction])
         }
     }
-    
-    func applySymbolModifications(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium)
-        let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?
-            .withTintColor(.white, renderingMode: .alwaysOriginal)
-        let coloredBackgroundImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
-            backgroundColor.setFill()
-            UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 30, height: 30), cornerRadius: 7).fill()
-        }
-        let mergedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
-            coloredBackgroundImage.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
-            symbolImage?.draw(in: CGRect(x: 5, y: 5, width: 20, height: 20)) // adjust the x and y values as needed
-        }
-        cell.imageView?.image = mergedImage
-        cell.imageView?.layer.cornerRadius = 7
-        cell.imageView?.clipsToBounds = true
-        cell.imageView?.layer.borderWidth = 1
-        cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
-    }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

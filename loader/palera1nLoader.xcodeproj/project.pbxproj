@@ -10,7 +10,6 @@
 		33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */; };
 		33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */; };
 		33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DB029F4F03A00D2770A /* LogViewVC.swift */; };
-		33E15DB429F4F1F400D2770A /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 33E15DB329F4F1F400D2770A /* Runestone */; };
 		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
 		452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A308629ECAF9900EB8CAC /* Utilities.swift */; };
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
@@ -77,7 +76,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33E15DB429F4F1F400D2770A /* Runestone in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +202,6 @@
 			);
 			name = palera1nLoader;
 			packageProductDependencies = (
-				33E15DB329F4F1F400D2770A /* Runestone */,
 			);
 			productName = Pogo;
 			productReference = E181BAD628CF914300CD25A6 /* palera1nLoader.app */;
@@ -243,7 +240,6 @@
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
 				453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */,
-				33E15DB229F4F1F400D2770A /* XCRemoteSwiftPackageReference "Runestone" */,
 			);
 			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
 			projectDirPath = "";
@@ -629,14 +625,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		33E15DB229F4F1F400D2770A /* XCRemoteSwiftPackageReference "Runestone" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/simonbs/Runestone";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.0;
-			};
-		};
 		453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/staturnzz/SWCompression.git";
@@ -648,11 +636,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		33E15DB329F4F1F400D2770A /* Runestone */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 33E15DB229F4F1F400D2770A /* XCRemoteSwiftPackageReference "Runestone" */;
-			productName = Runestone;
-		};
 		453D1A5C29E27A9C00F357BB /* SWCompression */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */;
