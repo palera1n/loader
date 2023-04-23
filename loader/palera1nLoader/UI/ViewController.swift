@@ -380,8 +380,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 present(alertController, animated: true, completion: nil)
             } else {
                 self.installStrap(file: "sileo.deb", completion: {
-                   // self.installDebFile(file: "libkrw0-tfp0.deb")
-                    //self.installDebFile(file: "sileo.deb")
+                    //idk yet
                 })
             }
         case local("ZEBRA"):
@@ -405,9 +404,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                self.installStrap(file: "bootstrap.tar", completion: {
-                    self.installDebFile(file: "libkrw0-tfp0.deb")
-                    self.installDebFile(file: "zebra.deb")
+                self.installStrap(file: "zebra.deb", completion: {
+                    //idk yet
                 })
             }
         default:
