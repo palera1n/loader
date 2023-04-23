@@ -115,6 +115,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 print("Failed to open Sileo app")
             }
+            
         case local("OPENER_ZEBRA"):
             if !openApp("xyz.willy.Zebra") {
                 print("Failed to open Zebra app")
@@ -125,20 +126,25 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             
         case local("RESPRING"):
-            spawn(command: "\(prefix)/usr/bin/sbreload", args: [], root: true)
+            spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true)
         case local("UICACHE"):
             spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"], root: true)
         case local("TWEAKS"):
             if envInfo.isRootful {
                 spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
+                spawn(command: "/etc/rc.d/ellekit-loader", args: [], root: true)
             } else {
                 spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
             }
             
         case local("US_REBOOT"):
-            spawn(command: "\(prefix)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
+            spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"], root: true)
         case local("DAEMONS"):
-            spawn(command: "\(prefix)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
+            if envInfo.isRootful {
+                spawn(command: "/cores/binpack/bin/launchctl", args: ["bootstrap", "system", "/Library/LaunchDaemons"], root: true)
+            } else {
+                spawn(command: "/cores/binpack/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
+            }
         case local("MOUNT"):
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
         default:
