@@ -59,7 +59,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             switchControl.isOn = envInfo.rebootAfter
             switchControl.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
             cell.accessoryView = switchControl
-            cell.textLabel?.text = "Reboot on revert"
+            cell.textLabel?.text = local("FR_SWITCH")
             cell.selectionStyle = .none
         case local("HIDE"):
             applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
