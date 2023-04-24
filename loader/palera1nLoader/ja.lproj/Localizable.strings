@@ -4,68 +4,95 @@ palera1nLoader
 Japanese
 */
 
+// ViewController Cells
 "INSTALL" = "インストール";
-"DEBUG" = "デバッグ";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"UTIL_CELL" = "ユーティリティ";
-"OPEN_CELL" = "アプリケーションを開く";
+"DEBUG" = "デバッグ";
+"DIAGNOSTICS" = "Diagnostics";
+"ACTIONS" = "Actions";
+"JBINIT_LOG" = "Logging";
 "REVERT_CELL" = "Jailbreakを削除";
-"PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
+
+//Actions VC
+"HIDDEN" = "Hidden Environment";
+"HIDE" = "Hide Environment";
+"OPEN_CELL" = "アプリケーションを開く";
+"OPENER_SILEO" = "Sileoを開く";
+"OPENER_ZEBRA" = "Zebraを開く";
+"OPENER_TH" = "TrollHelperを開く";
+"UTIL_CELL" = "ユーティリティ";
 "RESPRING" = "Respring";
 "US_REBOOT" = "Userspace Reboot";
 "UICACHE" = "UICache";
 "DAEMONS" = "Launch Daemons";
 "MOUNT" = "Mount Directories";
 "TWEAKS" = "Enable Tweaks";
-"TYPE_INFO" = "種類:";
-"INSTALL_INFO" = "インストール状況:";
-"ARCH_INFO" = "アーキテクチャ:";
-"VERSION_INFO" = "バージョン:";
+"FR_SWITCH" = "Revert on reboot";
+
+// Diags
+"TYPE_INFO" = "種類";
+"INSTALL_INFO" = "インストール状況";
+"ARCH_INFO" = "アーキテクチャ";
+"VERSION_INFO" = "バージョン";
+"STRAP_INFO" = "環境";
+"STRAP_FR_PREFIX" = "Fakeroot Prefix";
+"INSTALL_FR" = "Force Reverted";
+"HELPER" = "Helper";
+"HELPER_PATH" = "Helper Path";
+"SILEO_INSTALLED" = "Sileo Installed";
+"ZEBRA_INSTALLED" = "Zebra Installed";
+
 "TRUE" = "済";
 "FALSE" = "未";
-"OPENER_MSG" = "アプリケーションを開く";
-"OPENER_SILEO" = "Sileoを開く";
-"OPENER_ZEBRA" = "Zebraを開く";
-"OPENER_TH" = "TrollHelperを開く";
-"HIDE" = "Hide Environment";
-"SOCIALS" = "Social Media";
-"STRAP_INFO" = "環境:";
-"DISCORD" = "Discord";
-"TWITTER" = "Twitter";
-"WEBSITE" = "Webサイト";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
-"REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
-"ABOUT" = "palera1nについて";
 "CANCEL" = "キャンセル";
-"DOWNLOADING" = "ダウンロード中...";
+"CONFIRM" = "確認";
+"CLOSE" = "閉じる";
+"PROCEED" = "Proceed";
+"NO_PROCEED" = "Unable to proceed";
+
+// DL / BS
 "DL_STRAP" = "Bootstrapをダウンロード中";
 "DL_SILEO" = "Sileoをダウンロード中";
 "DL_ZEBRA" = "Zebraをダウンロード中";
+"DOWNLOADING" = "ダウンロード中...";
 "INSTALLING" = "インストール中...";
 "DOWNLOAD_FAIL" = "ファイルをダウンロードできませんでした";
 "DOWNLOAD_ERROR" = "不明なエラー";
 "SAVE_FAIL" = "ファイルをディスクにコピーできませんでした";
 "INSTALL_DONE" = "インストール完了";
 "INSTALL_DONE_SUB" = "アプリを終了します。";
-"STRAP_ERROR" = "Bootstrapのインストールに失敗しました";
-"STATUS" = "ステータス";
-"DPKG_ERROR" = "パッケージのインストールに失敗しました";
-"UICACHE_ERROR" = "UICacheの実行に失敗しました";
-"CONFIRM" = "確認";
+"REVERT_DONE" = "削除完了";
+"REMOVING" = "削除中...";
+
+// hehe
+"REINSTALL" = "再インストール";
+"ENJOY" = "Enjoy!";
+
+// WARNINGS / NOTICES
+"HIDDEN_NOTICE" = "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder. You may need to run uicache in utilities after proceeding.";
+"ROOTLESS_NOTICE" = "You may not use this button if you're on a non rootless jailbreak.";
+
+"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back";
+
+"REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
+"PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
 "REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるjailbreak関連ファイルや、jailbreakアプリケーションなどは全て削除されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
 "SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
 "ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
 "SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
 "ZEBRA_INSTALL" = "Zebraをインストールしてもよろしいですか？";
-"REINSTALL" = "再インストール";
-"ENJOY" = "Enjoy!"; 
+"CLOSE_APP" = "You may close the app.";
+"UNHID_ENV" = "Unhid the environment";
+
+// errors
+"STRAP_ERROR" = "Bootstrapのインストールに失敗しました";
+"STATUS" = "ステータス";
+"DPKG_ERROR" = "パッケージのインストールに失敗しました";
+"UICACHE_ERROR" = "UICacheの実行に失敗しました";
 "SILEO_FAIL" = "Sileoのインストールに失敗しました";
 "ZEBRA_FAIL" = "Zebraのインストールに失敗しました";
-"REVERT_FAIL" = "Jailbreakの削除に失敗しました。";
-"CLOSE_APP" = "アプリを終了します。";
-"REVERT_DONE" = "削除完了";
 "UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
-"CLOSE" = "閉じる";
-"REMOVING" = "削除中...";
+"REVERT_FAIL" = "Jailbreakの削除に失敗しました。";

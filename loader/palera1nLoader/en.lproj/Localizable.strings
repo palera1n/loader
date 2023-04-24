@@ -74,7 +74,9 @@ English
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder. You may need to run uicache in utilities after proceeding.";
 "ROOTLESS_NOTICE" = "You may not use this button if you're on a non rootless jailbreak.";
+
 "HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back";
+
 "REVERT_SUBTEXT" = "Rootful cannot use this button :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new :)";
 "REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
