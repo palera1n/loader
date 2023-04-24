@@ -62,13 +62,16 @@ func strap(_ input: String,_ rootless: Bool) {
     do { try autoreleasepool {
         let data = try Data(contentsOf: URL(fileURLWithPath: input))
         let container = try TarContainer.open(container: data)
+        // delete leftovers
+        if rootless { removeLeftovers() }
+        
         NSLog("[palera1n helper] Opened Container")
         for entry in container { do {
             var path = entry.info.name
             if path.first == "." { path.removeFirst() }
             if path == "/" || path == "/var" { continue }
             path = path.replacingOccurrences(of: replace, with: dest)
-            
+
             switch entry.info.type {
             case .symbolicLink:
                 var linkName = entry.info.linkName
@@ -112,15 +115,14 @@ func strap(_ input: String,_ rootless: Bool) {
     attrib[.posixPermissions] = 0o755
     attrib[.ownerAccountName] = "mobile"
     attrib[.groupOwnerAccountName] = "mobile"
-    
-    do { try fm.setAttributes(attrib, ofItemAtPath: "\(replace)/var/mobile")}
-    catch { NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)") }
-    
-    // create files if needed
+    strapfiles(rootless: rootless)
+}
+
+func strapfiles(rootless: Bool) {
     let filePath: String
     if rootless { filePath = "/var/jb/.palecursus_strapped" } else { filePath = "/.palecursus_strapped" }
     touch(atPath: filePath)
-    // Taken from: https://github.com/opa334/Dopamine/blob/master/Packages/Fugu15KernelExploit/Sources/Fugu15KernelExploit/Bootstrapper.swift#L222-L230
+    
     do {
         if !FileManager.default.fileExists(atPath: "/var/jb/var/mobile/Library/Preferences") && rootless {
             let attributes: [FileAttributeKey: Any] = [
@@ -133,6 +135,19 @@ func strap(_ input: String,_ rootless: Bool) {
     } catch {
         NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)")
     }
+}
+func removeLeftovers() {
+    rm("/var/jb")
+    rm("/var/lib")
+    rm("/var/cache")
+    rm("/var/LIB")
+    rm("/var/Liy")
+    rm("/var/LIY")
+    rm("/var/sbin")
+    rm("/var/bin")
+    rm("/var/ubi")
+    rm("/var/ulb")
+    rm("/var/local")
 }
 
 func revert() -> Void {
@@ -164,7 +179,7 @@ func revert() -> Void {
             NSLog("[palera1n helper] Failed to retrieve contents of directory: \(error.localizedDescription)")
         }
 
-        rm("/var/jb")
+        removeLeftovers()
         rm("/private/preboot/\(uuid)/procursus") // old installs
     }
 }

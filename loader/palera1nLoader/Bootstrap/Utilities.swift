@@ -105,20 +105,5 @@ class Utils {
         }
         
         envInfo.hasChecked = true
-        
-        /// for debugging will remove later
-        print("installPrefix: \(envInfo.installPrefix)")
-        print("envType: \(envInfo.envType)")
-        print("systemArch: \(envInfo.systemArch)")
-        print("systemVersion: \(envInfo.systemVersion)")
-        print("isRootful: \(envInfo.isRootful)")
-        print("isInstalled: \(envInfo.isInstalled)")
-        print("isSimulator: \(envInfo.isSimulator)")
-        print("zebraInstalled: \(envInfo.zebraInstalled)")
-        print("sileoInstalled: \(envInfo.sileoInstalled)")
-        print("helperPath: \(envInfo.helperPath)")
-        print("hasHelper: \(envInfo.hasHelper)")
-        print("hasChecked: \(envInfo.hasChecked)")
-        print("hasForceReverted: \(envInfo.hasForceReverted)")
     }
 }

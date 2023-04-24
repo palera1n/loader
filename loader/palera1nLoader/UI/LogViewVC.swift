@@ -23,9 +23,9 @@ class LogViewer: UIViewController {
         textView.backgroundColor = .systemBackground
         textView.textContainerInset = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
         textView.isEditable = false
-        textView.isSelectable = false
+        textView.isSelectable = true
         textView.isScrollEnabled = true
-        textView.textContainer.lineBreakMode = .byWordWrapping
+        textView.textContainer.lineBreakMode = .byClipping
         textView.font = UIFont.monospacedSystemFont(ofSize: 12, weight: .regular)
         view.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,7 +39,7 @@ class LogViewer: UIViewController {
         
         /* Read jbinit Log File */
         let logFilePath = "/cores/jbinit.log"
-        
+        //let logFilePath = "/Users/samara/Downloads/jbinit.log"
         do {
             let logFileContents = try String(contentsOfFile: logFilePath, encoding: .utf8)
             textView.text = logFileContents
@@ -52,7 +52,6 @@ class LogViewer: UIViewController {
             #endif
         }
         
-        /* UIContextMenu Shenanigans */
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))
         shareButton.tintColor = .systemBlue
         
@@ -67,4 +66,3 @@ class LogViewer: UIViewController {
         present(activityViewController, animated: true, completion: nil)
     }
 }
-
