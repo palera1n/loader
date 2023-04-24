@@ -115,15 +115,21 @@ class bootstrap {
             return
         }
         
-        let libkrwPath = docsFile(file: "libkrw0-tfp0.deb")
-        let debPath = docsFile(file: deb)
-        
-        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", libkrwPath], root: true)
-        if (ret != 0) {
-            completion(local("DPKG_ERROR"), ret)
-            return
+        if !envInfo.isRootful {
+            let libkrwPath = docsFile(file: "libkrw0-tfp0.deb")
+            ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", libkrwPath], root: true)
+            if (ret != 0) {
+                completion(local("DPKG_ERROR"), ret)
+                return
+            }
+        }
+        // DIE DIE DIE DIE DIE FUCK ROOTFUL ^_^
+        if envInfo.isRootful {
+            do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/etc/apt/sources.list.d/procursus.sources")) }
+            catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
         }
         
+        let debPath = docsFile(file: deb)
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", debPath], root: true)
         if (ret != 0) {
             completion(local("DPKG_ERROR"), ret)

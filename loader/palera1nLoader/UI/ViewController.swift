@@ -123,10 +123,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             deleteFile(file: "bootstrap.tar")
         }
         
+        if (!envInfo.isRootful) {
+            libkrw0Url = server.appendingPathComponent("libkrw0-tfp0.deb")
+            downloadFile(url: libkrw0Url!, completion:{(path:String?, error:Error?) in})
+        }
         pmUrl = server.appendingPathComponent(file)
-        libkrw0Url = server.appendingPathComponent("libkrw0-tfp0.deb")
-        
-        downloadFile(url: libkrw0Url!, completion:{(path:String?, error:Error?) in})
         downloadFile(url: pmUrl!, completion:{(path:String?, error:Error?) in })
 
         self.downloadFile(url: downloadUrl!, completion:{(path:String?, error:Error?) in
