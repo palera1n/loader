@@ -28,7 +28,7 @@ English
 "DAEMONS" = "Launch Daemons";
 "MOUNT" = "Mount Directories";
 "TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Revert on reboot";
+"FR_SWITCH" = "Reboot on revert";
 
 // Diags
 "TYPE_INFO" = "Type";
