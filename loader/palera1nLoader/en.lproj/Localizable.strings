@@ -37,6 +37,10 @@ English
 "VERSION_INFO" = "Version";
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
+"STRAP_FR_PATH" = "Fakeroot Path";
+"OPEN_FILZA" = "Open in Filza";
+"OPEN_SANTANDER" = "Open in Santander";
+"COPY" = "Copy";
 "INSTALL_FR" = "Force Reverted";
 "HELPER" = "Helper";
 "HELPER_PATH" = "Helper Path";

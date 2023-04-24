@@ -12,7 +12,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var tableData = [
         [local("Version"), local("Architecture"), local("TYPE_INFO")],
         
-        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("INSTALL_FR")],
+        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH"), local("INSTALL_FR")],
         
         [local("HELPER"), local("HELPER_PATH")],
         
@@ -45,14 +45,36 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions -> UIMenu? in
-            let copyAction = UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc"), identifier: nil, discoverabilityTitle: nil) { action in
+            let copyAction = UIAction(title: local("COPY"), image: UIImage(systemName: "doc.on.doc"), identifier: nil, discoverabilityTitle: nil) { action in
                 UIPasteboard.general.string = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text ?? ""
             }
-            return UIMenu(image: nil, identifier: nil, options: [], children: [copyAction])
+            
+            let title = (tableView.cellForRow(at: indexPath)?.detailTextLabel?.text)!
+            let filzaInstalled = UIApplication.shared.canOpenURL(URL(string: "filza://")!)
+            let santanderInstalled = UIApplication.shared.canOpenURL(URL(string: "santander://")!)
+            var filePath = ""
+            var menuOptions = [copyAction]
+            
+            let openInFilza = UIAction(title: local("OPEN_FILZA"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
+                UIApplication.shared.open(URL(string: "filza://\(filePath)")!, options: [:], completionHandler: { (success) in })
+            }
+            
+            let openInSantander = UIAction(title: local("OPEN_SANTANDER"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
+                UIApplication.shared.open(URL(string: "santander://\(filePath)")!, options: [:], completionHandler: { (success) in })
+            }
+   
+            if ((indexPath.section == 1 && indexPath.row == 3) || (indexPath.section == 2 && indexPath.row == 1)) {
+                if (filzaInstalled) { menuOptions.append(openInFilza) }
+                if (santanderInstalled) { menuOptions.append(openInSantander) }
+
+                filePath = (tableView.cellForRow(at: indexPath)?.detailTextLabel?.text)!
+                return UIMenu(title: title, image: nil, identifier: nil, options: [], children: menuOptions)
+            } else {
+                return UIMenu(image: nil, identifier: nil, options: [], children: [copyAction])
+            }
         }
     }
 
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
@@ -81,8 +103,15 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.textLabel?.text = local("STRAP_FR_PREFIX")
             let jbFolder = Utils().strapCheck().jbFolder
             if !jbFolder.isEmpty {
-                let lastPathComponent = URL(fileURLWithPath: jbFolder).lastPathComponent
-                cell.detailTextLabel?.text = "\(lastPathComponent)"
+                cell.detailTextLabel?.text = "\(URL(string: jbFolder)?.lastPathComponent ?? "")"
+            } else {
+                cell.detailTextLabel?.text = "None"
+            }
+        case local("STRAP_FR_PATH"):
+            cell.textLabel?.text = local("STRAP_FR_PATH")
+            let jbFolder = Utils().strapCheck().jbFolder
+            if !jbFolder.isEmpty {
+                cell.detailTextLabel?.text = "\(jbFolder)"
             } else {
                 cell.detailTextLabel?.text = "None"
             }
