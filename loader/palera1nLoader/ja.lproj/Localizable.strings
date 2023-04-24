@@ -56,6 +56,7 @@ Japanese
 "CLOSE" = "閉じる";
 "PROCEED" = "Proceed";
 "NO_PROCEED" = "Unable to proceed";
+"SET" = "Set";
 
 // DL / BS
 "DL_STRAP" = "Bootstrapをダウンロード中";
@@ -70,6 +71,7 @@ Japanese
 "INSTALL_DONE_SUB" = "アプリを終了します。";
 "REVERT_DONE" = "削除完了";
 "REMOVING" = "削除中...";
+"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
 
 // hehe
 "REINSTALL" = "再インストール";

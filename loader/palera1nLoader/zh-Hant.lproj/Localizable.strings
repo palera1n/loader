@@ -9,14 +9,14 @@ Chinese (Traditional)
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "除錯";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
+"DIAGNOSTICS"="診斷";
+"ACTIONS"="動作";
+"JBINIT_LOG"="日誌";
 "REVERT_CELL" = "還原系統";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"HIDE" = "Hide Environment";
+"HIDDEN"="隱藏環境";
+"HIDE"="隱藏環境";
 "OPEN_CELL" = "開啟器";
 "OPENER_SILEO" = "開啟 Sileo";
 "OPENER_ZEBRA" = "開啟 Zebra";
@@ -28,24 +28,24 @@ Chinese (Traditional)
 "DAEMONS" = "載入守護進程";
 "MOUNT" = "掛載資料夾";
 "TWEAKS" = "載入插件";
-"FR_SWITCH" = "Revert on reboot";
+"FR_SWITCH"="還原後重啟";
 
 // Diags
 "TYPE_INFO" = "類型";
 "INSTALL_INFO" = "已安裝";
 "ARCH_INFO" = "架構";
 "VERSION_INFO" = "版本";
-"STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
+"STRAP_INFO"="環境";
+"STRAP_FR_PREFIX"="偽根前綴";
+"STRAP_FR_PATH"="偽根路徑";
+"OPEN_FILZA"="在Filza中開啟";
+"OPEN_SANTANDER"="在Santander中開啟";
+"COPY"="複製";
+"INSTALL_FR"="強制還原";
+"HELPER"="輔助程式";
+"HELPER_PATH"="輔助程式路徑";
+"SILEO_INSTALLED"="己安裝Sileo";
+"ZEBRA_INSTALLED"="己安裝Zebra";
 
 "TRUE" = "是";
 "FALSE" = "否";
@@ -54,13 +54,14 @@ Chinese (Traditional)
 "CANCEL" = "取消";
 "CONFIRM" = "確定";
 "CLOSE" = "關閉";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
+"PROCEED"="繼續";
+"NO_PROCEED"="無法繼續";
+"SET" = "設置";
 
 // DL / BS
-"DL_STRAP" = "Downloading Bootstrap";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
+"DL_STRAP"="正在下載底層越獄檔案";
+"DL_SILEO"="正在下載Sileo";
+"DL_ZEBRA"="正在下載Zebra";
 "DOWNLOADING" = "下載中⋯⋯";
 "INSTALLING" = "安裝中⋯⋯";
 "DOWNLOAD_FAIL" = "無法下載檔案";
@@ -69,17 +70,17 @@ Chinese (Traditional)
 "INSTALL_DONE" = "安裝完成";
 "INSTALL_DONE_SUB" = "你現在可以關閉此應用程式";
 "REVERT_DONE" = "完成移除";
-"REMOVING" = "Removing...";
+"REMOVING"="移除中⋯⋯";
+"PASSWORD"="要在越獄後使用「sudo」之類的命令列工具，你需要設置終端密碼。（這不能為空）";
 
 // hehe
 "REINSTALL" = "重新安裝";
 "ENJOY" = "請慢用！";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder. You may need to run uicache in utilities after proceeding.";
-"ROOTLESS_NOTICE" = "You may not use this button if you're on a non rootless jailbreak.";
-
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and userspace reboot the device, once you open back the loader you will be prompt to add back the symlink to the device to have your environment back";
+"HIDDEN_NOTICE"="你的 jb-XXXXXXXX 資料夾仍然存在但\/var\/jb並不存在。這會把\/var\/jb重新符號連結到它本來的資料夾。之後你可能要在工具中更新圖示快取。";
+"ROOTLESS_NOTICE"="你不能在非無根越獄中使用這個按紐";
+"HIDE_NOTICE"="繼續後會移除\/var\/jb符號連結並重啟用戶空間，當你重新開啟這個應用程式時，會提示重建符號連結，以還原你的環境。";
 
 "REVERT_SUBTEXT" = "這個按鈕不能在有根上使用";
 "PM_SUBTEXT" = "在這裏選擇你最喜愛的套件包管理器，建議新手使用Sileo。:)";
@@ -89,7 +90,7 @@ Chinese (Traditional)
 "SILEO_INSTALL" = "你確定你想安裝Sileo嗎？";
 "ZEBRA_INSTALL" = "你確定你想安裝Zebra嗎？";
 "CLOSE_APP" = "你現在可關閉這個應用程式。";
-"UNHID_ENV" = "Unhid the environment";
+"UNHID_ENV"="取消隱藏環境";
 
 // errors
 "STRAP_ERROR" = "安裝底層越獄檔案時發生錯誤。";

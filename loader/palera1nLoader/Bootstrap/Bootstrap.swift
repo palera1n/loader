@@ -114,6 +114,7 @@ class bootstrap {
             completion(local("STRAP_ERROR"), ret)
             return
         }
+        
         let libkrwPath = docsFile(file: "libkrw0-tfp0.deb")
         let debPath = docsFile(file: deb)
         
