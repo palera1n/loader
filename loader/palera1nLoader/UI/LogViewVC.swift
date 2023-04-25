@@ -39,17 +39,17 @@ class LogViewer: UIViewController {
         
         /* Read jbinit Log File */
         let logFilePath = "/cores/jbinit.log"
-        //let logFilePath = "/Users/samara/Downloads/jbinit.log"
+        
         do {
             let logFileContents = try String(contentsOfFile: logFilePath, encoding: .utf8)
             textView.text = logFileContents
         } catch {
-            print("[-] Error Reading JBinit Log File")
-            #if targetEnvironment(simulator)
-            textView.text = "Error: Simulator"
-            #else
-            textView.text = "Error: /cores/jbinit.log not found.\nInfo: Use `-L` when jailbreaking to be able to use this feature."
-            #endif
+            NSLog("[palera1n] Error Reading JBinit Log File")
+            if (envInfo.isSimulator) {
+                textView.text = "Error: Simulator"
+            } else {
+                textView.text = "Error: /cores/jbinit.log not found.\nInfo: Use `-L` when jailbreaking to be able to use this feature."
+            }
         }
         
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))

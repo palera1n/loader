@@ -68,6 +68,7 @@ Japanese
 "DOWNLOAD_ERROR" = "不明なエラー";
 "SAVE_FAIL" = "ファイルをディスクにコピーできませんでした";
 "INSTALL_DONE" = "インストール完了";
+"INSTALL_FAIL" = "Install Failed";
 "INSTALL_DONE_SUB" = "アプリを終了します。";
 "REVERT_DONE" = "削除完了";
 "REMOVING" = "削除中...";

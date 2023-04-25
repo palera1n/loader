@@ -92,7 +92,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.textLabel?.text = local("TYPE_INFO")
             cell.detailTextLabel?.text = envInfo.isRootful ? local("ROOTFUL") : local("ROOTLESS")
             
-            
         case local("INSTALL_INFO"):
             cell.textLabel?.text = local("INSTALL_INFO")
             cell.detailTextLabel?.text = envInfo.isInstalled ? local("TRUE") : local("FALSE")

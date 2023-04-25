@@ -11,9 +11,9 @@ import MachO
 
 class Utils {
     func strapCheck() -> (env: Int, jbFolder: String) {
-        #if targetEnvironment(simulator)
+        if (envInfo.isSimulator) {
             return (-1, "")
-        #else
+        }
         let uuid: String
         do {
             uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8)
@@ -57,13 +57,12 @@ class Utils {
         } else {
             return (value, "\(directoryPath)/\(jbFolders[0])") // TODO: this probably shouldnt always use 0
         }
-        #endif
     }
     
     func prerequisiteChecks() -> Void {
         #if targetEnvironment(simulator)
             envInfo.isSimulator = true
-            print("[palera1n] Running in simulator")
+            NSLog("[palera1n] Running in simulator")
         #endif
         
         /// root helper check

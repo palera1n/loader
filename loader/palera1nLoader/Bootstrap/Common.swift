@@ -26,10 +26,6 @@ struct envInfo {
     static var hasChecked: Bool = false
 }
 
-// will be removed
-let global = (UIApplication.shared.connectedScenes.filter { $0.activationState == .foregroundActive }
-    .first(where: { $0 is UIWindowScene }).flatMap({ $0 as? UIWindowScene })?.windows.first(where: \.isKeyWindow)?.rootViewController!)!
-
 func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
 }
@@ -98,28 +94,7 @@ func applyImageModifications(to cell: UITableViewCell, with originalImage: UIIma
     cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
 }
 
-extension UIAlertController {
-    static func setPassword() -> UIAlertController {
-        let message = local("PASSWORD")
-        let alertController = UIAlertController(title: "Set Password", message: message, preferredStyle: .alert)
-        alertController.addTextField() { (password) in
-            password.placeholder = "Password"
-            password.isSecureTextEntry = true
-        }
-        
-        alertController.addTextField() { (repeatPassword) in
-            repeatPassword.placeholder = "Repeat Password"
-            repeatPassword.isSecureTextEntry = true
-        }
-        
-        alertController.addAction(UIAlertAction(title: local("SET"), style: .default) { _ in
-            bootstrap().cleanUp()
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
-        })
-        return alertController
-    }
-    
+extension UIAlertController {    
     static func warning(title: String, message: String, destructiveBtnTitle: String?, destructiveHandler: (() -> Void)?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if let destructiveTitle = destructiveBtnTitle, let handler = destructiveHandler {

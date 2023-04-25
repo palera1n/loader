@@ -68,6 +68,7 @@ Chinese (Traditional)
 "DOWNLOAD_ERROR" = "未知的錯誤";
 "SAVE_FAIL" = "無法把檔案複製到磁碟上";
 "INSTALL_DONE" = "安裝完成";
+"INSTALL_FAIL" = "安裝失敗";
 "INSTALL_DONE_SUB" = "你現在可以關閉此應用程式";
 "REVERT_DONE" = "完成移除";
 "REMOVING"="移除中⋯⋯";

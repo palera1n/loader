@@ -15,9 +15,9 @@ var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .defaul
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData = [
         [local("SILEO"), local("ZEBRA")],
-        
         [local("ACTIONS"), local("DIAGNOSTICS"), local("JBINIT_LOG"), local("REVERT_CELL")]
     ]
+    
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
     func downloadFile(url: URL, forceBar: Bool = false, completion: @escaping (String?, Error?) -> Void) {
@@ -34,12 +34,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if response.statusCode == 200 {
                         if let data = data {
                             if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic) {
-                                completion(destinationUrl.path, error) // saved
+                                completion(destinationUrl.path, error)
                             } else {
-                                completion(destinationUrl.path, error)  // failed to saved
+                                completion(destinationUrl.path, error)
                             }
                         } else {
-                            completion(destinationUrl.path, error) // failed to download
+                            completion(destinationUrl.path, error)
                         }
                     }
                 }
@@ -47,9 +47,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 completion(destinationUrl.path, error) // unknown error
             }
         })
+        
         if (url.pathExtension == "tar" || forceBar) {
             observation = task.progress.observe(\.fractionCompleted) { progress, _ in
-                print("progress: ", progress.fractionCompleted) // remove after testing
                 DispatchQueue.main.async {
                     progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
                 }
@@ -77,7 +77,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
                     if (error == nil) {
-                        print("Downloaded To: \(path!)")
                         let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
                         self.present(installingAlert, animated: true) {
                             bootstrap().installDebian(deb: path!, withStrap: true, completion:{(msg:String?, error:Int?) in
@@ -86,7 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                         let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
                                         self.present(alert, animated: true)
                                     } else {
-                                        let alert = UIAlertController.error(title: "Install Failed", message: "Status: \(error!)")
+                                        let alert = UIAlertController.error(title: local("INSTALL_FAIL"), message: "Status: \(error!)")
                                         self.present(alert, animated: true)
                                     }
                                 }
@@ -256,7 +255,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("REVERT_CELL"):
             let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
             let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
-            
             applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
             cell.isUserInteractionEnabled = isProcursusStrapped
             cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
@@ -343,9 +341,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                self.installStrap(file: "sileo.deb", completion: {
-                    //idk yet
-                })
+                self.installStrap(file: "sileo.deb", completion: { })
             }
         case local("ZEBRA"):
             if (envInfo.zebraInstalled) {
@@ -367,9 +363,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                self.installStrap(file: "zebra.deb", completion: {
-                    //idk yet
-                })
+                self.installStrap(file: "zebra.deb", completion: { })
             }
         default:
             break

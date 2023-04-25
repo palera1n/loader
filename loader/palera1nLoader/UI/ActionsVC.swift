@@ -112,17 +112,14 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("OPENER_SILEO"):
             if openApp("org.coolstar.SileoStore") {
             } else if openApp("org.coolstar.SileoNightly") {
-            } else {
-                print("Failed to open Sileo app")
-            }
-            
+            } else { NSLog("Failed to open Sileo app") }
         case local("OPENER_ZEBRA"):
             if !openApp("xyz.willy.Zebra") {
-                print("Failed to open Zebra app")
+                NSLog("Failed to open Zebra app")
             }
         case local("OPENER_TH"):
             if !openApp("com.opa334.trollstorepersistencehelper") {
-                print("Failed to open Trollhelper app")
+                NSLog("Failed to open Trollhelper app")
             }
             
         case local("RESPRING"):

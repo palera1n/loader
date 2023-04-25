@@ -68,6 +68,7 @@ English
 "DOWNLOAD_ERROR" = "Unknown error";
 "SAVE_FAIL" = "Could not copy file to disk";
 "INSTALL_DONE" = "Install Completed";
+"INSTALL_FAIL" = "Install Failed";
 "INSTALL_DONE_SUB" = "You may close the app.";
 "REVERT_DONE" = "Remove Completed";
 "REMOVING" = "Removing...";

@@ -210,7 +210,7 @@ func main() {
     case "-d":
         reboot(0)
     default:
-        print("[Helper] Unknown Argument")
+        NSLog("[Helper] Unknown Argument")
     }
 }
 
