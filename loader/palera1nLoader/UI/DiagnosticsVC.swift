@@ -111,7 +111,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.textLabel?.text = local("STRAP_FR_PATH")
             let jbFolder = Utils().strapCheck().jbFolder
             if !jbFolder.isEmpty {
-                cell.detailTextLabel?.text = "\(jbFolder)"
+                cell.detailTextLabel?.text = "\(jbFolder)/procursus"
             } else {
                 cell.detailTextLabel?.text = "None"
             }

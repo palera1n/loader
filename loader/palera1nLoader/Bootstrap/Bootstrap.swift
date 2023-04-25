@@ -59,9 +59,10 @@ class bootstrap {
         case "sileo.deb":
             try? sileoSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
             spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, sileoPath.path], root: true)
-        case "zebra.deb":
-            try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
-            spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
+        //case "zebra.deb":
+            // need to fix
+            //try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
+            //spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
         default:
             print("[palera1n] Unknown or Unsupported Package Manager")
         }

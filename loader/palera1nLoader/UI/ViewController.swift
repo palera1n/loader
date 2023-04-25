@@ -63,6 +63,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (envInfo.isSimulator) {
             return
         }
+        
+        UIApplication.shared.isIdleTimerDisabled = true
         let title: String.LocalizationValue = file == "sileo.deb" ? "DL_SILEO" : "DL_ZEBRA"
         let downloadAlert = UIAlertController.downloading(title)
         present(downloadAlert, animated: true)
@@ -104,6 +106,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             completion()
             return
         }
+        
+        UIApplication.shared.isIdleTimerDisabled = true
         let downloadAlert = UIAlertController.downloading("DL_STRAP")
         present(downloadAlert, animated: true)
 
@@ -139,49 +143,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             bootstrap().installBootstrap(tar: path!, deb: file, completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
-                                        if (!envInfo.isRootful) {
-                                            let message = local("PASSWORD")
-                                            let alertController = UIAlertController(title: "Set Password", message: message, preferredStyle: .alert)
-                                            alertController.addTextField() { (password) in
-                                                password.placeholder = "Password"
-                                                password.isSecureTextEntry = true
-                                                password.keyboardType = UIKeyboardType.asciiCapable
-                                            }
-                                            
-                                            alertController.addTextField() { (repeatPassword) in
-                                                repeatPassword.placeholder = "Repeat Password"
-                                                repeatPassword.isSecureTextEntry = true
-                                                repeatPassword.keyboardType = UIKeyboardType.asciiCapable
-                                            }
-                                            
-                                            let setPassword = UIAlertAction(title: local("SET"), style: .default) { _ in
-                                                let pw = alertController.textFields![0].text!
-                                                spawn(command: "\(envInfo.installPrefix)/bin/bash", args: ["-c", "printf \"\(pw)\n\" | pw usermod 501 -h 0"], root: true)
-                                                
-                                                alertController.dismiss(animated: true) {
-                                                    let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
-                                                    self.present(alert, animated: true)
-                                                    completion()
-                                                }
-                                            }
-                                            setPassword.isEnabled = false
-                                            alertController.addAction(setPassword)
-                                            
-                                            NotificationCenter.default.addObserver(
-                                                forName: UITextField.textDidChangeNotification,
-                                                object: nil,
-                                                queue: .main
-                                            ) { notification in
-                                                let passOne = alertController.textFields![0].text
-                                                let passTwo = alertController.textFields![1].text
-                                                setPassword.isEnabled = (passOne == passTwo) && !passOne!.isEmpty && !passTwo!.isEmpty
-                                            }
-                                            self.present(alertController, animated: true)
-                                        } else {
-                                            let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
-                                            self.present(alert, animated: true)
-                                            completion()
-                                        }
+                                        let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
+                                        self.present(alert, animated: true)
+                                        completion()
                                     } else {
                                         let errStr = String(cString: strerror(Int32(error!)))
                                         let alert = UIAlertController.error(title: "Install Failed", message: errStr)
