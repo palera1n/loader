@@ -95,6 +95,9 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case local("INSTALL_INFO"):
             cell.textLabel?.text = local("INSTALL_INFO")
             cell.detailTextLabel?.text = envInfo.isInstalled ? local("TRUE") : local("FALSE")
+        case local("INSTALL_FR"):
+            cell.textLabel?.text = local("INSTALL_FR")
+            cell.detailTextLabel?.text = envInfo.hasForceReverted ? local("TRUE") : local("FALSE")
         case local("STRAP_INFO"):
             cell.textLabel?.text = local("STRAP_INFO")
             cell.detailTextLabel?.text = "\(Int(envInfo.envType))"
@@ -114,9 +117,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             } else {
                 cell.detailTextLabel?.text = "None"
             }
-        case local("INSTALL_FR"):
-            cell.textLabel?.text = local("INSTALL_FR")
-            cell.detailTextLabel?.text = envInfo.hasForceReverted ? local("TRUE") : local("FALSE")
             
         case local("HELPER"):
             cell.textLabel?.text = local("HELPER")

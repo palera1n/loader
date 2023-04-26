@@ -291,14 +291,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         switch tableData[indexPath.section][indexPath.row] {
         case local("REVERT_CELL"):
-            let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
-            let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+            if envInfo.isRootful {
+                let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+                cell.isUserInteractionEnabled = false
+                cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
+            } else if !envInfo.isRootful {
+                let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+                cell.isUserInteractionEnabled = isProcursusStrapped
+                cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
+                cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
+                cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
+            } else {
+                cell.isUserInteractionEnabled = false
+            }
             applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-            cell.isUserInteractionEnabled = isProcursusStrapped
-            cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
-            cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
-            cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
-            cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
         case local("SILEO"):
             applyImageModifications(to: cell, with: UIImage(named: "Sileo_logo")!)
             if (envInfo.envType == 2) {
