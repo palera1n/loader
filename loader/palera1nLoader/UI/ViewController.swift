@@ -143,15 +143,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
                                         let message = local("PASSWORD")
-                                        let alertController = UIAlertController(title: "Set Password", message: message, preferredStyle: .alert)
+                                        let alertController = UIAlertController(title: local("PASSWORD_SET"), message: message, preferredStyle: .alert)
                                         alertController.addTextField() { (password) in
-                                            password.placeholder = "Password"
+                                            password.placeholder = local("PASSWORD_TEXT")
                                             password.isSecureTextEntry = true
                                             password.keyboardType = UIKeyboardType.asciiCapable
                                         }
 
                                         alertController.addTextField() { (repeatPassword) in
-                                            repeatPassword.placeholder = "Repeat Password"
+                                            repeatPassword.placeholder = local("PASSWORD_REPEAT")
                                             repeatPassword.isSecureTextEntry = true
                                             repeatPassword.keyboardType = UIKeyboardType.asciiCapable
                                         }

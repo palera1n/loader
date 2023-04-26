@@ -72,8 +72,10 @@ Japanese
 "INSTALL_DONE_SUB" = "アプリを終了します。";
 "REVERT_DONE" = "削除完了";
 "REMOVING" = "削除中...";
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
 
+"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
+"PASSWORD_REPEAT" = "Repeat Password";
+"PASSWORD_SET" = "Set Password";
 // hehe
 "REINSTALL" = "再インストール";
 "ENJOY" = "Enjoy!";

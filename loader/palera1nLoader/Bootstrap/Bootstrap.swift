@@ -125,11 +125,6 @@ class bootstrap {
                 return
             }
         }
-        // DIE DIE DIE DIE DIE FUCK ROOTFUL ^_^
-        if envInfo.isRootful {
-            do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/etc/apt/sources.list.d/procursus.sources")) }
-            catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
-        }
         
         let debPath = docsFile(file: deb)
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", debPath], root: true)
@@ -152,6 +147,7 @@ class bootstrap {
         
         defaultSources(URL(string: deb)!.lastPathComponent)
         cleanUp()
+        if envInfo.isRootful { spawn(command: "/usr/bin/rm", args: ["/etc/apt/sources.list.d/procursus.sources"], root: true) }
         completion(local("INSTALL_DONE"), 0)
         return
     }
