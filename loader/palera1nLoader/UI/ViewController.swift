@@ -294,6 +294,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if envInfo.isRootful {
                 let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
                 cell.isUserInteractionEnabled = false
+                cell.textLabel?.textColor = .gray
+                cell.imageView?.alpha = 0.4
                 cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
             } else if !envInfo.isRootful {
                 let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
