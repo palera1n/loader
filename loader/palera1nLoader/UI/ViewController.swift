@@ -301,10 +301,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
         case local("SILEO"):
             applyImageModifications(to: cell, with: UIImage(named: "Sileo_logo")!)
-            cell.isUserInteractionEnabled = true
+            if (envInfo.envType == 2) {
+                cell.isUserInteractionEnabled = false
+            } else {
+                cell.isUserInteractionEnabled = true
+            }
             cell.accessoryType = .disclosureIndicator
         case local("ZEBRA"):
             applyImageModifications(to: cell, with: UIImage(named: "Zebra_logo")!)
+            if (envInfo.envType == 2) {
+                cell.isUserInteractionEnabled = false
+            } else {
+                cell.isUserInteractionEnabled = true
+            }
             cell.accessoryType = .disclosureIndicator
         case local("DIAGNOSTICS"):
             applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
