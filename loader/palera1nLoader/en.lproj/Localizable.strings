@@ -59,7 +59,7 @@ English
 "SET" = "Set";
 
 // DL / BS
-"DL_STRAP" = "Downloading Bootstrap";
+"DL_STRAP" = "Downloading Base System";
 "DL_SILEO" = "Downloading Sileo";
 "DL_ZEBRA" = "Downloading Zebra";
 "DOWNLOADING" = "Downloading...";

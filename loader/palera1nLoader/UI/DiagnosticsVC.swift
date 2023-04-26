@@ -10,7 +10,7 @@ import UIKit
 class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [local("Version"), local("Architecture"), local("TYPE_INFO")],
+        [local("VERSION_INFO"), local("ARCH_INFO"), local("TYPE_INFO")],
         
         [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH"), local("INSTALL_FR")],
         
@@ -82,11 +82,11 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.selectionStyle = .none
         
         switch tableData[indexPath.section][indexPath.row] {
-        case local("Version"):
-            cell.textLabel?.text = local("Version")
+        case local("VERSION_INFO"):
+            cell.textLabel?.text = local("VERSION_INFO")
             cell.detailTextLabel?.text = UIDevice.current.systemVersion
-        case local("Architecture"):
-            cell.textLabel?.text = local("Architecture")
+        case local("ARCH_INFO"):
+            cell.textLabel?.text = local("ARCH_INFO")
             cell.detailTextLabel?.text = envInfo.systemArch
         case local("TYPE_INFO"):
             cell.textLabel?.text = local("TYPE_INFO")
