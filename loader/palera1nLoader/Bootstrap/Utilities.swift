@@ -14,6 +14,9 @@ class Utils {
         if (envInfo.isSimulator) {
             return (-1, "")
         }
+        if (envInfo.isRootful) {
+            return (0, "")
+        }
         let uuid: String
         do {
             uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8)
