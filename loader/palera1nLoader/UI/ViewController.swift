@@ -115,7 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let downloadUrl: URL?
         let pmUrl: URL?
         let libkrw0Url: URL?
-
+        
         deleteFile(file: file)
         
         if (!envInfo.isRootful) {
@@ -142,9 +142,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             bootstrap().installBootstrap(tar: path!, deb: file, completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
-                                        let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
-                                        self.present(alert, animated: true)
-                                        completion()
+                                        let message = local("PASSWORD")
+                                        let alertController = UIAlertController(title: "Set Password", message: message, preferredStyle: .alert)
+                                        alertController.addTextField() { (password) in
+                                            password.placeholder = "Password"
+                                            password.isSecureTextEntry = true
+                                            password.keyboardType = UIKeyboardType.asciiCapable
+                                        }
+
+                                        alertController.addTextField() { (repeatPassword) in
+                                            repeatPassword.placeholder = "Repeat Password"
+                                            repeatPassword.isSecureTextEntry = true
+                                            repeatPassword.keyboardType = UIKeyboardType.asciiCapable
+                                        }
+
+                                        let setPassword = UIAlertAction(title: local("SET"), style: .default) { _ in
+                                            helperCmd(["-p", alertController.textFields![0].text!])
+                        
+                                            alertController.dismiss(animated: true) {
+                                                let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
+                                                self.present(alert, animated: true)
+                                                completion()
+                                            }
+                                        }
+                                        setPassword.isEnabled = false
+                                        alertController.addAction(setPassword)
+
+                                        NotificationCenter.default.addObserver(
+                                            forName: UITextField.textDidChangeNotification,
+                                            object: nil,
+                                            queue: .main
+                                        ) { notification in
+                                            let passOne = alertController.textFields![0].text
+                                            let passTwo = alertController.textFields![1].text
+                                            if (passOne!.count > 253 || passOne!.count > 253) {
+                                                setPassword.setValue("Too Long", forKeyPath: "title")
+                                            } else {
+                                                setPassword.setValue("Set", forKeyPath: "title")
+                                                setPassword.isEnabled = (passOne == passTwo) && !passOne!.isEmpty && !passTwo!.isEmpty
+                                            }
+                                        }
+                                        self.present(alertController, animated: true)
                                     } else {
                                         let errStr = String(cString: strerror(Int32(error!)))
                                         let alert = UIAlertController.error(title: "Install Failed", message: errStr)

@@ -62,7 +62,6 @@ func strap(_ input: String,_ rootless: Bool) {
     do { try autoreleasepool {
         let data = try Data(contentsOf: URL(fileURLWithPath: input))
         let container = try TarContainer.open(container: data)
-        // delete leftovers
         if rootless { removeLeftovers() }
         
         NSLog("[palera1n helper] Opened Container")
@@ -137,17 +136,10 @@ func strapfiles(rootless: Bool) {
     }
 }
 func removeLeftovers() {
-    rm("/var/jb")
-    rm("/var/lib")
-    rm("/var/cache")
-    rm("/var/LIB")
-    rm("/var/Liy")
-    rm("/var/LIY")
-    rm("/var/sbin")
-    rm("/var/bin")
-    rm("/var/ubi")
-    rm("/var/ulb")
-    rm("/var/local")
+    let remove = ["/var/jb","/var/lib","/var/cache","/var/LIB","/var/Liy","/var/LIY","/var/sbin","/var/bin","/var/ubi","/var/ulb","/var/local"]
+    for path in remove {
+        rm(path)
+    }
 }
 
 func revert() -> Void {
@@ -189,7 +181,7 @@ func main() {
     guard getuid() == 0 else { fatalError() }
     let rootfulCheck = check_rootful() == 1 ? true : false
     let forceRevertCheck = check_forcerevert() == 1 ? true : false
-    let args = CommandLine.arguments
+    var args = CommandLine.arguments
 
     switch (args[1]) {
     case "-i":
@@ -197,6 +189,8 @@ func main() {
         else {strap(args[2], false)}
     case "-r":
         revert()
+    case "-p":
+        setpw(&args[2])
     case "-e":
         if !rootfulCheck {
             if !fm.fileExists(atPath: "/var/jb") {

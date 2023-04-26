@@ -33,7 +33,7 @@ class bootstrap {
     
     // Created palera1n defaults sources file for Sileo/Zebra
     func defaultSources(_ packageManager: String) -> Void {
-        let zebraPath = URL(string: "/var/mobile/Library/Application Support/xyz.willy.Zebra/palera1n.list")!
+        //let zebraPath = URL(string: "/var/mobile/Library/Application Support/xyz.willy.Zebra/palera1n.list")!
         let sileoPath = URL(string: envInfo.installPrefix)!.appendingPathComponent("etc/apt/sources.list.d/palera1n.sources")
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -68,6 +68,7 @@ class bootstrap {
         }
     }
     
+
 
     func installDebian(deb: String, withStrap: Bool, completion: @escaping (String?, Int?) -> Void) {
         var ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
@@ -187,7 +188,7 @@ class bootstrap {
             }
                 
             if (envInfo.rebootAfter) {
-                _ = helperCmd(["-d"])
+                helperCmd(["-d"])
             } else {
                 let errorAlert = UIAlertController.error(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
                 alert.dismiss(animated: true) {

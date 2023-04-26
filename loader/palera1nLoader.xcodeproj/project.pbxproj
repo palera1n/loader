@@ -13,6 +13,7 @@
 		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
 		452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A308629ECAF9900EB8CAC /* Utilities.swift */; };
 		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
+		455CBDA929F87F640074D773 /* pwset.c in Sources */ = {isa = PBXBuildFile; fileRef = 455CBDA829F87F640074D773 /* pwset.c */; };
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
 		45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F091F229E9A30700F4770A /* CoreServices.framework */; };
@@ -44,6 +45,8 @@
 		33E15DB029F4F03A00D2770A /* LogViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewVC.swift; sourceTree = "<group>"; };
 		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		452A308629ECAF9900EB8CAC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		455CBDA729F87F640074D773 /* pwset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwset.h; sourceTree = "<group>"; };
+		455CBDA829F87F640074D773 /* pwset.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pwset.c; sourceTree = "<group>"; };
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 			children = (
 				CED0FAF329DC8C7E00106BEF /* paleinfo */,
 				E131378E28CFA16B00754132 /* main.swift */,
+				455CBDA729F87F640074D773 /* pwset.h */,
+				455CBDA829F87F640074D773 /* pwset.c */,
 				33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */,
 			);
 			path = Helper;
@@ -268,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455CBDA929F87F640074D773 /* pwset.c in Sources */,
 				CED0FAF629DC8C8800106BEF /* paleinfo.c in Sources */,
 				E131378F28CFA16B00754132 /* main.swift in Sources */,
 			);

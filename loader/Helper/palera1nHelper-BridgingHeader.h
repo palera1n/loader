@@ -3,6 +3,7 @@
 //
 
 #import "paleinfo/paleinfo.h"
+#import "pwset.h"
 #include <spawn.h>
 
 #define POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE 1

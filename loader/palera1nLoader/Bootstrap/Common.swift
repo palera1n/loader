@@ -30,7 +30,7 @@ func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
 }
 
-func helperCmd(_ args: [String]) -> Int {
+@discardableResult func helperCmd(_ args: [String]) -> Int {
     return spawn(command: envInfo.helperPath, args: args, root: true)
 }
 
