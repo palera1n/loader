@@ -120,7 +120,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if (!envInfo.isRootful) {
             bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-ssh-iphoneos-arm64.tar.zst")
-            libkrw0Url = URL(string: "https://static.palera.in/rootless/libkrw0-tfp0.deb")
+            libkrw0Url = URL(string: "https://apt.procurs.us/pool/main/iphoneos-arm64-rootless/1900/libkrw/libkrw0-tfp0_1.1.1_iphoneos-arm64.deb")
             
             downloadFile(url: pkgmgrUrl.appendingPathComponent(file), completion:{(path:String?, error:Error?) in
                 print(pkgmgrUrl)
@@ -142,7 +142,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.downloadFile(url: pkgmgrFallbackUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in})
         }
 
-        downloadFile(url: libkrw0Url!, completion:{(path:String?, error:Error?) in })
+        downloadFile(url: libkrw0Url!, output: "libkrw0-tfp0.deb", completion:{(path:String?, error:Error?) in })
     
         self.downloadFile(url: bootstrapDownload!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
