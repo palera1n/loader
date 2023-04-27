@@ -115,16 +115,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let pkgmgrFallbackUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
 
         let bootstrapDownload: URL?
-        let libkrw0Url: URL?
         let regexBundle = file == "sileo" ? #""org.*""# : #""xyz.*""#
         
         if (!envInfo.isRootful) {
             bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-ssh-iphoneos-arm64.tar.zst")
-            libkrw0Url = URL(string: "https://apt.procurs.us/pool/main/iphoneos-arm64-rootless/1900/libkrw/libkrw0-tfp0_1.1.1_iphoneos-arm64.deb")
+            let libkrw = URL(string: "https://apt.procurs.us/pool/main/iphoneos-arm64-rootless/\(envInfo.CF)/libkrw")
+            
+            downloadFile(url: libkrw!, completion:{(path:String?, error:Error?) in
+                let fileContents = try? String(contentsOfFile: path!)
+                if let range = fileContents!.range(of: #""libkrw0-tfp0.*""#, options: .regularExpression) {
+                    let filename = compactString(String(fileContents![range]))
+                    let libkrwDownload = libkrw!.appendingPathComponent(filename)
+                    self.downloadFile(url: libkrwDownload, output: "libkrw0-tfp0.deb", completion:{(path:String?, error:Error?) in })
+                }
+            })
             
             downloadFile(url: pkgmgrUrl.appendingPathComponent(file), completion:{(path:String?, error:Error?) in
-                print(pkgmgrUrl)
-                print(file)
                 let fileContents = try? String(contentsOfFile: path!)
                 if let range = fileContents!.range(of: regexBundle, options: .regularExpression) {
                     let filename = compactString(String(fileContents![range]))
@@ -137,12 +143,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             })
         } else {
-            bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-1900.tar.zst")
-            libkrw0Url = URL(string: "https://static.palera.in/libkrw0-tfp0.deb")
+            bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-\(envInfo.CF).tar.zst")
+            let libkrw0Url = URL(string: "https://static.palera.in/libkrw0-tfp0.deb")
+            downloadFile(url: libkrw0Url!, output: "libkrw0-tfp0.deb", completion:{(path:String?, error:Error?) in })
             self.downloadFile(url: pkgmgrFallbackUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in})
         }
 
-        downloadFile(url: libkrw0Url!, output: "libkrw0-tfp0.deb", completion:{(path:String?, error:Error?) in })
+        
+    
     
         self.downloadFile(url: bootstrapDownload!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
