@@ -134,5 +134,15 @@ import Darwin.POSIX
     var status: Int32 = 0
     waitpid(pid, &status, 0)
     NSLog("[palera1n] \(status) \(stdoutStr) \(stderrStr)")
+    
+    if (args[1] == "-g") {
+        envInfo.pinfoFlags = "\(stdoutStr)"
+    }
+    
+    if (args[1] == "-q") {
+        envInfo.kinfoFlags = "\(stdoutStr)"
+    }
+    
     return Int(status)
+    
 }

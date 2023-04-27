@@ -46,6 +46,8 @@ English
 "HELPER_PATH" = "Helper Path";
 "SILEO_INSTALLED" = "Sileo Installed";
 "ZEBRA_INSTALLED" = "Zebra Installed";
+"KINFO_FLAGS" = "Flags (kerninfo)";
+"PINFO_FLAGS" = "Flags (paleinfo)";
 
 "TRUE" = "Yes";
 "FALSE" = "No";

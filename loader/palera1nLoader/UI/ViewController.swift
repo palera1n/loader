@@ -20,9 +20,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
-    func downloadFile(url: URL, forceBar: Bool = false, completion: @escaping (String?, Error?) -> Void) {
+    func downloadFile(url: URL, forceBar: Bool = false, output: String? = nil, completion: @escaping (String?, Error?) -> Void) {
         let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        var destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        if (output != nil) {
+            destinationUrl = documentsUrl.appendingPathComponent(output!)
+        }
 
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
         var request = URLRequest(url: url)
@@ -34,13 +37,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if response.statusCode == 200 {
                         if let data = data {
                             if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic) {
-                                completion(destinationUrl.path, error)
+                                completion(destinationUrl.path, error) // saved
                             } else {
-                                completion(destinationUrl.path, error)
+                                completion(destinationUrl.path, error) // failed to save
                             }
                         } else {
                             completion(destinationUrl.path, error)
                         }
+                    } else {
+                        completion(destinationUrl.path, error)
                     }
                 }
             } else {
@@ -48,7 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         })
         
-        if (url.pathExtension == "tar" || forceBar) {
+        if (url.pathExtension == "zst" || url.pathExtension == "tar" || forceBar) {
             observation = task.progress.observe(\.fractionCompleted) { progress, _ in
                 DispatchQueue.main.async {
                     progressDownload.setProgress(Float(progress.fractionCompleted/1.0), animated: true)
@@ -101,45 +106,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func installStrap(file: String, completion: @escaping () -> Void) {
-        if (envInfo.isSimulator) {
-            completion()
-            return
-        }
-        
         UIApplication.shared.isIdleTimerDisabled = true
         let downloadAlert = UIAlertController.downloading("DL_STRAP")
         present(downloadAlert, animated: true)
 
-        let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
-        let server = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
-        let downloadUrl: URL?
-        let pmUrl: URL?
-        let libkrw0Url: URL?
-        
-        deleteFile(file: file)
-        
-        if (!envInfo.isRootful) {
-            downloadUrl = server.appendingPathComponent("bootstrap-\(CF).tar")
-            deleteFile(file: "bootstrap-\(CF).tar")
-        } else {
-            downloadUrl = server.appendingPathComponent("bootstrap.tar")
-            deleteFile(file: "bootstrap.tar")
-        }
-        
-        if (!envInfo.isRootful) {
-            libkrw0Url = server.appendingPathComponent("libkrw0-tfp0.deb")
-            downloadFile(url: libkrw0Url!, completion:{(path:String?, error:Error?) in})
-        }
-        pmUrl = server.appendingPathComponent(file)
-        downloadFile(url: pmUrl!, completion:{(path:String?, error:Error?) in })
+        let bootstrapUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://apt.procurs.us/bootstraps/\(envInfo.CF)")!
+        let pkgmgrUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://apt.procurs.us/pool/main/iphoneos-arm64-rootless/\(envInfo.CF)")!
+        let pkgmgrFallbackUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
 
-        self.downloadFile(url: downloadUrl!, completion:{(path:String?, error:Error?) in
+        let bootstrapDownload: URL?
+        let libkrw0Url: URL?
+        let regexBundle = file == "sileo" ? #""org.*""# : #""xyz.*""#
+        
+        if (!envInfo.isRootful) {
+            bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-ssh-iphoneos-arm64.tar.zst")
+            libkrw0Url = URL(string: "https://static.palera.in/rootless/libkrw0-tfp0.deb")
+            
+            downloadFile(url: pkgmgrUrl.appendingPathComponent(file), completion:{(path:String?, error:Error?) in
+                print(pkgmgrUrl)
+                print(file)
+                let fileContents = try? String(contentsOfFile: path!)
+                if let range = fileContents!.range(of: regexBundle, options: .regularExpression) {
+                    let filename = compactString(String(fileContents![range]))
+                    let pgkmgrDownload = pkgmgrUrl.appendingPathComponent("\(file)/\(filename)")
+                    self.downloadFile(url: pgkmgrDownload, output: "\(file).deb", completion:{(path:String?, error:Error?) in
+                        if (error != nil) {
+                            self.downloadFile(url: pkgmgrFallbackUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in})
+                        }
+                    })
+                }
+            })
+        } else {
+            bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-1900.tar.zst")
+            libkrw0Url = URL(string: "https://static.palera.in/libkrw0-tfp0.deb")
+            self.downloadFile(url: pkgmgrFallbackUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in})
+        }
+
+        downloadFile(url: libkrw0Url!, completion:{(path:String?, error:Error?) in })
+    
+        self.downloadFile(url: bootstrapDownload!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
                     if (error == nil) {
                         let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
                         self.present(installingAlert, animated: true) {
-                            bootstrap().installBootstrap(tar: path!, deb: file, completion:{(msg:String?, error:Int?) in
+                            bootstrap().installBootstrap(tar: path!, deb: "\(file).deb", completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
                                         let message = local("PASSWORD")
@@ -202,6 +213,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print(__uint32_t((1 << 30)))
         if (!envInfo.isRootful) {
             if envInfo.envType == 2 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -396,7 +408,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                self.installStrap(file: "sileo.deb", completion: { })
+                self.installStrap(file: "sileo", completion: { })
             }
         case local("ZEBRA"):
             if (envInfo.zebraInstalled) {
@@ -418,7 +430,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 alertController.addAction(confirmAction)
                 present(alertController, animated: true, completion: nil)
             } else {
-                self.installStrap(file: "zebra.deb", completion: { })
+                self.installStrap(file: "zebra", completion: { })
             }
         default:
             break

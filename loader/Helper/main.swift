@@ -176,7 +176,7 @@ func revert() -> Void {
     }
 }
 
-func main() {
+func main() -> __uint32_t? {
     NSLog("[palera1n helper] Spawned!")
     guard getuid() == 0 else { fatalError() }
     let rootfulCheck = check_rootful() == 1 ? true : false
@@ -189,6 +189,12 @@ func main() {
         else {strap(args[2], false)}
     case "-r":
         revert()
+    case "-q":
+        get_kflags()
+        return 0
+    case "-g":
+        get_pflags()
+        return 0
     case "-p":
         setpw(&args[2])
     case "-e":
@@ -206,6 +212,7 @@ func main() {
     default:
         NSLog("[Helper] Unknown Argument")
     }
+    return 0
 }
 
 main()

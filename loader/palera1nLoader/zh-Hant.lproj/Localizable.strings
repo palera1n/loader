@@ -46,6 +46,8 @@ Chinese (Traditional)
 "HELPER_PATH"="輔助程式路徑";
 "SILEO_INSTALLED"="己安裝Sileo";
 "ZEBRA_INSTALLED"="己安裝Zebra";
+"KINFO_FLAGS" = "標籤 (kerninfo)";
+"PINFO_FLAGS" = "標籤 (paleinfo)";
 
 "TRUE" = "是";
 "FALSE" = "否";

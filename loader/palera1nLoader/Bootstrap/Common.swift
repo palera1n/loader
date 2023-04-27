@@ -24,6 +24,9 @@ struct envInfo {
     static var sileoInstalled: Bool = false
     static var zebraInstalled: Bool = false
     static var hasChecked: Bool = false
+    static var kinfoFlags: String = ""
+    static var pinfoFlags: String = ""
+    static var CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
 }
 
 func local(_ str: String.LocalizationValue) -> String {
@@ -36,6 +39,10 @@ func local(_ str: String.LocalizationValue) -> String {
 
 func fileExists(_ path: String) -> Bool {
     return FileManager.default.fileExists(atPath: path)
+}
+
+func compactString(_ str: String) -> String {
+    str.replacingOccurrences(of: #"""#, with: "").trimmingCharacters(in: .whitespacesAndNewlines)
 }
 
 func docsFile(file: String) -> String {

@@ -83,6 +83,10 @@ class Utils {
         /// force revert check
         envInfo.hasForceReverted = helperCmd(["-n"]) == 0 ? false : true
 
+        /// get paleinfo and kerninfo flags
+        helperCmd(["-g"])
+        helperCmd(["-q"])
+
         /// is installed check
         if fileExists("/.procursus_strapped") || fileExists("/var/jb/.procursus_strapped") {
             envInfo.isInstalled = true

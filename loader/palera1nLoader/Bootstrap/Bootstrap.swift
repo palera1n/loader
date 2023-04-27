@@ -68,8 +68,6 @@ class bootstrap {
         }
     }
     
-
-
     func installDebian(deb: String, withStrap: Bool, completion: @escaping (String?, Int?) -> Void) {
         var ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
@@ -102,7 +100,15 @@ class bootstrap {
             spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
         }
         
-        var ret = helperCmd(["-i", tar])
+        
+        deleteFile(file: "bootstrap.tar")
+        var ret = spawn(command: "/cores/binpack/usr/bin/zstd", args: ["-d", tar, "-o", docsFile(file: "bootstrap.tar")], root: true)
+        if (ret != 0) {
+            completion(local("STRAP_ERROR"), ret)
+            return
+        }
+        
+        ret = helperCmd(["-i", docsFile(file: "bootstrap.tar")])
         if (ret != 0) {
             completion(local("STRAP_ERROR"), ret)
             return
@@ -125,14 +131,14 @@ class bootstrap {
                 return
             }
         }
-        
+         
         let debPath = docsFile(file: deb)
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", debPath], root: true)
         if (ret != 0) {
             completion(local("DPKG_ERROR"), ret)
             return
         }
-
+         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
         if (ret != 0) {
             completion(local("DPKG_ERROR"), ret)
@@ -151,7 +157,6 @@ class bootstrap {
         completion(local("INSTALL_DONE"), 0)
         return
     }
-    
     
     // Reverting/Removing jailbreak, wipes /var/jb
     func revert(viewController: UIViewController) -> Void {

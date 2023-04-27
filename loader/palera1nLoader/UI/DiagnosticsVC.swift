@@ -12,7 +12,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var tableData = [
         [local("VERSION_INFO"), local("ARCH_INFO"), local("TYPE_INFO")],
         
-        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH"), local("INSTALL_FR")],
+        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
         
         [local("HELPER"), local("HELPER_PATH")],
         
@@ -117,6 +117,13 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             } else {
                 cell.detailTextLabel?.text = "None"
             }
+        case local("KINFO_FLAGS"):
+            cell.textLabel?.text = local("KINFO_FLAGS")
+            cell.detailTextLabel?.text = envInfo.kinfoFlags
+        case local("PINFO_FLAGS"):
+            cell.textLabel?.text = local("PINFO_FLAGS")
+            cell.detailTextLabel?.text = envInfo.pinfoFlags
+
             
         case local("HELPER"):
             cell.textLabel?.text = local("HELPER")
