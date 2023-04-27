@@ -76,6 +76,7 @@ Chinese (Traditional)
 "PASSWORD" = "要在越獄後使用「sudo」之類的命令列工具，你需要設置終端密碼。（這不能為空）";
 "PASSWORD_REPEAT" = "重複密碼";
 "PASSWORD_SET" = "設置密碼";
+"PASSWORD_TEXT" = "密碼";
 
 // hehe
 "REINSTALL" = "重新安裝";

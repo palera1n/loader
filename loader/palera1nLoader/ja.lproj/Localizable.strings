@@ -76,6 +76,8 @@ Japanese
 "PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
 "PASSWORD_REPEAT" = "Repeat Password";
 "PASSWORD_SET" = "Set Password";
+"PASSWORD_TEXT" = "Password";
+
 // hehe
 "REINSTALL" = "再インストール";
 "ENJOY" = "Enjoy!";
