@@ -10,16 +10,18 @@ import UIKit
 class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [local("VERSION_INFO"), local("ARCH_INFO"), local("TYPE_INFO")],
+        [local("VERSION_INFO"), local("ARCH_INFO")],
         
-        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
+        [local("TYPE_INFO"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
+        
+        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH")],
         
         [local("HELPER"), local("HELPER_PATH")],
         
         [local("SILEO_INSTALLED"), local("ZEBRA_INSTALLED")]
     ]
     
-    let sectionTitles = ["", local("STRAP_INFO"), local("HELPER"), local("INSTALL_INFO")]
+    let sectionTitles = ["", "PALERA1N", local("STRAP_INFO"), local("HELPER"), local("INSTALL_INFO")]
     override func viewDidLoad() {
         if (!envInfo.hasChecked) { Utils().prerequisiteChecks() }
         super.viewDidLoad()
