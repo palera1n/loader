@@ -65,7 +65,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 UIApplication.shared.open(URL(string: "santander://\(filePath)")!, options: [:], completionHandler: { (success) in })
             }
    
-            if ((indexPath.section == 1 && indexPath.row == 3) || (indexPath.section == 2 && indexPath.row == 1)) {
+            if (((indexPath.section == 2 && indexPath.row == 3) && !envInfo.isRootful) || (indexPath.section == 3 && indexPath.row == 1)) {
                 if (filzaInstalled) { menuOptions.append(openInFilza) }
                 if (santanderInstalled) { menuOptions.append(openInSantander) }
 

@@ -18,9 +18,20 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         [local("RESPRING"), local("UICACHE"), local("TWEAKS"), local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
     ]
     
-    let sectionTitles = ["", "OPENERS", "UTILITIES"]
+    
+    
+  
+    var sectionTitles = ["", "OPENERS", "UTILITIES"]
     override func viewDidLoad() {
         if (!envInfo.hasChecked) { Utils().prerequisiteChecks() }
+        if (envInfo.isRootful) {
+            tableData = [
+                [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
+                [local("RESPRING"), local("UICACHE"), local("TWEAKS"), local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
+            ]
+            sectionTitles = ["OPENERS", "UTILITIES"]
+        }
+        
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.title = local("ACTIONS")
@@ -43,9 +54,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return sectionTitles[section]
     }
     
-    
-
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
@@ -64,7 +72,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("HIDE"):
             applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
             cell.textLabel?.text = local("HIDE")
-            
         case local("OPENER_SILEO"):
             applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = "Open Sileo"
