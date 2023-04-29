@@ -15,7 +15,7 @@ Japanese
 "REVERT_CELL" = "Jailbreak環境を削除";
 
 //Actions VC
-"HIDDEN" = "Hidden Environment";
+"HIDDEN" = "隠されたJailbreak環境を検出";
 "HIDE" = "Jailbreak環境を隠す";
 "OPEN_CELL" = "アプリケーションを開く";
 "OPENER_SILEO" = "Sileoを開く";
@@ -23,12 +23,12 @@ Japanese
 "OPENER_TH" = "TrollHelperを開く";
 "UTIL_CELL" = "ユーティリティ";
 "RESPRING" = "Respring";
-"US_REBOOT" = "Userspace Reboot";
+"US_REBOOT" = "Userspaceの再起動";
 "UICACHE" = "UICache";
-"DAEMONS" = "Launch Daemons";
-"MOUNT" = "Mount Directories";
-"TWEAKS" = "Tweaksの有効化";
-"FR_SWITCH" = "Revert on reboot";
+"DAEMONS" = "デーモンの起動";
+"MOUNT" = "ディレクトリの再マウント";
+"TWEAKS" = "Tweakの有効化";
+"FR_SWITCH" = "復元後の再起動";
 
 // Diags
 "TYPE_INFO" = "種類";
@@ -41,7 +41,7 @@ Japanese
 "OPEN_FILZA" = "Filzaで開く";
 "OPEN_SANTANDER" = "Santanderで開く";
 "COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
+"INSTALL_FR" = "強制復元";
 "HELPER" = "Helper";
 "HELPER_PATH" = "Helperのパス";
 "SILEO_INSTALLED" = "Sileo";
@@ -57,7 +57,7 @@ Japanese
 "CONFIRM" = "確認";
 "CLOSE" = "閉じる";
 "PROCEED" = "続ける";
-"NO_PROCEED" = "Unable to proceed";
+"NO_PROCEED" = "作業を続行できませんでした";
 "SET" = "セット";
 
 // DL / BS
@@ -76,8 +76,8 @@ Japanese
 "REMOVING" = "削除中...";
 
 "PASSWORD" = "Jailbreak後に「sudo」などのコマンドラインツールを使用するためには、terminalのパスコードを設定する必要があります。（空白にすることはできません）";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
+"PASSWORD_REPEAT" = "新しいパスワードをもう一度入力";
+"PASSWORD_SET" = "パスワードを設定する";
 "PASSWORD_TEXT" = "パスワード";
 
 // hehe
@@ -85,7 +85,7 @@ Japanese
 "ENJOY" = "Enjoy!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder. You may need to run uicache in utilities after proceeding.";
+"HIDDEN_NOTICE" = "jb-XXXXXXXXディレクトリは存在しますが、/var/jbにシンボリックリンクが存在しません。 この作業を続行すると、/var/jbに元のディレクトリに対するシンボリックリンクが再度作成されます。この作業を行った後、ユーティリティからuicacheを実行する必要がある場合があります。";
 "ROOTLESS_NOTICE" = "rootless jailbreakではない場合、このボタンは使用できません。";
 
 "HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはuserspaceで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
@@ -98,7 +98,7 @@ Japanese
 "SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
 "ZEBRA_INSTALL" = "Zebraをインストールしてもよろしいですか？";
 "CLOSE_APP" = "アプリを終了します。";
-"UNHID_ENV" = "Unhid the environment";
+"UNHID_ENV" = "環境を再表示";
 
 // errors
 "STRAP_ERROR" = "Bootstrapのインストールに失敗しました";
