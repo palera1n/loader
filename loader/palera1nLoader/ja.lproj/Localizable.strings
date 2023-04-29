@@ -12,7 +12,7 @@ Japanese
 "DIAGNOSTICS" = "診断";
 "ACTIONS" = "アクション";
 "JBINIT_LOG" = "ログ";
-"REVERT_CELL" = "Jailbreakを削除";
+"REVERT_CELL" = "Jailbreak環境を削除";
 
 //Actions VC
 "HIDDEN" = "Hidden Environment";
@@ -37,13 +37,13 @@ Japanese
 "VERSION_INFO" = "バージョン";
 "STRAP_INFO" = "環境";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
+"STRAP_FR_PATH" = "Fakerootのパス";
 "OPEN_FILZA" = "Filzaで開く";
 "OPEN_SANTANDER" = "Santanderで開く";
 "COPY" = "Copy";
 "INSTALL_FR" = "Force Reverted";
 "HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
+"HELPER_PATH" = "Helperのパス";
 "SILEO_INSTALLED" = "Sileo";
 "ZEBRA_INSTALLED" = "Zebra";
 "KINFO_FLAGS" = "Flags (kerninfo)";
@@ -70,15 +70,15 @@ Japanese
 "DOWNLOAD_ERROR" = "不明なエラー";
 "SAVE_FAIL" = "ファイルをディスクにコピーできませんでした";
 "INSTALL_DONE" = "インストール完了";
-"INSTALL_FAIL" = "Install Failed";
+"INSTALL_FAIL" = "インストール失敗";
 "INSTALL_DONE_SUB" = "アプリを終了します。";
 "REVERT_DONE" = "削除完了";
 "REMOVING" = "削除中...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
+"PASSWORD" = "Jailbreak後に「sudo」などのコマンドラインツールを使用するためには、terminalのパスコードを設定する必要があります。（空白にすることはできません）";
 "PASSWORD_REPEAT" = "Repeat Password";
 "PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD_TEXT" = "パスワード";
 
 // hehe
 "REINSTALL" = "再インストール";
@@ -86,9 +86,9 @@ Japanese
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "Your jb-XXXXXXXX folder is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original folder. You may need to run uicache in utilities after proceeding.";
-"ROOTLESS_NOTICE" = "You may not use this button if you're on a non rootless jailbreak.";
+"ROOTLESS_NOTICE" = "rootless jailbreakではない場合、このボタンは使用できません。";
 
-"HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはユーザースペースで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
+"HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはuserspaceで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
 
 "REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
 "PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
@@ -97,7 +97,7 @@ Japanese
 "ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
 "SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
 "ZEBRA_INSTALL" = "Zebraをインストールしてもよろしいですか？";
-"CLOSE_APP" = "You may close the app.";
+"CLOSE_APP" = "アプリを終了します。";
 "UNHID_ENV" = "Unhid the environment";
 
 // errors
@@ -108,4 +108,4 @@ Japanese
 "SILEO_FAIL" = "Sileoのインストールに失敗しました";
 "ZEBRA_FAIL" = "Zebraのインストールに失敗しました";
 "UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
-"REVERT_FAIL" = "Jailbreakの削除に失敗しました。";
+"REVERT_FAIL" = "Jailbreak環境の削除に失敗しました。";
