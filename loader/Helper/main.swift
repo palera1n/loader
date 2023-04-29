@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SWCompression
 
 let fm = FileManager.default
 func md(_ at: String,_ wid: Bool) {
@@ -29,112 +28,7 @@ func touch(atPath path: String) {
     fm.createFile(atPath: path, contents: fileData, attributes: nil)
 }
 
-func strap(_ input: String,_ rootless: Bool) {
-    NSLog("[palera1n helper] Attempting to install \(input)")
-    var dest = "/"
-    var replace = ""
-    
-    if (rootless) {
-        let uuid: String
-        do {uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8) }
-        catch { fatalError() }
-        
-        var randomString = ""
 
-        for _ in 0..<8 {
-            let randomValue = Int.random(in: 1...3)
-            let char: String
-            switch randomValue {
-            case 1:
-                char = String(UnicodeScalar(Int.random(in: 65...90))!)
-            case 2:
-                char = String(UnicodeScalar(Int.random(in: 97...122))!)
-            default:
-                char = String(Int.random(in: 0...9))
-            }
-            randomString.append(char)
-        }
-        
-        dest = "/private/preboot/\(uuid)/jb-\(randomString)/procursus"
-        replace = "/var/jb"
-    }
-    
-    do { try autoreleasepool {
-        let data = try Data(contentsOf: URL(fileURLWithPath: input))
-        let container = try TarContainer.open(container: data)
-        if rootless { removeLeftovers() }
-        
-        NSLog("[palera1n helper] Opened Container")
-        for entry in container { do {
-            var path = entry.info.name
-            if path.first == "." { path.removeFirst() }
-            if path == "/" || path == "/var" { continue }
-            path = path.replacingOccurrences(of: replace, with: dest)
-
-            switch entry.info.type {
-            case .symbolicLink:
-                var linkName = entry.info.linkName
-                if !linkName.contains("/") || linkName.contains("..") {
-                    var tmp = path.split(separator: "/").map { String($0) }
-                    tmp.removeLast()
-                    tmp.append(linkName)
-                    linkName = tmp.joined(separator: "/")
-                    if linkName.first != "/" { linkName = "/" + linkName }
-                }
-                
-                linkName = linkName.replacingOccurrences(of: replace, with: dest)
-                NSLog("[palera1n helper] \(entry.info.linkName) at \(linkName) to \(path)")
-                ln(path, linkName)
-            case .directory:
-                md(path, true)
-            case .regular:
-                guard let data = entry.data else { continue }
-                try data.write(to: URL(fileURLWithPath: path))
-            default:
-                NSLog("[palera1n helper] Unknown Action for \(entry.info.type)")
-            }
-            
-            var attrib = [FileAttributeKey: Any]()
-            attrib[.posixPermissions] = entry.info.permissions?.rawValue
-            attrib[.ownerAccountName] = entry.info.ownerUserName
-            
-            var ownerGroupName = entry.info.ownerGroupName
-            if ownerGroupName == "staff" && entry.info.ownerUserName == "root" { ownerGroupName = "wheel" }
-            attrib[.groupOwnerAccountName] = ownerGroupName
-            
-            do { try fm.setAttributes(attrib, ofItemAtPath: path) }
-            catch { continue }
-        } catch { NSLog("[palera1n helper] Error: \(error.localizedDescription)") }}}
-    } catch { NSLog("[palera1n helper] Error: \(error.localizedDescription)"); return }
-    
-    NSLog("[palera1n helper] Strapped to \(dest)")
-    if (rootless) {if !fm.fileExists(atPath: "/var/jb") { ln("/var/jb", dest )}}
-    var attrib = [FileAttributeKey: Any]()
-    
-    attrib[.posixPermissions] = 0o755
-    attrib[.ownerAccountName] = "mobile"
-    attrib[.groupOwnerAccountName] = "mobile"
-    strapfiles(rootless: rootless)
-}
-
-func strapfiles(rootless: Bool) {
-    let filePath: String
-    if rootless { filePath = "/var/jb/.palecursus_strapped" } else { filePath = "/.palecursus_strapped" }
-    touch(atPath: filePath)
-    
-    do {
-        if !FileManager.default.fileExists(atPath: "/var/jb/var/mobile/Library/Preferences") && rootless {
-            let attributes: [FileAttributeKey: Any] = [
-                .posixPermissions: 0o755,
-                .ownerAccountID: 501,
-                .groupOwnerAccountID: 501
-            ]
-            try FileManager.default.createDirectory(atPath: "/var/jb/var/mobile/Library/Preferences", withIntermediateDirectories: true, attributes: attributes)
-        }
-    } catch {
-        NSLog("[palera1n helper] Failed to set attributes: \(error.localizedDescription)")
-    }
-}
 func removeLeftovers() {
     let remove = ["/var/jb","/var/lib","/var/cache","/var/LIB","/var/Liy","/var/LIY","/var/sbin","/var/bin","/var/ubi","/var/ulb","/var/local"]
     for path in remove {
@@ -177,16 +71,12 @@ func revert() -> Void {
 }
 
 func main() -> __uint32_t? {
-    NSLog("[palera1n helper] Spawned!")
     guard getuid() == 0 else { fatalError() }
     let rootfulCheck = check_rootful() == 1 ? true : false
     let forceRevertCheck = check_forcerevert() == 1 ? true : false
     var args = CommandLine.arguments
 
     switch (args[1]) {
-    case "-i":
-        if (!rootfulCheck) {strap(args[2], true)}
-        else {strap(args[2], false)}
     case "-r":
         revert()
     case "-q":
@@ -203,6 +93,8 @@ func main() -> __uint32_t? {
                 ln("/var/jb", args[2])
             }
         }
+    case "-h":
+        get_bmhash()
     case "-f":
         if rootfulCheck { exit(1) }
     case "-n":

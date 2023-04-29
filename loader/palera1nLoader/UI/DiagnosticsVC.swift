@@ -23,7 +23,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     let sectionTitles = ["", "PALERA1N", local("STRAP_INFO"), local("HELPER"), local("INSTALL_INFO")]
     override func viewDidLoad() {
-        if (!envInfo.hasChecked) { Utils().prerequisiteChecks() }
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.title = local("DIAGNOSTICS")
@@ -125,7 +124,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case local("PINFO_FLAGS"):
             cell.textLabel?.text = local("PINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.pinfoFlags
-
             
         case local("HELPER"):
             cell.textLabel?.text = local("HELPER")

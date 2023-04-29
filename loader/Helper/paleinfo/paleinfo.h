@@ -6,4 +6,6 @@ int check_forcerevert(void);
 int check_rootful(void);
 void get_pflags(void);
 void get_kflags(void);
+int get_bmhash(void);
+
 #endif

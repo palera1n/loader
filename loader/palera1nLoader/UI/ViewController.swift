@@ -15,16 +15,18 @@ var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .defaul
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData = [
         [local("SILEO"), local("ZEBRA")],
-        [local("ACTIONS"), local("DIAGNOSTICS"), local("JBINIT_LOG"), local("REVERT_CELL")]
+        [local("ACTIONS"), local("DIAGNOSTICS"), local("REVERT_CELL")]
     ]
     
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
     
     func downloadFile(url: URL, forceBar: Bool = false, output: String? = nil, completion: @escaping (String?, Error?) -> Void) {
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        var destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        let tempDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        //URL(string: "/var/tmp/palera1nloader/downloads/")!
+        
+        var destinationUrl = tempDir.appendingPathComponent(url.lastPathComponent)
         if (output != nil) {
-            destinationUrl = documentsUrl.appendingPathComponent(output!)
+            destinationUrl = tempDir.appendingPathComponent(output!)
         }
 
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
@@ -37,19 +39,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if response.statusCode == 200 {
                         if let data = data {
                             if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic) {
-                                completion(destinationUrl.path, error) // saved
+                                try? FileManager.default.moveItem(at: destinationUrl, to: URL(string: "/var/tmp/palera1nloader/downloads\(url.lastPathComponent)" )!)
+                                completion(destinationUrl.path, error)
+                                log(type: .info, msg: "Saved to: \(destinationUrl.path)")
                             } else {
-                                completion(destinationUrl.path, error) // failed to save
+                                completion(destinationUrl.path, error)
+                                log(type: .error, msg: "Failed to save file at: \(destinationUrl.path)")
                             }
                         } else {
                             completion(destinationUrl.path, error)
+                            log(type: .error, msg: "Failed to download: \(request)")
                         }
                     } else {
                         completion(destinationUrl.path, error)
+                        log(type: .error, msg: "Unknown error on download: \(response.statusCode) - \(request)")
                     }
                 }
             } else {
-                completion(destinationUrl.path, error) // unknown error
+                completion(destinationUrl.path, error)
+                log(type: .error, msg: "Failed to download: \(request)")
             }
         })
         
@@ -60,15 +68,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
-
         task.resume()
     }
 
     func installDebFile(file: String) {
-        if (envInfo.isSimulator) {
-            return
-        }
-        
         UIApplication.shared.isIdleTimerDisabled = true
         let title: String.LocalizationValue = file == "sileo.deb" ? "DL_SILEO" : "DL_ZEBRA"
         let downloadAlert = UIAlertController.downloading(title)
@@ -84,13 +87,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if (error == nil) {
                         let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
                         self.present(installingAlert, animated: true) {
-                            bootstrap().installDebian(deb: path!, withStrap: true, completion:{(msg:String?, error:Int?) in
+                            bootstrap().installDebian(deb: path!, completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
                                         let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
                                         self.present(alert, animated: true)
                                     } else {
-                                        let alert = UIAlertController.error(title: local("INSTALL_FAIL"), message: "Status: \(error!)")
+                                        let alert = UIAlertController.error(title: local("INSTALL_FAIL"), message: "Status: \(errorString(Int32(error!)))")
                                         self.present(alert, animated: true)
                                     }
                                 }
@@ -149,9 +152,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.downloadFile(url: pkgmgrFallbackUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in})
         }
 
-        
-    
-    
         self.downloadFile(url: bootstrapDownload!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
@@ -211,17 +211,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             })
                         }
                     } else {
-                        let alert = UIAlertController.error(title: "Download Failed", message: error!.localizedDescription)
+                        let alert = UIAlertController.error(title: "Download Failed", message: error.debugDescription)
                         self.present(alert, animated: true)
                     }
                 }
             }
         })
     }
+    
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(__uint32_t((1 << 30)))
+        envInfo.nav = navigationController!
+
         if (!envInfo.isRootful) {
             if envInfo.envType == 2 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -351,10 +353,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
             cell.isUserInteractionEnabled = true
             cell.accessoryType = .disclosureIndicator
-        case local("JBINIT_LOG"):
-            applySymbolModifications(to: cell, with: "terminal", backgroundColor: .systemPurple)
-            cell.isUserInteractionEnabled = true
-            cell.accessoryType = .disclosureIndicator
         default:
             break
         }
@@ -383,9 +381,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("DIAGNOSTICS"):
             let diagnosticsVC = DiagnosticsVC()
             navigationController?.pushViewController(diagnosticsVC, animated: true)
-        case local("JBINIT_LOG"):
-            let logviewVC = LogViewer()
-            navigationController?.pushViewController(logviewVC, animated: true)
         case local("ACTIONS"):
             let actionsVC = ActionsVC()
             navigationController?.pushViewController(actionsVC, animated: true)

@@ -18,12 +18,13 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         [local("RESPRING"), local("UICACHE"), local("TWEAKS"), local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
     ]
     
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        envInfo.nav = navigationController!
+    }
   
     var sectionTitles = ["", "OPENERS", "UTILITIES"]
     override func viewDidLoad() {
-        if (!envInfo.hasChecked) { Utils().prerequisiteChecks() }
         if (envInfo.isRootful) {
             tableData = [
                 [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
@@ -119,14 +120,16 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("OPENER_SILEO"):
             if openApp("org.coolstar.SileoStore") {
             } else if openApp("org.coolstar.SileoNightly") {
-            } else { NSLog("Failed to open Sileo app") }
+            } else {
+                log(type: .info, msg: "Cannot open Sileo app")
+            }
         case local("OPENER_ZEBRA"):
             if !openApp("xyz.willy.Zebra") {
-                NSLog("Failed to open Zebra app")
+                log(type: .info, msg: "Cannot open Zebra app")
             }
         case local("OPENER_TH"):
             if !openApp("com.opa334.trollstorepersistencehelper") {
-                NSLog("Failed to open Trollhelper app")
+                log(type: .info, msg: "Cannot open Trollhelper app")
             }
             
         case local("RESPRING"):
@@ -150,7 +153,8 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 spawn(command: "/cores/binpack/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
             }
         case local("MOUNT"):
-            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
+            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
         default:
             break
         }
@@ -167,7 +171,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if (envInfo.hasHelper) {
                         if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
                             do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
-                            catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
+                            catch { log(type: .error, msg: "Failed to remove /var/jb: \(error.localizedDescription)") }
                         }
                         
                         let ret = spawn(command: envInfo.helperPath, args: ["-d"], root: true)

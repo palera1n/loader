@@ -19,11 +19,10 @@ import Darwin.POSIX
     pipe(&pipestderr)
 
     guard fcntl(pipestdout[0], F_SETFL, O_NONBLOCK) != -1 else {
-        NSLog("[palera1n] Could not open stdout")
+        log(type: .error, msg: "Could not open stdout" )
         return -1
     }
     guard fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1 else {
-        NSLog("[palera1n] Could not open stderr")
         return -1
     }
 
@@ -55,7 +54,12 @@ import Darwin.POSIX
     var pid: pid_t = 0
     let spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], proenv + [nil])
     if spawnStatus != 0 {
-        NSLog("[palera1n] Spawn Status = \(spawnStatus)")
+        let noLog = ["-f","-n","-g","-q","-h"]
+        if (args.count > 1) {
+            if (!noLog.contains(args[1])) {
+                log(type: .error, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n")
+            }
+        }
         return Int(spawnStatus)
     }
 
@@ -133,14 +137,20 @@ import Darwin.POSIX
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    NSLog("[palera1n] \(status) \(stdoutStr) \(stderrStr)")
-    
+    let noLog = ["-f","-n","-g","-q","-h"]
+    if (!noLog.contains(args[1])) {
+        log(type: .info, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n\tStdout: \(stdoutStr)\n\tStderr: \(stderrStr)\n")
+    }
     if (args[1] == "-g") {
-        envInfo.pinfoFlags = "\(stdoutStr)"
+        envInfo.pinfoFlags = "\(stdoutStr)".trimmingCharacters(in: .newlines)
     }
     
     if (args[1] == "-q") {
-        envInfo.kinfoFlags = "\(stdoutStr)"
+        envInfo.kinfoFlags = "\(stdoutStr)".trimmingCharacters(in: .newlines)
+    }
+    
+    if (args[1] == "-h") {
+        envInfo.bmHash = "\(stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines))"
     }
     
     return Int(status)

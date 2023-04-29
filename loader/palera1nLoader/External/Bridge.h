@@ -3,3 +3,4 @@
 + (instancetype)defaultWorkspace;
 - (BOOL)openApplicationWithBundleID:(NSString *)arg1 ;
 @end
+

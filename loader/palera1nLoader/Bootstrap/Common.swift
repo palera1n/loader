@@ -27,6 +27,8 @@ struct envInfo {
     static var kinfoFlags: String = ""
     static var pinfoFlags: String = ""
     static var CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
+    static var bmHash: String = ""
+    static var nav: UINavigationController = UINavigationController()
 }
 
 func local(_ str: String.LocalizationValue) -> String {
@@ -108,6 +110,8 @@ extension UIAlertController {
             alertController.addAction(UIAlertAction(title: destructiveTitle, style: .destructive) { _ in handler() })
         }
         alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { _ in return })
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.warning)
         return alertController
     }
     
@@ -118,6 +122,15 @@ extension UIAlertController {
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
         })
+        alertController.addAction(UIAlertAction(title: "View Logs", style: .default, handler: { (_) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                log(type: .info, msg: "Opening Log View")
+                let LogViewVC = LogViewer()
+                envInfo.nav.pushViewController(LogViewVC, animated: true)
+            }
+        }))
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
         return alertController
     }
     

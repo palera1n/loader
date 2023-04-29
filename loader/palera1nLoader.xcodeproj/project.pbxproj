@@ -10,14 +10,16 @@
 		33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */; };
 		33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */; };
 		33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DB029F4F03A00D2770A /* LogViewVC.swift */; };
+		4501473829FC1AEB0001834C /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4501473729FC1AEB0001834C /* Logging.swift */; };
 		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
 		452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A308629ECAF9900EB8CAC /* Utilities.swift */; };
-		453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 453D1A5C29E27A9C00F357BB /* SWCompression */; };
 		45538AB929FA158D000EE412 /* paleinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.m */; };
 		455CBDA929F87F640074D773 /* pwset.c in Sources */ = {isa = PBXBuildFile; fileRef = 455CBDA829F87F640074D773 /* pwset.c */; };
+		45B0E7C729FCCBD400B64489 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F091F229E9A30700F4770A /* CoreServices.framework */; };
+		45B0E7D029FCD09B00B64489 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45538ABA29FAEA2B000EE412 /* IOKit.framework */; };
+		45B0E7D129FCD09B00B64489 /* IOKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45538ABA29FAEA2B000EE412 /* IOKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
-		45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F091F229E9A30700F4770A /* CoreServices.framework */; };
 		CED0FAF629DC8C8800106BEF /* paleinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.m */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
@@ -27,6 +29,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		45B0E7D229FCD09B00B64489 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				45B0E7D129FCD09B00B64489 /* IOKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E131378528CFA0BC00754132 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,10 +57,14 @@
 		33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsVC.swift; sourceTree = "<group>"; };
 		33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsVC.swift; sourceTree = "<group>"; };
 		33E15DB029F4F03A00D2770A /* LogViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewVC.swift; sourceTree = "<group>"; };
+		4501473729FC1AEB0001834C /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		452A308629ECAF9900EB8CAC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		45538ABA29FAEA2B000EE412 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOKit.framework; sourceTree = "<group>"; };
 		455CBDA729F87F640074D773 /* pwset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwset.h; sourceTree = "<group>"; };
 		455CBDA829F87F640074D773 /* pwset.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pwset.c; sourceTree = "<group>"; };
+		45B0E7C029FCCB2400B64489 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		45B0E7C529FCCBD100B64489 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -71,8 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				453D1A5D29E27A9C00F357BB /* SWCompression in Frameworks */,
-				45F091F329E9A30700F4770A /* CoreServices.framework in Frameworks */,
+				45B0E7C729FCCBD400B64489 /* CoreServices.framework in Frameworks */,
+				45B0E7D029FCD09B00B64489 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +121,7 @@
 				452A308629ECAF9900EB8CAC /* Utilities.swift */,
 				4509BACB29E7970300D36328 /* Bootstrap.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+				4501473729FC1AEB0001834C /* Logging.swift */,
 			);
 			path = Bootstrap;
 			sourceTree = "<group>";
@@ -111,6 +129,7 @@
 		CED0FAF329DC8C7E00106BEF /* paleinfo */ = {
 			isa = PBXGroup;
 			children = (
+				45538ABA29FAEA2B000EE412 /* IOKit.framework */,
 				CED0FAF429DC8C8800106BEF /* paleinfo.m */,
 				CED0FAF529DC8C8800106BEF /* paleinfo.h */,
 			);
@@ -120,6 +139,8 @@
 		CED0FB0029DC8DC100106BEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45B0E7C529FCCBD100B64489 /* CoreFoundation.framework */,
+				45B0E7C029FCCB2400B64489 /* IOKit.framework */,
 				45F091F229E9A30700F4770A /* CoreServices.framework */,
 				CED0FB0129DC8DC200106BEF /* CoreServices.framework */,
 			);
@@ -181,6 +202,7 @@
 				E131378328CFA0BC00754132 /* Sources */,
 				E131378428CFA0BC00754132 /* Frameworks */,
 				E131378528CFA0BC00754132 /* CopyFiles */,
+				45B0E7D229FCD09B00B64489 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,7 +210,6 @@
 			);
 			name = Helper;
 			packageProductDependencies = (
-				453D1A5C29E27A9C00F357BB /* SWCompression */,
 			);
 			productName = PogoHelper;
 			productReference = E131378728CFA0BC00754132 /* Helper */;
@@ -245,7 +266,6 @@
 			);
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
-				453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */,
 			);
 			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
 			projectDirPath = "";
@@ -287,6 +307,7 @@
 				33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */,
 				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
+				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
 				45538AB929FA158D000EE412 /* paleinfo.m in Sources */,
@@ -329,6 +350,10 @@
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = "";
 				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Helper/paleinfo",
+				);
 				GCC_OPTIMIZATION_LEVEL = z;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -369,6 +394,10 @@
 				ENABLE_BITCODE = NO;
 				EXECUTABLE_EXTENSION = "";
 				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Helper/paleinfo",
+				);
 				GCC_OPTIMIZATION_LEVEL = z;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -631,25 +660,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/staturnzz/SWCompression.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		453D1A5C29E27A9C00F357BB /* SWCompression */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 453D1A5B29E27A9C00F357BB /* XCRemoteSwiftPackageReference "SWCompression" */;
-			productName = SWCompression;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E181BACE28CF914300CD25A6 /* Project object */;
 }

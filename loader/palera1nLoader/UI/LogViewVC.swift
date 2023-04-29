@@ -14,14 +14,13 @@ class LogViewer: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /* VC App Title */
-        self.title = "/cores/jbinit.log"
+        let textView = UITextView()
+
+        self.navigationItem.title = "Logs"
         
         /* TextView Configuration */
-        let textView = UITextView()
         textView.backgroundColor = .systemBackground
-        textView.textContainerInset = UIEdgeInsets(top: 8, left: 5, bottom: 8, right: 5)
+        textView.textContainerInset = UIEdgeInsets(top: self.navigationController!.navigationBar.frame.size.height - 25, left: 5, bottom: 8, right: 5)
         textView.isEditable = false
         textView.isSelectable = true
         textView.isScrollEnabled = true
@@ -37,30 +36,25 @@ class LogViewer: UIViewController {
             textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
-        /* Read jbinit Log File */
-        let logFilePath = "/cores/jbinit.log"
-        
         do {
-            let logFileContents = try String(contentsOfFile: logFilePath, encoding: .utf8)
+            let logFileContents = try String(contentsOfFile: logInfo.logFile, encoding: .utf8)
             textView.text = logFileContents
         } catch {
-            NSLog("[palera1n] Error Reading JBinit Log File")
+            log(type: .error, msg: "Reading log file: \(logInfo.logFile)")
             if (envInfo.isSimulator) {
                 textView.text = "Error: Simulator"
             } else {
-                textView.text = "Error: /cores/jbinit.log not found.\nInfo: Use `-L` when jailbreaking to be able to use this feature."
+                textView.text = "Error: Failed to read loader log file."
             }
         }
         
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))
         shareButton.tintColor = .systemBlue
-        
         self.navigationItem.rightBarButtonItem = shareButton
     }
     
     @objc func shareButtonTapped(_ sender: UIBarButtonItem) {
-        let logFileURL = URL(fileURLWithPath: "/cores/jbinit.log")
-        
+        let logFileURL = URL(fileURLWithPath: logInfo.logFile)
         let activityViewController = UIActivityViewController(activityItems: [logFileURL], applicationActivities: nil)
         activityViewController.popoverPresentationController?.barButtonItem = sender
         present(activityViewController, animated: true, completion: nil)
