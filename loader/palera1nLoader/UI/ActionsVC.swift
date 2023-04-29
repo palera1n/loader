@@ -15,7 +15,9 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
         
-        [local("RESPRING"), local("UICACHE"), local("TWEAKS"), local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
+        [local("RESPRING"), local("UICACHE"), local("TWEAKS")],
+        
+        [local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
     ]
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,14 +25,17 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         envInfo.nav = navigationController!
     }
   
-    var sectionTitles = ["", "OPENERS", "UTILITIES"]
+    var sectionTitles = ["", "OPENERS", "UTILITIES", ""]
     override func viewDidLoad() {
         if (envInfo.isRootful) {
             tableData = [
                 [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
-                [local("RESPRING"), local("UICACHE"), local("TWEAKS"), local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
+                
+                [local("RESPRING"), local("UICACHE"), local("TWEAKS")],
+                
+                [local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
             ]
-            sectionTitles = ["OPENERS", "UTILITIES"]
+            sectionTitles = ["OPENERS", "UTILITIES", ""]
         }
         
         super.viewDidLoad()

@@ -48,9 +48,18 @@ class LogViewer: UIViewController {
             }
         }
         
+        let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeButtonTapped(_:)))
+        self.navigationItem.leftBarButtonItem = closeButton
+        
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))
-        shareButton.tintColor = .systemBlue
         self.navigationItem.rightBarButtonItem = shareButton
+        self.isModalInPresentation = true
+    }
+    
+    @objc func closeButtonTapped(_ sender: UIBarButtonItem) {
+        bootstrap().cleanUp()
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
     }
     
     @objc func shareButtonTapped(_ sender: UIBarButtonItem) {
@@ -60,3 +69,4 @@ class LogViewer: UIViewController {
         present(activityViewController, animated: true, completion: nil)
     }
 }
+

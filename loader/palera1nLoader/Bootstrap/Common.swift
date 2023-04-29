@@ -126,7 +126,9 @@ extension UIAlertController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 log(type: .info, msg: "Opening Log View")
                 let LogViewVC = LogViewer()
-                envInfo.nav.pushViewController(LogViewVC, animated: true)
+                let navController = UINavigationController(rootViewController: LogViewVC)
+                navController.modalPresentationStyle = .formSheet
+                envInfo.nav.present(navController, animated: true, completion: nil)
             }
         }))
         let generator = UINotificationFeedbackGenerator()
