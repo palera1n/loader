@@ -23,6 +23,7 @@ import Darwin.POSIX
         return -1
     }
     guard fcntl(pipestderr[0], F_SETFL, O_NONBLOCK) != -1 else {
+        log(type: .error, msg: "Could not open stderr" )
         return -1
     }
 
