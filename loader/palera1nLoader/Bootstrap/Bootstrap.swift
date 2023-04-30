@@ -82,7 +82,7 @@ class bootstrap {
             zebraSourcesFile += "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
         } else {
             sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n\n"
-            zebraSourcesFile += "deb https://ellekit.space/ ./\ndeb https://apt.procurs.us/ iphoneos-arm64/\(CF) main\n"
+            zebraSourcesFile += "deb https://ellekit.space/ ./\ndeb https://apt.procurs.us/ iphoneos-arm64-rootless/\(CF) main\n"
         }
 
         switch packageManager {
