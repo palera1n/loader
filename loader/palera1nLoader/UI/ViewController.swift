@@ -223,25 +223,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         envInfo.nav = navigationController!
-
-        if (!envInfo.isRootful) {
-            if envInfo.envType == 2 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    let alert = UIAlertController.warning(title: local("HIDDEN"), message: local("HIDDEN_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
-                        let procursus = "\(Utils().strapCheck().jbFolder)/procursus"
-
-                        let ret = helperCmd(["-e", procursus])
-                        if (ret == 0) {
-                            spawn(command: "/var/jb/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
-                        } else {
-                            let errStr = String(cString: strerror(Int32(ret)))
-                            let alert = UIAlertController.error(title: "Failed to link", message: errStr)
-                            self.present(alert, animated: true)
-                        }
-                    })
-                    self.present(alert, animated: true)
-                }
+        
+        if (!envInfo.hasHelper) {
+            #if targetEnvironment(simulator)
+            #else
+                let alert = UIAlertController.error(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
+                self.present(alert, animated: true)
                 return
+            #endif
+        }
+
+        if (!envInfo.hasHelper || (!envInfo.isRootful && envInfo.envType == 2)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let alert = UIAlertController.warning(title: local("HIDDEN"), message: local("HIDDEN_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
+                    if (!envInfo.hasHelper) {
+                        let alert = UIAlertController.error(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
+                        self.present(alert, animated: true)
+                        return
+                    }
+                    
+                    let procursus = "\(Utils().strapCheck().jbFolder)/procursus"
+
+                    let ret = helperCmd(["-e", procursus])
+                    if (ret == 0) {
+                        spawn(command: "/var/jb/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
+                    } else {
+                        let errStr = String(cString: strerror(Int32(ret)))
+                        let alert = UIAlertController.error(title: "Failed to link", message: errStr)
+                        self.present(alert, animated: true)
+                    }
+                })
+                self.present(alert, animated: true)
             }
         }
     }

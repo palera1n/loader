@@ -80,7 +80,7 @@ class bootstrap {
             zebraSourcesFile += "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
         } else {
             sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n\n"
-            zebraSourcesFile += "deb https://ellekit.space/ ./\ndeb https://apt.procurs.us/ iphoneos-arm64-rootless/\(CF) main\n"
+            zebraSourcesFile += "deb https://ellekit.space/ ./\ndeb https://apt.procurs.us/ \(CF) main\n"
         }
 
         switch packageManager {
@@ -171,7 +171,7 @@ class bootstrap {
             let prefix = "/private/preboot/\(envInfo.bmHash)"
             let randomString = randomStr()
             bp_rm("/var/jb")
-            bp_rm("/private/preboot/\(envInfo.bmHash)/jb-*")
+            bp_rm("\(prefix)/jb-*")
             
             ret = bp_bsdtar(["-xkf", docsFile(file: "bootstrap.tar"), "-C", prefix, "--preserve-permissions"])
 

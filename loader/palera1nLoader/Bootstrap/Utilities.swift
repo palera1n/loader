@@ -81,8 +81,6 @@ class Utils {
         if let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") {
             envInfo.hasHelper = true
             envInfo.helperPath = helper
-        } else {
-            //errAlert(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
         }
        
         /// rootless/rootful check
