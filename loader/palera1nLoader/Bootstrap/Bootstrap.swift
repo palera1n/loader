@@ -64,8 +64,6 @@ class bootstrap {
     // Created palera1n defaults sources file for Sileo/Zebra
     func defaultSources(for packageManager: String) {
         let zebraPath = "/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list"
-        bp_rm(zebraPath)
-
         let sileoPath = "\(envInfo.installPrefix)/etc/apt/sources.list.d/palera1n.sources"
 
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -94,6 +92,7 @@ class bootstrap {
                 log(type: .warning, msg: "Error writing Sileo sources file: \(error)")
             }
         case "zebra.deb":
+            bp_rm(zebraPath)
             do {
                 try zebraSourcesFile.write(to: tempURL, atomically: true, encoding: .utf8)
                 mv0(tempURL.path, zebraPath)
