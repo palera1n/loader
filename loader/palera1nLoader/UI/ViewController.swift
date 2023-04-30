@@ -236,11 +236,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (!envInfo.hasHelper || (!envInfo.isRootful && envInfo.envType == 2)) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let alert = UIAlertController.warning(title: local("HIDDEN"), message: local("HIDDEN_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
-                    if (!envInfo.hasHelper) {
-                        let alert = UIAlertController.error(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
-                        self.present(alert, animated: true)
-                        return
-                    }
                     
                     let procursus = "\(Utils().strapCheck().jbFolder)/procursus"
 
