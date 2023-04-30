@@ -35,7 +35,7 @@ class bootstrap {
     
     // Created palera1n defaults sources file for Sileo/Zebra
     func defaultSources(_ packageManager: String) -> Void {
-        //let zebraPath = URL(string: "/var/mobile/Library/Application Support/xyz.willy.Zebra/palera1n.list")!
+        let zebraPath = URL(string: "/var/mobile/Library/Application Support/xyz.willy.Zebra/zebra.list")!
         let sileoPath = URL(string: envInfo.installPrefix)!.appendingPathComponent("etc/apt/sources.list.d/palera1n.sources")
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -43,28 +43,67 @@ class bootstrap {
         
         let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
 
-        var zebraSourcesFile = "deb https://repo.palera.in/\n"
-        var sileoSourcesFile = """
-        Types: deb\nURIs: https://repo.getsileo.app/\nSuites: ./\nComponents:\n
-        Types: deb\nURIs: https://repo.palera.in/\nSuites: ./\nComponents:\n\n
+        var zebraSourcesFile =
+        
+        """
+        deb https://repo.palera.in/
+        
+        """
+        
+        var sileoSourcesFile =
+        
+        """
+        Types: deb
+        URIs: https://repo.palera.in/
+        Suites: ./
+        Components:
+        
         """
         
         if (envInfo.isRootful) {
-            sileoSourcesFile += "Types: deb\nURIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n\n"
-            zebraSourcesFile += "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
+            sileoSourcesFile +=
+            
+            """
+            Types: deb
+            URIs: https://strap.palera.in/
+            Suites: iphoneos-arm64/\(CF)
+            Components: main
+            
+            """
+            
+            zebraSourcesFile +=
+            
+            """
+            deb https://strap.palera.in/ iphoneos-arm64/\(CF) main
+            
+            """
+ 
         } else {
-            sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n\n"
-            zebraSourcesFile += "deb https://ellekit.space/ ./\n"
+            sileoSourcesFile +=
+            
+            """
+            Types: deb
+            URIs: https://ellekit.space/
+            Suites: ./
+            Components:
+            
+            """
+            
+            zebraSourcesFile +=
+            
+            """
+            deb https://ellekit.space/ ./
+            
+            """
         }
         
         switch(packageManager) {
         case "sileo.deb":
             try? sileoSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
             spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, sileoPath.path], root: true)
-        //case "zebra.deb":
-            // need to fix
-            //try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
-            //spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
+        case "zebra.deb":
+            try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
+            spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
         default:
             log(type: .warning, msg: "Unknown or Unsupported Package Manager" )
         }
