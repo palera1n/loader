@@ -63,7 +63,9 @@ class bootstrap {
     
     // Created palera1n defaults sources file for Sileo/Zebra
     func defaultSources(_ packageManager: String) -> Void {
-        let zebraPath = URL(string: #"/var/mobile/Library/Application\ Support/xyz.willy.Zebra/zebra.list"#)!
+        let zebraPath = #"/var/mobile/Library/Application\ Support/xyz.willy.Zebra/zebra.list"#
+        bp_rm(zebraPath)
+
         let sileoPath = URL(string: envInfo.installPrefix)!.appendingPathComponent("etc/apt/sources.list.d/palera1n.sources")
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -91,7 +93,7 @@ class bootstrap {
         case "zebra.deb":
             try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
             //spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
-            mv0(tempURL.path, zebraPath.path)
+            mv0(tempURL.path, zebraPath)
         default:
             log(type: .warning, msg: "Unknown or Unsupported Package Manager" )
         }
@@ -124,13 +126,31 @@ class bootstrap {
         return
     }
     
+    func randomStr() -> String {
+        var randomString = ""
+
+        for _ in 0..<8 {
+            let randomValue = Int.random(in: 1...3)
+            let char: String
+            switch randomValue {
+            case 1:
+                char = String(UnicodeScalar(Int.random(in: 65...90))!)
+            case 2:
+                char = String(UnicodeScalar(Int.random(in: 97...122))!)
+            default:
+                char = String(Int.random(in: 0...9))
+            }
+            randomString.append(char)
+        }
+        return randomString
+    }
     
     func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
+        // mounts
         spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-        if envInfo.isRootful {
-            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
-        }
-        
+        if envInfo.isRootful { spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }
+
+        // extract zstd strap
         deleteFile(file: "bootstrap.tar")
         var ret = spawn(command: "/cores/binpack/usr/bin/zstd", args: ["-d", tar, "-o", docsFile(file: "bootstrap.tar")], root: true)
         if (ret != 0) {
@@ -138,62 +158,46 @@ class bootstrap {
             return
         }
         
+        // install bootstrap
         if (envInfo.isRootful) {
             ret = bp_bsdtar(["-xkf", docsFile(file: "bootstrap.tar"), "-C", "/", "--preserve-permissions"])
         } else {
-            var randomString = ""
-
-            for _ in 0..<8 {
-                let randomValue = Int.random(in: 1...3)
-                let char: String
-                switch randomValue {
-                case 1:
-                    char = String(UnicodeScalar(Int.random(in: 65...90))!)
-                case 2:
-                    char = String(UnicodeScalar(Int.random(in: 97...122))!)
-                default:
-                    char = String(Int.random(in: 0...9))
-                }
-                randomString.append(char)
-            }
             let prefix = "/private/preboot/\(envInfo.bmHash)"
-            
+            let randomString = randomStr()
             bp_rm("/var/jb")
             bp_rm("/private/preboot/\(envInfo.bmHash)/jb-*")
             
             ret = bp_bsdtar(["-xkf", docsFile(file: "bootstrap.tar"), "-C", prefix, "--preserve-permissions"])
-            
+
             mv0("\(prefix)/var", "\(prefix)/jb-\(randomString)")
             mv0("\(prefix)/jb-\(randomString)/jb", "\(prefix)/jb-\(randomString)/procursus")
             
             bp_ln("\(prefix)/jb-\(randomString)/procursus", "/var/jb")
             bp_chown(0, 0, "/var/jb")
-            bp_chmod(4755, "/var/jb")
-
+            bp_chmod(755, "/var/jb")
         }
+        
         if (ret != 0) {
             completion(local("STRAP_ERROR"), ret)
             return
         }
         
-        bp_chmod(4755, "\(envInfo.installPrefix)/usr/bin/sudo")
-        bp_chown(0, 0, "\(envInfo.installPrefix)/usr/bin/sudo")
-        
+        // prep bootstrap
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/sh", args: ["\(envInfo.installPrefix)/prep_bootstrap.sh"], root: true)
         if (ret != 0) {
             completion(local("STRAP_ERROR"), ret)
             return
         }
         
-        if !envInfo.isRootful {
-            let libkrwPath = docsFile(file: "libkrw0-tfp0.deb")
-            ret = spawn(command: "/var/jb/usr/bin/dpkg", args: ["-i", libkrwPath], root: true)
-            if (ret != 0) {
-                completion(local("DPKG_ERROR"), ret)
-                return
-            }
+        // install libkrw0-tfp0
+        let libkrwPath = docsFile(file: "libkrw0-tfp0.deb")
+        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", libkrwPath], root: true)
+        if (ret != 0) {
+            completion(local("DPKG_ERROR"), ret)
+            return
         }
-         
+        
+        // install package manager
         let debPath = docsFile(file: deb)
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", debPath], root: true)
         if (ret != 0) {
@@ -201,14 +205,25 @@ class bootstrap {
             return
         }
         
+        if (!envInfo.isRootful) {
+            ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
+            if (ret != 0) {
+                completion(local("DPKG_ERROR"), ret)
+                return
+            }
+        }
+
+        
+        // uicache
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             completion(local("UICACHE_ERROR"), ret)
             return
         }
         
-        cleanUp()
+        // clean up
         defaultSources(URL(string: deb)!.lastPathComponent)
+        cleanUp()
         completion(local("INSTALL_DONE"), 0)
         return
     }

@@ -87,7 +87,7 @@ class Utils {
        
         /// rootless/rootful check
         envInfo.isRootful = helperCmd(["-f"]) == 0 ? false : true
-        envInfo.installPrefix = envInfo.isRootful ? "/" : "/var/jb"
+        envInfo.installPrefix = envInfo.isRootful ? "" : "/var/jb"
         
         /// force revert check
         envInfo.hasForceReverted = helperCmd(["-n"]) == 0 ? false : true
