@@ -138,7 +138,7 @@ import Darwin.POSIX
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    let noLog = ["-f","-n","-g","-q","-h"]
+    let noLog = ["-f","-n","-g","-q","-h","-p"]
     if (!noLog.contains(args[1])) {
         log(type: .info, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n\tStdout: \(stdoutStr)\n\tStderr: \(stderrStr)\n")
     }

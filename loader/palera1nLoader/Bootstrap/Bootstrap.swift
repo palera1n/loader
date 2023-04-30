@@ -9,6 +9,34 @@ import Foundation
 import UIKit
 
 class bootstrap {
+    
+    @discardableResult func bp_rm(_ file: String) -> Int {
+        return spawn(command: "/cores/binpack/bin/rm", args: ["-rf", file], root: true)
+    }
+    
+    @discardableResult func bp_bsdtar(_ args: [String]) -> Int {
+        return spawn(command: "/cores/binpack/usr/bin/tar", args: args, root: true)
+    }
+    
+    @discardableResult func bp_ln(_ target: String,_ src: String) -> Int {
+        return spawn(command: "/cores/binpack/bin/ln", args: ["-s", target, src], root: true)
+    }
+    
+    @discardableResult func bp_chown(_ owner: Int,_ group: Int,_ file: String) -> Int {
+        return spawn(command: "/cores/binpack/usr/sbin/chown", args: ["\(owner):\(group)", file], root: true)
+    }
+    
+    @discardableResult func bp_chmod(_ bits: Int,_ file: String) -> Int {
+        return spawn(command: "/cores/binpack/bin/chmod", args: [String(bits), "/var/jb"], root: true)
+    }
+    
+    @discardableResult func bp_unlink(_ file: String) -> Int {
+        return 0
+    }
+    
+    func mv0(_ from: String,_ to: String) -> Void {
+        spawn(command: "/cores/binpack/bin/mv", args: ["-f", from, to], root: true)
+    }
 
     // Ran after bootstrap/deb install
     func cleanUp() -> Void {
@@ -35,7 +63,7 @@ class bootstrap {
     
     // Created palera1n defaults sources file for Sileo/Zebra
     func defaultSources(_ packageManager: String) -> Void {
-        let zebraPath = URL(string: "/var/mobile/Library/Application Support/xyz.willy.Zebra/zebra.list")!
+        let zebraPath = URL(string: #"/var/mobile/Library/Application\ Support/xyz.willy.Zebra/zebra.list"#)!
         let sileoPath = URL(string: envInfo.installPrefix)!.appendingPathComponent("etc/apt/sources.list.d/palera1n.sources")
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -43,67 +71,27 @@ class bootstrap {
         
         let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
 
-        var zebraSourcesFile =
-        
-        """
-        deb https://repo.palera.in/
-        
-        """
-        
-        var sileoSourcesFile =
-        
-        """
-        Types: deb
-        URIs: https://repo.palera.in/
-        Suites: ./
-        Components:
-        
-        """
+        var zebraSourcesFile = "deb https://repo.palera.in/ ./\n"
+        var sileoSourcesFile = "Types: deb\nURIs: https://repo.palera.in/\nSuites: ./\nComponents:\n\n"
         
         if (envInfo.isRootful) {
-            sileoSourcesFile +=
-            
-            """
-            Types: deb
-            URIs: https://strap.palera.in/
-            Suites: iphoneos-arm64/\(CF)
-            Components: main
-            
-            """
-            
-            zebraSourcesFile +=
-            
-            """
-            deb https://strap.palera.in/ iphoneos-arm64/\(CF) main
-            
-            """
- 
+            bp_rm("/etc/apt/sources.list.d/procursus.sources")
+            sileoSourcesFile += "Types: deb\nURIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n"
+            zebraSourcesFile += "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
         } else {
-            sileoSourcesFile +=
-            
-            """
-            Types: deb
-            URIs: https://ellekit.space/
-            Suites: ./
-            Components:
-            
-            """
-            
-            zebraSourcesFile +=
-            
-            """
-            deb https://ellekit.space/ ./
-            
-            """
+            sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n\n"
+            zebraSourcesFile += "deb https://ellekit.space/ ./\n"
         }
         
         switch(packageManager) {
         case "sileo.deb":
             try? sileoSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
-            spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, sileoPath.path], root: true)
+           // spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, sileoPath.path], root: true)
+            mv0(tempURL.path, sileoPath.path)
         case "zebra.deb":
             try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
-            spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
+            //spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
+            mv0(tempURL.path, zebraPath.path)
         default:
             log(type: .warning, msg: "Unknown or Unsupported Package Manager" )
         }
@@ -116,11 +104,13 @@ class bootstrap {
             return
         }
 
+        /*
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
         if (ret != 0) {
             completion(local("DPKG_ERROR"), ret)
             return
         }
+         */
         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
@@ -132,10 +122,6 @@ class bootstrap {
         cleanUp()
         completion(local("INSTALL_DONE"), 0)
         return
-    }
-    
-    func mv0(_ from: String,_ to: String) -> Void {
-        spawn(command: "/cores/binpack/bin/mv", args: ["-f", from, to], root: true)
     }
     
     
@@ -153,7 +139,7 @@ class bootstrap {
         }
         
         if (envInfo.isRootful) {
-            ret = spawn(command: "/cores/binpack/usr/bin/tar", args: ["-xkf", docsFile(file: "bootstrap.tar"), "-C", "/", "--preserve-permissions"], root: true)
+            ret = bp_bsdtar(["-xkf", docsFile(file: "bootstrap.tar"), "-C", "/", "--preserve-permissions"])
         } else {
             var randomString = ""
 
@@ -172,18 +158,17 @@ class bootstrap {
             }
             let prefix = "/private/preboot/\(envInfo.bmHash)"
             
-            spawn(command: "/cores/binpack/bin/rm", args: ["-rf", "/var/jb"], root: true)
-            spawn(command: "/cores/binpack/bin/rm", args: ["-rf", "/private/preboot/\(envInfo.bmHash)/jb-*"], root: true)
-
+            bp_rm("/var/jb")
+            bp_rm("/private/preboot/\(envInfo.bmHash)/jb-*")
             
-            ret = spawn(command: "/cores/binpack/usr/bin/tar", args: ["-xkf", docsFile(file: "bootstrap.tar"), "-C", prefix, "--preserve-permissions"], root: true)
+            ret = bp_bsdtar(["-xkf", docsFile(file: "bootstrap.tar"), "-C", prefix, "--preserve-permissions"])
             
             mv0("\(prefix)/var", "\(prefix)/jb-\(randomString)")
             mv0("\(prefix)/jb-\(randomString)/jb", "\(prefix)/jb-\(randomString)/procursus")
-
-            spawn(command: "/cores/binpack/bin/ln", args: ["-s", "\(prefix)/jb-\(randomString)/procursus", "/var/jb"], root: true)
-            spawn(command: "/cores/binpack/usr/sbin/chown", args: ["0:0", "/var/jb"], root: true)
-            spawn(command: "/cores/binpack/bin/chmod", args: ["4755", "/var/jb"], root: true)
+            
+            bp_ln("\(prefix)/jb-\(randomString)/procursus", "/var/jb")
+            bp_chown(0, 0, "/var/jb")
+            bp_chmod(4755, "/var/jb")
 
         }
         if (ret != 0) {
@@ -191,8 +176,8 @@ class bootstrap {
             return
         }
         
-        spawn(command: "\(envInfo.installPrefix)/usr/bin/chmod", args: ["4755", "\(envInfo.installPrefix)/usr/bin/sudo"], root: true)
-        spawn(command: "\(envInfo.installPrefix)/usr/bin/chown", args: ["root:wheel", "\(envInfo.installPrefix)/usr/bin/sudo"], root: true)
+        bp_chmod(4755, "\(envInfo.installPrefix)/usr/bin/sudo")
+        bp_chown(0, 0, "\(envInfo.installPrefix)/usr/bin/sudo")
         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/sh", args: ["\(envInfo.installPrefix)/prep_bootstrap.sh"], root: true)
         if (ret != 0) {
@@ -215,12 +200,6 @@ class bootstrap {
             completion(local("DPKG_ERROR"), ret)
             return
         }
-         
-        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
-        if (ret != 0) {
-            completion(local("DPKG_ERROR"), ret)
-            return
-        }
         
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
@@ -228,9 +207,8 @@ class bootstrap {
             return
         }
         
-        defaultSources(URL(string: deb)!.lastPathComponent)
         cleanUp()
-        if envInfo.isRootful { spawn(command: "/usr/bin/rm", args: ["/etc/apt/sources.list.d/procursus.sources"], root: true) }
+        defaultSources(URL(string: deb)!.lastPathComponent)
         completion(local("INSTALL_DONE"), 0)
         return
     }
