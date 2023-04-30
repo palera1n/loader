@@ -62,21 +62,21 @@ class bootstrap {
     }
     
     // Created palera1n defaults sources file for Sileo/Zebra
-    func defaultSources(_ packageManager: String) -> Void {
-        let zebraPath = #"/var/mobile/Library/Application\ Support/xyz.willy.Zebra/zebra.list"#
+    func defaultSources(for packageManager: String) {
+        let zebraPath = "/var/mobile/Library/Application Support/xyz.willy.Zebra/sources.list"
         bp_rm(zebraPath)
 
-        let sileoPath = URL(string: envInfo.installPrefix)!.appendingPathComponent("etc/apt/sources.list.d/palera1n.sources")
-        
+        let sileoPath = "\(envInfo.installPrefix)/etc/apt/sources.list.d/palera1n.sources"
+
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let tempURL = documentsURL.appendingPathComponent("temp_sources")
-        
+
         let CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
 
-        var zebraSourcesFile = "deb https://repo.palera.in/ ./\n"
+        var zebraSourcesFile = "deb https://repo.palera.in/ ./\ndeb https://getzbra.com/repo ./\n"
         var sileoSourcesFile = "Types: deb\nURIs: https://repo.palera.in/\nSuites: ./\nComponents:\n\n"
-        
-        if (envInfo.isRootful) {
+
+        if envInfo.isRootful {
             bp_rm("/etc/apt/sources.list.d/procursus.sources")
             sileoSourcesFile += "Types: deb\nURIs: https://strap.palera.in/\nSuites: iphoneos-arm64/\(CF)\nComponents: main\n"
             zebraSourcesFile += "deb https://strap.palera.in/ iphoneos-arm64/\(CF) main\n"
@@ -84,20 +84,27 @@ class bootstrap {
             sileoSourcesFile += "Types: deb\nURIs: https://ellekit.space/\nSuites: ./\nComponents:\n\n"
             zebraSourcesFile += "deb https://ellekit.space/ ./\n"
         }
-        
-        switch(packageManager) {
+
+        switch packageManager {
         case "sileo.deb":
-            try? sileoSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
-           // spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, sileoPath.path], root: true)
-            mv0(tempURL.path, sileoPath.path)
+            do {
+                try sileoSourcesFile.write(to: tempURL, atomically: true, encoding: .utf8)
+                mv0(tempURL.path, sileoPath)
+            } catch {
+                log(type: .warning, msg: "Error writing Sileo sources file: \(error)")
+            }
         case "zebra.deb":
-            try? zebraSourcesFile.write(to: tempURL, atomically: true, encoding: String.Encoding.utf8)
-            //spawn(command: "\(envInfo.installPrefix)/usr/bin/mv", args: [tempURL.path, zebraPath.path], root: true)
-            mv0(tempURL.path, zebraPath)
+            do {
+                try zebraSourcesFile.write(to: tempURL, atomically: true, encoding: .utf8)
+                mv0(tempURL.path, zebraPath)
+            } catch {
+                log(type: .warning, msg: "Error writing Zebra sources file: \(error)")
+            }
         default:
-            log(type: .warning, msg: "Unknown or Unsupported Package Manager" )
+            log(type: .warning, msg: "Unknown or unsupported package manager: \(packageManager)")
         }
     }
+
     
     func installDebian(deb: String, completion: @escaping (String?, Int?) -> Void) {
         var ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
@@ -120,7 +127,7 @@ class bootstrap {
             return
         }
         
-        defaultSources(URL(string: deb)!.lastPathComponent)
+        defaultSources(for: URL(string: deb)!.lastPathComponent)
         cleanUp()
         completion(local("INSTALL_DONE"), 0)
         return
@@ -222,7 +229,7 @@ class bootstrap {
         }
         
         // clean up
-        defaultSources(URL(string: deb)!.lastPathComponent)
+        defaultSources(for: URL(string: deb)!.lastPathComponent)
         cleanUp()
         completion(local("INSTALL_DONE"), 0)
         return
