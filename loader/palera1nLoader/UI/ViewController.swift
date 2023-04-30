@@ -233,7 +233,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             #endif
         }
 
-        if (envInfo.hasHelper || (!envInfo.isRootful && envInfo.envType == 2)) {
+        if (envInfo.hasHelper && envInfo.isRootful && envInfo.envType == 2) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 let alert = UIAlertController.warning(title: local("HIDDEN"), message: local("HIDDEN_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                     
