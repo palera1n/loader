@@ -76,7 +76,6 @@ class Utils {
             envInfo.isSimulator = true
         #endif
         
-    
         /// root helper check
         if let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") {
             envInfo.hasHelper = true
@@ -121,8 +120,6 @@ class Utils {
         }
         
         envInfo.hasChecked = true
-        
-        
         log(msg: "## palera1nLoader logs ##")
         log(msg: "Jailbreak Type: \(envInfo.isRootful ? "Rootful" : "Rootless")")
         log(msg: "Environment: \(envInfo.envType)")
@@ -136,6 +133,5 @@ class Utils {
         log(msg: "pinfo: \(envInfo.pinfoFlags)")
         log(msg: "CoreFoundation: \(envInfo.CF)")
         log(msg: "Hash: \(envInfo.bmHash)")
-
     }
 }

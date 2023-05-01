@@ -63,9 +63,9 @@ func initLogs() -> Void {
 
 func log(type: logTypes = .info, msg: String, file: String = #file, line: Int = #line, function: String = #function) {
     let srcFile = URL(string: file)!.lastPathComponent
-
     freopen(logInfo.logFile.cString(using: .ascii)!, "a+", stderr)
     freopen(logInfo.logFile.cString(using: .ascii)!, "a+", stdout)
+    
     switch (type) {
     case .fatal:
         print("[FATAL] \(msg)\tFile: \(srcFile):\(line)\n\tFunc: \(function)", terminator: "\n")

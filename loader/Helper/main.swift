@@ -3,7 +3,6 @@
 //  palera1nHelper
 //
 //  Created by Staturnz on 04/08/2023.
-//  Code based off of https://github.com/elihwyma/Pogo/blob/main/PogoHelper/main.swift by Amy While 
 //
 
 import Foundation
@@ -19,15 +18,13 @@ func ln(_ target: String,_ dest: String) {
 }
 
 func rm(_ at: String) {
-    do { try fm.removeItem(at: URL(fileURLWithPath:at)) }
-    catch { NSLog("[palera1n helper] Failed with error \(error.localizedDescription)") }
+   try? fm.removeItem(at: URL(fileURLWithPath:at))
 }
 
 func touch(atPath path: String) {
     let fileData = Data()
     fm.createFile(atPath: path, contents: fileData, attributes: nil)
 }
-
 
 func removeLeftovers() {
     let remove = ["/var/jb","/var/lib","/var/cache","/var/LIB","/var/Liy","/var/LIY","/var/sbin","/var/bin","/var/ubi","/var/ulb","/var/local"]
@@ -36,17 +33,10 @@ func removeLeftovers() {
     }
 }
 
-func revert() -> Void {
+func revert(_ hash: String) -> Void {
     let rootfulCheck = check_rootful() == 1 ? true : false
     if !rootfulCheck {
-        let uuid: String
-        do {
-            uuid = try String(contentsOf: URL(fileURLWithPath: "/private/preboot/active"), encoding: .utf8)
-        } catch {
-            fatalError("Failed to retrieve UUID: \(error.localizedDescription)")
-        }
-
-        let directoryPath = "/private/preboot/\(uuid)"
+        let directoryPath = "/private/preboot/\(hash)"
         let fileManager = FileManager.default
         do {
             let files = try fileManager.contentsOfDirectory(atPath: directoryPath)
@@ -66,11 +56,11 @@ func revert() -> Void {
         }
 
         removeLeftovers()
-        rm("/private/preboot/\(uuid)/procursus") // old installs
+        rm("/private/preboot/\(hash)/procursus") // old installs
     }
 }
 
-func main() -> __uint32_t? {
+@discardableResult func main() -> __uint32_t? {
     guard getuid() == 0 else { fatalError() }
     let rootfulCheck = check_rootful() == 1 ? true : false
     let forceRevertCheck = check_forcerevert() == 1 ? true : false
@@ -78,7 +68,7 @@ func main() -> __uint32_t? {
 
     switch (args[1]) {
     case "-r":
-        revert()
+        revert(args[2])
     case "-q":
         get_kflags()
         return 0
@@ -89,9 +79,7 @@ func main() -> __uint32_t? {
         setpw(&args[2])
     case "-e":
         if !rootfulCheck {
-            if !fm.fileExists(atPath: "/var/jb") {
-                ln("/var/jb", args[2])
-            }
+            if !fm.fileExists(atPath: "/var/jb") { ln("/var/jb", args[2]) }
         }
     case "-h":
         get_bmhash()
@@ -106,5 +94,4 @@ func main() -> __uint32_t? {
     }
     return 0
 }
-
 main()
