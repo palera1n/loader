@@ -214,46 +214,5 @@ class bootstrap {
         completion(local("INSTALL_DONE"), 0)
         return
     }
-    
-    // Reverting/Removing jailbreak, wipes /var/jb
-    func revert(viewController: UIViewController) -> Void {
-        if !envInfo.isRootful {
-            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            let alert = UIAlertController.spinnerAlert("REMOVING")
-            viewController.present(alert, animated: true)
-            
-            let apps = try? FileManager.default.contentsOfDirectory(atPath: "/var/jb/Applications")
-            for app in apps ?? [] {
-                if app.hasSuffix(".app") {
-                    let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/var/jb/Applications/\(app)"], root: true)
-                    if ret != 0 {
-                        let errorAlert = UIAlertController.error(title: "Failed to unregister \(app)", message: "Status: \(ret)");
-                        alert.dismiss(animated: true) {
-                            viewController.present(errorAlert, animated: true)
-                        }
-                        return
-                    }
-                }
-            }
-            
-            let ret = helperCmd(["-r", envInfo.bmHash])
-            if ret != 0 {
-                let errorAlert = UIAlertController.error(title: local("REVERT_FAIL"), message: "Status: \(ret)")
-                alert.dismiss(animated: true) {
-                    viewController.present(errorAlert, animated: true)
-                }
-                return
-            }
-                
-            if (envInfo.rebootAfter) {
-                helperCmd(["-d"])
-            } else {
-                let errorAlert = UIAlertController.error(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
-                alert.dismiss(animated: true) {
-                    viewController.present(errorAlert, animated: true)
-                }
-            }
-        }
-    }
 }
 

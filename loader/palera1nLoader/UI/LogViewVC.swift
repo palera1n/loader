@@ -14,11 +14,10 @@ class LogViewer: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let textView = UITextView()
-
         self.navigationItem.title = "Logs"
         
-        /* TextView Configuration */
         textView.backgroundColor = .systemBackground
         textView.textContainerInset = UIEdgeInsets(top: self.navigationController!.navigationBar.frame.size.height - 25, left: 5, bottom: 8, right: 5)
         textView.isEditable = false
@@ -26,6 +25,7 @@ class LogViewer: UIViewController {
         textView.isScrollEnabled = true
         textView.textContainer.lineBreakMode = .byClipping
         textView.font = UIFont.monospacedSystemFont(ofSize: 12, weight: .regular)
+        
         view.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         

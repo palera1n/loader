@@ -15,13 +15,11 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         [local("TYPE_INFO"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
         
         [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH")],
-        
-        [local("HELPER"), local("HELPER_PATH")],
-        
+                
         [local("SILEO_INSTALLED"), local("ZEBRA_INSTALLED")]
     ]
     
-    let sectionTitles = ["", "PALERA1N", local("STRAP_INFO"), local("HELPER"), local("INSTALL_INFO")]
+    let sectionTitles = ["", "PALERA1N", local("STRAP_INFO"), local("INSTALL_INFO")]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
@@ -64,7 +62,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 UIApplication.shared.open(URL(string: "santander://\(filePath)")!, options: [:], completionHandler: { (success) in })
             }
    
-            if (((indexPath.section == 2 && indexPath.row == 3) && !envInfo.isRootful) || (indexPath.section == 3 && indexPath.row == 1)) {
+            if (((indexPath.section == 2 && indexPath.row == 3) && !envInfo.isRootful)) {
                 if (filzaInstalled) { menuOptions.append(openInFilza) }
                 if (santanderInstalled) { menuOptions.append(openInSantander) }
 
@@ -112,9 +110,12 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         case local("STRAP_FR_PATH"):
             cell.textLabel?.text = local("STRAP_FR_PATH")
-            let jbFolder = Utils().strapCheck().jbFolder
-            if !jbFolder.isEmpty {
-                cell.detailTextLabel?.text = "\(jbFolder)/procursus"
+            if !envInfo.isRootful {
+                if (envInfo.jbFolder == "") {
+                    cell.detailTextLabel?.text = "None"
+                } else {
+                    cell.detailTextLabel?.text = "\(envInfo.jbFolder)/procursus"
+                }
             } else {
                 cell.detailTextLabel?.text = "None"
             }
@@ -124,13 +125,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case local("PINFO_FLAGS"):
             cell.textLabel?.text = local("PINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.pinfoFlags
-            
-        case local("HELPER"):
-            cell.textLabel?.text = local("HELPER")
-            cell.detailTextLabel?.text = envInfo.hasHelper ? local("TRUE") : local("FALSE")
-        case local("HELPER_PATH"):
-            cell.textLabel?.text = local("HELPER_PATH")
-            cell.detailTextLabel?.text = envInfo.helperPath
             
         case local("SILEO_INSTALLED"):
             cell.textLabel?.text = local("SILEO_INSTALLED")
@@ -151,7 +145,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             © 2023, palera1n team
             
             Loader made by:
-            @flowerible (Samara), @staturnzz (staturnz)
+            @flowerible (Samara) & staturnz
             """
         case 1:
             return """

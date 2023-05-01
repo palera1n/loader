@@ -13,46 +13,18 @@
 		4501473829FC1AEB0001834C /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4501473729FC1AEB0001834C /* Logging.swift */; };
 		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
 		452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A308629ECAF9900EB8CAC /* Utilities.swift */; };
-		45538AB929FA158D000EE412 /* paleinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.m */; };
-		455CBDA929F87F640074D773 /* pwset.c in Sources */ = {isa = PBXBuildFile; fileRef = 455CBDA829F87F640074D773 /* pwset.c */; };
-		45B0E7C729FCCBD400B64489 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45F091F229E9A30700F4770A /* CoreServices.framework */; };
-		45B0E7D029FCD09B00B64489 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45538ABA29FAEA2B000EE412 /* IOKit.framework */; };
-		45B0E7D129FCD09B00B64489 /* IOKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45538ABA29FAEA2B000EE412 /* IOKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4544B50029FFB506006DDCB4 /* Revert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544B4FF29FFB506006DDCB4 /* Revert.swift */; };
+		45C2C1DB29FFC3340082B97D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45538ABA29FAEA2B000EE412 /* IOKit.framework */; };
+		45C2C1DF29FFC6010082B97D /* paleinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C2C1DE29FFC6010082B97D /* paleinfo.swift */; };
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
-		CED0FAF629DC8C8800106BEF /* paleinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0FAF429DC8C8800106BEF /* paleinfo.m */; };
-		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
 		E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BADD28CF914300CD25A6 /* ViewController.swift */; };
 		E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE228CF914500CD25A6 /* Assets.xcassets */; };
 		E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		45B0E7D229FCD09B00B64489 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				45B0E7D129FCD09B00B64489 /* IOKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E131378528CFA0BC00754132 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "palera1nHelper-BridgingHeader.h"; sourceTree = "<group>"; };
 		33DE13AA29DCAD7800DF3D5E /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; path = External; sourceTree = "<group>"; };
 		33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsVC.swift; sourceTree = "<group>"; };
 		33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsVC.swift; sourceTree = "<group>"; };
@@ -60,21 +32,17 @@
 		4501473729FC1AEB0001834C /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		452A308629ECAF9900EB8CAC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4544B4FF29FFB506006DDCB4 /* Revert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revert.swift; sourceTree = "<group>"; };
 		45538ABA29FAEA2B000EE412 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOKit.framework; sourceTree = "<group>"; };
-		455CBDA729F87F640074D773 /* pwset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pwset.h; sourceTree = "<group>"; };
-		455CBDA829F87F640074D773 /* pwset.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pwset.c; sourceTree = "<group>"; };
 		45B0E7C029FCCB2400B64489 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		45B0E7C529FCCBD100B64489 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		45C2C1DE29FFC6010082B97D /* paleinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paleinfo.swift; sourceTree = "<group>"; };
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45F091F229E9A30700F4770A /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		45F3AD7029E70E3500ADF163 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		CED0FAF429DC8C8800106BEF /* paleinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = paleinfo.m; sourceTree = "<group>"; };
-		CED0FAF529DC8C8800106BEF /* paleinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = paleinfo.h; sourceTree = "<group>"; };
 		CED0FB0129DC8DC200106BEF /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
-		E131378728CFA0BC00754132 /* Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Helper; sourceTree = BUILT_PRODUCTS_DIR; };
-		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E181BAD628CF914300CD25A6 /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E181BAD928CF914300CD25A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E181BADD28CF914300CD25A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,19 +52,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E131378428CFA0BC00754132 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				45B0E7C729FCCBD400B64489 /* CoreServices.framework in Frameworks */,
-				45B0E7D029FCD09B00B64489 /* IOKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E181BAD328CF914300CD25A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C2C1DB29FFC3340082B97D /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,18 +82,18 @@
 				4509BACB29E7970300D36328 /* Bootstrap.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
 				4501473729FC1AEB0001834C /* Logging.swift */,
+				4544B4FF29FFB506006DDCB4 /* Revert.swift */,
 			);
 			path = Bootstrap;
 			sourceTree = "<group>";
 		};
-		CED0FAF329DC8C7E00106BEF /* paleinfo */ = {
+		45C2C1D529FFC2190082B97D /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				45538ABA29FAEA2B000EE412 /* IOKit.framework */,
-				CED0FAF429DC8C8800106BEF /* paleinfo.m */,
-				CED0FAF529DC8C8800106BEF /* paleinfo.h */,
+				45C2C1DE29FFC6010082B97D /* paleinfo.swift */,
 			);
-			path = paleinfo;
+			path = Other;
 			sourceTree = "<group>";
 		};
 		CED0FB0029DC8DC100106BEF /* Frameworks */ = {
@@ -147,23 +107,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E131378828CFA0BC00754132 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				CED0FAF329DC8C7E00106BEF /* paleinfo */,
-				E131378E28CFA16B00754132 /* main.swift */,
-				455CBDA729F87F640074D773 /* pwset.h */,
-				455CBDA829F87F640074D773 /* pwset.c */,
-				33D1038D29DC21C4005D4C3B /* palera1nHelper-BridgingHeader.h */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		E181BACD28CF914300CD25A6 = {
 			isa = PBXGroup;
 			children = (
 				E181BAD828CF914300CD25A6 /* palera1nLoader */,
-				E131378828CFA0BC00754132 /* Helper */,
 				E181BAD728CF914300CD25A6 /* Products */,
 				CED0FB0029DC8DC100106BEF /* Frameworks */,
 			);
@@ -173,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				E181BAD628CF914300CD25A6 /* palera1nLoader.app */,
-				E131378728CFA0BC00754132 /* Helper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +130,7 @@
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
+				45C2C1D529FFC2190082B97D /* Other */,
 				3313A75629ECE2690021665E /* UI */,
 				3313A75729ECE2710021665E /* Bootstrap */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
@@ -195,26 +142,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E131378628CFA0BC00754132 /* Helper */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E131378B28CFA0BC00754132 /* Build configuration list for PBXNativeTarget "Helper" */;
-			buildPhases = (
-				E131378328CFA0BC00754132 /* Sources */,
-				E131378428CFA0BC00754132 /* Frameworks */,
-				E131378528CFA0BC00754132 /* CopyFiles */,
-				45B0E7D229FCD09B00B64489 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Helper;
-			packageProductDependencies = (
-			);
-			productName = PogoHelper;
-			productReference = E131378728CFA0BC00754132 /* Helper */;
-			productType = "com.apple.product-type.library.dynamic";
-		};
 		E181BAD528CF914300CD25A6 /* palera1nLoader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E181BAEA28CF914500CD25A6 /* Build configuration list for PBXNativeTarget "palera1nLoader" */;
@@ -244,10 +171,6 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					E131378628CFA0BC00754132 = {
-						CreatedOnToolsVersion = 13.4.1;
-						LastSwiftMigration = 1340;
-					};
 					E181BAD528CF914300CD25A6 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -272,7 +195,6 @@
 			projectRoot = "";
 			targets = (
 				E181BAD528CF914300CD25A6 /* palera1nLoader */,
-				E131378628CFA0BC00754132 /* Helper */,
 			);
 		};
 /* End PBXProject section */
@@ -290,16 +212,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E131378328CFA0BC00754132 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				455CBDA929F87F640074D773 /* pwset.c in Sources */,
-				CED0FAF629DC8C8800106BEF /* paleinfo.m in Sources */,
-				E131378F28CFA16B00754132 /* main.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E181BAD228CF914300CD25A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,14 +219,15 @@
 				33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */,
 				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
+				45C2C1DF29FFC6010082B97D /* paleinfo.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
-				45538AB929FA158D000EE412 /* paleinfo.m in Sources */,
 				33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */,
+				4544B50029FFB506006DDCB4 /* Revert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,94 +247,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E131378C28CFA0BC00754132 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_MODULE_DEBUGGING = NO;
-				CLANG_MODULES_AUTOLINK = YES;
-				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = 98BG3C5BP9;
-				DYLIB_COMPATIBILITY_VERSION = "";
-				DYLIB_CURRENT_VERSION = "";
-				ENABLE_BITCODE = NO;
-				EXECUTABLE_EXTENSION = "";
-				EXECUTABLE_SUFFIX = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Helper/paleinfo",
-				);
-				GCC_OPTIMIZATION_LEVEL = z;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LLVM_LTO = YES;
-				LOCALIZATION_EXPORT_SUPPORTED = NO;
-				LOCALIZED_STRING_MACRO_NAMES = "";
-				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
-				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				STRIP_STYLE = all;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		E131378D28CFA0BC00754132 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
-				CLANG_ENABLE_MODULES = NO;
-				CLANG_ENABLE_MODULE_DEBUGGING = NO;
-				CLANG_MODULES_AUTOLINK = YES;
-				CLANG_STATIC_ANALYZER_MODE = deep;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = 98BG3C5BP9;
-				DYLIB_COMPATIBILITY_VERSION = "";
-				DYLIB_CURRENT_VERSION = "";
-				ENABLE_BITCODE = NO;
-				EXECUTABLE_EXTENSION = "";
-				EXECUTABLE_SUFFIX = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Helper/paleinfo",
-				);
-				GCC_OPTIMIZATION_LEVEL = z;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LLVM_LTO = YES;
-				LOCALIZATION_EXPORT_SUPPORTED = NO;
-				LOCALIZED_STRING_MACRO_NAMES = "";
-				LOCALIZED_STRING_SWIFTUI_SUPPORT = NO;
-				MACH_O_TYPE = mh_execute;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				STRIP_STYLE = all;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		E181BAE828CF914500CD25A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -554,6 +379,10 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/palera1nLoader/Other",
+				);
 				GCC_OPTIMIZATION_LEVEL = z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = palera1nLoader/Info.plist;
@@ -579,7 +408,6 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -599,6 +427,10 @@
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 98BG3C5BP9;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/palera1nLoader/Other",
+				);
 				GCC_OPTIMIZATION_LEVEL = z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = palera1nLoader/Info.plist;
@@ -624,7 +456,6 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Helper/palera1nHelper-BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -634,15 +465,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E131378B28CFA0BC00754132 /* Build configuration list for PBXNativeTarget "Helper" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E131378C28CFA0BC00754132 /* Debug */,
-				E131378D28CFA0BC00754132 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E181BAD128CF914300CD25A6 /* Build configuration list for PBXProject "palera1nLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

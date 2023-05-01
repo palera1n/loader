@@ -20,16 +20,12 @@ endif
 P1_TMP         = $(TMPDIR)/$(NAME)
 P1_STAGE_DIR   = $(P1_TMP)/stage
 P1_APP_DIR 	   = $(P1_TMP)/Build/Products/$(RELEASE)/$(NAME).app
-P1_HELPER_PATH = $(P1_TMP)/Build/Products/$(RELEASE)/Helper
 
 package:
 	/usr/libexec/PlistBuddy -c "Set :REVISION ${GIT_REV}" "loader/palera1nLoader/Info.plist"
 
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme palera1nLoader -configuration Release -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
-		CODE_SIGNING_ALLOWED=NO DSTROOT=$(P1_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
-	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme Helper -configuration Release -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(P1_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf Payload
 	@rm -rf $(P1_STAGE_DIR)/
@@ -38,9 +34,7 @@ package:
 	@echo $(P1_TMP)
 	@echo $(P1_STAGE_DIR)
 
-	@mv $(P1_HELPER_PATH) $(P1_STAGE_DIR)/Payload/$(NAME).app//Helper
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app/
-	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app//Helper
 	
 	@rm -rf $(P1_STAGE_DIR)/Payload/$(NAME).app/_CodeSignature
 	@ln -sf $(P1_STAGE_DIR)/Payload Payload

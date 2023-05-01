@@ -186,17 +186,16 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             switch strapValue {
             case 1:
                 let alert = UIAlertController.warning(title: local("HIDE"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
-                    if (envInfo.hasHelper) {
-                        if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
-                            do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
-                            catch { log(type: .error, msg: "Failed to remove /var/jb: \(error.localizedDescription)") }
-                        }
-                        
-                        let ret = spawn(command: envInfo.helperPath, args: ["-d"], root: true)
-                        if (ret != 0) {
-                            return
-                        }
+                    if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
+                        do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
+                        catch { log(type: .error, msg: "Failed to remove /var/jb: \(error.localizedDescription)") }
                     }
+                    
+                    let ret = spawn(command: "/cores/binpack/sbin/shutdown", args: ["-r", "now"], root: true)
+                    if (ret != 0) {
+                        return
+                    }
+                    
                 })
                 viewController.present(alert, animated: true)
             default:

@@ -8,6 +8,8 @@
 
 import Foundation
 import Darwin.POSIX
+import Extras
+
 
 @discardableResult func spawn(command: String, args: [String], root: Bool = true) -> Int {
     var pipestdout: [Int32] = [0, 0]
@@ -152,6 +154,22 @@ import Darwin.POSIX
     
     if (args[1] == "-h") {
         envInfo.bmHash = "\(stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines))"
+    }
+    
+    if (args[1] == "palera1n_flags") {
+        let temp = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "0x", with: "")
+        log(msg: temp)
+        paleinfo.paleinfo.pinfo_flags = Int(temp)!
+        paleinfo.paleinfo.pinfo_flags_str = temp
+        envInfo.pinfoFlags = temp
+    }
+    
+    if (args[1] == "checkra1n_flags") {
+        let temp = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "0x", with: "")
+        log(msg: temp)
+        paleinfo.paleinfo.kinfo_flags = Int(temp)!
+        paleinfo.paleinfo.kinfo_flags_str = temp
+        envInfo.kinfoFlags = temp
     }
     
     return Int(status)

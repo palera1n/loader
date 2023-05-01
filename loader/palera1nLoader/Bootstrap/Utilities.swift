@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MachO
+import Extras
 
 class Utils {
     func strapCheck() -> (env: Int, jbFolder: String) {
@@ -49,6 +50,7 @@ class Utils {
         if value == 0 {
             return (0, "")
         } else {
+            envInfo.jbFolder = "\(directoryPath)/\(jbFolders[0])"
             return (value, "\(directoryPath)/\(jbFolders[0])") // TODO: this probably shouldnt always use 0
         }
     }
@@ -76,25 +78,21 @@ class Utils {
             envInfo.isSimulator = true
         #endif
         
-        /// root helper check
-        if let helper = Bundle.main.path(forAuxiliaryExecutable: "Helper") {
-            envInfo.hasHelper = true
-            envInfo.helperPath = helper
-        }
-       
         /// rootless/rootful check
-        envInfo.isRootful = helperCmd(["-f"]) == 0 ? false : true
+        envInfo.isRootful = paleinfo().checkRootful()
         envInfo.installPrefix = envInfo.isRootful ? "" : "/var/jb"
         
         /// force revert check
-        envInfo.hasForceReverted = helperCmd(["-n"]) == 0 ? false : true
+        envInfo.hasForceReverted = paleinfo().checkForceRevert()
 
         /// get paleinfo and kerninfo flags
-        helperCmd(["-g"])
-        helperCmd(["-q"])
+        paleinfo().getFlags()
         
         /// get bmhash
-        helperCmd(["-h"])
+                
+        envInfo.bmHash = paleinfo().get_bmhash()!
+        
+      
 
         /// is installed check
         if fileExists("/.procursus_strapped") || fileExists("/var/jb/.procursus_strapped") {
@@ -107,6 +105,7 @@ class Utils {
         
         /// jb-XXXXXXXX and /var/jb checks
         envInfo.envType = strapCheck().env
+        //envInfo.jbFolder = strapCheck().jbFolders[0]
         
         /// sileo installed check
         if (fileExists("/Applications/Sileo.app") || fileExists("/var/jb/Applications/Sileo.app") ||

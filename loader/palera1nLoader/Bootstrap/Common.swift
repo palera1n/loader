@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import LaunchServicesBridge
+import Extras
 import UIKit
 
 struct envInfo {
@@ -14,8 +14,6 @@ struct envInfo {
     static var isSimulator: Bool = false
     static var installPrefix: String = "unset"
     static var rebootAfter: Bool = true
-    static var hasHelper: Bool = false
-    static var helperPath: String = "unset"
     static var envType: Int = -1
     static var systemVersion: String = "unset"
     static var systemArch: String = "unset"
@@ -26,6 +24,7 @@ struct envInfo {
     static var hasChecked: Bool = false
     static var kinfoFlags: String = ""
     static var pinfoFlags: String = ""
+    static var jbFolder: String = ""
     static var CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
     static var bmHash: String = ""
     static var nav: UINavigationController = UINavigationController()
@@ -35,9 +34,6 @@ func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
 }
 
-@discardableResult func helperCmd(_ args: [String]) -> Int {
-    return spawn(command: envInfo.helperPath, args: args, root: true)
-}
 
 func fileExists(_ path: String) -> Bool {
     return FileManager.default.fileExists(atPath: path)
