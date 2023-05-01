@@ -299,11 +299,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }()
 
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
-        let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+        
+        // Add this to resize the table view when the device is rotated
+        view.addConstraints([
+            NSLayoutConstraint(item: tableView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1, constant: 0),
+        ])
     }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
