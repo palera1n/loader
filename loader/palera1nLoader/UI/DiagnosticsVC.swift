@@ -144,8 +144,29 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         return cell
     }
-
-
-
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case tableData.count - 1:
+            return """
+            © 2023, palera1n team
+            
+            Loader made by:
+            @flowerible (Samara), @staturnzz (staturnz)
+            """
+        case 1:
+            return """
+            \(local("PINFO_FLAGS")) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.
+            """
+        case 2:
+            return """
+            \(local("STRAP_INFO")): -1 == Simulator
+            \(local("STRAP_INFO")): 0 == \(local("ROOTFUL")) | !jb-*
+            \(local("STRAP_INFO")): 1 == /var/jb & jb-*
+            \(local("STRAP_INFO")): 2 == !/var/jb & jb-*
+            """
+        default:
+            return nil
+        }
+    }
 }
 

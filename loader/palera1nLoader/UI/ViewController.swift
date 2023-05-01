@@ -379,14 +379,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
-            if section == tableData.count - 1 {
-                return "universal_lite • 1.0 (\(revision))"
-            } else if section == 0 {
-                return local("PM_SUBTEXT")
-            }
+        guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
+            return nil
         }
-        return nil
+        switch section {
+        case tableData.count - 1:
+            return "universal_lite • 1.0 (\(revision))"
+        case 0:
+            return local("PM_SUBTEXT")
+        default:
+            return nil
+        }
     }
 
     // MARK: - Main table cells

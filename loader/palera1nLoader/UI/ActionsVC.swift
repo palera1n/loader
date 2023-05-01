@@ -167,6 +167,19 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case tableData.count - 1:
+            return "\"Mount Directories\" only attempts to mount root and preboot as read/write."
+        case tableData.count - 2:
+            return "Common utilities for palera1n, \"Enable Tweaks\" only tries to attempt to enable ElleKit or Substitute."
+        case tableData.count - 3:
+            return "When using palera1n on an iPad, theres cases where you would need to use these actions to open the installed applications as they don't appear on the homescreen."
+        default:
+            return nil
+        }
+    }
+    
     private func HideEnv(viewController: UIViewController) {
         if (!envInfo.isRootful) {
             let strapValue = envInfo.envType

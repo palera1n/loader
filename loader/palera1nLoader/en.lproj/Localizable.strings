@@ -91,7 +91,7 @@ English
 "HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
 
 "REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new :)";
+"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
 "REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
 "SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
 "ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
