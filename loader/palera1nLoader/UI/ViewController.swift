@@ -91,10 +91,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             bootstrap().installDebian(deb: path!, completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
-                                        let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
+                                        let alert = UIAlertController.error(title: local("DONE_INSTALL"), message: local("DONE_INSTALL_SUB"))
                                         self.present(alert, animated: true)
                                     } else {
-                                        let alert = UIAlertController.error(title: local("INSTALL_FAIL"), message: "Status: \(errorString(Int32(error!)))")
+                                        let alert = UIAlertController.error(title: local("ERROR_INSTALL"), message: "Status: \(errorString(Int32(error!)))")
                                         self.present(alert, animated: true)
                                     }
                                 }
@@ -180,7 +180,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                             paleinfo().set_pw(pw: alertController.textFields![0].text!)
                         
                                             alertController.dismiss(animated: true) {
-                                                let alert = UIAlertController.error(title: local("INSTALL_DONE"), message: local("INSTALL_DONE_SUB"))
+                                                let alert = UIAlertController.error(title: local("DONE_INSTALL"), message: local("DONE_INSTALL_SUB"))
                                                 self.present(alert, animated: true)
                                                 completion()
                                             }
@@ -372,7 +372,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         switch section {
         case tableData.count - 1:
-            return "universal_lite • 1.0 (\(revision))"
+            return "palera1n loader • 1.0 (\(revision))"
         case 0:
             return local("PM_SUBTEXT")
         default:

@@ -238,12 +238,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let alertController = whichAlert(title: local("UTIL_CELL"))
 
         let actions: [(title: String, imageName: String, handler: () -> Void)] = [
-            (title: local("RESPRING"), imageName: "arrow.clockwise.circle", handler: { spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)}),
-            (title: local("US_REBOOT"), imageName: "power.circle", handler: { spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)}),
-            (title: local("UICACHE"), imageName: "xmark.circle", handler: { spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)}),
-            (title: local("DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
-            (title: local("MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
-            (title: local("TWEAKS"), imageName: "iphone.circle", handler: {
+            (title: local("ACTION_RESPRING"), imageName: "arrow.clockwise.circle", handler: { spawn(command: "\(pre)/usr/bin/sbreload", args: [], root: true)}),
+            (title: local("ACTION_USREBOOT"), imageName: "power.circle", handler: { spawn(command: "\(pre)/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)}),
+            (title: local("ACTION_UICACHE"), imageName: "xmark.circle", handler: { spawn(command: "\(pre)/usr/bin/uicache", args: ["-a"], root: true)}),
+            (title: local("ACTION_DAEMONS"), imageName: "play.circle", handler: { spawn(command: "\(pre)/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)}),
+            (title: local("ACTION_MOUNT"), imageName: "folder.circle", handler: { spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true); spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true) }),
+            (title: local("ACTION_TWEAKS"), imageName: "iphone.circle", handler: {
                 if rootful {spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)}
                 else {spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)}
             })
@@ -396,20 +396,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_DPKG"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_UICACHE"), message: "Status: \(ret)")
             return
             
         }
         defaultSources(file, rootful)
         self.closeAllAlerts()
-        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
+        errAlert(title: local("DONE_INSTALL"), message: local("ENJOY"))
     }
             
     func bootstrap(_ pm: String,_ rootful: Bool) -> Void {
@@ -421,7 +421,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let ret = spawn(command: helper, args: ["-r"], root: true)
             if (ret != 0) {
                 self.closeAllAlerts()
-                errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+                errAlert(title: local("ERROR_STRAP"), message: "Status: \(ret)")
                 return
             }
         }
@@ -451,48 +451,48 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_STRAP"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/sh", args: ["\(inst_prefix)/prep_bootstrap.sh"], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("STRAP_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_STRAP"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", libkrw], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_DPKG"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_DPKG"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("DPKG_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_DPKG"), message: "Status: \(ret)")
             return
         }
         
         ret = spawn(command: "\(inst_prefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             self.closeAllAlerts()
-            errAlert(title: local("UICACHE_ERROR"), message: "Status: \(ret)")
+            errAlert(title: local("ERROR_UICACHE"), message: "Status: \(ret)")
             return
         }
 
         defaultSources(pm, rootful)
         self.closeAllAlerts()
-        errAlert(title: local("INSTALL_DONE"), message: local("ENJOY"))
+        errAlert(title: local("DONE_INSTALL"), message: local("ENJOY"))
     }
 
     
@@ -516,7 +516,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let ret = spawn(command: helper, args: ["-r"], root: true)
                 if ret != 0 {
-                    self.errAlert(title: local("REVERT_FAIL"), message: "Status: \(ret)")
+                    self.errAlert(title: local("ERROR_REVERT"), message: "Status: \(ret)")
                     print("[revert] Failed to remove jailbreak: \(ret)")
                     return
                 }
@@ -525,7 +525,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     spawn(command: helper, args: ["-d"], root: true)
                 } else {
                     self.closeAllAlerts()
-                    self.errAlert(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
+                    self.errAlert(title: local("DONE_REVERT"), message: local("CLOSE_APP"))
                 }
             }
         }

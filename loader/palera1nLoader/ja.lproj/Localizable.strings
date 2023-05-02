@@ -16,18 +16,18 @@ Japanese
 
 //Actions VC
 "HIDDEN" = "隠されたJailbreak環境を検出";
-"HIDE" = "Jailbreak環境を隠す";
+"ACTION_HIDEJB" = "Jailbreak環境を隠す";
 "OPEN_CELL" = "アプリケーションを開く";
 "OPENER_SILEO" = "Sileoを開く";
 "OPENER_ZEBRA" = "Zebraを開く";
 "OPENER_TH" = "TrollHelperを開く";
 "UTIL_CELL" = "ユーティリティ";
-"RESPRING" = "Respring";
-"US_REBOOT" = "Userspaceの再起動";
-"UICACHE" = "UICache";
-"DAEMONS" = "デーモンの起動";
-"MOUNT" = "ディレクトリの再マウント";
-"TWEAKS" = "Tweakの有効化";
+"ACTION_RESPRING" = "Respring";
+"ACTION_USREBOOT" = "Userspaceの再起動";
+"ACTION_UICACHE" = "UICache";
+"ACTION_DAEMONS" = "デーモンの起動";
+"ACTION_MOUNT" = "ディレクトリの再マウント";
+"ACTION_TWEAKS" = "Tweakの有効化";
 "FR_SWITCH" = "復元後の再起動";
 
 // Diags
@@ -69,10 +69,10 @@ Japanese
 "DOWNLOAD_FAIL" = "ファイルをダウンロードできませんでした";
 "DOWNLOAD_ERROR" = "不明なエラー";
 "SAVE_FAIL" = "ファイルをディスクにコピーできませんでした";
-"INSTALL_DONE" = "インストール完了";
-"INSTALL_FAIL" = "インストール失敗";
-"INSTALL_DONE_SUB" = "アプリを終了します。";
-"REVERT_DONE" = "削除完了";
+"DONE_INSTALL" = "インストール完了";
+"ERROR_INSTALL" = "インストール失敗";
+"DONE_INSTALL_SUB" = "アプリを終了します。";
+"DONE_REVERT" = "削除完了";
 "REMOVING" = "削除中...";
 
 "PASSWORD" = "Jailbreak後に「sudo」などのコマンドラインツールを使用するためには、terminalのパスコードを設定する必要があります。（空白にすることはできません）";
@@ -86,7 +86,7 @@ Japanese
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "jb-XXXXXXXXディレクトリは存在しますが、/var/jbにシンボリックリンクが存在しません。 この作業を続行すると、/var/jbに元のディレクトリに対するシンボリックリンクが再度作成されます。この作業を行った後、ユーティリティからuicacheを実行する必要がある場合があります。";
-"ROOTLESS_NOTICE" = "rootless jailbreakではない場合、このボタンは使用できません。";
+"NOTICE_ROOTLESS" = "rootless jailbreakではない場合、このボタンは使用できません。";
 
 "HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはuserspaceで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
 
@@ -101,11 +101,11 @@ Japanese
 "UNHID_ENV" = "環境を再表示";
 
 // errors
-"STRAP_ERROR" = "Bootstrapのインストールに失敗しました";
+"ERROR_STRAP" = "Bootstrapのインストールに失敗しました";
 "STATUS" = "ステータス";
-"DPKG_ERROR" = "パッケージのインストールに失敗しました";
-"UICACHE_ERROR" = "UICacheの実行に失敗しました";
-"SILEO_FAIL" = "Sileoのインストールに失敗しました";
-"ZEBRA_FAIL" = "Zebraのインストールに失敗しました";
-"UNREGISTER_FAIL" = "アプリケーションの登録解除に失敗しました。";
-"REVERT_FAIL" = "Jailbreak環境の削除に失敗しました。";
+"ERROR_DPKG" = "パッケージのインストールに失敗しました";
+"ERROR_UICACHE" = "UICacheの実行に失敗しました";
+"ERROR_SILEO" = "Sileoのインストールに失敗しました";
+"ERROR_ZEBRA" = "Zebraのインストールに失敗しました";
+"ERROR_UNREGISTER" = "アプリケーションの登録解除に失敗しました。";
+"ERROR_REVERT" = "Jailbreak環境の削除に失敗しました。";

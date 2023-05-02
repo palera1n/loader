@@ -34,7 +34,6 @@ func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
 }
 
-
 func fileExists(_ path: String) -> Bool {
     return FileManager.default.fileExists(atPath: path)
 }

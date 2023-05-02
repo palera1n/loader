@@ -11,13 +11,13 @@ import UIKit
 class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [local("FR_SWITCH"), local("HIDE")],
+        [local("FR_SWITCH"), local("ACTION_HIDEJB")],
         
         [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
         
-        [local("RESPRING"), local("UICACHE"), local("TWEAKS")],
+        [local("ACTION_RESPRING"), local("ACTION_UICACHE"), local("ACTION_TWEAKS")],
         
-        [local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
+        [local("ACTION_USREBOOT"), local("ACTION_DAEMONS"), local("ACTION_MOUNT")]
     ]
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,9 +31,9 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             tableData = [
                 [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
                 
-                [local("RESPRING"), local("UICACHE"), local("TWEAKS")],
+                [local("ACTION_RESPRING"), local("ACTION_UICACHE"), local("ACTION_TWEAKS")],
                 
-                [local("US_REBOOT"), local("DAEMONS"), local("MOUNT")]
+                [local("ACTION_USREBOOT"), local("ACTION_DAEMONS"), local("ACTION_MOUNT")]
             ]
             sectionTitles = ["OPENERS", "UTILITIES", ""]
         }
@@ -75,40 +75,40 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.accessoryView = switchControl
             cell.textLabel?.text = local("FR_SWITCH")
             cell.selectionStyle = .none
-        case local("HIDE"):
+        case local("ACTION_HIDEJB"):
             applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
-            cell.textLabel?.text = local("HIDE")
+            cell.textLabel?.text = local("ACTION_HIDEJB")
         case local("OPENER_SILEO"):
             applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
-            cell.textLabel?.text = "Open Sileo"
+            cell.textLabel?.text = local("OPENER_SILEO")
         case local("OPENER_ZEBRA"):
             applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
-            cell.textLabel?.text = "Open Zebra"
+            cell.textLabel?.text = local("OPENER_ZEBRA")
         case local("OPENER_TH"):
             applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
-            cell.textLabel?.text = "Open Trollhelper"
+            cell.textLabel?.text = local("OPENER_TH")
             
-        case local("RESPRING"):
+        case local("ACTION_RESPRING"):
             applySymbolModifications(to: cell, with: "arrow.counterclockwise.circle", backgroundColor: .systemBlue)
-            cell.textLabel?.text = local("RESPRING")
-        case local("UICACHE"):
+            cell.textLabel?.text = local("ACTION_RESPRING")
+        case local("ACTION_UICACHE"):
             applySymbolModifications(to: cell, with: "iphone.circle", backgroundColor: .systemPurple)
-            cell.textLabel?.text = local("UICACHE")
-        case local("TWEAKS"):
+            cell.textLabel?.text = local("ACTION_UICACHE")
+        case local("ACTION_TWEAKS"):
             applySymbolModifications(to: cell, with: "hammer.circle", backgroundColor: .systemPink)
-            cell.textLabel?.text = local("TWEAKS")
+            cell.textLabel?.text = local("ACTION_TWEAKS")
             
-        case local("US_REBOOT"):
+        case local("ACTION_USREBOOT"):
             applySymbolModifications(to: cell, with: "bolt.circle", backgroundColor: .systemOrange)
-            cell.textLabel?.text = local("US_REBOOT")
+            cell.textLabel?.text = local("ACTION_USREBOOT")
             cell.textLabel?.textColor = .systemOrange
-        case local("DAEMONS"):
+        case local("ACTION_DAEMONS"):
             applySymbolModifications(to: cell, with: "eject.circle", backgroundColor: .systemOrange)
-            cell.textLabel?.text = local("DAEMONS")
+            cell.textLabel?.text = local("ACTION_DAEMONS")
             cell.textLabel?.textColor = .systemOrange
-        case local("MOUNT"):
+        case local("ACTION_MOUNT"):
             applySymbolModifications(to: cell, with: "tray.circle", backgroundColor: .systemOrange)
-            cell.textLabel?.text = local("MOUNT")
+            cell.textLabel?.text = local("ACTION_MOUNT")
             cell.textLabel?.textColor = .systemOrange
         default:
             break
@@ -120,7 +120,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let prefix = envInfo.installPrefix
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case local("HIDE"):
+        case local("ACTION_HIDEJB"):
             HideEnv(viewController: self)
         case local("OPENER_SILEO"):
             if openApp("org.coolstar.SileoStore") {
@@ -137,11 +137,11 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 log(type: .info, msg: "Cannot open Trollhelper app")
             }
             
-        case local("RESPRING"):
+        case local("ACTION_RESPRING"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true)
-        case local("UICACHE"):
+        case local("ACTION_UICACHE"):
             spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"], root: true)
-        case local("TWEAKS"):
+        case local("ACTION_TWEAKS"):
             if envInfo.isRootful {
                 spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
                 spawn(command: "/etc/rc.d/ellekit-loader", args: [], root: true)
@@ -149,15 +149,15 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
             }
             
-        case local("US_REBOOT"):
+        case local("ACTION_USREBOOT"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"], root: true)
-        case local("DAEMONS"):
+        case local("ACTION_DAEMONS"):
             if envInfo.isRootful {
                 spawn(command: "/cores/binpack/bin/launchctl", args: ["bootstrap", "system", "/Library/LaunchDaemons"], root: true)
             } else {
                 spawn(command: "/cores/binpack/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
             }
-        case local("MOUNT"):
+        case local("ACTION_MOUNT"):
             spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
             spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
         default:
@@ -185,7 +185,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let strapValue = envInfo.envType
             switch strapValue {
             case 1:
-                let alert = UIAlertController.warning(title: local("HIDE"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
+                let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                     if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
                         do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
                         catch { log(type: .error, msg: "Failed to remove /var/jb: \(error.localizedDescription)") }
@@ -200,7 +200,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 viewController.present(alert, animated: true)
             default:
                 if (envInfo.isSimulator) {
-                    let alert = UIAlertController.warning(title: local("HIDE"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
+                    let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                     })
                     viewController.present(alert, animated: true)
                 } else {
@@ -209,7 +209,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
         } else {
-            let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: local("ROOTLESS_NOTICE"))
+            let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NOTICE_ROOTLESS"))
             viewController.present(errorAlert, animated: true)
             return
         }

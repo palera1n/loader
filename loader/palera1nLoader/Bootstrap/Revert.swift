@@ -75,7 +75,7 @@ class Revert {
             if (envInfo.rebootAfter) {
                 //helperCmd(["-d"])
             } else {
-                let errorAlert = UIAlertController.error(title: local("REVERT_DONE"), message: local("CLOSE_APP"))
+                let errorAlert = UIAlertController.error(title: local("DONE_REVERT"), message: local("CLOSE_APP"))
                 alert.dismiss(animated: true) {
                     viewController.present(errorAlert, animated: true)
                 }

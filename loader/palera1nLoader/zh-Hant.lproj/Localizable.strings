@@ -16,18 +16,18 @@ Chinese (Traditional)
 
 // ActionsVC
 "HIDDEN"="隱藏環境";
-"HIDE"="隱藏環境";
+"ACTION_HIDEJB"="隱藏環境";
 "OPEN_CELL" = "開啟器";
 "OPENER_SILEO" = "開啟 Sileo";
 "OPENER_ZEBRA" = "開啟 Zebra";
 "OPENER_TH" = "開啟 TrollHelper";
 "UTIL_CELL" = "工具";
-"RESPRING" = "重啟主畫面";
-"US_REBOOT" = "重啟用戶空間";
-"UICACHE" = "重建圖示快取";
-"DAEMONS" = "載入守護進程";
-"MOUNT" = "掛載資料夾";
-"TWEAKS" = "載入插件";
+"ACTION_RESPRING" = "重啟主畫面";
+"ACTION_USREBOOT" = "重啟用戶空間";
+"ACTION_UICACHE" = "重建圖示快取";
+"ACTION_DAEMONS" = "載入守護進程";
+"ACTION_MOUNT" = "掛載資料夾";
+"ACTION_TWEAKS" = "載入插件";
 "FR_SWITCH"="還原後重啟";
 
 // Diags
@@ -69,10 +69,10 @@ Chinese (Traditional)
 "DOWNLOAD_FAIL" = "無法下載檔案";
 "DOWNLOAD_ERROR" = "未知的錯誤";
 "SAVE_FAIL" = "無法把檔案複製到磁碟上";
-"INSTALL_DONE" = "安裝完成";
-"INSTALL_FAIL" = "安裝失敗";
-"INSTALL_DONE_SUB" = "你現在可以關閉此應用程式";
-"REVERT_DONE" = "完成移除";
+"DONE_INSTALL" = "安裝完成";
+"ERROR_INSTALL" = "安裝失敗";
+"DONE_INSTALL_SUB" = "你現在可以關閉此應用程式";
+"DONE_REVERT" = "完成移除";
 "REMOVING" = "移除中⋯⋯";
 
 "PASSWORD" = "要在越獄後使用「sudo」之類的命令列工具，你需要設置終端密碼。（這不能為空）";
@@ -86,7 +86,7 @@ Chinese (Traditional)
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE"="你的 jb-XXXXXXXX 資料夾仍然存在但\/var\/jb並不存在。這會把\/var\/jb重新符號連結到它本來的資料夾。之後你可能要在工具中更新圖示快取。";
-"ROOTLESS_NOTICE"="你不能在非無根越獄中使用這個按紐";
+"NOTICE_ROOTLESS"="你不能在非無根越獄中使用這個按紐";
 "HIDE_NOTICE"="繼續後會移除\/var\/jb符號連結並重啟用戶空間，當你重新開啟這個應用程式時，會提示重建符號連結，以還原你的環境。";
 
 "REVERT_SUBTEXT" = "這個按鈕不能在有根上使用";
@@ -100,11 +100,11 @@ Chinese (Traditional)
 "UNHID_ENV" = "取消隱藏環境";
 
 // errors
-"STRAP_ERROR" = "安裝底層越獄檔案時發生錯誤。";
+"ERROR_STRAP" = "安裝底層越獄檔案時發生錯誤。";
 "STATUS" = "狀態";
-"DPKG_ERROR" = "套件安裝失敗";
-"UICACHE_ERROR" = "重建圖示快取失敗";
-"SILEO_FAIL" = "安裝Sileo失敗";
-"ZEBRA_FAIL" = "安裝Zebra失敗";
-"UNREGISTER_FAIL" = "取消註冊失敗";
-"REVERT_FAIL" = "移除越獄失敗";
+"ERROR_DPKG" = "套件安裝失敗";
+"ERROR_UICACHE" = "重建圖示快取失敗";
+"ERROR_SILEO" = "安裝Sileo失敗";
+"ERROR_ZEBRA" = "安裝Zebra失敗";
+"ERROR_UNREGISTER" = "取消註冊失敗";
+"ERROR_REVERT" = "移除越獄失敗";

@@ -98,19 +98,19 @@ class bootstrap {
     func installDebian(deb: String, completion: @escaping (String?, Int?) -> Void) {
         var ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", deb], root: true)
         if (ret != 0) {
-            completion(local("DPKG_ERROR"), ret)
+            completion(local("ERROR_DPKG"), ret)
             return
         }
 
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
-            completion(local("UICACHE_ERROR"), ret)
+            completion(local("ERROR_UICACHE"), ret)
             return
         }
         
         defaultSources(for: URL(string: deb)!.lastPathComponent)
         cleanUp()
-        completion(local("INSTALL_DONE"), 0)
+        completion(local("DONE_INSTALL"), 0)
         return
     }
     
@@ -142,7 +142,7 @@ class bootstrap {
         deleteFile(file: "bootstrap.tar")
         var ret = spawn(command: "/cores/binpack/usr/bin/zstd", args: ["-d", tar, "-o", docsFile(file: "bootstrap.tar")], root: true)
         if (ret != 0) {
-            completion(local("STRAP_ERROR"), ret)
+            completion(local("ERROR_STRAP"), ret)
             return
         }
         
@@ -166,14 +166,14 @@ class bootstrap {
         }
         
         if (ret != 0) {
-            completion(local("STRAP_ERROR"), ret)
+            completion(local("ERROR_STRAP"), ret)
             return
         }
         
         // prep bootstrap
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/sh", args: ["\(envInfo.installPrefix)/prep_bootstrap.sh"], root: true)
         if (ret != 0) {
-            completion(local("STRAP_ERROR"), ret)
+            completion(local("ERROR_STRAP"), ret)
             return
         }
         
@@ -181,7 +181,7 @@ class bootstrap {
         let libkrwPath = docsFile(file: "libkrw0-tfp0.deb")
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", libkrwPath], root: true)
         if (ret != 0) {
-            completion(local("DPKG_ERROR"), ret)
+            completion(local("ERROR_DPKG"), ret)
             return
         }
         
@@ -189,14 +189,14 @@ class bootstrap {
         let debPath = docsFile(file: deb)
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/dpkg", args: ["-i", debPath], root: true)
         if (ret != 0) {
-            completion(local("DPKG_ERROR"), ret)
+            completion(local("ERROR_DPKG"), ret)
             return
         }
         
         if (!envInfo.isRootful) {
             ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/apt-get", args: ["install", "-f", "-y", "--allow-unauthenticated"], root: true)
             if (ret != 0) {
-                completion(local("DPKG_ERROR"), ret)
+                completion(local("ERROR_DPKG"), ret)
                 return
             }
         }
@@ -204,14 +204,14 @@ class bootstrap {
         // uicache
         ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
-            completion(local("UICACHE_ERROR"), ret)
+            completion(local("ERROR_UICACHE"), ret)
             return
         }
         
         // clean up
         defaultSources(for: URL(string: deb)!.lastPathComponent)
         cleanUp()
-        completion(local("INSTALL_DONE"), 0)
+        completion(local("DONE_INSTALL"), 0)
         return
     }
 }

@@ -65,7 +65,6 @@ class Utils {
             log(type: .error, msg: "Failed to create temp directories: \(error)")
         }
      
-        
         if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
             FileManager.default.createFile(atPath: "/var/tmp/palera1nloader/\(revision)", contents: nil)
         } else {
@@ -78,42 +77,39 @@ class Utils {
             envInfo.isSimulator = true
         #endif
         
-        /// rootless/rootful check
+        // rootless/rootful check
         envInfo.isRootful = paleinfo().checkRootful()
         envInfo.installPrefix = envInfo.isRootful ? "" : "/var/jb"
         
-        /// force revert check
+        // force revert check
         envInfo.hasForceReverted = paleinfo().checkForceRevert()
 
-        /// get paleinfo and kerninfo flags
+        // get paleinfo and kerninfo flags
         paleinfo().getFlags()
         
-        /// get bmhash
-                
+        // get bmhash
         envInfo.bmHash = paleinfo().get_bmhash()!
-        
-      
 
-        /// is installed check
+        // is installed check
         if fileExists("/.procursus_strapped") || fileExists("/var/jb/.procursus_strapped") {
             envInfo.isInstalled = true
         }
         
-        /// device info
+        // device info
         envInfo.systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
         envInfo.systemArch = String(cString: NXGetLocalArchInfo().pointee.name)
         
-        /// jb-XXXXXXXX and /var/jb checks
+        // jb-XXXXXXXX and /var/jb checks
         envInfo.envType = strapCheck().env
         //envInfo.jbFolder = strapCheck().jbFolders[0]
         
-        /// sileo installed check
+        // sileo installed check
         if (fileExists("/Applications/Sileo.app") || fileExists("/var/jb/Applications/Sileo.app") ||
             fileExists("/Applications/Sileo-Nightly.app") || fileExists("/var/jb/Applications/Sileo-Nightly.app")) {
             envInfo.sileoInstalled = true
         }
         
-        /// zebra installed check
+        // zebra installed check
         if (fileExists("/Applications/Zebra.app") || fileExists("/var/jb/Applications/Zebra.app")) {
             envInfo.zebraInstalled = true
         }

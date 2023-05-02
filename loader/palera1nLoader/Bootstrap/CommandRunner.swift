@@ -74,7 +74,7 @@ import Extras
 
     let mutex = DispatchSemaphore(value: 0)
 
-    let readQueue = DispatchQueue(label: "com.amywhile.pogo.command",
+    let readQueue = DispatchQueue(label: "in.palera.loader.command",
                                   qos: .userInitiated,
                                   attributes: .concurrent,
                                   autoreleaseFrequency: .inherit,

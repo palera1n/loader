@@ -16,18 +16,18 @@ English
 
 // ActionsVC
 "HIDDEN" = "Hidden Environment";
-"HIDE" = "Hide Environment";
+"ACTION_HIDEJB" = "Hide Environment";
 "OPEN_CELL" = "Openers";
 "OPENER_SILEO" = "Open Sileo";
 "OPENER_ZEBRA" = "Open Zebra";
 "OPENER_TH" = "Open TrollHelper";
 "UTIL_CELL" = "Utilities";
-"RESPRING" = "Respring";
-"US_REBOOT" = "Userspace Reboot";
-"UICACHE" = "UICache";
-"DAEMONS" = "Launch Daemons";
-"MOUNT" = "Mount Directories";
-"TWEAKS" = "Enable Tweaks";
+"ACTION_RESPRING" = "Respring";
+"ACTION_USREBOOT" = "Userspace Reboot";
+"ACTION_UICACHE" = "UICache";
+"ACTION_DAEMONS" = "Launch Daemons";
+"ACTION_MOUNT" = "Mount Directories";
+"ACTION_TWEAKS" = "Enable Tweaks";
 "FR_SWITCH" = "Reboot on revert";
 
 // Diags
@@ -69,10 +69,10 @@ English
 "DOWNLOAD_FAIL" = "Unable to fetch file";
 "DOWNLOAD_ERROR" = "Unknown error";
 "SAVE_FAIL" = "Could not copy file to disk";
-"INSTALL_DONE" = "Install Completed";
-"INSTALL_FAIL" = "Install Failed";
-"INSTALL_DONE_SUB" = "You may close the app.";
-"REVERT_DONE" = "Remove Completed";
+"DONE_INSTALL" = "Install Completed";
+"ERROR_INSTALL" = "Install Failed";
+"DONE_INSTALL_SUB" = "You may close the app.";
+"DONE_REVERT" = "Remove Completed";
 "REMOVING" = "Removing...";
 
 "PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
@@ -86,10 +86,8 @@ English
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"ROOTLESS_NOTICE" = "You may not use this button if you're on a non rootless jailbreak.";
-
+"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
 "HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-
 "REVERT_SUBTEXT" = "Rootful cannot use this button :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
 "REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
@@ -101,11 +99,11 @@ English
 "UNHID_ENV" = "Unhid the environment";
 
 // errors
-"STRAP_ERROR" = "Error installing bootstrap";
 "STATUS" = "Status";
-"DPKG_ERROR" = "Failed to install packages";
-"UICACHE_ERROR" = "Failed to run UICache";
-"SILEO_FAIL" = "Failed to install Sileo";
-"ZEBRA_FAIL" = "Failed to install Zebra";
-"UNREGISTER_FAIL" = "Failed to unregister";
-"REVERT_FAIL" = "Failed to remove jailbreak";
+"ERROR_STRAP" = "Error installing bootstrap";
+"ERROR_DPKG" = "Failed to install packages";
+"ERROR_UICACHE" = "Failed to run UICache";
+"ERROR_SILEO" = "Failed to install Sileo";
+"ERROR_ZEBRA" = "Failed to install Zebra";
+"ERROR_UNREGISTER" = "Failed to unregister";
+"ERROR_REVERT" = "Failed to remove jailbreak";
