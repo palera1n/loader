@@ -29,35 +29,11 @@ class Revert {
                       "/var/dropbear_rsa_host_key","/var/tmp/palera1nloader/downloads",
                       "/var/tmp/palera1nloader/temp","/var/tmp/xyz.willy.Zebra"]
         
-        let excludePrefs = [
-            ".GlobalPreferences.plist",".GlobalPreferences_m.plist","bluetoothaudiod.plist",
-            "NetworkInterfaces.plist","OSThermalStatus.plist","preferences.plist",
-            "osanalyticshelper.plist","UserEventAgent.plist","wifid.plist","dprivacyd.plist",
-            "silhouette.plist","nfcd.plist","kNPProgressTrackerDomain.plist",
-            "siriknowledged.plist","UITextInputContextIdentifiers.plist","mobile_storage_proxy.plist",
-            "splashboardd.plist","mobile_installation_proxy.plist","languageassetd.plist","ptpcamerad.plist",
-            "com.google.gmp.measurement.monitor.plist","com.google.gmp.measurement.plist"
-        ]
-        
         for path in remove {
             if (fileExists(path)) {
                 log(type: .info, msg: "Removing directory: /var/mobile/Library/Preferences/\(path)")
                 self.bp_rm(path)
             }
-        }
-        
-        do {
-            let files = try FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/Preferences")
-            for file in files {
-                if (file.hasPrefix("com.apple.") || file.hasPrefix("systemgroup.com.apple.") || file.hasPrefix("group.com.apple.") || excludePrefs.contains(file)) {
-                    log(type: .info, msg: "Skipping file: /var/mobile/Library/Preferences/\(file)")
-                } else {
-                    log(type: .info, msg: "Removing file: /var/mobile/Library/Preferences/\(file)")
-                    self.bp_rm(file)
-                }
-            }
-        } catch {
-            log(type: .error, msg: "Failed to retrieve contents of directory: \(error.localizedDescription)")
         }
     }
     
