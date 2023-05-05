@@ -27,11 +27,11 @@ class Revert {
                       "/var/mobile/Library/Application Support/xyz.willy.Zebra",
                       "/var/mobile/Library/Cydia","/var/mobile/Library/Sileo",
                       "/var/dropbear_rsa_host_key","/var/tmp/palera1nloader/downloads",
-                      "/var/tmp/palera1nloader/temp","/var/tmp/xyz.willy.Zebra"]
+                      "/var/tmp/palera1nloader/temp"]
         
         for path in remove {
             if (fileExists(path)) {
-                log(type: .info, msg: "Removing directory: /var/mobile/Library/Preferences/\(path)")
+                log(type: .info, msg: "Removing directory: \(path)")
                 self.bp_rm(path)
             }
         }
