@@ -33,11 +33,11 @@ class paleinfo {
     }
     
     func checkRootful() -> Bool {
-        return (paleinfo.kinfo_flags & checkrain_option_force_revert) != 0;
+        return (paleinfo.pinfo_flags & palerain_option_rootful) != 0;
     }
     
     func checkForceRevert() -> Bool {
-        return (paleinfo.pinfo_flags & palerain_option_rootful) != 0;
+        return (paleinfo.kinfo_flags & checkrain_option_force_revert) != 0;
     }
     
     func getFlags() -> Void {
