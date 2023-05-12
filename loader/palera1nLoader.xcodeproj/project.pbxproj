@@ -13,9 +13,6 @@
 		4501473829FC1AEB0001834C /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4501473729FC1AEB0001834C /* Logging.swift */; };
 		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
 		452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A308629ECAF9900EB8CAC /* Utilities.swift */; };
-		4544B50029FFB506006DDCB4 /* Revert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4544B4FF29FFB506006DDCB4 /* Revert.swift */; };
-		45C2C1DB29FFC3340082B97D /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45538ABA29FAEA2B000EE412 /* IOKit.framework */; };
-		45C2C1DF29FFC6010082B97D /* paleinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C2C1DE29FFC6010082B97D /* paleinfo.swift */; };
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
@@ -32,11 +29,8 @@
 		4501473729FC1AEB0001834C /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
 		452A308629ECAF9900EB8CAC /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		4544B4FF29FFB506006DDCB4 /* Revert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revert.swift; sourceTree = "<group>"; };
-		45538ABA29FAEA2B000EE412 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOKit.framework; sourceTree = "<group>"; };
 		45B0E7C029FCCB2400B64489 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		45B0E7C529FCCBD100B64489 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		45C2C1DE29FFC6010082B97D /* paleinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paleinfo.swift; sourceTree = "<group>"; };
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -56,7 +50,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45C2C1DB29FFC3340082B97D /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,23 +70,20 @@
 		3313A75729ECE2710021665E /* Bootstrap */ = {
 			isa = PBXGroup;
 			children = (
-				45E7E0F229E4EC5B0057741A /* Common.swift */,
-				452A308629ECAF9900EB8CAC /* Utilities.swift */,
 				4509BACB29E7970300D36328 /* Bootstrap.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
-				4501473729FC1AEB0001834C /* Logging.swift */,
-				4544B4FF29FFB506006DDCB4 /* Revert.swift */,
 			);
 			path = Bootstrap;
 			sourceTree = "<group>";
 		};
-		45C2C1D529FFC2190082B97D /* Other */ = {
+		450911252A0D91210087F26A /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				45538ABA29FAEA2B000EE412 /* IOKit.framework */,
-				45C2C1DE29FFC6010082B97D /* paleinfo.swift */,
+				45E7E0F229E4EC5B0057741A /* Common.swift */,
+				4501473729FC1AEB0001834C /* Logging.swift */,
+				452A308629ECAF9900EB8CAC /* Utilities.swift */,
 			);
-			path = Other;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		CED0FB0029DC8DC100106BEF /* Frameworks */ = {
@@ -130,7 +120,7 @@
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
-				45C2C1D529FFC2190082B97D /* Other */,
+				450911252A0D91210087F26A /* Common */,
 				3313A75629ECE2690021665E /* UI */,
 				3313A75729ECE2710021665E /* Bootstrap */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
@@ -219,7 +209,6 @@
 				33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */,
 				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
-				45C2C1DF29FFC6010082B97D /* paleinfo.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
@@ -227,7 +216,6 @@
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */,
-				4544B50029FFB506006DDCB4 /* Revert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +389,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/palera1nLoader/Required",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -449,7 +437,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/palera1nLoader/Required",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

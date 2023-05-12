@@ -24,6 +24,8 @@ struct envInfo {
     static var hasChecked: Bool = false
     static var kinfoFlags: String = ""
     static var pinfoFlags: String = ""
+    static var kinfoFlagsStr: String = ""
+    static var pinfoFlagsStr: String = ""
     static var jbFolder: String = ""
     static var CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
     static var bmHash: String = ""
@@ -53,7 +55,7 @@ func whichAlert(title: String, message: String? = nil) -> UIAlertController {
     return UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 }
 
-func openApp(_ bundle: String) -> Bool {
+@discardableResult func openApp(_ bundle: String) -> Bool {
     return LSApplicationWorkspace.default().openApplication(withBundleID: bundle)
 }
 
@@ -61,6 +63,14 @@ func deleteFile(file: String) -> Void {
    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
    let fileURL = documentsURL.appendingPathComponent(file)
    try? FileManager.default.removeItem(at: fileURL)
+}
+
+@discardableResult func helper(args: [String]) -> Int {
+   return spawn(command: "/var/mobile/Library/palera1n/helper", args: args, root: true)
+}
+
+@discardableResult func bp_ln(_ src: String,_ dest: String) -> Int {
+    return spawn(command: "/cores/binpack/bin/ln", args: ["-s", src, dest], root: true)
 }
 
 // image mods

@@ -20,7 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     ]
     
     let sectionTitles = [local("INSTALL"), local("DEBUG")]
-    
+
     func downloadFile(url: URL, forceBar: Bool = false, output: String? = nil, completion: @escaping (String?, Error?) -> Void) {
         let tempDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         //URL(string: "/var/tmp/palera1nloader/downloads/")!
@@ -40,9 +40,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     if response.statusCode == 200 {
                         if let data = data {
                             if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic) {
-                                try? FileManager.default.moveItem(at: destinationUrl, to: URL(string: "/var/tmp/palera1nloader/downloads\(url.lastPathComponent)" )!)
-                                completion(destinationUrl.path, error)
-                                log(type: .info, msg: "Saved to: \(destinationUrl.path)")
+                                spawn(command: "/cores/binpack/bin/mv", args: [destinationUrl.path, "/var/mobile/Library/palera1n/downloads/\(destinationUrl.lastPathComponent)"])
+                                completion("/var/mobile/Library/palera1n/downloads/\(destinationUrl.lastPathComponent)", error)
+                                log(type: .info, msg: "Saved to: /var/mobile/Library/palera1n/downloads/\(destinationUrl.lastPathComponent)")
                             } else {
                                 completion(destinationUrl.path, error)
                                 log(type: .error, msg: "Failed to save file at: \(destinationUrl.path)")
@@ -115,43 +115,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         present(downloadAlert, animated: true)
 
         let bootstrapUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://apt.procurs.us/bootstraps/\(envInfo.CF)")!
-        let pkgmgrUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://apt.procurs.us/pool/main/iphoneos-arm64-rootless/\(envInfo.CF)")!
-        let pkgmgrFallbackUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
-
+        let pkgmgrUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
         let bootstrapDownload: URL?
-        let regexBundle = file == "sileo" ? #""org.*""# : #""xyz.*""#
         
-        if (!envInfo.isRootful) {
-            bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-ssh-iphoneos-arm64.tar.zst")
-            let libkrw = URL(string: "https://apt.procurs.us/pool/main/iphoneos-arm64-rootless/\(envInfo.CF)/libkrw")
-            
-            downloadFile(url: libkrw!, completion:{(path:String?, error:Error?) in
-                let fileContents = try? String(contentsOfFile: path!)
-                if let range = fileContents!.range(of: #""libkrw0-tfp0.*""#, options: .regularExpression) {
-                    let filename = compactString(String(fileContents![range]))
-                    let libkrwDownload = libkrw!.appendingPathComponent(filename)
-                    self.downloadFile(url: libkrwDownload, output: "libkrw0-tfp0.deb", completion:{(path:String?, error:Error?) in })
+        if (!envInfo.isRootful) {bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-ssh-iphoneos-arm64.tar.zst")
+        } else {bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-\(envInfo.CF).tar.zst")}
+        
+        downloadFile(url: pkgmgrUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in
+            if (error != nil) {
+                DispatchQueue.main.async {
+                    downloadAlert.dismiss(animated: true) {
+                        let alert = UIAlertController.error(title: "Download Failed", message: error.debugDescription)
+                        self.present(alert, animated: true)
+                    }
                 }
-            })
-            
-            downloadFile(url: pkgmgrUrl.appendingPathComponent(file), completion:{(path:String?, error:Error?) in
-                let fileContents = try? String(contentsOfFile: path!)
-                if let range = fileContents!.range(of: regexBundle, options: .regularExpression) {
-                    let filename = compactString(String(fileContents![range]))
-                    let pgkmgrDownload = pkgmgrUrl.appendingPathComponent("\(file)/\(filename)")
-                    self.downloadFile(url: pgkmgrDownload, output: "\(file).deb", completion:{(path:String?, error:Error?) in
-                        if (error != nil) {
-                            self.downloadFile(url: pkgmgrFallbackUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in})
-                        }
-                    })
-                }
-            })
-        } else {
-            bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-\(envInfo.CF).tar.zst")
-            let libkrw0Url = URL(string: "https://static.palera.in/libkrw0-tfp0.deb")
-            downloadFile(url: libkrw0Url!, output: "libkrw0-tfp0.deb", completion:{(path:String?, error:Error?) in })
-            self.downloadFile(url: pkgmgrFallbackUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in})
-        }
+            }
+        })
 
         self.downloadFile(url: bootstrapDownload!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
@@ -177,7 +156,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                         }
 
                                         let setPassword = UIAlertAction(title: local("SET"), style: .default) { _ in
-                                            paleinfo().set_pw(pw: alertController.textFields![0].text!)
+                                            helper(args: ["-P", alertController.textFields![0].text!])
                         
                                             alertController.dismiss(animated: true) {
                                                 let alert = UIAlertController.error(title: local("DONE_INSTALL"), message: local("DONE_INSTALL_SUB"))
@@ -223,23 +202,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         envInfo.nav = navigationController!
-        if (!envInfo.isRootful && envInfo.envType == 2) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                let alert = UIAlertController.warning(title: local("HIDDEN"), message: local("HIDDEN_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
-                    let procursus = "\(Utils().strapCheck().jbFolder)/procursus"
-                    let ret = bootstrap().bp_ln(procursus, "/var/jb")
-                    
-                    if (ret == 0) {
-                        spawn(command: "/var/jb/usr/bin/launchctl", args: ["reboot", "userspace"], root: true)
-                    } else {
-                        let errStr = String(cString: strerror(Int32(ret)))
-                        let alert = UIAlertController.error(title: "Failed to link", message: errStr)
-                        self.present(alert, animated: true)
-                    }
-                })
-                self.present(alert, animated: true)
-            }
-        }
     }
     
     override func viewDidLoad() {
@@ -372,7 +334,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         switch section {
         case tableData.count - 1:
-            return "palera1n loader • 1.0 (\(revision))"
+            return "palera1n loader • 1.1 (\(revision))"
         case 0:
             return local("PM_SUBTEXT")
         default:
@@ -393,7 +355,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("REVERT_CELL"):
             let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in Revert().revert(viewController: self) }
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in revert(viewController: self) }
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
             present(alertController, animated: true, completion: nil)

@@ -56,39 +56,48 @@ class Utils {
     }
     
     func createLoaderDirs() -> Void {
-        if (fileExists("/var/mobile/tmp/palera1nloader")) { rmdir("/var/mobile/tmp/palera1nloader") }
-        do {
-            try FileManager.default.createDirectory(atPath: "/var/tmp/palera1nloader/temp", withIntermediateDirectories: true)
-            try FileManager.default.createDirectory(atPath: "/var/tmp/palera1nloader/downloads", withIntermediateDirectories: true)
-            try FileManager.default.createDirectory(atPath: "/var/tmp/palera1nloader/logs", withIntermediateDirectories: true)
-        } catch {
-            log(type: .error, msg: "Failed to create temp directories: \(error)")
+        if (!fileExists("/var/mobile/Library/palera1n")) {
+            do {
+                try FileManager.default.createDirectory(atPath: "/var/mobile/Library/", withIntermediateDirectories: true)
+                try FileManager.default.createDirectory(atPath: "/var/mobile/Library/palera1n/temp", withIntermediateDirectories: true)
+                try FileManager.default.createDirectory(atPath: "/var/mobile/Library/palera1n/downloads", withIntermediateDirectories: true)
+                try FileManager.default.createDirectory(atPath: "/var/mobile/Library/palera1n/logs", withIntermediateDirectories: true)
+            } catch {
+                log(type: .error, msg: "Failed to create temp directories: \(error)")
+            }
         }
      
         if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
-            FileManager.default.createFile(atPath: "/var/tmp/palera1nloader/\(revision)", contents: nil)
+            FileManager.default.createFile(atPath: "/var/mobile/Library/palera1n/.revision-\(revision)", contents: nil)
         } else {
             log(type: .error, msg: "Failed to find revision string")
         }
     }
     
     func prerequisiteChecks() -> Void {
+        createHelperLink()
         #if targetEnvironment(simulator)
             envInfo.isSimulator = true
         #endif
         
         // rootless/rootful check
-        envInfo.isRootful = paleinfo().checkRootful()
+        envInfo.isRootful = true
+        print(Bool(truncating: helper(args: ["-t"]) as NSNumber))
+        print(helper(args: ["-t"]) as NSNumber)
+
         envInfo.installPrefix = envInfo.isRootful ? "" : "/var/jb"
         
         // force revert check
-        envInfo.hasForceReverted = paleinfo().checkForceRevert()
+        envInfo.hasForceReverted = Bool(truncating: helper(args: ["-f"]) as NSNumber)
 
         // get paleinfo and kerninfo flags
-        paleinfo().getFlags()
+        helper(args: ["-k"])
+        helper(args: ["-p"])
+        helper(args: ["-S"])
+        helper(args: ["-s"])
         
         // get bmhash
-        envInfo.bmHash = paleinfo().get_bmhash()!
+        helper(args: ["-b"])
 
         // is installed check
         if fileExists("/.procursus_strapped") || fileExists("/var/jb/.procursus_strapped") {
@@ -128,5 +137,57 @@ class Utils {
         log(msg: "pinfo: \(envInfo.pinfoFlags)")
         log(msg: "CoreFoundation: \(envInfo.CF)")
         log(msg: "Hash: \(envInfo.bmHash)")
+    }
+}
+
+func revert(viewController: UIViewController) -> Void {
+    if !envInfo.isRootful {
+        let alert = UIAlertController.spinnerAlert("REMOVING")
+        viewController.present(alert, animated: true)
+        helper(args: ["-R"])
+
+        if (envInfo.rebootAfter) {
+            helper(args: ["-r"])
+        } else {
+            let errorAlert = UIAlertController.error(title: local("DONE_REVERT"), message: local("CLOSE_APP"))
+            alert.dismiss(animated: true) {
+                viewController.present(errorAlert, animated: true)
+            }
+        }
+    }
+}
+ 
+func createHelperLink(){
+    let path = "/var/mobile/Library/palera1n/helper"
+    if (fileExists("/cores/jbloader")) {
+        if (fileExists(path)) {
+            log(type: .info, msg: "helper symlink already exists.")
+        } else {
+            let ret = bp_ln("/cores/jbloader", path)
+            if (ret != 0) { log(type: .fatal, msg: "Failed to create helper symlink.") }
+            chmod(path, 0755)
+        }
+    } else {
+        log(type: .fatal, msg: "Failed to find jbloader")
+    }
+}
+
+func openTrollHelper() -> Void {
+    if !openApp("com.opa334.trollstorepersistencehelper") {
+        let fm = FileManager.default
+        let contents = try! fm.contentsOfDirectory(atPath: "/var/containers/Bundle/Application")
+        for uuid in contents {
+            do {
+                let contentsuuid = try fm.contentsOfDirectory(atPath: "/var/containers/Bundle/Application/\(uuid)")
+                let appFolder = contentsuuid.filter { $0.hasSuffix("app") }
+                for app in appFolder {
+                    if (fileExists("/var/containers/Bundle/Application/\(uuid)/\(app)/trollstorehelper") && app != "TrollStore.app") {
+                        openApp(Bundle(path: "/var/containers/Bundle/Application/\(uuid)/\(app)")!.bundleIdentifier!)
+                    }
+                }
+            } catch {
+                log(type: .fatal, msg: "Failed to get contents of directory: \(error.localizedDescription)")
+            }
+        }
     }
 }

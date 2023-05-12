@@ -54,6 +54,12 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             var filePath = ""
             var menuOptions = [copyAction]
             
+            var sys_info = utsname()
+            uname(&sys_info)
+            let model = withUnsafePointer(to: &sys_info.machine){$0.withMemoryRebound(to: CChar.self, capacity: 1){ptr in String.init(validatingUTF8: ptr)}}
+            let kernel = withUnsafePointer(to: &sys_info.release){$0.withMemoryRebound(to: CChar.self, capacity: 1){ptr in String.init(validatingUTF8: ptr)}}
+            print(floor(kCFCoreFoundationVersionNumber))
+    
             let openInFilza = UIAction(title: local("OPEN_FILZA"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
                 UIApplication.shared.open(URL(string: "filza://\(filePath)")!, options: [:], completionHandler: { (success) in })
             }
@@ -68,6 +74,12 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
                 filePath = (tableView.cellForRow(at: indexPath)?.detailTextLabel?.text)!
                 return UIMenu(title: title, image: nil, identifier: nil, options: [], children: menuOptions)
+            } else if (indexPath.section == 1 && indexPath.row == 2 || indexPath.section == 1 && indexPath.row == 3) {
+                let flags = indexPath.row == 2 ? envInfo.kinfoFlagsStr : envInfo.pinfoFlagsStr
+                return UIMenu(title: flags, image: nil, identifier: nil, options: [], children: [copyAction])
+            } else if (indexPath.section == 0 && indexPath.row == 0) {
+                let info_title = "Device Model: \(model!)\nKernel Version: \(kernel!)\nCoreFoundation: \(floor(kCFCoreFoundationVersionNumber))"
+                return UIMenu(title: info_title, image: nil, identifier: nil, options: [], children: [copyAction])
             } else {
                 return UIMenu(image: nil, identifier: nil, options: [], children: [copyAction])
             }

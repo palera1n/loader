@@ -133,10 +133,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 log(type: .info, msg: "Cannot open Zebra app")
             }
         case local("OPENER_TH"):
-            if !openApp("com.opa334.trollstorepersistencehelper") {
-                log(type: .info, msg: "Cannot open Trollhelper app")
-            }
-            
+            openTrollHelper()
         case local("ACTION_RESPRING"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true)
         case local("ACTION_UICACHE"):

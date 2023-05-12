@@ -57,9 +57,9 @@ import Extras
     var pid: pid_t = 0
     let spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], proenv + [nil])
     if spawnStatus != 0 {
-        let noLog = ["-f","-n","-g","-q","-h"]
+        let noLog = ["-p","-P","-k","-b","-t","-f"]
         if (args.count > 1) {
-            if (!noLog.contains(args[1])) {
+            if (!noLog.contains(args[1]) && args[0] != "mv") {
                 log(type: .error, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n")
             }
         }
@@ -140,38 +140,49 @@ import Extras
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    let noLog = ["-f","-n","-g","-q","-h","-p"]
-    if (!noLog.contains(args[1])) {
+    let noLog = ["-p","-k","-b","-t","-f","-P","-s","-S"]
+    if (!noLog.contains(args[1]) && args[0] != "mv") {
         log(type: .info, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n\tStdout: \(stdoutStr)\n\tStderr: \(stderrStr)\n")
     }
-    if (args[1] == "-g") {
-        envInfo.pinfoFlags = "\(stdoutStr)".trimmingCharacters(in: .newlines)
+    if (args[1] == "-p") {
+        let str = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
+        let pflags_dec = Int(str)!
+        let pflags_hex = String(pflags_dec, radix: 16)
+        envInfo.pinfoFlags = "0x\(pflags_hex) (\(str))"
     }
     
-    if (args[1] == "-q") {
-        envInfo.kinfoFlags = "\(stdoutStr)".trimmingCharacters(in: .newlines)
+    if (args[1] == "-k") {
+        let str = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
+        let kflags_dec = Int(str)!
+        let kflags_hex = String(kflags_dec, radix: 16)
+        envInfo.kinfoFlags = "0x\(kflags_hex) (\(str))"
     }
     
-    if (args[1] == "-h") {
+    if (args[1] == "-s") {
+        let flags = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
+        let flags_list = flags.replacingOccurrences(of: ",", with: "\n")
+        envInfo.pinfoFlagsStr = String(flags_list.dropLast())
+    }
+    
+    if (args[1] == "-S") {
+        let flags = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
+        let flags_list = flags.replacingOccurrences(of: ",", with: "\n")
+        envInfo.kinfoFlagsStr = String(flags_list.dropLast())
+    }
+    
+    if (args[1] == "-f") {
+        let temp = "\(stdoutStr)".trimmingCharacters(in: .newlines)
+        envInfo.hasForceReverted = Int(temp) == 1 ? true : false
+    }
+    
+    if (args[1] == "-t") {
+        let temp = "\(stdoutStr)".trimmingCharacters(in: .newlines)
+        envInfo.isRootful = Int(temp) == 1 ? true : false
+    }
+    
+    if (args[1] == "-b") {
         envInfo.bmHash = "\(stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines))"
     }
     
-    if (args[1] == "palera1n_flags") {
-        let temp = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "0x", with: "")
-        log(msg: temp)
-        paleinfo.paleinfo.pinfo_flags = Int(temp)!
-        paleinfo.paleinfo.pinfo_flags_str = temp
-        envInfo.pinfoFlags = temp
-    }
-    
-    if (args[1] == "checkra1n_flags") {
-        let temp = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "0x", with: "")
-        log(msg: temp)
-        paleinfo.paleinfo.kinfo_flags = Int(temp)!
-        paleinfo.paleinfo.kinfo_flags_str = temp
-        envInfo.kinfoFlags = temp
-    }
-    
     return Int(status)
-    
 }
