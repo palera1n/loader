@@ -28,6 +28,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
+        
         view.addSubview(tableView)
     }
     
@@ -150,6 +151,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case tableData.count - 1:

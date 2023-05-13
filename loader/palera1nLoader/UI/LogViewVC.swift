@@ -17,6 +17,9 @@ class LogViewer: UIViewController {
         
         let textView = UITextView()
         self.navigationItem.title = "Logs"
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         textView.backgroundColor = .systemBackground
         textView.textContainerInset = UIEdgeInsets(top: self.navigationController!.navigationBar.frame.size.height - 25, left: 5, bottom: 8, right: 5)
@@ -48,18 +51,9 @@ class LogViewer: UIViewController {
             }
         }
         
-        let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeButtonTapped(_:)))
-        self.navigationItem.leftBarButtonItem = closeButton
-        
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))
         self.navigationItem.rightBarButtonItem = shareButton
         self.isModalInPresentation = true
-    }
-    
-    @objc func closeButtonTapped(_ sender: UIBarButtonItem) {
-        bootstrap().cleanUp()
-        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
     }
     
     @objc func shareButtonTapped(_ sender: UIBarButtonItem) {

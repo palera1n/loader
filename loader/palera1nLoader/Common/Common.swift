@@ -132,6 +132,8 @@ extension UIAlertController {
                 log(type: .info, msg: "Opening Log View")
                 let LogViewVC = LogViewer()
                 let navController = UINavigationController(rootViewController: LogViewVC)
+                let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeapp))
+                LogViewVC.navigationItem.leftBarButtonItem = closeButton
                 navController.modalPresentationStyle = .formSheet
                 envInfo.nav.present(navController, animated: true, completion: nil)
             }
@@ -140,7 +142,14 @@ extension UIAlertController {
         generator.notificationOccurred(.error)
         return alertController
     }
-    
+
+    @objc func closeapp() {
+        bootstrap().cleanUp()
+        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
+    }
+
+
     static func downloading(_ msg: String.LocalizationValue) -> UIAlertController {
         let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
         let constraintHeight = NSLayoutConstraint(item: alertController.view!, attribute: NSLayoutConstraint.Attribute.height,

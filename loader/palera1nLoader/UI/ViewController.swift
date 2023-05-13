@@ -202,6 +202,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         envInfo.nav = navigationController!
+        
+        if !fileExists("/var/mobile/Library/palera1n/helper") {
+            #if targetEnvironment(simulator)
+            #else
+            let alert = UIAlertController.error(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
+            self.present(alert, animated: true)
+            return
+            #endif
+        }
+
+        if fileExists("/var/mobile/Library/palera1n/helper") && envInfo.hasForceReverted {
+            let alert = UIAlertController.error(title: "Unable to continue", message: "Reboot the device manually after using --force-revert, jailbreak again to be able to bootstrap.")
+            self.present(alert, animated: true)
+        }
     }
     
     override func viewDidLoad() {
@@ -212,44 +226,39 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        let customView: UIView = {
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-            view.translatesAutoresizingMaskIntoConstraints = false
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        customView.translatesAutoresizingMaskIntoConstraints = false
 
-            let button: UIButton = {
-                let button = UIButton(type: .custom)
-                button.translatesAutoresizingMaskIntoConstraints = false
-                button.widthAnchor.constraint(equalToConstant: 25).isActive = true
-                button.heightAnchor.constraint(equalToConstant: 25).isActive = true
-                button.layer.cornerRadius = 6
-                button.clipsToBounds = true
-                button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
-                button.layer.borderWidth = 0.7
-                button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-                return button
-            }()
-            view.addSubview(button)
-            
-            let titleLabel: UILabel = {
-                let label = UILabel()
-                label.translatesAutoresizingMaskIntoConstraints = false
-                label.text = "palera1n"
-                label.font = UIFont.boldSystemFont(ofSize: 17)
-                return label
-            }()
-            view.addSubview(titleLabel)
-            
-            NSLayoutConstraint.activate([
-                button.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8),
-                titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-            ])
-            
-            return view
-        }()
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        button.layer.cornerRadius = 6
+        button.clipsToBounds = true
+        button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
+        button.layer.borderWidth = 0.7
+        button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        customView.addSubview(button)
 
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "palera1n"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        customView.addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            button.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            button.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8),
+            titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
+        ])
+
+        // Add triple tap gesture recognizer to navigation bar
+        let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
+        tripleTapGestureRecognizer.numberOfTapsRequired = 3
+        navigationController?.navigationBar.addGestureRecognizer(tripleTapGestureRecognizer)
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
+
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
@@ -262,7 +271,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1, constant: 0),
         ])
     }
-
+    
+    @objc func tripleTapDebug(sender: UIButton) {
+            let debugVC = DebugVC()
+            let navController = UINavigationController(rootViewController: debugVC)
+            navController.modalPresentationStyle = .formSheet
+            present(navController, animated: true, completion: nil)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }

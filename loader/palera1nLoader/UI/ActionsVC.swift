@@ -11,8 +11,6 @@ import UIKit
 class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [local("FR_SWITCH"), local("ACTION_HIDEJB")],
-        
         [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
         
         [local("ACTION_RESPRING"), local("ACTION_UICACHE"), local("ACTION_TWEAKS")],
@@ -25,19 +23,8 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         envInfo.nav = navigationController!
     }
   
-    var sectionTitles = ["", "OPENERS", "UTILITIES", ""]
+    var sectionTitles = ["OPENERS", "UTILITIES", ""]
     override func viewDidLoad() {
-        if (envInfo.isRootful) {
-            tableData = [
-                [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
-                
-                [local("ACTION_RESPRING"), local("ACTION_UICACHE"), local("ACTION_TWEAKS")],
-                
-                [local("ACTION_USREBOOT"), local("ACTION_DAEMONS"), local("ACTION_MOUNT")]
-            ]
-            sectionTitles = ["OPENERS", "UTILITIES", ""]
-        }
-        
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.title = local("ACTIONS")
@@ -67,17 +54,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .default
         
         switch tableData[indexPath.section][indexPath.row] {
-        case local("FR_SWITCH"):
-            applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
-            let switchControl = UISwitch()
-            switchControl.isOn = envInfo.rebootAfter
-            switchControl.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
-            cell.accessoryView = switchControl
-            cell.textLabel?.text = local("FR_SWITCH")
-            cell.selectionStyle = .none
-        case local("ACTION_HIDEJB"):
-            applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
-            cell.textLabel?.text = local("ACTION_HIDEJB")
         case local("OPENER_SILEO"):
             applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = local("OPENER_SILEO")
@@ -120,8 +96,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let prefix = envInfo.installPrefix
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case local("ACTION_HIDEJB"):
-            HideEnv(viewController: self)
         case local("OPENER_SILEO"):
             if openApp("org.coolstar.SileoStore") {
             } else if openApp("org.coolstar.SileoNightly") {
@@ -175,43 +149,5 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         default:
             return nil
         }
-    }
-    
-    private func HideEnv(viewController: UIViewController) {
-        if (!envInfo.isRootful) {
-            let strapValue = envInfo.envType
-            switch strapValue {
-            case 1:
-                let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
-                    if (!envInfo.isRootful && FileManager.default.fileExists(atPath: "/var/jb")) {
-                        do { try FileManager.default.removeItem(at: URL(fileURLWithPath: "/var/jb")) }
-                        catch { log(type: .error, msg: "Failed to remove /var/jb: \(error.localizedDescription)") }
-                    }
-                    
-                    let ret = spawn(command: "/cores/binpack/sbin/shutdown", args: ["-r", "now"], root: true)
-                    if (ret != 0) {
-                        return
-                    }
-                    
-                })
-                viewController.present(alert, animated: true)
-            default:
-                if (envInfo.isSimulator) {
-                    let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
-                    })
-                    viewController.present(alert, animated: true)
-                } else {
-                    let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: "\(local("STRAP_INFO")) \(strapValue)")
-                    viewController.present(errorAlert, animated: true)
-                }
-            }
-        } else {
-            let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NOTICE_ROOTLESS"))
-            viewController.present(errorAlert, animated: true)
-            return
-        }
-    }
-    @objc func switchToggled(_ sender: UISwitch) {
-        envInfo.rebootAfter.toggle()
     }
 }
