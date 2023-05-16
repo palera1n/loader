@@ -3,8 +3,8 @@ Localizable.strings
 palera1nLoader
 English
 */
-
 // ViewController Cells
+
 "INSTALL" = "Install";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
