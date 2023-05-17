@@ -11,8 +11,6 @@ import UIKit
 class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     var tableData = [
-        ["Flags (paleinfo)", "Set p1 Flags"],
-        ["Flags (kerninfo)", "Set kerninfo Flags"],
         ["View Logs"],
         ["Clean fakefs", "Enter safemode", "Exit safemode"],
         [local("FR_SWITCH")]
@@ -20,7 +18,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     var customMessage: String?
     
-    var sectionTitles = ["", "", "", "OPTIONS", ""]
+    var sectionTitles = ["", "OPTIONS", ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +34,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         view.addSubview(tableView)
     }
     @objc func closeSheet() {
@@ -71,7 +70,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             cell.textLabel?.text = local("FR_SWITCH")
             cell.selectionStyle = .none
         case "Clean fakefs":
-            applySymbolModifications(to: cell, with: "eraser.fill", backgroundColor: .systemRed)
+            applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
             cell.textLabel?.text = "Clean fakefs"
         case "Enter safemode":
             applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
@@ -79,32 +78,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         case "Exit safemode":
             applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
             cell.textLabel?.text = "Exit safemode"
-        case "Flags (paleinfo)":
-            let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
-            textField.placeholder = "Enter custom flags"
-            textField.borderStyle = .roundedRect
-            textField.backgroundColor = UIColor.systemGray6
-            textField.delegate = self
-            cell.accessoryView = textField
-            
-            cell.textLabel?.text = "paleinfo"
-        case "Set p1 Flags":
-            cell.textLabel?.text = "Set paleinfo flags"
-            cell.textLabel?.textColor = .systemBlue
         case "View Logs":
             cell.textLabel?.text = "View Logs"
-            cell.textLabel?.textColor = .systemBlue
-        case "Flags (kerninfo)":
-            let textField = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
-            textField.placeholder = "Enter custom flags"
-            textField.borderStyle = .roundedRect
-            textField.backgroundColor = UIColor.systemGray6
-            textField.delegate = self
-            cell.accessoryView = textField
-            
-            cell.textLabel?.text = "kerninfo"
-        case "Set kerninfo Flags":
-            cell.textLabel?.text = "Set kerninfo flags"
             cell.textLabel?.textColor = .systemBlue
         default:
             break
@@ -126,10 +101,6 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             log(type: .info, msg: "Exit SM")
         case "Clean fakefs":
             log(type: .info, msg: "Pressed fakefs")
-        case "Set p1 Flags":
-            print("Custom message: \(customMessage ?? "")")
-        case "Set kerninfo Flags":
-            print("Custom message: \(customMessage ?? "")")
         default:
             break
         }

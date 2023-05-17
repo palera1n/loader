@@ -26,6 +26,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.title = local("DIAGNOSTICS")
         
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         tableView.delegate = self
         tableView.dataSource = self
         
