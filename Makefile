@@ -51,7 +51,7 @@ ifeq ($(TIPA),1)
 	@7zz a -mx=9 packages/$(NAME).tipa Payload
 else
 	#@zip -r9 packages/$(NAME).ipa Payload
-	@7zz a -mx=9 packages/$(NAME).tipa Payload
+	@7zz a -mx=9 packages/$(NAME).ipa Payload
 endif
 ifneq ($(NO_DMG),1)
 	@hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
