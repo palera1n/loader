@@ -228,12 +228,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         view.addSubview(blurView)
-        tableView.frame = self.view.frame
-        tableView.backgroundColor = UIColor.clear
+
+        tableView.backgroundColor = .clear
+        tableView.separatorColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorColor = UIColor.clear
-        self.view.addSubview(tableView)
+        view.addSubview(tableView)
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         
         toolbar = UIToolbar()
@@ -249,38 +249,46 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
+        // Tools button
         let button = UIButton(type: .system)
         button.setTitle("Actions", for: .normal)
+
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor { (traitCollection) -> UIColor in
+            .foregroundColor: UIColor { traitCollection in
                 return traitCollection.userInterfaceStyle == .dark ? .white : .black
             },
             .font: UIFont.systemFont(ofSize: 17, weight: .semibold)
         ]
         let attributedTitle = NSMutableAttributedString(string: "Tools", attributes: titleAttributes)
+
         let chevronImageConfig = UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold)
         let chevronImage = UIImage(systemName: "chevron.down.circle.fill", withConfiguration: chevronImageConfig)?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
         let chevronAttachment = NSTextAttachment()
         chevronAttachment.image = chevronImage
         let chevronAttributedString = NSAttributedString(attachment: chevronAttachment)
-        let spacing = NSAttributedString(string: " ", attributes: nil)
+
+        let spacing = NSAttributedString(string: " ")
         attributedTitle.append(spacing)
         attributedTitle.append(chevronAttributedString)
+
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(actionsButtonTapped), for: .touchUpInside)
-        let actionsButton = UIBarButtonItem(customView: button)
 
+        //tools bar
+        let actionsButton = UIBarButtonItem(customView: button)
         let item1 = UIBarButtonItem(image: UIImage(systemName: "list.bullet.rectangle"), style: .plain, target: self, action: #selector(item1Tapped))
         let item2 = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(item2Tapped))
-        
         toolbar.items = [item1, flexibleSpace, actionsButton, flexibleSpace, item2]
-        
+                
         //view
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
+        let leadingConstant: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 150 : 0 // Adjust as desired
+        let trailingConstant: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? -150 : 0 // Adjust as desired
+
         NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: leadingConstant),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingConstant),
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])

@@ -28,8 +28,8 @@ class CreditsViewController: UIViewController {
         listView.contentInset = UIEdgeInsets(top: -25, left: 0, bottom: 40, right: 0)
         
         NSLayoutConstraint.activate([
-            listView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            listView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            listView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            listView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             listView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             listView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
