@@ -13,18 +13,29 @@ class CreditsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Credits"
-        let listView = UITableView(frame: view.bounds, style: .insetGrouped)
+        
+        let listView = UITableView(frame: .zero, style: .insetGrouped)
         listView.dataSource = self
         listView.delegate = self
         listView.register(PersonCell.self, forCellReuseIdentifier: "PersonCell")
         view.addSubview(listView)
-        
+
         people = CreditsData.getCreditsData()
         
-        listView.contentInset = UIEdgeInsets (top: -25, left: 0, bottom: 40, right: 0)
-        listView.reloadData()
+        //view
+        view.backgroundColor = UIColor.systemGray6
+        listView.translatesAutoresizingMaskIntoConstraints = false
+        listView.contentInset = UIEdgeInsets(top: -25, left: 0, bottom: 40, right: 0)
+        
+        NSLayoutConstraint.activate([
+            listView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            listView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            listView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            listView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
+
 
 extension CreditsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {

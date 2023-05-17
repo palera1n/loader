@@ -23,11 +23,22 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.title = local("DIAGNOSTICS")
         
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
-        tableView.contentInset = UIEdgeInsets (top: -25, left: 0, bottom: 40, right: 0)
         tableView.delegate = self
         tableView.dataSource = self
         
         view.addSubview(tableView)
+        
+        //view
+        view.backgroundColor = UIColor.systemGray6
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.contentInset = UIEdgeInsets(top: -25, left: 0, bottom: 40, right: 0)
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
