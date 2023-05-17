@@ -299,7 +299,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             v.frame = view.bounds
             v.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             return v
-        }()
+    }()
     
     @objc func actionsButtonTapped() {
         let actionVC = ActionsVC()

@@ -1,5 +1,6 @@
 TARGET_CODESIGN = $(shell which ldid)
 GIT_REV=$(shell git rev-parse --short HEAD)
+STRIP = xcrun -sdk iphoneos strip
 
 ifeq ($(IOS),1)
 	PLATFORM = iphoneos
@@ -34,19 +35,23 @@ package:
 	@echo $(P1_TMP)
 	@echo $(P1_STAGE_DIR)
 
-	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app/
-	
+	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app/$(NAME)
+	@$(STRIP) $(P1_STAGE_DIR)/Payload/$(NAME).app/$(NAME)
+ifneq ($(FINAL),1)
+	/usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier in.palera.loaderdebug" "$(P1_STAGE_DIR)/Payload/$(NAME).app/Info.plist"
+	/usr/libexec/PlistBuddy -c "Set :CFBundleDisplayName 'palera1n (debug)'" "$(P1_STAGE_DIR)/Payload/$(NAME).app/Info.plist"
+endif
 	@rm -rf $(P1_STAGE_DIR)/Payload/$(NAME).app/_CodeSignature
 	@ln -sf $(P1_STAGE_DIR)/Payload Payload
 	@rm -rf packages
 	@mkdir -p packages
 
 ifeq ($(TIPA),1)
-	@zip -r9 packages/$(NAME).tipa Payload
-	#@7zz a -mx=9 packages/$(NAME).tipa Payload
+	#@zip -r9 packages/$(NAME).tipa Payload
+	@7zz a -mx=9 packages/$(NAME).tipa Payload
 else
-	@zip -r9 packages/$(NAME).ipa Payload
-	#@7zz a -mx=9 packages/$(NAME).tipa Payload
+	#@zip -r9 packages/$(NAME).ipa Payload
+	@7zz a -mx=9 packages/$(NAME).tipa Payload
 endif
 ifneq ($(NO_DMG),1)
 	@hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
