@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "laMqxYhl_400x400.png",
-      "idiom" : "universal"
+      "filename" : "Sileo_logo.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

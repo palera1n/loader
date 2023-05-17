@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Zebra-package-manager-icon.png",
-      "idiom" : "universal"
+      "filename" : "zeeb.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

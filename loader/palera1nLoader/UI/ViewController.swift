@@ -14,7 +14,13 @@ var observation: NSKeyValueObservation?
 var progressDownload: UIProgressView = UIProgressView(progressViewStyle: .default)
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var tableData = [
+        [local("SILEO"), local("ZEBRA")],
+        [local("ACTIONS"), local("DIAGNOSTICS"), local("REVERT_CELL")]
+    ]
     
+    let sectionTitles = [local("INSTALL"), local("DEBUG")]
+
     func downloadFile(url: URL, forceBar: Bool = false, output: String? = nil, completion: @escaping (String?, Error?) -> Void) {
         let tempDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         //URL(string: "/var/tmp/palera1nloader/downloads/")!
@@ -23,7 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if (output != nil) {
             destinationUrl = tempDir.appendingPathComponent(output!)
         }
-        
+
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -65,7 +71,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         task.resume()
     }
-    
+
     func installDebFile(file: String) {
         UIApplication.shared.isIdleTimerDisabled = true
         let title: String.LocalizationValue = file == "sileo.deb" ? "DL_SILEO" : "DL_ZEBRA"
@@ -107,7 +113,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         UIApplication.shared.isIdleTimerDisabled = true
         let downloadAlert = UIAlertController.downloading("DL_STRAP")
         present(downloadAlert, animated: true)
-        
+
         let bootstrapUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://apt.procurs.us/bootstraps/\(envInfo.CF)")!
         let pkgmgrUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
         let bootstrapDownload: URL?
@@ -125,7 +131,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         })
-        
+
         self.downloadFile(url: bootstrapDownload!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
@@ -142,16 +148,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                             password.isSecureTextEntry = true
                                             password.keyboardType = UIKeyboardType.asciiCapable
                                         }
-                                        
+
                                         alertController.addTextField() { (repeatPassword) in
                                             repeatPassword.placeholder = local("PASSWORD_REPEAT")
                                             repeatPassword.isSecureTextEntry = true
                                             repeatPassword.keyboardType = UIKeyboardType.asciiCapable
                                         }
-                                        
+
                                         let setPassword = UIAlertAction(title: local("SET"), style: .default) { _ in
                                             helper(args: ["-P", alertController.textFields![0].text!])
-                                            
+                        
                                             alertController.dismiss(animated: true) {
                                                 let alert = UIAlertController.error(title: local("DONE_INSTALL"), message: local("DONE_INSTALL_SUB"))
                                                 self.present(alert, animated: true)
@@ -160,7 +166,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                         }
                                         setPassword.isEnabled = false
                                         alertController.addAction(setPassword)
-                                        
+
                                         NotificationCenter.default.addObserver(
                                             forName: UITextField.textDidChangeNotification,
                                             object: nil,
@@ -192,181 +198,184 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         })
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         envInfo.nav = navigationController!
         
         if !fileExists("/var/mobile/Library/palera1n/helper") {
-#if targetEnvironment(simulator)
-#else
+            #if targetEnvironment(simulator)
+            #else
             let alert = UIAlertController.error(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
             self.present(alert, animated: true)
             return
-#endif
+            #endif
         }
-        
+
         if fileExists("/var/mobile/Library/palera1n/helper") && envInfo.hasForceReverted {
             let alert = UIAlertController.error(title: "Unable to continue", message: "Reboot the device manually after using --force-revert, jailbreak again to be able to bootstrap.")
             self.present(alert, animated: true)
         }
     }
     
-    var tableView = UITableView()
-    var userArr = [UserModal]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         if (!envInfo.hasChecked) { Utils().prerequisiteChecks() }
-        
-        navigationItem.title = "palera1n"
-        var toolbar: UIToolbar!
-        
-        if !(envInfo.envType == 2) {
-            userArr.append(UserModal(titleImg:  #imageLiteral(resourceName: "Sileo_logo"), titleLabel: "Sileo", subTitleLabel: "Modern package manager"))
-            userArr.append(UserModal(titleImg:  #imageLiteral(resourceName: "Zebra_logo"), titleLabel: "Zebra", subTitleLabel: "Familiar package manager"))
-        }
-        
-        view.addSubview(blurView)
 
-        tableView.backgroundColor = .clear
-        tableView.separatorColor = .clear
+        let appearance = UINavigationBarAppearance()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        customView.translatesAutoresizingMaskIntoConstraints = false
+
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        button.layer.cornerRadius = 6
+        button.clipsToBounds = true
+        button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
+        button.layer.borderWidth = 0.7
+        button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
+        customView.addSubview(button)
+
+        let titleLabel = UILabel()
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.text = "palera1n"
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        customView.addSubview(titleLabel)
+
+        NSLayoutConstraint.activate([
+            button.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
+            button.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8),
+            titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
+        ])
+
+        // Add triple tap gesture recognizer to navigation bar
+        let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
+        tripleTapGestureRecognizer.numberOfTapsRequired = 3
+        navigationController?.navigationBar.addGestureRecognizer(tripleTapGestureRecognizer)
+        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
+
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        toolbar = UIToolbar()
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(toolbar)
-        
-        NSLayoutConstraint.activate([
-            toolbar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            toolbar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            toolbar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            toolbar.heightAnchor.constraint(equalToConstant: 44)
-        ])
-
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        // Tools button
-        let button = UIButton(type: .system)
-        button.setTitle("Actions", for: .normal)
-
-        let titleAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor { traitCollection in
-                return traitCollection.userInterfaceStyle == .dark ? .white : .black
-            },
-            .font: UIFont.systemFont(ofSize: 17, weight: .semibold)
-        ]
-        let attributedTitle = NSMutableAttributedString(string: "Tools", attributes: titleAttributes)
-
-        let chevronImageConfig = UIImage.SymbolConfiguration(pointSize: 14, weight: .semibold)
-        let chevronImage = UIImage(systemName: "chevron.down.circle.fill", withConfiguration: chevronImageConfig)?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
-        let chevronAttachment = NSTextAttachment()
-        chevronAttachment.image = chevronImage
-        let chevronAttributedString = NSAttributedString(attachment: chevronAttachment)
-
-        let spacing = NSAttributedString(string: " ")
-        attributedTitle.append(spacing)
-        attributedTitle.append(chevronAttributedString)
-
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(actionsButtonTapped), for: .touchUpInside)
-
-        //tools bar
-        let actionsButton = UIBarButtonItem(customView: button)
-        let item1 = UIBarButtonItem(image: UIImage(systemName: "list.bullet.rectangle"), style: .plain, target: self, action: #selector(item1Tapped))
-        let item2 = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(item2Tapped))
-        toolbar.items = [item1, flexibleSpace, actionsButton, flexibleSpace, item2]
-                
-        //view
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let leadingConstant: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 150 : 0 // Adjust as desired
-        let trailingConstant: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? -150 : 0 // Adjust as desired
-
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: leadingConstant),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: trailingConstant),
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        // Add this to resize the table view when the device is rotated
+        view.addConstraints([
+            NSLayoutConstraint(item: tableView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: 0),
+            NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1, constant: 0),
         ])
     }
     
-    private lazy var blurView: UIVisualEffectView = {
-            let v = UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
-            v.frame = view.bounds
-            v.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            return v
-    }()
-    
-    @objc func actionsButtonTapped() {
-        let actionVC = ActionsVC()
-        let navController = UINavigationController(rootViewController: actionVC)
-        navController.modalPresentationStyle = .pageSheet
-        if let sheet = navController.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-
-            let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(closeButtonTapped))
-            actionVC.navigationItem.rightBarButtonItem = closeButton
-        }
-        present(navController, animated: true, completion: nil)
-    }
-
-    @objc func closeButtonTapped() {
-        dismiss(animated: true, completion: nil)
-    }
-
-    @objc func item1Tapped() {
-        let diagsVC = DiagnosticsVC()
-        let navController = UINavigationController(rootViewController: diagsVC)
-        navController.modalPresentationStyle = .pageSheet
-        if let sheet = navController.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-
-            let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(closeButtonTapped))
-            diagsVC.navigationItem.rightBarButtonItem = closeButton
-        }
-        present(navController, animated: true, completion: nil)
+    @objc func tripleTapDebug(sender: UIButton) {
+            let debugVC = DebugVC()
+            let navController = UINavigationController(rootViewController: debugVC)
+            navController.modalPresentationStyle = .formSheet
+            present(navController, animated: true, completion: nil)
     }
     
-    @objc func item2Tapped() {
-        let creditsVC = CreditsViewController()
-        let navController = UINavigationController(rootViewController: creditsVC)
-        navController.modalPresentationStyle = .pageSheet
-        if let sheet = navController.sheetPresentationController {
-            sheet.detents = [.medium(), .large()]
-
-            let closeButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(closeButtonTapped))
-            creditsVC.navigationItem.rightBarButtonItem = closeButton
-        }
-        present(navController, animated: true, completion: nil)
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionTitles.count
     }
     
-    // MARK: - Main table cells
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userArr.count
+        return tableData[section].count
     }
     
+    // MARK: - Viewtable for Sileo/Zebra/Revert/Etc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CustomTableViewCell else {fatalError("Unable to create cell")}
-        cell.titleImg.image = userArr[indexPath.row].titleImg
-        cell.titleLabel.text = userArr[indexPath.row].titleLabel
-        cell.subTitleLabel.text = userArr[indexPath.row].subTitleLabel
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.textLabel?.text = tableData[indexPath.section][indexPath.row]
         
+        switch tableData[indexPath.section][indexPath.row] {
+        case local("REVERT_CELL"):
+            if envInfo.isRootful {
+                let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+                cell.isUserInteractionEnabled = false
+                cell.textLabel?.textColor = .gray
+                cell.imageView?.alpha = 0.4
+                cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
+            } else if !envInfo.isRootful {
+                let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+                cell.isUserInteractionEnabled = isProcursusStrapped
+                cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
+                cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
+                cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
+            } else {
+                cell.isUserInteractionEnabled = false
+            }
+            applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+        case local("SILEO"):
+            applyImageModifications(to: cell, with: UIImage(named: "Sileo_logo")!)
+            if (envInfo.envType == 2) {
+                cell.isUserInteractionEnabled = false
+            } else {
+                cell.isUserInteractionEnabled = true
+            }
+            cell.accessoryType = .disclosureIndicator
+        case local("ZEBRA"):
+            applyImageModifications(to: cell, with: UIImage(named: "Zebra_logo")!)
+            if (envInfo.envType == 2) {
+                cell.isUserInteractionEnabled = false
+            } else {
+                cell.isUserInteractionEnabled = true
+            }
+            cell.accessoryType = .disclosureIndicator
+        case local("DIAGNOSTICS"):
+            applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
+            cell.isUserInteractionEnabled = true
+            cell.accessoryType = .disclosureIndicator
+        case local("ACTIONS"):
+            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
+            cell.isUserInteractionEnabled = true
+            cell.accessoryType = .disclosureIndicator
+        default:
+            break
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 105
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitles[section]
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
+            return nil
+        }
+        switch section {
+        case tableData.count - 1:
+            return "palera1n loader • 1.1 (\(revision))"
+        case 0:
+            return local("PM_SUBTEXT")
+        default:
+            return nil
+        }
+    }
+
+    // MARK: - Main table cells
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = userArr[indexPath.row]
-        
-        switch selectedItem {
-        case let item where item.titleLabel == "Sileo":
+        let itemTapped = tableData[indexPath.section][indexPath.row]
+        switch itemTapped {
+        case local("DIAGNOSTICS"):
+            let diagnosticsVC = DiagnosticsVC()
+            navigationController?.pushViewController(diagnosticsVC, animated: true)
+        case local("ACTIONS"):
+            let actionsVC = ActionsVC()
+            navigationController?.pushViewController(actionsVC, animated: true)
+        case local("REVERT_CELL"):
+            let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in revert(viewController: self) }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion: nil)
+        case local("SILEO"):
             if (envInfo.sileoInstalled) {
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("SILEO_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
@@ -388,12 +397,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             } else {
                 self.installStrap(file: "sileo", completion: { })
             }
-        case let item where item.titleLabel == "Zebra":
+        case local("ZEBRA"):
             if (envInfo.zebraInstalled) {
                 let alertController = whichAlert(title: local("CONFIRM"), message: local("ZEBRA_REINSTALL"))
                 let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
                 let confirmAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                    self.installDebFile(file: "zebra.deb")
+                     self.installDebFile(file: "zebra.deb")
                 }
                 alertController.addAction(cancelAction)
                 alertController.addAction(confirmAction)
@@ -411,17 +420,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.installStrap(file: "zebra", completion: { })
             }
         default:
-            fatalError()
+            break
         }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-extension UIBlurEffect.Style {
-    private static var effectAndName: [UIBlurEffect.Style: String] {[
-        .systemThinMaterial: "systemThinMaterial"
-    ]}
-    
-    static var effects: [UIBlurEffect.Style] { Array(UIBlurEffect.Style.effectAndName.keys) }
-    
-    var name: String { UIBlurEffect.Style.effectAndName[self, default: "unknown"] }
 }

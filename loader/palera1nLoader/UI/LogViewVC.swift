@@ -17,7 +17,6 @@ class LogViewer: UIViewController {
         
         let textView = UITextView()
         self.navigationItem.title = "Logs"
-        
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -33,16 +32,11 @@ class LogViewer: UIViewController {
         view.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         
-        //view
-        view.backgroundColor = UIColor.systemGray6
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.contentInset = UIEdgeInsets(top: -25, left: 0, bottom: 40, right: 0)
-        
         NSLayoutConstraint.activate([
-            textView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            textView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            textView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            textView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            textView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
         do {
@@ -60,11 +54,6 @@ class LogViewer: UIViewController {
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))
         self.navigationItem.rightBarButtonItem = shareButton
         self.isModalInPresentation = true
-        
-        view.addConstraints([
-            NSLayoutConstraint(item: textView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1, constant: 0),
-        ])
     }
     
     @objc func shareButtonTapped(_ sender: UIBarButtonItem) {
