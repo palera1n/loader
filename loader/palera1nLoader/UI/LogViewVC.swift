@@ -17,9 +17,6 @@ class LogViewer: UIViewController {
         
         let textView = UITextView()
         self.navigationItem.title = "Logs"
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         textView.backgroundColor = .systemBackground
         textView.textContainerInset = UIEdgeInsets(top: self.navigationController!.navigationBar.frame.size.height - 25, left: 5, bottom: 8, right: 5)

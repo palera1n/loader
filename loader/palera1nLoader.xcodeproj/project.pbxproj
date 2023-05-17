@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		33A420D92A0ED59D005AE29C /* DebugVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A420D82A0ED59D005AE29C /* DebugVC.swift */; };
+		33DD098A2A1413F8003B35EB /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD09892A1413F8003B35EB /* CustomTableViewCell.swift */; };
+		33DD098C2A1447F5003B35EB /* CreditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD098B2A1447F5003B35EB /* CreditsVC.swift */; };
 		33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */; };
 		33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */; };
 		33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DB029F4F03A00D2770A /* LogViewVC.swift */; };
@@ -24,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		33A420D82A0ED59D005AE29C /* DebugVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugVC.swift; sourceTree = "<group>"; };
+		33DD09892A1413F8003B35EB /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		33DD098B2A1447F5003B35EB /* CreditsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsVC.swift; sourceTree = "<group>"; };
 		33DE13AA29DCAD7800DF3D5E /* External */ = {isa = PBXFileReference; lastKnownFileType = folder; path = External; sourceTree = "<group>"; };
 		33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsVC.swift; sourceTree = "<group>"; };
 		33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsVC.swift; sourceTree = "<group>"; };
@@ -61,11 +65,13 @@
 		3313A75629ECE2690021665E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				33DD09892A1413F8003B35EB /* CustomTableViewCell.swift */,
 				E181BADD28CF914300CD25A6 /* ViewController.swift */,
 				33E15DB029F4F03A00D2770A /* LogViewVC.swift */,
 				33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */,
 				33E15DAE29F4E6CA00D2770A /* ActionsVC.swift */,
 				33A420D82A0ED59D005AE29C /* DebugVC.swift */,
+				33DD098B2A1447F5003B35EB /* CreditsVC.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -212,8 +218,10 @@
 				33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */,
 				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
+				33DD098C2A1447F5003B35EB /* CreditsVC.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
+				33DD098A2A1413F8003B35EB /* CustomTableViewCell.swift in Sources */,
 				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
 				33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,

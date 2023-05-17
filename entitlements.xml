@@ -14,18 +14,26 @@
 	<true/>
 	<key>com.apple.private.skip-library-validation</key>
 	<true/>
-	<key>com.apple.security.iokit-user-client-class</key>
-	<array>
-		<string>IOSurfaceRootUserClient</string>
-		<string>AGXDeviceUserClient</string>
-	</array>
-	<key>com.apple.security.exception.files.absolute-path.read-write</key>
-	<array>
-		<string>/</string>
-	</array>
-	<key>get-task-allow</key>
+    <key>com.apple.security.iokit-user-client-class</key>
+    <array>
+        <string>IOSurfaceRootUserClient</string>
+        <string>AGXDeviceUserClient</string>
+    </array>
+    <key>com.apple.security.exception.files.absolute-path.read-write</key>
+    <array>
+        <string>/</string>
+    </array>
+    <key>get-task-allow</key>
     <true/>
-	<key>com.apple.AutoWake-write-access</key>
-	<true/>
+    <key>com.apple.AutoWake-write-access</key>
+    <true/>
+    <key>com.apple.springboard.wallpaper-access</key>
+    <true/>
+    <key>com.apple.features.all-access</key>
+    <true/>
+    <key>com.apple.springboard.appbackgroundstyle</key>
+    <true/>
+    <key>com.apple.springboard.wallpaperAnimationSuspension</key>
+    <true/>
 </dict>
 </plist>

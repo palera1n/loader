@@ -11,21 +11,19 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     var tableData = [
         [local("VERSION_INFO"), local("ARCH_INFO")],
-        
         [local("TYPE_INFO"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
-        
         [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH")],
-                
         [local("SILEO_INSTALLED"), local("ZEBRA_INSTALLED")]
     ]
     
-    let sectionTitles = ["", "PALERA1N", local("STRAP_INFO"), local("INSTALL_INFO")]
+    let sectionTitles = ["", "", "", ""]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.title = local("DIAGNOSTICS")
         
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        tableView.contentInset = UIEdgeInsets (top: -25, left: 0, bottom: 40, right: 0)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -153,14 +151,12 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
+                    return nil
+                }
         switch section {
         case tableData.count - 1:
-            return """
-            © 2023, palera1n team
-            
-            Loader made by:
-            @flowerible (Samara) & staturnz
-            """
+            return "Loader • 1.1 (\(revision))"
         case 1:
             return """
             \(local("PINFO_FLAGS")) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.

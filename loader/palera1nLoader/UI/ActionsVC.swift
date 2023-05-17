@@ -11,10 +11,8 @@ import UIKit
 class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
-        
         [local("ACTION_RESPRING"), local("ACTION_UICACHE"), local("ACTION_TWEAKS")],
-        
+        [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
         [local("ACTION_USREBOOT"), local("ACTION_DAEMONS"), local("ACTION_MOUNT")]
     ]
     
@@ -23,16 +21,25 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         envInfo.nav = navigationController!
     }
   
-    var sectionTitles = ["OPENERS", "UTILITIES", ""]
+    var sectionTitles = ["", "", ""]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         self.title = local("ACTIONS")
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Settings", style: .plain, target: self, action: #selector(closeSheet))
+
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        tableView.contentInset = UIEdgeInsets (top: -25, left: 0, bottom: 40, right: 0)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
+    }
+    
+    @objc func closeSheet() {
+        log(type: .info, msg: "Opening Log View")
+        let LogViewVC = DebugVC()
+        navigationController?.pushViewController(LogViewVC, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -140,10 +147,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        case tableData.count - 1:
-            return "\"Mount Directories\" only attempts to mount root and preboot as read/write."
-        case tableData.count - 2:
-            return "Common utilities for palera1n, \"Enable Tweaks\" only tries to attempt to enable ElleKit or Substitute."
         case tableData.count - 3:
             return "When using palera1n on an iPad, theres cases where you would need to use these actions to open the installed applications as they don't appear on the homescreen."
         default:
