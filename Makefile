@@ -47,24 +47,35 @@ endif
 	@mkdir -p packages
 
 ifeq ($(TIPA),1)
-	#@zip -r9 packages/$(NAME).tipa Payload
 	@7zz a -mx=9 packages/$(NAME).tipa Payload
 else
-	#@zip -r9 packages/$(NAME).ipa Payload
+ifeq ($(FINAL),1)
+	@sudo chmod 0755 Payload/palera1nLoader.app
+	@sudo chmod 0755 Payload
+	@sudo chown 0:0 Payload/palera1nLoader.app
+	@sudo chown 0:0 Payload
+	@sudo chmod 0755 Payload/palera1nLoader.app/*
+	@sudo chmod 0755 Payload/palera1nLoader.app/*.lproj/*
+	@sudo chown 0:0 Payload/palera1nLoader.app/*
+	@sudo chown 0:0 Payload/palera1nLoader.app/*.lproj/*
+	@sudo 7zz a -mx=9 packages/$(NAME).ipa Payload
+	@sudo chown 0:0 packages/$(NAME).ipa
+else
 	@7zz a -mx=9 packages/$(NAME).ipa Payload
+endif
 endif
 ifneq ($(NO_DMG),1)
 	@sudo hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
 	@sudo hdiutil convert out.dmg -format UDZO -imagekey zlib-level=9 -o packages/$(VOLNAME).dmg
-	@rm -rf out.dmg
+	@sudo rm -rf out.dmg
 endif
-	@rm -rf Payload
-	@rm -rf $(P1_TMP)
+	@sudo rm -rf Payload
+	@sudo rm -rf $(P1_TMP)
 
 clean:
-	@rm -rf $(P1_STAGE_DIR)
-	@rm -rf packages
-	@rm -rf out.dmg
-	@rm -rf Payload
-	@rm -rf $(P1_TMP)
+	@sudo rm -rf $(P1_STAGE_DIR)
+	@sudo rm -rf packages
+	@sudo rm -rf out.dmg
+	@sudo rm -rf Payload
+	@sudo rm -rf $(P1_TMP)
 
