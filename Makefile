@@ -1,6 +1,5 @@
 TARGET_CODESIGN = $(shell which ldid)
 GIT_REV=$(shell git rev-parse --short HEAD)
-STRIP = xcrun -sdk iphoneos strip
 
 ifeq ($(IOS),1)
 	PLATFORM = iphoneos
@@ -35,49 +34,32 @@ package:
 	@echo $(P1_TMP)
 	@echo $(P1_STAGE_DIR)
 
-	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app/$(NAME)
-	@$(STRIP) $(P1_STAGE_DIR)/Payload/$(NAME).app/$(NAME)
-ifneq ($(FINAL),1)
-	/usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier in.palera.loaderdebug" "$(P1_STAGE_DIR)/Payload/$(NAME).app/Info.plist"
-	/usr/libexec/PlistBuddy -c "Set :CFBundleDisplayName 'palera1n (debug)'" "$(P1_STAGE_DIR)/Payload/$(NAME).app/Info.plist"
-endif
+	@$(TARGET_CODESIGN) -Sentitlements.xml $(P1_STAGE_DIR)/Payload/$(NAME).app/
+	
 	@rm -rf $(P1_STAGE_DIR)/Payload/$(NAME).app/_CodeSignature
 	@ln -sf $(P1_STAGE_DIR)/Payload Payload
 	@rm -rf packages
 	@mkdir -p packages
 
 ifeq ($(TIPA),1)
-	@7zz a -mx=9 packages/$(NAME).tipa Payload
+	@zip -r9 packages/$(NAME).tipa Payload
+	#@7zz a -mx=9 packages/$(NAME).tipa Payload
 else
-ifeq ($(FINAL),1)
-	@sudo chmod 0755 Payload
-	@sudo chmod 0755 Payload/palera1nLoader.app
-	@sudo chown 501:0 Payload
-	@sudo chown 501:0 Payload/palera1nLoader.app
-	@sudo chmod 0755 Payload/palera1nLoader.app/*
-	@sudo chmod 0644 Payload/palera1nLoader.app/Info.plist
-	@sudo chmod 0644 Payload/palera1nLoader.app/PkgInfo
-	@sudo chmod 0644 Payload/palera1nLoader.app/Assets.car
-	@sudo chmod 0644 Payload/palera1nLoader.app/*.lproj/*
-	@sudo chown 501:0 Payload/palera1nLoader.app/*
-	@sudo chown 501:0 Payload/palera1nLoader.app/*.lproj/*
 	@zip -r9 packages/$(NAME).ipa Payload
-else
-	@7zz a -mx=9 packages/$(NAME).ipa Payload
-endif
+	#@7zz a -mx=9 packages/$(NAME).tipa Payload
 endif
 ifneq ($(NO_DMG),1)
-	@sudo hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
-	@sudo hdiutil convert out.dmg -format UDZO -imagekey zlib-level=9 -o packages/$(VOLNAME).dmg
-	@sudo rm -rf out.dmg
+	@hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
+	@hdiutil convert out.dmg -format UDZO -imagekey zlib-level=9 -o packages/$(VOLNAME).dmg
+	@rm -rf out.dmg
 endif
-	@sudo rm -rf Payload
-	@sudo rm -rf $(P1_TMP)
+	@rm -rf Payload
+	@rm -rf $(P1_TMP)
 
 clean:
-	@sudo rm -rf $(P1_STAGE_DIR)
-	@sudo rm -rf packages
-	@sudo rm -rf out.dmg
-	@sudo rm -rf Payload
-	@sudo rm -rf $(P1_TMP)
+	@rm -rf $(P1_STAGE_DIR)
+	@rm -rf packages
+	@rm -rf out.dmg
+	@rm -rf Payload
+	@rm -rf $(P1_TMP)
 
