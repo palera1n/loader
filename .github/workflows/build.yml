@@ -21,7 +21,7 @@ jobs:
           brew install 7zip
 
       - name: Compile
-        run: sudo IOS=1 FINAL=1 make
+        run: IOS=1 FINAL=1 make
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8

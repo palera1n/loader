@@ -54,8 +54,8 @@ else
 	@7zz a -mx=9 packages/$(NAME).ipa Payload
 endif
 ifneq ($(NO_DMG),1)
-	@hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
-	@hdiutil convert out.dmg -format UDZO -imagekey zlib-level=9 -o packages/$(VOLNAME).dmg
+	@sudo hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload
+	@sudo hdiutil convert out.dmg -format UDZO -imagekey zlib-level=9 -o packages/$(VOLNAME).dmg
 	@rm -rf out.dmg
 endif
 	@rm -rf Payload
