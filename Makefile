@@ -50,16 +50,18 @@ ifeq ($(TIPA),1)
 	@7zz a -mx=9 packages/$(NAME).tipa Payload
 else
 ifeq ($(FINAL),1)
-	@sudo chmod 0755 Payload/palera1nLoader.app
 	@sudo chmod 0755 Payload
-	@sudo chown 0:0 Payload/palera1nLoader.app
-	@sudo chown 0:0 Payload
+	@sudo chmod 0755 Payload/palera1nLoader.app
+	@sudo chown 501:0 Payload
+	@sudo chown 501:0 Payload/palera1nLoader.app
 	@sudo chmod 0755 Payload/palera1nLoader.app/*
-	@sudo chmod 0755 Payload/palera1nLoader.app/*.lproj/*
-	@sudo chown 0:0 Payload/palera1nLoader.app/*
-	@sudo chown 0:0 Payload/palera1nLoader.app/*.lproj/*
-	@sudo 7zz a -mx=9 packages/$(NAME).ipa Payload
-	@sudo chown 0:0 packages/$(NAME).ipa
+	@sudo chmod 0644 Payload/palera1nLoader.app/Info.plist
+	@sudo chmod 0644 Payload/palera1nLoader.app/PkgInfo
+	@sudo chmod 0644 Payload/palera1nLoader.app/Assets.car
+	@sudo chmod 0644 Payload/palera1nLoader.app/*.lproj/*
+	@sudo chown 501:0 Payload/palera1nLoader.app/*
+	@sudo chown 501:0 Payload/palera1nLoader.app/*.lproj/*
+	@zip -r9 packages/$(NAME).ipa Payload
 else
 	@7zz a -mx=9 packages/$(NAME).ipa Payload
 endif
