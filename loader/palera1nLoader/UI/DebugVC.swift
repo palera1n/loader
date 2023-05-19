@@ -41,7 +41,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         dismiss(animated: true, completion: nil)
     }
 
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
@@ -96,11 +96,12 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             let LogViewVC = LogViewer()
             navigationController?.pushViewController(LogViewVC, animated: true)
         case "Enter safemode":
-            log(type: .info, msg: "Enter SM")
+            helper(args: ["--safemode", "1"])
         case "Exit safemode":
-            log(type: .info, msg: "Exit SM")
+            helper(args: ["--safemode", "0"])
         case "Clean fakefs":
-            log(type: .info, msg: "Pressed fakefs")
+            helper(args: ["--revert-install"])
+
         default:
             break
         }
