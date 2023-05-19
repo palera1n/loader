@@ -140,7 +140,7 @@ import Extras
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    let noLog = ["-p","-k","-b","-t","-f","-P","-s","-S"]
+    let noLog = ["-p","-k","-b","-t","-f","-P","-s","-S", "-rf"]
     if (!noLog.contains(args[1]) && args[0] != "mv") {
         log(type: .info, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n\tStdout: \(stdoutStr)\n\tStderr: \(stderrStr)\n")
     }

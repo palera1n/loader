@@ -160,7 +160,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             © 2023, palera1n team
             
             Loader made by:
-            @flowerible (Samara) & staturnz
+            @flowerible (Samara) & @staturnzdev (Staturnz)
             """
         case 1:
             return """

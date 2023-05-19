@@ -17,7 +17,6 @@ enum logTypes {
 
 struct logInfo {
     static var logPath: String = "/var/mobile/Library/palera1n/logs"
-    static var crashFile: String = "/var/tmp/palera1nloader/logs/crash.log"
     static var logFile: String = ""
     static var isDebug: Bool = false
     static var isRelease: Bool = false

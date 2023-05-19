@@ -32,20 +32,9 @@ struct envInfo {
     static var nav: UINavigationController = UINavigationController()
 }
 
+// for string localization
 func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
-}
-
-func fileExists(_ path: String) -> Bool {
-    return FileManager.default.fileExists(atPath: path)
-}
-
-func compactString(_ str: String) -> String {
-    str.replacingOccurrences(of: #"""#, with: "").trimmingCharacters(in: .whitespacesAndNewlines)
-}
-
-func docsFile(file: String) -> String {
-   return "\(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(file).path)"
 }
 
 func whichAlert(title: String, message: String? = nil) -> UIAlertController {
@@ -55,14 +44,12 @@ func whichAlert(title: String, message: String? = nil) -> UIAlertController {
     return UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 }
 
-@discardableResult func openApp(_ bundle: String) -> Bool {
-    return LSApplicationWorkspace.default().openApplication(withBundleID: bundle)
+func fileExists(_ path: String) -> Bool {
+    return FileManager.default.fileExists(atPath: path)
 }
 
-func deleteFile(file: String) -> Void {
-   let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-   let fileURL = documentsURL.appendingPathComponent(file)
-   try? FileManager.default.removeItem(at: fileURL)
+@discardableResult func openApp(_ bundle: String) -> Bool {
+    return LSApplicationWorkspace.default().openApplication(withBundleID: bundle)
 }
 
 @discardableResult func helper(args: [String]) -> Int {
@@ -71,6 +58,10 @@ func deleteFile(file: String) -> Void {
 
 @discardableResult func bp_ln(_ src: String,_ dest: String) -> Int {
     return spawn(command: "/cores/binpack/bin/ln", args: ["-s", src, dest], root: true)
+}
+
+@discardableResult func bp_rm(_ file: String) -> Int {
+    return spawn(command: "/cores/binpack/bin/rm", args: ["-rf", file], root: true)
 }
 
 // image mods
@@ -132,7 +123,7 @@ extension UIAlertController {
                 log(type: .info, msg: "Opening Log View")
                 let LogViewVC = LogViewer()
                 let navController = UINavigationController(rootViewController: LogViewVC)
-                let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeapp))
+                let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(self.closeapp(_:)))
                 LogViewVC.navigationItem.leftBarButtonItem = closeButton
                 navController.modalPresentationStyle = .formSheet
                 envInfo.nav.present(navController, animated: true, completion: nil)
@@ -143,12 +134,11 @@ extension UIAlertController {
         return alertController
     }
 
-    @objc func closeapp() {
+    @objc func closeapp(_ sender:UIBarButtonItem!) {
         bootstrap().cleanUp()
         UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
     }
-
 
     static func downloading(_ msg: String.LocalizationValue) -> UIAlertController {
         let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)

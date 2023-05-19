@@ -80,7 +80,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let server = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
         let downloadUrl = server.appendingPathComponent(file)
-        deleteFile(file: file)
         
         downloadFile(url: downloadUrl, forceBar: true, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {

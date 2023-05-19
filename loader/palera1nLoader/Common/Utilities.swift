@@ -157,7 +157,7 @@ func revert(viewController: UIViewController) -> Void {
     }
 }
  
-func createHelperLink(){
+func createHelperLink() {
     let path = "/var/mobile/Library/palera1n/helper"
     if (fileExists("/cores/jbloader")) {
         if (fileExists(path)) {

@@ -12,7 +12,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
     var tableData = [
         ["View Logs"],
-        ["Clean fakefs", "Enter safemode", "Exit safemode"],
+        ["Clean fakefs", "Enter safemode", "Exit safemode", "Clear logs"],
         [local("FR_SWITCH")]
     ]
     
@@ -37,10 +37,10 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         view.addSubview(tableView)
     }
+    
     @objc func closeSheet() {
         dismiss(animated: true, completion: nil)
     }
-
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
@@ -78,6 +78,9 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         case "Exit safemode":
             applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
             cell.textLabel?.text = "Exit safemode"
+        case "Clear logs":
+            applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
+            cell.textLabel?.text = "Clear logs"
         case "View Logs":
             cell.textLabel?.text = "View Logs"
             cell.textLabel?.textColor = .systemBlue
@@ -101,7 +104,11 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             helper(args: ["--safemode", "0"])
         case "Clean fakefs":
             helper(args: ["--revert-install"])
-
+        case "Clear logs":
+            let files = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n/logs")
+            for file in files {
+                bp_rm("/var/mobile/Library/palera1n/logs/\(file)")
+            }
         default:
             break
         }

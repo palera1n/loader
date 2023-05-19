@@ -12,11 +12,22 @@ class bootstrap {
 
     // Ran after bootstrap/deb install
     func cleanUp() -> Void {
-        deleteFile(file: "sileo.deb")
-        deleteFile(file: "zebra.deb")
-        deleteFile(file: "libkrw0-tfp0.deb")
-        deleteFile(file: "bootstrap.tar")
         
+        let pathsToClear = ["/var/mobile/Library/palera1n/downloads", "/var/mobile/Library/palera1n/temp"]
+        for path in pathsToClear {
+            let files = try! FileManager.default.contentsOfDirectory(atPath: path)
+            for file in files {
+                bp_rm("\(path)/\(file)")
+            }
+        }
+        
+        let palera1nDir = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n")
+        for file in palera1nDir {
+            if (file.contains("revision") || file.contains("loader.log")) {
+                bp_rm("/var/mobile/Library/palera1n/\(file)")
+            }
+        }
+
         URLCache.shared.removeAllCachedResponses()
         URLCache.shared.diskCapacity = 0
         URLCache.shared.memoryCapacity = 0
@@ -32,18 +43,19 @@ class bootstrap {
     
 
     func installDebian(deb: String, completion: @escaping (String?, Int?) -> Void) {
-        var ret = spawn(command: "/var/mobile/Library/palera1n/helper", args: ["-d", deb], root: true)
+        var ret = helper(args: ["-d", deb])
         if (ret != 0) {
             completion(local("DPKG_ERROR"), ret)
             return
         }
 
-        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
+        ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             completion(local("ERROR_UICACHE"), ret)
             return
         }
         
+        cleanUp()
         completion(local("DONE_INSTALL"), 0)
         return
     }
@@ -51,19 +63,19 @@ class bootstrap {
     
     func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
         let debPath = "/var/mobile/Library/palera1n/downloads/\(deb)"
-        var ret = spawn(command: "/var/mobile/Library/palera1n/helper", args: ["--install", tar, debPath], root: true)
+        var ret = helper(args: ["--install", tar, debPath])
         if (ret != 0) {
             completion(local("ERROR_UICACHE"), ret)
             return
         }
         
-        ret = spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"], root: true)
+        ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"], root: true)
         if (ret != 0) {
             completion(local("ERROR_UICACHE"), ret)
             return
         }
 
-        //cleanUp()
+        cleanUp()
         completion(local("DONE_INSTALL"), 0)
         return
     }
