@@ -5,63 +5,63 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Telepítés";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Hibakeresés";
+"DIAGNOSTICS" = "Diagnosztika";
+"ACTIONS" = "Műveletek";
+"JBINIT_LOG" = "Naplózás";
+"REVERT_CELL" = "Telepítés visszaállítása";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
+"HIDDEN" = "Rejtett környezet";
+"ACTION_HIDEJB" = "Környezet elrejtése";
+"OPEN_CELL" = "Nyitók";
+"OPENER_SILEO" = "Sileo megnyitása";
+"OPENER_ZEBRA" = "Zebra megnyitása";
+"OPENER_TH" = "TrollHelper megnyitása";
+"UTIL_CELL" = "Segédprogramok";
 "ACTION_RESPRING" = "Respring";
 "ACTION_USREBOOT" = "Userspace Reboot";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
+"ACTION_DAEMONS" = "Daemons elindítása";
+"ACTION_MOUNT" = "Könyvtárak felszerelése";
+"ACTION_TWEAKS" = "Tweakek engedélyezése";
+"FR_SWITCH" = "Újraindítás a visszaállításkor";
 
 // Diags
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
-"ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
-"STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"TYPE_INFO" = "Típus";
+"INSTALL_INFO" = "Telepítve";
+"ARCH_INFO" = "Architektúra";
+"VERSION_INFO" = "Verzió";
+"STRAP_INFO" = "Környezet";
+"STRAP_FR_PREFIX" = "Hamis gyökérkönyvtár Előtag";
+"STRAP_FR_PATH" = "Hamis gyökérkönyvtár útvonal";
+"OPEN_FILZA" = "Megnyitás Filza-ban";
+"OPEN_SANTANDER" = "Megnyitás Santander-ben";
+"COPY" = "Másolás";
+"INSTALL_FR" = "Kényszerített visszaállítás";
+"HELPER" = "Segítő";
+"HELPER_PATH" = "Segítő útvonal";
+"SILEO_INSTALLED" = "Sileo telepítve";
+"ZEBRA_INSTALLED" = "Zebra telepítve";
+"KINFO_FLAGS" = "Zászlók (kerninfo)";
+"PINFO_FLAGS" = "Zászlók (paleinfo)";
 
-"TRUE" = "Yes";
-"FALSE" = "No";
-"ROOTFUL" = "Rootful";
-"ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
-"SET" = "Set";
+"TRUE" = "Igen";
+"FALSE" = "Nem";
+"ROOTFUL" = "Gyökeres";
+"ROOTLESS" = "Gyökértelen";
+"CANCEL" = "Mégse";
+"CONFIRM" = "Megerősítés";
+"CLOSE" = "Bezárás";
+"PROCEED" = "Folytatás";
+"NO_PROCEED" = "Képtelen folytatni";
+"SET" = "Alkalmaz";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
+"DL_STRAP" = "Az alaprendszer letöltése";
 "DL_SILEO" = "Downloading Sileo";
 "DL_ZEBRA" = "Downloading Zebra";
 "DOWNLOADING" = "Downloading...";
