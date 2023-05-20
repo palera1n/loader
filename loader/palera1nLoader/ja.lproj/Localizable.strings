@@ -1,10 +1,10 @@
 /*
 Localizable.strings
 palera1nLoader
-Japanese
+English
 */
-
 // ViewController Cells
+
 "INSTALL" = "インストール";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
@@ -14,7 +14,7 @@ Japanese
 "JBINIT_LOG" = "ログ";
 "REVERT_CELL" = "Jailbreak環境を削除";
 
-//Actions VC
+// ActionsVC
 "HIDDEN" = "隠されたJailbreak環境を検出";
 "ACTION_HIDEJB" = "Jailbreak環境を隠す";
 "OPEN_CELL" = "アプリケーションを開く";
@@ -87,9 +87,7 @@ Japanese
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "jb-XXXXXXXXディレクトリは存在しますが、/var/jbにシンボリックリンクが存在しません。 この作業を続行すると、/var/jbに元のディレクトリに対するシンボリックリンクが再度作成されます。この作業を行った後、ユーティリティからuicacheを実行する必要がある場合があります。";
 "NOTICE_ROOTLESS" = "rootless jailbreakではない場合、このボタンは使用できません。";
-
 "HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはuserspaceで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
-
 "REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
 "PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
 "REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるjailbreak関連ファイルや、jailbreakアプリケーションなどは全て削除されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
@@ -101,8 +99,8 @@ Japanese
 "UNHID_ENV" = "環境を再表示";
 
 // errors
-"ERROR_STRAP" = "Bootstrapのインストールに失敗しました";
 "STATUS" = "ステータス";
+"ERROR_STRAP" = "Bootstrapのインストールに失敗しました";
 "ERROR_DPKG" = "パッケージのインストールに失敗しました";
 "ERROR_UICACHE" = "UICacheの実行に失敗しました";
 "ERROR_SILEO" = "Sileoのインストールに失敗しました";

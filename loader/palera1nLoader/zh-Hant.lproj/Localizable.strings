@@ -1,22 +1,22 @@
 /*
 Localizable.strings
 palera1nLoader
-Chinese (Traditional)
+English
 */
-
 // ViewController Cells
+
 "INSTALL" = "安裝";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "除錯";
-"DIAGNOSTICS"="診斷";
-"ACTIONS"="動作";
-"JBINIT_LOG"="日誌";
+"DIAGNOSTICS" = "診斷";
+"ACTIONS" = "動作";
+"JBINIT_LOG" = "日誌";
 "REVERT_CELL" = "還原系統";
 
 // ActionsVC
-"HIDDEN"="隱藏環境";
-"ACTION_HIDEJB"="隱藏環境";
+"HIDDEN" = "隱藏環境";
+"ACTION_HIDEJB" = "隱藏環境";
 "OPEN_CELL" = "開啟器";
 "OPENER_SILEO" = "開啟 Sileo";
 "OPENER_ZEBRA" = "開啟 Zebra";
@@ -28,24 +28,24 @@ Chinese (Traditional)
 "ACTION_DAEMONS" = "載入守護進程";
 "ACTION_MOUNT" = "掛載資料夾";
 "ACTION_TWEAKS" = "載入插件";
-"FR_SWITCH"="還原後重啟";
+"FR_SWITCH" = "還原後重啟";
 
 // Diags
 "TYPE_INFO" = "類型";
 "INSTALL_INFO" = "已安裝";
 "ARCH_INFO" = "架構";
 "VERSION_INFO" = "版本";
-"STRAP_INFO"="環境";
-"STRAP_FR_PREFIX"="偽根前綴";
-"STRAP_FR_PATH"="偽根路徑";
-"OPEN_FILZA"="在Filza中開啟";
-"OPEN_SANTANDER"="在Santander中開啟";
-"COPY"="複製";
-"INSTALL_FR"="強制還原";
-"HELPER"="輔助程式";
-"HELPER_PATH"="輔助程式路徑";
-"SILEO_INSTALLED"="己安裝Sileo";
-"ZEBRA_INSTALLED"="己安裝Zebra";
+"STRAP_INFO" = "環境";
+"STRAP_FR_PREFIX" = "偽根前綴";
+"STRAP_FR_PATH" = "偽根路徑";
+"OPEN_FILZA" = "在Filza中開啟";
+"OPEN_SANTANDER" = "在Santander中開啟";
+"COPY" = "複製";
+"INSTALL_FR" = "強制還原";
+"HELPER" = "輔助程式";
+"HELPER_PATH" = "輔助程式路徑";
+"SILEO_INSTALLED" = "己安裝Sileo";
+"ZEBRA_INSTALLED" = "己安裝Zebra";
 "KINFO_FLAGS" = "標籤 (kerninfo)";
 "PINFO_FLAGS" = "標籤 (paleinfo)";
 
@@ -56,14 +56,14 @@ Chinese (Traditional)
 "CANCEL" = "取消";
 "CONFIRM" = "確定";
 "CLOSE" = "關閉";
-"PROCEED"="繼續";
-"NO_PROCEED"="無法繼續";
+"PROCEED" = "繼續";
+"NO_PROCEED" = "無法繼續";
 "SET" = "設置";
 
 // DL / BS
-"DL_STRAP"="正在下載底層越獄檔案";
-"DL_SILEO"="正在下載Sileo";
-"DL_ZEBRA"="正在下載Zebra";
+"DL_STRAP" = "正在下載底層越獄檔案";
+"DL_SILEO" = "正在下載Sileo";
+"DL_ZEBRA" = "正在下載Zebra";
 "DOWNLOADING" = "下載中⋯⋯";
 "INSTALLING" = "安裝中⋯⋯";
 "DOWNLOAD_FAIL" = "無法下載檔案";
@@ -85,10 +85,9 @@ Chinese (Traditional)
 "ENJOY" = "請慢用！";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE"="你的 jb-XXXXXXXX 資料夾仍然存在但\/var\/jb並不存在。這會把\/var\/jb重新符號連結到它本來的資料夾。之後你可能要在工具中更新圖示快取。";
-"NOTICE_ROOTLESS"="你不能在非無根越獄中使用這個按紐";
-"HIDE_NOTICE"="繼續後會移除\/var\/jb符號連結並重啟用戶空間，當你重新開啟這個應用程式時，會提示重建符號連結，以還原你的環境。";
-
+"HIDDEN_NOTICE" = "你的 jb-XXXXXXXX 資料夾仍然存在但\\/var\\/jb並不存在。這會把\\/var\\/jb重新符號連結到它本來的資料夾。之後你可能要在工具中更新圖示快取。";
+"NOTICE_ROOTLESS" = "你不能在非無根越獄中使用這個按紐";
+"HIDE_NOTICE" = "繼續後會移除\\/var\\/jb符號連結並重啟用戶空間，當你重新開啟這個應用程式時，會提示重建符號連結，以還原你的環境。";
 "REVERT_SUBTEXT" = "這個按鈕不能在有根上使用";
 "PM_SUBTEXT" = "在這裏選擇你最喜愛的套件包管理器，建議新手使用Sileo。:)";
 "REVERT_WARNING" = "移除 /var/jb 及取消注冊越獄應用程式，然後重啟到末越獄狀態。";
@@ -100,8 +99,8 @@ Chinese (Traditional)
 "UNHID_ENV" = "取消隱藏環境";
 
 // errors
-"ERROR_STRAP" = "安裝底層越獄檔案時發生錯誤。";
 "STATUS" = "狀態";
+"ERROR_STRAP" = "安裝底層越獄檔案時發生錯誤。";
 "ERROR_DPKG" = "套件安裝失敗";
 "ERROR_UICACHE" = "重建圖示快取失敗";
 "ERROR_SILEO" = "安裝Sileo失敗";
