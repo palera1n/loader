@@ -5,17 +5,17 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Instaluj";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DIAGNOSTICS" = "Diagnostyka";
+"ACTIONS" = "Działania";
+"JBINIT_LOG" = "Logi";
+"REVERT_CELL" = "Przywróć instalacje";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
+"HIDDEN" = "Ukryte środowisko";
 "ACTION_HIDEJB" = "Hide Environment";
 "OPEN_CELL" = "Openers";
 "OPENER_SILEO" = "Open Sileo";
