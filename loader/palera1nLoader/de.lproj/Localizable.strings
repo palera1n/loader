@@ -86,17 +86,17 @@ English
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
+"NOTICE_ROOTLESS" = "Du kannst diesen Knopf nicht verwenden, wenn du einen rootless Jailbreak verwendest.";
+"HIDE_NOTICE" = "Durch Fortfahren wird der /var/jb Symlink entfernt und das Gerät neu gestartet.";
 "REVERT_SUBTEXT" = "Rootful kann diesen Knopf nicht verwenden :(";
 "PM_SUBTEXT" = "Wählen Sie hier Ihren bevorzugten Paketmanager aus, den Sie installieren möchten. Sileo wird empfohlen, falls Sie neu sind.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
+"REVERT_WARNING" = "Löscht /var/jb und deinstalliert Jailbreak Anwendungen, das Gerät wird in den normalen Zustand neu starten.";
 "SILEO_REINSTALL" = "Sind Sie sicher, dass Sie Sileo neu installieren möchten?";
 "ZEBRA_REINSTALL" = "Sind Sie sicher, dass Sie Zebra neu installieren möchten?";
 "SILEO_INSTALL" = "Sind Sie sicher, dass Sie Sileo installieren möchten?";
 "ZEBRA_INSTALL" = "Sind Sie sicher, dass Sie Zebra installieren möchten?";
 "CLOSE_APP" = "Du kannst die App schließen.";
-"UNHID_ENV" = "Unhid the environment";
+"UNHID_ENV" = "Umgebung sichtbar gemacht";
 
 // errors
 "STATUS" = "Status";
