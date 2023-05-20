@@ -5,90 +5,90 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Telepítés";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Hibakeresés";
+"DIAGNOSTICS" = "Diagnosztika";
+"ACTIONS" = "Műveletek";
+"JBINIT_LOG" = "Naplózás";
+"REVERT_CELL" = "Telepítés visszaállítása";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
+"HIDDEN" = "Rejtett környezet";
+"ACTION_HIDEJB" = "Környezet elrejtése";
+"OPEN_CELL" = "Nyitók";
+"OPENER_SILEO" = "Sileo megnyitása";
+"OPENER_ZEBRA" = "Zebra megnyitása";
+"OPENER_TH" = "TrollHelper megnyitása";
+"UTIL_CELL" = "Segédprogramok";
 "ACTION_RESPRING" = "Respring";
 "ACTION_USREBOOT" = "Userspace Reboot";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
+"ACTION_DAEMONS" = "Daemons elindítása";
+"ACTION_MOUNT" = "Könyvtárak felszerelése";
+"ACTION_TWEAKS" = "Tweakek engedélyezése";
+"FR_SWITCH" = "Újraindítás a visszaállításkor";
 
 // Diags
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
-"ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
-"STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"TYPE_INFO" = "Típus";
+"INSTALL_INFO" = "Telepítve";
+"ARCH_INFO" = "Architektúra";
+"VERSION_INFO" = "Verzió";
+"STRAP_INFO" = "Környezet";
+"STRAP_FR_PREFIX" = "Hamis gyökérkönyvtár Előtag";
+"STRAP_FR_PATH" = "Hamis gyökérkönyvtár útvonal";
+"OPEN_FILZA" = "Megnyitás Filza-ban";
+"OPEN_SANTANDER" = "Megnyitás Santander-ben";
+"COPY" = "Másolás";
+"INSTALL_FR" = "Kényszerített visszaállítás";
+"HELPER" = "Segítő";
+"HELPER_PATH" = "Segítő útvonal";
+"SILEO_INSTALLED" = "Sileo telepítve";
+"ZEBRA_INSTALLED" = "Zebra telepítve";
+"KINFO_FLAGS" = "Zászlók (kerninfo)";
+"PINFO_FLAGS" = "Zászlók (paleinfo)";
 
-"TRUE" = "Yes";
-"FALSE" = "No";
-"ROOTFUL" = "Rootful";
-"ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
-"SET" = "Set";
+"TRUE" = "Igen";
+"FALSE" = "Nem";
+"ROOTFUL" = "Gyökeres";
+"ROOTLESS" = "Gyökértelen";
+"CANCEL" = "Mégse";
+"CONFIRM" = "Megerősítés";
+"CLOSE" = "Bezárás";
+"PROCEED" = "Folytatás";
+"NO_PROCEED" = "Képtelen folytatni";
+"SET" = "Alkalmaz";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DL_STRAP" = "Az alaprendszer letöltése";
+"DL_SILEO" = "Sileo letöltése";
+"DL_ZEBRA" = "Zebra letöltése";
+"DOWNLOADING" = "Letöltés...";
+"INSTALLING" = "Telepítés...";
+"DOWNLOAD_FAIL" = "Nem sikerült lekérni a fájlt";
+"DOWNLOAD_ERROR" = "Ismeretlen hiba";
+"SAVE_FAIL" = "A fájl nem másolható";
+"DONE_INSTALL" = "Telepítés befejezve";
+"ERROR_INSTALL" = "Telepítés sikertelen";
+"DONE_INSTALL_SUB" = "Bezárhatja az alkalmazást.";
+"DONE_REVERT" = "Az eltávolítás megtörtént";
+"REMOVING" = "Eltávolít…";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "A parancssori eszközök, például a „sudo” használatához a jailbreak után be kell állítania egy terminál jelszavát. (Ez nem lehet üres)";
+"PASSWORD_REPEAT" = "Jelszó újra";
+"PASSWORD_SET" = "Jelszó beállítása";
+"PASSWORD_TEXT" = "Jelszó";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "Újratelepités";
+"ENJOY" = "Jó szórakozást!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
+"HIDDEN_NOTICE" = "A fakerootod továbbra is sértetlen, míg a /var/jb nem, ez a /var/jb újra szimbolizálja az eredeti fakeroot-ot. Előfordulhat, hogy a folytatás után le kell futtatnia az uicache-t a segédprogramokban.";
+"NOTICE_ROOTLESS" = "Nem használhatod ezt a gombot, ha nem gyökér nélküli jailbreaket használsz.";
+"HIDE_NOTICE" = "A folytatás eltávolítja a /var/jb szimbolikus hivatkozást, és újraindítja az eszközt.";
+"REVERT_SUBTEXT" = "A Gyökeres nem tudja használni ezt a gombot :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
 "REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
 "SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
