@@ -88,7 +88,7 @@ English
 "HIDDEN_NOTICE" = "A fakerootod továbbra is sértetlen, míg a /var/jb nem, ez a /var/jb újra szimbolizálja az eredeti fakeroot-ot. Előfordulhat, hogy a folytatás után le kell futtatnia az uicache-t a segédprogramokban.";
 "NOTICE_ROOTLESS" = "Nem használhatod ezt a gombot, ha nem gyökér nélküli jailbreaket használsz.";
 "HIDE_NOTICE" = "A folytatás eltávolítja a /var/jb szimbolikus hivatkozást, és újraindítja az eszközt.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
+"REVERT_SUBTEXT" = "A Gyökeres nem tudja használni ezt a gombot :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
 "REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
 "SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
