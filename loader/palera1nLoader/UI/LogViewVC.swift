@@ -12,11 +12,13 @@ import UIKit
 
 class LogViewer: UIViewController {
     
+    let dummytext = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper aliquam leo, placerat luctus massa vestibulum vitae. Curabitur maximus, neque sed finibus gravida, ante mauris mattis quam, eget placerat ante urna vitae lorem. Nam erat est, varius nec ligula ut, interdum hendrerit metus. Donec vulputate diam porttitor, lobortis massa id, feugiat leo. Morbi at velit sed lacus pretium euismod non quis est. Nam sem enim, malesuada ac sagittis sit amet, elementum ut erat. Nullam sit amet nisl aliquam, fermentum odio non, cursus orci. Aenean ut erat felis. Sed et libero id mauris iaculis maximus vel vel tellus. In hac habitasse platea dictumst."
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let textView = UITextView()
-        self.navigationItem.title = "Logs"
+        self.navigationItem.title = local("LOG_CELL")
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
@@ -45,7 +47,7 @@ class LogViewer: UIViewController {
         } catch {
             log(type: .error, msg: "Reading log file: \(logInfo.logFile)")
             if (envInfo.isSimulator) {
-                textView.text = "Error: Simulator"
+                textView.text = "\(dummytext)"
             } else {
                 textView.text = "Error: Failed to read loader log file."
             }

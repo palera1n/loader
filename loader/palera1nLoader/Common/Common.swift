@@ -118,12 +118,12 @@ extension UIAlertController {
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
         })
-        alertController.addAction(UIAlertAction(title: "View Logs", style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: local("LOG_CELL_VIEW"), style: .default, handler: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 log(type: .info, msg: "Opening Log View")
                 let LogViewVC = LogViewer()
                 let navController = UINavigationController(rootViewController: LogViewVC)
-                let closeButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(self.closeapp(_:)))
+                let closeButton = UIBarButtonItem(title: local("CLOSE"), style: .done, target: self, action: #selector(self.closeapp(_:)))
                 LogViewVC.navigationItem.leftBarButtonItem = closeButton
                 navController.modalPresentationStyle = .formSheet
                 envInfo.nav.present(navController, animated: true, completion: nil)

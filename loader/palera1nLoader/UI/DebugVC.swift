@@ -11,19 +11,19 @@ import UIKit
 class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     var tableData = [
-        ["View Logs"],
-        ["Clean fakefs", "Enter safemode", "Exit safemode", "Clear logs"],
+        [local("LOG_CELL_VIEW")],
+        [local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
         [local("FR_SWITCH")]
     ]
     
     var customMessage: String?
     
-    var sectionTitles = ["", "OPTIONS", ""]
+    var sectionTitles = ["", local("DEBUG_OPTIONS"), ""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
-        self.title = "Debug"
+        self.title = local("DEBUG_CELL")
         
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
@@ -69,20 +69,29 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             cell.accessoryView = switchControl
             cell.textLabel?.text = local("FR_SWITCH")
             cell.selectionStyle = .none
-        case "Clean fakefs":
+        case local("DEBUG_CLEAN_FAKEFS"):
+            if envInfo.isRootful {
+                cell.isUserInteractionEnabled = true
+                cell.imageView?.alpha = 1
+            } else if !envInfo.isRootful {
+                cell.isUserInteractionEnabled = false
+                cell.textLabel?.textColor = .gray
+                cell.accessoryType = .none
+                cell.imageView?.alpha = 0.4
+            }
             applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
-            cell.textLabel?.text = "Clean fakefs"
-        case "Enter safemode":
+            cell.textLabel?.text = local("DEBUG_CLEAN_FAKEFS")
+        case local("DEBUG_ENTER_SAFEMODE"):
             applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
-            cell.textLabel?.text = "Enter safemode"
-        case "Exit safemode":
+            cell.textLabel?.text = local("DEBUG_ENTER_SAFEMODE")
+        case local("DEBUG_EXIT_SAFEMODE"):
             applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
-            cell.textLabel?.text = "Exit safemode"
-        case "Clear logs":
+            cell.textLabel?.text = local("DEBUG_EXIT_SAFEMODE")
+        case local("LOG_CLEAR"):
             applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
-            cell.textLabel?.text = "Clear logs"
-        case "View Logs":
-            cell.textLabel?.text = "View Logs"
+            cell.textLabel?.text = local("LOG_CLEAR")
+        case local("LOG_CELL_VIEW"):
+            cell.textLabel?.text = local("LOG_CELL_VIEW")
             cell.textLabel?.textColor = .systemBlue
         default:
             break
@@ -94,17 +103,32 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case "View Logs":
+        case local("LOG_CELL_VIEW"):
             log(type: .info, msg: "Opening Log View")
             let LogViewVC = LogViewer()
             navigationController?.pushViewController(LogViewVC, animated: true)
-        case "Enter safemode":
-            helper(args: ["--safemode", "1"])
-        case "Exit safemode":
-            helper(args: ["--safemode", "0"])
-        case "Clean fakefs":
-            helper(args: ["--revert-install"])
-        case "Clear logs":
+        case local("DEBUG_ENTER_SAFEMODE"):
+            let alertController = whichAlert(title: "\(local("DEBUG_ENTER_SAFEMODE"))?", message: nil)
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "1"]) }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion: nil)
+        case local("DEBUG_EXIT_SAFEMODE"):
+            let alertController = whichAlert(title: "\(local("DEBUG_EXIT_SAFEMODE"))?", message: nil)
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "0"]) }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion: nil)
+        case local("DEBUG_CLEAN_FAKEFS"):
+            let alertController = whichAlert(title: "\(local("DEBUG_CLEAN_FAKEFS"))?", message: nil)
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .destructive) {_ in helper(args: ["--revert-install"]) }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion: nil)
+        case local("LOG_CLEAR"):
             let files = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n/logs")
             for file in files {
                 bp_rm("/var/mobile/Library/palera1n/logs/\(file)")

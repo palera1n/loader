@@ -47,44 +47,53 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions -> UIMenu? in
             let copyAction = UIAction(title: local("COPY"), image: UIImage(systemName: "doc.on.doc"), identifier: nil, discoverabilityTitle: nil) { action in
-                UIPasteboard.general.string = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text ?? ""
+                if let text = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text {
+                    UIPasteboard.general.string = text
+                }
             }
             
-            let title = (tableView.cellForRow(at: indexPath)?.detailTextLabel?.text)!
-            let filzaInstalled = UIApplication.shared.canOpenURL(URL(string: "filza://")!)
-            let santanderInstalled = UIApplication.shared.canOpenURL(URL(string: "santander://")!)
-            var filePath = ""
             var menuOptions = [copyAction]
+            var filePath = ""
             
-            var sys_info = utsname()
-            uname(&sys_info)
-            let model = withUnsafePointer(to: &sys_info.machine){$0.withMemoryRebound(to: CChar.self, capacity: 1){ptr in String.init(validatingUTF8: ptr)}}
-            let kernel = withUnsafePointer(to: &sys_info.release){$0.withMemoryRebound(to: CChar.self, capacity: 1){ptr in String.init(validatingUTF8: ptr)}}
-            print(floor(kCFCoreFoundationVersionNumber))
-    
-            let openInFilza = UIAction(title: local("OPEN_FILZA"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
-                UIApplication.shared.open(URL(string: "filza://\(filePath)")!, options: [:], completionHandler: { (success) in })
-            }
-            
-            let openInSantander = UIAction(title: local("OPEN_SANTANDER"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
-                UIApplication.shared.open(URL(string: "santander://\(filePath)")!, options: [:], completionHandler: { (success) in })
-            }
-   
-            if (((indexPath.section == 2 && indexPath.row == 3) && !envInfo.isRootful)) {
-                if (filzaInstalled) { menuOptions.append(openInFilza) }
-                if (santanderInstalled) { menuOptions.append(openInSantander) }
-
-                filePath = (tableView.cellForRow(at: indexPath)?.detailTextLabel?.text)!
-                return UIMenu(title: title, image: nil, identifier: nil, options: [], children: menuOptions)
-            } else if (indexPath.section == 1 && indexPath.row == 2 || indexPath.section == 1 && indexPath.row == 3) {
+            switch (indexPath.section, indexPath.row) {
+            case (2, 3) where !envInfo.isRootful:
+                let filzaInstalled = UIApplication.shared.canOpenURL(URL(string: "filza://")!)
+                let santanderInstalled = UIApplication.shared.canOpenURL(URL(string: "santander://")!)
+                
+                if filzaInstalled {
+                    let openInFilza = UIAction(title: local("OPEN_FILZA"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
+                        UIApplication.shared.open(URL(string: "filza://\(filePath)")!, options: [:], completionHandler: nil)
+                    }
+                    menuOptions.append(openInFilza)
+                }
+                
+                if santanderInstalled {
+                    let openInSantander = UIAction(title: local("OPEN_SANTANDER"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
+                        UIApplication.shared.open(URL(string: "santander://\(filePath)")!, options: [:], completionHandler: nil)
+                    }
+                    menuOptions.append(openInSantander)
+                }
+                
+                if let detailText = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text {
+                    filePath = detailText
+                    return UIMenu(title: detailText, image: nil, identifier: nil, options: [], children: menuOptions)
+                }
+                
+            case (1, 2), (1, 3):
                 let flags = indexPath.row == 2 ? envInfo.kinfoFlagsStr : envInfo.pinfoFlagsStr
                 return UIMenu(title: flags, image: nil, identifier: nil, options: [], children: [copyAction])
-            } else if (indexPath.section == 0 && indexPath.row == 0) {
-                let info_title = "Device Model: \(model!)\nKernel Version: \(kernel!)\nCoreFoundation: \(floor(kCFCoreFoundationVersionNumber))"
-                return UIMenu(title: info_title, image: nil, identifier: nil, options: [], children: [copyAction])
-            } else {
+                
+            case (0, 0):
+                let model = UIDevice.current.model
+                let kernel = UIDevice.current.systemVersion
+                let infoTitle = "\(local("DEVICE_MODEL")) \(model)\n\(local("DEVICE_MODEL_KERN")) \(kernel)\n\(local("DEVICE_MODEL_CF")) \(floor(kCFCoreFoundationVersionNumber))"
+                return UIMenu(title: infoTitle, image: nil, identifier: nil, options: [], children: [copyAction])
+                
+            default:
                 return UIMenu(image: nil, identifier: nil, options: [], children: [copyAction])
             }
+            
+            return nil
         }
     }
 
@@ -120,18 +129,18 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             if !jbFolder.isEmpty {
                 cell.detailTextLabel?.text = "\(URL(string: jbFolder)?.lastPathComponent ?? "")"
             } else {
-                cell.detailTextLabel?.text = "None"
+                cell.detailTextLabel?.text = local("NONE")
             }
         case local("STRAP_FR_PATH"):
             cell.textLabel?.text = local("STRAP_FR_PATH")
             if !envInfo.isRootful {
                 if (envInfo.jbFolder == "") {
-                    cell.detailTextLabel?.text = "None"
+                    cell.detailTextLabel?.text = local("NONE")
                 } else {
                     cell.detailTextLabel?.text = "\(envInfo.jbFolder)/procursus"
                 }
             } else {
-                cell.detailTextLabel?.text = "None"
+                cell.detailTextLabel?.text = local("NONE")
             }
         case local("KINFO_FLAGS"):
             cell.textLabel?.text = local("KINFO_FLAGS")
@@ -159,12 +168,12 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return """
             © 2023, palera1n team
             
-            Loader made by:
+            \(local("CREDITS_SUBTEXT"))
             @flowerible (Samara) & @staturnzdev (Staturnz)
             """
         case 1:
             return """
-            \(local("PINFO_FLAGS")) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.
+            \(local("PINFO_SUBTEXT"))
             """
         case 2:
             return """

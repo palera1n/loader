@@ -124,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if (error != nil) {
                 DispatchQueue.main.async {
                     downloadAlert.dismiss(animated: true) {
-                        let alert = UIAlertController.error(title: "Download Failed", message: error.debugDescription)
+                        let alert = UIAlertController.error(title: local("DOWNLOAD_FAIL"), message: error.debugDescription)
                         self.present(alert, animated: true)
                     }
                 }
@@ -174,23 +174,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                             let passOne = alertController.textFields![0].text
                                             let passTwo = alertController.textFields![1].text
                                             if (passOne!.count > 253 || passOne!.count > 253) {
-                                                setPassword.setValue("Too Long", forKeyPath: "title")
+                                                setPassword.setValue(local("TOO_LONG"), forKeyPath: "title")
                                             } else {
-                                                setPassword.setValue("Set", forKeyPath: "title")
+                                                setPassword.setValue(local("SET"), forKeyPath: "title")
                                                 setPassword.isEnabled = (passOne == passTwo) && !passOne!.isEmpty && !passTwo!.isEmpty
                                             }
                                         }
                                         self.present(alertController, animated: true)
                                     } else {
                                         let errStr = String(cString: strerror(Int32(error!)))
-                                        let alert = UIAlertController.error(title: "Install Failed", message: errStr)
+                                        let alert = UIAlertController.error(title: local("ERROR_INSTALL"), message: errStr)
                                         self.present(alert, animated: true)
                                     }
                                 }
                             })
                         }
                     } else {
-                        let alert = UIAlertController.error(title: "Download Failed", message: error.debugDescription)
+                        let alert = UIAlertController.error(title: local("DOWNLOAD_FAIL"), message: error.debugDescription)
                         self.present(alert, animated: true)
                     }
                 }
@@ -205,14 +205,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if !fileExists("/var/mobile/Library/palera1n/helper") {
             #if targetEnvironment(simulator)
             #else
-            let alert = UIAlertController.error(title: "Helper not found", message: "Sideloading is not supported, please jailbreak with palera1n before using.")
+            let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
             self.present(alert, animated: true)
             return
             #endif
         }
 
         if fileExists("/var/mobile/Library/palera1n/helper") && envInfo.hasForceReverted {
-            let alert = UIAlertController.error(title: "Unable to continue", message: "Reboot the device manually after using --force-revert, jailbreak again to be able to bootstrap.")
+            let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
             self.present(alert, animated: true)
         }
     }

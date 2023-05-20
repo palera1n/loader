@@ -29,8 +29,28 @@ Korean
 "ACTION_MOUNT" = "Mount Directories";
 "ACTION_TWEAKS" = "Enable Tweaks";
 "FR_SWITCH" = "Reboot on revert";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
+"OPENER_SUBTEXT" = "When using palera1n on an iPad, theres cases where you would need to use these actions to open the installed applications as they don't appear on the homescreen.";
+
+// Logging View
+"LOG_CELL" = "Logs";
+"LOG_CELL_VIEW" = "View Logs";
+"NONE" = "None";
+"LOG_CLEAR" = "Clear Logs";
+
+// Debug
+"DEBUG_CELL" = "Debug";
+"DEBUG_OPTIONS" = "Options";
+"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
+"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
 
 // Diags
+"DEVICE_MODEL" = "Device Model:";
+"DEVICE_MODEL_KERN" = "Kernel Version:";
+"DEVICE_MODEL_CF" = "CFVersion:";
+"CREDITS_SUBTEXT" = "Loader made by:";
+"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
 "TYPE_INFO" = "Type";
 "INSTALL_INFO" = "Installed";
 "ARCH_INFO" = "Architecture";
@@ -58,7 +78,10 @@ Korean
 "CLOSE" = "Close";
 "PROCEED" = "Proceed";
 "NO_PROCEED" = "Unable to proceed";
+"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
+"NO_PROCEED_FR" = "Reboot the device manually after using --force-revert, jailbreak again to be able to bootstrap.";
 "SET" = "Set";
+"TOO_LONG" = "Too Long";
 
 // DL / BS
 "DL_STRAP" = "Downloading Base System";
