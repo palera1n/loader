@@ -5,22 +5,22 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Installer";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
+"DEBUG" = "Débogue";
+"DIAGNOSTICS" = "Diagnostiques";
 "ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"JBINIT_LOG" = "Enregistrement";
+"REVERT_CELL" = "Supprimer l'installation";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
+"HIDDEN" = "Environnement masqué";
+"ACTION_HIDEJB" = "Masquer l'environnement";
 "OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
+"OPENER_SILEO" = "Ouvrir Sileo";
+"OPENER_ZEBRA" = "Ouvrir Zebra";
+"OPENER_TH" = "Ouvrir TrollHelper";
 "UTIL_CELL" = "Utilities";
 "ACTION_RESPRING" = "Respring";
 "ACTION_USREBOOT" = "Userspace Reboot";
