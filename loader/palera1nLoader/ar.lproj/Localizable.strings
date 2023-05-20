@@ -5,24 +5,24 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"INSTALL" = "تثبيت";
+"SILEO" = "سيليو";
+"ZEBRA" = "زيبرا";
+"DEBUG" = "تصحيح";
+"DIAGNOSTICS" = "تشخيص";
+"ACTIONS" = "إجراءات";
+"JBINIT_LOG" = "سجل التهيئة";
+"REVERT_CELL" = "إلغاء التثبيت";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
+"HIDDEN" = "بيئة مخفية";
+"ACTION_HIDEJB" = "إخفاء البيئة";
+"OPEN_CELL" = "المفتوحات";
+"OPENER_SILEO" = "فتح سيليو";
+"OPENER_ZEBRA" = "فتح زيبرا";
+"OPENER_TH" = "فتح TrollHelper";
+"UTIL_CELL" = "الأدوات";
+"ACTION_RESPRING" = "الأدوات";
 "ACTION_USREBOOT" = "Userspace Reboot";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Launch Daemons";
