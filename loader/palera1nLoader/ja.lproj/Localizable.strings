@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはuserspaceで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
 "REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
 "PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
-"REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるjailbreak関連ファイルや、jailbreakアプリケーションなどは全て削除されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
 "ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
 "SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
