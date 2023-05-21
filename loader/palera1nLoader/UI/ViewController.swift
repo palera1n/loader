@@ -211,7 +211,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             #endif
         }
 
-        if fileExists("/var/mobile/Library/palera1n/helper") && envInfo.hasForceReverted {
+        if envInfo.hasForceReverted {
             let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
             self.present(alert, animated: true)
         }
