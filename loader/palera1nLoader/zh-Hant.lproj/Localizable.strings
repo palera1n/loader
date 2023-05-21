@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "繼續後會移除\\/var\\/jb符號連結並重啟用戶空間，當你重新開啟這個應用程式時，會提示重建符號連結，以還原你的環境。";
 "REVERT_SUBTEXT" = "這個按鈕不能在有根上使用";
 "PM_SUBTEXT" = "在這裏選擇你最喜愛的套件包管理器，建議新手使用Sileo。:)";
-"REVERT_WARNING" = "移除 /var/jb 及取消注冊越獄應用程式，然後重啟到末越獄狀態。";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "SILEO_REINSTALL" = "你確定你要重新安裝Sileo嗎？";
 "ZEBRA_REINSTALL" = "你確定你要重新安裝Zebra嗎？";
 "SILEO_INSTALL" = "你確定你想安裝Sileo嗎？";
