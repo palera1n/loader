@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "Continuer supprimera le lien symbolique /var/jb et redémarrera l'appareil.";
 "REVERT_SUBTEXT" = "Avec-racine ne peut pas utiliser ce bouton :(";
 "PM_SUBTEXT" = "Sélectionnez votre gestionnaire de paquets préféré. Sileo est recommandé pour les débutants.";
-"REVERT_WARNING" = "Cela supprimera /var/jb et désinscrira les applications du jailbreak. L'appareil se redémarrera sans jailbreak.";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "SILEO_REINSTALL" = "Êtes-vous sûr de vouloir réinstaller Sileo?";
 "ZEBRA_REINSTALL" = "Êtes-vous sûr de vouloir réinstaller Zebra?";
 "SILEO_INSTALL" = "Êtes-vous sûr de vouloir installer Sileo?";
