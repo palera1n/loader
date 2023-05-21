@@ -47,10 +47,10 @@ English
 
 // Diags
 "DEVICE_MODEL" = "طراز الجهاز:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
+"DEVICE_MODEL_KERN" = "إصدار النواة:";
+"DEVICE_MODEL_CF" = "إصدار CF:";
+"CREDITS_SUBTEXT" = "المحمل مكون من قبل:";
+"PINFO_SUBTEXT" = "العلامات (paleinfo) تتوافق مع العلامات التي استخدمتها عبر واجهة سطر الأوامر palera1n 2.0.0، مفيدة للمطورين.";
 "TYPE_INFO" = "النوع";
 "INSTALL_INFO" = "تم التثبيت";
 "ARCH_INFO" = "البنية";
@@ -78,10 +78,10 @@ English
 "CLOSE" = "إغلاق";
 "PROCEED" = "متابعة";
 "NO_PROCEED" = "غير قادر على المتابعة";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "Reboot the device manually after using --force-revert, jailbreak again to be able to bootstrap.";
+"NO_PROCEED_SIDELOADING" = "التحميل الجانبي غير مدعوم.";
+"NO_PROCEED_FR" = "أعد تشغيل الجهاز يدويًا بعد استخدام --force-revert، وأعد عملية الجيلبريك مرة أخرى لتمكين التشغيل الأساسي.";
 "SET" = "تعيين";
-"TOO_LONG" = "Too Long";
+"TOO_LONG" = "طويل جداً";
 
 // DL / BS
 "DL_STRAP" = "جارٍ تحميل نظام الأساس";
