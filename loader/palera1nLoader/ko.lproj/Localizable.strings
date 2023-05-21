@@ -1,7 +1,7 @@
 /*
 Localizable.strings
 palera1nLoader
-Korean
+English
 */
 // ViewController Cells
 
@@ -79,7 +79,7 @@ Korean
 "PROCEED" = "Proceed";
 "NO_PROCEED" = "Unable to proceed";
 "NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "Reboot the device manually after using --force-revert, jailbreak again to be able to bootstrap.";
+"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
 "SET" = "Set";
 "TOO_LONG" = "Too Long";
 

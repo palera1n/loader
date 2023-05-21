@@ -201,17 +201,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if !fileExists("/var/mobile/Library/palera1n/helper") {
             #if targetEnvironment(simulator)
             #else
-            let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
-            self.present(alert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
+                self.present(alert, animated: true)
+            }
             return
             #endif
         }
-
+        
         if envInfo.hasForceReverted {
-            let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
-            self.present(alert, animated: true)
+            #if targetEnvironment(simulator)
+            #else
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
+                self.present(alert, animated: true)
+            }
+            #endif
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
