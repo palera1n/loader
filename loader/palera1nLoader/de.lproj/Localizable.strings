@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "Durch Fortfahren wird der /var/jb Symlink entfernt und das Gerät neu gestartet.";
 "REVERT_SUBTEXT" = "Rootful kann diesen Knopf nicht verwenden :(";
 "PM_SUBTEXT" = "Wählen Sie hier Ihren bevorzugten Paketmanager aus, den Sie installieren möchten. Sileo wird empfohlen, falls Sie neu sind.";
-"REVERT_WARNING" = "Löscht /var/jb und deinstalliert Jailbreak Anwendungen, das Gerät wird in den normalen Zustand neu starten.";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "SILEO_REINSTALL" = "Sind Sie sicher, dass Sie Sileo neu installieren möchten?";
 "ZEBRA_REINSTALL" = "Sind Sie sicher, dass Sie Zebra neu installieren möchten?";
 "SILEO_INSTALL" = "Sind Sie sicher, dass Sie Sileo installieren möchten?";
