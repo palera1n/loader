@@ -1,7 +1,6 @@
-## palera1nLoader (lite)
-Just like universal branch, this is supposed to be something that offers same functionality while also being around 90% smaller.
+# palera1n Loader
 
-### Building
+## Building
 
 Optional Flags:
 - TIPA=1 (outputs as .tipa)
@@ -19,9 +18,9 @@ make TVOS=1
 ## Downloads
 Don't use unless you know what you're doing.
 
-https://static.palera.in/artifacts/loader/universal_lite/palera1nLoader.ipa
-https://static.palera.in/artifacts/loader/universal_lite/loader.dmg
+- https://static.palera.in/artifacts/loader/universal_lite/palera1nLoader.ipa
+- https://static.palera.in/artifacts/loader/universal_lite/loader.dmg
 
 (These links may not be accessible)
-https://static.palera.in/artifacts/loader/universal_lite/palera1nTVLoader.ipa
-https://static.palera.in/artifacts/loader/universal_lite/tvloader.dmg
+- https://static.palera.in/artifacts/loader/universal_lite/palera1nTVLoader.ipa
+- https://static.palera.in/artifacts/loader/universal_lite/tvloader.dmg
