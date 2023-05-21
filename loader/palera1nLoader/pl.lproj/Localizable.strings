@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "Kontynuacja spowoduje usunięcie plika /var/jb i ponowne uruchomienie urządzenia.";
 "REVERT_SUBTEXT" = "Rootful nie może użyć tego przycisku :(";
 "PM_SUBTEXT" = "Wybierz swojego ulubionego menedżera pakietów, który chcesz zainstalować, Sileo jest zalecany, jeśli jesteś nowy.";
-"REVERT_WARNING" = "Usuwa plik /var/jb i wyłącza aplikacje jailbreakowe. Urządzenie zrestartuje się w stan bez jailbreaka.";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "SILEO_REINSTALL" = "Napewno chcesz ponownie instalować Sileo?";
 "ZEBRA_REINSTALL" = "Napewno chcesz ponownie instalować Zebra?";
 "SILEO_INSTALL" = "Napewno chcesz instalować Sileo?";
