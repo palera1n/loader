@@ -114,24 +114,13 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("ACTION_UICACHE"):
             spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"], root: true)
         case local("ACTION_TWEAKS"):
-            if envInfo.isRootful {
-                spawn(command: "/etc/rc.d/substitute-launcher", args: [], root: true)
-                spawn(command: "/etc/rc.d/ellekit-loader", args: [], root: true)
-            } else {
-                spawn(command: "/var/jb/usr/libexec/ellekit/loader", args: [], root: true)
-            }
-            
+            helper(args: ["-l"])
         case local("ACTION_USREBOOT"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"], root: true)
         case local("ACTION_DAEMONS"):
-            if envInfo.isRootful {
-                spawn(command: "/cores/binpack/bin/launchctl", args: ["bootstrap", "system", "/Library/LaunchDaemons"], root: true)
-            } else {
-                spawn(command: "/cores/binpack/bin/launchctl", args: ["bootstrap", "system", "/var/jb/Library/LaunchDaemons"], root: true)
-            }
+            helper(args: ["-L"])
         case local("ACTION_MOUNT"):
-            spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true)
-            spawn(command: "/sbin/mount", args: ["-uw", "/"], root: true)
+            helper(args: ["-M"])
         default:
             break
         }
