@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  pockiiau
+//  palera1nLoader
 //
 //  Created by samiiau on 2/27/23.
 //  Copyright © 2023 samiiau. All rights reserved.
@@ -23,12 +23,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func downloadFile(url: URL, forceBar: Bool = false, output: String? = nil, completion: @escaping (String?, Error?) -> Void) {
         let tempDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        //URL(string: "/var/tmp/palera1nloader/downloads/")!
-        
         var destinationUrl = tempDir.appendingPathComponent(url.lastPathComponent)
-        if (output != nil) {
-            destinationUrl = tempDir.appendingPathComponent(output!)
-        }
+        if (output != nil) {destinationUrl = tempDir.appendingPathComponent(output!)}
 
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
         var request = URLRequest(url: url)

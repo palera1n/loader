@@ -11,6 +11,9 @@ import MachO
 import Extras
 
 class Utils {
+    
+//MARK: - Check for installation in jb-* and environment type
+    
     func strapCheck() -> (env: Int, jbFolder: String) {
         if (envInfo.isSimulator) {
             return (-1, "")
@@ -55,6 +58,9 @@ class Utils {
         }
     }
     
+
+//MARK: - Preparing loader for use, creating files, etc
+
     func createLoaderDirs() -> Void {
         if (!fileExists("/var/mobile/Library/palera1n")) {
             do {
@@ -74,6 +80,8 @@ class Utils {
         }
     }
     
+    
+    // Sets all info in envInfo
     func prerequisiteChecks() -> Void {
         createHelperLink()
         #if targetEnvironment(simulator)
@@ -81,14 +89,11 @@ class Utils {
         #endif
         
         // rootless/rootful check
-        envInfo.isRootful = true
-        print(Bool(truncating: helper(args: ["-t"]) as NSNumber))
-        print(helper(args: ["-t"]) as NSNumber)
-
+        helper(args: ["-t"])
         envInfo.installPrefix = envInfo.isRootful ? "" : "/var/jb"
         
         // force revert check
-        envInfo.hasForceReverted = Bool(truncating: helper(args: ["-f"]) as NSNumber)
+        helper(args: ["-f"])
 
         // get paleinfo and kerninfo flags
         helper(args: ["-k"])
@@ -140,6 +145,7 @@ class Utils {
     }
 }
 
+// Revert/Removes jailbreak install on rootless devices
 func revert(viewController: UIViewController) -> Void {
     if !envInfo.isRootful {
         let alert = UIAlertController.spinnerAlert("REMOVING")
@@ -157,6 +163,7 @@ func revert(viewController: UIViewController) -> Void {
     }
 }
  
+// Create Symlink for helper
 func createHelperLink() {
     let path = "/var/mobile/Library/palera1n/helper"
     if (fileExists("/cores/jbloader")) {
@@ -172,6 +179,7 @@ func createHelperLink() {
     }
 }
 
+// Find and open TrollStore Helper
 func openTrollHelper() -> Void {
     if !openApp("com.opa334.trollstorepersistencehelper") {
         let fm = FileManager.default

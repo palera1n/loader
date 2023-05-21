@@ -1,8 +1,6 @@
 //
 //  AppDelegate.swift
-//  Pogo
-//
-//  Created by Amy While on 12/09/2022.
+//  palera1nLoader
 //
 
 import UIKit

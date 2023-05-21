@@ -44,6 +44,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
+    
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions -> UIMenu? in
             let copyAction = UIAction(title: local("COPY"), image: UIImage(systemName: "doc.on.doc"), identifier: nil, discoverabilityTitle: nil) { action in
@@ -178,7 +179,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case 2:
             return """
             \(local("STRAP_INFO")): -1 == Simulator
-            \(local("STRAP_INFO")): 0 == \(local("ROOTFUL")) | !jb-*
+            \(local("STRAP_INFO")): 0 == \(local("ROOTFUL")) or !jb-*
             \(local("STRAP_INFO")): 1 == /var/jb & jb-*
             \(local("STRAP_INFO")): 2 == !/var/jb & jb-*
             """

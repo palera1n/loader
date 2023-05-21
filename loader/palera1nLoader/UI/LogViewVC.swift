@@ -1,6 +1,6 @@
 //
 //  LogViewer.swift
-//  ElleKit Configurator
+//  palera1nLoader
 //
 //  Created by 0x8ff on 3/10/23.
 //  Copyright © 2023 0x8ff. All rights reserved.

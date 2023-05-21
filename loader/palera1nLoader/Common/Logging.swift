@@ -29,6 +29,7 @@ func errorString(_ error: Int32) -> String {
     return "\(POSIXError(POSIXErrorCode(rawValue: error)!))"
 }
 
+// Creates new log file, check if debugging device
 func initLogs() -> Void {
     var procinfo = kinfo_proc()
     var size = MemoryLayout.stride(ofValue: procinfo)
@@ -60,6 +61,7 @@ func initLogs() -> Void {
     logInfo.logFile = "/var/mobile/Library/palera1n/logs/\(timestamp)-loader.log"
 }
 
+// Prints log message with type
 func log(type: logTypes = .info, msg: String, file: String = #file, line: Int = #line, function: String = #function) {
     let srcFile = URL(string: file)!.lastPathComponent
     freopen(logInfo.logFile.cString(using: .ascii)!, "a+", stderr)
