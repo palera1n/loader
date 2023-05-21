@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  pockiiau
+//  palera1nLoader
 //
 //  Created by samiiau on 2/27/23.
 //  Copyright © 2023 samiiau. All rights reserved.
@@ -23,12 +23,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     func downloadFile(url: URL, forceBar: Bool = false, output: String? = nil, completion: @escaping (String?, Error?) -> Void) {
         let tempDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        //URL(string: "/var/tmp/palera1nloader/downloads/")!
-        
         var destinationUrl = tempDir.appendingPathComponent(url.lastPathComponent)
-        if (output != nil) {
-            destinationUrl = tempDir.appendingPathComponent(output!)
-        }
+        if (output != nil) {destinationUrl = tempDir.appendingPathComponent(output!)}
 
         let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: nil)
         var request = URLRequest(url: url)
@@ -205,17 +201,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if !fileExists("/var/mobile/Library/palera1n/helper") {
             #if targetEnvironment(simulator)
             #else
-            let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
-            self.present(alert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
+                self.present(alert, animated: true)
+            }
             return
             #endif
         }
-
-        if fileExists("/var/mobile/Library/palera1n/helper") && envInfo.hasForceReverted {
-            let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
-            self.present(alert, animated: true)
+        
+        if envInfo.hasForceReverted {
+            #if targetEnvironment(simulator)
+            #else
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
+                self.present(alert, animated: true)
+            }
+            #endif
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
