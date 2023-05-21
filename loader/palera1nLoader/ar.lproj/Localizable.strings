@@ -79,7 +79,7 @@ English
 "PROCEED" = "متابعة";
 "NO_PROCEED" = "غير قادر على المتابعة";
 "NO_PROCEED_SIDELOADING" = "التحميل الجانبي غير مدعوم.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"NO_PROCEED_FR" = "بعد استخدام --force-revert، يجب أن تقوم بإعادة تشغيل جهازك يدويًا وإعادة عملية الجيلبريك مرة أخرى لتمكين التشغيل الأساسي.";
 "SET" = "تعيين";
 "TOO_LONG" = "طويل جداً";
 
@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "سيؤدي المتابعة إلى إزالة رابط /var/jb وإعادة تشغيل الجهاز.";
 "REVERT_SUBTEXT" = "صلاحيات الجذر لا يمكن استخدام هذا الزر :(";
 "PM_SUBTEXT" = "اختر مدير الحزم المفضل لديك هنا الذي ترغب في تثبيته، يُنصح باستخدام سيليو إذا كنت جديدًا.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
+"REVERT_WARNING" = "يقوم بمسح /var/jb وإلغاء تسجيل تطبيقات الجيلبريك، بعد الانتهاء سيتم إعادة تشغيل الجهاز إلى حالة غير مكسورة.";
 "SILEO_REINSTALL" = "هل أنت متأكد من رغبتك في إعادة تثبيت سيليو؟";
 "ZEBRA_REINSTALL" = "هل أنت متأكد من رغبتك في إعادة تثبيت زيبرا؟";
 "SILEO_INSTALL" = "هل أنت متأكد من رغبتك في تثبيت سيليو؟";
