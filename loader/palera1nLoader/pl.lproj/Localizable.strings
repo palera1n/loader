@@ -30,7 +30,7 @@ English
 "ACTION_TWEAKS" = "Włącz modyfikacje";
 "FR_SWITCH" = "Rebootuj po przywróceniu";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, theres cases where you would need to use these actions to open the installed applications as they don't appear on the homescreen.";
+"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
 
 // Logging View
 "LOG_CELL" = "Logs";

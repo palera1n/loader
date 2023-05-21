@@ -30,7 +30,7 @@ English
 "ACTION_TWEAKS" = "Tweakek engedélyezése";
 "FR_SWITCH" = "Újraindítás a visszaállításkor";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, theres cases where you would need to use these actions to open the installed applications as they don't appear on the homescreen.";
+"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
 
 // Logging View
 "LOG_CELL" = "Logs";
@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "A folytatás eltávolítja a /var/jb szimbolikus hivatkozást, és újraindítja az eszközt.";
 "REVERT_SUBTEXT" = "A Gyökeres nem tudja használni ezt a gombot :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
 "ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
 "SILEO_INSTALL" = "Are you sure you want to install Sileo?";

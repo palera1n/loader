@@ -30,7 +30,7 @@ English
 "ACTION_TWEAKS" = "Enable Tweaks";
 "FR_SWITCH" = "Reboot on revert";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, theres cases where you would need to use these actions to open the installed applications as they don't appear on the homescreen.";
+"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
 
 // Logging View
 "LOG_CELL" = "Logs";
@@ -79,7 +79,7 @@ English
 "PROCEED" = "Proceed";
 "NO_PROCEED" = "Unable to proceed";
 "NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "Reboot the device manually after using --force-revert, jailbreak again to be able to bootstrap.";
+"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
 "SET" = "Set";
 "TOO_LONG" = "Too Long";
 
@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
 "REVERT_SUBTEXT" = "Rootful cannot use this button :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, the device will reboot into unjailbroken state.";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
 "ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
 "SILEO_INSTALL" = "Are you sure you want to install Sileo?";
