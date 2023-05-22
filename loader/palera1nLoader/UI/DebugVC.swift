@@ -12,7 +12,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
     var tableData = [
         [local("LOG_CELL_VIEW")],
-        [local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
+       // [local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
+        [local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
         [local("FR_SWITCH")]
     ]
     
@@ -90,12 +91,12 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             }
             applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
             cell.textLabel?.text = local("DEBUG_CLEAN_FAKEFS")
-        case local("DEBUG_ENTER_SAFEMODE"):
-            applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
-            cell.textLabel?.text = local("DEBUG_ENTER_SAFEMODE")
-        case local("DEBUG_EXIT_SAFEMODE"):
-            applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
-            cell.textLabel?.text = local("DEBUG_EXIT_SAFEMODE")
+//        case local("DEBUG_ENTER_SAFEMODE"):
+//            applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
+//            cell.textLabel?.text = local("DEBUG_ENTER_SAFEMODE")
+//        case local("DEBUG_EXIT_SAFEMODE"):
+//            applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
+//            cell.textLabel?.text = local("DEBUG_EXIT_SAFEMODE")
         case local("LOG_CLEAR"):
             applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
             cell.textLabel?.text = local("LOG_CLEAR")
@@ -116,20 +117,20 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             log(type: .info, msg: "Opening Log View")
             let LogViewVC = LogViewer()
             navigationController?.pushViewController(LogViewVC, animated: true)
-        case local("DEBUG_ENTER_SAFEMODE"):
-            let alertController = whichAlert(title: "\(local("DEBUG_ENTER_SAFEMODE"))?", message: nil)
-            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "1"]) }
-            alertController.addAction(cancelAction)
-            alertController.addAction(confirmAction)
-            present(alertController, animated: true, completion: nil)
-        case local("DEBUG_EXIT_SAFEMODE"):
-            let alertController = whichAlert(title: "\(local("DEBUG_EXIT_SAFEMODE"))?", message: nil)
-            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "0"]) }
-            alertController.addAction(cancelAction)
-            alertController.addAction(confirmAction)
-            present(alertController, animated: true, completion: nil)
+//        case local("DEBUG_ENTER_SAFEMODE"):
+//            let alertController = whichAlert(title: "\(local("DEBUG_ENTER_SAFEMODE"))?", message: nil)
+//            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+//            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "1"]) }
+//            alertController.addAction(cancelAction)
+//            alertController.addAction(confirmAction)
+//            present(alertController, animated: true, completion: nil)
+//        case local("DEBUG_EXIT_SAFEMODE"):
+//            let alertController = whichAlert(title: "\(local("DEBUG_EXIT_SAFEMODE"))?", message: nil)
+//            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+//            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "0"]) }
+//            alertController.addAction(cancelAction)
+//            alertController.addAction(confirmAction)
+//            present(alertController, animated: true, completion: nil)
         case local("DEBUG_CLEAN_FAKEFS"):
             let alertController = whichAlert(title: "\(local("DEBUG_CLEAN_FAKEFS"))?", message: nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
