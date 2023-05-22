@@ -13,7 +13,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     var tableData = [
         [local("LOG_CELL_VIEW")],
        // [local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
-        [local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
+//        [local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
+        [local("LOG_CLEAR")],
         [local("FR_SWITCH")]
     ]
     
@@ -79,18 +80,18 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             cell.accessoryView = switchControl
             cell.textLabel?.text = local("FR_SWITCH")
             cell.selectionStyle = .none
-        case local("DEBUG_CLEAN_FAKEFS"):
-            if envInfo.isRootful {
-                cell.isUserInteractionEnabled = true
-                cell.imageView?.alpha = 1
-            } else if !envInfo.isRootful {
-                cell.isUserInteractionEnabled = false
-                cell.textLabel?.textColor = .gray
-                cell.accessoryType = .none
-                cell.imageView?.alpha = 0.4
-            }
-            applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
-            cell.textLabel?.text = local("DEBUG_CLEAN_FAKEFS")
+//        case local("DEBUG_CLEAN_FAKEFS"):
+//            if envInfo.isRootful {
+//                cell.isUserInteractionEnabled = true
+//                cell.imageView?.alpha = 1
+//            } else if !envInfo.isRootful {
+//                cell.isUserInteractionEnabled = false
+//                cell.textLabel?.textColor = .gray
+//                cell.accessoryType = .none
+//                cell.imageView?.alpha = 0.4
+//            }
+//            applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
+//            cell.textLabel?.text = local("DEBUG_CLEAN_FAKEFS")
 //        case local("DEBUG_ENTER_SAFEMODE"):
 //            applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
 //            cell.textLabel?.text = local("DEBUG_ENTER_SAFEMODE")
@@ -131,13 +132,13 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 //            alertController.addAction(cancelAction)
 //            alertController.addAction(confirmAction)
 //            present(alertController, animated: true, completion: nil)
-        case local("DEBUG_CLEAN_FAKEFS"):
-            let alertController = whichAlert(title: "\(local("DEBUG_CLEAN_FAKEFS"))?", message: nil)
-            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .destructive) {_ in helper(args: ["--revert-install"]) }
-            alertController.addAction(cancelAction)
-            alertController.addAction(confirmAction)
-            present(alertController, animated: true, completion: nil)
+//        case local("DEBUG_CLEAN_FAKEFS"):
+//            let alertController = whichAlert(title: "\(local("DEBUG_CLEAN_FAKEFS"))?", message: nil)
+//            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+//            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .destructive) {_ in helper(args: ["--revert-install"]) }
+//            alertController.addAction(cancelAction)
+//            alertController.addAction(confirmAction)
+//            present(alertController, animated: true, completion: nil)
         case local("LOG_CLEAR"):
             let files = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n/logs")
             for file in files {
