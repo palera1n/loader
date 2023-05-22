@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>REVISION</key>
-	<string>5dfe2b9</string>
+	<string>e39aeb7</string>
 	<key>Scene Configuration</key>
 	<dict/>
 	<key>TSRootBinaries</key>
@@ -17,5 +17,24 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>arrow.counterclockwise.circle</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Respring</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>qa_respring</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconSymbolName</key>
+			<string>iphone.circle</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>UICache</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>qa_uicache</string>
+		</dict>
+	</array>
 </dict>
 </plist>

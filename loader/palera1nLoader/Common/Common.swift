@@ -136,10 +136,9 @@ extension UIAlertController {
         alertController.addAction(UIAlertAction(title: local("LOG_CELL_VIEW"), style: .default, handler: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 log(type: .info, msg: "Opening Log View")
+                fromAlert = true
                 let LogViewVC = LogViewer()
                 let navController = UINavigationController(rootViewController: LogViewVC)
-                let closeButton = UIBarButtonItem(title: local("CLOSE"), style: .done, target: self, action: #selector(self.closeapp(_:)))
-                LogViewVC.navigationItem.leftBarButtonItem = closeButton
                 navController.modalPresentationStyle = .formSheet
                 envInfo.nav.present(navController, animated: true, completion: nil)
             }
@@ -147,12 +146,6 @@ extension UIAlertController {
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
         return alertController
-    }
-
-    @objc func closeapp(_ sender:UIBarButtonItem!) {
-        bootstrap().cleanUp()
-        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
     }
 
     // Downloading Alert
