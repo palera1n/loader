@@ -26,7 +26,7 @@ English
 "ACTION_USREBOOT" = "Userspace-Neustart";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Starte Hintergrunddienste";
-"ACTION_MOUNT" = "Mount Directories";
+"ACTION_MOUNT" = "Mount-Verzeichnisse";
 "ACTION_TWEAKS" = "Tweaks aktivieren";
 "FR_SWITCH" = "Neustart nach Zurücksetzen";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
