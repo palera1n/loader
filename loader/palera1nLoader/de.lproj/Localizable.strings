@@ -29,28 +29,28 @@ English
 "ACTION_MOUNT" = "Mount-Verzeichnisse";
 "ACTION_TWEAKS" = "Tweaks aktivieren";
 "FR_SWITCH" = "Neustart nach Zurücksetzen";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount-Verzeichnisse\" versucht nur, Stammverzeichnis und Preboot als ablesen/Schreiben einzubinden.";
+"OPENER_SUBTEXT" = "Bei Verwendung von palera1n auf einem iPad gibt es Fälle, in denen Sie diese Aktionen verwenden müssen, um die installierten Anwendungen zu öffnen, wenn sie nicht auf dem Startbildschirm erscheinen.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "Logdateien";
+"LOG_CELL_VIEW" = "Logdateien anzeigen";
+"NONE" = "Keine";
+"LOG_CLEAR" = "Logdateien löschen";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CELL" = "Fehlersuche";
+"DEBUG_OPTIONS" = "Optionen";
+"DEBUG_CLEAN_FAKEFS" = "Fakefs bereinigen";
+"DEBUG_EXIT_SAFEMODE" = "Sicherheitsmodus beenden";
+"DEBUG_ENTER_SAFEMODE" = "Sicherheitsmodus aktivieren";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
+"DEVICE_MODEL" = "Gerätemodell:";
+"DEVICE_MODEL_KERN" = "Kernel-Version:";
 "DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
+"CREDITS_SUBTEXT" = "Loader erstellt von:";
+"PINFO_SUBTEXT" = "Flags (paleinfo) entsprechen den Flags, die Sie mit palera1n 2.0.0 CLI verwendet haben, nützlich für Entwickler.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Installiert";
 "ARCH_INFO" = "Architektur";
@@ -61,13 +61,13 @@ English
 "OPEN_FILZA" = "Öffne in Filza";
 "OPEN_SANTANDER" = "Öffne in Santander";
 "COPY" = "Kopieren";
-"INSTALL_FR" = "Force Reverted";
+"INSTALL_FR" = "Zwangsweise zurückgesetzt";
 "HELPER" = "Helfer";
 "HELPER_PATH" = "Helfer Pfad";
 "SILEO_INSTALLED" = "Sileo installiert";
 "ZEBRA_INSTALLED" = "Zebra installiert";
 "KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"PINFO_FLAGS" = "Flaggen (paleinfo)";
 
 "TRUE" = "Ja";
 "FALSE" = "Nein";
@@ -78,10 +78,10 @@ English
 "CLOSE" = "Schließen";
 "PROCEED" = "Weiter";
 "NO_PROCEED" = "Fortfahren nicht möglich";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"NO_PROCEED_SIDELOADING" = "Sideloading wird nicht unterstützt.";
+"NO_PROCEED_FR" = "Nachdem Sie --force-revert verwendet haben, müssen Sie manuell neu starten und Ihr Gerät erneut einjagen um es bootstrap zu können.";
 "SET" = "Speichern";
-"TOO_LONG" = "Too Long";
+"TOO_LONG" = "Zu lang";
 
 // DL / BS
 "DL_STRAP" = "Basis-System herunterladen";
@@ -108,12 +108,12 @@ English
 "ENJOY" = "Viel Spaß!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
+"HIDDEN_NOTICE" = "Ihr fakeroot ist noch intakt, während /var/jb nicht ist, wird dies wieder symlink /var/jb zurück zu seinem ursprünglichen fakeroot machen. Sie müssen eventuell Uicache in Dienstprogrammen ausführen, nachdem Sie fortfahren.";
 "NOTICE_ROOTLESS" = "Du kannst diesen Knopf nicht verwenden, wenn du einen rootless Jailbreak verwendest.";
 "HIDE_NOTICE" = "Durch Fortfahren wird der /var/jb Symlink entfernt und das Gerät neu gestartet.";
 "REVERT_SUBTEXT" = "Rootful kann diesen Knopf nicht verwenden :(";
 "PM_SUBTEXT" = "Wählen Sie hier Ihren bevorzugten Paketmanager aus, den Sie installieren möchten. Sileo wird empfohlen, falls Sie neu sind.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
+"REVERT_WARNING" = "Löscht /var/jb und meldet Jailbreak-Anwendungen ab. Nach Abschluss wird das Gerät in einen nicht-gejailbreakten Zustand neu starten.";
 "SILEO_REINSTALL" = "Sind Sie sicher, dass Sie Sileo neu installieren möchten?";
 "ZEBRA_REINSTALL" = "Sind Sie sicher, dass Sie Zebra neu installieren möchten?";
 "SILEO_INSTALL" = "Sind Sie sicher, dass Sie Sileo installieren möchten?";
