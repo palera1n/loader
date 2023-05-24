@@ -5,54 +5,54 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Installera";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Felsök";
+"DIAGNOSTICS" = "Diagnostik";
+"ACTIONS" = "Åtgärder";
+"JBINIT_LOG" = "Logg";
+"REVERT_CELL" = "Återställ Jailbreak";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
+"HIDDEN" = "Gömd Jailbreak";
+"ACTION_HIDEJB" = "Göm Jailbreak";
+"OPEN_CELL" = "Appöppnare";
+"OPENER_SILEO" = "Öppna Sileo";
+"OPENER_ZEBRA" = "Öppna Zebra";
+"OPENER_TH" = "Öppna TrollHelper";
+"UTIL_CELL" = "Verktyg";
+"ACTION_RESPRING" = "Respringa";
+"ACTION_USREBOOT" = "Starta om Userspace";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_DAEMONS" = "Starta Daemons";
+"ACTION_MOUNT" = "Montera Filkataloger";
+"ACTION_TWEAKS" = "Aktivera Tweaks";
+"FR_SWITCH" = "Starta om vid återställning";
+"ACTION_MOUNT_SUBTEXT" = "\"Montera Filkataloger\" försöker bara montera root och preboot med läs- och skrivtillåtelse.";
+"OPENER_SUBTEXT" = "Vid användning av palera1n på iPad så kan det finnas fall då du behöver öppna installerade appar härifrån då de inte visas på hemskärmen.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "Loggar";
+"LOG_CELL_VIEW" = "Visa Loggar";
+"NONE" = "Inga";
+"LOG_CLEAR" = "Rensa Loggar";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CELL" = "Felsök";
+"DEBUG_OPTIONS" = "Inställningar";
+"DEBUG_CLEAN_FAKEFS" = "Rensa fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Avsluta felsäkert läge";
+"DEBUG_ENTER_SAFEMODE" = "Aktivera felsäkert läge";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
+"DEVICE_MODEL" = "Enhetsmodell:";
+"DEVICE_MODEL_KERN" = "Kernelversion:";
 "DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
+"CREDITS_SUBTEXT" = "Loader gjord av:";
+"PINFO_SUBTEXT" = "Flaggor (paleinfo) motsvarar flaggor du använde via palera1n 2.0.0 CLI, användbart för utvecklare.";
+"TYPE_INFO" = "Typ";
+"INSTALL_INFO" = "Installerad";
 "ARCH_INFO" = "Architecture";
 "VERSION_INFO" = "Version";
 "STRAP_INFO" = "Environment";
