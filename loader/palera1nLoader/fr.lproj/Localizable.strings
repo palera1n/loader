@@ -29,17 +29,17 @@ English
 "ACTION_MOUNT" = "Monter les répertoires";
 "ACTION_TWEAKS" = "Activer les tweaks";
 "FR_SWITCH" = "Redémarrer lors de la restauration";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
+"ACTION_MOUNT_SUBTEXT" = "\"Monter les répertoires\" essaye juste de monter la racine et preboot en mode lecture/écriture.";
 "OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
+"LOG_CELL" = "Journaux";
+"LOG_CELL_VIEW" = "Afficher Journaux";
+"NONE" = "Aucun";
 "LOG_CLEAR" = "Clear Logs";
 
 // Debug
-"DEBUG_CELL" = "Debug";
+"DEBUG_CELL" = "Débogue";
 "DEBUG_OPTIONS" = "Options";
 "DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Exit safemode";
@@ -47,10 +47,10 @@ English
 
 // Diags
 "DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
+"DEVICE_MODEL_KERN" = "Version Du Noyau:";
 "DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
+"CREDITS_SUBTEXT" = "Application faite par:";
+"PINFO_SUBTEXT" = "Les drapeaux (paleinfo) correspondent aux drapeaux que vous avez utilisés sur palera1n 2.0.0, utiles pour les développeurs.";
 "TYPE_INFO" = "Type";
 "INSTALL_INFO" = "Installé";
 "ARCH_INFO" = "Architecture";
