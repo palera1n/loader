@@ -29,27 +29,27 @@ English
 "ACTION_MOUNT" = "掛載資料夾";
 "ACTION_TWEAKS" = "載入插件";
 "FR_SWITCH" = "還原後重啟";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_MOUNT_SUBTEXT" = "「掛載資料夾」只會嘗試把根和預開機卷宗掛載為可讀寫。";
+"OPENER_SUBTEXT" = "當在iPad上使用palera1n時，有些情況下已安裝的應用程式沒有在主畫面上出現，而需要使用這些動作來開啟應用程式。";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "日誌";
+"LOG_CELL_VIEW" = "查看日誌";
+"NONE" = "無";
+"LOG_CLEAR" = "清除日誌";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CELL" = "除錯";
+"DEBUG_OPTIONS" = "選項";
+"DEBUG_CLEAN_FAKEFS" = "清理fakefs";
+"DEBUG_EXIT_SAFEMODE" = "離開安全模式";
+"DEBUG_ENTER_SAFEMODE" = "進入安全模式";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
+"DEVICE_MODEL" = "裝置型號：";
+"DEVICE_MODEL_KERN" = "核心版本：";
+"DEVICE_MODEL_CF" = "CF版本：";
+"CREDITS_SUBTEXT" = "載入器作者：";
 "PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
 "TYPE_INFO" = "類型";
 "INSTALL_INFO" = "已安裝";
