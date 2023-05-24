@@ -11,6 +11,8 @@ import UIKit
 class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
+        [local("ACTION_HIDEJB")],
+        
         [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
         
         [local("ACTION_RESPRING"), local("ACTION_UICACHE"), local("ACTION_TWEAKS")],
@@ -23,7 +25,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         envInfo.nav = navigationController!
     }
   
-    var sectionTitles = [local("OPEN_CELL"), local("UTIL_CELL"), ""]
+    var sectionTitles = ["", local("OPEN_CELL"), local("UTIL_CELL"), ""]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
@@ -55,6 +57,9 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .default
         
         switch tableData[indexPath.section][indexPath.row] {
+        case local("ACTION_HIDEJB"):
+            applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
+            cell.textLabel?.text = local("ACTION_HIDEJB")
         case local("OPENER_SILEO"):
             applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = local("OPENER_SILEO")
@@ -97,6 +102,8 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let prefix = envInfo.installPrefix
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
+        case local("ACTION_HIDEJB"):
+            HideEnv(viewController: self)
         case local("OPENER_SILEO"):
             if openApp("org.coolstar.SileoStore") {
             } else if openApp("org.coolstar.SileoNightly") {
@@ -136,6 +143,33 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return local("OPENER_SUBTEXT")
         default:
             return nil
+        }
+    }
+    
+    private func HideEnv(viewController: UIViewController) {
+        if (!envInfo.isRootful) {
+            let strapValue = envInfo.envType
+            switch strapValue {
+            case 1:
+                #if !targetEnvironment(simulator)
+                let alert = UIAlertController.warning(title: local("HIDE"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
+                    if fileExists("/var/mobile/Library/palera1n/helper") {
+                        if (!envInfo.isRootful) && fileExists("/var/jb") {
+                            bp_rmf("/var/jb")
+                        }
+                        spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"], root: true)
+                    }
+                })
+                viewController.present(alert, animated: true)
+                #endif
+            default:
+                let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: "\(local("STRAP_INFO")) \(strapValue)")
+                viewController.present(errorAlert, animated: true)
+            }
+        } else {
+            let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: local("ROOTLESS_NOTICE"))
+            viewController.present(errorAlert, animated: true)
+            return
         }
     }
 }

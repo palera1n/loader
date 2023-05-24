@@ -23,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3384F5972A1EAAC000F8BF22 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3384F5982A1EAACC00F8BF22 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3384F59A2A1EAB2400F8BF22 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3384F59B2A1EAB3600F8BF22 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33A420D82A0ED59D005AE29C /* DebugVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugVC.swift; sourceTree = "<group>"; };
 		33AA48DC2A19675E0070F207 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33AA48DE2A1967800070F207 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -250,6 +254,10 @@
 				33AA48E12A1967950070F207 /* pl */,
 				33AA48E72A1967FA0070F207 /* hu */,
 				33AA48E92A19680C0070F207 /* de */,
+				3384F5972A1EAAC000F8BF22 /* es */,
+				3384F5982A1EAACC00F8BF22 /* cs */,
+				3384F59A2A1EAB2400F8BF22 /* sv */,
+				3384F59B2A1EAB3600F8BF22 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

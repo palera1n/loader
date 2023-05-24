@@ -198,40 +198,50 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidAppear(animated)
         envInfo.nav = navigationController!
         
-        if !fileExists("/var/mobile/Library/palera1n/helper") {
-            #if targetEnvironment(simulator)
-            #else
+        /// This sees if the loader app should let the user be able to interact with it,
+        /// if not then a prompt will appear prompting them to close.
+        
+        #if !targetEnvironment(simulator)
+        switch true {
+        case !fileExists("/var/mobile/Library/palera1n/helper"):
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
                 self.present(alert, animated: true)
             }
             return
-            #endif
-        }
-        
-        if envInfo.hasForceReverted {
-            #if targetEnvironment(simulator)
-            #else
+            
+        case envInfo.hasForceReverted:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
                 self.present(alert, animated: true)
             }
-            #endif
+            return
+            
+        default:
+            break
         }
+        #endif
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (!envInfo.hasChecked) { Utils().prerequisiteChecks() }
+        
+        if !envInfo.hasChecked {
+            Utils().prerequisiteChecks()
+        }
+        
+        setNavigationBar()
+        setTableView()
+    }
 
+    private func setNavigationBar() {
         let appearance = UINavigationBarAppearance()
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
         let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
         customView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.widthAnchor.constraint(equalToConstant: 25).isActive = true
@@ -242,26 +252,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         button.layer.borderWidth = 0.7
         button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         customView.addSubview(button)
-
+        
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "palera1n"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         customView.addSubview(titleLabel)
-
+        
         NSLayoutConstraint.activate([
             button.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             button.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8),
             titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
         ])
-
-        // Add triple tap gesture recognizer to navigation bar
+        
+        /// Add triple tap gesture recognizer to navigation bar
         let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
         tripleTapGestureRecognizer.numberOfTapsRequired = 3
         navigationController?.navigationBar.addGestureRecognizer(tripleTapGestureRecognizer)
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
+    }
 
+    private func setTableView() {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
@@ -269,10 +281,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         view.addSubview(tableView)
         
-        // Add this to resize the table view when the device is rotated
-        view.addConstraints([
-            NSLayoutConstraint(item: tableView, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1, constant: 0),
-            NSLayoutConstraint(item: tableView, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1, constant: 0),
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     

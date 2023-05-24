@@ -36,12 +36,12 @@ struct envInfo {
 
 //MARK: - Commonly used Functions
 
-// String Localization
+/// String Localization
 func local(_ str: String.LocalizationValue) -> String {
     return String(localized: str)
 }
 
-// iPad/iPhone Alert Type
+/// iPad/iPhone Alert Type
 func whichAlert(title: String, message: String? = nil) -> UIAlertController {
     if UIDevice.current.userInterfaceIdiom == .pad {
         return UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -57,21 +57,24 @@ func fileExists(_ path: String) -> Bool {
     return LSApplicationWorkspace.default().openApplication(withBundleID: bundle)
 }
 
-// Execute palera1n helper
+/// Execute palera1n helper
 @discardableResult func helper(args: [String]) -> Int {
    return spawn(command: "/var/mobile/Library/palera1n/helper", args: args, root: true)
 }
 
-// Execute binpack ln
+/// Execute binpack ln
 @discardableResult func bp_ln(_ src: String,_ dest: String) -> Int {
     return spawn(command: "/cores/binpack/bin/ln", args: ["-s", src, dest], root: true)
 }
 
-// Execute binpack rm
+/// Execute binpack rm
 @discardableResult func bp_rm(_ file: String) -> Int {
     return spawn(command: "/cores/binpack/bin/rm", args: ["-rf", file], root: true)
 }
 
+@discardableResult func bp_rmf(_ file: String) -> Int {
+    return spawn(command: "/cores/binpack/bin/rm", args: ["-f", file], root: true)
+}
 
 //MARK: - Image Modification for Cells
 
@@ -113,7 +116,7 @@ func applyImageModifications(to cell: UITableViewCell, with originalImage: UIIma
 
 extension UIAlertController {
     
-    // Warning Alert
+    /// Warning Alert
     static func warning(title: String, message: String, destructiveBtnTitle: String?, destructiveHandler: (() -> Void)?) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         if let destructiveTitle = destructiveBtnTitle, let handler = destructiveHandler {
@@ -125,7 +128,7 @@ extension UIAlertController {
         return alertController
     }
     
-    // Error Alert
+    /// Error Alert
     static func error(title: String, message: String) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
@@ -148,7 +151,7 @@ extension UIAlertController {
         return alertController
     }
 
-    // Downloading Alert
+    /// Downloading Alert
     static func downloading(_ msg: String.LocalizationValue) -> UIAlertController {
         let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
         let constraintHeight = NSLayoutConstraint(item: alertController.view!, attribute: NSLayoutConstraint.Attribute.height,
@@ -161,7 +164,7 @@ extension UIAlertController {
         return alertController
     }
     
-    // Spinner/Installing Alert
+    /// Spinner/Installing Alert
     static func spinnerAlert(_ msg: String.LocalizationValue) -> UIAlertController {
         let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
