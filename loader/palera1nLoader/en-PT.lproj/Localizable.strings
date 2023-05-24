@@ -69,36 +69,36 @@ English
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flags (paleinfo)";
 
-"TRUE" = "Yes";
+"TRUE" = "Aye";
 "FALSE" = "No";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
+"CANCEL" = "Scuttle";
+"CONFIRM" = "AYE AYE";
 "CLOSE" = "Close";
 "PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"NO_PROCEED" = "Unable t' proceed";
+"NO_PROCEED_SIDELOADING" = "Sideloadin' ain't supported.";
+"NO_PROCEED_FR" = "Aft usin' --force-revert, ye must manually reboot 'n jailbreak yer device again t' be able t' bootstrap.";
 "SET" = "Set";
 "TOO_LONG" = "Too Long";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
+"DL_STRAP" = "Downloadin' Base System";
+"DL_SILEO" = "Downloadin' Sileo";
+"DL_ZEBRA" = "Downloadin' Zebra";
+"DOWNLOADING" = "Downloadin'...";
+"INSTALLING" = "Installin'...";
+"DOWNLOAD_FAIL" = "Unable t' fetch file";
 "DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
+"SAVE_FAIL" = "Could nah copy file t' disk";
 "DONE_INSTALL" = "Install Completed";
 "ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DONE_INSTALL_SUB" = "Ye may close the app.";
+"DONE_REVERT" = "Scuttle Completed";
+"REMOVING" = "Scuttlin'...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
+"PASSWORD" = "In order t' use command line tools like \"sudo\" aft jailbreakin', ye will needs t' set a terminal passcode. (This can nah be empty)";
 "PASSWORD_REPEAT" = "Repeat Password";
 "PASSWORD_SET" = "Set Password";
 "PASSWORD_TEXT" = "Password";
@@ -108,17 +108,17 @@ English
 "ENJOY" = "Enjoy!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
-"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
-"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
-"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
-"CLOSE_APP" = "You may close the app.";
+"HIDDEN_NOTICE" = "Yer fakeroot be still intact while /var/jb ain't, this will re-symlink /var/jb back t' it's original fakeroot. Ye may needs t' run uicache in utilities aft proceedin'.";
+"NOTICE_ROOTLESS" = "Ye may nah use this button if ye're on a non rootless jailbreak.";
+"HIDE_NOTICE" = "Proceedin' will scuttle the /var/jb symlink 'n reboot the device.";
+"REVERT_SUBTEXT" = "Rootful can nah use this button :(";
+"PM_SUBTEXT" = "Select yer fav'rit package manager here that ye would like t' install, Sileo be recommended if ye're new.";
+"REVERT_WARNING" = "Wipes /var/jb 'n unregisters jailbreak applications, aft 'tis done the device will reboot into an unjailbroken state.";
+"SILEO_REINSTALL" = "Are ye sure ye wants t' re-install Sileo?";
+"ZEBRA_REINSTALL" = "Are ye sure ye wants t' re-install Zebra?";
+"SILEO_INSTALL" = "Are ye sure ye wants t' install Sileo?";
+"ZEBRA_INSTALL" = "Are ye sure ye wants t' install Zebra?";
+"CLOSE_APP" = "Ye may close the app.";
 "UNHID_ENV" = "Unhid the environment";
 
 // errors
@@ -128,5 +128,5 @@ English
 "ERROR_UICACHE" = "Failed t' run UICache";
 "ERROR_SILEO" = "Failed t' install Sileo";
 "ERROR_ZEBRA" = "Failed t' install Zebra";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"ERROR_UNREGISTER" = "Failed t' unregister";
+"ERROR_REVERT" = "Failed t' scuttle jailbreak";
