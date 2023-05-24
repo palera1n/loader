@@ -5,23 +5,23 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "CÀI ĐẶT";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Sửa lỗi";
+"DIAGNOSTICS" = "Chuẩn đoán";
+"ACTIONS" = "Các chức năng";
+"JBINIT_LOG" = "Nhật ký";
+"REVERT_CELL" = "Xoá Môi Trường Jailbreak";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
+"HIDDEN" = "Đã Ẩn Môi Trường Jailbreak";
+"ACTION_HIDEJB" = "Ẩn Môi Trường Jailbreak";
+"OPEN_CELL" = "Mở Ứng Dụng";
+"OPENER_SILEO" = "Mở Sileo";
+"OPENER_ZEBRA" = "Mở Zebra";
+"OPENER_TH" = "Mở TrollHelper";
+"UTIL_CELL" = "Tiện ích";
 "ACTION_RESPRING" = "Respring";
 "ACTION_USREBOOT" = "Userspace Reboot";
 "ACTION_UICACHE" = "UICache";
