@@ -71,8 +71,8 @@ English
 
 "TRUE" = "Ja";
 "FALSE" = "No";
-"ROOTFUL" = "Geworteld";
-"ROOTLESS" = "Geworteld";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
 "CANCEL" = "Annuleren";
 "CONFIRM" = "Bevestigen";
 "CLOSE" = "Sluiten";
@@ -84,42 +84,42 @@ English
 "TOO_LONG" = "Te lang";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DL_STRAP" = "Base Systeem downloaden";
+"DL_SILEO" = "Sileo downloaden";
+"DL_ZEBRA" = "Zebra downloaden";
+"DOWNLOADING" = "Downloaden...";
+"INSTALLING" = "Installeren...";
+"DOWNLOAD_FAIL" = "Kan bestand niet ophalen";
+"DOWNLOAD_ERROR" = "Onbekende fout";
+"SAVE_FAIL" = "Kon bestand niet kopiëren naar schijf";
+"DONE_INSTALL" = "Installatie voltooid";
+"ERROR_INSTALL" = "Installatie mislukt";
+"DONE_INSTALL_SUB" = "U kunt de app sluiten.";
+"DONE_REVERT" = "Verwijderen voltooid";
+"REMOVING" = "Aan het verwijderen...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "Om commandoregelhulpmiddelen zoals 'sudo' te kunnen gebruiken na het jailbreaken, moet je een terminal-toegangscode instellen. (Dit kan niet leeg zijn)";
+"PASSWORD_REPEAT" = "Herhaal wachtwoord";
+"PASSWORD_SET" = "Stel wachtwoord in";
+"PASSWORD_TEXT" = "Wachtwoord";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "Herinstalleren";
+"ENJOY" = "Geniet!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
-"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
-"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
-"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"HIDDEN_NOTICE" = "Je fakeroot is nog intact terwijl /var/jb dat niet is. Dit zal /var/jb opnieuw linken naar de oorspronkelijke fakeroot. Mogelijk moet je uicache uitvoeren in hulpprogramma's nadat je verder bent gegaan.";
+"NOTICE_ROOTLESS" = "Je mag deze knop niet gebruiken als je een niet-rootless jailbreak hebt.";
+"HIDE_NOTICE" = "Het voortzetten zal de /var/jb-symlink verwijderen en het apparaat opnieuw opstarten.";
+"REVERT_SUBTEXT" = "Rootful kan deze knop niet gebruiken :(";
+"PM_SUBTEXT" = "Selecteer je favoriete pakketbeheerder die je wilt installeren. Sileo wordt aanbevolen als je nieuw bent.";
+"REVERT_WARNING" = "Wist /var/jb en wist jailbreak-toepassingen uit, nadat dit is voltooid zal het apparaat opnieuw opstarten naar een niet-gejailbreakte staat.";
+"SILEO_REINSTALL" = "Weet u zeker dat u Sileo opnieuw wilt installeren?";
+"ZEBRA_REINSTALL" = "Weet u zeker dat u Zebra opnieuw wilt installeren?";
+"SILEO_INSTALL" = "Weet u zeker dat u Sileo wilt installeren?";
+"ZEBRA_INSTALL" = "Weet u zeker dat u Zebra wilt installeren?";
+"CLOSE_APP" = "U kunt de app sluiten.";
+"UNHID_ENV" = "Omgeving zichtbaar gemaakt";
 
 // errors
 "STATUS" = "Status";
