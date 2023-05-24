@@ -30,23 +30,23 @@ English
 "ACTION_TWEAKS" = "Activer les tweaks";
 "FR_SWITCH" = "Redémarrer lors de la restauration";
 "ACTION_MOUNT_SUBTEXT" = "\"Monter les répertoires\" essaye juste de monter la racine et preboot en mode lecture/écriture.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"OPENER_SUBTEXT" = "Lorsque vous utilisez palera1n sur un iPad, il y a des cas où vous devriez utiliser ces actions pour ouvrir les applications installées si elles n'apparaissent pas sur l'écran d'accueil.";
 
 // Logging View
 "LOG_CELL" = "Journaux";
 "LOG_CELL_VIEW" = "Afficher Journaux";
 "NONE" = "Aucun";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CLEAR" = "Effacer les journaux";
 
 // Debug
 "DEBUG_CELL" = "Débogue";
 "DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CLEAN_FAKEFS" = "Nettoyer fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Quitter mode sans échec";
+"DEBUG_ENTER_SAFEMODE" = "Activer mode sans échec";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
+"DEVICE_MODEL" = "Modèle de l'appareil:";
 "DEVICE_MODEL_KERN" = "Version Du Noyau:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Application faite par:";
@@ -78,10 +78,10 @@ English
 "CLOSE" = "Fermer";
 "PROCEED" = "Continuer";
 "NO_PROCEED" = "Impossible de continuer";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"NO_PROCEED_SIDELOADING" = "Chargement latéral non pris en charge.";
+"NO_PROCEED_FR" = "Après avoir utilisé --force-revert, vous devriez redémarrer et jailbreak votre appareil de nouveau pour installer l'amorce.";
 "SET" = "Définir";
-"TOO_LONG" = "Too Long";
+"TOO_LONG" = "Trop Long";
 
 // DL / BS
 "DL_STRAP" = "Téléchargement du Système de Base";
@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "Continuer supprimera le lien symbolique /var/jb et redémarrera l'appareil.";
 "REVERT_SUBTEXT" = "Avec-racine ne peut pas utiliser ce bouton :(";
 "PM_SUBTEXT" = "Sélectionnez votre gestionnaire de paquets préféré. Sileo est recommandé pour les débutants.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
+"REVERT_WARNING" = "Cela supprimera /var/jb et désinscrira les applications du jailbreak. L'appareil se redémarrera sans jailbreak.";
 "SILEO_REINSTALL" = "Êtes-vous sûr de vouloir réinstaller Sileo?";
 "ZEBRA_REINSTALL" = "Êtes-vous sûr de vouloir réinstaller Zebra?";
 "SILEO_INSTALL" = "Êtes-vous sûr de vouloir installer Sileo?";
@@ -123,7 +123,7 @@ English
 
 // errors
 "STATUS" = "État";
-"ERROR_STRAP" = "Erreur lors de l'installation du bootstrap";
+"ERROR_STRAP" = "Erreur lors de l'installation de l'amorce";
 "ERROR_DPKG" = "Installation de paquets échouée";
 "ERROR_UICACHE" = "Impossible d'exécuter UICache";
 "ERROR_SILEO" = "Impossible d'installer Sileo";
