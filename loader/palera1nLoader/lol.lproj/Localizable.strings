@@ -1,0 +1,132 @@
+/*
+Localizable.strings
+palera1nLoader
+English
+*/
+// ViewController Cells
+
+"INSTALL" = "INSTALL";
+"SILEO" = "SILEO";
+"ZEBRA" = "ZEBRA";
+"DEBUG" = "DEBUG";
+"DIAGNOSTICS" = "Diagnostix";
+"ACTIONS" = "Acshunz";
+"JBINIT_LOG" = "Loggin";
+"REVERT_CELL" = "Revert Install";
+
+// ActionsVC
+"HIDDEN" = "Hidden Environment";
+"ACTION_HIDEJB" = "Hide Environment";
+"OPEN_CELL" = "Openers";
+"OPENER_SILEO" = "Open Sileo";
+"OPENER_ZEBRA" = "Open Zebra";
+"OPENER_TH" = "Open TrollHelper";
+"UTIL_CELL" = "Utilitiez";
+"ACTION_RESPRING" = "Resprin";
+"ACTION_USREBOOT" = "Userspace Reboot";
+"ACTION_UICACHE" = "UICache";
+"ACTION_DAEMONS" = "Launch Demonz";
+"ACTION_MOUNT" = "Mount Directoriez";
+"ACTION_TWEAKS" = "Enable Tweakz";
+"FR_SWITCH" = "Reboot on revert";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount Directoriez\" only attempts 2 mount root an preboot as read/rite.";
+"OPENER_SUBTEXT" = "When using palera1n on an iPad, thar r casez wer u wud ned 2 use thees acshuns 2 open teh installd applicashuns when they doan appear on teh homescreen.";
+
+// Logging View
+"LOG_CELL" = "Logz";
+"LOG_CELL_VIEW" = "View Logz";
+"NONE" = "None";
+"LOG_CLEAR" = "Clearz Logz";
+
+// Debug
+"DEBUG_CELL" = "Debugz";
+"DEBUG_OPTIONS" = "Opshuns";
+"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
+"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+
+// Diags
+"DEVICE_MODEL" = "Device Model:";
+"DEVICE_MODEL_KERN" = "Kernel Vershun:";
+"DEVICE_MODEL_CF" = "CFVershun:";
+"CREDITS_SUBTEXT" = "Loadr made by:";
+"PINFO_SUBTEXT" = "Flags (paleinfo) correspond 2 flags u usd via palera1n 2.0.0 CLI, useful 4 developers.";
+"TYPE_INFO" = "Type";
+"INSTALL_INFO" = "Installd";
+"ARCH_INFO" = "Architecchur";
+"VERSION_INFO" = "Vershun";
+"STRAP_INFO" = "Environment";
+"STRAP_FR_PREFIX" = "Fakeroot Prefix";
+"STRAP_FR_PATH" = "Fakeroot Path";
+"OPEN_FILZA" = "Open in Filza";
+"OPEN_SANTANDER" = "Open in Santandr";
+"COPY" = "Copy";
+"INSTALL_FR" = "Force Reverted";
+"HELPER" = "Helpr";
+"HELPER_PATH" = "Helpr Path";
+"SILEO_INSTALLED" = "Sileo Installd";
+"ZEBRA_INSTALLED" = "Zebra Installd";
+"KINFO_FLAGS" = "Flags (kerninfo)";
+"PINFO_FLAGS" = "Flags (paleinfo)";
+
+"TRUE" = "Yez";
+"FALSE" = "No";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootles";
+"CANCEL" = "Cancel";
+"CONFIRM" = "Confirm";
+"CLOSE" = "Close";
+"PROCEED" = "Proced";
+"NO_PROCEED" = "Unable 2 proced";
+"NO_PROCEED_SIDELOADING" = "Sideloadin iz not supportd.";
+"NO_PROCEED_FR" = "Aftr usin --force-revert, u must manually reboot and jailbreak your device again 2 be able 2 bootstrap.";
+"SET" = "Set";
+"TOO_LONG" = "Too Long";
+
+// DL / BS
+"DL_STRAP" = "Downloadin Base Sistem";
+"DL_SILEO" = "Downloadin Sileo";
+"DL_ZEBRA" = "Downloadin Zebra";
+"DOWNLOADING" = "Downloadin...";
+"INSTALLING" = "Installin...";
+"DOWNLOAD_FAIL" = "Unable 2 fetch file";
+"DOWNLOAD_ERROR" = "Unknown errorz";
+"SAVE_FAIL" = "Cud not copy file 2 disk";
+"DONE_INSTALL" = "Install Completd";
+"ERROR_INSTALL" = "Install Faild";
+"DONE_INSTALL_SUB" = "You cud close teh app.";
+"DONE_REVERT" = "Remoov Completed";
+"REMOVING" = "Remoovin..";
+
+"PASSWORD" = "In ordr 2 use command line tools liek \"sudo\" aftr jailbreaking, u will ned 2 set a terminal pascode. (Dis cant be empty)";
+"PASSWORD_REPEAT" = "Repeat Password";
+"PASSWORD_SET" = "Set Password";
+"PASSWORD_TEXT" = "Password";
+
+// hehe
+"REINSTALL" = "Re-installz";
+"ENJOY" = "Enjoyz!";
+
+// WARNINGS / NOTICES
+"HIDDEN_NOTICE" = "Ur fakerootz iz still intact while /var/jb isnt, dis will re-symlink /var/jb back to it's original fakerootz. U cud ned 2 run uicache in utilitiez aftr proceedin.";
+"NOTICE_ROOTLESS" = "U cud not use dis butn if ure on a non rootless jailbrek.";
+"HIDE_NOTICE" = "Proceedin will remoov teh /var/jb symlink an reboot teh device.";
+"REVERT_SUBTEXT" = "Rootful cannot use dis butn :((((";
+"PM_SUBTEXT" = "Select ur favorite package managr her dat u wud liek 2 install, Sileo iz recommendd if ure new.";
+"REVERT_WARNING" = "Wipez /var/jb an unregisters jailbrek applicashuns, aftr it is dun teh device will reboot into an unjailbroken state.";
+"SILEO_REINSTALL" = "R u sure you wants 2 re-install Sileo?";
+"ZEBRA_REINSTALL" = "R u sure you wants to re-install Zebra?";
+"SILEO_INSTALL" = "R u sure you wants to install Sileo?";
+"ZEBRA_INSTALL" = "R u sure you wants to install Zebra?";
+"CLOSE_APP" = "U cud close teh app.";
+"UNHID_ENV" = "Unhid teh environment";
+
+// errors
+"STATUS" = "Status";
+"ERROR_STRAP" = "Errorz installin bootstrap";
+"ERROR_DPKG" = "Faild 2 install packagez";
+"ERROR_UICACHE" = "Faild 2 run UICache";
+"ERROR_SILEO" = "Faild 2 install Sileo";
+"ERROR_ZEBRA" = "Faild 2 install Zebra";
+"ERROR_UNREGISTER" = "Faild 2 unregisterz";
+"ERROR_REVERT" = "Faild 2 remove jailbrek";

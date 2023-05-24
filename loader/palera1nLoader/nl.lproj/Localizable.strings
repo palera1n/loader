@@ -5,128 +5,128 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Installeren";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Debuggen";
+"DIAGNOSTICS" = "Diagnostiek";
+"ACTIONS" = "Acties";
+"JBINIT_LOG" = "Logboekregistratie";
+"REVERT_CELL" = "Installatie ongedaan maken";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
+"HIDDEN" = "Verborgen omgeving";
+"ACTION_HIDEJB" = "Verberg omgeving";
 "OPEN_CELL" = "Openers";
 "OPENER_SILEO" = "Open Sileo";
 "OPENER_ZEBRA" = "Open Zebra";
 "OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
+"UTIL_CELL" = "Hulpmiddelen";
+"ACTION_RESPRING" = "Herstart Springboard";
+"ACTION_USREBOOT" = "Herstart gebruikersruimte";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_DAEMONS" = "Open Daemons";
+"ACTION_MOUNT" = "Koppel Mappen";
+"ACTION_TWEAKS" = "Tweaks inschakelen";
+"FR_SWITCH" = "Herstarten bij terugdraaien";
+"ACTION_MOUNT_SUBTEXT" = "\"Koppel mappen\" probeert alleen de root en preboot te koppelen als lezen/schrijven.";
+"OPENER_SUBTEXT" = "Bij het gebruik van palera1n op een iPad zijn er situaties waarin je deze handelingen moet uitvoeren om de geïnstalleerde applicaties te openen wanneer ze niet op het startscherm verschijnen.";
 
 // Logging View
 "LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL_VIEW" = "Bekijk Logs";
+"NONE" = "Niets";
+"LOG_CLEAR" = "Wis logs";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CELL" = "Debuggen";
+"DEBUG_OPTIONS" = "Opties";
+"DEBUG_CLEAN_FAKEFS" = "Opschonen fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Verlaat veilige modus";
+"DEBUG_ENTER_SAFEMODE" = "Betreed veilige modus";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
-"ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
-"STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
+"DEVICE_MODEL" = "Apparaatmodel:";
+"DEVICE_MODEL_KERN" = "Kernelversie:";
+"DEVICE_MODEL_CF" = "CFVersie:";
+"CREDITS_SUBTEXT" = "Lader gemaakt door:";
+"PINFO_SUBTEXT" = "De vlaggen (paleinfo) komen overeen met de vlaggen die je hebt gebruikt via de palera1n 2.0.0 CLI, nuttig voor ontwikkelaars.";
+"TYPE_INFO" = "Soort";
+"INSTALL_INFO" = "Geïnstalleerd";
+"ARCH_INFO" = "Architectuur";
+"VERSION_INFO" = "Versie";
+"STRAP_INFO" = "Omgeving";
+"STRAP_FR_PREFIX" = "Fakeroot-voorvoegsel";
+"STRAP_FR_PATH" = "Fakeroot Pad";
+"OPEN_FILZA" = "Openen in Filza";
+"OPEN_SANTANDER" = "Openen in Santander";
+"COPY" = "Kopiëer";
+"INSTALL_FR" = "Geforceerd omgekeerd";
 "HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"HELPER_PATH" = "Helper pad";
+"SILEO_INSTALLED" = "Sileo geïnstalleerd";
+"ZEBRA_INSTALLED" = "Zebra geïnstalleerd";
+"KINFO_FLAGS" = "Vlaggen (kerninfo)";
+"PINFO_FLAGS" = "Vlaggen (paleinfo)";
 
-"TRUE" = "Yes";
+"TRUE" = "Ja";
 "FALSE" = "No";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
-"SET" = "Set";
-"TOO_LONG" = "Too Long";
+"CANCEL" = "Annuleren";
+"CONFIRM" = "Bevestigen";
+"CLOSE" = "Sluiten";
+"PROCEED" = "Doorgaan";
+"NO_PROCEED" = "Kan niet doorgaan";
+"NO_PROCEED_SIDELOADING" = "Sideloden wordt niet ondersteund.";
+"NO_PROCEED_FR" = "Na het gebruik van --force-revert moet je handmatig je apparaat opnieuw opstarten en jailbreaken om het bootstrap-proces opnieuw te kunnen starten.";
+"SET" = "Instellen";
+"TOO_LONG" = "Te lang";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DL_STRAP" = "Base Systeem downloaden";
+"DL_SILEO" = "Sileo downloaden";
+"DL_ZEBRA" = "Zebra downloaden";
+"DOWNLOADING" = "Downloaden...";
+"INSTALLING" = "Installeren...";
+"DOWNLOAD_FAIL" = "Kan bestand niet ophalen";
+"DOWNLOAD_ERROR" = "Onbekende fout";
+"SAVE_FAIL" = "Kon bestand niet kopiëren naar schijf";
+"DONE_INSTALL" = "Installatie voltooid";
+"ERROR_INSTALL" = "Installatie mislukt";
+"DONE_INSTALL_SUB" = "U kunt de app sluiten.";
+"DONE_REVERT" = "Verwijderen voltooid";
+"REMOVING" = "Aan het verwijderen...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "Om commandoregelhulpmiddelen zoals 'sudo' te kunnen gebruiken na het jailbreaken, moet je een terminal-toegangscode instellen. (Dit kan niet leeg zijn)";
+"PASSWORD_REPEAT" = "Herhaal wachtwoord";
+"PASSWORD_SET" = "Stel wachtwoord in";
+"PASSWORD_TEXT" = "Wachtwoord";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "Herinstalleren";
+"ENJOY" = "Geniet!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
-"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
-"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
-"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"HIDDEN_NOTICE" = "Je fakeroot is nog intact terwijl /var/jb dat niet is. Dit zal /var/jb opnieuw linken naar de oorspronkelijke fakeroot. Mogelijk moet je uicache uitvoeren in hulpprogramma's nadat je verder bent gegaan.";
+"NOTICE_ROOTLESS" = "Je mag deze knop niet gebruiken als je een niet-rootless jailbreak hebt.";
+"HIDE_NOTICE" = "Het voortzetten zal de /var/jb-symlink verwijderen en het apparaat opnieuw opstarten.";
+"REVERT_SUBTEXT" = "Rootful kan deze knop niet gebruiken :(";
+"PM_SUBTEXT" = "Selecteer je favoriete pakketbeheerder die je wilt installeren. Sileo wordt aanbevolen als je nieuw bent.";
+"REVERT_WARNING" = "Wist /var/jb en wist jailbreak-toepassingen uit, nadat dit is voltooid zal het apparaat opnieuw opstarten naar een niet-gejailbreakte staat.";
+"SILEO_REINSTALL" = "Weet u zeker dat u Sileo opnieuw wilt installeren?";
+"ZEBRA_REINSTALL" = "Weet u zeker dat u Zebra opnieuw wilt installeren?";
+"SILEO_INSTALL" = "Weet u zeker dat u Sileo wilt installeren?";
+"ZEBRA_INSTALL" = "Weet u zeker dat u Zebra wilt installeren?";
+"CLOSE_APP" = "U kunt de app sluiten.";
+"UNHID_ENV" = "Omgeving zichtbaar gemaakt";
 
 // errors
 "STATUS" = "Status";
-"ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_SILEO" = "Failed to install Sileo";
-"ERROR_ZEBRA" = "Failed to install Zebra";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"ERROR_STRAP" = "Fout bij installeren bootstrap";
+"ERROR_DPKG" = "Het installeren van pakketten is mislukt";
+"ERROR_UICACHE" = "UICache uitvoeren mislukt";
+"ERROR_SILEO" = "Installatie van Sileo is mislukt";
+"ERROR_ZEBRA" = "Installatie van Zebra is mislukt";
+"ERROR_UNREGISTER" = "Uitschrijven mislukt";
+"ERROR_REVERT" = "Verwijderen van jailbreak is mislukt";
