@@ -30,7 +30,7 @@ English
 "ACTION_TWEAKS" = "Aktivera Tweaks";
 "FR_SWITCH" = "Starta om vid återställning";
 "ACTION_MOUNT_SUBTEXT" = "\"Montera Filkataloger\" försöker bara montera root och preboot med läs- och skrivtillåtelse.";
-"OPENER_SUBTEXT" = "Vid användning av palera1n på iPad så kan det att du behöver öppna installerade appar härifrån, då de inte visas på hemskärmen.";
+"OPENER_SUBTEXT" = "Vid användning av palera1n på iPad så kan du behöva öppna installerade appar härifrån, då de inte visas på hemskärmen.";
 
 // Logging View
 "LOG_CELL" = "Loggar";
