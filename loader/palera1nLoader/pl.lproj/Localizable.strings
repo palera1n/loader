@@ -33,24 +33,24 @@ English
 "OPENER_SUBTEXT" = "Podczas korzystania z narzędzia palera1n na iPad zdarzają się sytuacje, gdy konieczne jest użycie tych czynności, aby otworzyć zainstalowane aplikacje, gdy nie pojawiają się one na ekranie głównym.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "Dzienniki";
+"LOG_CELL_VIEW" = "Przeglądaj Dziennik";
+"NONE" = "Żaden";
+"LOG_CLEAR" = "Wyczyść Dzienniki";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CELL" = "Debugować";
+"DEBUG_OPTIONS" = "Opcje";
+"DEBUG_CLEAN_FAKEFS" = "Wyczyść fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Wyjście z trybu bezpiecznego";
+"DEBUG_ENTER_SAFEMODE" = "Wejście do trybu bezpiecznego";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
+"DEVICE_MODEL" = "Model urządzenia:";
+"DEVICE_MODEL_KERN" = "Wersja jądra:";
+"DEVICE_MODEL_CF" = "Wersja CF:";
+"CREDITS_SUBTEXT" = "Instalator stworzony prze:";
+"PINFO_SUBTEXT" = "Flagi (paleinfo) odpowiadają flagom, których użyłeś za pomocą wiersza poleceń palera1n 2.0.0, przydatne dla programistów.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Zainstalowane";
 "ARCH_INFO" = "Architektura";
@@ -78,10 +78,10 @@ English
 "CLOSE" = "Zamkńij";
 "PROCEED" = "Dalej";
 "NO_PROCEED" = "Nie można kontynuować";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"NO_PROCEED_SIDELOADING" = "Bezpośrednie instalowanie (sideloading) nie jest obsługiwane.";
+"NO_PROCEED_FR" = "Po użyciu opcji --force-revert, musisz ręcznie zrestartować i ponownie zastosować jailbreak na urządzeniu, aby możliwe było ponowne uruchomienie bootstrapu.";
 "SET" = "Ustaw";
-"TOO_LONG" = "Too Long";
+"TOO_LONG" = "Za długo";
 
 // DL / BS
 "DL_STRAP" = "Ściąganie 'Base System'";
@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "Kontynuacja spowoduje usunięcie plika /var/jb i ponowne uruchomienie urządzenia.";
 "REVERT_SUBTEXT" = "Rootful nie może użyć tego przycisku :(";
 "PM_SUBTEXT" = "Wybierz swojego ulubionego menedżera pakietów, który chcesz zainstalować, Sileo jest zalecany, jeśli jesteś nowy.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
+"REVERT_WARNING" = "Usuwa /var/jb oraz wyrejestrowuje aplikacje związane z jailbreakiem, po wykonaniu tych operacji urządzenie zrestartuje się w stanie bez jailbreaka.";
 "SILEO_REINSTALL" = "Napewno chcesz ponownie instalować Sileo?";
 "ZEBRA_REINSTALL" = "Napewno chcesz ponownie instalować Zebra?";
 "SILEO_INSTALL" = "Napewno chcesz instalować Sileo?";
