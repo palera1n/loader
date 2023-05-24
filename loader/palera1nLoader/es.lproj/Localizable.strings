@@ -5,14 +5,14 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Instalar";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Depurar";
+"DIAGNOSTICS" = "Diagnósticos";
+"ACTIONS" = "Acciones";
+"JBINIT_LOG" = "Registro";
+"REVERT_CELL" = "Revertir la instalación";
 
 // ActionsVC
 "HIDDEN" = "Hidden Environment";
