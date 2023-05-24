@@ -29,28 +29,28 @@ English
 "ACTION_MOUNT" = "ディレクトリの再マウント";
 "ACTION_TWEAKS" = "Tweakの有効化";
 "FR_SWITCH" = "復元後の再起動";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_MOUNT_SUBTEXT" = "\"ディレクトリの再マウント\" では、rootとprebootをread/writeで再マウントします。";
+"OPENER_SUBTEXT" = "iPadでpalera1nを使用する場合、ホームスクリーンに表示されないアプリケーションを開くために、これらのアクションを使用する必要がある場合があります。";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
+"LOG_CELL" = "ログ";
+"LOG_CELL_VIEW" = "ログを確認";
 "NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CLEAR" = "ログを消去";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CELL" = "デバッグ";
+"DEBUG_OPTIONS" = "オプション";
+"DEBUG_CLEAN_FAKEFS" = "fakefsを消去";
+"DEBUG_EXIT_SAFEMODE" = "safemodeを終了";
+"DEBUG_ENTER_SAFEMODE" = "safemodeに入る";
 
 // Diags
 "DEVICE_MODEL" = "Device Model:";
 "DEVICE_MODEL_KERN" = "Kernel Version:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
+"PINFO_SUBTEXT" = "フラグ (paleinfo) は、palera1n 2.0.0 CLIのフラグに対応しています。これは開発者にとって役立つものです。";
 "TYPE_INFO" = "種類";
 "INSTALL_INFO" = "インストール状況";
 "ARCH_INFO" = "アーキテクチャ";
@@ -66,8 +66,8 @@ English
 "HELPER_PATH" = "Helperのパス";
 "SILEO_INSTALLED" = "Sileo";
 "ZEBRA_INSTALLED" = "Zebra";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"KINFO_FLAGS" = "フラグ (kerninfo)";
+"PINFO_FLAGS" = "フラグ (paleinfo)";
 
 "TRUE" = "済";
 "FALSE" = "未";
@@ -78,10 +78,10 @@ English
 "CLOSE" = "閉じる";
 "PROCEED" = "続ける";
 "NO_PROCEED" = "作業を続行できませんでした";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"NO_PROCEED_SIDELOADING" = "サイドローディングには対応していません。";
+"NO_PROCEED_FR" = "--force-revertを使用した場合、bootstrapをインストールするには手動でデバイスを再起動してから再度jailbreakを実行する必要があります。";
 "SET" = "セット";
-"TOO_LONG" = "Too Long";
+"TOO_LONG" = "パスワードが長すぎます";
 
 // DL / BS
 "DL_STRAP" = "Bootstrapをダウンロード中";
@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはuserspaceで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
 "REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
 "PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
+"REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるjailbreak関連ファイルや、jailbreakアプリケーションなどは全て削除されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
 "SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
 "ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
 "SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
