@@ -29,8 +29,8 @@ English
 "ACTION_MOUNT" = "Zamontuj katalogi";
 "ACTION_TWEAKS" = "Włącz modyfikacje";
 "FR_SWITCH" = "Rebootuj po przywróceniu";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_MOUNT_SUBTEXT" = "\"Zamontuj Katalogi” próbuje jedynie zamontować partycje root i preboot jako odczyt/zapis.";
+"OPENER_SUBTEXT" = "Podczas korzystania z narzędzia palera1n na iPad zdarzają się sytuacje, gdy konieczne jest użycie tych czynności, aby otworzyć zainstalowane aplikacje, gdy nie pojawiają się one na ekranie głównym.";
 
 // Logging View
 "LOG_CELL" = "Logs";
