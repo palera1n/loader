@@ -152,7 +152,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             switch strapValue {
             case 1:
                 #if !targetEnvironment(simulator)
-                let alert = UIAlertController.warning(title: local("HIDE"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
+                let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                     if fileExists("/var/mobile/Library/palera1n/helper") {
                         if (!envInfo.isRootful) && fileExists("/var/jb") {
                             bp_rmf("/var/jb")
