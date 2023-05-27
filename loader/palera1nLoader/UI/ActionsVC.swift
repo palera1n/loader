@@ -105,15 +105,9 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("ACTION_HIDEJB"):
             HideEnv(viewController: self)
         case local("OPENER_SILEO"):
-            if openApp("org.coolstar.SileoStore") {
-            } else if openApp("org.coolstar.SileoNightly") {
-            } else {
-                log(type: .info, msg: "Cannot open Sileo app")
-            }
+            if openApp("org.coolstar.SileoStore") {} else if openApp("org.coolstar.SileoNightly") {}
         case local("OPENER_ZEBRA"):
-            if !openApp("xyz.willy.Zebra") {
-                log(type: .info, msg: "Cannot open Zebra app")
-            }
+            if openApp("xyz.willy.Zebra") {}
         case local("OPENER_TH"):
             openTrollHelper()
         case local("ACTION_RESPRING"):
@@ -122,6 +116,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"], root: true)
         case local("ACTION_TWEAKS"):
             helper(args: ["-l"])
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true) }
         case local("ACTION_USREBOOT"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"], root: true)
         case local("ACTION_DAEMONS"):
@@ -167,7 +162,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 viewController.present(errorAlert, animated: true)
             }
         } else {
-            let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: local("ROOTLESS_NOTICE"))
+            let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NOTICE_ROOTLESS"))
             viewController.present(errorAlert, animated: true)
             return
         }
