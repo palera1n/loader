@@ -108,25 +108,25 @@ English
 "ENJOY" = "Gaudeix!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
-"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
-"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
-"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"HIDDEN_NOTICE" = "El teu fakeroot encara està intacte mentre que /var/jb no ho està, això tornarà a enllaçar /var/jb al seu fakeroot original. És possible que hagis d'executar uicache a utilitats després de procedir.";
+"NOTICE_ROOTLESS" = "No pots utilitzar aquest botó si estàs en un jailbreak no rootless.";
+"HIDE_NOTICE" = "Continuar eliminarà l'enllaç de /var/jb i reiniciarà el dispositiu.";
+"REVERT_SUBTEXT" = "Rootful no pot utilitzar aquest botó :(";
+"PM_SUBTEXT" = "Escull el teu gestor de paquets preferit que vols instal·lar. Sileo és recomanat si ets nou.";
+"REVERT_WARNING" = "Borra /var/jb i desregistra aplicacions del jailbreak, després d'acabar el dispositiu es reiniciarà a un estat sense jailbreak.";
+"SILEO_REINSTALL" = "Estàs segur que vols reinstal·lar Sileo?";
+"ZEBRA_REINSTALL" = "Estàs segur que vols reinstal·lar Zebra?";
+"SILEO_INSTALL" = "Estàs segur que vols instal·lar Sileo?";
+"ZEBRA_INSTALL" = "Estàs segur que vols instal·lar Zebra?";
+"CLOSE_APP" = "Pots tancar l'aplicació.";
+"UNHID_ENV" = "Mostra l'entorn";
 
 // errors
-"STATUS" = "Status";
-"ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_SILEO" = "Failed to install Sileo";
-"ERROR_ZEBRA" = "Failed to install Zebra";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"STATUS" = "Estat";
+"ERROR_STRAP" = "Error en instal·lar el bootstrap";
+"ERROR_DPKG" = "No s'han pogut instal·lar els paquets";
+"ERROR_UICACHE" = "No s'ha pogut executar UICache";
+"ERROR_SILEO" = "No s'ha pogut instal·lar Sileo";
+"ERROR_ZEBRA" = "No s'ha pogut instal·lar Zebra";
+"ERROR_UNREGISTER" = "Error en cancel·lar el registre";
+"ERROR_REVERT" = "No s'ha pogut eliminar el jailbreak";
