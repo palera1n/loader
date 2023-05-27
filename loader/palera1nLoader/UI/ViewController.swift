@@ -311,13 +311,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case local("REVERT_CELL"):
             if envInfo.isRootful {
                 let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
+                
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
                 cell.imageView?.alpha = 0.4
                 cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
             } else if !envInfo.isRootful {
                 let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+                #if !targetEnvironment(simulator)
                 cell.isUserInteractionEnabled = isProcursusStrapped
+                #endif
                 cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
                 cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
                 cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
@@ -384,11 +387,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let actionsVC = ActionsVC()
             navigationController?.pushViewController(actionsVC, animated: true)
         case local("REVERT_CELL"):
-            let alertController = whichAlert(title: local("CONFIRM"), message: local("REVERT_WARNING"))
+            let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) {_ in revert(viewController: self) }
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in revert(viewController: self) }
+
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
+
             present(alertController, animated: true, completion: nil)
         case local("SILEO"):
             if (envInfo.sileoInstalled) {
