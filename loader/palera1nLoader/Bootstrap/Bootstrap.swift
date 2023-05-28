@@ -65,7 +65,7 @@ class bootstrap {
         let debPath = "/var/mobile/Library/palera1n/downloads/\(deb)"
         var ret = helper(args: ["--install", tar, debPath])
         if (ret != 0) {
-            completion(local("ERROR_UICACHE"), ret)
+            completion(local("ERROR_STRAP"), ret)
             return
         }
         

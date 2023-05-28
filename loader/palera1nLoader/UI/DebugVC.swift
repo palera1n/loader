@@ -12,8 +12,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
     var tableData = [
         [local("LOG_CELL_VIEW")],
-       // [local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
-//        [local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
+        //[local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
+        //[local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
         [local("LOG_CLEAR")],
         [local("FR_SWITCH")]
     ]
