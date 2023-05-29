@@ -68,10 +68,6 @@ import Extras
 
     close(pipestdout[1])
     close(pipestderr[1])
-    free(&attr)
-    posix_spawnattr_destroy(&attr)
-    free(&fileActions)
-    posix_spawn_file_actions_destroy(&fileActions)
 
     var stdoutStr = ""
     var stderrStr = ""
