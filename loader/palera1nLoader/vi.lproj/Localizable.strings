@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "CÀI ĐẶT";
+"INSTALL" = "Cài đặt";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "Sửa lỗi";
@@ -17,7 +17,7 @@ English
 // ActionsVC
 "HIDDEN" = "Đã Ẩn Môi Trường Jailbreak";
 "ACTION_HIDEJB" = "Ẩn Môi Trường Jailbreak";
-"OPEN_CELL" = "Mở Ứng Dụng";
+"OPEN_CELL" = "Mở";
 "OPENER_SILEO" = "Mở Sileo";
 "OPENER_ZEBRA" = "Mở Zebra";
 "OPENER_TH" = "Mở TrollHelper";
