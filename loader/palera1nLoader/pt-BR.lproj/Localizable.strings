@@ -5,30 +5,30 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Instalar";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Depurar";
+"DIAGNOSTICS" = "Diagnósticos";
+"ACTIONS" = "Ações";
+"JBINIT_LOG" = "Registro de eventos";
+"REVERT_CELL" = "Reverter instalação";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
+"HIDDEN" = "Ambiente Oculto";
+"ACTION_HIDEJB" = "Ocultar Ambiente";
 "OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
+"OPENER_SILEO" = "Abrir Sileo";
+"OPENER_ZEBRA" = "Abrir Zebra";
+"OPENER_TH" = "Abrir TrollHelper";
+"UTIL_CELL" = "Utilitários";
 "ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
+"ACTION_USREBOOT" = "Restartar Userspace";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
+"ACTION_DAEMONS" = "Iniciar Daemons";
+"ACTION_MOUNT" = "Montar Diretórios";
+"ACTION_TWEAKS" = "Ativar Tweaks";
+"FR_SWITCH" = "Reiniciar ao reverter";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
 "OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
 
