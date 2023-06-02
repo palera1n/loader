@@ -6,8 +6,8 @@ English
 // ViewController Cells
 
 "INSTALL" = "تثبيت";
-"SILEO" = "سيليو";
-"ZEBRA" = "زيبرا";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
 "DEBUG" = "تصحيح";
 "DIAGNOSTICS" = "تشخيص";
 "ACTIONS" = "إجراءات";
@@ -18,11 +18,11 @@ English
 "HIDDEN" = "بيئة مخفية";
 "ACTION_HIDEJB" = "إخفاء البيئة";
 "OPEN_CELL" = "المفتوحات";
-"OPENER_SILEO" = "فتح سيليو";
-"OPENER_ZEBRA" = "فتح زيبرا";
+"OPENER_SILEO" = "فتح Sileo";
+"OPENER_ZEBRA" = "فتح Zebra";
 "OPENER_TH" = "فتح TrollHelper";
 "UTIL_CELL" = "الأدوات";
-"ACTION_RESPRING" = "إعادة التشغيل";
+"ACTION_RESPRING" = "إعادة التشغيل السريع";
 "ACTION_USREBOOT" = "إعادة تشغيل المستخدم";
 "ACTION_UICACHE" = "تحديث الواجهة";
 "ACTION_DAEMONS" = "تشغيل الخدمات";
