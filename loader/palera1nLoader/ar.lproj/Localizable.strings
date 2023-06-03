@@ -24,7 +24,7 @@ English
 "UTIL_CELL" = "الأدوات";
 "ACTION_RESPRING" = "إعادة التشغيل السريع";
 "ACTION_USREBOOT" = "إعادة تشغيل Userspace";
-"ACTION_UICACHE" = "تحديث الواجهة";
+"ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "تنشيط العمليات الخفية";
 "ACTION_MOUNT" = "تركيب المجلدات";
 "ACTION_TWEAKS" = "تفعيل الأدوات";
