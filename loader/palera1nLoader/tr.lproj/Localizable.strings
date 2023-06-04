@@ -5,17 +5,17 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Yükle";
+"INSTALL" = "Yükleme";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "Hata Ayıklama";
+"DIAGNOSTICS" = "Jailbreak Bilgileri";
+"ACTIONS" = "İşlemler";
+"JBINIT_LOG" = "Kayıtlar";
+"REVERT_CELL" = "Jailbreak'i Kaldır";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
+"HIDDEN" = "Gizli Environment";
 "ACTION_HIDEJB" = "Hide Environment";
 "OPEN_CELL" = "Openers";
 "OPENER_SILEO" = "Open Sileo";
