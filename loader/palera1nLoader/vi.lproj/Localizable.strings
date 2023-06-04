@@ -22,21 +22,21 @@ English
 "OPENER_ZEBRA" = "Mở Zebra";
 "OPENER_TH" = "Mở TrollHelper";
 "UTIL_CELL" = "Tiện ích";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
+"ACTION_RESPRING" = "Khởi Động lại";
+"ACTION_USREBOOT" = "Khởi động lại Không gian người dùng";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_DAEMONS" = "Khởi chạy Daemon";
+"ACTION_MOUNT" = "Gắn thư mục";
+"ACTION_TWEAKS" = "Kích hoạt tinh chỉnh";
+"FR_SWITCH" = "Khởi động lại khi hoàn nguyên";
+"ACTION_MOUNT_SUBTEXT" = "\"Thư mục gắn kết\" chỉ cố gắng gắn kết root và khởi động trước dưới dạng đọc/ghi.";
+"OPENER_SUBTEXT" = "Khi sử dụng palera1n trên iPad, có những trường hợp bạn cần sử dụng các thao tác này để mở các ứng dụng đã cài đặt khi chúng không xuất hiện trên màn hình chính.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "Nhật ký";
+"LOG_CELL_VIEW" = "Xem các bản ghi";
+"NONE" = "Không có";
+"LOG_CLEAR" = "Xóa các bản ghi";
 
 // Debug
 "DEBUG_CELL" = "Debug";
