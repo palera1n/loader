@@ -86,7 +86,7 @@ English
 // DL / BS
 "DL_STRAP" = "Đang tải xuống hệ thống cơ sở";
 "DL_SILEO" = "Đang tải xuống Sileo";
-"DL_ZEBRA" = "Đang tải xuống Zerba";
+"DL_ZEBRA" = "Đang tải xuống Zebra";
 "DOWNLOADING" = "Đang tải xuống...";
 "INSTALLING" = "Đang cài đặt...";
 "DOWNLOAD_FAIL" = "Không thể tìm nạp tệp";
