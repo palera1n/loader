@@ -35,8 +35,17 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(tableView)
     }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if let tableView = view.subviews.first as? UITableView {
+            tableView.frame = view.bounds
+        }
+    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count

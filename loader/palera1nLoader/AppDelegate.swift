@@ -14,11 +14,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         Utils().createLoaderDirs()
         initLogs()
+        
         let viewController = ViewController()
-        let navController = UINavigationController(rootViewController: viewController)
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = navController
-        window?.makeKeyAndVisible()
+        let diagnosticsController = DiagnosticsVC()
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let masterNavController = UINavigationController(rootViewController: viewController)
+            let detailNavController = UINavigationController(rootViewController: diagnosticsController)
+            
+            let splitViewController = UISplitViewController()
+            splitViewController.viewControllers = [masterNavController, detailNavController]
+            splitViewController.preferredDisplayMode = UISplitViewController.DisplayMode.oneBesideSecondary
+            
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = splitViewController
+            window?.makeKeyAndVisible()
+        } else {
+            let navController = UINavigationController(rootViewController: viewController)
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = navController
+            window?.makeKeyAndVisible()
+        }
+        
+        
 
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             launchedShortcutItem = shortcutItem

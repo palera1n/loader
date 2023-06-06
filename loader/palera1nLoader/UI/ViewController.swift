@@ -217,6 +217,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             return
             
+        case (envInfo.CF == 2000):
+            if envInfo.isRootful {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    let alert = UIAlertController.error(title: local("DOWNLOAD_ERROR"), message: "Rootful on iOS 17 is not supported. You will get no support, and you're on your own.")
+                    self.present(alert, animated: true)
+                }
+                return
+            }
+            return
         default:
             break
         }
@@ -382,10 +391,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         switch itemTapped {
         case local("DIAGNOSTICS"):
             let diagnosticsVC = DiagnosticsVC()
-            navigationController?.pushViewController(diagnosticsVC, animated: true)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                let diagnosticsNavController = UINavigationController(rootViewController: diagnosticsVC)
+                showDetailViewController(diagnosticsNavController, sender: nil)
+            } else {
+                navigationController?.pushViewController(diagnosticsVC, animated: true)
+            }
+
         case local("ACTIONS"):
             let actionsVC = ActionsVC()
-            navigationController?.pushViewController(actionsVC, animated: true)
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                let actionsNavController = UINavigationController(rootViewController: actionsVC)
+                showDetailViewController(actionsNavController, sender: nil)
+            } else {
+                navigationController?.pushViewController(actionsVC, animated: true)
+            }
+            
         case local("REVERT_CELL"):
             let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)

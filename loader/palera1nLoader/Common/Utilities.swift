@@ -47,9 +47,12 @@ class Utils {
             }
         } catch {
             log(type: .fatal, msg: "Failed to get contents of directory: \(error.localizedDescription)")
+            #if !targetEnvironment(simulator)
             fatalError("Failed to get contents of directory: \(error.localizedDescription)")
+            #else
+            return (-1, "")
+            #endif
         }
-        
         if value == 0 {
             return (0, "")
         } else {

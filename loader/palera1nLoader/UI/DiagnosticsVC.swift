@@ -30,8 +30,19 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         view.addSubview(tableView)
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        if let tableView = view.subviews.first as? UITableView {
+            tableView.frame = view.bounds
+        }
+    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
