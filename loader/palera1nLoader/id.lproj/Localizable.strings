@@ -25,9 +25,9 @@ English
 "ACTION_RESPRING" = "Respring";
 "ACTION_USREBOOT" = "Userspace Reboot";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
+"ACTION_DAEMONS" = "Mulai Proses";
 "ACTION_MOUNT" = "Mount Direktori";
-"ACTION_TWEAKS" = "Enable Tweaks";
+"ACTION_TWEAKS" = "Aktifkan Tweaks";
 "FR_SWITCH" = "Reboot on revert";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Direktori\" hanya mencoba untuk me-mount root dan preboot sebagai baca/tulis.";
 "OPENER_SUBTEXT" = "Saat menggunakan palera1n di iPad, terdapat kasus dimana anda perlu menggunakan tindakan ini untuk membuka aplikasi yang sudah terpasang saat mereka tidak muncul di layar utama.";
@@ -50,7 +50,7 @@ English
 "DEVICE_MODEL_KERN" = "Versi Kernel:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader dibuat oleh:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
+"PINFO_SUBTEXT" = "Penanda (paleinfo) sesuai dengan penanda yang Anda gunakan melalui CLI palera1n 2.0.0, berguna untuk pengembang.";
 "TYPE_INFO" = "Tipe";
 "INSTALL_INFO" = "Terpasang";
 "ARCH_INFO" = "Arsitektur";
@@ -66,8 +66,8 @@ English
 "HELPER_PATH" = "Path Pembantu";
 "SILEO_INSTALLED" = "Sileo Terpasang";
 "ZEBRA_INSTALLED" = "Zebra Terpasang";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"KINFO_FLAGS" = "Penanda (kerninfo)";
+"PINFO_FLAGS" = "Penanda (paleinfo)";
 
 "TRUE" = "Ya";
 "FALSE" = "Tidak";
@@ -81,10 +81,10 @@ English
 "NO_PROCEED_SIDELOADING" = "Sideload tidak didukung.";
 "NO_PROCEED_FR" = "Setelah menggunakan --force-revert, anda harus menyalakan ulang secara manual dan jailbreak perangkat anda lagi untuk bisa melakukan bootstrap.";
 "SET" = "Atur";
-"TOO_LONG" = "Too Long";
+"TOO_LONG" = "Terlalu Panjang";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
+"DL_STRAP" = "Mengunduh Sistem Dasar";
 "DL_SILEO" = "Mengunduh Sileo";
 "DL_ZEBRA" = "Mengunduh Zebra";
 "DOWNLOADING" = "Mengunduh...";
@@ -119,7 +119,7 @@ English
 "SILEO_INSTALL" = "Anda yakin ingin memasang Sileo?";
 "ZEBRA_INSTALL" = "Anda yakin ingin memasang Zebra?";
 "CLOSE_APP" = "Anda dapat menutup aplikasi ini.";
-"UNHID_ENV" = "Unhid the environment";
+"UNHID_ENV" = "Perlihatkan Jailbreak";
 
 // errors
 "STATUS" = "Status";
