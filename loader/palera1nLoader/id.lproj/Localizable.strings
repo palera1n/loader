@@ -12,10 +12,10 @@ English
 "DIAGNOSTICS" = "Diagnostik";
 "ACTIONS" = "Tindakan";
 "JBINIT_LOG" = "Pencatatan Log";
-"REVERT_CELL" = "Revert Install";
+"REVERT_CELL" = "Hapus Instalasi";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
+"HIDDEN" = "Sembunyikan Jailbreak";
 "ACTION_HIDEJB" = "Sembunyikan Jailbreak";
 "OPEN_CELL" = "Pembuka";
 "OPENER_SILEO" = "Buka Sileo";
