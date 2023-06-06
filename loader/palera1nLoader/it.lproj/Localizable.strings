@@ -5,12 +5,12 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Installa";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
+"DIAGNOSTICS" = "Diagnosi";
+"ACTIONS" = "Azioni";
 "JBINIT_LOG" = "Logging";
 "REVERT_CELL" = "Revert Install";
 
