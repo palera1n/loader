@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Utils().createLoaderDirs()
         initLogs()
         
-        let viewController = ViewController()
+        let viewController = JsonVC()
         let diagnosticsController = DiagnosticsVC()
         
         if UIDevice.current.userInterfaceIdiom == .pad {
