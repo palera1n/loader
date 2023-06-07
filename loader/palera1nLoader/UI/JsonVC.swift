@@ -23,14 +23,13 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func installDebFile(file: String) {
         UIApplication.shared.isIdleTimerDisabled = true
-        let title: String.LocalizationValue = file == "sileo.deb" ? "DL_SILEO" : "DL_ZEBRA"
+        let title: String.LocalizationValue = file == "sileo" ? "DL_SILEO" : "DL_ZEBRA"
         let downloadAlert = UIAlertController.downloading(title)
         present(downloadAlert, animated: true)
         
-        let server = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
-        let downloadUrl = server.appendingPathComponent(file)
+        let downloadUrl = getManagerURL(envInfo.jsonInfo!, file)!
         
-        downloadFile(url: downloadUrl, forceBar: true, completion:{(path:String?, error:Error?) in
+        downloadFile(url: URL(string: downloadUrl)!, forceBar: true, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
                     if (error == nil) {
@@ -109,14 +108,10 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let downloadAlert = UIAlertController.downloading("DL_STRAP")
         present(downloadAlert, animated: true)
 
-        let bootstrapUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://apt.procurs.us/bootstraps/\(envInfo.CF)")!
-        let pkgmgrUrl = envInfo.isRootful ? URL(string: "https://static.palera.in")! : URL(string: "https://static.palera.in/rootless")!
-        let bootstrapDownload: URL?
+        let bootstrapUrl = getBootstrapURL(envInfo.jsonInfo!)!
+        let pkgmgrUrl = getManagerURL(envInfo.jsonInfo!, file)!
         
-        if (!envInfo.isRootful) {bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-ssh-iphoneos-arm64.tar.zst")
-        } else {bootstrapDownload = bootstrapUrl.appendingPathComponent("bootstrap-\(envInfo.CF).tar.zst")}
-        
-        downloadFile(url: pkgmgrUrl.appendingPathComponent("\(file).deb"), completion:{(path:String?, error:Error?) in
+        downloadFile(url: URL(string: pkgmgrUrl)!, completion:{(path:String?, error:Error?) in
             if (error != nil) {
                 DispatchQueue.main.async {
                     downloadAlert.dismiss(animated: true) {
@@ -127,7 +122,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         })
 
-        self.downloadFile(url: bootstrapDownload!, completion:{(path:String?, error:Error?) in
+        self.downloadFile(url:  URL(string: bootstrapUrl)!, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
                     if (error == nil) {
@@ -300,34 +295,29 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                if let dict = json as? [String: Any],
-                   let managers = dict["managers"] as? [[String: Any]] {
-                    let rootlessManagers = managers.first(where: { ($0["label"] as? String) == "Rootless" })
-                    if let items = rootlessManagers?["items"] as? [[String: Any]] {
-                        let names = items.compactMap({ $0["name"] as? String })
-                        let icons = items.compactMap({ $0["icon"] as? String })
-                        self.tableData = [names, icons]
-                        self.sectionTitles = [""]
-                        
-                        DispatchQueue.global().async {
-                            let iconImages = icons.map { iconURLString -> UIImage? in
-                                guard let iconURL = URL(string: iconURLString),
-                                      let data = try? Data(contentsOf: iconURL),
-                                      let image = UIImage(data: data) else {
-                                    return nil
-                                }
-                                return image
-                            }
-                            
-                            DispatchQueue.main.async {
-                                self.iconImages = iconImages
-                                self.isLoading = false
-                                self.tableView.reloadData()
-                            }
+                //let json = try JSONSerialization.jsonObject(with: data, options: [])
+                let jsonapi = try JSONDecoder().decode(loaderJSON.self, from: data)
+                envInfo.jsonInfo = jsonapi
+                self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]
+                self.sectionTitles = [""]
+                
+                DispatchQueue.global().async {
+                    let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
+                        guard let iconURL = URL(string: iconURLString),
+                              let data = try? Data(contentsOf: iconURL),
+                              let image = UIImage(data: data) else {
+                            return nil
                         }
+                        return image
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.iconImages = iconImages
+                        self.isLoading = false
+                        self.tableView.reloadData()
                     }
                 }
+                
             } catch {
                 print("Error parsing JSON:", error)
                 self.showErrorCell(with: self.errorMessage)
@@ -513,6 +503,10 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 } else {
                     let lowercaseName = name.lowercased()
                     print("Tapped: \(lowercaseName)")
+                    installStrap(file: name.lowercased()) {
+                        print("cocla")
+                        
+                    }
                     return
                 }
                 

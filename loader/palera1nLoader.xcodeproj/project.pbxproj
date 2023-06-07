@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F12BB0A2A30BF5B0095972E /* CoreServices.framework */; };
+		2F12BB102A30C4970095972E /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12BB0F2A30C4970095972E /* Decoder.swift */; };
 		33A420D92A0ED59D005AE29C /* DebugVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A420D82A0ED59D005AE29C /* DebugVC.swift */; };
 		33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4DF2A30050A006EC0B4 /* JsonVC.swift */; };
 		33AED4E22A30338D006EC0B4 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4E12A30338D006EC0B4 /* Cells.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		2F12BB0A2A30BF5B0095972E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		2F12BB0F2A30C4970095972E /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		3340404F2A21C37B000884CC /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F5972A1EAAC000F8BF22 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F5982A1EAACC00F8BF22 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				4501473729FC1AEB0001834C /* Logging.swift */,
 				452A308629ECAF9900EB8CAC /* Utilities.swift */,
 				33AED4E12A30338D006EC0B4 /* Cells.swift */,
+				2F12BB0F2A30C4970095972E /* Decoder.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				33AED4E22A30338D006EC0B4 /* Cells.swift in Sources */,
 				33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */,
+				2F12BB102A30C4970095972E /* Decoder.swift in Sources */,
 				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,

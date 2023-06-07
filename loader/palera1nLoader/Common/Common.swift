@@ -32,6 +32,7 @@ struct envInfo {
     static var CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
     static var bmHash: String = ""
     static var nav: UINavigationController = UINavigationController()
+    static var jsonInfo: loaderJSON?
 }
 
 //MARK: - Commonly used Functions

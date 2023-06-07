@@ -64,10 +64,11 @@ func initLogs() -> Void {
 // Prints log message with type
 func log(type: logTypes = .info, msg: String, file: String = #file, line: Int = #line, function: String = #function) {
     let srcFile = URL(string: file)!.lastPathComponent
-    if (!envInfo.isSimulator) {
-        freopen(logInfo.logFile.cString(using: .ascii)!, "a+", stderr)
-        freopen(logInfo.logFile.cString(using: .ascii)!, "a+", stdout)
-    }
+#if targetEnvironment(simulator)
+#else
+    freopen(logInfo.logFile.cString(using: .ascii)!, "a+", stderr)
+    freopen(logInfo.logFile.cString(using: .ascii)!, "a+", stdout)
+#endif
     
     switch (type) {
     case .fatal:
