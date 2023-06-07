@@ -5,32 +5,32 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Εγκατάσταση";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
+"DIAGNOSTICS" = "Διαγνωστικά";
+"ACTIONS" = "Ενέργειες";
 "JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"REVERT_CELL" = "Απεγκατάσταση";
 
 // ActionsVC
 "HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
-"ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
+"ACTION_HIDEJB" = "Απόκρυψη περιβάλλοντος jailbreak";
+"OPEN_CELL" = "Σύνδεσμοι";
+"OPENER_SILEO" = "Άνοιγμα Sileo";
+"OPENER_ZEBRA" = "Άνοιγμα Zebra";
+"OPENER_TH" = "Άνοιγμα TrollHelper";
+"UTIL_CELL" = "Ενέργειες";
+"ACTION_RESPRING" = "Επανεκκίνηση Springboard";
+"ACTION_USREBOOT" = "Επανεκκίνηση Userspace";
+"ACTION_UICACHE" = "Εκτέλεση UICache";
+"ACTION_DAEMONS" = "Εκκίνηση Υπηρεσιών";
 "ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
+"ACTION_TWEAKS" = "Ενεργοποίηση των Tweaks";
+"FR_SWITCH" = "Επανεκκίνηση κατά την απεγκατάσταση";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"OPENER_SUBTEXT" = "Όταν χρησιμοποιείτε palera1n σε iPad, υπάρχει περίπτωση να χρειαστούν μια από τις παρακάτω επιλογές για να ανοίξουν αυτές οι εφαρμογές (Sileo, Zebra, Trollhelper) όταν δεν εμφανίζονται στην αρχική οθόνη.";
 
 // Logging View
 "LOG_CELL" = "Logs";
@@ -40,93 +40,93 @@ English
 
 // Debug
 "DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_OPTIONS" = "Επιλογές";
+"DEBUG_CLEAN_FAKEFS" = "Εγκαθάριση FakeFS";
+"DEBUG_EXIT_SAFEMODE" = "Έξοδος από το safemode";
+"DEBUG_ENTER_SAFEMODE" = "Επανεκκίνηση σε safemode";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
+"DEVICE_MODEL" = "Μοντέλο συσκευής:";
+"DEVICE_MODEL_KERN" = "Έκδοση Kernel:";
 "DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
-"ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
-"STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
+"CREDITS_SUBTEXT" = "Loader από:";
+"PINFO_SUBTEXT" = "Τα Flags (paleinfo) αντιστοιχούν στα flags που χρησιμοποιήθηκαν μέσω του palera1n 2.0.0 CLI, χρήσιμα για προγραμματιστές.";
+"TYPE_INFO" = "Τύπος";
+"INSTALL_INFO" = "Εγκατεστημένο";
+"ARCH_INFO" = "Αρχιτεκτονική";
+"VERSION_INFO" = "Έκδοση";
+"STRAP_INFO" = "Περιβάλλον";
+"STRAP_FR_PREFIX" = "Πρόθεμα Fakeroot";
+"STRAP_FR_PATH" = "Τοποθεσία Fakeroot";
+"OPEN_FILZA" = "Άνοιγμα με Filza";
+"OPEN_SANTANDER" = "Άνοιγμα με Santader";
+"COPY" = "Αντιγραφή";
+"INSTALL_FR" = "Απεγκατεστημένο";
+"HELPER" = "Βοηθός";
+"HELPER_PATH" = "Τοποθεσία βοηθού";
+"SILEO_INSTALLED" = "Sileo Εγκατεστημένο";
+"ZEBRA_INSTALLED" = "Zebra Εγκατεστημένο";
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flags (paleinfo)";
 
-"TRUE" = "Yes";
-"FALSE" = "No";
+"TRUE" = "Ναι";
+"FALSE" = "Όχι";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"CANCEL" = "Ακύρωση";
+"CONFIRM" = "Επιβεβαίωση";
+"CLOSE" = "Κλείσιμο";
+"PROCEED" = "Συνέχεια";
+"NO_PROCEED" = "Αδυναμία συνέχισης";
+"NO_PROCEED_SIDELOADING" = "Δεν υποστηρίζεται το sideloading.";
+"NO_PROCEED_FR" = "Μετά τη χρήση του --force-revert, πρέπει να επανεκκινήσεις χειροκίνητα και να κάνεις jailbreak τη συσκευή σου ξανά για να μπορείς να κάνεις bootstrap.";
 "SET" = "Set";
 "TOO_LONG" = "Too Long";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DL_STRAP" = "Λήψη Βασικού Συστήματος";
+"DL_SILEO" = "Λήψη Sileo";
+"DL_ZEBRA" = "Λήψη Zebra";
+"DOWNLOADING" = "Λήψη...";
+"INSTALLING" = "Εγκατάσταση...";
+"DOWNLOAD_FAIL" = "Αποτυχία στην ανάκτηση αρχείου";
+"DOWNLOAD_ERROR" = "Άγνωστο σφάλμα";
+"SAVE_FAIL" = "Αδυναμία αντιγραφής αρχείου στο δίσκο";
+"DONE_INSTALL" = "Η εγκατάσταση ολοκληρώθηκε";
+"ERROR_INSTALL" = "Η εγκατάσταση απέτυχε";
+"DONE_INSTALL_SUB" = "Μπορείς πλέον να κλείσεις την εφαρμογή.";
+"DONE_REVERT" = "Η αφαίρεση ολοκληρώθηκε";
+"REMOVING" = "Αφαίρεση...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "Για την χρήση εργαλείων command line όπως \"sudo\" μετα το jailbreak, πρέπει να οριστεί ένας κωδικός πρόσβασης. (Αυτό δεν μπορεί να είναι κενό)";
+"PASSWORD_REPEAT" = "Επανάληψη κωδικού";
+"PASSWORD_SET" = "Ορισμός κωδικού";
+"PASSWORD_TEXT" = "Κωδικός";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "Επανεγκατάσταση";
+"ENJOY" = "Καλή Διασκέδαση!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
-"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
-"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
-"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"HIDDEN_NOTICE" = "Το fakeroot είναι ακόμα ανέπαφο ενώ το /var/jb δεν είναι, αυτό θα επανασυνδέσει το /var/jb πίσω σε αυτό το πρωτότυπο fakeroot. Ίσως χρειαστεί να εκτελέσεις το UICache στις βοηθητικές ενέργειες μετά τη συνέχεια.";
+"NOTICE_ROOTLESS" = "Δεν μπορείτε να χρησιμοποιήσετε αυτή την επιλογή σε μη rootless jailbreak.";
+"HIDE_NOTICE" = "Πρόκειται να αφαιρεθεί η συντόμευση για το /var/jb και να γίνει επανεκκίνηση της συσκευής.";
+"REVERT_SUBTEXT" = "Δεν γίνεται η χρήση αυτής της επιλογής σε rootful :(";
+"PM_SUBTEXT" = "Διάλεξε το αγαπημένο σου package manager που θα ήθελες να εγκαταστήσεις, προτείνουμε το Sileo αν είσαι νέος/νέα στο jailbreak.";
+"REVERT_WARNING" = "Διαγράφει το /var/jb και καταργεί τις εφαρμογές jailbreak. Όταν ολοκληρωθεί, η συσκευή θα κάνει επανεκκίνηση σε unjailbroken κατάσταση.";
+"SILEO_REINSTALL" = "Σίγουρα θέλεις να επανεγκαταστήσεις το Sileo?";
+"ZEBRA_REINSTALL" = "Σίγουρα θέλεις να επανεγκαταστήσεις το Zebra?";
+"SILEO_INSTALL" = "Σίγουρα θέλεις να εγκαταστήσεις το Sileo?";
+"ZEBRA_INSTALL" = "Σίγουρα θέλεις να εγκαταστήσεις το Zebra?";
+"CLOSE_APP" = "Μπορείς πλέον να κλείσεις την εφαρμογή.";
+"UNHID_ENV" = "Επανεμφάνιση περιβάλλοντος";
 
 // errors
-"STATUS" = "Status";
-"ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_SILEO" = "Failed to install Sileo";
-"ERROR_ZEBRA" = "Failed to install Zebra";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"STATUS" = "Κατάσταση";
+"ERROR_STRAP" = "Σφάλμα κατά την εγκατάσταση του bootstrap";
+"ERROR_DPKG" = "Αποτυχία εγκατάστασης πακέτων";
+"ERROR_UICACHE" = "Αποτυχία εκτέλεσης UICache";
+"ERROR_SILEO" = "Αποτυχία εγκατάστασης Sileo";
+"ERROR_ZEBRA" = "Αποτυχία εγκατάστασης του Zebra";
+"ERROR_UNREGISTER" = "Αποτυχία κατάργησης";
+"ERROR_REVERT" = "Αποτυχία κατάργησης jailbreak";
