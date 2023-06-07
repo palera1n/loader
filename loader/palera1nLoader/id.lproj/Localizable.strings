@@ -23,7 +23,7 @@ English
 "OPENER_TH" = "Buka TrollHelper";
 "UTIL_CELL" = "Utilitas";
 "ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
+"ACTION_USREBOOT" = "Nyalakan ulang Userspace";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Mulai Proses";
 "ACTION_MOUNT" = "Mount Direktori";
