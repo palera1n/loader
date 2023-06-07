@@ -465,7 +465,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             // Handle cells in section 0
             let itemTapped = tableData[indexPath.section][indexPath.row]
             if let name = itemTapped as? String {
-                let fileExists = FileManager.default.fileExists(atPath: "/Applications/Sileo.app")
+                let fileExists = FileManager.default.fileExists(atPath: "/Applications/\(name).app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/\(name).app")
                 let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
                 
                 let title: String
