@@ -364,36 +364,20 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (isLoading, isError) {
-        case (true, _):
-            switch section {
-            case 0:
-                return "\(local("DOWNLOADING"))"
-            case 1:
-                return "\(local("DEBUG"))"
-            default:
-                return nil
-            }
-        case (_, true):
-            switch section {
-            case 0:
-                return "\(local("DOWNLOAD_ERROR"))"
-            case 1:
-                return "\(local("DEBUG"))"
-            default:
-                return nil
-            }
+        switch (section, isLoading, isError) {
+        case (0, true, _):
+            return local("DOWNLOADING")
+        case (0, _, true):
+            return local("DOWNLOAD_ERROR")
+        case (0, _, _):
+            return local("INSTALL")
+        case (1, _, _):
+            return local("DEBUG")
         default:
-            switch section {
-            case 0:
-                return "\(local("INSTALL"))"
-            case 1:
-                return "\(local("DEBUG"))"
-            default:
-                return nil
-            }
+            return nil
         }
     }
+
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
             return nil
@@ -411,8 +395,8 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
-        switch indexPath.section {
-        case 0: // Fetching section
+        switch (indexPath.section, indexPath.row) {
+        case (0, _): // Fetching section
             if isLoading {
                 let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
                 loadingCell.startLoading()
@@ -433,45 +417,39 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 
                 return cell
             }
-            
-        case 1:
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = local("ACTIONS")
-                cell.accessoryType = .disclosureIndicator
-                applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
-                return cell
-            case 1:
-                cell.textLabel?.text = local("DIAGNOSTICS")
-                cell.accessoryType = .disclosureIndicator
-                applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
-                return cell
-            case 2:
-                applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-                cell.textLabel?.text = local("REVERT_CELL")
-                if envInfo.isRootful {
-                    let isOldProcursusStrapped = FileManager.default.fileExists(atPath: "/.procursus_strapped")
-                    
-                    cell.isUserInteractionEnabled = false
-                    cell.textLabel?.textColor = .gray
-                    cell.imageView?.alpha = 0.4
-                    cell.detailTextLabel?.text = isOldProcursusStrapped ? local("REVERT_SUBTEXT") : nil
-                    return cell
-                } else if !envInfo.isRootful {
-                    let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
-                    cell.isUserInteractionEnabled = isProcursusStrapped
-                    cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
-                    cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
-                    cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
-                    return cell
-                } else {
-                    cell.isUserInteractionEnabled = false
-                    return cell
-                }
-                
-            default:
-                break
+        case (1, 2):
+            applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+            cell.textLabel?.text = local("REVERT_CELL")
+            if envInfo.isRootful {
+                cell.isUserInteractionEnabled = false
+                cell.textLabel?.textColor = .gray
+                cell.imageView?.alpha = 0.4
+            } else if !envInfo.isRootful {
+                let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+                cell.isUserInteractionEnabled = isProcursusStrapped
+                cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
+                cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
+                cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
+            } else {
+                cell.isUserInteractionEnabled = false
             }
+            return cell
+        case (1, 0):
+            cell.textLabel?.text = local("ACTIONS")
+            cell.accessoryType = .disclosureIndicator
+            cell.isUserInteractionEnabled = true
+            cell.textLabel?.textColor = .label
+            cell.imageView?.alpha = 1.0
+            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
+            return cell
+        case (1, 1):
+            cell.textLabel?.text = local("DIAGNOSTICS")
+            cell.accessoryType = .disclosureIndicator
+            cell.isUserInteractionEnabled = true
+            cell.textLabel?.textColor = .label
+            cell.imageView?.alpha = 1.0
+            applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
+            return cell
         default:
             break
         }
@@ -481,13 +459,11 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = indexPath.section
-        let row = indexPath.row
         
-        switch section {
-        case 0:
+        switch (indexPath.section, indexPath.row) {
+        case (0, _):
             // Handle cells in section 0
-            let itemTapped = tableData[section][row]
+            let itemTapped = tableData[indexPath.section][indexPath.row]
             if let name = itemTapped as? String {
                 let fileExists = FileManager.default.fileExists(atPath: "/Applications/Sileo.app")
                 let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
@@ -525,37 +501,32 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.installStrap(file: "\(String(describing: lowercaseName))", completion: { })
             }
             
-        case 1:
-            switch row {
-            case 0:
-                let actionsVC = ActionsVC()
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    let actionsNavController = UINavigationController(rootViewController: actionsVC)
-                    showDetailViewController(actionsNavController, sender: nil)
-                } else {
-                    navigationController?.pushViewController(actionsVC, animated: true)
-                }
-            case 1:
-                let diagnosticsVC = DiagnosticsVC()
-                if UIDevice.current.userInterfaceIdiom == .pad {
-                    let diagnosticsNavController = UINavigationController(rootViewController: diagnosticsVC)
-                    showDetailViewController(diagnosticsNavController, sender: nil)
-                } else {
-                    navigationController?.pushViewController(diagnosticsVC, animated: true)
-                }
-            case 2:
-                let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
-                let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in revert(viewController: self) }
-
-                alertController.addAction(cancelAction)
-                alertController.addAction(confirmAction)
-
-                present(alertController, animated: true, completion: nil)
-            default:
-                print("whhat")
-                break
+        case (1, 0):
+            let actionsVC = ActionsVC()
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                let actionsNavController = UINavigationController(rootViewController: actionsVC)
+                showDetailViewController(actionsNavController, sender: nil)
+            } else {
+                navigationController?.pushViewController(actionsVC, animated: true)
             }
+        case (1, 1):
+            let diagnosticsVC = DiagnosticsVC()
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                let diagnosticsNavController = UINavigationController(rootViewController: diagnosticsVC)
+                showDetailViewController(diagnosticsNavController, sender: nil)
+            } else {
+                navigationController?.pushViewController(diagnosticsVC, animated: true)
+            }
+        case (1, 3):
+            let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in revert(viewController: self) }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
             
         default:
             break
