@@ -15,7 +15,7 @@ English
 "REVERT_CELL" = "Hapus Instalasi";
 
 // ActionsVC
-"HIDDEN" = "Sembunyikan Jailbreak";
+"HIDDEN" = "Jailbreak Disembunyikan";
 "ACTION_HIDEJB" = "Sembunyikan Jailbreak";
 "OPEN_CELL" = "Pembuka";
 "OPENER_SILEO" = "Buka Sileo";
@@ -28,7 +28,7 @@ English
 "ACTION_DAEMONS" = "Mulai Proses";
 "ACTION_MOUNT" = "Mount Direktori";
 "ACTION_TWEAKS" = "Aktifkan Tweaks";
-"FR_SWITCH" = "Reboot on revert";
+"FR_SWITCH" = "Nyalakan ulang setelah pengembalian";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Direktori\" hanya mencoba untuk me-mount root dan preboot sebagai baca/tulis.";
 "OPENER_SUBTEXT" = "Saat menggunakan palera1n di iPad, terdapat kasus dimana anda perlu menggunakan tindakan ini untuk membuka aplikasi yang sudah terpasang saat mereka tidak muncul di layar utama.";
 
@@ -56,7 +56,7 @@ English
 "ARCH_INFO" = "Arsitektur";
 "VERSION_INFO" = "Versi";
 "STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
+"STRAP_FR_PREFIX" = "Prefiks Fakeroot";
 "STRAP_FR_PATH" = "Path Fakeroot";
 "OPEN_FILZA" = "Buka di Filza";
 "OPEN_SANTANDER" = "Buka di Santander";
@@ -124,7 +124,7 @@ English
 // errors
 "STATUS" = "Status";
 "ERROR_STRAP" = "Gagal memasang bootstrap";
-"ERROR_DPKG" = "Gagal menmasang paket";
+"ERROR_DPKG" = "Gagal memasang paket";
 "ERROR_UICACHE" = "Gagal menjalankan UICache";
 "ERROR_SILEO" = "Gagal memasang Sileo";
 "ERROR_ZEBRA" = "Gagal memasang Zebra";
