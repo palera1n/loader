@@ -89,7 +89,7 @@ English
 "DL_ZEBRA" = "Mengunduh Zebra";
 "DOWNLOADING" = "Mengunduh...";
 "INSTALLING" = "Memasang...";
-"DOWNLOAD_FAIL" = "Tidak dapat mengunduh file";
+"DOWNLOAD_FAIL" = "Tidak dapat mengunduh berkas";
 "DOWNLOAD_ERROR" = "Kesalahan tidak diketahui";
 "SAVE_FAIL" = "Tidak bisa menyimpan berkas ke disk";
 "DONE_INSTALL" = "Pemasangan selesai";
