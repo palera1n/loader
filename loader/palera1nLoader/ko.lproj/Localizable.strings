@@ -5,128 +5,128 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "설치";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"DEBUG" = "디버그";
+"DIAGNOSTICS" = "특수 정보";
+"ACTIONS" = "액션";
+"JBINIT_LOG" = "로그";
+"REVERT_CELL" = "제거";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
-"ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"HIDDEN" = "제일브레이크 숨김";
+"ACTION_HIDEJB" = "제일브레이크 숨기기";
+"OPEN_CELL" = "쇼트컷";
+"OPENER_SILEO" = "Sileo 열기";
+"OPENER_ZEBRA" = "Zebra 열기";
+"OPENER_TH" = "TrollHelper 열기";
+"UTIL_CELL" = "유틸리티";
+"ACTION_RESPRING" = "리스프링";
+"ACTION_USREBOOT" = "유저스페이스 제시작";
+"ACTION_UICACHE" = "스프링보드 케시 제거";
+"ACTION_DAEMONS" = "데몬 시작";
+"ACTION_MOUNT" = "마운트 디렉토리";
+"ACTION_TWEAKS" = "트윅 시작하기";
+"FR_SWITCH" = "제거 후 재시작";
+"ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root과 preboot만 r/w로 제마운트 한다.";
+"OPENER_SUBTEXT" = "palera1n을 iPad에 사용시, 앱이 홈스크린에 안 뜰 경우에 이 엑션을 사용합니다.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "로그";
+"LOG_CELL_VIEW" = "로그 보기";
+"NONE" = "없음";
+"LOG_CLEAR" = "로그 지우기";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
+"DEBUG_CELL" = "디버그";
+"DEBUG_OPTIONS" = "옵션";
+"DEBUG_CLEAN_FAKEFS" = "fakefs 지욱기";
+"DEBUG_EXIT_SAFEMODE" = "safemode 나가기";
+"DEBUG_ENTER_SAFEMODE" = "safemode 시작하기";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
+"DEVICE_MODEL" = "디바이스 모델:";
+"DEVICE_MODEL_KERN" = "커널 버전";
 "DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
+"CREDITS_SUBTEXT" = "로더 제작원:";
+"PINFO_SUBTEXT" = "Flags (paleinfo)는 palera1n 2.0.0 CLI에 사용한 플레그와 대응한다 (개발자에게 유용함)";
+"TYPE_INFO" = "종류";
+"INSTALL_INFO" = "설치됨";
 "ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
+"VERSION_INFO" = "버전";
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
 "STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
+"OPEN_FILZA" = "Filza에 열기";
+"OPEN_SANTANDER" = "Santander에 열기";
+"COPY" = "복사";
 "INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
+"HELPER" = "헬퍼";
+"HELPER_PATH" = "헬퍼 저장소";
+"SILEO_INSTALLED" = "Sileo 설치 여부";
+"ZEBRA_INSTALLED" = "Zebra 설치 여부";
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flags (paleinfo)";
 
-"TRUE" = "Yes";
-"FALSE" = "No";
+"TRUE" = "예";
+"FALSE" = "아니오";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
-"SET" = "Set";
-"TOO_LONG" = "Too Long";
+"CANCEL" = "취소";
+"CONFIRM" = "확인";
+"CLOSE" = "닫기";
+"PROCEED" = "계속";
+"NO_PROCEED" = "계속 못함";
+"NO_PROCEED_SIDELOADING" = "사이드로딩은 호환되지 않습니다.";
+"NO_PROCEED_FR" = "--force-revert 사용 후 제시작을 해야만 bootstrap을 다시 할 수 있습니다.";
+"SET" = "설정";
+"TOO_LONG" = "길이 초과";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DL_STRAP" = "배이스 다운받는 중";
+"DL_SILEO" = "Sileo 다운로드 중";
+"DL_ZEBRA" = "Zebra 다운받는 중";
+"DOWNLOADING" = "다운받는 중...";
+"INSTALLING" = "설치 중...";
+"DOWNLOAD_FAIL" = "다운로드 실패";
+"DOWNLOAD_ERROR" = "알 수 없는 오류";
+"SAVE_FAIL" = "디스크에 저장 실패";
+"DONE_INSTALL" = "설치 완료";
+"ERROR_INSTALL" = "설치 실패";
+"DONE_INSTALL_SUB" = "앱을 닫으셔도 됩니다.";
+"DONE_REVERT" = "제거 완료";
+"REMOVING" = "제거 중...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "\"sudo\"와 같은 툴을 사용하러면, 패스코드를 설정하셔야 합니다. (비면 안됨)";
+"PASSWORD_REPEAT" = "다시 입력";
+"PASSWORD_SET" = "비밀번호 설정";
+"PASSWORD_TEXT" = "비밀번호";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "다시 설치";
+"ENJOY" = "설치 완료!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
-"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
-"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
-"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"HIDDEN_NOTICE" = "fakeroot는 /var/jb와 달리 보존 되어 있습니다. 이 것은 /var/jb를 다시 연결시킨다. UICache를 다시 실행 하셔야 할 수도 있습니다.";
+"NOTICE_ROOTLESS" = "Rootless가 아니면 이 기능을 못 사용합니다.";
+"HIDE_NOTICE" = "계속하면 /var/jb 연결을 지우고 제부팅 합니다.";
+"REVERT_SUBTEXT" = "Rootful은 이 버트 사용 못 합니다 :(";
+"PM_SUBTEXT" = "좋아하시는 페키지 관리자를 고르시오, 처음이면 Sileo를 추천합니다.";
+"REVERT_WARNING" = "/var/jb를 지우고 제일브레이크 앱을 지운다. 끝난 후 제거된 상태로 제부팅 됩니다.";
+"SILEO_REINSTALL" = "Sileo를 제설치 하시고 싶습닏까?";
+"ZEBRA_REINSTALL" = "Zebra를 제설치 하시고 싶습닏까?";
+"SILEO_INSTALL" = "Sileo를 설치 하시고 싶습닏까?";
+"ZEBRA_INSTALL" = "Zebra를 설치 하시고 싶습닏까?";
+"CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
+"UNHID_ENV" = "더이상 제일브레이크 숨기지 않는다.";
 
 // errors
-"STATUS" = "Status";
-"ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_SILEO" = "Failed to install Sileo";
-"ERROR_ZEBRA" = "Failed to install Zebra";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"STATUS" = "상태";
+"ERROR_STRAP" = "bootstrap 설치중 에러";
+"ERROR_DPKG" = "페키지 설치 실패";
+"ERROR_UICACHE" = "UICache실패";
+"ERROR_SILEO" = "Sileo 설치 실패";
+"ERROR_ZEBRA" = "Zebra 설치 실패";
+"ERROR_UNREGISTER" = "Unregister 실패";
+"ERROR_REVERT" = "제일브레이크 제거 실패";
