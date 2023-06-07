@@ -1,9 +1,11 @@
 #include <spawn.h>
 #include <IOKit/IOKitlib.h>
+
 @import Foundation;
+
 @interface LSApplicationWorkspace
 + (instancetype)defaultWorkspace;
-- (BOOL)openApplicationWithBundleID:(NSString *)arg1 ;
+- (BOOL)openApplicationWithBundleID:(NSString *)arg1;
 @end
 
 #define POSIX_SPAWN_PERSONA_FLAGS_OVERRIDE 1

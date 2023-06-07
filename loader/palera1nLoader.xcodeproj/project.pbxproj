@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F12BB0A2A30BF5B0095972E /* CoreServices.framework */; };
 		33A420D92A0ED59D005AE29C /* DebugVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A420D82A0ED59D005AE29C /* DebugVC.swift */; };
 		33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4DF2A30050A006EC0B4 /* JsonVC.swift */; };
 		33AED4E22A30338D006EC0B4 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4E12A30338D006EC0B4 /* Cells.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F12BB0A2A30BF5B0095972E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		3340404F2A21C37B000884CC /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F5972A1EAAC000F8BF22 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F5982A1EAACC00F8BF22 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -61,12 +63,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F12BB092A30BF5A0095972E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F12BB0A2A30BF5B0095972E /* CoreServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3313A75629ECE2690021665E /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +116,7 @@
 			children = (
 				E181BAD828CF914300CD25A6 /* palera1nLoader */,
 				E181BAD728CF914300CD25A6 /* Products */,
+				2F12BB092A30BF5A0095972E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
