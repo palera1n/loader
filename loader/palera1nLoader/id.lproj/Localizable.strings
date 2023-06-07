@@ -79,7 +79,7 @@ English
 "PROCEED" = "Lanjutkan";
 "NO_PROCEED" = "Tidak bisa melanjutkan";
 "NO_PROCEED_SIDELOADING" = "Sideload tidak didukung.";
-"NO_PROCEED_FR" = "Setelah menggunakan --force-revert, anda harus menyalakan ulang secara manual dan jailbreak perangkat anda lagi untuk bisa melakukan bootstrap.";
+"NO_PROCEED_FR" = "Setelah menggunakan --force-revert, anda harus menyalakan ulang secara manual dan jailbreak perangkat anda lagi untuk melakukan bootstrap.";
 "SET" = "Atur";
 "TOO_LONG" = "Terlalu Panjang";
 
@@ -91,7 +91,7 @@ English
 "INSTALLING" = "Memasang...";
 "DOWNLOAD_FAIL" = "Tidak dapat mengunduh file";
 "DOWNLOAD_ERROR" = "Kesalahan tidak diketahui";
-"SAVE_FAIL" = "Tidak bisa menyimpan file ke disk";
+"SAVE_FAIL" = "Tidak bisa menyimpan berkas ke disk";
 "DONE_INSTALL" = "Pemasangan selesai";
 "ERROR_INSTALL" = "Pemasangan gagal";
 "DONE_INSTALL_SUB" = "Anda dapat menutup aplikasi ini.";
