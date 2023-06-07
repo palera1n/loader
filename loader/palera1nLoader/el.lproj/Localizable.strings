@@ -8,14 +8,14 @@ English
 "INSTALL" = "Εγκατάσταση";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
+"DEBUG" = "Εντοπισμός σφαλμάτων";
 "DIAGNOSTICS" = "Διαγνωστικά";
 "ACTIONS" = "Ενέργειες";
-"JBINIT_LOG" = "Logging";
+"JBINIT_LOG" = "Καταγραφή";
 "REVERT_CELL" = "Απεγκατάσταση";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
+"HIDDEN" = "Περιβάλλον κρυμμένο";
 "ACTION_HIDEJB" = "Απόκρυψη περιβάλλοντος jailbreak";
 "OPEN_CELL" = "Σύνδεσμοι";
 "OPENER_SILEO" = "Άνοιγμα Sileo";
@@ -26,20 +26,20 @@ English
 "ACTION_USREBOOT" = "Επανεκκίνηση Userspace";
 "ACTION_UICACHE" = "Εκτέλεση UICache";
 "ACTION_DAEMONS" = "Εκκίνηση Υπηρεσιών";
-"ACTION_MOUNT" = "Mount Directories";
+"ACTION_MOUNT" = "Mount directories";
 "ACTION_TWEAKS" = "Ενεργοποίηση των Tweaks";
 "FR_SWITCH" = "Επανεκκίνηση κατά την απεγκατάσταση";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
+"ACTION_MOUNT_SUBTEXT" = "Το \"Mount Directories\" προσπαθεί να κάνει mount το root και preboot ως Read/Write.";
 "OPENER_SUBTEXT" = "Όταν χρησιμοποιείτε palera1n σε iPad, υπάρχει περίπτωση να χρειαστούν μια από τις παρακάτω επιλογές για να ανοίξουν αυτές οι εφαρμογές (Sileo, Zebra, Trollhelper) όταν δεν εμφανίζονται στην αρχική οθόνη.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "Αρχεία καταγραφής";
+"LOG_CELL_VIEW" = "Προβολή logs";
+"NONE" = "Τίποτα";
+"LOG_CLEAR" = "Εκκαθάριση καταγραφών";
 
 // Debug
-"DEBUG_CELL" = "Debug";
+"DEBUG_CELL" = "Εντοπισμός σφαλμάτων";
 "DEBUG_OPTIONS" = "Επιλογές";
 "DEBUG_CLEAN_FAKEFS" = "Εγκαθάριση FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "Έξοδος από το safemode";
@@ -81,7 +81,7 @@ English
 "NO_PROCEED_SIDELOADING" = "Δεν υποστηρίζεται το sideloading.";
 "NO_PROCEED_FR" = "Μετά τη χρήση του --force-revert, πρέπει να επανεκκινήσεις χειροκίνητα και να κάνεις jailbreak τη συσκευή σου ξανά για να μπορείς να κάνεις bootstrap.";
 "SET" = "Set";
-"TOO_LONG" = "Too Long";
+"TOO_LONG" = "Πολύ μεγάλο";
 
 // DL / BS
 "DL_STRAP" = "Λήψη Βασικού Συστήματος";
