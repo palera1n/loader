@@ -63,10 +63,10 @@ English
 "COPY" = "ʎdoƆ";
 "INSTALL_FR" = "pǝʇɹǝʌǝɹ ǝɔɹoℲ";
 "HELPER" = "ɹǝdlǝH";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
-"KINFO_FLAGS" = "Flags (kerninfo)";
+"HELPER_PATH" = "ɥʇɐԀ ɹǝdlǝH";
+"SILEO_INSTALLED" = "pǝllɐʇsuI oǝlᴉS";
+"ZEBRA_INSTALLED" = "pǝllɐʇsuI ɐɹqǝZ";
+"KINFO_FLAGS" = "(oɟuᴉuɹǝʞ) sƃɐlℲ";
 "PINFO_FLAGS" = "Flags (paleinfo)";
 
 "TRUE" = "Yes";
