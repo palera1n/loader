@@ -80,7 +80,7 @@ English
 "NO_PROCEED" = "Αδυναμία συνέχισης";
 "NO_PROCEED_SIDELOADING" = "Δεν υποστηρίζεται το sideloading.";
 "NO_PROCEED_FR" = "Μετά τη χρήση του --force-revert, πρέπει να επανεκκινήσεις χειροκίνητα και να κάνεις jailbreak τη συσκευή σου ξανά για να μπορείς να κάνεις bootstrap.";
-"SET" = "Set";
+"SET" = "Ορισμός";
 "TOO_LONG" = "Πολύ μεγάλο";
 
 // DL / BS
