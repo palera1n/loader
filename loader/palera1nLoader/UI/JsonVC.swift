@@ -521,28 +521,27 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             case 0..<filePaths.count:
                 let filePath = filePaths[row]
                 let filePathExists = FileManager.default.fileExists(atPath: filePath)
+                let lowercaseName = name.lowercased()
                 
                 switch true {
                 case procursusStrappedExists:
                     alertController.message = local("Install \(name)?")
                     let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { [self] _ in
-                        installStrap(file: name.lowercased()) {
-                            print("cock")
-                        }
+                        self.installDebFile(file: "\(lowercaseName).deb")
                     }
                     alertController.addAction(confirmAction)
                 case filePathExists:
                     alertController.message = "\(name) is already installed at \(filePath)"
                     let reinstallAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                        let lowercaseName = name.lowercased()
                         self.installDebFile(file: "\(lowercaseName).deb")
                     }
                     alertController.addAction(reinstallAction)
                 default:
                     alertController.message = "Strap and \(name) is not installed. Install now?"
                     let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
-                        let lowercaseName = name.lowercased()
-                        self.installDebFile(file: "\(lowercaseName).deb")
+                        self.installStrap(file: name.lowercased()) {
+                            print("cock")
+                        }
                     }
                     alertController.addAction(installAction)
                 }
@@ -570,7 +569,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 navigationController?.pushViewController(diagnosticsVC, animated: true)
             }
             
-        case (1, 3):
+        case (1, 2):
             let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
             let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in revert(viewController: self) }
