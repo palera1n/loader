@@ -193,6 +193,40 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidAppear(animated)
         envInfo.nav = navigationController!
         fetchJSON()
+        
+        #if !targetEnvironment(simulator)
+        switch true {
+        case !fileExists("/var/mobile/Library/palera1n/helper"):
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
+                self.present(alert, animated: true)
+            }
+            return
+
+        case envInfo.hasForceReverted:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
+                self.present(alert, animated: true)
+            }
+            return
+            
+        case (envInfo.CF == 2000):
+            if envInfo.isRootful {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    let alertController = whichAlert(title: "Oopsy :3", message: "Rootful on iOS 17 is not supported. You will get no support, and you're on your own.")
+                    let cancelAction = UIAlertAction(title: local("CLOSE"), style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                return
+            }
+            return
+        default:
+            break
+        }
+        #endif
+        
     }
     
     override func viewDidLoad() {
@@ -272,8 +306,10 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func fetchJSON() {
-        guard let url = URL(string: "https://palera.in/loader.json") else {
+        guard let url = URL(string: "http://127.0.0.1:3000/loader.json") else {
             print("Invalid URL")
+            self.showErrorCell(with: errorMessage)
+            self.isLoading = false
             return
         }
         
@@ -300,6 +336,8 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 envInfo.jsonInfo = jsonapi
                 self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]
                 self.sectionTitles = [""]
+                
+                print("\(self.tableData)")
                 
                 DispatchQueue.global().async {
                     let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
@@ -361,8 +399,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
 
-    
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch (section, isLoading, isError) {
         case (0, true, _):
@@ -395,28 +431,40 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
-        switch (indexPath.section, indexPath.row) {
-        case (0, _): // Fetching section
-            if isLoading {
-                let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
-                loadingCell.startLoading()
-                return loadingCell
-            } else if isError {
-                let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath) as! ErrorCell
-                errorCell.errorMessage = errorMessage
-                errorCell.retryAction = { [weak self] in
-                    self?.retryFetchJSON()
-                }
-                return errorCell
-            } else {
-                cell.selectionStyle = .default
-                cell.accessoryType = .disclosureIndicator
-                
-                cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
-                applyImageModifications(to: cell, with: iconImages[indexPath.row]!)
-                
-                return cell
+        
+        switch (isLoading, isError, indexPath.section) {
+        case (true, _, 0):
+            let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
+            loadingCell.startLoading()
+            return loadingCell
+            
+        case (_, true, 0):
+            let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath) as! ErrorCell
+            errorCell.errorMessage = errorMessage
+            errorCell.retryAction = { [weak self] in
+                self?.retryFetchJSON()
             }
+            return errorCell
+            
+        default:
+            break
+        }
+        
+        switch (indexPath.section, indexPath.row) {
+        case (1, 0):
+            cell.textLabel?.text = local("ACTIONS")
+            cell.accessoryType = .disclosureIndicator
+            cell.isUserInteractionEnabled = true
+            cell.textLabel?.textColor = .label
+            cell.imageView?.alpha = 1.0
+            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
+        case (1, 1):
+            cell.textLabel?.text = local("DIAGNOSTICS")
+            cell.accessoryType = .disclosureIndicator
+            cell.isUserInteractionEnabled = true
+            cell.textLabel?.textColor = .label
+            cell.imageView?.alpha = 1.0
+            applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
         case (1, 2):
             applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
             cell.textLabel?.text = local("REVERT_CELL")
@@ -433,73 +481,73 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 cell.isUserInteractionEnabled = false
             }
-            return cell
-        case (1, 0):
-            cell.textLabel?.text = local("ACTIONS")
-            cell.accessoryType = .disclosureIndicator
-            cell.isUserInteractionEnabled = true
-            cell.textLabel?.textColor = .label
-            cell.imageView?.alpha = 1.0
-            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
-            return cell
-        case (1, 1):
-            cell.textLabel?.text = local("DIAGNOSTICS")
-            cell.accessoryType = .disclosureIndicator
-            cell.isUserInteractionEnabled = true
-            cell.textLabel?.textColor = .label
-            cell.imageView?.alpha = 1.0
-            applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
-            return cell
         default:
-            break
+            cell.isUserInteractionEnabled = true
+            cell.selectionStyle = .default
+            cell.accessoryType = .disclosureIndicator
+            cell.textLabel?.textColor = .label
+            cell.imageView?.alpha = 1.0
+            
+            cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
+            applyImageModifications(to: cell, with: iconImages[indexPath.row]!)
         }
         
-        return UITableViewCell()
+        return cell
     }
 
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch (indexPath.section, indexPath.row) {
-        case (0, _):
+        case (0, let row):
             // Handle cells in section 0
             let itemTapped = tableData[indexPath.section][indexPath.row]
-            if let name = itemTapped as? String {
-                let fileExists = FileManager.default.fileExists(atPath: "/Applications/\(name).app") || FileManager.default.fileExists(atPath: "/var/jb/Applications/\(name).app")
-                let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
-                
-                let title: String
-                let message: String
-                if fileExists {
-                    title = local("CONFIRM")
-                    message = local("SILEO_REINSTALL")
-                } else if procursusStrappedExists {
-                    title = local("CONFIRM")
-                    message = local("SILEO_INSTALL")
-                } else {
-                    let lowercaseName = name.lowercased()
-                    print("Tapped: \(lowercaseName)")
-                    installStrap(file: name.lowercased()) {
-                        print("cocla")
-                        
-                    }
-                    return
-                }
-                
-                let alertController = whichAlert(title: title, message: message)
-                let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-                let confirmAction = UIAlertAction(title: fileExists ? local("REINSTALL") : local("INSTALL"), style: .default) { _ in
-                    let lowercaseName = name.lowercased()
-                    self.installDebFile(file: "\(lowercaseName).deb")
-                }
-                alertController.addAction(cancelAction)
-                alertController.addAction(confirmAction)
-                present(alertController, animated: true, completion: nil)
-            } else {
-                let name = itemTapped as? String
-                let lowercaseName = name?.lowercased()
-                self.installStrap(file: "\(String(describing: lowercaseName))", completion: { })
+
+            guard let name = itemTapped as? String else {
+                return
             }
+
+            let filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
+            let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            alertController.title = ""
+
+            switch row {
+            case 0..<filePaths.count:
+                let filePath = filePaths[row]
+                let filePathExists = FileManager.default.fileExists(atPath: filePath)
+                
+                switch true {
+                case procursusStrappedExists:
+                    alertController.message = local("Install \(name)?")
+                    let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { [self] _ in
+                        installStrap(file: name.lowercased()) {
+                            print("cock")
+                        }
+                    }
+                    alertController.addAction(confirmAction)
+                case filePathExists:
+                    alertController.message = "\(name) is already installed at \(filePath)"
+                    let reinstallAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
+                        let lowercaseName = name.lowercased()
+                        self.installDebFile(file: "\(lowercaseName).deb")
+                    }
+                    alertController.addAction(reinstallAction)
+                default:
+                    alertController.message = "Strap and \(name) is not installed. Install now?"
+                    let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
+                        let lowercaseName = name.lowercased()
+                        self.installDebFile(file: "\(lowercaseName).deb")
+                    }
+                    alertController.addAction(installAction)
+                }
+
+            default:
+                break
+            }
+            present(alertController, animated: true, completion: nil)
             
         case (1, 0):
             let actionsVC = ActionsVC()
@@ -509,6 +557,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 navigationController?.pushViewController(actionsVC, animated: true)
             }
+            
         case (1, 1):
             let diagnosticsVC = DiagnosticsVC()
             if UIDevice.current.userInterfaceIdiom == .pad {
@@ -517,6 +566,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 navigationController?.pushViewController(diagnosticsVC, animated: true)
             }
+            
         case (1, 3):
             let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
@@ -526,7 +576,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             alertController.addAction(confirmAction)
             
             present(alertController, animated: true, completion: nil)
-            
             
         default:
             break

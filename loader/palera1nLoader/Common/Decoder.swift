@@ -38,11 +38,14 @@ struct ManagerItem: Codable {
     let name: String
     let uri: String
     let icon: String
+    let filePaths: [String] // Updated the type to [String]
 }
+
 
 struct cellInfo {
     let names: [String]
     let icons: [String]
+    let paths: [String]
 }
 
 func getBootstrapURL(_ json: loaderJSON) -> String? {
@@ -96,9 +99,11 @@ func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
 
 func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    //let jailbreakType = "Rootful"
     var items: [ManagerItem]?
     var names: [String] = []
     var icons: [String] = []
+    var paths: [String] = []
 
     for type in json.managers {
         if (type.label == jailbreakType) {
@@ -114,6 +119,7 @@ func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     for info in items! {
         names.append(info.name)
         icons.append(info.icon)
+        paths.append(contentsOf: info.filePaths)
     }
     
     if (names.isEmpty || icons.isEmpty) {
@@ -121,5 +127,5 @@ func getCellInfo(_ json: loaderJSON) -> cellInfo? {
         return nil
     }
     
-    return cellInfo(names: names, icons: icons)
+    return cellInfo(names: names, icons: icons, paths: paths)
 }
