@@ -187,13 +187,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return """
             \(local("PINFO_SUBTEXT"))
             """
-        case 2:
-            return """
-            \(local("STRAP_INFO")): -1 == Simulator
-            \(local("STRAP_INFO")): 0 == \(local("ROOTFUL")) or !jb-*
-            \(local("STRAP_INFO")): 1 == /var/jb & jb-*
-            \(local("STRAP_INFO")): 2 == !/var/jb & jb-*
-            """
         default:
             return nil
         }

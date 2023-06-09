@@ -23,7 +23,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func installDebFile(file: String) {
         UIApplication.shared.isIdleTimerDisabled = true
-        let title: String.LocalizationValue = file == "sileo" ? "DL_SILEO" : "DL_ZEBRA"
+        let title: String.LocalizationValue = "\(local("DOWNLOADING"))"
         let downloadAlert = UIAlertController.downloading(title)
         present(downloadAlert, animated: true)
         

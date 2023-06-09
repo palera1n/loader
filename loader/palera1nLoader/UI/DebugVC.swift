@@ -14,14 +14,13 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         [local("LOG_CELL_VIEW")],
         //[local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
         //[local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
-        [local("LOG_CLEAR")],
         ["json"],
-        [local("FR_SWITCH")]
+        [local("LOG_CLEAR"), local("FR_SWITCH")]
     ]
     
     var customMessage: String?
     
-    var sectionTitles = ["", local("DEBUG_OPTIONS"), "JSON", local("FR_SWITCH")]
+    var sectionTitles = ["", "JSON", local("DEBUG_OPTIONS")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
