@@ -16,6 +16,7 @@ struct envInfo {
     static var isSimulator: Bool = false
     static var installPrefix: String = "unset"
     static var rebootAfter: Bool = true
+    static var jsonURI: String = "https://palera.in/loader.json"
     static var envType: Int = -1
     static var systemVersion: String = "unset"
     static var systemArch: String = "unset"

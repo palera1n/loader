@@ -21,7 +21,6 @@
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
-		E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BADD28CF914300CD25A6 /* ViewController.swift */; };
 		E181BAE328CF914500CD25A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E181BAE228CF914500CD25A6 /* Assets.xcassets */; };
 		E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		45F3AD7029E70E3500ADF163 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E181BAD628CF914300CD25A6 /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E181BAD928CF914300CD25A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E181BADD28CF914300CD25A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E181BAE228CF914500CD25A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E181BAE728CF914500CD25A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
@@ -83,7 +81,6 @@
 		3313A75629ECE2690021665E /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E181BADD28CF914300CD25A6 /* ViewController.swift */,
 				33AED4DF2A30050A006EC0B4 /* JsonVC.swift */,
 				33E15DB029F4F03A00D2770A /* LogViewVC.swift */,
 				33E15DAC29F4DC8F00D2770A /* DiagnosticsVC.swift */,
@@ -256,7 +253,6 @@
 				452A308729ECAF9900EB8CAC /* Utilities.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
-				E181BADE28CF914300CD25A6 /* ViewController.swift in Sources */,
 				33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,

@@ -15,12 +15,13 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         //[local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
         //[local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
         [local("LOG_CLEAR")],
+        ["json"],
         [local("FR_SWITCH")]
     ]
     
     var customMessage: String?
     
-    var sectionTitles = ["", local("DEBUG_OPTIONS"), ""]
+    var sectionTitles = ["", local("DEBUG_OPTIONS"), "JSON", local("FR_SWITCH")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +81,25 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             cell.accessoryView = switchControl
             cell.textLabel?.text = local("FR_SWITCH")
             cell.selectionStyle = .none
+        case "json":
+            let textField = UITextField()
+            textField.placeholder = envInfo.jsonURI
+            textField.translatesAutoresizingMaskIntoConstraints = false
+            cell.contentView.addSubview(textField)
+            textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+
+            // Add Auto Layout constraints
+            textField.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 16).isActive = true
+            textField.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -16).isActive = true
+            textField.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 8).isActive = true
+            textField.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -8).isActive = true
+
+            // Set a tag to identify the text field later if needed
+            textField.tag = 123
+
+        case "fetch":
+            cell.textLabel?.text = "Fetch JSON"
+            cell.textLabel?.textColor = .systemBlue
 //        case local("DEBUG_CLEAN_FAKEFS"):
 //            if envInfo.isRootful {
 //                cell.isUserInteractionEnabled = true
@@ -161,5 +181,12 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     @objc func switchToggled(_ sender: UISwitch) {
         envInfo.rebootAfter.toggle()
+    }
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        // Store the typed value
+        if let newValue = textField.text {
+            print("\(newValue)")
+            envInfo.jsonURI = newValue
+        }
     }
 }

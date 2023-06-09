@@ -271,7 +271,8 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8),
             titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
         ])
-        
+        let restartButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartButtonTapped))
+        navigationItem.rightBarButtonItem = restartButton
         /// Add triple tap gesture recognizer to navigation bar
         let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
         tripleTapGestureRecognizer.numberOfTapsRequired = 3
@@ -305,8 +306,12 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             present(navController, animated: true, completion: nil)
     }
     
+    @objc func restartButtonTapped() {
+        self.retryFetchJSON()
+    }
+    
     func fetchJSON() {
-        guard let url = URL(string: "http://127.0.0.1:3000/loader.json") else {
+        guard let url = URL(string: "\(envInfo.jsonURI)") else {
             print("Invalid URL")
             self.showErrorCell(with: errorMessage)
             self.isLoading = false
@@ -499,7 +504,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         switch (indexPath.section, indexPath.row) {
         case (0, let row):
-            // Handle cells in section 0
             let itemTapped = tableData[indexPath.section][indexPath.row]
 
             guard let name = itemTapped as? String else {
@@ -509,10 +513,9 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
             let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
 
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            let alertController = whichAlert(title: "", message: nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
-            alertController.title = ""
 
             switch row {
             case 0..<filePaths.count:

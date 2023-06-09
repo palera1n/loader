@@ -35,8 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = navController
             window?.makeKeyAndVisible()
         }
-        
-        
 
         if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             launchedShortcutItem = shortcutItem
