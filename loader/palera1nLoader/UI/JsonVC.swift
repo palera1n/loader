@@ -28,7 +28,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         present(downloadAlert, animated: true)
         
         let downloadUrl = getManagerURL(envInfo.jsonInfo!, file)!
-        
+
         downloadFile(url: URL(string: downloadUrl)!, forceBar: true, completion:{(path:String?, error:Error?) in
             DispatchQueue.main.async {
                 downloadAlert.dismiss(animated: true) {
@@ -527,21 +527,19 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 case procursusStrappedExists:
                     alertController.message = local("Install \(name)?")
                     let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { [self] _ in
-                        self.installDebFile(file: "\(lowercaseName).deb")
+                        self.installDebFile(file: "\(lowercaseName)")
                     }
                     alertController.addAction(confirmAction)
                 case filePathExists:
                     alertController.message = "\(name) is already installed at \(filePath)"
                     let reinstallAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                        self.installDebFile(file: "\(lowercaseName).deb")
+                        self.installDebFile(file: "\(lowercaseName)")
                     }
                     alertController.addAction(reinstallAction)
                 default:
                     alertController.message = "Strap and \(name) is not installed. Install now?"
                     let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
-                        self.installStrap(file: name.lowercased()) {
-                            print("cock")
-                        }
+                        self.installStrap(file: name.lowercased()) {}
                     }
                     alertController.addAction(installAction)
                 }
