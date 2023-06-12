@@ -67,38 +67,38 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         switch tableData[indexPath.section][indexPath.row] {
         case local("ACTION_HIDEJB"):
-            applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
+            mods.applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
             cell.textLabel?.text = local("ACTION_HIDEJB")
         case local("OPENER_SILEO"):
-            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
+            mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = local("OPENER_SILEO")
         case local("OPENER_ZEBRA"):
-            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
+            mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = local("OPENER_ZEBRA")
         case local("OPENER_TH"):
-            applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
+            mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
             cell.textLabel?.text = local("OPENER_TH")
             
         case local("ACTION_RESPRING"):
-            applySymbolModifications(to: cell, with: "arrow.counterclockwise.circle", backgroundColor: .systemBlue)
+            mods.applySymbolModifications(to: cell, with: "arrow.counterclockwise.circle", backgroundColor: .systemBlue)
             cell.textLabel?.text = local("ACTION_RESPRING")
         case local("ACTION_UICACHE"):
-            applySymbolModifications(to: cell, with: "iphone.circle", backgroundColor: .systemPurple)
+            mods.applySymbolModifications(to: cell, with: "iphone.circle", backgroundColor: .systemPurple)
             cell.textLabel?.text = local("ACTION_UICACHE")
         case local("ACTION_TWEAKS"):
-            applySymbolModifications(to: cell, with: "hammer.circle", backgroundColor: .systemPink)
+            mods.applySymbolModifications(to: cell, with: "hammer.circle", backgroundColor: .systemPink)
             cell.textLabel?.text = local("ACTION_TWEAKS")
             
         case local("ACTION_USREBOOT"):
-            applySymbolModifications(to: cell, with: "bolt.circle", backgroundColor: .systemOrange)
+            mods.applySymbolModifications(to: cell, with: "bolt.circle", backgroundColor: .systemOrange)
             cell.textLabel?.text = local("ACTION_USREBOOT")
             cell.textLabel?.textColor = .systemOrange
         case local("ACTION_DAEMONS"):
-            applySymbolModifications(to: cell, with: "eject.circle", backgroundColor: .systemOrange)
+            mods.applySymbolModifications(to: cell, with: "eject.circle", backgroundColor: .systemOrange)
             cell.textLabel?.text = local("ACTION_DAEMONS")
             cell.textLabel?.textColor = .systemOrange
         case local("ACTION_MOUNT"):
-            applySymbolModifications(to: cell, with: "tray.circle", backgroundColor: .systemOrange)
+            mods.applySymbolModifications(to: cell, with: "tray.circle", backgroundColor: .systemOrange)
             cell.textLabel?.text = local("ACTION_MOUNT")
             cell.textLabel?.textColor = .systemOrange
         default:
@@ -114,11 +114,11 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("ACTION_HIDEJB"):
             HideEnv(viewController: self)
         case local("OPENER_SILEO"):
-            if openApp("org.coolstar.SileoStore") {} else if openApp("org.coolstar.SileoNightly") {}
+            if opener.openApp("org.coolstar.SileoStore") {} else if opener.openApp("org.coolstar.SileoNightly") {}
         case local("OPENER_ZEBRA"):
-            if openApp("xyz.willy.Zebra") {}
+            if opener.openApp("xyz.willy.Zebra") {}
         case local("OPENER_TH"):
-            openTrollHelper()
+            opener.TrollHelper()
         case local("ACTION_RESPRING"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true)
         case local("ACTION_UICACHE"):
@@ -159,7 +159,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                     if fileExists("/var/mobile/Library/palera1n/helper") {
                         if (!envInfo.isRootful) && fileExists("/var/jb") {
-                            bp_rmf("/var/jb")
+                            binpack.rm("/var/jb")
                         }
                         spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"], root: true)
                     }

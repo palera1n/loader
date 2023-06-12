@@ -2,15 +2,14 @@
 //  Decoder.swift
 //  palera1nLoader
 //
-//  Created by staturnz on 6/7/23.
+//  Created by Staturnz on 6/7/23.
 //
 
 import Foundation
 
-//let jsonapi = try? JSONDecoder().decode(loaderJSON.self, from: data)
 
 // loader.json
-struct loaderJSON: Codable {
+public struct loaderJSON: Codable {
     let bootstraps: [Bootstrap]
     let managers: [Manager]
 }
@@ -42,13 +41,13 @@ struct ManagerItem: Codable {
 }
 
 
-struct cellInfo {
+public struct cellInfo {
     let names: [String]
     let icons: [String]
     let paths: [String]
 }
 
-func getBootstrapURL(_ json: loaderJSON) -> String? {
+public func getBootstrapURL(_ json: loaderJSON) -> String? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
     let cfver = String(envInfo.CF)
     var items: [BootstrapItem]?
@@ -73,7 +72,7 @@ func getBootstrapURL(_ json: loaderJSON) -> String? {
     return nil
 }
 
-func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
+public func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
     var items: [ManagerItem]?
     
@@ -97,7 +96,7 @@ func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
     return nil
 }
 
-func getCellInfo(_ json: loaderJSON) -> cellInfo? {
+public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
     //let jailbreakType = "Rootful"
     var items: [ManagerItem]?

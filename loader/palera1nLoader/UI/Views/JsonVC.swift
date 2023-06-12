@@ -35,7 +35,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if (error == nil) {
                         let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
                         self.present(installingAlert, animated: true) {
-                            bootstrap().installDebian(deb: path!, completion:{(msg:String?, error:Int?) in
+                            bootstrap.installDebian(deb: path!, completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
                                         let alert = UIAlertController.error(title: local("DONE_INSTALL"), message: local("DONE_INSTALL_SUB"))
@@ -128,7 +128,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if (error == nil) {
                         let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
                         self.present(installingAlert, animated: true) {
-                            bootstrap().installBootstrap(tar: path!, deb: "\(file).deb", completion:{(msg:String?, error:Int?) in
+                            bootstrap.installBootstrap(tar: path!, deb: "\(file).deb", completion:{(msg:String?, error:Int?) in
                                 installingAlert.dismiss(animated: true) {
                                     if (error == 0) {
                                         let message = local("PASSWORD")
@@ -233,7 +233,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         
         if !envInfo.hasChecked {
-            Utils().prerequisiteChecks()
+            Check.prerequisites()
         }
         
         setNavigationBar()
@@ -462,16 +462,16 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.isUserInteractionEnabled = true
             cell.textLabel?.textColor = .label
             cell.imageView?.alpha = 1.0
-            applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
+            mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
         case (1, 1):
             cell.textLabel?.text = local("DIAGNOSTICS")
             cell.accessoryType = .disclosureIndicator
             cell.isUserInteractionEnabled = true
             cell.textLabel?.textColor = .label
             cell.imageView?.alpha = 1.0
-            applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
+            mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
         case (1, 2):
-            applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+            mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
             cell.textLabel?.text = local("REVERT_CELL")
             if envInfo.isRootful {
                 cell.isUserInteractionEnabled = false
@@ -494,7 +494,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.imageView?.alpha = 1.0
             
             cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
-            applyImageModifications(to: cell, with: iconImages[indexPath.row]!)
+            mods.applyImageModifications(to: cell, with: iconImages[indexPath.row]!)
         }
         
         return cell
@@ -570,7 +570,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case (1, 2):
             let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in revert(viewController: self) }
+            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in bootstrap.revert(viewController: self) }
             
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)

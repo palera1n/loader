@@ -137,9 +137,9 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.detailTextLabel?.text = "\(Int(envInfo.envType))"
         case local("STRAP_FR_PREFIX"):
             cell.textLabel?.text = local("STRAP_FR_PREFIX")
-            let jbFolder = Utils().strapCheck().jbFolder
-            if !jbFolder.isEmpty {
-                cell.detailTextLabel?.text = "\(URL(string: jbFolder)?.lastPathComponent ?? "")"
+            let jbFolder = Check.installation().jb_folder
+            if (jbFolder != nil) {
+                cell.detailTextLabel?.text = "\(URL(string: jbFolder!)?.lastPathComponent ?? "")"
             } else {
                 cell.detailTextLabel?.text = local("NONE")
             }

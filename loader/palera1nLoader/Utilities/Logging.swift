@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum logTypes {
+public enum logTypes {
     case fatal
     case debug
     case warning
@@ -15,14 +15,14 @@ enum logTypes {
     case error
 }
 
-struct logInfo {
+public struct logInfo {
     static var logPath: String = "/var/mobile/Library/palera1n/logs"
     static var logFile: String = ""
     static var isDebug: Bool = false
     static var isRelease: Bool = false
 }
 
-func errorString(_ error: Int32) -> String {
+public func errorString(_ error: Int32) -> String {
     if (error > 106) {
         return "\(POSIXError(POSIXErrorCode(rawValue: (Int32(error/256)))!))"
     }
@@ -30,7 +30,7 @@ func errorString(_ error: Int32) -> String {
 }
 
 // Creates new log file, check if debugging device
-func initLogs() -> Void {
+public func initLogs() -> Void {
     var procinfo = kinfo_proc()
     var size = MemoryLayout.stride(ofValue: procinfo)
     var mib: [Int32] = [CTL_KERN, KERN_PROC, KERN_PROC_PID, getpid()]
@@ -62,7 +62,7 @@ func initLogs() -> Void {
 }
 
 // Prints log message with type
-func log(type: logTypes = .info, msg: String, file: String = #file, line: Int = #line, function: String = #function) {
+public func log(type: logTypes = .info, msg: String, file: String = #file, line: Int = #line, function: String = #function) {
     let srcFile = URL(string: file)!.lastPathComponent
 #if targetEnvironment(simulator)
 #else

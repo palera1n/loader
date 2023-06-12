@@ -73,7 +73,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         
         switch tableData[indexPath.section][indexPath.row] {
         case local("FR_SWITCH"):
-            applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
+            mods.applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
             let switchControl = UISwitch()
             switchControl.isOn = envInfo.rebootAfter
             switchControl.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
@@ -109,16 +109,16 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 //                cell.accessoryType = .none
 //                cell.imageView?.alpha = 0.4
 //            }
-//            applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
+//            mods.applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
 //            cell.textLabel?.text = local("DEBUG_CLEAN_FAKEFS")
 //        case local("DEBUG_ENTER_SAFEMODE"):
-//            applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
+//            mods.applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
 //            cell.textLabel?.text = local("DEBUG_ENTER_SAFEMODE")
 //        case local("DEBUG_EXIT_SAFEMODE"):
-//            applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
+//            mods.applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
 //            cell.textLabel?.text = local("DEBUG_EXIT_SAFEMODE")
         case local("LOG_CLEAR"):
-            applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
+            mods.applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
             cell.textLabel?.text = local("LOG_CLEAR")
         case local("LOG_CELL_VIEW"):
             cell.textLabel?.text = local("LOG_CELL_VIEW")
@@ -161,7 +161,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         case local("LOG_CLEAR"):
             let files = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n/logs")
             for file in files {
-                bp_rm("/var/mobile/Library/palera1n/logs/\(file)")
+                binpack.rm("/var/mobile/Library/palera1n/logs/\(file)")
             }
         default:
             break

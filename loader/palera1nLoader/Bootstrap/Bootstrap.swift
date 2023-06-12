@@ -11,20 +11,20 @@ import UIKit
 class bootstrap {
 
     // Ran after bootstrap/deb install
-    func cleanUp() -> Void {
+    static public func cleanUp() -> Void {
         
         let pathsToClear = ["/var/mobile/Library/palera1n/downloads", "/var/mobile/Library/palera1n/temp"]
         for path in pathsToClear {
             let files = try! FileManager.default.contentsOfDirectory(atPath: path)
             for file in files {
-                bp_rm("\(path)/\(file)")
+                binpack.rm("\(path)/\(file)")
             }
         }
         
         let palera1nDir = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n")
         for file in palera1nDir {
             if (file.contains("revision") || file.contains("loader.log")) {
-                bp_rm("/var/mobile/Library/palera1n/\(file)")
+                binpack.rm("/var/mobile/Library/palera1n/\(file)")
             }
         }
 
@@ -42,7 +42,7 @@ class bootstrap {
     }
     
 
-    func installDebian(deb: String, completion: @escaping (String?, Int?) -> Void) {
+    static public func installDebian(deb: String, completion: @escaping (String?, Int?) -> Void) {
         var ret = helper(args: ["-d", deb])
         if (ret != 0) {
             completion(local("DPKG_ERROR"), ret)
@@ -61,7 +61,7 @@ class bootstrap {
     }
     
     
-    func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
+    static public func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
         let debPath = "/var/mobile/Library/palera1n/downloads/\(deb)"
         var ret = helper(args: ["--install", tar, debPath])
         if (ret != 0) {
@@ -78,6 +78,24 @@ class bootstrap {
         cleanUp()
         completion(local("DONE_INSTALL"), 0)
         return
+    }
+    
+    
+    static public func revert(viewController: UIViewController) -> Void {
+        if !envInfo.isRootful {
+            let alert = UIAlertController.spinnerAlert("REMOVING")
+            viewController.present(alert, animated: true)
+            helper(args: ["-R"])
+            
+            if (envInfo.rebootAfter) {
+                helper(args: ["-r"])
+            } else {
+                let errorAlert = UIAlertController.error(title: local("DONE_REVERT"), message: local("CLOSE_APP"))
+                alert.dismiss(animated: true) {
+                    viewController.present(errorAlert, animated: true)
+                }
+            }
+        }
     }
 }
 

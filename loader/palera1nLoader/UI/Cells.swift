@@ -2,7 +2,7 @@
 //  Cells.swift
 //  palera1nLoader
 //
-//  Created by samara on 6/6/23.
+//  Created by Staturnz on 6/11/23.
 //
 
 import Foundation
