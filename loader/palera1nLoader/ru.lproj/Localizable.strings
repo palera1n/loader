@@ -8,7 +8,7 @@ English
 "INSTALL" = "Установить";
 "SILEO" = "Sileo (Силео)";
 "ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
+"DEBUG" = "Отладка";
 "DIAGNOSTICS" = "Диагностика";
 "ACTIONS" = "Действия";
 "JBINIT_LOG" = "Логируем";
@@ -17,7 +17,7 @@ English
 // ActionsVC
 "HIDDEN" = "Jailbreak скрыт";
 "ACTION_HIDEJB" = "Скрыть jailbreak";
-"OPEN_CELL" = "Запуск...";
+"OPEN_CELL" = "Запуск";
 "OPENER_SILEO" = "Открыть Sileo";
 "OPENER_ZEBRA" = "Открыть Zebra";
 "OPENER_TH" = "Открыть TrollHelper";
@@ -50,7 +50,7 @@ English
 "DEVICE_MODEL_KERN" = "Версия ядра:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Установщик создан:";
-"PINFO_SUBTEXT" = "Параметры (paleinfo) равны параметрах, которые вы использовали в palera1n 2.0.0 CLI, полезно для разработчиков.";
+"PINFO_SUBTEXT" = "Параметры (paleinfo) равны параметрам, которые вы использовали в palera1n 2.0.0 CLI, полезно для разработчиков.";
 "TYPE_INFO" = "Тип";
 "INSTALL_INFO" = "Установлено";
 "ARCH_INFO" = "Архитектура";
@@ -63,7 +63,7 @@ English
 "COPY" = "Скопировать";
 "INSTALL_FR" = "Force Reverted";
 "HELPER" = "Помощник";
-"HELPER_PATH" = "Путь к помощнику Helper";
+"HELPER_PATH" = "Путь к помощнику";
 "SILEO_INSTALLED" = "Sileo Установлен";
 "ZEBRA_INSTALLED" = "Zebra Установлен";
 "KINFO_FLAGS" = "Параметры (kerninfo)";
