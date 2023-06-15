@@ -113,7 +113,7 @@ English
 "HIDE_NOTICE" = "Продолжение удалит ссылку на /var/jb и перезапустит устройство.";
 "REVERT_SUBTEXT" = "Rootful не могут использовать эту кнопку :(";
 "PM_SUBTEXT" = "Выберите свой любимый пакетный менеджер, который вы хотите установить, Sileo рекомендован если вы новичок.";
-"REVERT_WARNING" = "Стирает /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
+"REVERT_WARNING" = "Стирает /var/jb и снимает регистрацию с jailbreak приложений, после чего устройство будет перезагружено в нормальное(не-jailbreak) состояние.";
 "SILEO_REINSTALL" = "Вы уверены что хотите переустановить Sileo?";
 "ZEBRA_REINSTALL" = "Вы уверены что хотите переустановить Zebra?";
 "SILEO_INSTALL" = "Вы уверены что хотите установить Sileo?";
