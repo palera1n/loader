@@ -312,7 +312,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func fetchJSON() {
         guard let url = URL(string: "\(envInfo.jsonURI)") else {
-            print("Invalid URL")
+            log(type: .error, msg: "Invalid URL")
             self.showErrorCell(with: errorMessage)
             self.isLoading = false
             return
@@ -322,14 +322,14 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             guard let self = self else { return }
             
             if let error = error {
-                print("Error fetching JSON:", error)
+                log(type: .error, msg: "Error parsing JSON: \(error)")
                 self.showErrorCell(with: self.errorMessage)
                 self.isLoading = false
                 return
             }
             
             guard let data = data else {
-                print("No data received")
+                log(type: .error, msg: "No data received")
                 self.showErrorCell(with: self.errorMessage)
                 self.isLoading = false
                 return
@@ -342,7 +342,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]
                 self.sectionTitles = [""]
                 
-                print("\(self.tableData)")
+                log(msg: "\(self.tableData)")
                 
                 DispatchQueue.global().async {
                     let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
@@ -362,7 +362,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 
             } catch {
-                print("Error parsing JSON:", error)
+                log(type: .error, msg: "Error parsing JSON: \(error)")
                 self.showErrorCell(with: self.errorMessage)
                 self.isLoading = false
                 
@@ -510,38 +510,54 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return
             }
 
-            let filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
+            var filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
             let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
 
             let alertController = whichAlert(title: "", message: nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
 
+            log(msg: "\(getCellInfo(envInfo.jsonInfo!)!.paths)")
+            
             switch row {
             case 0..<filePaths.count:
                 let filePath = filePaths[row]
-                let filePathExists = FileManager.default.fileExists(atPath: filePath)
+                let regex = try! NSRegularExpression(pattern: "\"(.*?)\"")
+                let range = NSRange(filePath.startIndex..<filePath.endIndex, in: filePath)
+                let matches = regex.matches(in: filePath, range: range)
+
+                for match in matches {
+                    if let matchRange = Range(match.range(at: 1), in: filePath) {
+                        let filePath = String(filePath[matchRange])
+                        filePaths.append(filePath)
+                    }
+                }
+
+                let components = filePath.components(separatedBy: ",")
+                let exists = components.contains { path in
+                    let trimmedPath = path.trimmingCharacters(in: .whitespaces)
+                    return FileManager.default.fileExists(atPath: trimmedPath)
+                }
+
                 let lowercaseName = name.lowercased()
+                
+                log(msg: "\(filePath) exists? \(exists).")
                 
                 switch true {
                 case procursusStrappedExists:
-                    alertController.message = local("Install \(name)?")
-                    let confirmAction = UIAlertAction(title: local("INSTALL"), style: .default) { [self] _ in
+                    alertController.message = exists ? "\(name) is already installed at \(filePath)" : local("Install \(name)?")
+                    let pkgAction = UIAlertAction(title: exists ? local("REINSTALL") : local("INSTALL"), style: .default) { _ in
                         self.installDebFile(file: "\(lowercaseName)")
                     }
-                    alertController.addAction(confirmAction)
-                case filePathExists:
-                    alertController.message = "\(name) is already installed at \(filePath)"
-                    let reinstallAction = UIAlertAction(title: local("REINSTALL"), style: .default) { _ in
-                        self.installDebFile(file: "\(lowercaseName)")
-                    }
-                    alertController.addAction(reinstallAction)
+                    alertController.addAction(pkgAction)
+                    
                 default:
                     alertController.message = "Strap and \(name) is not installed. Install now?"
                     let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
                         self.installStrap(file: name.lowercased()) {}
                     }
                     alertController.addAction(installAction)
+                    
                 }
 
             default:

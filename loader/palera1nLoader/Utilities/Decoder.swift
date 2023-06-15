@@ -118,7 +118,9 @@ public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     for info in items! {
         names.append(info.name)
         icons.append(info.icon)
-        paths.append(contentsOf: info.filePaths)
+        
+        let filePathString = info.filePaths.joined(separator: ", ")
+        paths.append(filePathString)
     }
     
     if (names.isEmpty || icons.isEmpty) {

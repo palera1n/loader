@@ -15,7 +15,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         //[local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
         //[local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
         ["json"],
-        [local("LOG_CLEAR"), local("FR_SWITCH")]
+        [local("LOG_CLEAR"), local("LIB_NUKE"), local("FR_SWITCH")]
     ]
     
     var customMessage: String?
@@ -95,28 +95,11 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
             // Set a tag to identify the text field later if needed
             textField.tag = 123
+            cell.accessoryType = .none
 
-        case "fetch":
-            cell.textLabel?.text = "Fetch JSON"
-            cell.textLabel?.textColor = .systemBlue
-//        case local("DEBUG_CLEAN_FAKEFS"):
-//            if envInfo.isRootful {
-//                cell.isUserInteractionEnabled = true
-//                cell.imageView?.alpha = 1
-//            } else if !envInfo.isRootful {
-//                cell.isUserInteractionEnabled = false
-//                cell.textLabel?.textColor = .gray
-//                cell.accessoryType = .none
-//                cell.imageView?.alpha = 0.4
-//            }
-//            mods.applySymbolModifications(to: cell, with: "fanblades", backgroundColor: .systemRed)
-//            cell.textLabel?.text = local("DEBUG_CLEAN_FAKEFS")
-//        case local("DEBUG_ENTER_SAFEMODE"):
-//            mods.applySymbolModifications(to: cell, with: "checkerboard.shield", backgroundColor: .systemGreen)
-//            cell.textLabel?.text = local("DEBUG_ENTER_SAFEMODE")
-//        case local("DEBUG_EXIT_SAFEMODE"):
-//            mods.applySymbolModifications(to: cell, with: "shield.slash", backgroundColor: .systemRed)
-//            cell.textLabel?.text = local("DEBUG_EXIT_SAFEMODE")
+        case local("LIB_NUKE"):
+            mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+            cell.textLabel?.text = local("LIB_NUKE")
         case local("LOG_CLEAR"):
             mods.applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
             cell.textLabel?.text = local("LOG_CLEAR")
@@ -151,13 +134,17 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 //            alertController.addAction(cancelAction)
 //            alertController.addAction(confirmAction)
 //            present(alertController, animated: true, completion: nil)
-//        case local("DEBUG_CLEAN_FAKEFS"):
-//            let alertController = whichAlert(title: "\(local("DEBUG_CLEAN_FAKEFS"))?", message: nil)
-//            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-//            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .destructive) {_ in helper(args: ["--revert-install"]) }
-//            alertController.addAction(cancelAction)
-//            alertController.addAction(confirmAction)
-//            present(alertController, animated: true, completion: nil)
+        case local("LIB_NUKE"):
+            let alertController = whichAlert(title: "\(local("LIB_NUKE"))?", message: nil)
+            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .destructive) {_ in
+                binpack.rm("/var/mobile/Library/palera1n")
+                let alert = UIAlertController.error(title: local("DOWNLOAD_FAIL"), message: "")
+                self.present(alert, animated: true)
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion: nil)
         case local("LOG_CLEAR"):
             let files = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n/logs")
             for file in files {
@@ -184,7 +171,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     @objc private func textFieldDidChange(_ textField: UITextField) {
         // Store the typed value
         if let newValue = textField.text {
-            print("\(newValue)")
+            log(msg: "\(newValue)")
             envInfo.jsonURI = newValue
         }
     }
