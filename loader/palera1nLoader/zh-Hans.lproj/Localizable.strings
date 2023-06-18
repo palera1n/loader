@@ -7,23 +7,23 @@ English
 
 "INSTALL" = "安装";
 "SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"ZEBRA" = "斑马";
+"DEBUG" = "调试";
+"DIAGNOSTICS" = "诊断";
+"ACTIONS" = "行动";
+"JBINIT_LOG" = "记录日志";
+"REVERT_CELL" = "还原安装";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
+"HIDDEN" = "已隐藏环境";
+"ACTION_HIDEJB" = "隐藏环境";
+"OPEN_CELL" = "打开";
+"OPENER_SILEO" = "打开 Sileo";
+"OPENER_ZEBRA" = "打开 Zebra";
+"OPENER_TH" = "打开 TrollHelper";
+"UTIL_CELL" = "实用工具";
+"ACTION_RESPRING" = "重新加载 SpringBoard";
+"ACTION_USREBOOT" = "重新起动装置";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Launch Daemons";
 "ACTION_MOUNT" = "Mount Directories";
@@ -58,13 +58,13 @@ English
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
 "STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
+"OPEN_FILZA" = "在 Filza 中打开";
+"OPEN_SANTANDER" = "在 Santander 中打开";
+"COPY" = "复制";
+"INSTALL_FR" = "强制还原";
+"HELPER" = "助手";
 "HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
+"SILEO_INSTALLED" = "Sileo 已安装";
 "ZEBRA_INSTALLED" = "Zebra Installed";
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flags (paleinfo)";
@@ -124,9 +124,9 @@ English
 // errors
 "STATUS" = "Status";
 "ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_SILEO" = "Failed to install Sileo";
-"ERROR_ZEBRA" = "Failed to install Zebra";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"ERROR_DPKG" = "安装软件包失败";
+"ERROR_UICACHE" = "无法运行 UICache";
+"ERROR_SILEO" = "无法安装 Sileo";
+"ERROR_ZEBRA" = "无法安装 Zebra";
+"ERROR_UNREGISTER" = "取消注册失败";
+"ERROR_REVERT" = "移除越狱失败";
