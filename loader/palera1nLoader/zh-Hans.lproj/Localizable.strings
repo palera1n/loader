@@ -33,7 +33,7 @@ English
 "OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
 
 // Logging View
-"LOG_CELL" = "Logs";
+"LOG_CELL" = "记录";
 "LOG_CELL_VIEW" = "View Logs";
 "NONE" = "None";
 "LOG_CLEAR" = "Clear Logs";
