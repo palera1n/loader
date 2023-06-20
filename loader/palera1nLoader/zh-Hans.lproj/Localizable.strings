@@ -25,22 +25,22 @@ English
 "ACTION_RESPRING" = "重新加载 SpringBoard";
 "ACTION_USREBOOT" = "重新起动装置";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"ACTION_DAEMONS" = "启动Daemons";
+"ACTION_MOUNT" = "挂载文件夹";
+"ACTION_TWEAKS" = "启动Tweaks";
+"FR_SWITCH" = "重新启动时还原";
+"ACTION_MOUNT_SUBTEXT" = "“挂载文件夹”只是会挂载root和preboot成read/write。";
+"OPENER_SUBTEXT" = "在iPad上使用palera1n，有些情况下，应用程式不出现在主页上，就要用这些操作来打开已安装的应用程式";
 
 // Logging View
 "LOG_CELL" = "记录";
-"LOG_CELL_VIEW" = "View Logs";
+"LOG_CELL_VIEW" = "查看Logs";
 "NONE" = "没有";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CLEAR" = "清除 Logs";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
+"DEBUG_CELL" = "调试";
+"DEBUG_OPTIONS" = "选项";
 "DEBUG_CLEAN_FAKEFS" = "清理FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "退出安全模式";
 "DEBUG_ENTER_SAFEMODE" = "进入安全模式";
@@ -49,13 +49,13 @@ English
 "DEVICE_MODEL" = "装置型号：";
 "DEVICE_MODEL_KERN" = "内核版本：";
 "DEVICE_MODEL_CF" = "CF版本：";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
+"CREDITS_SUBTEXT" = "加载器由：";
+"PINFO_SUBTEXT" = "标记(paleinfo)对应于您通过palera1.0.0CLI使用的标志，对开发者有用。";
 "TYPE_INFO" = "类型";
 "INSTALL_INFO" = "已安装";
 "ARCH_INFO" = "软件架构";
 "VERSION_INFO" = "版本";
-"STRAP_INFO" = "Environment";
+"STRAP_INFO" = "環境";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
 "STRAP_FR_PATH" = "Fakeroot 路径";
 "OPEN_FILZA" = "在 Filza 中打开";
@@ -63,14 +63,14 @@ English
 "COPY" = "复制";
 "INSTALL_FR" = "强制还原";
 "HELPER" = "助手";
-"HELPER_PATH" = "Helper Path";
+"HELPER_PATH" = "助手路径";
 "SILEO_INSTALLED" = "Sileo 已安装";
-"ZEBRA_INSTALLED" = "Zebra Installed";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"ZEBRA_INSTALLED" = "已安装 Zebra";
+"KINFO_FLAGS" = "标记 (kerninfo)";
+"PINFO_FLAGS" = "标志(paleinfo)";
 
-"TRUE" = "Yes";
-"FALSE" = "No";
+"TRUE" = "是";
+"FALSE" = "否";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
 "CANCEL" = "取消";
@@ -87,31 +87,31 @@ English
 "DL_STRAP" = "正在下载基础系统";
 "DL_SILEO" = "正在下载Sileo";
 "DL_ZEBRA" = "正在下载Zebra";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DOWNLOADING" = "下载中...";
+"INSTALLING" = "正在安装...";
+"DOWNLOAD_FAIL" = "无法拿取文件";
+"DOWNLOAD_ERROR" = "未知错误";
+"SAVE_FAIL" = "无法将文件复制到磁盘";
+"DONE_INSTALL" = "安装完成";
+"ERROR_INSTALL" = "安装失败";
+"DONE_INSTALL_SUB" = "您可以关闭此程式。";
+"DONE_REVERT" = "移除已完成";
+"REMOVING" = "正在移除...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "为了在越狱后使用指令，如“sudo”，你要设置终端密码。(不能镂空)";
+"PASSWORD_REPEAT" = "重复输入密码";
+"PASSWORD_SET" = "设置密码";
+"PASSWORD_TEXT" = "密码";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "重新安装";
+"ENJOY" = "享受！";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
+"HIDDEN_NOTICE" = "您的fakeroot仍然完好无损，当/var/jb 不存在时，这将重新对称链接/var/jb 返回到它原来的fakeroot。 在继续操作后，您可能需要在实用程序中运行 uicache 。";
+"NOTICE_ROOTLESS" = "如过你不是使用rootless，你就不能使按钮。";
+"HIDE_NOTICE" = "继续操作将会删除 /var/jb 的链接并重新启动此装置。";
+"REVERT_SUBTEXT" = "Rootful 不能使用此按钮 :(";
 "PM_SUBTEXT" = "在此选择您想要安装的软件包管理器。如果您是新手，建议使用 Sileo 。";
 "REVERT_WARNING" = "把 /var/jb 和取消注册越狱程式，装置会重新起动并入没有越狱的状态。";
 "SILEO_REINSTALL" = "您确定要重新安装 Sileo 吗？";
@@ -119,7 +119,7 @@ English
 "SILEO_INSTALL" = "您确定要安装 Sileo 吗？";
 "ZEBRA_INSTALL" = "您确定要安装Zebra吗？";
 "CLOSE_APP" = "您可以关闭此程式。";
-"UNHID_ENV" = "Unhid the environment";
+"UNHID_ENV" = "解除隐藏环境";
 
 // errors
 "STATUS" = "状态";
