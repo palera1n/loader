@@ -35,7 +35,7 @@ English
 // Logging View
 "LOG_CELL" = "记录";
 "LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
+"NONE" = "没有";
 "LOG_CLEAR" = "Clear Logs";
 
 // Debug
@@ -73,9 +73,9 @@ English
 "FALSE" = "No";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
+"CANCEL" = "取消";
+"CONFIRM" = "确定";
+"CLOSE" = "关闭";
 "PROCEED" = "进行";
 "NO_PROCEED" = "无发进行";
 "NO_PROCEED_SIDELOADING" = "不支持 Sideloading";
@@ -84,9 +84,9 @@ English
 "TOO_LONG" = "超长";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Downloading Sileo";
-"DL_ZEBRA" = "Downloading Zebra";
+"DL_STRAP" = "正在下载基础系统";
+"DL_SILEO" = "正在下载Sileo";
+"DL_ZEBRA" = "正在下载Zebra";
 "DOWNLOADING" = "Downloading...";
 "INSTALLING" = "Installing...";
 "DOWNLOAD_FAIL" = "Unable to fetch file";
