@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "تثبيت";
+"INSTALL" = "Install";
 "SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "تصحيح";
