@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Установить";
-"SILEO" = "Sileo (Сайлео)";
+"SILEO" = "Sileo";
 "ZEBRA" = "Zebra";
 "DEBUG" = "Отладка";
 "DIAGNOSTICS" = "Диагностика";
@@ -16,7 +16,7 @@ English
 
 // ActionsVC
 "HIDDEN" = "Скрытое окружение";
-"ACTION_HIDEJB" = "Скрыть Окружение";
+"ACTION_HIDEJB" = "Скрыть окружение";
 "OPEN_CELL" = "Открыть";
 "OPENER_SILEO" = "Открыть Sileo";
 "OPENER_ZEBRA" = "Открыть Zebra";
