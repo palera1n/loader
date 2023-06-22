@@ -79,7 +79,7 @@ English
 "PROCEED" = "Weiter";
 "NO_PROCEED" = "Fortfahren nicht möglich";
 "NO_PROCEED_SIDELOADING" = "Sideloading wird nicht unterstützt.";
-"NO_PROCEED_FR" = "Nachdem Sie --force-revert verwendet haben, müssen Sie manuell neu starten und Ihr Gerät erneut einjagen um es bootstrap zu können.";
+"NO_PROCEED_FR" = "Nachdem Sie --force-revert verwendet haben, müssen Sie manuell neu starten und Ihr Gerät erneut jailbreaken um es bootstrapen zu können.";
 "SET" = "Speichern";
 "TOO_LONG" = "Zu lang";
 
@@ -108,7 +108,7 @@ English
 "ENJOY" = "Viel Spaß!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Ihr fakeroot ist noch intakt, während /var/jb nicht ist, wird dies wieder symlink /var/jb zurück zu seinem ursprünglichen fakeroot machen. Sie müssen eventuell Uicache in Dienstprogrammen ausführen, nachdem Sie fortfahren.";
+"HIDDEN_NOTICE" = "Ihr fakeroot ist noch intakt, während /var/jb es nicht ist, dies wird wieder symlink /var/jb zurück zu seinem ursprünglichen fakeroot machen. Sie müssen eventuell Uicache in Dienstprogrammen ausführen, nachdem Sie fortfahren.";
 "NOTICE_ROOTLESS" = "Du kannst diesen Knopf nicht verwenden, wenn du einen rootless Jailbreak verwendest.";
 "HIDE_NOTICE" = "Durch Fortfahren wird der /var/jb Symlink entfernt und das Gerät neu gestartet.";
 "REVERT_SUBTEXT" = "Rootful kann diesen Knopf nicht verwenden :(";

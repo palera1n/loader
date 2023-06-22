@@ -1,0 +1,132 @@
+/*
+Localizable.strings
+palera1nLoader
+English
+*/
+// ViewController Cells
+
+"INSTALL" = "Pasang";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"DEBUG" = "Debug";
+"DIAGNOSTICS" = "Diagnostik";
+"ACTIONS" = "Tindakan";
+"JBINIT_LOG" = "Pencatatan Log";
+"REVERT_CELL" = "Hapus Instalasi";
+
+// ActionsVC
+"HIDDEN" = "Jailbreak Disembunyikan";
+"ACTION_HIDEJB" = "Sembunyikan Jailbreak";
+"OPEN_CELL" = "Pembuka";
+"OPENER_SILEO" = "Buka Sileo";
+"OPENER_ZEBRA" = "Buka Zebra";
+"OPENER_TH" = "Buka TrollHelper";
+"UTIL_CELL" = "Utilitas";
+"ACTION_RESPRING" = "Respring";
+"ACTION_USREBOOT" = "Nyalakan ulang Userspace";
+"ACTION_UICACHE" = "UICache";
+"ACTION_DAEMONS" = "Mulai Proses";
+"ACTION_MOUNT" = "Mount Direktori";
+"ACTION_TWEAKS" = "Aktifkan Tweaks";
+"FR_SWITCH" = "Nyalakan ulang setelah pengembalian";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount Direktori\" hanya mencoba untuk me-mount root dan preboot sebagai baca/tulis.";
+"OPENER_SUBTEXT" = "Saat menggunakan palera1n di iPad, terdapat kasus dimana anda perlu menggunakan tindakan ini untuk membuka aplikasi yang sudah terpasang saat mereka tidak muncul di layar utama.";
+
+// Logging View
+"LOG_CELL" = "Log";
+"LOG_CELL_VIEW" = "Lihat Log";
+"NONE" = "Kosong";
+"LOG_CLEAR" = "Hapus log";
+
+// Debug
+"DEBUG_CELL" = "Debug";
+"DEBUG_OPTIONS" = "Opsi";
+"DEBUG_CLEAN_FAKEFS" = "Bersihkan fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Keluar dari safemode";
+"DEBUG_ENTER_SAFEMODE" = "Memasuki safemode";
+
+// Diags
+"DEVICE_MODEL" = "Model Perangkat:";
+"DEVICE_MODEL_KERN" = "Versi Kernel:";
+"DEVICE_MODEL_CF" = "CFVersion:";
+"CREDITS_SUBTEXT" = "Loader dibuat oleh:";
+"PINFO_SUBTEXT" = "Penanda (paleinfo) sesuai dengan penanda yang Anda gunakan melalui CLI palera1n 2.0.0, berguna untuk pengembang.";
+"TYPE_INFO" = "Tipe";
+"INSTALL_INFO" = "Terpasang";
+"ARCH_INFO" = "Arsitektur";
+"VERSION_INFO" = "Versi";
+"STRAP_INFO" = "Environment";
+"STRAP_FR_PREFIX" = "Prefiks Fakeroot";
+"STRAP_FR_PATH" = "Path Fakeroot";
+"OPEN_FILZA" = "Buka di Filza";
+"OPEN_SANTANDER" = "Buka di Santander";
+"COPY" = "Salin";
+"INSTALL_FR" = "Dikembalikan Secara Paksa";
+"HELPER" = "Pembantu";
+"HELPER_PATH" = "Path Pembantu";
+"SILEO_INSTALLED" = "Sileo Terpasang";
+"ZEBRA_INSTALLED" = "Zebra Terpasang";
+"KINFO_FLAGS" = "Penanda (kerninfo)";
+"PINFO_FLAGS" = "Penanda (paleinfo)";
+
+"TRUE" = "Ya";
+"FALSE" = "Tidak";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
+"CANCEL" = "Batal";
+"CONFIRM" = "Konfirmasi";
+"CLOSE" = "Tutup";
+"PROCEED" = "Lanjutkan";
+"NO_PROCEED" = "Tidak bisa melanjutkan";
+"NO_PROCEED_SIDELOADING" = "Sideload tidak didukung.";
+"NO_PROCEED_FR" = "Setelah menggunakan --force-revert, anda harus menyalakan ulang secara manual dan jailbreak perangkat anda lagi untuk melakukan bootstrap.";
+"SET" = "Atur";
+"TOO_LONG" = "Terlalu Panjang";
+
+// DL / BS
+"DL_STRAP" = "Mengunduh Sistem Dasar";
+"DL_SILEO" = "Mengunduh Sileo";
+"DL_ZEBRA" = "Mengunduh Zebra";
+"DOWNLOADING" = "Mengunduh...";
+"INSTALLING" = "Memasang...";
+"DOWNLOAD_FAIL" = "Tidak dapat mengunduh berkas";
+"DOWNLOAD_ERROR" = "Kesalahan tidak diketahui";
+"SAVE_FAIL" = "Tidak bisa menyimpan berkas ke disk";
+"DONE_INSTALL" = "Pemasangan selesai";
+"ERROR_INSTALL" = "Pemasangan gagal";
+"DONE_INSTALL_SUB" = "Anda dapat menutup aplikasi ini.";
+"DONE_REVERT" = "Pengembalian Selesai";
+"REMOVING" = "Menghapus...";
+
+"PASSWORD" = "Untuk menggunakan alat baris perintah seperti \"sudo\" setelah melakukan jailbreak, anda perlu mengatur kode sandi terminal. (Tidak boleh kosong)";
+"PASSWORD_REPEAT" = "Ketik Ulang Kata Sandi";
+"PASSWORD_SET" = "Atur Kata Sandi";
+"PASSWORD_TEXT" = "Kata sandi";
+
+// hehe
+"REINSTALL" = "Memasang ulang";
+"ENJOY" = "Selamat menikmati!";
+
+// WARNINGS / NOTICES
+"HIDDEN_NOTICE" = "Fakeroot anda masih utuh sementara /var/jb tidak, ini akan men-symlink ulang /var/jb kembali ke fakeroot semula. Anda mungkin perlu menjalankan uicache di utilitas setelah menlanjutkan.";
+"NOTICE_ROOTLESS" = "Anda tidak bisa menggunakan tombol ini apabila anda menggunakan jailbreak non-rootless.";
+"HIDE_NOTICE" = "Melanjutkan akan menghapus symlink /var/jb dan menyalakan ulang perangkat.";
+"REVERT_SUBTEXT" = "Rootful tidak bisa menggunakan tombol ini :(";
+"PM_SUBTEXT" = "Pilih manajer paket favorit yang ingin Anda pasang, Sileo disarankan apabila anda seorang pemula.";
+"REVERT_WARNING" = "Menghapus /var/jb dan menghapus aplikasi jailbreak, setelah selesai perangkat akan menyala ulang ke dalam keadaan tidak terjailbreak.";
+"SILEO_REINSTALL" = "Anda yakin ingin memasang ulang Sileo?";
+"ZEBRA_REINSTALL" = "Anda yakin ingin memasang ulang Zebra?";
+"SILEO_INSTALL" = "Anda yakin ingin memasang Sileo?";
+"ZEBRA_INSTALL" = "Anda yakin ingin memasang Zebra?";
+"CLOSE_APP" = "Anda dapat menutup aplikasi ini.";
+"UNHID_ENV" = "Perlihatkan Jailbreak";
+
+// errors
+"STATUS" = "Status";
+"ERROR_STRAP" = "Gagal memasang bootstrap";
+"ERROR_DPKG" = "Gagal memasang paket";
+"ERROR_UICACHE" = "Gagal menjalankan UICache";
+"ERROR_SILEO" = "Gagal memasang Sileo";
+"ERROR_ZEBRA" = "Gagal memasang Zebra";
+"ERROR_UNREGISTER" = "Unregister gagal";
+"ERROR_REVERT" = "Gagal menghapus jailbreak";

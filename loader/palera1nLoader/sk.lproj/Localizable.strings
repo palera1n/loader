@@ -1,0 +1,132 @@
+/*
+Localizable.strings
+palera1nLoader
+English
+*/
+// ViewController Cells
+
+"INSTALL" = "Inštalovať";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"DEBUG" = "Debug";
+"DIAGNOSTICS" = "Diagnostiky";
+"ACTIONS" = "Akcie";
+"JBINIT_LOG" = "Zápis logu";
+"REVERT_CELL" = "Vrátenie inštalácie";
+
+// ActionsVC
+"HIDDEN" = "Skryté prostredie";
+"ACTION_HIDEJB" = "Skryť prostredie";
+"OPEN_CELL" = "Otvárače";
+"OPENER_SILEO" = "Otvoriť Sileo";
+"OPENER_ZEBRA" = "Otvoriť Zebra";
+"OPENER_TH" = "Otvoriť TrollHelper";
+"UTIL_CELL" = "Užitočné";
+"ACTION_RESPRING" = "Respring";
+"ACTION_USREBOOT" = "Reštartovať UserSpace";
+"ACTION_UICACHE" = "UICache";
+"ACTION_DAEMONS" = "Spustiť služby";
+"ACTION_MOUNT" = "Mountovať priečinky";
+"ACTION_TWEAKS" = "Zapnúť tweaky";
+"FR_SWITCH" = "Reštartovanie pri návrate";
+"ACTION_MOUNT_SUBTEXT" = "\"Mountovať priečinky\" sa pokúša mountovať iba root a preboot ako čítať/pisať.";
+"OPENER_SUBTEXT" = "Pri používaní aplikácie palera1n na iPadoch sa môžu vyskytnúť prípady, keď budete musieť použiť tieto akcie na otvorenie nainštalovaných aplikácií, keď sa nezobrazia na domovskej obrazovke.";
+
+// Logging View
+"LOG_CELL" = "Logy";
+"LOG_CELL_VIEW" = "Zobraziť logy";
+"NONE" = "Nič";
+"LOG_CLEAR" = "Vymazať logy";
+
+// Debug
+"DEBUG_CELL" = "Debug";
+"DEBUG_OPTIONS" = "Nastavenia";
+"DEBUG_CLEAN_FAKEFS" = "Vyčistiť fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Ukončenie bezpečného režimu";
+"DEBUG_ENTER_SAFEMODE" = "Zapnúť bezpečný režim";
+
+// Diags
+"DEVICE_MODEL" = "Model zariadenia:";
+"DEVICE_MODEL_KERN" = "Verzia kernelu:";
+"DEVICE_MODEL_CF" = "CFVersion:";
+"CREDITS_SUBTEXT" = "Loader vytvorili:";
+"PINFO_SUBTEXT" = "Vlajky (paleinfo) zodpovedajú vlajkám, ktoré ste použili v CLI palera1n 2.0.0, užitočné pre developerov.";
+"TYPE_INFO" = "Typ";
+"INSTALL_INFO" = "Inštalované";
+"ARCH_INFO" = "Architektúra";
+"VERSION_INFO" = "Verzia";
+"STRAP_INFO" = "Prostredie";
+"STRAP_FR_PREFIX" = "Predpona Fakerootu";
+"STRAP_FR_PATH" = "Lokalizácia Fakerootu";
+"OPEN_FILZA" = "Otvoriť v Filza";
+"OPEN_SANTANDER" = "Otvoriť v Santander";
+"COPY" = "Kopírovať";
+"INSTALL_FR" = "Vrátené silou";
+"HELPER" = "Pomocník";
+"HELPER_PATH" = "Lokalizácia pomocníka";
+"SILEO_INSTALLED" = "Sileo nainštalovaný";
+"ZEBRA_INSTALLED" = "Zebra nainštalovaný";
+"KINFO_FLAGS" = "Vlajky (kerninfo)";
+"PINFO_FLAGS" = "Vlajky (paleinfo)";
+
+"TRUE" = "Áno";
+"FALSE" = "Nie";
+"ROOTFUL" = "S rootom";
+"ROOTLESS" = "Bez rootu";
+"CANCEL" = "Zrušiť";
+"CONFIRM" = "Potvrdiť";
+"CLOSE" = "Zatvoriť";
+"PROCEED" = "Pokračovať";
+"NO_PROCEED" = "Nie je možné pokračovať";
+"NO_PROCEED_SIDELOADING" = "Sideloading nie je podporovaný.";
+"NO_PROCEED_FR" = "Po použití --force-revert musíte zariadenie manuálne reštartovať a znova ho jailbreaknúť, aby ste mohli znovu bootstrapnúť.";
+"SET" = "Nastaviť";
+"TOO_LONG" = "Príliš dlhé";
+
+// DL / BS
+"DL_STRAP" = "Sťahovanie základného systému";
+"DL_SILEO" = "Sťahovanie Sileo";
+"DL_ZEBRA" = "Sťahovanie Zebra";
+"DOWNLOADING" = "Sťahuje sa...";
+"INSTALLING" = "Inštalácia...";
+"DOWNLOAD_FAIL" = "Nie je možné načítať súbor";
+"DOWNLOAD_ERROR" = "Neznáma chyba";
+"SAVE_FAIL" = "Nebolo možné skopírovať súbor";
+"DONE_INSTALL" = "Inštalácia ukončená";
+"ERROR_INSTALL" = "Inštalácia zlyhala";
+"DONE_INSTALL_SUB" = "Môžete zatvoriť aplikáciu.";
+"DONE_REVERT" = "Odstránenie dokončené";
+"REMOVING" = "Odstraňuje sa...";
+
+"PASSWORD" = "Ak chcete po jailbreaku používať nástroje príkazového riadka, ako sudo, musíte nastaviť prístupový kód terminálu. (Toto nemôže byť prázdne)";
+"PASSWORD_REPEAT" = "Zopakovať heslo";
+"PASSWORD_SET" = "Nastaviť heslo";
+"PASSWORD_TEXT" = "Heslo";
+
+// hehe
+"REINSTALL" = "Znovu nainštalovať";
+"ENJOY" = "Užite si to!";
+
+// WARNINGS / NOTICES
+"HIDDEN_NOTICE" = "Váš fakeroot je stále neporušený, zatiaľ čo /var/jb nie je, toto opätovne prepojí /var/jb s pôvodným fakeroot. Možno budete musieť po pokračovaní spustiť uicache v utilitách.";
+"NOTICE_ROOTLESS" = "Toto tlačidlo nesmiete používať, ak používate jailbreak s rootom.";
+"HIDE_NOTICE" = "Pokračovaním odstránite symlink /var/jb a reštartujete zariadenie.";
+"REVERT_SUBTEXT" = "Rootful nemôže používať toto tlačidlo :(";
+"PM_SUBTEXT" = "Tu vyberte svojho obľúbeného správcu balíkov, ktorý chcete nainštalovať, ak ste nováčik, odporúčame použiť Sileo.";
+"REVERT_WARNING" = "Vymaže /var/jb a odregistruje aplikácie jailbreaku, po jeho dokončení sa zariadenie reštartuje do stavu bez jailbreaku.";
+"SILEO_REINSTALL" = "Ste si istí, že chcete znovu nainštalovať Sileo?";
+"ZEBRA_REINSTALL" = "Ste si istí, že chcete znovu nainštalovať Zebra?";
+"SILEO_INSTALL" = "Ste si istí, že chcete inštalovať Sileo?";
+"ZEBRA_INSTALL" = "Ste si istí, že chcete inštalovať Zebra?";
+"CLOSE_APP" = "Môžete zatvoriť aplikáciu.";
+"UNHID_ENV" = "Odkrylo sa prostredie";
+
+// errors
+"STATUS" = "Status";
+"ERROR_STRAP" = "Nepodarilo sa nainštalovať bootstrap";
+"ERROR_DPKG" = "Nepodarilo sa nainštalovať balíky";
+"ERROR_UICACHE" = "Nepodarilo sa spustiť UICache";
+"ERROR_SILEO" = "Nepodarilo sa nainštalovať Sileo";
+"ERROR_ZEBRA" = "Nepodarilo sa nainštalovať Zebra";
+"ERROR_UNREGISTER" = "Nepodarilo sa odregistrovať";
+"ERROR_REVERT" = "Nepodarilo sa odstrániť jailbreak";

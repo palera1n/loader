@@ -1,0 +1,132 @@
+/*
+Localizable.strings
+palera1nLoader
+English
+*/
+// ViewController Cells
+
+"INSTALL" = "Instalo";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"DEBUG" = "Debugim";
+"DIAGNOSTICS" = "Diagnostika";
+"ACTIONS" = "Aksione";
+"JBINIT_LOG" = "Logime";
+"REVERT_CELL" = "Revert Install";
+
+// ActionsVC
+"HIDDEN" = "I Fshehur";
+"ACTION_HIDEJB" = "Beje Te Fshehur";
+"OPEN_CELL" = "Hapesit";
+"OPENER_SILEO" = "Hap Sileo-n";
+"OPENER_ZEBRA" = "Hap Zebra-n";
+"OPENER_TH" = "Hap TrollHelper-in";
+"UTIL_CELL" = "Programe ndihmëse";
+"ACTION_RESPRING" = "Respring";
+"ACTION_USREBOOT" = "Restart i Userspaces";
+"ACTION_UICACHE" = "UICache";
+"ACTION_DAEMONS" = "Launch Daemons";
+"ACTION_MOUNT" = "Mount Directories";
+"ACTION_TWEAKS" = "Aktivizo Tweaks";
+"FR_SWITCH" = "Rinisni në rikthim";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
+"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+
+// Logging View
+"LOG_CELL" = "Logjet";
+"LOG_CELL_VIEW" = "Shihni Logjet";
+"NONE" = "Asnje";
+"LOG_CLEAR" = "Fshij Logjet";
+
+// Debug
+"DEBUG_CELL" = "Debugim";
+"DEBUG_OPTIONS" = "Opsionet";
+"DEBUG_CLEAN_FAKEFS" = "Pastroni FakeFS-in";
+"DEBUG_EXIT_SAFEMODE" = "Dilni nga modaliteti i sigurt";
+"DEBUG_ENTER_SAFEMODE" = "Hyr ne modaliteti i sigurt";
+
+// Diags
+"DEVICE_MODEL" = "Modeli i paisjes:";
+"DEVICE_MODEL_KERN" = "Versioni i kernelit:";
+"DEVICE_MODEL_CF" = "CFVersion:";
+"CREDITS_SUBTEXT" = "Aplikacioni i krijuar nga:";
+"PINFO_SUBTEXT" = "Flag-sat (paleinfo) korrespondojnë me flag-sat që keni përdorur nëpërmjet palera1n 2.0.0 CLI, i dobishëm për developera-t.";
+"TYPE_INFO" = "Lloji";
+"INSTALL_INFO" = "Instaluar";
+"ARCH_INFO" = "Arkitektura e pajisjes";
+"VERSION_INFO" = "Versioni";
+"STRAP_INFO" = "Ambienti";
+"STRAP_FR_PREFIX" = "Prefiksi i Fakeroot";
+"STRAP_FR_PATH" = "Vendndodhja e Fakeroot-it";
+"OPEN_FILZA" = "Hap ne Filza";
+"OPEN_SANTANDER" = "Hap ne Santander";
+"COPY" = "Kopjo";
+"INSTALL_FR" = "Force Reverted";
+"HELPER" = "Ndihmes";
+"HELPER_PATH" = "Helper Path";
+"SILEO_INSTALLED" = "Sileo Instaluar";
+"ZEBRA_INSTALLED" = "Zebra Instaluar";
+"KINFO_FLAGS" = "Flags (kerninfo)";
+"PINFO_FLAGS" = "Flags (paleinfo)";
+
+"TRUE" = "Po";
+"FALSE" = "Jo";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
+"CANCEL" = "Anullo";
+"CONFIRM" = "Konfirmo";
+"CLOSE" = "Mbyll";
+"PROCEED" = "Vazhdo";
+"NO_PROCEED" = "Nuk mund te vazhdonim";
+"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
+"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"SET" = "Set";
+"TOO_LONG" = "Too Long";
+
+// DL / BS
+"DL_STRAP" = "Downloading Base System";
+"DL_SILEO" = "Sileo eshte duke u shkarkuar";
+"DL_ZEBRA" = "Zebra eshte duke u shkarkuar";
+"DOWNLOADING" = "Duke u shkarkuar...";
+"INSTALLING" = "Duke u instaluar...";
+"DOWNLOAD_FAIL" = "Unable to fetch file";
+"DOWNLOAD_ERROR" = "Unknown error";
+"SAVE_FAIL" = "Could not copy file to disk";
+"DONE_INSTALL" = "Install Completed";
+"ERROR_INSTALL" = "Install Failed";
+"DONE_INSTALL_SUB" = "Ju mund ta mbyllni applikacionin.";
+"DONE_REVERT" = "U fshi saktesisht";
+"REMOVING" = "Duke u fshire...";
+
+"PASSWORD" = "Ne qofte se doni te perdorni komanda si \"sudo\" pasi kini bere jailbreak, ju me pare duhet te vendosni nje fjalekalim. (Kjo nuk mund te jete bosh)";
+"PASSWORD_REPEAT" = "Perserit fjalekalimin";
+"PASSWORD_SET" = "Vendos fjalekalimin";
+"PASSWORD_TEXT" = "Fjalekalimi";
+
+// hehe
+"REINSTALL" = "Ri-instaloni";
+"ENJOY" = "Shijoni!";
+
+// WARNINGS / NOTICES
+"HIDDEN_NOTICE" = "Fakeroot-i juaj është ende i paprekur ndërsa /var/jb jo, kjo do të ri-symlink /var/jb përsëri në fakeroot-in e tij origjinal. Mund t'ju duhet të përdorni uicache në programet ndihmëse pasi të vazhdoni.";
+"NOTICE_ROOTLESS" = "Ju nuk mund ta perdorni kete buton sepse kini nje jailbreak rootless.";
+"HIDE_NOTICE" = "Ne vazhdim, do te prishet symlink-u /var/jb dhe pajisja do te ristartohet.";
+"REVERT_SUBTEXT" = "Jailbreaku rootful nuk e perdor dot kete buton";
+"PM_SUBTEXT" = "Zgjidhni manaxhuesin e packageve qe doni te instaloni, Sileo eshte i rekomanduar nese je i ri.";
+"REVERT_WARNING" = "Fshin /var/jb dhe çregjistron aplikacionet e jailbreak-it, pasi të përfundojë pajisja do të rindizet në një gjendje të pa jailbreak-uar.";
+"SILEO_REINSTALL" = "A ini te sigurt qe doni ta reinstaloni Sileo-n?";
+"ZEBRA_REINSTALL" = "A ini te sigurt qe doni ta reinstaloni Zebra-n?";
+"SILEO_INSTALL" = "A ini te sigurt qe doni te instaloni Sileo-n?";
+"ZEBRA_INSTALL" = "A ini te sigurt qe doni te instaloni Zebra-n?";
+"CLOSE_APP" = "Ju mund ta mbyllni aplikacionin.";
+"UNHID_ENV" = "Tregoje enviromentin";
+
+// errors
+"STATUS" = "Statusi";
+"ERROR_STRAP" = "Ndodhi nje gabim gjate instalimit te bootstrap-it";
+"ERROR_DPKG" = "Nuk u instaluan dot paketat";
+"ERROR_UICACHE" = "UICache nuk u ekzekutua dot";
+"ERROR_SILEO" = "Instalimi i Sileo-s dështoi";
+"ERROR_ZEBRA" = "Instalimi i Zebra-s dështoi";
+"ERROR_UNREGISTER" = "Çregjistrimi dështoi";
+"ERROR_REVERT" = "Heqja e jailbreak-ut dështoi";

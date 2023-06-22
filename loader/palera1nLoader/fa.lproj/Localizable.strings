@@ -1,0 +1,132 @@
+/*
+Localizable.strings
+palera1nLoader
+English
+*/
+// ViewController Cells
+
+"INSTALL" = "نصب";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"DEBUG" = "اشکال زدایی";
+"DIAGNOSTICS" = "تشخیص";
+"ACTIONS" = "اقدامات";
+"JBINIT_LOG" = "Logging";
+"REVERT_CELL" = "برگرداندن نصب";
+
+// ActionsVC
+"HIDDEN" = "محیط پنهان";
+"ACTION_HIDEJB" = "مخفی کردن محیط";
+"OPEN_CELL" = "باز کن";
+"OPENER_SILEO" = "Sileo را باز کنید";
+"OPENER_ZEBRA" = "Zebra را باز کنید";
+"OPENER_TH" = "TrollHelper را باز کنید";
+"UTIL_CELL" = "برخی از خدمات آب و برق";
+"ACTION_RESPRING" = "SpringBoard را مجدداً راه اندازی کنید";
+"ACTION_USREBOOT" = "Userspace را راه‌اندازی مجدد کنید";
+"ACTION_UICACHE" = "UIcache را اجرا کنید";
+"ACTION_DAEMONS" = "Daemons را راه‌اندازی کنید";
+"ACTION_MOUNT" = "Directories را سوار کنید";
+"ACTION_TWEAKS" = "Tweaks را فعال کنید";
+"FR_SWITCH" = "راه‌اندازی مجدد در بازگشت";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" فقط تلاش می کند تا root و preboot را به صورت خواندن/نوشتن نصب کند.";
+"OPENER_SUBTEXT" = "هنگام استفاده از palera1n در iPad، مواردی وجود دارد که لازم است از این اقدامات برای باز کردن برنامه های نصب شده در زمانی که در صفحه اصلی ظاهر نمی شوند، استفاده کنید.";
+
+// Logging View
+"LOG_CELL" = "گزارش رویدادها";
+"LOG_CELL_VIEW" = "دیدن گزارش وقایع";
+"NONE" = "هیچ یک";
+"LOG_CLEAR" = "پاک کردن گزارش های رویداد";
+
+// Debug
+"DEBUG_CELL" = "اشکال زدایی";
+"DEBUG_OPTIONS" = "گزینه ها";
+"DEBUG_CLEAN_FAKEFS" = "تمیز کردن FakeFS";
+"DEBUG_EXIT_SAFEMODE" = "از حالت ایمن خارج شوید";
+"DEBUG_ENTER_SAFEMODE" = "وارد حالت امن شوید";
+
+// Diags
+"DEVICE_MODEL" = "مدل دستگاه:";
+"DEVICE_MODEL_KERN" = "نسخه Kernel:";
+"DEVICE_MODEL_CF" = "نسخه CF:";
+"CREDITS_SUBTEXT" = "لودر ساخته شده توسط:";
+"PINFO_SUBTEXT" = "پرچم‌ها (paleinfo) مربوط به پرچم‌هایی است که از طریق Palera1n 2.0.0 CLI استفاده کرده‌اید که برای توسعه‌دهندگان مفید است.";
+"TYPE_INFO" = "تایپ کنید";
+"INSTALL_INFO" = "نصب شده است";
+"ARCH_INFO" = "Architecture";
+"VERSION_INFO" = "Version";
+"STRAP_INFO" = "محیط";
+"STRAP_FR_PREFIX" = "پیشوند Fakeroot";
+"STRAP_FR_PATH" = "مسیر Fakeroot";
+"OPEN_FILZA" = "در Filza باز کنید";
+"OPEN_SANTANDER" = "در Santander باز کنید";
+"COPY" = "Copy";
+"INSTALL_FR" = "Force reverted";
+"HELPER" = "یاور";
+"HELPER_PATH" = "Helper Path";
+"SILEO_INSTALLED" = "Sileo نصب شد";
+"ZEBRA_INSTALLED" = "Zebra نصب شده است";
+"KINFO_FLAGS" = "Flags (kerninfo)";
+"PINFO_FLAGS" = "Flags (paleinfo)";
+
+"TRUE" = "آره";
+"FALSE" = "خیر";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
+"CANCEL" = "لغو کنید";
+"CONFIRM" = "تایید";
+"CLOSE" = "بستن";
+"PROCEED" = "ادامه دهید";
+"NO_PROCEED" = "قادر به ادامه نیست";
+"NO_PROCEED_SIDELOADING" = "Sideloading پشتیبانی نمی شود.";
+"NO_PROCEED_FR" = "پس از استفاده از --force-revert، باید به صورت دستی دستگاه خود را ریبوت کرده و دوباره جیلبریک کنید تا بتوانید بوت استرپ کنید.";
+"SET" = "Set";
+"TOO_LONG" = "خیلی طولانی است";
+
+// DL / BS
+"DL_STRAP" = "دانلود Base System";
+"DL_SILEO" = "در حال دانلود Sileo";
+"DL_ZEBRA" = "در حال دانلود Zebra";
+"DOWNLOADING" = "در حال دانلود...";
+"INSTALLING" = "در حال نصب...";
+"DOWNLOAD_FAIL" = "Unable to fetch file";
+"DOWNLOAD_ERROR" = "خطای ناشناخته";
+"SAVE_FAIL" = "فایل روی دیسک کپی نشد";
+"DONE_INSTALL" = "نصب کامل شد";
+"ERROR_INSTALL" = "نصب نشد";
+"DONE_INSTALL_SUB" = "می توانید برنامه را ببندید.";
+"DONE_REVERT" = "حذف کامل شد";
+"REMOVING" = "در حال حذف...";
+
+"PASSWORD" = "برای استفاده از ابزارهای خط فرمان مانند \"sudo\" پس از جیلبریک، باید یک رمز عبور ترمینال تنظیم کنید. (این نمی تواند خالی باشد)";
+"PASSWORD_REPEAT" = "تکرار رمز عبور";
+"PASSWORD_SET" = "قراردادن رمز عبور";
+"PASSWORD_TEXT" = "کلمه عبور";
+
+// hehe
+"REINSTALL" = "دوباره نصب کنید";
+"ENJOY" = "لذت ببرید!";
+
+// WARNINGS / NOTICES
+"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
+"NOTICE_ROOTLESS" = "اگر از جیلبریک بدون ریشه استفاده می کنید، نمی توانید از این دکمه استفاده کنید.";
+"HIDE_NOTICE" = "ادامه، پیوند نمادین /var/jb را حذف می‌کند و دستگاه را راه‌اندازی مجدد می‌کند.";
+"REVERT_SUBTEXT" = "Rootful نمی تواند از این دکمه استفاده کند :(";
+"PM_SUBTEXT" = "مدیر بسته مورد علاقه خود را در اینجا انتخاب کنید که می خواهید نصب کنید، Sileo توصیه می شود اگر تازه‌کار هستید.";
+"REVERT_WARNING" = "/var/jb را پاک می‌کند و برنامه‌های جیلبریک را لغو ثبت می‌کند، پس از اتمام، دستگاه به حالت غیر جیلبریک راه‌اندازی مجدد می‌شود.";
+"SILEO_REINSTALL" = "آیا مطمئن هستید که می خواهید Sileo را دوباره نصب کنید?";
+"ZEBRA_REINSTALL" = "آیا مطمئن هستید که می خواهید Zebra را دوباره نصب کنید?";
+"SILEO_INSTALL" = "آیا مطمئن هستید که می خواهید Sileo را نصب کنید?";
+"ZEBRA_INSTALL" = "آیا مطمئن هستید که می خواهید Zebra را نصب کنید?";
+"CLOSE_APP" = "می توانید برنامه را ببندید.";
+"UNHID_ENV" = "محیط را آشکار کنید";
+
+// errors
+"STATUS" = "Status";
+"ERROR_STRAP" = "خطا در نصب بوت استرپ";
+"ERROR_DPKG" = "بسته ها نصب نشد";
+"ERROR_UICACHE" = "UIcache اجرا نشد";
+"ERROR_SILEO" = "Sileo نصب نشد";
+"ERROR_ZEBRA" = "نصب Zebra انجام نشد";
+"ERROR_UNREGISTER" = "لغو ثبت نام انجام نشد";
+"ERROR_REVERT" = "جیلبریک حذف نشد";

@@ -1,0 +1,132 @@
+/*
+Localizable.strings
+palera1nLoader
+English
+*/
+// ViewController Cells
+
+"INSTALL" = "Įdiegti";
+"SILEO" = "Sileo";
+"ZEBRA" = "Zebra";
+"DEBUG" = "Derinti";
+"DIAGNOSTICS" = "Diagnostika";
+"ACTIONS" = "Veiksmai";
+"JBINIT_LOG" = "Registravimas";
+"REVERT_CELL" = "Atšaukti diegimą";
+
+// ActionsVC
+"HIDDEN" = "Paslėpta aplinka";
+"ACTION_HIDEJB" = "Paslėpti aplinką";
+"OPEN_CELL" = "Lango varikliai";
+"OPENER_SILEO" = "Atverti Sileo";
+"OPENER_ZEBRA" = "Atverti Zebra";
+"OPENER_TH" = "Atverti TrollHelper";
+"UTIL_CELL" = "Pagalbinės programos";
+"ACTION_RESPRING" = "Atnaujinti";
+"ACTION_USREBOOT" = "Vartotojo erdvės perkrovimas";
+"ACTION_UICACHE" = "UICache";
+"ACTION_DAEMONS" = "Paleisti daemons";
+"ACTION_MOUNT" = "Prijungti katalogą";
+"ACTION_TWEAKS" = "Įjungti modifikacijas";
+"FR_SWITCH" = "Perktrauti po grąžinimo";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" tik bando prijungti root ir preboot kaip skaitymo/rašymo.";
+"OPENER_SUBTEXT" = "Naudojant palera1n su iPad, gali prireikti naudoti šiuos veiksmus, kad atidaryti įdiegtas programas, jei jos neatsiranda pagrindiniame ekrane.";
+
+// Logging View
+"LOG_CELL" = "Įrašai";
+"LOG_CELL_VIEW" = "Peržiūrėti įrašus";
+"NONE" = "Niekas";
+"LOG_CLEAR" = "Išvalyti įrašus";
+
+// Debug
+"DEBUG_CELL" = "Derinti";
+"DEBUG_OPTIONS" = "Nustatymai";
+"DEBUG_CLEAN_FAKEFS" = "Išvalyti fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Išeiti iš saugaus režimo";
+"DEBUG_ENTER_SAFEMODE" = "Įeiti į saugų režimą";
+
+// Diags
+"DEVICE_MODEL" = "Prietaiso modelis:";
+"DEVICE_MODEL_KERN" = "„Kernel“ versija:";
+"DEVICE_MODEL_CF" = "CFVersion:";
+"CREDITS_SUBTEXT" = "Programą sukūrė:";
+"PINFO_SUBTEXT" = "Vėliavos (paleinfo) atitinka vėliavas, kurias naudojote per palera1n 2.0.0 CLI, naudinga programų kūrėjams.";
+"TYPE_INFO" = "Tipas";
+"INSTALL_INFO" = "Įdiegta";
+"ARCH_INFO" = "Architektūra";
+"VERSION_INFO" = "Versija";
+"STRAP_INFO" = "Aplinka";
+"STRAP_FR_PREFIX" = "Fakeroot priešdėlis";
+"STRAP_FR_PATH" = "Fakeroot vieta";
+"OPEN_FILZA" = "Atidaryti naudojant \"Filza\"";
+"OPEN_SANTANDER" = "Atidaryti naudojant \"Santander\"";
+"COPY" = "Kopijuoti";
+"INSTALL_FR" = "Priverstinis atšaukimas";
+"HELPER" = "Pagalbininkas";
+"HELPER_PATH" = "Pagalbininko vieta";
+"SILEO_INSTALLED" = "Sileo instaliuotas";
+"ZEBRA_INSTALLED" = "Zebra instaliuotas";
+"KINFO_FLAGS" = "Žymos (kerninfo)";
+"PINFO_FLAGS" = "Žymos (paleinfo)";
+
+"TRUE" = "Taip";
+"FALSE" = "Ne";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
+"CANCEL" = "Atšaukti";
+"CONFIRM" = "Patvirtinti";
+"CLOSE" = "Uždaryti";
+"PROCEED" = "Tęsti";
+"NO_PROCEED" = "Neįmanoma tęsti";
+"NO_PROCEED_SIDELOADING" = "Sideloading nepalaikomas.";
+"NO_PROCEED_FR" = "Panaudojus --force-revert, turite rankiniu būdu perkrauti ir \"jailbreakinti\" įrenginį, kad galima būtų įdiegti jailbreak failus.";
+"SET" = "Nustatyti";
+"TOO_LONG" = "Per ilgas";
+
+// DL / BS
+"DL_STRAP" = "Bazinė sistema siunčiama";
+"DL_SILEO" = "Sileo atsiunčiamas";
+"DL_ZEBRA" = "Zebra atsiunčiamas";
+"DOWNLOADING" = "Atsiunčiama...";
+"INSTALLING" = "Įdiegiama...";
+"DOWNLOAD_FAIL" = "Nepavyksta parsisiųsti failo";
+"DOWNLOAD_ERROR" = "Nežinoma klaida";
+"SAVE_FAIL" = "Nepavyko nukopijuoti failo į diską";
+"DONE_INSTALL" = "Įdiegta sėkmingai";
+"ERROR_INSTALL" = "Diegimas nepavyko";
+"DONE_INSTALL_SUB" = "Galite uždaryti programą.";
+"DONE_REVERT" = "Šalinimas užbaigtas";
+"REMOVING" = "Šalinama...";
+
+"PASSWORD" = "Norėdami naudoti komandinės eilutės įrankius, pvz., \"sudo\", po jailbreak, turėsite nustatyti terminalo slaptažodį. (Jis negali būti tuščias)";
+"PASSWORD_REPEAT" = "Pakartokite slaptažodį";
+"PASSWORD_SET" = "Nustatykite slaptažodį";
+"PASSWORD_TEXT" = "Slaptažodis";
+
+// hehe
+"REINSTALL" = "Iš naujo įdiegti";
+"ENJOY" = "Mėgaukitės!";
+
+// WARNINGS / NOTICES
+"HIDDEN_NOTICE" = "Jūsų fakeroot vis dar nepažeistas, o /var/jb - ne, todėl /var/jb bus iš naujo susietas su originaliu fakeroot. Atlikus šiuos veiksmus, gali tekti paleisti uicache pagalbinėse programose.";
+"NOTICE_ROOTLESS" = "Galite nenaudoti šio mygtuko, jei naudojate ne rootless jailbreak.";
+"HIDE_NOTICE" = "Tęsiant šią procedūrą bus pašalinta /var/jb simbolinė nuoroda ir įrenginys bus paleistas iš naujo.";
+"REVERT_SUBTEXT" = "Rootful negali naudoti šio mygtuko :(";
+"PM_SUBTEXT" = "Pasirinkite mėgstamą paketų tvarkyklę, kurią norite įdiegti, jei esate naujokas, rekomenduojama naudoti Sileo.";
+"REVERT_WARNING" = "Ištrina /var/jb ir išregistruoja jailbreak programas, po to įrenginys bus perkrautas į ne jailbreak būseną.";
+"SILEO_REINSTALL" = "Ar tikrai norite iš naujo įdiegti Sileo?";
+"ZEBRA_REINSTALL" = "Ar tikrai norite iš naujo įdiegti Zebra?";
+"SILEO_INSTALL" = "Ar tikrai norite įdiegti Sileo?";
+"ZEBRA_INSTALL" = "Ar tikrai norite įdiegti Zebra?";
+"CLOSE_APP" = "Galite uždaryti programą.";
+"UNHID_ENV" = "Neslėpti aplinkos";
+
+// errors
+"STATUS" = "Būsena";
+"ERROR_STRAP" = "Klaida diegiant bootstrap";
+"ERROR_DPKG" = "Nepavyko įdiegti paketų";
+"ERROR_UICACHE" = "Nepavyko paleisti UICache";
+"ERROR_SILEO" = "Nepavyko įdiegti Sileo";
+"ERROR_ZEBRA" = "Nepavyko įdiegti Zebra";
+"ERROR_UNREGISTER" = "Nepavyko išregistruoti";
+"ERROR_REVERT" = "Nepavyko pašalinti jailbreak";
