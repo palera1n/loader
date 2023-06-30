@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Установить";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Отладка";
 "DIAGNOSTICS" = "Диагностика";
 "ACTIONS" = "Действия";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Загрузка базовых файлов";
-"DL_SILEO" = "Загрузка Sileo";
-"DL_ZEBRA" = "Загрузка Zebra";
 "DOWNLOADING" = "Загрузка...";
 "INSTALLING" = "Установка...";
 "DOWNLOAD_FAIL" = "Невозможно получить файл";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful пользователи не могут использовать эту кнопку :(";
 "PM_SUBTEXT" = "Выберите ваш любимый менеджер пакетов, который вы хотите установить, Sileo рекомендуется, если вы новичок.";
 "REVERT_WARNING" = "Стирает /var/jb и убирает регистрацию Jailbreak приложений, после чего устройство перезагрузится в не-jailbreak состояние.";
-"SILEO_REINSTALL" = "Вы уверены, что хотите переустановить Sileo?";
-"ZEBRA_REINSTALL" = "Вы уверены, что хотите переустановить Zebra?";
-"SILEO_INSTALL" = "Вы уверены, что хотите установить Sileo?";
-"ZEBRA_INSTALL" = "Вы уверены, что хотите установить Zebra?";
 "CLOSE_APP" = "Вы можете закрыть приложение.";
 "UNHID_ENV" = "Снять скрытие окружения";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Ошибка при установке bootstrap";
 "ERROR_DPKG" = "Не удалось установить пакеты";
 "ERROR_UICACHE" = "Не удалось запустить UICache";
-"ERROR_SILEO" = "Не удалось установить Sileo";
-"ERROR_ZEBRA" = "Не удалось установить Zebra";
 "ERROR_UNREGISTER" = "Не удалось снять регистрацию";
 "ERROR_REVERT" = "Не удалось удалить Jailbreak";
