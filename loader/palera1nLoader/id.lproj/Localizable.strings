@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Pasang";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Debug";
 "DIAGNOSTICS" = "Diagnostik";
 "ACTIONS" = "Tindakan";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Mengunduh Sistem Dasar";
-"DL_SILEO" = "Mengunduh Sileo";
-"DL_ZEBRA" = "Mengunduh Zebra";
 "DOWNLOADING" = "Mengunduh...";
 "INSTALLING" = "Memasang...";
 "DOWNLOAD_FAIL" = "Tidak dapat mengunduh berkas";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful tidak bisa menggunakan tombol ini :(";
 "PM_SUBTEXT" = "Pilih manajer paket favorit yang ingin Anda pasang, Sileo disarankan apabila anda seorang pemula.";
 "REVERT_WARNING" = "Menghapus /var/jb dan menghapus aplikasi jailbreak, setelah selesai perangkat akan menyala ulang ke dalam keadaan tidak terjailbreak.";
-"SILEO_REINSTALL" = "Anda yakin ingin memasang ulang Sileo?";
-"ZEBRA_REINSTALL" = "Anda yakin ingin memasang ulang Zebra?";
-"SILEO_INSTALL" = "Anda yakin ingin memasang Sileo?";
-"ZEBRA_INSTALL" = "Anda yakin ingin memasang Zebra?";
 "CLOSE_APP" = "Anda dapat menutup aplikasi ini.";
 "UNHID_ENV" = "Perlihatkan Jailbreak";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Gagal memasang bootstrap";
 "ERROR_DPKG" = "Gagal memasang paket";
 "ERROR_UICACHE" = "Gagal menjalankan UICache";
-"ERROR_SILEO" = "Gagal memasang Sileo";
-"ERROR_ZEBRA" = "Gagal memasang Zebra";
 "ERROR_UNREGISTER" = "Unregister gagal";
 "ERROR_REVERT" = "Gagal menghapus jailbreak";
