@@ -171,7 +171,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     @objc private func textFieldDidChange(_ textField: UITextField) {
         // Store the typed value
         if let newValue = textField.text {
-            log(msg: "\(newValue)")
+            log(msg: "[JSON EDITING] \(newValue)")
             envInfo.jsonURI = newValue
         }
     }

@@ -312,7 +312,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func fetchJSON() {
         guard let url = URL(string: "\(envInfo.jsonURI)") else {
-            log(type: .error, msg: "Invalid URL")
+            log(type: .error, msg: "Invalid JSON URL")
             self.showErrorCell(with: errorMessage)
             self.isLoading = false
             return
@@ -342,7 +342,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]
                 self.sectionTitles = [""]
                 
-                log(msg: "\(self.tableData)")
+                log(msg: "[JSON CELL DATA] \(self.tableData)")
                 
                 DispatchQueue.global().async {
                     let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
@@ -440,12 +440,14 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch (isLoading, isError, indexPath.section) {
         case (true, _, 0):
             let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
+            loadingCell.isUserInteractionEnabled = false
             loadingCell.startLoading()
             return loadingCell
             
         case (_, true, 0):
             let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath) as! ErrorCell
             errorCell.errorMessage = errorMessage
+            errorCell.isUserInteractionEnabled = false
             errorCell.retryAction = { [weak self] in
                 self?.retryFetchJSON()
             }
@@ -517,7 +519,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
 
-            log(msg: "\(getCellInfo(envInfo.jsonInfo!)!.paths)")
+            log(msg: "[JSON PATH DATA] \(getCellInfo(envInfo.jsonInfo!)!.paths)")
             
             switch row {
             case 0..<filePaths.count:
@@ -541,7 +543,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
                 let lowercaseName = name.lowercased()
                 
-                log(msg: "\(filePath) exists? \(exists).")
+                log(msg: "[JSON PATH DATA] \(filePath) exists? \(exists).")
                 
                 switch true {
                 case procursusStrappedExists:
