@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installera";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Felsök";
 "DIAGNOSTICS" = "Diagnostik";
 "ACTIONS" = "Åtgärder";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Hämtar bassystem";
-"DL_SILEO" = "Hämtar Sileo";
-"DL_ZEBRA" = "Hämtar Zebra";
 "DOWNLOADING" = "Hämtar...";
 "INSTALLING" = "Installerar...";
 "DOWNLOAD_FAIL" = "Kunde inte hämta fil";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Tillgång till root kan inte använda denna knapp :(";
 "PM_SUBTEXT" = "Välj din favoritpakethanterare här som du vill installera, Sileo rekommenderas om du är ny.";
 "REVERT_WARNING" = "Rensar /var/jb och avregistrerar jailbreak-applikationer, efter processen startas enheten om i en ej jailbreakad stat.";
-"SILEO_REINSTALL" = "Är du säker på att du vill installera om Sileo?";
-"ZEBRA_REINSTALL" = "Är du säker på att du vill installera om Zebra?";
-"SILEO_INSTALL" = "Är du säker på att du vill installera Sileo?";
-"ZEBRA_INSTALL" = "Är du säker på att du vill installera Zebra?";
 "CLOSE_APP" = "Du kan stänga applikationen.";
 "UNHID_ENV" = "Jailbreak är inte längre gömd";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Fel vid installation av bootstrap";
 "ERROR_DPKG" = "Paketinstallation misslyckades";
 "ERROR_UICACHE" = "Körning av UICache misslyckades";
-"ERROR_SILEO" = "Installation av Sileo misslyckades";
-"ERROR_ZEBRA" = "Installation av Zebra misslyckades";
 "ERROR_UNREGISTER" = "Avregistrering misslyckades";
 "ERROR_REVERT" = "Borttagning av jailbreak misslyckades";
