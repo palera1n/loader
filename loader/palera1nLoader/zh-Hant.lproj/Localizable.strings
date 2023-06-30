@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "安裝";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "除錯";
 "DIAGNOSTICS" = "診斷";
 "ACTIONS" = "動作";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "正在下載底層越獄檔案";
-"DL_SILEO" = "正在下載Sileo";
-"DL_ZEBRA" = "正在下載Zebra";
 "DOWNLOADING" = "下載中⋯⋯";
 "INSTALLING" = "安裝中⋯⋯";
 "DOWNLOAD_FAIL" = "無法下載檔案";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "這個按鈕不能在有根上使用";
 "PM_SUBTEXT" = "在這裏選擇你最喜愛的套件包管理器，建議新手使用Sileo。:)";
 "REVERT_WARNING" = "移除 /var/jb 及取消注冊越獄應用程式，然後重啟到末越獄狀態。";
-"SILEO_REINSTALL" = "你確定你要重新安裝Sileo嗎？";
-"ZEBRA_REINSTALL" = "你確定你要重新安裝Zebra嗎？";
-"SILEO_INSTALL" = "你確定你想安裝Sileo嗎？";
-"ZEBRA_INSTALL" = "你確定你想安裝Zebra嗎？";
 "CLOSE_APP" = "你現在可關閉這個應用程式。";
 "UNHID_ENV" = "取消隱藏環境";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "安裝底層越獄檔案時發生錯誤。";
 "ERROR_DPKG" = "套件安裝失敗";
 "ERROR_UICACHE" = "重建圖示快取失敗";
-"ERROR_SILEO" = "安裝Sileo失敗";
-"ERROR_ZEBRA" = "安裝Zebra失敗";
 "ERROR_UNREGISTER" = "取消註冊失敗";
 "ERROR_REVERT" = "移除越獄失敗";
