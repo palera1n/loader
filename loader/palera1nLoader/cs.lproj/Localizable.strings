@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Nainstalovat";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Debug";
 "DIAGNOSTICS" = "Diagnostika";
 "ACTIONS" = "Akce";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Stahování Base Systému";
-"DL_SILEO" = "Stahování Silea";
-"DL_ZEBRA" = "Stahování Zebry";
 "DOWNLOADING" = "Stahování...";
 "INSTALLING" = "Instalování...";
 "DOWNLOAD_FAIL" = "Stahování souboru selhalo";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful toto tlačítko nemůže použít :(";
 "PM_SUBTEXT" = "Vyberte si svůj oblíbený správce balíčků, který chcete nainstalovat. Sileo je doporučeno pro nováčky.";
 "REVERT_WARNING" = "Vymaže /var/jb, odregistruje jailbreak aplikace a po dokončení zrestartuje zařízení do původního stavu před jailbreakem.";
-"SILEO_REINSTALL" = "Opravdu chcete reinstalovat Sileo?";
-"ZEBRA_REINSTALL" = "Opravdu chcete reinstalovat Zebru?";
-"SILEO_INSTALL" = "Opravdu chcete nainstalovat Sileo?";
-"ZEBRA_INSTALL" = "Opravdu chcete nainstalovat Zebru?";
 "CLOSE_APP" = "Můžete zavřít aplikaci.";
 "UNHID_ENV" = "Odkrýt prostředí";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Chyba při instalaci bootstrapu";
 "ERROR_DPKG" = "Instalace balíčku se nezdařila";
 "ERROR_UICACHE" = "Spuštění UICache se nezdařilo";
-"ERROR_SILEO" = "Instalace Silea selhala";
-"ERROR_ZEBRA" = "Instalace Zebry selhala";
 "ERROR_UNREGISTER" = "Zrušení registrace selhalo";
 "ERROR_REVERT" = "Odstranění jailbreaku selhalo";
