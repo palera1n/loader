@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Inštalovať";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Debug";
 "DIAGNOSTICS" = "Diagnostiky";
 "ACTIONS" = "Akcie";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Sťahovanie základného systému";
-"DL_SILEO" = "Sťahovanie Sileo";
-"DL_ZEBRA" = "Sťahovanie Zebra";
 "DOWNLOADING" = "Sťahuje sa...";
 "INSTALLING" = "Inštalácia...";
 "DOWNLOAD_FAIL" = "Nie je možné načítať súbor";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful nemôže používať toto tlačidlo :(";
 "PM_SUBTEXT" = "Tu vyberte svojho obľúbeného správcu balíkov, ktorý chcete nainštalovať, ak ste nováčik, odporúčame použiť Sileo.";
 "REVERT_WARNING" = "Vymaže /var/jb a odregistruje aplikácie jailbreaku, po jeho dokončení sa zariadenie reštartuje do stavu bez jailbreaku.";
-"SILEO_REINSTALL" = "Ste si istí, že chcete znovu nainštalovať Sileo?";
-"ZEBRA_REINSTALL" = "Ste si istí, že chcete znovu nainštalovať Zebra?";
-"SILEO_INSTALL" = "Ste si istí, že chcete inštalovať Sileo?";
-"ZEBRA_INSTALL" = "Ste si istí, že chcete inštalovať Zebra?";
 "CLOSE_APP" = "Môžete zatvoriť aplikáciu.";
 "UNHID_ENV" = "Odkrylo sa prostredie";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Nepodarilo sa nainštalovať bootstrap";
 "ERROR_DPKG" = "Nepodarilo sa nainštalovať balíky";
 "ERROR_UICACHE" = "Nepodarilo sa spustiť UICache";
-"ERROR_SILEO" = "Nepodarilo sa nainštalovať Sileo";
-"ERROR_ZEBRA" = "Nepodarilo sa nainštalovať Zebra";
 "ERROR_UNREGISTER" = "Nepodarilo sa odregistrovať";
 "ERROR_REVERT" = "Nepodarilo sa odstrániť jailbreak";
