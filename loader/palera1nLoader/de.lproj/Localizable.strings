@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installieren";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Debug";
 "DIAGNOSTICS" = "Diagnose";
 "ACTIONS" = "Aktionen";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Basis-System herunterladen";
-"DL_SILEO" = "Sileo herunterladen";
-"DL_ZEBRA" = "Zebra herunterladen";
 "DOWNLOADING" = "Herunterladen...";
 "INSTALLING" = "Installiere...";
 "DOWNLOAD_FAIL" = "Datei kann nicht abgerufen werden";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful kann diesen Knopf nicht verwenden :(";
 "PM_SUBTEXT" = "Wählen Sie hier Ihren bevorzugten Paketmanager aus, den Sie installieren möchten. Sileo wird empfohlen, falls Sie neu sind.";
 "REVERT_WARNING" = "Löscht /var/jb und meldet Jailbreak-Anwendungen ab. Nach Abschluss wird das Gerät in einen nicht-gejailbreakten Zustand neu starten.";
-"SILEO_REINSTALL" = "Sind Sie sicher, dass Sie Sileo neu installieren möchten?";
-"ZEBRA_REINSTALL" = "Sind Sie sicher, dass Sie Zebra neu installieren möchten?";
-"SILEO_INSTALL" = "Sind Sie sicher, dass Sie Sileo installieren möchten?";
-"ZEBRA_INSTALL" = "Sind Sie sicher, dass Sie Zebra installieren möchten?";
 "CLOSE_APP" = "Du kannst die App schließen.";
 "UNHID_ENV" = "Umgebung sichtbar gemacht";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Fehler beim Installieren der Bootstrap";
 "ERROR_DPKG" = "Fehler beim Installieren der Pakete";
 "ERROR_UICACHE" = "Fehler beim Ausführen von UICache";
-"ERROR_SILEO" = "Fehler beim Installieren von Sileo";
-"ERROR_ZEBRA" = "Fehler beim Installieren von Zebra";
 "ERROR_UNREGISTER" = "Fehler beim Entfernen der Registrierung";
 "ERROR_REVERT" = "Fehler beim Entfernen des Jailbreaks";

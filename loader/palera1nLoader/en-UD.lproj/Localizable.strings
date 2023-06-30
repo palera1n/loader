@@ -7,8 +7,6 @@ English
 
 "INSTALL" = "ןןɐʇsuI";
 "SILEO" = "oǝlᴉS";
-"ZEBRA" = "ɐɹqǝZ";
-"DEBUG" = "ƃnqǝp";
 "DIAGNOSTICS" = "sɔᴉʇsouƃɐᴉp";
 "ACTIONS" = "suoᴉʇɔ∀";
 "JBINIT_LOG" = "ƃuᴉƃƃo˥";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "ɯǝʇsʎS ǝsɐq ƃuᴉpɐoluʍop";
-"DL_SILEO" = "oǝlᴉS ƃuᴉpɐoluʍop";
-"DL_ZEBRA" = "ɐɹqǝZ ƃuᴉpɐoluʍop";
 "DOWNLOADING" = "˙˙˙ƃuᴉpɐoluʍop";
 "INSTALLING" = "˙˙˙ƃuᴉllɐʇsuI";
 "DOWNLOAD_FAIL" = "ǝlᴉɟ ɥɔʇǝɟ oʇ ǝlqɐu∩";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "): uoʇʇnq sᴉɥʇ ǝsn ʇouuɐɔ lnɟʇooɹ";
 "PM_SUBTEXT" = "˙ʍǝu ǝɹ,noʎ ɟᴉ pǝpuǝɯɯoɔǝɹ sᴉ oǝlᴉS 'llɐʇsuᴉ oʇ ǝʞᴉl plnoʍ noʎ ʇɐɥʇ ǝɹǝɥ ɹǝƃɐuɐɯ ǝƃɐʞɔɐd ǝʇᴉɹoʌɐɟ ɹnoʎ ʇɔǝlǝS";
 "REVERT_WARNING" = "˙ǝʇɐʇs uǝʞoɹqlᴉɐɾun uɐ oʇuᴉ ʇooqǝɹ llᴉʍ ǝɔᴉʌǝp ǝɥʇ ǝuop sᴉ ʇᴉ ɹǝʇɟɐ 'suoᴉʇɐɔᴉlddɐ ʞɐǝɹqlᴉɐɾ sɹǝʇsᴉƃǝɹun puɐ qɾ/ɹɐʌ/ sǝdᴉM";
-"SILEO_REINSTALL" = "¿oǝlᴉS llɐʇsuᴉ-ǝɹ oʇ ʇuɐʍ noʎ ǝɹns noʎ ǝɹ∀";
-"ZEBRA_REINSTALL" = "¿ɐɹqǝZ llɐʇsuᴉ-ǝɹ oʇ ʇuɐʍ noʎ ǝɹns noʎ ǝɹ∀";
-"SILEO_INSTALL" = "¿oǝlᴉS llɐʇsuᴉ oʇ ʇuɐʍ noʎ ǝɹns noʎ ǝɹ∀";
-"ZEBRA_INSTALL" = "¿ɐɹqǝZ llɐʇsuᴉ oʇ ʇuɐʍ noʎ ǝɹns noʎ ǝɹ∀";
 "CLOSE_APP" = "˙ddɐ ǝɥʇ ǝsolɔ ʎɐɯ no⅄";
 "UNHID_ENV" = "ʇuǝɯuoɹᴉʌuǝ ǝɥʇ pᴉɥu∩";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "dɐɹʇsʇooq ƃuᴉllɐʇsuᴉ ɹoɹɹƎ";
 "ERROR_DPKG" = "sǝƃɐʞɔɐd llɐʇsuᴉ oʇ pǝlᴉɐℲ";
 "ERROR_UICACHE" = "ǝɥɔɐƆI∩ unɹ oʇ pǝlᴉɐℲ";
-"ERROR_SILEO" = "oǝlᴉS llɐʇsuᴉ oʇ pǝlᴉɐℲ";
-"ERROR_ZEBRA" = "ɐɹqǝZ llɐʇsuᴉ oʇ pǝlᴉɐℲ";
 "ERROR_UNREGISTER" = "ɹǝʇsᴉƃǝɹun oʇ pǝlᴉɐℲ";
 "ERROR_REVERT" = "ʞɐǝɹqlᴉɐɾ ǝʌoɯǝɹ oʇ pǝlᴉɐℲ";

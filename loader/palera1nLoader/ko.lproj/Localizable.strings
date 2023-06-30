@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "설치";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "디버그";
 "DIAGNOSTICS" = "특수 정보";
 "ACTIONS" = "액션";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "배이스 다운받는 중";
-"DL_SILEO" = "Sileo 다운로드 중";
-"DL_ZEBRA" = "Zebra 다운받는 중";
 "DOWNLOADING" = "다운받는 중...";
 "INSTALLING" = "설치 중...";
 "DOWNLOAD_FAIL" = "다운로드 실패";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful은 이 버트 사용 못 합니다 :(";
 "PM_SUBTEXT" = "좋아하시는 페키지 관리자를 고르시오, 처음이면 Sileo를 추천합니다.";
 "REVERT_WARNING" = "/var/jb를 지우고 제일브레이크 앱을 지운다. 끝난 후 제거된 상태로 제부팅 됩니다.";
-"SILEO_REINSTALL" = "Sileo를 제설치 하시고 싶습닏까?";
-"ZEBRA_REINSTALL" = "Zebra를 제설치 하시고 싶습닏까?";
-"SILEO_INSTALL" = "Sileo를 설치 하시고 싶습닏까?";
-"ZEBRA_INSTALL" = "Zebra를 설치 하시고 싶습닏까?";
 "CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
 "UNHID_ENV" = "더이상 제일브레이크 숨기지 않는다.";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "bootstrap 설치중 에러";
 "ERROR_DPKG" = "페키지 설치 실패";
 "ERROR_UICACHE" = "UICache실패";
-"ERROR_SILEO" = "Sileo 설치 실패";
-"ERROR_ZEBRA" = "Zebra 설치 실패";
 "ERROR_UNREGISTER" = "Unregister 실패";
 "ERROR_REVERT" = "제일브레이크 제거 실패";

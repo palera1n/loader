@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "INSTALL";
-"SILEO" = "SILEO";
-"ZEBRA" = "ZEBRA";
 "DEBUG" = "DEBUG";
 "DIAGNOSTICS" = "Diagnostix";
 "ACTIONS" = "Acshunz";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Downloadin Base Sistem";
-"DL_SILEO" = "Downloadin Sileo";
-"DL_ZEBRA" = "Downloadin Zebra";
 "DOWNLOADING" = "Downloadin...";
 "INSTALLING" = "Installin...";
 "DOWNLOAD_FAIL" = "Unable 2 fetch file";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful cannot use dis butn :((((";
 "PM_SUBTEXT" = "Select ur favorite package managr her dat u wud liek 2 install, Sileo iz recommendd if ure new.";
 "REVERT_WARNING" = "Wipez /var/jb an unregisters jailbrek applicashuns, aftr it is dun teh device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "R u sure you wants 2 re-install Sileo?";
-"ZEBRA_REINSTALL" = "R u sure you wants to re-install Zebra?";
-"SILEO_INSTALL" = "R u sure you wants to install Sileo?";
-"ZEBRA_INSTALL" = "R u sure you wants to install Zebra?";
 "CLOSE_APP" = "U cud close teh app.";
 "UNHID_ENV" = "Unhid teh environment";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Errorz installin bootstrap";
 "ERROR_DPKG" = "Faild 2 install packagez";
 "ERROR_UICACHE" = "Faild 2 run UICache";
-"ERROR_SILEO" = "Faild 2 install Sileo";
-"ERROR_ZEBRA" = "Faild 2 install Zebra";
 "ERROR_UNREGISTER" = "Faild 2 unregisterz";
 "ERROR_REVERT" = "Faild 2 remove jailbrek";

@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Telepítés";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Hibakeresés";
 "DIAGNOSTICS" = "Diagnosztika";
 "ACTIONS" = "Műveletek";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Az alaprendszer letöltése";
-"DL_SILEO" = "Sileo letöltése";
-"DL_ZEBRA" = "Zebra letöltése";
 "DOWNLOADING" = "Letöltés...";
 "INSTALLING" = "Telepítés...";
 "DOWNLOAD_FAIL" = "Nem sikerült lekérni a fájlt";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "A Gyökeres nem tudja használni ezt a gombot :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
 "REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"SILEO_REINSTALL" = "Are you sure you want to re-install Sileo?";
-"ZEBRA_REINSTALL" = "Are you sure you want to re-install Zebra?";
-"SILEO_INSTALL" = "Are you sure you want to install Sileo?";
-"ZEBRA_INSTALL" = "Are you sure you want to install Zebra?";
 "CLOSE_APP" = "You may close the app.";
 "UNHID_ENV" = "Unhid the environment";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Error installing bootstrap";
 "ERROR_DPKG" = "Failed to install packages";
 "ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_SILEO" = "Failed to install Sileo";
-"ERROR_ZEBRA" = "Failed to install Zebra";
 "ERROR_UNREGISTER" = "Failed to unregister";
 "ERROR_REVERT" = "Failed to remove jailbreak";

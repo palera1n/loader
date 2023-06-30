@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "インストール";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "デバッグ";
 "DIAGNOSTICS" = "診断";
 "ACTIONS" = "アクション";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Bootstrapをダウンロード中";
-"DL_SILEO" = "Sileoをダウンロード中";
-"DL_ZEBRA" = "Zebraをダウンロード中";
 "DOWNLOADING" = "ダウンロード中...";
 "INSTALLING" = "インストール中...";
 "DOWNLOAD_FAIL" = "ファイルをダウンロードできませんでした";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
 "PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
 "REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるjailbreak関連ファイルや、jailbreakアプリケーションなどは全て削除されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
-"SILEO_REINSTALL" = "本当にSileoを再インストールしてもよろしいですか？";
-"ZEBRA_REINSTALL" = "本当にZebraを再インストールしてもよろしいですか？";
-"SILEO_INSTALL" = "Sileoをインストールしてもよろしいですか？";
-"ZEBRA_INSTALL" = "Zebraをインストールしてもよろしいですか？";
 "CLOSE_APP" = "アプリを終了します。";
 "UNHID_ENV" = "環境を再表示";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Bootstrapのインストールに失敗しました";
 "ERROR_DPKG" = "パッケージのインストールに失敗しました";
 "ERROR_UICACHE" = "UICacheの実行に失敗しました";
-"ERROR_SILEO" = "Sileoのインストールに失敗しました";
-"ERROR_ZEBRA" = "Zebraのインストールに失敗しました";
 "ERROR_UNREGISTER" = "アプリケーションの登録解除に失敗しました。";
 "ERROR_REVERT" = "Jailbreak環境の削除に失敗しました。";

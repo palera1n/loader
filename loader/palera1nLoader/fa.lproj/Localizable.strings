@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "نصب";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "اشکال زدایی";
 "DIAGNOSTICS" = "تشخیص";
 "ACTIONS" = "اقدامات";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "دانلود Base System";
-"DL_SILEO" = "در حال دانلود Sileo";
-"DL_ZEBRA" = "در حال دانلود Zebra";
 "DOWNLOADING" = "در حال دانلود...";
 "INSTALLING" = "در حال نصب...";
 "DOWNLOAD_FAIL" = "Unable to fetch file";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful نمی تواند از این دکمه استفاده کند :(";
 "PM_SUBTEXT" = "مدیر بسته مورد علاقه خود را در اینجا انتخاب کنید که می خواهید نصب کنید، Sileo توصیه می شود اگر تازه‌کار هستید.";
 "REVERT_WARNING" = "/var/jb را پاک می‌کند و برنامه‌های جیلبریک را لغو ثبت می‌کند، پس از اتمام، دستگاه به حالت غیر جیلبریک راه‌اندازی مجدد می‌شود.";
-"SILEO_REINSTALL" = "آیا مطمئن هستید که می خواهید Sileo را دوباره نصب کنید?";
-"ZEBRA_REINSTALL" = "آیا مطمئن هستید که می خواهید Zebra را دوباره نصب کنید?";
-"SILEO_INSTALL" = "آیا مطمئن هستید که می خواهید Sileo را نصب کنید?";
-"ZEBRA_INSTALL" = "آیا مطمئن هستید که می خواهید Zebra را نصب کنید?";
 "CLOSE_APP" = "می توانید برنامه را ببندید.";
 "UNHID_ENV" = "محیط را آشکار کنید";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "خطا در نصب بوت استرپ";
 "ERROR_DPKG" = "بسته ها نصب نشد";
 "ERROR_UICACHE" = "UIcache اجرا نشد";
-"ERROR_SILEO" = "Sileo نصب نشد";
-"ERROR_ZEBRA" = "نصب Zebra انجام نشد";
 "ERROR_UNREGISTER" = "لغو ثبت نام انجام نشد";
 "ERROR_REVERT" = "جیلبریک حذف نشد";

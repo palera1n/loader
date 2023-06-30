@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "安装";
-"SILEO" = "Sileo";
-"ZEBRA" = "斑马";
 "DEBUG" = "调试";
 "DIAGNOSTICS" = "诊断";
 "ACTIONS" = "行动";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "正在下载基础系统";
-"DL_SILEO" = "正在下载Sileo";
-"DL_ZEBRA" = "正在下载Zebra";
 "DOWNLOADING" = "下载中...";
 "INSTALLING" = "正在安装...";
 "DOWNLOAD_FAIL" = "无法拿取文件";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful 不能使用此按钮 :(";
 "PM_SUBTEXT" = "在此选择您想要安装的软件包管理器。如果您是新手，建议使用 Sileo 。";
 "REVERT_WARNING" = "把 /var/jb 和取消注册越狱程式，装置会重新起动并入没有越狱的状态。";
-"SILEO_REINSTALL" = "您确定要重新安装 Sileo 吗？";
-"ZEBRA_REINSTALL" = "您确定要重新安装Zebra吗？";
-"SILEO_INSTALL" = "您确定要安装 Sileo 吗？";
-"ZEBRA_INSTALL" = "您确定要安装Zebra吗？";
 "CLOSE_APP" = "您可以关闭此程式。";
 "UNHID_ENV" = "解除隐藏环境";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "安装 bootstrap 时出错";
 "ERROR_DPKG" = "安装软件包失败";
 "ERROR_UICACHE" = "无法运行 UICache";
-"ERROR_SILEO" = "无法安装 Sileo";
-"ERROR_ZEBRA" = "无法安装 Zebra";
 "ERROR_UNREGISTER" = "取消注册失败";
 "ERROR_REVERT" = "移除越狱失败";

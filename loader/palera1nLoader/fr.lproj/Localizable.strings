@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installer";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Débogue";
 "DIAGNOSTICS" = "Diagnostiques";
 "ACTIONS" = "Actions";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Téléchargement du Système de Base";
-"DL_SILEO" = "Téléchargement de Sileo";
-"DL_ZEBRA" = "Téléchargement de Zebra";
 "DOWNLOADING" = "Téléchargement...";
 "INSTALLING" = "Installation...";
 "DOWNLOAD_FAIL" = "Impossible de récupérer les données";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Avec-racine ne peut pas utiliser ce bouton :(";
 "PM_SUBTEXT" = "Sélectionnez votre gestionnaire de paquets préféré. Sileo est recommandé pour les débutants.";
 "REVERT_WARNING" = "Cela supprimera /var/jb et désinscrira les applications du jailbreak. L'appareil se redémarrera sans jailbreak.";
-"SILEO_REINSTALL" = "Êtes-vous sûr de vouloir réinstaller Sileo?";
-"ZEBRA_REINSTALL" = "Êtes-vous sûr de vouloir réinstaller Zebra?";
-"SILEO_INSTALL" = "Êtes-vous sûr de vouloir installer Sileo?";
-"ZEBRA_INSTALL" = "Êtes-vous sûr de vouloir installer Zebra?";
 "CLOSE_APP" = "Vous pouvez fermer l'application.";
 "UNHID_ENV" = "Démasqué l'environnement";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Erreur lors de l'installation de l'amorce";
 "ERROR_DPKG" = "Installation de paquets échouée";
 "ERROR_UICACHE" = "Impossible d'exécuter UICache";
-"ERROR_SILEO" = "Impossible d'installer Sileo";
-"ERROR_ZEBRA" = "Impossible d'installer Zebra";
 "ERROR_UNREGISTER" = "Échec de la désinscription";
 "ERROR_REVERT" = "Impossible de supprimer le jailbreak";

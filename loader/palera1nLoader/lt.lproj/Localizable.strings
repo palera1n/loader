@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Įdiegti";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Derinti";
 "DIAGNOSTICS" = "Diagnostika";
 "ACTIONS" = "Veiksmai";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Bazinė sistema siunčiama";
-"DL_SILEO" = "Sileo atsiunčiamas";
-"DL_ZEBRA" = "Zebra atsiunčiamas";
 "DOWNLOADING" = "Atsiunčiama...";
 "INSTALLING" = "Įdiegiama...";
 "DOWNLOAD_FAIL" = "Nepavyksta parsisiųsti failo";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful negali naudoti šio mygtuko :(";
 "PM_SUBTEXT" = "Pasirinkite mėgstamą paketų tvarkyklę, kurią norite įdiegti, jei esate naujokas, rekomenduojama naudoti Sileo.";
 "REVERT_WARNING" = "Ištrina /var/jb ir išregistruoja jailbreak programas, po to įrenginys bus perkrautas į ne jailbreak būseną.";
-"SILEO_REINSTALL" = "Ar tikrai norite iš naujo įdiegti Sileo?";
-"ZEBRA_REINSTALL" = "Ar tikrai norite iš naujo įdiegti Zebra?";
-"SILEO_INSTALL" = "Ar tikrai norite įdiegti Sileo?";
-"ZEBRA_INSTALL" = "Ar tikrai norite įdiegti Zebra?";
 "CLOSE_APP" = "Galite uždaryti programą.";
 "UNHID_ENV" = "Neslėpti aplinkos";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Klaida diegiant bootstrap";
 "ERROR_DPKG" = "Nepavyko įdiegti paketų";
 "ERROR_UICACHE" = "Nepavyko paleisti UICache";
-"ERROR_SILEO" = "Nepavyko įdiegti Sileo";
-"ERROR_ZEBRA" = "Nepavyko įdiegti Zebra";
 "ERROR_UNREGISTER" = "Nepavyko išregistruoti";
 "ERROR_REVERT" = "Nepavyko pašalinti jailbreak";

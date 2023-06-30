@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Yükle";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Hata Ayıklama";
 "DIAGNOSTICS" = "Jailbreak Bilgileri";
 "ACTIONS" = "İşlemler";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Ana Sistem İndiriliyor";
-"DL_SILEO" = "Sileo İndiriliyor";
-"DL_ZEBRA" = "Zebra İndiriliyor";
 "DOWNLOADING" = "İndiriliyor...";
 "INSTALLING" = "Yükleniyor...";
 "DOWNLOAD_FAIL" = "Dosya alınamıyor";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootlu kullanıcılar bu tuşu kullanamazlar :(";
 "PM_SUBTEXT" = "Yüklemek istediğiniz paket yöneticisini buradan seçin. Yeni kullanıcılara Sileo önerilir.";
 "REVERT_WARNING" = "/var/jb'yi kaldırır ve jailbreak uygulamalarının kaydını siler. Her şey bittikten sonra cihazınız jailbreaksiz bir şekilde yeniden başlar.";
-"SILEO_REINSTALL" = "Sileo'yu yeniden yüklemek istediğinizden emin misiniz?";
-"ZEBRA_REINSTALL" = "Zebra'yı yeniden yüklemek istediğinizden emin misiniz?";
-"SILEO_INSTALL" = "Sileo'yu yüklemek istediğinizden emin misiniz?";
-"ZEBRA_INSTALL" = "Zebra'yı yüklemek istediğinizden emin misiniz?";
 "CLOSE_APP" = "Uygulamayı kapatabilirsiniz.";
 "UNHID_ENV" = "Çevreyi Gizli Durumdan Çıkar";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Jailbreak dosyaları dağıtılamadı";
 "ERROR_DPKG" = "Paketler yüklenemedi";
 "ERROR_UICACHE" = "UICache çalıştırılamadı";
-"ERROR_SILEO" = "Sileo yüklenemedi";
-"ERROR_ZEBRA" = "Zebra yüklenemedi";
 "ERROR_UNREGISTER" = "Kayıt silme başarısız oldu";
 "ERROR_REVERT" = "Jailbreak kaldırılamadı";

@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "تصحيح";
 "DIAGNOSTICS" = "تشخيص";
 "ACTIONS" = "إجراءات";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "تنزيل النظام الأساسي";
-"DL_SILEO" = "جارِ تنزيل Sileo";
-"DL_ZEBRA" = "جارِ تنزيل Zebra";
 "DOWNLOADING" = "جارِ التنزيل...";
 "INSTALLING" = "جارِ التثبيت...";
 "DOWNLOAD_FAIL" = "غير قادر على جلب الملف";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "لا يمكن استخدام هذا الزر مع Rootful ):";
 "PM_SUBTEXT" = "اختر مدير الحزم المفضل لديك هنا الذي ترغب في تثبيته، يُنصح باستخدام Sileo إذا كنت جديدًا.";
 "REVERT_WARNING" = "يقوم بمسح /var/jb وإلغاء تسجيل تطبيقات الجيلبريك، بعد الانتهاء سيتم إعادة تشغيل الجهاز إلى وضع بدون جيلبريك.";
-"SILEO_REINSTALL" = "هل أنت متأكد من رغبتك في إعادة تثبيت Sileo؟";
-"ZEBRA_REINSTALL" = "هل أنت متأكد من رغبتك في إعادة تثبيت Zebra؟";
-"SILEO_INSTALL" = "هل أنت متأكد من رغبتك في تثبيت Sileo؟";
-"ZEBRA_INSTALL" = "هل أنت متأكد من رغبتك في تثبيت Zebra؟";
 "CLOSE_APP" = "يمكنك إغلاق التطبيق.";
 "UNHID_ENV" = "إلغاء إخفاء البيئة";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "خطأ في تثبيت التمهيد";
 "ERROR_DPKG" = "فشل تثبيت الحزم";
 "ERROR_UICACHE" = "فشل تشغيل UICache";
-"ERROR_SILEO" = "فشل تثبيت Sileo";
-"ERROR_ZEBRA" = "فشل تثبيت Zebra";
 "ERROR_UNREGISTER" = "فشل إلغاء التسجيل";
 "ERROR_REVERT" = "فشل إزالة الجيلبريك";

@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Instal·lar";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Depuració";
 "DIAGNOSTICS" = "Diagnòstics";
 "ACTIONS" = "Accions";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Descarregant Sistema Base";
-"DL_SILEO" = "Descarregant Sileo";
-"DL_ZEBRA" = "Descarregant Zebra";
 "DOWNLOADING" = "Descarregant...";
 "INSTALLING" = "Instal·lant...";
 "DOWNLOAD_FAIL" = "No s'ha pogut obtenir el fitxer";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful no pot utilitzar aquest botó :(";
 "PM_SUBTEXT" = "Escull el teu gestor de paquets preferit que vols instal·lar. Sileo és recomanat si ets nou.";
 "REVERT_WARNING" = "Borra /var/jb i desregistra aplicacions del jailbreak, després d'acabar el dispositiu es reiniciarà a un estat sense jailbreak.";
-"SILEO_REINSTALL" = "Estàs segur que vols reinstal·lar Sileo?";
-"ZEBRA_REINSTALL" = "Estàs segur que vols reinstal·lar Zebra?";
-"SILEO_INSTALL" = "Estàs segur que vols instal·lar Sileo?";
-"ZEBRA_INSTALL" = "Estàs segur que vols instal·lar Zebra?";
 "CLOSE_APP" = "Pots tancar l'aplicació.";
 "UNHID_ENV" = "Mostra l'entorn";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Error en instal·lar el bootstrap";
 "ERROR_DPKG" = "No s'han pogut instal·lar els paquets";
 "ERROR_UICACHE" = "No s'ha pogut executar UICache";
-"ERROR_SILEO" = "No s'ha pogut instal·lar Sileo";
-"ERROR_ZEBRA" = "No s'ha pogut instal·lar Zebra";
 "ERROR_UNREGISTER" = "Error en cancel·lar el registre";
 "ERROR_REVERT" = "No s'ha pogut eliminar el jailbreak";

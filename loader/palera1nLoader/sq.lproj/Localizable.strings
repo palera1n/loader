@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Instalo";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Debugim";
 "DIAGNOSTICS" = "Diagnostika";
 "ACTIONS" = "Aksione";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Downloading Base System";
-"DL_SILEO" = "Sileo eshte duke u shkarkuar";
-"DL_ZEBRA" = "Zebra eshte duke u shkarkuar";
 "DOWNLOADING" = "Duke u shkarkuar...";
 "INSTALLING" = "Duke u instaluar...";
 "DOWNLOAD_FAIL" = "Unable to fetch file";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Jailbreaku rootful nuk e perdor dot kete buton";
 "PM_SUBTEXT" = "Zgjidhni manaxhuesin e packageve qe doni te instaloni, Sileo eshte i rekomanduar nese je i ri.";
 "REVERT_WARNING" = "Fshin /var/jb dhe çregjistron aplikacionet e jailbreak-it, pasi të përfundojë pajisja do të rindizet në një gjendje të pa jailbreak-uar.";
-"SILEO_REINSTALL" = "A ini te sigurt qe doni ta reinstaloni Sileo-n?";
-"ZEBRA_REINSTALL" = "A ini te sigurt qe doni ta reinstaloni Zebra-n?";
-"SILEO_INSTALL" = "A ini te sigurt qe doni te instaloni Sileo-n?";
-"ZEBRA_INSTALL" = "A ini te sigurt qe doni te instaloni Zebra-n?";
 "CLOSE_APP" = "Ju mund ta mbyllni aplikacionin.";
 "UNHID_ENV" = "Tregoje enviromentin";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Ndodhi nje gabim gjate instalimit te bootstrap-it";
 "ERROR_DPKG" = "Nuk u instaluan dot paketat";
 "ERROR_UICACHE" = "UICache nuk u ekzekutua dot";
-"ERROR_SILEO" = "Instalimi i Sileo-s dështoi";
-"ERROR_ZEBRA" = "Instalimi i Zebra-s dështoi";
 "ERROR_UNREGISTER" = "Çregjistrimi dështoi";
 "ERROR_REVERT" = "Heqja e jailbreak-ut dështoi";

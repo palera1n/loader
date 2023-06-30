@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Instalar";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Depurar";
 "DIAGNOSTICS" = "Diagnósticos";
 "ACTIONS" = "Ações";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Baixando o Sistema Base";
-"DL_SILEO" = "Baixando o Sileo";
-"DL_ZEBRA" = "Baixando o Zebra";
 "DOWNLOADING" = "Baixando...";
 "INSTALLING" = "Instalando...";
 "DOWNLOAD_FAIL" = "Falha ao baixar o arquivo";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful não pode usar este botão :(";
 "PM_SUBTEXT" = "Selecione o gerenciador de pacotes que você gostaria de instalar, o Sileo é recomendado para novatos.";
 "REVERT_WARNING" = "Limpar /var/jb e desregistrar os apps de Jailbreak. Após concluído, o dispositivo reiniciará em um estado unjailbroken -- sem Jailbreak.";
-"SILEO_REINSTALL" = "Certeza que deseja reinstalar o Sileo?";
-"ZEBRA_REINSTALL" = "Certeza que deseja reinstalar o Zebra?";
-"SILEO_INSTALL" = "Certeza que deseja instalar o Sileo?";
-"ZEBRA_INSTALL" = "Certeza que deseja instalar o Zebra?";
 "CLOSE_APP" = "Você pode fechar o app.";
 "UNHID_ENV" = "Exiba o ambiente";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Erro ao instalar o boostrap";
 "ERROR_DPKG" = "Falha ao instalar o pacote";
 "ERROR_UICACHE" = "Falha ao executar UICache";
-"ERROR_SILEO" = "Falha ao instalar o Sileo";
-"ERROR_ZEBRA" = "Falha ao instalar Zebra";
 "ERROR_UNREGISTER" = "Falha ao cancelar o registo";
 "ERROR_REVERT" = "Falha ao remover o Jailbreak";
