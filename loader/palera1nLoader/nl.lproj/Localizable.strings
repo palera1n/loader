@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installeren";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Debuggen";
 "DIAGNOSTICS" = "Diagnostiek";
 "ACTIONS" = "Acties";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Base Systeem downloaden";
-"DL_SILEO" = "Sileo downloaden";
-"DL_ZEBRA" = "Zebra downloaden";
 "DOWNLOADING" = "Downloaden...";
 "INSTALLING" = "Installeren...";
 "DOWNLOAD_FAIL" = "Kan bestand niet ophalen";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful kan deze knop niet gebruiken :(";
 "PM_SUBTEXT" = "Selecteer je favoriete pakketbeheerder die je wilt installeren. Sileo wordt aanbevolen als je nieuw bent.";
 "REVERT_WARNING" = "Wist /var/jb en wist jailbreak-toepassingen uit, nadat dit is voltooid zal het apparaat opnieuw opstarten naar een niet-gejailbreakte staat.";
-"SILEO_REINSTALL" = "Weet u zeker dat u Sileo opnieuw wilt installeren?";
-"ZEBRA_REINSTALL" = "Weet u zeker dat u Zebra opnieuw wilt installeren?";
-"SILEO_INSTALL" = "Weet u zeker dat u Sileo wilt installeren?";
-"ZEBRA_INSTALL" = "Weet u zeker dat u Zebra wilt installeren?";
 "CLOSE_APP" = "U kunt de app sluiten.";
 "UNHID_ENV" = "Omgeving zichtbaar gemaakt";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Fout bij installeren bootstrap";
 "ERROR_DPKG" = "Het installeren van pakketten is mislukt";
 "ERROR_UICACHE" = "UICache uitvoeren mislukt";
-"ERROR_SILEO" = "Installatie van Sileo is mislukt";
-"ERROR_ZEBRA" = "Installatie van Zebra is mislukt";
 "ERROR_UNREGISTER" = "Uitschrijven mislukt";
 "ERROR_REVERT" = "Verwijderen van jailbreak is mislukt";
