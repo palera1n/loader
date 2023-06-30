@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Cài đặt";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Sửa lỗi";
 "DIAGNOSTICS" = "Chuẩn đoán";
 "ACTIONS" = "Các chức năng";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Đang tải xuống tệp tin hệ thống";
-"DL_SILEO" = "Đang tải xuống Sileo";
-"DL_ZEBRA" = "Đang tải xuống Zebra";
 "DOWNLOADING" = "Đang tải xuống...";
 "INSTALLING" = "Đang cài đặt...";
 "DOWNLOAD_FAIL" = "Không thể tìm tệp";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Rootful không thể sử dụng chức năng này :(";
 "PM_SUBTEXT" = "Chọn trình quản lý gói yêu thích của bạn tại đây mà bạn muốn cài đặt, Sileo được khuyến nghị nếu bạn là người mới.";
 "REVERT_WARNING" = "Xóa /var/jb và hủy đăng ký các ứng dụng bẻ khóa, sau khi hoàn tất, thiết bị sẽ khởi động lại ở trạng thái chưa bẻ khóa.";
-"SILEO_REINSTALL" = "Bạn có chắc chắn muốn cài đặt lại Sileo không?";
-"ZEBRA_REINSTALL" = "Bạn có chắc chắn muốn cài đặt lại Zebra không?";
-"SILEO_INSTALL" = "Bạn có chắc chắn muốn cài đặt Sileo?";
-"ZEBRA_INSTALL" = "Bạn có chắc chắn muốn cài đặt Zebra không?";
 "CLOSE_APP" = "Bạn có thể đóng ứng dụng.";
 "UNHID_ENV" = "Bỏ ẩn môi trường";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Lỗi cài đặt bootstrap";
 "ERROR_DPKG" = "Không thể cài đặt các gói";
 "ERROR_UICACHE" = "Không thể chạy UICache";
-"ERROR_SILEO" = "Không thể cài đặt Sileo";
-"ERROR_ZEBRA" = "Không thể cài đặt Zebra";
 "ERROR_UNREGISTER" = "Hủy đăng ký không thành công";
 "ERROR_REVERT" = "Không thể xóa bản bẻ khóa";
