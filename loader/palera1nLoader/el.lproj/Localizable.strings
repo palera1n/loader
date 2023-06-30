@@ -6,8 +6,6 @@ English
 // ViewController Cells
 
 "INSTALL" = "Εγκατάσταση";
-"SILEO" = "Sileo";
-"ZEBRA" = "Zebra";
 "DEBUG" = "Εντοπισμός σφαλμάτων";
 "DIAGNOSTICS" = "Διαγνωστικά";
 "ACTIONS" = "Ενέργειες";
@@ -85,8 +83,6 @@ English
 
 // DL / BS
 "DL_STRAP" = "Λήψη Βασικού Συστήματος";
-"DL_SILEO" = "Λήψη Sileo";
-"DL_ZEBRA" = "Λήψη Zebra";
 "DOWNLOADING" = "Λήψη...";
 "INSTALLING" = "Εγκατάσταση...";
 "DOWNLOAD_FAIL" = "Αποτυχία στην ανάκτηση αρχείου";
@@ -114,10 +110,6 @@ English
 "REVERT_SUBTEXT" = "Δεν γίνεται η χρήση αυτής της επιλογής σε rootful :(";
 "PM_SUBTEXT" = "Διάλεξε το αγαπημένο σου package manager που θα ήθελες να εγκαταστήσεις, προτείνουμε το Sileo αν είσαι νέος/νέα στο jailbreak.";
 "REVERT_WARNING" = "Διαγράφει το /var/jb και καταργεί τις εφαρμογές jailbreak. Όταν ολοκληρωθεί, η συσκευή θα κάνει επανεκκίνηση σε unjailbroken κατάσταση.";
-"SILEO_REINSTALL" = "Σίγουρα θέλεις να επανεγκαταστήσεις το Sileo?";
-"ZEBRA_REINSTALL" = "Σίγουρα θέλεις να επανεγκαταστήσεις το Zebra?";
-"SILEO_INSTALL" = "Σίγουρα θέλεις να εγκαταστήσεις το Sileo?";
-"ZEBRA_INSTALL" = "Σίγουρα θέλεις να εγκαταστήσεις το Zebra?";
 "CLOSE_APP" = "Μπορείς πλέον να κλείσεις την εφαρμογή.";
 "UNHID_ENV" = "Επανεμφάνιση περιβάλλοντος";
 
@@ -126,7 +118,5 @@ English
 "ERROR_STRAP" = "Σφάλμα κατά την εγκατάσταση του bootstrap";
 "ERROR_DPKG" = "Αποτυχία εγκατάστασης πακέτων";
 "ERROR_UICACHE" = "Αποτυχία εκτέλεσης UICache";
-"ERROR_SILEO" = "Αποτυχία εγκατάστασης Sileo";
-"ERROR_ZEBRA" = "Αποτυχία εγκατάστασης του Zebra";
 "ERROR_UNREGISTER" = "Αποτυχία κατάργησης";
 "ERROR_REVERT" = "Αποτυχία κατάργησης jailbreak";
