@@ -37,11 +37,11 @@ English
 "LOG_CLEAR" = "Effacer les journaux";
 
 // Debug
-"DEBUG_CELL" = "Débogue";
+"DEBUG_CELL" = "Déboguer";
 "DEBUG_OPTIONS" = "Options";
 "DEBUG_CLEAN_FAKEFS" = "Nettoyer fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Quitter mode sans échec";
-"DEBUG_ENTER_SAFEMODE" = "Activer mode sans échec";
+"DEBUG_EXIT_SAFEMODE" = "Quitter le mode sans échec";
+"DEBUG_ENTER_SAFEMODE" = "Activer le mode sans échec";
 
 // Diags
 "DEVICE_MODEL" = "Modèle de l'appareil:";
@@ -54,8 +54,8 @@ English
 "ARCH_INFO" = "Architecture";
 "VERSION_INFO" = "Version";
 "STRAP_INFO" = "Environnement";
-"STRAP_FR_PREFIX" = "Préfixe de fakeroot";
-"STRAP_FR_PATH" = "Location de fakeroot";
+"STRAP_FR_PREFIX" = "Préfixe du fakeroot";
+"STRAP_FR_PATH" = "Emplacement du fakeroot";
 "OPEN_FILZA" = "Ouvrir dans Filza";
 "OPEN_SANTANDER" = "Ouvrir dans Santander";
 "COPY" = "Copier";
@@ -69,15 +69,15 @@ English
 
 "TRUE" = "Oui";
 "FALSE" = "Non";
-"ROOTFUL" = "Avec racine";
-"ROOTLESS" = "Sans racine";
+"ROOTFUL" = "Rootful";
+"ROOTLESS" = "Rootless";
 "CANCEL" = "Annuler";
 "CONFIRM" = "Confirmer";
 "CLOSE" = "Fermer";
 "PROCEED" = "Continuer";
 "NO_PROCEED" = "Impossible de continuer";
-"NO_PROCEED_SIDELOADING" = "Chargement latéral non pris en charge.";
-"NO_PROCEED_FR" = "Après avoir utilisé --force-revert, vous devriez redémarrer et jailbreak votre appareil de nouveau pour installer l'amorce.";
+"NO_PROCEED_SIDELOADING" = "Sideloading non pris en charge.";
+"NO_PROCEED_FR" = "Après avoir utilisé --force-revert, vous devriez redémarrer et jailbreak votre appareil de nouveau pour installer le bootstrap.";
 "SET" = "Définir";
 "TOO_LONG" = "Trop Long";
 
@@ -89,12 +89,12 @@ English
 "DOWNLOAD_ERROR" = "Erreur inconnue";
 "SAVE_FAIL" = "Impossible de copier des fichiers au disque";
 "DONE_INSTALL" = "Installation Terminée";
-"ERROR_INSTALL" = "Installation échouée";
+"ERROR_INSTALL" = "Échec de l'installation";
 "DONE_INSTALL_SUB" = "Vous pouvez fermer l'application.";
 "DONE_REVERT" = "Restauration complétée";
 "REMOVING" = "Suppression...";
 
-"PASSWORD" = "Pour utiliser des commandes comme \"sudo\" après appliquer le jailbreak, vous devrez définir un mot de passe du terminal. (Ne peut pas être vide)";
+"PASSWORD" = "Pour utiliser des commandes comme \"sudo\" après avoir jailbreak, vous devrez définir un mot de passe du terminal. (Ne peut pas être vide)";
 "PASSWORD_REPEAT" = "Répéter le mot de passe";
 "PASSWORD_SET" = "Définir le mot de passe";
 "PASSWORD_TEXT" = "Mot de passe";
@@ -104,19 +104,19 @@ English
 "ENJOY" = "Amusez-vous !";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Votre fakeroot est intacte lorsque /var/jb ne l'est pas. Cela va point /var/jb vers votre fakeroot. Vous devriez utiliser l'utilité UICache après la procédure.";
-"NOTICE_ROOTLESS" = "Vous ne pourrez pas utilise ce bouton si vous êtes sur un jailbreak avec racine.";
+"HIDDEN_NOTICE" = "Votre fakeroot est intacte lorsque /var/jb ne l'est pas. Cela va rediriger /var/jb vers votre fakeroot. Vous devriez utiliser l'outil UICache après la procédure.";
+"NOTICE_ROOTLESS" = "Vous ne pourrez pas utilise ce bouton si vous êtes sur un jailbreak non rootless.";
 "HIDE_NOTICE" = "Continuer supprimera le lien symbolique /var/jb et redémarrera l'appareil.";
-"REVERT_SUBTEXT" = "Avec-racine ne peut pas utiliser ce bouton :(";
+"REVERT_SUBTEXT" = "Sur rootful, vous ne pouvez pas utiliser ce bouton :(";
 "PM_SUBTEXT" = "Sélectionnez votre gestionnaire de paquets préféré. Sileo est recommandé pour les débutants.";
-"REVERT_WARNING" = "Cela supprimera /var/jb et désinscrira les applications du jailbreak. L'appareil se redémarrera sans jailbreak.";
+"REVERT_WARNING" = "Cela supprimera /var/jb et enlèvera les applications du jailbreak. L'appareil se redémarrera sans jailbreak.";
 "CLOSE_APP" = "Vous pouvez fermer l'application.";
 "UNHID_ENV" = "Démasqué l'environnement";
 
 // errors
 "STATUS" = "État";
 "ERROR_STRAP" = "Erreur lors de l'installation de l'amorce";
-"ERROR_DPKG" = "Installation de paquets échouée";
+"ERROR_DPKG" = "Échecs de l'installation de paquets";
 "ERROR_UICACHE" = "Impossible d'exécuter UICache";
 "ERROR_UNREGISTER" = "Échec de la désinscription";
 "ERROR_REVERT" = "Impossible de supprimer le jailbreak";
