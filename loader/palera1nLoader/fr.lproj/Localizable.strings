@@ -6,11 +6,11 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installer";
-"DEBUG" = "Débogue";
+"DEBUG" = "Déboguer";
 "DIAGNOSTICS" = "Diagnostiques";
 "ACTIONS" = "Actions";
 "JBINIT_LOG" = "Enregistrement";
-"REVERT_CELL" = "Restaurer l'installation";
+"REVERT_CELL" = "Annuler l'installation";
 
 // ActionsVC
 "HIDDEN" = "Environnement masqué";
@@ -19,9 +19,9 @@ English
 "OPENER_SILEO" = "Ouvrir Sileo";
 "OPENER_ZEBRA" = "Ouvrir Zebra";
 "OPENER_TH" = "Ouvrir TrollHelper";
-"UTIL_CELL" = "Utilités";
+"UTIL_CELL" = "Boîte à outils";
 "ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Redémarrer Userspace";
+"ACTION_USREBOOT" = "Redémarrer l'environnement utilisateur";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Lancer les Daemons";
 "ACTION_MOUNT" = "Monter les répertoires";
