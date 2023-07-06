@@ -5,27 +5,27 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostics";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"INSTALL" = "Installeer";
+"DEBUG" = "Ontfout";
+"DIAGNOSTICS" = "Diagnostiek";
+"ACTIONS" = "Aksies";
+"JBINIT_LOG" = "Tekening";
+"REVERT_CELL" = "Stel installeer terug";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
+"HIDDEN" = "Versteekte omgewing";
+"ACTION_HIDEJB" = "Versteek omgewing";
 "OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
+"OPENER_SILEO" = "Maak Sileo oop";
+"OPENER_ZEBRA" = "Maak Zebra oop";
+"OPENER_TH" = "Maak TrollHelper oop";
+"UTIL_CELL" = "Nutsprogramme";
 "ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
+"ACTION_USREBOOT" = "Gebruikersruimte Herlaai";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
+"ACTION_DAEMONS" = "Begin Daemons";
+"ACTION_MOUNT" = "Monteer Gidse";
+"ACTION_TWEAKS" = "Aktiveer Tweaks";
 "FR_SWITCH" = "Reboot on revert";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
 "OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
