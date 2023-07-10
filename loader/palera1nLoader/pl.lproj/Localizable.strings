@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Instaluj";
-"DEBUG" = "Debug";
+"DEBUG" = "Opcje Debugowania";
 "DIAGNOSTICS" = "Diagnostyka";
 "ACTIONS" = "Działania";
 "JBINIT_LOG" = "Logi";
@@ -14,7 +14,7 @@ English
 
 // ActionsVC
 "HIDDEN" = "Ukryte środowisko";
-"ACTION_HIDEJB" = "Chowaj środowisko";
+"ACTION_HIDEJB" = "Ukryj środowisko";
 "OPEN_CELL" = "Otwieracze";
 "OPENER_SILEO" = "Otwórz Sileo";
 "OPENER_ZEBRA" = "Otwórz Zebra";
