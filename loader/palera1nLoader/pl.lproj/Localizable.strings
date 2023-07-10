@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Ukryte środowisko";
 "ACTION_HIDEJB" = "Ukryj środowisko";
-"OPEN_CELL" = "Otwieracze";
+"OPEN_CELL" = "Otwórz";
 "OPENER_SILEO" = "Otwórz Sileo";
 "OPENER_ZEBRA" = "Otwórz Zebra";
 "OPENER_TH" = "Otwórz TrollHelper";
@@ -25,16 +25,16 @@ English
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Uruchom daemony";
 "ACTION_MOUNT" = "Zamontuj katalogi";
-"ACTION_TWEAKS" = "Włącz modyfikacje";
+"ACTION_TWEAKS" = "Włącz tweaki";
 "FR_SWITCH" = "Rebootuj po przywróceniu";
 "ACTION_MOUNT_SUBTEXT" = "\"Zamontuj Katalogi” próbuje jedynie zamontować partycje root i preboot jako odczyt/zapis.";
 "OPENER_SUBTEXT" = "Podczas korzystania z narzędzia palera1n na iPad zdarzają się sytuacje, gdy konieczne jest użycie tych czynności, aby otworzyć zainstalowane aplikacje, gdy nie pojawiają się one na ekranie głównym.";
 
 // Logging View
-"LOG_CELL" = "Dzienniki";
-"LOG_CELL_VIEW" = "Przeglądaj Dziennik";
+"LOG_CELL" = "Logi";
+"LOG_CELL_VIEW" = "Zobacz logi";
 "NONE" = "Żaden";
-"LOG_CLEAR" = "Wyczyść Dzienniki";
+"LOG_CLEAR" = "Wyczyść logi";
 
 // Debug
 "DEBUG_CELL" = "Debugować";
@@ -54,7 +54,7 @@ English
 "ARCH_INFO" = "Architektura";
 "VERSION_INFO" = "Wersja";
 "STRAP_INFO" = "Środowisko";
-"STRAP_FR_PREFIX" = "Przedrostek fakeroot";
+"STRAP_FR_PREFIX" = "Fakeroot Prefix";
 "STRAP_FR_PATH" = "Ścieżka fakeroot";
 "OPEN_FILZA" = "Otwórz w Filza";
 "OPEN_SANTANDER" = "Otwórz w Santander";
@@ -71,24 +71,24 @@ English
 "FALSE" = "Nie";
 "ROOTFUL" = "Rootful";
 "ROOTLESS" = "Rootless";
-"CANCEL" = "Kanceluj";
-"CONFIRM" = "Konfirmuj";
-"CLOSE" = "Zamkńij";
-"PROCEED" = "Dalej";
+"CANCEL" = "Anuluj";
+"CONFIRM" = "Potwierdź";
+"CLOSE" = "Zamknij";
+"PROCEED" = "Kontynuuj";
 "NO_PROCEED" = "Nie można kontynuować";
-"NO_PROCEED_SIDELOADING" = "Bezpośrednie instalowanie (sideloading) nie jest obsługiwane.";
+"NO_PROCEED_SIDELOADING" = "Sideloading nie jest obsługiwany.";
 "NO_PROCEED_FR" = "Po użyciu opcji --force-revert, musisz ręcznie zrestartować i ponownie zastosować jailbreak na urządzeniu, aby możliwe było ponowne uruchomienie bootstrapu.";
 "SET" = "Ustaw";
 "TOO_LONG" = "Za długo";
 
 // DL / BS
-"DL_STRAP" = "Ściąganie 'Base System'";
+"DL_STRAP" = "Pobieranie 'Base System'";
 "DOWNLOADING" = "Pobieranie...";
 "INSTALLING" = "Instalowanie...";
-"DOWNLOAD_FAIL" = "Nie można pobrać plika";
-"DOWNLOAD_ERROR" = "Nieznany problem";
-"SAVE_FAIL" = "Nie udało się skopiować pliku do dysku";
-"DONE_INSTALL" = "Zainstalowanie skończone";
+"DOWNLOAD_FAIL" = "Nie można pobrać pliku";
+"DOWNLOAD_ERROR" = "Nieznany błąd";
+"SAVE_FAIL" = "Nie udało się skopiować pliku na dysku";
+"DONE_INSTALL" = "Instalacja Zakończona";
 "ERROR_INSTALL" = "Instalacja nieudana";
 "DONE_INSTALL_SUB" = "Możesz zamknąć aplikację.";
 "DONE_REVERT" = "Usuwanie ukończone";
@@ -101,14 +101,14 @@ English
 
 // hehe
 "REINSTALL" = "Zainstaluj ponownie";
-"ENJOY" = "Ciesz się! :3";
+"ENJOY" = "Dobrej zabawy!";
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "Twój fakeroot dalej istnieje, nawet jak plik /var/jb nie istnieję. To ponownie podłączy /var/jb do fakeroota. Będziesz musiał(a) uruchomić UICache w narzędziach po tym.";
 "NOTICE_ROOTLESS" = "Nie możesz użyć tego przycisku, jeśli jesteś na jailbreaku 'rootful'.";
 "HIDE_NOTICE" = "Kontynuacja spowoduje usunięcie plika /var/jb i ponowne uruchomienie urządzenia.";
 "REVERT_SUBTEXT" = "Rootful nie może użyć tego przycisku :(";
-"PM_SUBTEXT" = "Wybierz swojego ulubionego menedżera pakietów, który chcesz zainstalować, Sileo jest zalecany, jeśli jesteś nowy.";
+"PM_SUBTEXT" = "Wybierz swojego ulubionego menedżera pakietów, który chcesz zainstalować, Sileo jest zalecany, jeśli dopiero zaczynasz.";
 "REVERT_WARNING" = "Usuwa /var/jb oraz wyrejestrowuje aplikacje związane z jailbreakiem, po wykonaniu tych operacji urządzenie zrestartuje się w stanie bez jailbreaka.";
 "CLOSE_APP" = "Możesz zamknąć aplikację.";
 "UNHID_ENV" = "Odkryj środowisko";
@@ -119,4 +119,4 @@ English
 "ERROR_DPKG" = "Błąd z instalowaniem pakietów";
 "ERROR_UICACHE" = "Błąd z uruchomieniem UICache";
 "ERROR_UNREGISTER" = "Błąd z wyrejestrowaniem aplikacji";
-"ERROR_REVERT" = "Błąd z usuwaniem jailbreaka";
+"ERROR_REVERT" = "Nie udało się usunąć jailbreaka";
