@@ -17,8 +17,8 @@ class LogViewer: UIViewController {
     let dummytext = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper aliquam leo, placerat luctus massa vestibulum vitae. Curabitur maximus, neque sed finibus gravida, ante mauris mattis quam, eget placerat ante urna vitae lorem. Nam erat est, varius nec ligula ut, interdum hendrerit metus. Donec vulputate diam porttitor, lobortis massa id, feugiat leo. Morbi at velit sed lacus pretium euismod non quis est. Nam sem enim, malesuada ac sagittis sit amet, elementum ut erat. Nullam sit amet nisl aliquam, fermentum odio non, cursus orci. Aenean ut erat felis. Sed et libero id mauris iaculis maximus vel vel tellus. In hac habitasse platea dictumst."
     
     @objc func closeWithDelay(){
-        UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
+      UIApplication.shared.openSpringBoard()
+      exit(0)
     }
     
     override func viewDidLoad() {

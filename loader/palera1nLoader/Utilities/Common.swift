@@ -16,7 +16,10 @@ struct envInfo {
     static var isSimulator: Bool = false
     static var installPrefix: String = "unset"
     static var rebootAfter: Bool = true
-    static var jsonURI: String = "https://palera.in/loader.json"
+    static var jsonURI: String {
+        get { UserDefaults.standard.string(forKey: "JsonURI") ?? "https://palera.in/loader.json" }
+        set { UserDefaults.standard.set(newValue, forKey: "JsonURI") }
+    }
     static var envType: Int = -1
     static var systemVersion: String = "unset"
     static var systemArch: String = "unset"
@@ -43,4 +46,11 @@ public func local(_ str: String.LocalizationValue) -> String {
 
 public func fileExists(_ path: String) -> Bool {
     return fm.fileExists(atPath: path)
+}
+
+extension UIApplication {
+  public func openSpringBoard() {
+    let workspace = LSApplicationWorkspace.default() as! LSApplicationWorkspace
+  workspace.openApplication(withBundleID: "com.apple.springboard")
+  }
 }

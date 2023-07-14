@@ -31,7 +31,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.view.backgroundColor = .systemBackground
         self.title = local("ACTIONS")
         
-        let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        let tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)

@@ -33,8 +33,8 @@ extension UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
             bootstrap.cleanUp()
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { exit(0) }
+          UIApplication.shared.openSpringBoard()
+          exit(0)
         })
         alertController.addAction(UIAlertAction(title: local("LOG_CELL_VIEW"), style: .default, handler: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

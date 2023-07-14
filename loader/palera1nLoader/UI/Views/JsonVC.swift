@@ -250,9 +250,9 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        button.layer.cornerRadius = 6
+        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        button.layer.cornerRadius = 7
         button.clipsToBounds = true
         button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
         button.layer.borderWidth = 0.7
@@ -268,11 +268,11 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NSLayoutConstraint.activate([
             button.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             button.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 12),
             titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
         ])
-        let restartButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartButtonTapped))
-        navigationItem.rightBarButtonItem = restartButton
+      let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(restartButtonTapped))
+      navigationItem.rightBarButtonItem = restartButton
         /// Add triple tap gesture recognizer to navigation bar
         let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
         tripleTapGestureRecognizer.numberOfTapsRequired = 3
@@ -281,7 +281,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     private func setTableView() {
-        tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+      tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
@@ -426,8 +426,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 1:
             return "palera1n loader • 1.2 (\(revision))"
-        case 0:
-            return local("PM_SUBTEXT")
         default:
             return nil
         }
@@ -464,7 +462,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             cell.isUserInteractionEnabled = true
             cell.textLabel?.textColor = .label
             cell.imageView?.alpha = 1.0
-            mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemOrange)
+          mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
         case (1, 1):
             cell.textLabel?.text = local("DIAGNOSTICS")
             cell.accessoryType = .disclosureIndicator
@@ -512,7 +510,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return
             }
 
-            var filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
+          var filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
             let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
 
             let alertController = whichAlert(title: "", message: nil)
@@ -520,9 +518,8 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             alertController.addAction(cancelAction)
 
             log(msg: "[JSON PATH DATA] \(getCellInfo(envInfo.jsonInfo!)!.paths)")
-            
-            switch row {
-            case 0..<filePaths.count:
+
+            if (0..<filePaths.count).contains(row) {
                 let filePath = filePaths[row]
                 let regex = try! NSRegularExpression(pattern: "\"(.*?)\"")
                 let range = NSRange(filePath.startIndex..<filePath.endIndex, in: filePath)
@@ -542,48 +539,42 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
 
                 let lowercaseName = name.lowercased()
-                
+
                 log(msg: "[JSON PATH DATA] \(filePath) exists? \(exists).")
-                
-                switch true {
-                case procursusStrappedExists:
+
+                if procursusStrappedExists {
                     alertController.message = exists ? "\(name) is already installed at \(filePath)" : local("Install \(name)?")
                     let pkgAction = UIAlertAction(title: exists ? local("REINSTALL") : local("INSTALL"), style: .default) { _ in
                         self.installDebFile(file: "\(lowercaseName)")
                     }
                     alertController.addAction(pkgAction)
-                    
-                default:
+                } else {
                     alertController.message = "Strap and \(name) is not installed. Install now?"
                     let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
                         self.installStrap(file: name.lowercased()) {}
                     }
                     alertController.addAction(installAction)
-                    
                 }
-
-            default:
-                break
             }
+
             present(alertController, animated: true, completion: nil)
             
         case (1, 0):
-            let actionsVC = ActionsVC()
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                let actionsNavController = UINavigationController(rootViewController: actionsVC)
-                showDetailViewController(actionsNavController, sender: nil)
-            } else {
-                navigationController?.pushViewController(actionsVC, animated: true)
-            }
+          let actionsVC = ActionsVC()
+
+          UIDevice.current.userInterfaceIdiom == .pad ?
+          
+          showDetailViewController(UINavigationController(rootViewController: actionsVC), sender: nil) :
+          navigationController?.pushViewController(actionsVC, animated: true)
+
             
         case (1, 1):
-            let diagnosticsVC = DiagnosticsVC()
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                let diagnosticsNavController = UINavigationController(rootViewController: diagnosticsVC)
-                showDetailViewController(diagnosticsNavController, sender: nil)
-            } else {
-                navigationController?.pushViewController(diagnosticsVC, animated: true)
-            }
+          let diagnosticsVC = DiagnosticsVC()
+
+          UIDevice.current.userInterfaceIdiom == .pad ?
+          
+          showDetailViewController(UINavigationController(rootViewController: diagnosticsVC), sender: nil) :
+          navigationController?.pushViewController(diagnosticsVC, animated: true)
             
         case (1, 2):
             let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)

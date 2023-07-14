@@ -15,7 +15,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         //[local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
         //[local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
         ["json"],
-        [local("LOG_CLEAR"), local("LIB_NUKE"), local("FR_SWITCH")]
+        ["Clear JSON config", local("LOG_CLEAR"), local("LIB_NUKE"), local("FR_SWITCH")]
     ]
     
     var customMessage: String?
@@ -33,7 +33,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(closeSheet))
         
-        let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
+        let tableView = UITableView(frame: view.bounds, style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
@@ -72,6 +72,9 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         cell.accessoryType = .disclosureIndicator
         
         switch tableData[indexPath.section][indexPath.row] {
+        case "Clear JSON config":
+            mods.applySymbolModifications(to: cell, with: "arrow.clockwise", backgroundColor: .systemGray)
+            cell.textLabel?.text = "Remove set JSON"
         case local("FR_SWITCH"):
             mods.applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
             let switchControl = UISwitch()
@@ -82,19 +85,16 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             cell.selectionStyle = .none
         case "json":
             let textField = UITextField()
-            textField.placeholder = envInfo.jsonURI
+            textField.placeholder = "https://palera.in/loader.json"
             textField.translatesAutoresizingMaskIntoConstraints = false
             cell.contentView.addSubview(textField)
             textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 
-            // Add Auto Layout constraints
             textField.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 16).isActive = true
             textField.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -16).isActive = true
             textField.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 8).isActive = true
             textField.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -8).isActive = true
 
-            // Set a tag to identify the text field later if needed
-            textField.tag = 123
             cell.accessoryType = .none
 
         case local("LIB_NUKE"):
@@ -112,10 +112,23 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         
         return cell
     }
-    
+  
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        switch section {
+        case tableData.count - 2:
+          return "This is how you'll be able to customize where the loader downloads from.\n\nSet currently: \"\(envInfo.jsonURI)\""
+        default:
+          return nil
+        }
+    }
+  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
+        case "Clear JSON config":
+          resetField()
+          UIApplication.shared.openSpringBoard()
+          exit(0)
         case local("LOG_CELL_VIEW"):
             log(type: .info, msg: "Opening Log View")
             let LogViewVC = LogViewer()
@@ -168,11 +181,16 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     @objc func switchToggled(_ sender: UISwitch) {
         envInfo.rebootAfter.toggle()
     }
+        
+  @objc private func resetField() {
+      log(msg: "[JSON EDITING] https://palera.in/loader.json")
+      UserDefaults.standard.set("https://palera.in/loader.json", forKey: "JsonURI")
+    }
+        
     @objc private func textFieldDidChange(_ textField: UITextField) {
-        // Store the typed value
         if let newValue = textField.text {
             log(msg: "[JSON EDITING] \(newValue)")
-            envInfo.jsonURI = newValue
-        }
+            UserDefaults.standard.set(newValue, forKey: "JsonURI")
+      }
     }
 }
