@@ -181,7 +181,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             © 2023, palera1n team
             
             \(local("CREDITS_SUBTEXT"))
-            @flowerible (Samara) & @staturnzdev (Staturnz)
+            @ssalggnikool (Samara) & @staturnzdev (Staturnz)
             """
         case 1:
             return """
