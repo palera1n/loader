@@ -99,7 +99,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
         case local("LIB_NUKE"):
             mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-            cell.textLabel?.text = local("LIB_NUKE")
+            cell.textLabel?.text = "Clear Cache"
         case local("LOG_CLEAR"):
             mods.applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
             cell.textLabel?.text = local("LOG_CLEAR")
