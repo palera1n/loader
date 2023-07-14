@@ -24,7 +24,7 @@ jobs:
         uses: wangyucode/sftp-upload-action@v1.4.8
         with:
           host: ${{ secrets.STATIC_FTP_HOST }}
-          port: 22
+          port: ${{ secrets.STATIC_FTP_PORT }}
           username: static
           password: ${{ secrets.STATIC_FTP_PASS }}
           forceUpload: true
