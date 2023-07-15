@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "نصب";
 "DEBUG" = "اشکال زدایی";
-"DIAGNOSTICS" = "تشخیص";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "اقدامات";
 "JBINIT_LOG" = "Logging";
 "REVERT_CELL" = "برگرداندن نصب";
