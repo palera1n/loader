@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Εγκατάσταση";
 "DEBUG" = "Εντοπισμός σφαλμάτων";
-"DIAGNOSTICS" = "Διαγνωστικά";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Ενέργειες";
 "JBINIT_LOG" = "Καταγραφή";
 "REVERT_CELL" = "Απεγκατάσταση";
