@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Установить";
 "DEBUG" = "Отладка";
-"DIAGNOSTICS" = "Диагностика";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Действия";
 "JBINIT_LOG" = "Логирование";
 "REVERT_CELL" = "Отменить установку";
