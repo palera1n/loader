@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "INSTALL";
 "DEBUG" = "DEBUG";
-"DIAGNOSTICS" = "Diagnostix";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Acshunz";
 "JBINIT_LOG" = "Loggin";
 "REVERT_CELL" = "Revert Install";
