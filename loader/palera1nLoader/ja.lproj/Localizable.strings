@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "インストール";
 "DEBUG" = "デバッグ";
-"DIAGNOSTICS" = "診断";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "アクション";
 "JBINIT_LOG" = "ログ";
 "REVERT_CELL" = "Jailbreak環境を削除";
