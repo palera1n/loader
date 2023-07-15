@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Installeer";
 "DEBUG" = "Ontfout";
-"DIAGNOSTICS" = "Diagnostiek";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Aksies";
 "JBINIT_LOG" = "Tekening";
 "REVERT_CELL" = "Stel installeer terug";
