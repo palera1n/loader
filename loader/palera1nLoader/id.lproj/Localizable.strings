@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Pasang";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostik";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Tindakan";
 "JBINIT_LOG" = "Pencatatan Log";
 "REVERT_CELL" = "Hapus Instalasi";
