@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Instalar";
 "DEBUG" = "Depurar";
-"DIAGNOSTICS" = "Diagnóstica";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Ações";
 "JBINIT_LOG" = "Exploração madeireira";
 "REVERT_CELL" = "Reverter instalação";
