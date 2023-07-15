@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Installeren";
 "DEBUG" = "Debuggen";
-"DIAGNOSTICS" = "Diagnostiek";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Acties";
 "JBINIT_LOG" = "Logboekregistratie";
 "REVERT_CELL" = "Installatie ongedaan maken";
