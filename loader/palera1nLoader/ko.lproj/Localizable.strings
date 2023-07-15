@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "설치";
 "DEBUG" = "디버그";
-"DIAGNOSTICS" = "특수 정보";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "액션";
 "JBINIT_LOG" = "로그";
 "REVERT_CELL" = "제거";
