@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Vyčistiť fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Ukončenie bezpečného režimu";
 "DEBUG_ENTER_SAFEMODE" = "Zapnúť bezpečný režim";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Model zariadenia:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Vymaže /var/jb a odregistruje aplikácie jailbreaku, po jeho dokončení sa zariadenie reštartuje do stavu bez jailbreaku.";
 "CLOSE_APP" = "Môžete zatvoriť aplikáciu.";
 "UNHID_ENV" = "Odkrylo sa prostredie";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Status";

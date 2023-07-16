@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Pastroni FakeFS-in";
 "DEBUG_EXIT_SAFEMODE" = "Dilni nga modaliteti i sigurt";
 "DEBUG_ENTER_SAFEMODE" = "Hyr ne modaliteti i sigurt";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Modeli i paisjes:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Fshin /var/jb dhe çregjistron aplikacionet e jailbreak-it, pasi të përfundojë pajisja do të rindizet në një gjendje të pa jailbreak-uar.";
 "CLOSE_APP" = "Ju mund ta mbyllni aplikacionin.";
 "UNHID_ENV" = "Tregoje enviromentin";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Statusi";

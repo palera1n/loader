@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Làm sạch hàng giả";
 "DEBUG_EXIT_SAFEMODE" = "Thoát chế độ an toàn";
 "DEBUG_ENTER_SAFEMODE" = "Vào chế độ an toàn";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Kiểu thiết bị:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Xóa /var/jb và hủy đăng ký các ứng dụng bẻ khóa, sau khi hoàn tất, thiết bị sẽ khởi động lại ở trạng thái chưa bẻ khóa.";
 "CLOSE_APP" = "Bạn có thể đóng ứng dụng.";
 "UNHID_ENV" = "Bỏ ẩn môi trường";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Trạng thái";

@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "تمیز کردن FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "از حالت ایمن خارج شوید";
 "DEBUG_ENTER_SAFEMODE" = "وارد حالت امن شوید";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "مدل دستگاه:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "/var/jb را پاک می‌کند و برنامه‌های جیلبریک را لغو ثبت می‌کند، پس از اتمام، دستگاه به حالت غیر جیلبریک راه‌اندازی مجدد می‌شود.";
 "CLOSE_APP" = "می توانید برنامه را ببندید.";
 "UNHID_ENV" = "محیط را آشکار کنید";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Status";

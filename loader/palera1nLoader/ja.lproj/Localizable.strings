@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "fakefsを消去";
 "DEBUG_EXIT_SAFEMODE" = "safemodeを終了";
 "DEBUG_ENTER_SAFEMODE" = "safemodeに入る";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Device Model:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "この作業を続行すると、/var/jb 以下にあるjailbreak関連ファイルや、jailbreakアプリケーションなどは全て削除されます。この作業か完了すると、デバイスは再起動して非jailbreak状態で起動します。";
 "CLOSE_APP" = "アプリを終了します。";
 "UNHID_ENV" = "環境を再表示";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "ステータス";

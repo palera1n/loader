@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "sɟǝʞɐɟ uɐǝlƆ";
 "DEBUG_EXIT_SAFEMODE" = "ǝpoɯǝɟɐs ʇᴉxƎ";
 "DEBUG_ENTER_SAFEMODE" = "ǝpoɯǝɟɐs ɹǝʇuƎ";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = ":lǝpoW ǝɔᴉʌǝp";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "˙ǝʇɐʇs uǝʞoɹqlᴉɐɾun uɐ oʇuᴉ ʇooqǝɹ llᴉʍ ǝɔᴉʌǝp ǝɥʇ ǝuop sᴉ ʇᴉ ɹǝʇɟɐ 'suoᴉʇɐɔᴉlddɐ ʞɐǝɹqlᴉɐɾ sɹǝʇsᴉƃǝɹun puɐ qɾ/ɹɐʌ/ sǝdᴉM";
 "CLOSE_APP" = "˙ddɐ ǝɥʇ ǝsolɔ ʎɐɯ no⅄";
 "UNHID_ENV" = "ʇuǝɯuoɹᴉʌuǝ ǝɥʇ pᴉɥu∩";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "snʇɐʇS";

@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Очистить fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Выйти из режима безопасности";
 "DEBUG_ENTER_SAFEMODE" = "Войти в режим безопасности";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Модель устройства:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Стирает /var/jb и убирает регистрацию Jailbreak приложений, после чего устройство перезагрузится в не-jailbreak состояние.";
 "CLOSE_APP" = "Вы можете закрыть приложение.";
 "UNHID_ENV" = "Снять скрытие окружения";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Статус";
