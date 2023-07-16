@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Instalar";
 "DEBUG" = "Depurar";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Información del Dispositivo";
 "ACTIONS" = "Acciones";
 "JBINIT_LOG" = "Registro";
 "REVERT_CELL" = "Revertir la instalación";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Limpiar fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Salir del modo seguro";
 "DEBUG_ENTER_SAFEMODE" = "Entrar del modo seguro";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Vaciar la caché";
+"DEBUG_CLEAR_JSON" = "Borrar configuración JSON";
 
 // Diags
 "DEVICE_MODEL" = "Modelo del dispositivo:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Puedes cerrar la aplicación.";
 "UNHID_ENV" = "Desocultó el entorno";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap y %@ no están instalados. ¿Instalar ahora?";
+"DL_STRAP_NOPM" = "¿Instalar %@?";
+"DL_STRAP_PM" = "%@ ya está instalado en %@";
 
 // errors
 "STATUS" = "Estado";
