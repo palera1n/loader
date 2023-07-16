@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "fakefs 지욱기";
 "DEBUG_EXIT_SAFEMODE" = "safemode 나가기";
 "DEBUG_ENTER_SAFEMODE" = "safemode 시작하기";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "디바이스 모델:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "/var/jb를 지우고 제일브레이크 앱을 지운다. 끝난 후 제거된 상태로 제부팅 됩니다.";
 "CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
 "UNHID_ENV" = "더이상 제일브레이크 숨기지 않는다.";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "상태";
