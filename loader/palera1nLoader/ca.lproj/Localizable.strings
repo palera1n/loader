@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Instal·lar";
 "DEBUG" = "Depuració";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Informació del Dispositiu";
 "ACTIONS" = "Accions";
 "JBINIT_LOG" = "Registrament";
 "REVERT_CELL" = "Revertir Instal·lació";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Rentar fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Sortir del mode segur";
 "DEBUG_ENTER_SAFEMODE" = "Entrar al mode segur";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Netejar memòria cau";
+"DEBUG_CLEAR_JSON" = "Netejar configuració JSON";
 
 // Diags
 "DEVICE_MODEL" = "Model del dispositiu:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Pots tancar l'aplicació.";
 "UNHID_ENV" = "Mostra l'entorn";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "El bootstrap i %@ no estan instal·lats. Instal·lar ara?";
+"DL_STRAP_NOPM" = "Instal·lar %@?";
+"DL_STRAP_PM" = "%@ ja està instal·lat a %@";
 
 // errors
 "STATUS" = "Estat";
