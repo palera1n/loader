@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Bersihkan fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Keluar dari safemode";
 "DEBUG_ENTER_SAFEMODE" = "Memasuki safemode";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Model Perangkat:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Menghapus /var/jb dan menghapus aplikasi jailbreak, setelah selesai perangkat akan menyala ulang ke dalam keadaan tidak terjailbreak.";
 "CLOSE_APP" = "Anda dapat menutup aplikasi ini.";
 "UNHID_ENV" = "Perlihatkan Jailbreak";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Status";
