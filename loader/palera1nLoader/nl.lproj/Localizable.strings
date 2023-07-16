@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Opschonen fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Verlaat veilige modus";
 "DEBUG_ENTER_SAFEMODE" = "Betreed veilige modus";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Apparaatmodel:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Wist /var/jb en wist jailbreak-toepassingen uit, nadat dit is voltooid zal het apparaat opnieuw opstarten naar een niet-gejailbreakte staat.";
 "CLOSE_APP" = "U kunt de app sluiten.";
 "UNHID_ENV" = "Omgeving zichtbaar gemaakt";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Status";
