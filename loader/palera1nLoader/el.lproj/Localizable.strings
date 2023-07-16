@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Εγκαθάριση FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "Έξοδος από το safemode";
 "DEBUG_ENTER_SAFEMODE" = "Επανεκκίνηση σε safemode";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Μοντέλο συσκευής:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Διαγράφει το /var/jb και καταργεί τις εφαρμογές jailbreak. Όταν ολοκληρωθεί, η συσκευή θα κάνει επανεκκίνηση σε unjailbroken κατάσταση.";
 "CLOSE_APP" = "Μπορείς πλέον να κλείσεις την εφαρμογή.";
 "UNHID_ENV" = "Επανεμφάνιση περιβάλλοντος";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Κατάσταση";
