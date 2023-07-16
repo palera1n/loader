@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "清理fakefs";
 "DEBUG_EXIT_SAFEMODE" = "離開安全模式";
 "DEBUG_ENTER_SAFEMODE" = "進入安全模式";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "裝置型號：";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "移除 /var/jb 及取消注冊越獄應用程式，然後重啟到末越獄狀態。";
 "CLOSE_APP" = "你現在可關閉這個應用程式。";
 "UNHID_ENV" = "取消隱藏環境";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "狀態";
