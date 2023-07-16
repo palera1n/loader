@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Išvalyti fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Išeiti iš saugaus režimo";
 "DEBUG_ENTER_SAFEMODE" = "Įeiti į saugų režimą";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Prietaiso modelis:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Ištrina /var/jb ir išregistruoja jailbreak programas, po to įrenginys bus perkrautas į ne jailbreak būseną.";
 "CLOSE_APP" = "Galite uždaryti programą.";
 "UNHID_ENV" = "Neslėpti aplinkos";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Būsena";
