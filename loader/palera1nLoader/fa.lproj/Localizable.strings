@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "نصب";
+"INSTALL" = "Install";
 "DEBUG" = "اشکال زدایی";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "اقدامات";
