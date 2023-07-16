@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Limpar fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Sair do SafeMode";
 "DEBUG_ENTER_SAFEMODE" = "Entrar no SafeMode";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Modelo do Dispositivo:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "Limpar /var/jb e desregistrar os apps de Jailbreak. Após concluído, o dispositivo reiniciará em um estado unjailbroken -- sem Jailbreak.";
 "CLOSE_APP" = "Você pode fechar o app.";
 "UNHID_ENV" = "Exiba o ambiente";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Status";
