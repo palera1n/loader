@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "安装";
 "DEBUG" = "调试";
-"DIAGNOSTICS" = "诊断";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "行动";
 "JBINIT_LOG" = "记录日志";
 "REVERT_CELL" = "还原安装";

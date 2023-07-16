@@ -5,8 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "ןןɐʇsuI";
-"DIAGNOSTICS" = "sɔᴉʇsouƃɐᴉp";
+"INSTALL" = "Install";
+"DEBUG" = "ƃnqǝp";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "suoᴉʇɔ∀";
 "JBINIT_LOG" = "ƃuᴉƃƃo˥";
 "REVERT_CELL" = "llɐʇsuI ʇɹǝʌǝɹ";

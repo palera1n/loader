@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Telepítés";
 "DEBUG" = "Hibakeresés";
-"DIAGNOSTICS" = "Diagnosztika";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Műveletek";
 "JBINIT_LOG" = "Naplózás";
 "REVERT_CELL" = "Telepítés visszaállítása";

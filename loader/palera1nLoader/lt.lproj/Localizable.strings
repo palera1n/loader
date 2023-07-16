@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Įdiegti";
 "DEBUG" = "Derinti";
-"DIAGNOSTICS" = "Diagnostika";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Veiksmai";
 "JBINIT_LOG" = "Registravimas";
 "REVERT_CELL" = "Atšaukti diegimą";

@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Installieren";
+"INSTALL" = "Install";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnose";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Aktionen";
 "JBINIT_LOG" = "Loggen";
 "REVERT_CELL" = "Installation zurücksetzen";

@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Nainstalovat";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Diagnostika";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Akce";
 "JBINIT_LOG" = "Logování";
 "REVERT_CELL" = "Obnovit instalaci";
