@@ -43,7 +43,7 @@ English
 "DEBUG_EXIT_SAFEMODE" = "safemode 나가기";
 "DEBUG_ENTER_SAFEMODE" = "safemode 시작하기";
 "DEBUG_CLEAR_CACHE" = "캐시 삭제";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "JSON 설정 초기화";
 
 // Diags
 "DEVICE_MODEL" = "디바이스 모델:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
 "UNHID_ENV" = "더이상 제일브레이크 숨기지 않는다.";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "부트스트렙과 %@은 설치되지 않았습니다. 지금 설치할까요?";
+"DL_STRAP_NOPM" = "%@를 설치할까요?";
+"DL_STRAP_PM" = "%@은 이미 %@에 설치되어 있습니다.";
 
 // errors
 "STATUS" = "상태";
