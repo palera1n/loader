@@ -42,6 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "مسح fakefs";
 "DEBUG_EXIT_SAFEMODE" = "الخروج من الوضع الآمن";
 "DEBUG_ENTER_SAFEMODE" = "الدخول إلى الوضع الآمن";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "طراز الجهاز:";
@@ -112,6 +114,10 @@ English
 "REVERT_WARNING" = "يقوم بمسح /var/jb وإلغاء تسجيل تطبيقات الجيلبريك، بعد الانتهاء سيتم إعادة تشغيل الجهاز إلى وضع بدون جيلبريك.";
 "CLOSE_APP" = "يمكنك إغلاق التطبيق.";
 "UNHID_ENV" = "إلغاء إخفاء البيئة";
+
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "الحالة";
