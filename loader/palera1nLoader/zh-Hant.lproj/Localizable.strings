@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "安裝";
+"INSTALL" = "安装";
 "DEBUG" = "除錯";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "設備信息";
 "ACTIONS" = "動作";
 "JBINIT_LOG" = "日誌";
 "REVERT_CELL" = "還原系統";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "清理fakefs";
 "DEBUG_EXIT_SAFEMODE" = "離開安全模式";
 "DEBUG_ENTER_SAFEMODE" = "進入安全模式";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "清除緩存";
+"DEBUG_CLEAR_JSON" = "清除 JSON 配置";
 
 // Diags
 "DEVICE_MODEL" = "裝置型號：";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "你現在可關閉這個應用程式。";
 "UNHID_ENV" = "取消隱藏環境";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap 和 %@ 還麽有安裝。現在安裝嗎？";
+"DL_STRAP_NOPM" = "安裝 %@?";
+"DL_STRAP_PM" = "%@ 已經安裝在 %@";
 
 // errors
 "STATUS" = "狀態";
