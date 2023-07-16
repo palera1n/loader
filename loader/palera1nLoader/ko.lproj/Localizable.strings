@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "설치";
 "DEBUG" = "디버그";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "디바이스 정보";
 "ACTIONS" = "액션";
 "JBINIT_LOG" = "로그";
 "REVERT_CELL" = "제거";
@@ -42,7 +42,7 @@ English
 "DEBUG_CLEAN_FAKEFS" = "fakefs 지욱기";
 "DEBUG_EXIT_SAFEMODE" = "safemode 나가기";
 "DEBUG_ENTER_SAFEMODE" = "safemode 시작하기";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_CACHE" = "캐시 삭제";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
