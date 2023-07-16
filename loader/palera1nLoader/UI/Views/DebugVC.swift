@@ -15,7 +15,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         //[local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
         //[local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
         ["json"],
-        ["Clear JSON config", local("LOG_CLEAR"), local("LIB_NUKE"), local("FR_SWITCH")]
+        [local("DEBUG_CLEAR_JSON"), local("LOG_CLEAR"), local("DEBUG_CLEAR_CACHE"), local("FR_SWITCH")]
     ]
     
     var customMessage: String?
@@ -72,9 +72,9 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         cell.accessoryType = .disclosureIndicator
         
         switch tableData[indexPath.section][indexPath.row] {
-        case "Clear JSON config":
+        case local("DEBUG_CLEAR_JSON"):
             mods.applySymbolModifications(to: cell, with: "arrow.clockwise", backgroundColor: .systemGray)
-            cell.textLabel?.text = "Remove set JSON"
+            cell.textLabel?.text = local("DEBUG_CLEAR_JSON")
         case local("FR_SWITCH"):
             mods.applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
             let switchControl = UISwitch()
@@ -97,9 +97,9 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
             cell.accessoryType = .none
 
-        case local("LIB_NUKE"):
+        case local("DEBUG_CLEAR_CACHE"):
             mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-            cell.textLabel?.text = "Clear Cache"
+            cell.textLabel?.text = local("DEBUG_CLEAR_CACHE")
         case local("LOG_CLEAR"):
             mods.applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
             cell.textLabel?.text = local("LOG_CLEAR")
@@ -125,7 +125,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case "Clear JSON config":
+        case local("DEBUG_CLEAR_JSON"):
           resetField()
           UIApplication.shared.openSpringBoard()
           exit(0)
@@ -147,8 +147,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 //            alertController.addAction(cancelAction)
 //            alertController.addAction(confirmAction)
 //            present(alertController, animated: true, completion: nil)
-        case local("LIB_NUKE"):
-            let alertController = whichAlert(title: "\(local("LIB_NUKE"))?", message: nil)
+        case local("DEBUG_CLEAR_CACHE"):
+            let alertController = whichAlert(title: "\(local("DEBUG_CLEAR_CACHE"))?", message: nil)
             let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
             let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .destructive) {_ in
                 binpack.rm("/var/mobile/Library/palera1n")

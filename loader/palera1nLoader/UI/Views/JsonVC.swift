@@ -542,19 +542,19 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
                 log(msg: "[JSON PATH DATA] \(filePath) exists? \(exists).")
 
-                if procursusStrappedExists {
-                    alertController.message = exists ? "\(name) is already installed at \(filePath)" : local("Install \(name)?")
-                    let pkgAction = UIAlertAction(title: exists ? local("REINSTALL") : local("INSTALL"), style: .default) { _ in
-                        self.installDebFile(file: "\(lowercaseName)")
-                    }
-                    alertController.addAction(pkgAction)
-                } else {
-                    alertController.message = "Strap and \(name) is not installed. Install now?"
-                    let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
-                        self.installStrap(file: name.lowercased()) {}
-                    }
-                    alertController.addAction(installAction)
-                }
+              if procursusStrappedExists {
+                  alertController.message = exists ? String(format: NSLocalizedString("DL_STRAP_PM", comment: ""), name, filePath) : String(format: NSLocalizedString("DL_STRAP_NOPM", comment: ""), name)
+                  let pkgAction = UIAlertAction(title: exists ? local("REINSTALL") : local("INSTALL"), style: .default) { _ in
+                      self.installDebFile(file: "\(lowercaseName)")
+                  }
+                  alertController.addAction(pkgAction)
+              } else {
+                  alertController.message = String(format: NSLocalizedString("DL_NOSTRAP", comment: ""), name)
+                  let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
+                      self.installStrap(file: name.lowercased()) {}
+                  }
+                  alertController.addAction(installAction)
+              }
             }
 
             present(alertController, animated: true, completion: nil)
