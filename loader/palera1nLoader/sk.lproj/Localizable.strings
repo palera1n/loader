@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Inštalovať";
+"INSTALL" = "Install";
 "DEBUG" = "Debug";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Akcie";
