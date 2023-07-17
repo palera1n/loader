@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Installer";
 "DEBUG" = "Déboguer";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Informations sur l'appareil";
 "ACTIONS" = "Actions";
 "JBINIT_LOG" = "Enregistrement";
 "REVERT_CELL" = "Annuler l'installation";
@@ -116,7 +116,7 @@ English
 "UNHID_ENV" = "Démasqué l'environnement";
 
 "DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_NOPM" = "Installer %@?";
 "DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
