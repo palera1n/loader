@@ -58,7 +58,7 @@ English
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
 "STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Filza에 열기";
+"OPEN_FILZA" = "Filza에서 열기";
 "OPEN_SANTANDER" = "Santander에 열기";
 "COPY" = "복사";
 "INSTALL_FR" = "Force Reverted";
@@ -66,8 +66,8 @@ English
 "HELPER_PATH" = "헬퍼 저장소";
 "SILEO_INSTALLED" = "Sileo 설치 여부";
 "ZEBRA_INSTALLED" = "Zebra 설치 여부";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"KINFO_FLAGS" = "플래그 (kerninfo)";
+"PINFO_FLAGS" = "플래그 (paleinfo)";
 
 "TRUE" = "예";
 "FALSE" = "아니오";
@@ -96,7 +96,7 @@ English
 "DONE_REVERT" = "제거 완료";
 "REMOVING" = "제거 중...";
 
-"PASSWORD" = "\"sudo\"와 같은 툴을 사용하러면, 패스코드를 설정하셔야 합니다. (비면 안됨)";
+"PASSWORD" = "\"sudo\"와 같은 툴을 사용하러면, 패스코드를 설정하셔야 합니다. (필수)";
 "PASSWORD_REPEAT" = "다시 입력";
 "PASSWORD_SET" = "비밀번호 설정";
 "PASSWORD_TEXT" = "비밀번호";
@@ -106,23 +106,23 @@ English
 "ENJOY" = "설치 완료!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "fakeroot는 /var/jb와 달리 보존 되어 있습니다. 이 것은 /var/jb를 다시 연결시킨다. UICache를 다시 실행 하셔야 할 수도 있습니다.";
+"HIDDEN_NOTICE" = "Fakeroot는 /var/jb와 달리 보존 되어 있습니다. 이 것은 /var/jb를 다시 연결시킵니다. Uicache를 다시 실행 하셔야 할 수도 있습니다.";
 "NOTICE_ROOTLESS" = "Rootless가 아니면 이 기능을 못 사용합니다.";
-"HIDE_NOTICE" = "계속하면 /var/jb 연결을 지우고 제부팅 합니다.";
-"REVERT_SUBTEXT" = "Rootful은 이 버트 사용 못 합니다 :(";
-"PM_SUBTEXT" = "좋아하시는 페키지 관리자를 고르시오, 처음이면 Sileo를 추천합니다.";
-"REVERT_WARNING" = "/var/jb를 지우고 제일브레이크 앱을 지운다. 끝난 후 제거된 상태로 제부팅 됩니다.";
+"HIDE_NOTICE" = "계속하면 /var/jb 연결을 지우고 재부팅 합니다.";
+"REVERT_SUBTEXT" = "Rootful은 이 버튼을 사용할 수 없습니다. :(";
+"PM_SUBTEXT" = "좋아하시는 패키지 관리자를 고르세요. 처음이면 Sileo를 추천합니다.";
+"REVERT_WARNING" = "/var/jb를 지우고 탈옥 앱을 지웁니다. 끝난 후 제거된 상태로 재부팅 됩니다.";
 "CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
-"UNHID_ENV" = "더이상 제일브레이크 숨기지 않는다.";
+"UNHID_ENV" = "더이상 탈옥을 숨기지 않습니다.";
 
-"DL_NOSTRAP" = "부트스트렙과 %@은 설치되지 않았습니다. 지금 설치할까요?";
+"DL_NOSTRAP" = "부트스트랩과 %@은 설치되지 않았습니다. 지금 설치할까요?";
 "DL_STRAP_NOPM" = "%@를 설치할까요?";
 "DL_STRAP_PM" = "%@은 이미 %@에 설치되어 있습니다.";
 
 // errors
 "STATUS" = "상태";
-"ERROR_STRAP" = "bootstrap 설치중 에러";
-"ERROR_DPKG" = "페키지 설치 실패";
+"ERROR_STRAP" = "부트스트랩 설치중 에러";
+"ERROR_DPKG" = "패키지 설치 실패";
 "ERROR_UICACHE" = "UICache실패";
 "ERROR_UNREGISTER" = "Unregister 실패";
-"ERROR_REVERT" = "제일브레이크 제거 실패";
+"ERROR_REVERT" = "탈옥 제거 실패";
