@@ -5,64 +5,64 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Device Information";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"INSTALL" = "Инсталирај";
+"DEBUG" = "Отклони грешке";
+"DIAGNOSTICS" = "Информације о уређају";
+"ACTIONS" = "Радње";
+"JBINIT_LOG" = "Евидентирање";
+"REVERT_CELL" = "Врати у првобитно стање";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
-"ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"HIDDEN" = "Сакриј џејлбрејк околину";
+"ACTION_HIDEJB" = "Сакриј џејлбрејк околину";
+"OPEN_CELL" = "Отвори";
+"OPENER_SILEO" = "Отвори Силео";
+"OPENER_ZEBRA" = "Отвори Зебру";
+"OPENER_TH" = "Отвори ТролХелпер";
+"UTIL_CELL" = "Услуге";
+"ACTION_RESPRING" = "Ресетуј Спрингборд";
+"ACTION_USREBOOT" = "Рестартовање корисничког простора";
+"ACTION_UICACHE" = "Кеш меморија корисничког интерфејса";
+"ACTION_DAEMONS" = "Покреми споредне процесе";
+"ACTION_MOUNT" = "Монтирај директоријуме";
+"ACTION_TWEAKS" = "Укључи подешавања";
+"FR_SWITCH" = "Ресетуј при враћању подешавања";
+"ACTION_MOUNT_SUBTEXT" = ",, Монтирај директорикумe\" покушава само да монтира директоријуме пре покретања као читање/писање.";
+"OPENER_SUBTEXT" = "Када користите Палера1н на иПад, постоје шансе да ћете морати да користите ове опције да отворите инсталиране апликације када се не појаве на почетном екрану.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "Записи";
+"LOG_CELL_VIEW" = "Погледај све записе";
+"NONE" = "Ништа";
+"LOG_CLEAR" = "Обриши записе";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CELL" = "Отклањање грешака";
+"DEBUG_OPTIONS" = "Опције";
+"DEBUG_CLEAN_FAKEFS" = "Обриши fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Изађи из сигурног мода";
+"DEBUG_ENTER_SAFEMODE" = "Уђи у сигуран мод";
+"DEBUG_CLEAR_CACHE" = "Обриши кеш";
+"DEBUG_CLEAR_JSON" = "Обриши JSON подешавања";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
-"ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
-"STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
+"DEVICE_MODEL" = "Модел уређаја:";
+"DEVICE_MODEL_KERN" = "Верзија керенела:";
+"DEVICE_MODEL_CF" = "Верзија ЦФ-а:";
+"CREDITS_SUBTEXT" = "Покретач направио:";
+"PINFO_SUBTEXT" = "Заставе (paleinfo) одговарају заставама које сте користили у палера1н 2.0.0 ЦЛИ, корисно за програмере.";
+"TYPE_INFO" = "Врста";
+"INSTALL_INFO" = "Инсталиран";
+"ARCH_INFO" = "Архитектура";
+"VERSION_INFO" = "Верзија";
+"STRAP_INFO" = "Окружење";
+"STRAP_FR_PREFIX" = "Префикс Fakeroot-а";
+"STRAP_FR_PATH" = "Локација Fakeroot-а";
+"OPEN_FILZA" = "Отвори у Filza";
+"OPEN_SANTANDER" = "Отвори у Santander-у";
+"COPY" = "Копирај";
+"INSTALL_FR" = "Присилно враћен";
+"HELPER" = "Помоћници";
 "HELPER_PATH" = "Helper Path";
 "SILEO_INSTALLED" = "Sileo Installed";
 "ZEBRA_INSTALLED" = "Zebra Installed";
@@ -124,5 +124,5 @@ English
 "ERROR_STRAP" = "Error installing bootstrap";
 "ERROR_DPKG" = "Failed to install packages";
 "ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"ERROR_UNREGISTER" = "Неуспешно одрегистеован";
+"ERROR_REVERT" = "Неуспешно уклањање џејлбрејка";
