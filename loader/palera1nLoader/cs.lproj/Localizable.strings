@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Nainstalovat";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Informace o zařízení";
 "ACTIONS" = "Akce";
 "JBINIT_LOG" = "Logování";
 "REVERT_CELL" = "Obnovit instalaci";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Vyčistit fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Odejít z bezpečného režimu";
 "DEBUG_ENTER_SAFEMODE" = "Spustit bezpečný režim";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Vymazat mezipaměť";
+"DEBUG_CLEAR_JSON" = "Vymazat konfiguraci JSON";
 
 // Diags
 "DEVICE_MODEL" = "Model zařízení:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Můžete zavřít aplikaci.";
 "UNHID_ENV" = "Odkrýt prostředí";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap a %@ nejsou nainstalovány. Chcete je nainstalovat?";
+"DL_STRAP_NOPM" = "Nainstalovat %@?";
+"DL_STRAP_PM" = "%@ je již nainstalováno v %@";
 
 // errors
 "STATUS" = "Stav";

@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Telepítés";
+"INSTALL" = "Install";
 "DEBUG" = "Hibakeresés";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Műveletek";

@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Installeren";
 "DEBUG" = "Debuggen";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Apparaat Informatie";
 "ACTIONS" = "Acties";
 "JBINIT_LOG" = "Logboekregistratie";
 "REVERT_CELL" = "Installatie ongedaan maken";
@@ -31,7 +31,7 @@ English
 "OPENER_SUBTEXT" = "Bij het gebruik van palera1n op een iPad zijn er situaties waarin je deze handelingen moet uitvoeren om de geïnstalleerde applicaties te openen wanneer ze niet op het startscherm verschijnen.";
 
 // Logging View
-"LOG_CELL" = "Logs";
+"LOG_CELL" = "Logboek";
 "LOG_CELL_VIEW" = "Bekijk Logs";
 "NONE" = "Niets";
 "LOG_CLEAR" = "Wis logs";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Opschonen fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Verlaat veilige modus";
 "DEBUG_ENTER_SAFEMODE" = "Betreed veilige modus";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Cache wissen";
+"DEBUG_CLEAR_JSON" = "Wis JSON-configuratie";
 
 // Diags
 "DEVICE_MODEL" = "Apparaatmodel:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "U kunt de app sluiten.";
 "UNHID_ENV" = "Omgeving zichtbaar gemaakt";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap en %@ is niet geïnstalleerd. Nu installeren?";
+"DL_STRAP_NOPM" = "%@ installeren?";
+"DL_STRAP_PM" = "%@ is al geïnstalleerd in %@";
 
 // errors
 "STATUS" = "Status";

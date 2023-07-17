@@ -7,28 +7,28 @@ English
 
 "INSTALL" = "설치";
 "DEBUG" = "디버그";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "디바이스 정보";
 "ACTIONS" = "액션";
 "JBINIT_LOG" = "로그";
 "REVERT_CELL" = "제거";
 
 // ActionsVC
-"HIDDEN" = "제일브레이크 숨김";
-"ACTION_HIDEJB" = "제일브레이크 숨기기";
+"HIDDEN" = "탈옥 숨김";
+"ACTION_HIDEJB" = "탈옥 숨기기";
 "OPEN_CELL" = "쇼트컷";
 "OPENER_SILEO" = "Sileo 열기";
 "OPENER_ZEBRA" = "Zebra 열기";
 "OPENER_TH" = "TrollHelper 열기";
 "UTIL_CELL" = "유틸리티";
-"ACTION_RESPRING" = "리스프링";
-"ACTION_USREBOOT" = "유저스페이스 제시작";
+"ACTION_RESPRING" = "SpringBoard 다시시작";
+"ACTION_USREBOOT" = "유저스페이스 재시작";
 "ACTION_UICACHE" = "스프링보드 케시 제거";
 "ACTION_DAEMONS" = "데몬 시작";
 "ACTION_MOUNT" = "마운트 디렉토리";
-"ACTION_TWEAKS" = "트윅 시작하기";
+"ACTION_TWEAKS" = "트윅 활성화";
 "FR_SWITCH" = "제거 후 재시작";
-"ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root과 preboot만 r/w로 제마운트 한다.";
-"OPENER_SUBTEXT" = "palera1n을 iPad에 사용시, 앱이 홈스크린에 안 뜰 경우에 이 엑션을 사용합니다.";
+"ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root과 preboot만 r/w로 재마운트 한다.";
+"OPENER_SUBTEXT" = "Palera1n을 iPad에 사용시, 앱이 홈화면에 뜨지 않을 경우에 이 엑션을 사용합니다.";
 
 // Logging View
 "LOG_CELL" = "로그";
@@ -39,26 +39,26 @@ English
 // Debug
 "DEBUG_CELL" = "디버그";
 "DEBUG_OPTIONS" = "옵션";
-"DEBUG_CLEAN_FAKEFS" = "fakefs 지욱기";
-"DEBUG_EXIT_SAFEMODE" = "safemode 나가기";
-"DEBUG_ENTER_SAFEMODE" = "safemode 시작하기";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAN_FAKEFS" = "FakeFs 지우기";
+"DEBUG_EXIT_SAFEMODE" = "안전모드 나가기";
+"DEBUG_ENTER_SAFEMODE" = "안전모드 시작하기";
+"DEBUG_CLEAR_CACHE" = "캐시 삭제";
+"DEBUG_CLEAR_JSON" = "JSON 설정 초기화";
 
 // Diags
 "DEVICE_MODEL" = "디바이스 모델:";
 "DEVICE_MODEL_KERN" = "커널 버전";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "로더 제작원:";
-"PINFO_SUBTEXT" = "Flags (paleinfo)는 palera1n 2.0.0 CLI에 사용한 플레그와 대응한다 (개발자에게 유용함)";
-"TYPE_INFO" = "종류";
+"PINFO_SUBTEXT" = "Flags (paleinfo)는 Palera1n 2.0.0 CLI에 사용한 플레그와 대응합니다. (개발자에게 유용함)";
+"TYPE_INFO" = "유형";
 "INSTALL_INFO" = "설치됨";
 "ARCH_INFO" = "Architecture";
 "VERSION_INFO" = "버전";
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
 "STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Filza에 열기";
+"OPEN_FILZA" = "Filza에서 열기";
 "OPEN_SANTANDER" = "Santander에 열기";
 "COPY" = "복사";
 "INSTALL_FR" = "Force Reverted";
@@ -66,8 +66,8 @@ English
 "HELPER_PATH" = "헬퍼 저장소";
 "SILEO_INSTALLED" = "Sileo 설치 여부";
 "ZEBRA_INSTALLED" = "Zebra 설치 여부";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"KINFO_FLAGS" = "플래그 (kerninfo)";
+"PINFO_FLAGS" = "플래그 (paleinfo)";
 
 "TRUE" = "예";
 "FALSE" = "아니오";
@@ -96,7 +96,7 @@ English
 "DONE_REVERT" = "제거 완료";
 "REMOVING" = "제거 중...";
 
-"PASSWORD" = "\"sudo\"와 같은 툴을 사용하러면, 패스코드를 설정하셔야 합니다. (비면 안됨)";
+"PASSWORD" = "\"sudo\"와 같은 툴을 사용하러면, 패스코드를 설정하셔야 합니다. (필수)";
 "PASSWORD_REPEAT" = "다시 입력";
 "PASSWORD_SET" = "비밀번호 설정";
 "PASSWORD_TEXT" = "비밀번호";
@@ -106,23 +106,23 @@ English
 "ENJOY" = "설치 완료!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "fakeroot는 /var/jb와 달리 보존 되어 있습니다. 이 것은 /var/jb를 다시 연결시킨다. UICache를 다시 실행 하셔야 할 수도 있습니다.";
+"HIDDEN_NOTICE" = "Fakeroot는 /var/jb와 달리 보존 되어 있습니다. 이 것은 /var/jb를 다시 연결시킵니다. Uicache를 다시 실행 하셔야 할 수도 있습니다.";
 "NOTICE_ROOTLESS" = "Rootless가 아니면 이 기능을 못 사용합니다.";
-"HIDE_NOTICE" = "계속하면 /var/jb 연결을 지우고 제부팅 합니다.";
-"REVERT_SUBTEXT" = "Rootful은 이 버트 사용 못 합니다 :(";
-"PM_SUBTEXT" = "좋아하시는 페키지 관리자를 고르시오, 처음이면 Sileo를 추천합니다.";
-"REVERT_WARNING" = "/var/jb를 지우고 제일브레이크 앱을 지운다. 끝난 후 제거된 상태로 제부팅 됩니다.";
+"HIDE_NOTICE" = "계속하면 /var/jb 연결을 지우고 재부팅 합니다.";
+"REVERT_SUBTEXT" = "Rootful은 이 버튼을 사용할 수 없습니다. :(";
+"PM_SUBTEXT" = "좋아하시는 패키지 관리자를 고르세요. 처음이면 Sileo를 추천합니다.";
+"REVERT_WARNING" = "/var/jb를 지우고 탈옥 앱을 지웁니다. 끝난 후 제거된 상태로 재부팅 됩니다.";
 "CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
-"UNHID_ENV" = "더이상 제일브레이크 숨기지 않는다.";
+"UNHID_ENV" = "더이상 탈옥을 숨기지 않습니다.";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "부트스트랩과 %@은 설치되지 않았습니다. 지금 설치할까요?";
+"DL_STRAP_NOPM" = "%@를 설치할까요?";
+"DL_STRAP_PM" = "%@은 이미 %@에 설치되어 있습니다.";
 
 // errors
 "STATUS" = "상태";
-"ERROR_STRAP" = "bootstrap 설치중 에러";
-"ERROR_DPKG" = "페키지 설치 실패";
+"ERROR_STRAP" = "부트스트랩 설치중 에러";
+"ERROR_DPKG" = "패키지 설치 실패";
 "ERROR_UICACHE" = "UICache실패";
 "ERROR_UNREGISTER" = "Unregister 실패";
-"ERROR_REVERT" = "제일브레이크 제거 실패";
+"ERROR_REVERT" = "탈옥 제거 실패";

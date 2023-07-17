@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "ꞁꞁɐʇsuI";
 "DEBUG" = "ƃnqǝp";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "uoᴉʇɐɯɹoɟuI ǝɔᴉʌǝp";
 "ACTIONS" = "suoᴉʇɔ∀";
 "JBINIT_LOG" = "ƃuᴉƃƃo˥";
 "REVERT_CELL" = "llɐʇsuI ʇɹǝʌǝɹ";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "sɟǝʞɐɟ uɐǝlƆ";
 "DEBUG_EXIT_SAFEMODE" = "ǝpoɯǝɟɐs ʇᴉxƎ";
 "DEBUG_ENTER_SAFEMODE" = "ǝpoɯǝɟɐs ɹǝʇuƎ";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "ǝɥɔɐƆ ɹɐǝlƆ";
+"DEBUG_CLEAR_JSON" = "ƃᴉɟuoɔ NOSſ ɹɐǝlƆ";
 
 // Diags
 "DEVICE_MODEL" = ":lǝpoW ǝɔᴉʌǝp";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "˙ddɐ ǝɥʇ ǝsolɔ ʎɐɯ no⅄";
 "UNHID_ENV" = "ʇuǝɯuoɹᴉʌuǝ ǝɥʇ pᴉɥu∩";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "¿ʍou llɐʇsuI ˙pǝllɐʇsuᴉ ʇou sᴉ %@ puɐ dɐɹʇsʇooq";
+"DL_STRAP_NOPM" = "¿%@ llɐʇsuI";
+"DL_STRAP_PM" = "%@ ʇɐ pǝllɐʇsuᴉ ʎpɐǝɹlɐ sᴉ %@";
 
 // errors
 "STATUS" = "snʇɐʇS";

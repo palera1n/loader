@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "تثبيت";
 "DEBUG" = "تصحيح";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "معلومات الجهاز";
 "ACTIONS" = "إجراءات";
 "JBINIT_LOG" = "سجل التهيئة";
 "REVERT_CELL" = "إلغاء التثبيت";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "بيئة مخفية";
 "ACTION_HIDEJB" = "إخفاء البيئة";
-"OPEN_CELL" = "المفتوحات";
+"OPEN_CELL" = "الافتتاحات";
 "OPENER_SILEO" = "فتح Sileo";
 "OPENER_ZEBRA" = "فتح Zebra";
 "OPENER_TH" = "فتح TrollHelper";
@@ -27,7 +27,7 @@ English
 "ACTION_MOUNT" = "تركيب المجلدات";
 "ACTION_TWEAKS" = "تفعيل الأدوات";
 "FR_SWITCH" = "إعادة التشغيل عند الإلغاء";
-"ACTION_MOUNT_SUBTEXT" = "يحاول \"تحميل الدلائل\" فقط تحميل الجذر والتمهيد المسبق للقراءة / الكتابة.";
+"ACTION_MOUNT_SUBTEXT" = "يحاول \"تحميل الدلائل\" فقط تحميل الجذر والتمهيد المسبق للقراءة/الكتابة.";
 "OPENER_SUBTEXT" = "عند استخدام palera1n على جهاز iPad، هناك حالات تتطلب استخدام هذه الإجراءات لفتح التطبيقات المثبتة عندما لا تظهر على شاشة الصفحة الرئيسية.";
 
 // Logging View
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "مسح fakefs";
 "DEBUG_EXIT_SAFEMODE" = "الخروج من الوضع الآمن";
 "DEBUG_ENTER_SAFEMODE" = "الدخول إلى الوضع الآمن";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "مسح التخزين المؤقت";
+"DEBUG_CLEAR_JSON" = "مسح تكوين JSON";
 
 // Diags
 "DEVICE_MODEL" = "طراز الجهاز:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "يمكنك إغلاق التطبيق.";
 "UNHID_ENV" = "إلغاء إخفاء البيئة";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "التمهيد و %@ غير مثبتان، تثبيت الآن؟";
+"DL_STRAP_NOPM" = "تثبيت %@؟";
+"DL_STRAP_PM" = "إن %@ مثبت بالفعل في %@";
 
 // errors
 "STATUS" = "الحالة";

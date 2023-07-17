@@ -7,10 +7,10 @@ English
 
 "INSTALL" = "Cài đặt";
 "DEBUG" = "Sửa lỗi";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Thông tin thiết bị";
 "ACTIONS" = "Các chức năng";
-"JBINIT_LOG" = "Nhật ký";
-"REVERT_CELL" = "Xoá Môi Trường Jailbreak";
+"JBINIT_LOG" = "Logging";
+"REVERT_CELL" = "Hoàn trả quá trình cài đặt";
 
 // ActionsVC
 "HIDDEN" = "Đã Ẩn Môi Trường Jailbreak";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Làm sạch hàng giả";
 "DEBUG_EXIT_SAFEMODE" = "Thoát chế độ an toàn";
 "DEBUG_ENTER_SAFEMODE" = "Vào chế độ an toàn";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Dọn bộ nhớ đệm";
+"DEBUG_CLEAR_JSON" = "Dọn cấu hình JSON";
 
 // Diags
 "DEVICE_MODEL" = "Kiểu thiết bị:";
@@ -52,7 +52,7 @@ English
 "CREDITS_SUBTEXT" = "Trình khởi chạy được thực hiện bởi:";
 "PINFO_SUBTEXT" = "Cờ (paleinfo) tương ứng với cờ bạn đã sử dụng qua palera1n 2.0.0 CLI, hữu ích cho nhà phát triển.";
 "TYPE_INFO" = "Kiểu";
-"INSTALL_INFO" = "Cài đặt";
+"INSTALL_INFO" = "Đã cài đặt";
 "ARCH_INFO" = "Cấu trúc";
 "VERSION_INFO" = "Phiên bản";
 "STRAP_INFO" = "Môi trường";
@@ -90,7 +90,7 @@ English
 "DOWNLOAD_FAIL" = "Không thể tìm tệp";
 "DOWNLOAD_ERROR" = "Lỗi không xác định";
 "SAVE_FAIL" = "Không thể sao chép tệp vào hệ thống";
-"DONE_INSTALL" = "Cài đặt hoàn thành";
+"DONE_INSTALL" = "Đã cài đặt thành công";
 "ERROR_INSTALL" = "Cài đặt không thành công";
 "DONE_INSTALL_SUB" = "Bạn có thể đóng ứng dụng.";
 "DONE_REVERT" = "Đã xóa thành công";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Bạn có thể đóng ứng dụng.";
 "UNHID_ENV" = "Bỏ ẩn môi trường";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap và %@ chưa được cài đặt. Cài đặt ngay bây giờ?";
+"DL_STRAP_NOPM" = "Cài đặt %@?";
+"DL_STRAP_PM" = "%@ đã được cài đặt tại %@";
 
 // errors
 "STATUS" = "Trạng thái";
@@ -125,4 +125,4 @@ English
 "ERROR_DPKG" = "Không thể cài đặt các gói";
 "ERROR_UICACHE" = "Không thể chạy UICache";
 "ERROR_UNREGISTER" = "Hủy đăng ký không thành công";
-"ERROR_REVERT" = "Không thể xóa bản bẻ khóa";
+"ERROR_REVERT" = "Không thể xóa Jailbreak";
