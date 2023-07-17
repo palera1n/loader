@@ -79,7 +79,7 @@ English
 "PROCEED" = "Продовжити";
 "NO_PROCEED" = "Неможливо продовжити";
 "NO_PROCEED_SIDELOADING" = "Sideloading не підтримується.";
-"NO_PROCEED_FR" = "Після використання --force-revert, вам потрібно вручну перезагрузитись та поставити jailbreak на ваш пристрiй, для того щоб отримати доступ до встановлення bootstrap.";
+"NO_PROCEED_FR" = "Після використання --force-revert, вам потрібно вручну перезагрузитись та поставити jailbreak на ваш пристрій, для того щоб отримати доступ до встановлення bootstrap.";
 "SET" = "Встановити";
 "TOO_LONG" = "Занадто довгий";
 
@@ -107,22 +107,22 @@ English
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "Ваш fakeroot досі не задітий, але /var/jb був змінений, це перестворить посилання на /var/jb назад до оригіналу fakeroot. Вам треба буде запустити Uicache в утилітах після продовження.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"NOTICE_ROOTLESS" = "Ви не можете використовувати цю кнопку допоки ви на не-rootless jailbreak.";
+"HIDE_NOTICE" = "При продовженні буде видалене посилання на /var/jb symlink і ваш пристрій буде перевстановлено.";
+"REVERT_SUBTEXT" = "Rootful користовачі не можуть використовувати цю кнопку :(";
+"PM_SUBTEXT" = "Оберіть ваш улюблений менеджер пакетів, який ви хочете встановити, Sileo рекомендується, якщо ви новичок.";
+"REVERT_WARNING" = "Стерти /var/jb та незареєстровані jailbreak додатки, але після цього пристрій перезагрузиться в не-jailbreak режимі.";
+"CLOSE_APP" = "Ви можете закрити додаток.";
+"UNHID_ENV" = "Відкрити середовище";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap і %@ не встановлені. Встановити зараз?";
+"DL_STRAP_NOPM" = "Встановити %@?";
+"DL_STRAP_PM" = "%@ вже встановлено на %@";
 
 // errors
-"STATUS" = "Status";
-"ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_UNREGISTER" = "Failed to unregister";
+"STATUS" = "Статус";
+"ERROR_STRAP" = "Помилка при встановленні bootstrap";
+"ERROR_DPKG" = "Не вдалось встановити пакети";
+"ERROR_UICACHE" = "Не вдалось запустити UICache";
+"ERROR_UNREGISTER" = "Не вдалось зняти регістрацію";
 "ERROR_REVERT" = "Не вдалося видалити jailbreak";
