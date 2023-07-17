@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "نصب";
 "DEBUG" = "اشکال زدایی";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "اطلاعات دستگاه";
 "ACTIONS" = "اقدامات";
 "JBINIT_LOG" = "Logging";
 "REVERT_CELL" = "برگرداندن نصب";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "تمیز کردن FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "از حالت ایمن خارج شوید";
 "DEBUG_ENTER_SAFEMODE" = "وارد حالت امن شوید";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "پاک کردن حافظه پنهان";
+"DEBUG_CLEAR_JSON" = "تنظیمات JSON را پاک کنید";
 
 // Diags
 "DEVICE_MODEL" = "مدل دستگاه:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "می توانید برنامه را ببندید.";
 "UNHID_ENV" = "محیط را آشکار کنید";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "بوت استرپ و %@ نصب نشده است. الآن نصب کن?";
+"DL_STRAP_NOPM" = "نصب %@?";
+"DL_STRAP_PM" = "%@ قبلاً در %@ نصب شده است";
 
 // errors
 "STATUS" = "Status";
