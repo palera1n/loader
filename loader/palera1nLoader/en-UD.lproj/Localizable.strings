@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "ꞁꞁɐʇsuI";
 "DEBUG" = "ƃnqǝp";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "uoᴉʇɐɯɹoɟuI ǝɔᴉʌǝp";
 "ACTIONS" = "suoᴉʇɔ∀";
 "JBINIT_LOG" = "ƃuᴉƃƃo˥";
 "REVERT_CELL" = "llɐʇsuI ʇɹǝʌǝɹ";
@@ -42,7 +42,7 @@ English
 "DEBUG_CLEAN_FAKEFS" = "sɟǝʞɐɟ uɐǝlƆ";
 "DEBUG_EXIT_SAFEMODE" = "ǝpoɯǝɟɐs ʇᴉxƎ";
 "DEBUG_ENTER_SAFEMODE" = "ǝpoɯǝɟɐs ɹǝʇuƎ";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_CACHE" = "ǝɥɔɐƆ ɹɐǝlƆ";
 "DEBUG_CLEAR_JSON" = "ƃᴉɟuoɔ NOSſ ɹɐǝlƆ";
 
 // Diags
@@ -116,8 +116,8 @@ English
 "UNHID_ENV" = "ʇuǝɯuoɹᴉʌuǝ ǝɥʇ pᴉɥu∩";
 
 "DL_NOSTRAP" = "¿ʍou llɐʇsuI ˙pǝllɐʇsuᴉ ʇou sᴉ %@ puɐ dɐɹʇsʇooq";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_STRAP_NOPM" = "¿%@ llɐʇsuI";
+"DL_STRAP_PM" = "%@ ʇɐ pǝllɐʇsuᴉ ʎpɐǝɹlɐ sᴉ %@";
 
 // errors
 "STATUS" = "snʇɐʇS";
