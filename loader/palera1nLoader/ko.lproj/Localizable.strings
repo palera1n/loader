@@ -13,22 +13,22 @@ English
 "REVERT_CELL" = "제거";
 
 // ActionsVC
-"HIDDEN" = "제일브레이크 숨김";
-"ACTION_HIDEJB" = "제일브레이크 숨기기";
+"HIDDEN" = "탈옥 숨김";
+"ACTION_HIDEJB" = "탈옥 숨기기";
 "OPEN_CELL" = "쇼트컷";
 "OPENER_SILEO" = "Sileo 열기";
 "OPENER_ZEBRA" = "Zebra 열기";
 "OPENER_TH" = "TrollHelper 열기";
 "UTIL_CELL" = "유틸리티";
-"ACTION_RESPRING" = "리스프링";
-"ACTION_USREBOOT" = "유저스페이스 제시작";
+"ACTION_RESPRING" = "SpringBoard 다시시작";
+"ACTION_USREBOOT" = "유저스페이스 재시작";
 "ACTION_UICACHE" = "스프링보드 케시 제거";
 "ACTION_DAEMONS" = "데몬 시작";
 "ACTION_MOUNT" = "마운트 디렉토리";
-"ACTION_TWEAKS" = "트윅 시작하기";
+"ACTION_TWEAKS" = "트윅 활성화";
 "FR_SWITCH" = "제거 후 재시작";
-"ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root과 preboot만 r/w로 제마운트 한다.";
-"OPENER_SUBTEXT" = "palera1n을 iPad에 사용시, 앱이 홈스크린에 안 뜰 경우에 이 엑션을 사용합니다.";
+"ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root과 preboot만 r/w로 재마운트 한다.";
+"OPENER_SUBTEXT" = "Palera1n을 iPad에 사용시, 앱이 홈화면에 뜨지 않을 경우에 이 엑션을 사용합니다.";
 
 // Logging View
 "LOG_CELL" = "로그";
@@ -39,9 +39,9 @@ English
 // Debug
 "DEBUG_CELL" = "디버그";
 "DEBUG_OPTIONS" = "옵션";
-"DEBUG_CLEAN_FAKEFS" = "fakefs 지욱기";
-"DEBUG_EXIT_SAFEMODE" = "safemode 나가기";
-"DEBUG_ENTER_SAFEMODE" = "safemode 시작하기";
+"DEBUG_CLEAN_FAKEFS" = "FakeFs 지우기";
+"DEBUG_EXIT_SAFEMODE" = "안전모드 나가기";
+"DEBUG_ENTER_SAFEMODE" = "안전모드 시작하기";
 "DEBUG_CLEAR_CACHE" = "캐시 삭제";
 "DEBUG_CLEAR_JSON" = "JSON 설정 초기화";
 
@@ -50,8 +50,8 @@ English
 "DEVICE_MODEL_KERN" = "커널 버전";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "로더 제작원:";
-"PINFO_SUBTEXT" = "Flags (paleinfo)는 palera1n 2.0.0 CLI에 사용한 플레그와 대응한다 (개발자에게 유용함)";
-"TYPE_INFO" = "종류";
+"PINFO_SUBTEXT" = "Flags (paleinfo)는 Palera1n 2.0.0 CLI에 사용한 플레그와 대응합니다. (개발자에게 유용함)";
+"TYPE_INFO" = "유형";
 "INSTALL_INFO" = "설치됨";
 "ARCH_INFO" = "Architecture";
 "VERSION_INFO" = "버전";
