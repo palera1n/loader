@@ -61,7 +61,7 @@ English
 "OPEN_FILZA" = "Открыть в Filza";
 "OPEN_SANTANDER" = "Открыть в Santander";
 "COPY" = "Скопировать";
-"INSTALL_FR" = "Откатить принудительно";
+"INSTALL_FR" = "Принудительно понижен";
 "HELPER" = "Помощник";
 "HELPER_PATH" = "Путь к помощнику";
 "SILEO_INSTALLED" = "Sileo установлен";
