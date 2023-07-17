@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Pasang";
 "DEBUG" = "Debug";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Informasi Perangkat";
 "ACTIONS" = "Tindakan";
 "JBINIT_LOG" = "Pencatatan Log";
 "REVERT_CELL" = "Hapus Instalasi";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Bersihkan fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Keluar dari safemode";
 "DEBUG_ENTER_SAFEMODE" = "Memasuki safemode";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Hapus Cache";
+"DEBUG_CLEAR_JSON" = "Bersihkan konfigurasi JSON";
 
 // Diags
 "DEVICE_MODEL" = "Model Perangkat:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Anda dapat menutup aplikasi ini.";
 "UNHID_ENV" = "Perlihatkan Jailbreak";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap dan %@ tidak terpasang. Pasang sekarang?";
+"DL_STRAP_NOPM" = "Pasang %@?";
+"DL_STRAP_PM" = "%@ telah terpasang pada %@";
 
 // errors
 "STATUS" = "Status";
