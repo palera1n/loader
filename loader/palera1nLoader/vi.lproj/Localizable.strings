@@ -106,14 +106,14 @@ English
 "ENJOY" = "Hãy tận hưởng!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Fakeroot của bạn vẫn còn nguyên vẹn trong khi /var/jb thì không, điều này sẽ liên kết lại /var/jb trở lại với fakeroot ban đầu. Bạn có thể cần chạy uicache trong các tiện ích sau khi tiếp tục.";
-"NOTICE_ROOTLESS" = "Bạn không thể sử dụng nút này nếu bạn đang bẻ khóa không root.";
+"HIDDEN_NOTICE" = "Fakeroot của bạn vẫn còn nguyên vẹn trong khi /var/jb thì không, điều này sẽ liên kết /var/jb trở lại với fakeroot ban đầu. Bạn có thể cần chạy uicache trong tiện ích sau khi tiếp tục.";
+"NOTICE_ROOTLESS" = "Bạn không thể sử dụng nút này nếu bạn đang dùng rootless jailbreak.";
 "HIDE_NOTICE" = "Việc tiếp tục sẽ xóa tệp tin /var/jb và khởi động lại thiết bị.";
 "REVERT_SUBTEXT" = "Rootful không thể sử dụng chức năng này :(";
 "PM_SUBTEXT" = "Chọn trình quản lý gói yêu thích của bạn tại đây mà bạn muốn cài đặt, Sileo được khuyến nghị nếu bạn là người mới.";
 "REVERT_WARNING" = "Xóa /var/jb và hủy đăng ký các ứng dụng bẻ khóa, sau khi hoàn tất, thiết bị sẽ khởi động lại ở trạng thái chưa bẻ khóa.";
 "CLOSE_APP" = "Bạn có thể đóng ứng dụng.";
-"UNHID_ENV" = "Bỏ ẩn môi trường";
+"UNHID_ENV" = "Bỏ ẩn Jailbreak";
 
 "DL_NOSTRAP" = "Bootstrap và %@ chưa được cài đặt. Cài đặt ngay bây giờ?";
 "DL_STRAP_NOPM" = "Cài đặt %@?";
