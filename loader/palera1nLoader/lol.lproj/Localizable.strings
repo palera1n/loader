@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Instal";
 "DEBUG" = "DEBUG";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "devise infomashin";
 "ACTIONS" = "Acshunz";
 "JBINIT_LOG" = "Loggin";
 "REVERT_CELL" = "Revert Install";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Exit safemode";
 "DEBUG_ENTER_SAFEMODE" = "Enter safemode";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "cler cash";
+"DEBUG_CLEAR_JSON" = "cler json cunfig";
 
 // Diags
 "DEVICE_MODEL" = "Device Model:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "U cud close teh app.";
 "UNHID_ENV" = "Unhid teh environment";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "boostrap and %@ not instal, instal naw?";
+"DL_STRAP_NOPM" = "Instal %@?";
+"DL_STRAP_PM" = "%@ alredy instald at %@";
 
 // errors
 "STATUS" = "Status";
