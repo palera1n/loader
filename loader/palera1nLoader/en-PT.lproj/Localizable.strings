@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Swab fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Exit safemode";
 "DEBUG_ENTER_SAFEMODE" = "Enter safemode";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Sweep the cache";
+"DEBUG_CLEAR_JSON" = "Sweep the JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Device Model:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Ye may close the app.";
 "UNHID_ENV" = "Unhid the environment";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_NOSTRAP" = "Yer bootstrap and %@ aren't installed. Install them now?";
 "DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_STRAP_PM" = "%@ be already installed at %@";
 
 // errors
 "STATUS" = "Status";
