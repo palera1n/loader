@@ -115,8 +115,8 @@ English
 "CLOSE_APP" = "你現在可關閉這個應用程式。";
 "UNHID_ENV" = "取消隱藏環境";
 
-"DL_NOSTRAP" = "Bootstrap 和 %@ 還麽有安裝。現在安裝嗎？";
-"DL_STRAP_NOPM" = "安裝 %@?";
+"DL_NOSTRAP" = "底層越獄檔案和 %@ 還未安裝。現在安裝嗎？";
+"DL_STRAP_NOPM" = "安裝 %@？";
 "DL_STRAP_PM" = "%@ 已經安裝在 %@";
 
 // errors
