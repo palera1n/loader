@@ -21,14 +21,14 @@ English
 "OPENER_TH" = "TrollHelper 열기";
 "UTIL_CELL" = "유틸리티";
 "ACTION_RESPRING" = "SpringBoard 다시시작";
-"ACTION_USREBOOT" = "유저스페이스 재시작";
-"ACTION_UICACHE" = "스프링보드 케시 제거";
+"ACTION_USREBOOT" = "유저스페이스 다시시작";
+"ACTION_UICACHE" = "스프링보드 캐시 제거";
 "ACTION_DAEMONS" = "데몬 시작";
 "ACTION_MOUNT" = "마운트 디렉토리";
 "ACTION_TWEAKS" = "트윅 활성화";
 "FR_SWITCH" = "제거 후 재시작";
-"ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root과 preboot만 r/w로 재마운트 한다.";
-"OPENER_SUBTEXT" = "Palera1n을 iPad에 사용시, 앱이 홈화면에 뜨지 않을 경우에 이 엑션을 사용합니다.";
+"ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root와 preboot만 r/w로 재마운트 합니다.";
+"OPENER_SUBTEXT" = "Palera1n을 iPad에서 사용시, 앱이 홈화면에 뜨지 않을 경우에 이 액션을 사용합니다.";
 
 // Logging View
 "LOG_CELL" = "로그";
