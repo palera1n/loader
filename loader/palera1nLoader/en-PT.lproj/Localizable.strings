@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "Install";
 "DEBUG" = "Fly Swatter";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "About yer ship";
 "ACTIONS" = "Actions";
 "JBINIT_LOG" = "Logging";
 "REVERT_CELL" = "Revert Install";
