@@ -10,7 +10,7 @@ English
 "DIAGNOSTICS" = "Informacja urządzenia";
 "ACTIONS" = "Działania";
 "JBINIT_LOG" = "Logi";
-"REVERT_CELL" = "Przywróć instalacje";
+"REVERT_CELL" = "Odwróć instalację";
 
 // ActionsVC
 "HIDDEN" = "Ukryte środowisko";
