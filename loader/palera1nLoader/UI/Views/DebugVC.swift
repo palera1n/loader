@@ -33,7 +33,7 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(closeSheet))
         
-        let tableView = UITableView(frame: view.bounds, style: .grouped)
+        let tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)

@@ -9,6 +9,7 @@ import Foundation
 import Extras
 import UIKit
 
+let isIpad = UIDevice.current.userInterfaceIdiom
 let fm = FileManager.default
 
 struct envInfo {

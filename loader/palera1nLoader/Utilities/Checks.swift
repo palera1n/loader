@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Extras
 import MachO
 
 struct environment {
