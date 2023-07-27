@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "安装";
-"DEBUG" = "调试";
-"DIAGNOSTICS" = "设备信息";
+"INSTALL" = "安装了";
+"DEBUG" = "开发人员调试版q";
+"DIAGNOSTICS" = "设备信息o";
 "ACTIONS" = "行动";
 "JBINIT_LOG" = "记录日志";
 "REVERT_CELL" = "还原安装";
