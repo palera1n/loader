@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "インストール";
 "DEBUG" = "デバッグ";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "端末情報";
 "ACTIONS" = "アクション";
 "JBINIT_LOG" = "ログ";
 "REVERT_CELL" = "Jailbreak環境を削除";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "fakefsを消去";
 "DEBUG_EXIT_SAFEMODE" = "safemodeを終了";
 "DEBUG_ENTER_SAFEMODE" = "safemodeに入る";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "キャッシュを削除";
+"DEBUG_CLEAR_JSON" = "JSON設定を消去";
 
 // Diags
 "DEVICE_MODEL" = "Device Model:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "アプリを終了します。";
 "UNHID_ENV" = "環境を再表示";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "ブートストラップと %@ がインストールされていません。インストールしますか？";
+"DL_STRAP_NOPM" = "%@ をインストールしますか？";
+"DL_STRAP_PM" = "%@ は既に %@ にインストールされています";
 
 // errors
 "STATUS" = "ステータス";
