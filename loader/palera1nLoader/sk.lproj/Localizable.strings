@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Namastite";
-"DEBUG" = "Debug";
+"DEBUG" = "Odstraňovať chyby";
 "DIAGNOSTICS" = "Informácie o zariadení";
 "ACTIONS" = "Akcie";
 "JBINIT_LOG" = "Zápis logu";
@@ -27,7 +27,7 @@ English
 "ACTION_MOUNT" = "Mountovať priečinky";
 "ACTION_TWEAKS" = "Zapnúť tweaky";
 "FR_SWITCH" = "Reštartovanie pri návrate";
-"ACTION_MOUNT_SUBTEXT" = "\"Mountovať priečinky\" sa pokúša mountovať iba root a preboot ako čítať/pisať.";
+"ACTION_MOUNT_SUBTEXT" = "\"Namontovať Adresár\" sa pokúša pripojiť iba root a predboot ako čítant'/pisat'.";
 "OPENER_SUBTEXT" = "Pri používaní aplikácie palera1n na iPadoch sa môžu vyskytnúť prípady, keď budete musieť použiť tieto akcie na otvorenie nainštalovaných aplikácií, keď sa nezobrazia na domovskej obrazovke.";
 
 // Logging View
@@ -37,7 +37,7 @@ English
 "LOG_CLEAR" = "Vymazať logy";
 
 // Debug
-"DEBUG_CELL" = "Debug";
+"DEBUG_CELL" = "Odstraňovať chyby";
 "DEBUG_OPTIONS" = "Nastavenia";
 "DEBUG_CLEAN_FAKEFS" = "Vyčistiť fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Ukončenie bezpečného režimu";
@@ -47,10 +47,10 @@ English
 
 // Diags
 "DEVICE_MODEL" = "Model zariadenia:";
-"DEVICE_MODEL_KERN" = "Verzia kernelu:";
+"DEVICE_MODEL_KERN" = "Verzia jadro:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader vytvorili:";
-"PINFO_SUBTEXT" = "Vlajky (paleinfo) zodpovedajú vlajkám, ktoré ste použili v CLI palera1n 2.0.0, užitočné pre developerov.";
+"PINFO_SUBTEXT" = "Vlajky (paleinfo) zodpovedajú vlajkám, ktoré ste použili v CLI palera1n 2.0.0, užitočné pre vývojár.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Inštalované";
 "ARCH_INFO" = "Architektúra";
@@ -116,8 +116,8 @@ English
 "UNHID_ENV" = "Odkrylo sa prostredie";
 
 "DL_NOSTRAP" = "Bootstrap a %@ nie je nainštalovaný. Nainštalovať teraz?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_STRAP_NOPM" = "Nainštalovať %@?";
+"DL_STRAP_PM" = "%@ je už nainštalované na %@";
 
 // errors
 "STATUS" = "Status";
