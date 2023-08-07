@@ -10,7 +10,7 @@ English
 "DIAGNOSTICS" = "Информация об устройстве";
 "ACTIONS" = "Действия";
 "JBINIT_LOG" = "Логирование";
-"REVERT_CELL" = "Отменить установку";
+"REVERT_CELL" = "Откатить установку";
 
 // ActionsVC
 "HIDDEN" = "Скрытое окружение";
@@ -20,13 +20,13 @@ English
 "OPENER_ZEBRA" = "Открыть Zebra";
 "OPENER_TH" = "Открыть TrollHelper";
 "UTIL_CELL" = "Утилиты";
-"ACTION_RESPRING" = "Респринг";
+"ACTION_RESPRING" = "Перезагрузить SpringBoard";
 "ACTION_USREBOOT" = "Перезапуск Userspace";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Запустить Daemon'ы";
 "ACTION_MOUNT" = "Смонтировать директории";
 "ACTION_TWEAKS" = "Включить твики";
-"FR_SWITCH" = "Перезагрузка после отката";
+"FR_SWITCH" = "Перезагружать после отката";
 "ACTION_MOUNT_SUBTEXT" = "\"Смонтировать Директории\" лишь пытается смонтировать рут и preboot с правами на запись/чтение.";
 "OPENER_SUBTEXT" = "При использовании palera1n на iPad могут произойти случаи, при которых вам понадобиться использовать данные действия, для открытия установленных приложений, которые не появляются на рабочем столе.";
 
@@ -50,7 +50,7 @@ English
 "DEVICE_MODEL_KERN" = "Версия ядра:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Загрузчик создан:";
-"PINFO_SUBTEXT" = "Флаги (paleinfo) соответствует флагам, которые вы использовали через palera1n 2.0.0 CLI, полезно для разработчиков.";
+"PINFO_SUBTEXT" = "Флаги (paleinfo) соответствуют флагам, которые вы использовали через palera1n 2.0.0 CLI, полезно для разработчиков.";
 "TYPE_INFO" = "Тип";
 "INSTALL_INFO" = "Установлено";
 "ARCH_INFO" = "Архитектура";
