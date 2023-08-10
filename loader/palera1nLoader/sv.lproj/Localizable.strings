@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Installera";
 "DEBUG" = "Felsök";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Enhetsinformation";
 "ACTIONS" = "Åtgärder";
 "JBINIT_LOG" = "Logg";
 "REVERT_CELL" = "Återställ Jailbreak";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Rensa fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Avsluta felsäkert läge";
 "DEBUG_ENTER_SAFEMODE" = "Aktivera felsäkert läge";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_CACHE" = "Rensa Cache";
+"DEBUG_CLEAR_JSON" = "Rensa JSON-konfiguration";
 
 // Diags
 "DEVICE_MODEL" = "Enhetsmodell:";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Du kan stänga applikationen.";
 "UNHID_ENV" = "Jailbreak är inte längre gömd";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap och %@ är inte installerat. Vill du installera nu?";
+"DL_STRAP_NOPM" = "Installera %@?";
+"DL_STRAP_PM" = "%@ är redan installerat på %@";
 
 // errors
 "STATUS" = "Status";
