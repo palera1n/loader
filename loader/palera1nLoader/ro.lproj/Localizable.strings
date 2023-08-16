@@ -123,6 +123,6 @@ English
 "STATUS" = "Stare";
 "ERROR_STRAP" = "Eroare la instalarea putea porni";
 "ERROR_DPKG" = "Pachetele nu au putut fi instalate";
-"ERROR_UICACHE" = "Failed to run UICache";
+"ERROR_UICACHE" = "Nu s-a putut rula UICache";
 "ERROR_UNREGISTER" = "Nu s-a putut anula înregistrarea";
 "ERROR_REVERT" = "Nu a reușit să elimine jailbreak";
