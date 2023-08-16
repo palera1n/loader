@@ -63,66 +63,66 @@ English
 "COPY" = "Copie";
 "INSTALL_FR" = "Forța inversată";
 "HELPER" = "Ajutor";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"HELPER_PATH" = "Calea De Ajutor";
+"SILEO_INSTALLED" = "Sileo Instalat";
+"ZEBRA_INSTALLED" = "Zebra Instalat";
+"KINFO_FLAGS" = "Steaguri (kerninfo)";
+"PINFO_FLAGS" = "Steaguri (paleinfo)";
 
-"TRUE" = "Yes";
-"FALSE" = "No";
-"ROOTFUL" = "Rootful";
-"ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
+"TRUE" = "Da";
+"FALSE" = "Nu";
+"ROOTFUL" = "Rădăcinată";
+"ROOTLESS" = "Fără rădăcini";
+"CANCEL" = "Anulare";
+"CONFIRM" = "A confirma";
+"CLOSE" = "Închide";
+"PROCEED" = "Continua";
+"NO_PROCEED" = "Nu se poate continua";
 "NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
-"SET" = "Set";
-"TOO_LONG" = "Too Long";
+"NO_PROCEED_FR" = "După ce ați folosit --force-revert, trebuie să reporniți manual și să vă faceți jailbreak din nou pentru a putea porni.";
+"SET" = "A stabilit";
+"TOO_LONG" = "Prea lung";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DL_STRAP" = "Descărcarea sistemului de bază";
+"DOWNLOADING" = "Descărcarea...";
+"INSTALLING" = "Se instalează...";
+"DOWNLOAD_FAIL" = "Nu se poate prelua fișierul";
+"DOWNLOAD_ERROR" = "Eroare necunoscută";
+"SAVE_FAIL" = "Nu s-a putut copia fișierul pe disc";
+"DONE_INSTALL" = "Instalare finalizată";
+"ERROR_INSTALL" = "Instalare eșuată";
+"DONE_INSTALL_SUB" = "Puteți închide aplicația.";
+"DONE_REVERT" = "Eliminare finalizată";
+"REMOVING" = "Se elimină...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "Pentru a utiliza instrumente de linie de comandă precum \"sudo\" după jailbreaking, va trebui să setați o parolă pentru terminal. (Acesta nu poate fi gol)";
+"PASSWORD_REPEAT" = "Repetați Parola";
+"PASSWORD_SET" = "Setează parolă";
+"PASSWORD_TEXT" = "Parola";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "Reinstala";
+"ENJOY" = "Bucurați-vă!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"HIDDEN_NOTICE" = "Fakeroot-ul dvs. este încă intact în timp ce /var/jb nu este, acesta va re-symlink /var/jb înapoi la fakeroot-ul original. Poate fi necesar să rulați uicache în utilitare după ce continuați.";
+"NOTICE_ROOTLESS" = "Nu puteți folosi acest buton dacă vă aflați într-un jailbreak fără root.";
+"HIDE_NOTICE" = "Continuând va elimina linkul simbolic /var/jb și va reporni dispozitivul.";
+"REVERT_SUBTEXT" = "Rootful nu poate folosi acest buton :(";
+"PM_SUBTEXT" = "Selectați aici managerul de pachete preferat pe care doriți să îl instalați, Sileo este recomandat dacă sunteți nou.";
+"REVERT_WARNING" = "Șterge /var/jb și anulează înregistrarea aplicațiilor de jailbreak, după ce se face, dispozitivul va reporni într-o stare nejailbreak.";
+"CLOSE_APP" = "Puteți închide aplicația.";
+"UNHID_ENV" = "Dezvăluie mediul înconjurător";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap și %@ nu sunt instalate. Instaleaza acum?";
+"DL_STRAP_NOPM" = "Instalare %@?";
+"DL_STRAP_PM" = "%@ este deja instalat la %@";
 
 // errors
-"STATUS" = "Status";
-"ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
+"STATUS" = "Stare";
+"ERROR_STRAP" = "Eroare la instalarea putea porni";
+"ERROR_DPKG" = "Pachetele nu au putut fi instalate";
 "ERROR_UICACHE" = "Failed to run UICache";
 "ERROR_UNREGISTER" = "Nu s-a putut anula înregistrarea";
 "ERROR_REVERT" = "Nu a reușit să elimine jailbreak";
