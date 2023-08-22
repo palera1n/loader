@@ -5,12 +5,12 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "fuck you";
+"INSTALL" = "Install";
 "DEBUG" = "Debugim";
-"DIAGNOSTICS" = "Informacion mbi pajisjen";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Aksione";
 "JBINIT_LOG" = "Logime";
-"REVERT_CELL" = "Meow";
+"REVERT_CELL" = "Revert Install";
 
 // ActionsVC
 "HIDDEN" = "I Fshehur";
@@ -23,12 +23,12 @@ English
 "ACTION_RESPRING" = "Respring";
 "ACTION_USREBOOT" = "Restart i Userspaces";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "A";
-"ACTION_MOUNT" = "A";
+"ACTION_DAEMONS" = "Launch Daemons";
+"ACTION_MOUNT" = "Mount Directories";
 "ACTION_TWEAKS" = "Aktivizo Tweaks";
 "FR_SWITCH" = "Rinisni në rikthim";
-"ACTION_MOUNT_SUBTEXT" = "A.";
-"OPENER_SUBTEXT" = "A.";
+"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
+"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
 
 // Logging View
 "LOG_CELL" = "Logjet";
@@ -42,8 +42,8 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Pastroni FakeFS-in";
 "DEBUG_EXIT_SAFEMODE" = "Dilni nga modaliteti i sigurt";
 "DEBUG_ENTER_SAFEMODE" = "Hyr ne modaliteti i sigurt";
-"DEBUG_CLEAR_CACHE" = "A";
-"DEBUG_CLEAR_JSON" = "A";
+"DEBUG_CLEAR_CACHE" = "Clear Cache";
+"DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
 "DEVICE_MODEL" = "Modeli i paisjes:";
@@ -61,13 +61,13 @@ English
 "OPEN_FILZA" = "Hap ne Filza";
 "OPEN_SANTANDER" = "Hap ne Santander";
 "COPY" = "Kopjo";
-"INSTALL_FR" = "A";
+"INSTALL_FR" = "Force Reverted";
 "HELPER" = "Ndihmes";
-"HELPER_PATH" = "A";
+"HELPER_PATH" = "Helper Path";
 "SILEO_INSTALLED" = "Sileo Instaluar";
 "ZEBRA_INSTALLED" = "Zebra Instaluar";
-"KINFO_FLAGS" = "A";
-"PINFO_FLAGS" = "A";
+"KINFO_FLAGS" = "Flags (kerninfo)";
+"PINFO_FLAGS" = "Flags (paleinfo)";
 
 "TRUE" = "Po";
 "FALSE" = "Jo";
@@ -78,20 +78,20 @@ English
 "CLOSE" = "Mbyll";
 "PROCEED" = "Vazhdo";
 "NO_PROCEED" = "Nuk mund te vazhdonim";
-"NO_PROCEED_SIDELOADING" = "A.";
-"NO_PROCEED_FR" = "A";
-"SET" = "A";
-"TOO_LONG" = "A";
+"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
+"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
+"SET" = "Set";
+"TOO_LONG" = "Too Long";
 
 // DL / BS
-"DL_STRAP" = "A";
+"DL_STRAP" = "Downloading Base System";
 "DOWNLOADING" = "Duke u shkarkuar...";
 "INSTALLING" = "Duke u instaluar...";
-"DOWNLOAD_FAIL" = "A";
-"DOWNLOAD_ERROR" = "A";
-"SAVE_FAIL" = "A";
-"DONE_INSTALL" = "A";
-"ERROR_INSTALL" = "A";
+"DOWNLOAD_FAIL" = "Unable to fetch file";
+"DOWNLOAD_ERROR" = "Unknown error";
+"SAVE_FAIL" = "Could not copy file to disk";
+"DONE_INSTALL" = "Install Completed";
+"ERROR_INSTALL" = "Install Failed";
 "DONE_INSTALL_SUB" = "Ju mund ta mbyllni applikacionin.";
 "DONE_REVERT" = "U fshi saktesisht";
 "REMOVING" = "Duke u fshire...";
@@ -115,9 +115,9 @@ English
 "CLOSE_APP" = "Ju mund ta mbyllni aplikacionin.";
 "UNHID_ENV" = "Tregoje enviromentin";
 
-"DL_NOSTRAP" = "A?";
-"DL_STRAP_NOPM" = "A?";
-"DL_STRAP_PM" = "Meow %@";
+"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
+"DL_STRAP_NOPM" = "Install %@?";
+"DL_STRAP_PM" = "%@ is already installed at %@";
 
 // errors
 "STATUS" = "Statusi";
