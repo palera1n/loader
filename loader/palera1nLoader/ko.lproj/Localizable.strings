@@ -20,9 +20,9 @@ English
 "OPENER_ZEBRA" = "Zebra 열기";
 "OPENER_TH" = "TrollHelper 열기";
 "UTIL_CELL" = "유틸리티";
-"ACTION_RESPRING" = "SpringBoard 다시시작";
-"ACTION_USREBOOT" = "유저스페이스 다시시작";
-"ACTION_UICACHE" = "스프링보드 캐시 제거";
+"ACTION_RESPRING" = "SpringBoard 다시 시작";
+"ACTION_USREBOOT" = "유저스페이스 다시 시작";
+"ACTION_UICACHE" = "SpringBoard 캐시 제거";
 "ACTION_DAEMONS" = "데몬 시작";
 "ACTION_MOUNT" = "마운트 디렉토리";
 "ACTION_TWEAKS" = "트윅 활성화";
