@@ -6,11 +6,11 @@ English
 // ViewController Cells
 
 "INSTALL" = "Cài đặt";
-"DEBUG" = "Sửa lỗi";
+"DEBUG" = "Gỡ lỗi";
 "DIAGNOSTICS" = "Thông tin thiết bị";
 "ACTIONS" = "Các chức năng";
 "JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Hoàn trả quá trình cài đặt";
+"REVERT_CELL" = "Hoàn trả môi trường gốc";
 
 // ActionsVC
 "HIDDEN" = "Đã Ẩn Môi Trường Jailbreak";
@@ -20,7 +20,7 @@ English
 "OPENER_ZEBRA" = "Mở Zebra";
 "OPENER_TH" = "Mở TrollHelper";
 "UTIL_CELL" = "Tiện ích";
-"ACTION_RESPRING" = "Khởi Động lại";
+"ACTION_RESPRING" = "Khởi Động lại SpringBoard";
 "ACTION_USREBOOT" = "Khởi động lại Không gian người dùng";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Khởi chạy Daemon";
