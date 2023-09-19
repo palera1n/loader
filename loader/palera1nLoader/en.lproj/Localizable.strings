@@ -5,11 +5,11 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Installs";
-"DEBUG" = "Debug";
+"INSTALL" = "~Install";
+"DEBUG" = "&Debug";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
+"JBINIT_LOG" = "Logging:";
 "REVERT_CELL" = "Revert Install";
 
 // ActionsVC
@@ -23,8 +23,8 @@ English
 "ACTION_RESPRING" = "Respring";
 "ACTION_USREBOOT" = "Userspace Reboot";
 "ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
+"ACTION_DAEMONS" = "Launch Demons";
+"ACTION_MOUNT" = "Mount 'er Directories";
 "ACTION_TWEAKS" = "Enable Tweaks";
 "FR_SWITCH" = "Reboot on revert";
 "ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
@@ -48,8 +48,8 @@ English
 // Diags
 "DEVICE_MODEL" = "Device Model:";
 "DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
+"DEVICE_MODEL_CF" = "CF_Version:";
+"CREDITS_SUBTEXT" = "Loader made by: Houdini:";
 "PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
 "TYPE_INFO" = "Type";
 "INSTALL_INFO" = "Installed";
