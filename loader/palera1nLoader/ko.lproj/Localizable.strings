@@ -78,14 +78,14 @@ English
 "CLOSE" = "닫기";
 "PROCEED" = "계속";
 "NO_PROCEED" = "계속할 수 없음";
-"NO_PROCEED_SIDELOADING" = "사이드로딩은 지원하지 않습니다.";
-"NO_PROCEED_FR" = "--force-revert 사용 후 재시작을 해야만 bootstrap을 다시 할 수 있습니다.";
+"NO_PROCEED_SIDELOADING" = "사이드로드는 지원하지 않습니다.";
+"NO_PROCEED_FR" = "--force-revert 사용 후 재시작 및 재탈옥해야 부팅할 수 있습니다.";
 "SET" = "설정";
 "TOO_LONG" = "길이 초과";
 
 // DL / BS
 "DL_STRAP" = "배이스 다운받는 중";
-"DOWNLOADING" = "다운받는 중...";
+"DOWNLOADING" = "다운로드 중...";
 "INSTALLING" = "설치 중...";
 "DOWNLOAD_FAIL" = "다운로드 실패";
 "DOWNLOAD_ERROR" = "알 수 없는 오류";
