@@ -28,7 +28,7 @@ English
 "ACTION_TWEAKS" = "트윅 활성화";
 "FR_SWITCH" = "제거 후 재시작";
 "ACTION_MOUNT_SUBTEXT" = "\"마운트 디렉토리\"는 root와 preboot만 r/w로 재마운트 합니다.";
-"OPENER_SUBTEXT" = "Palera1n을 iPad에서 사용시, 앱이 홈화면에 뜨지 않을 경우에 이 액션을 사용합니다.";
+"OPENER_SUBTEXT" = "palera1n을 iPad에서 사용 시, 앱이 홈 화면에 표시되지 않을 경우에 이 액션을 사용하세요.";
 
 // Logging View
 "LOG_CELL" = "로그";
@@ -49,8 +49,8 @@ English
 "DEVICE_MODEL" = "디바이스 모델:";
 "DEVICE_MODEL_KERN" = "커널 버전";
 "DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "로더 제작원:";
-"PINFO_SUBTEXT" = "Flags (paleinfo)는 Palera1n 2.0.0 CLI에 사용한 플레그와 대응합니다. (개발자에게 유용함)";
+"CREDITS_SUBTEXT" = "로더 제작자:";
+"PINFO_SUBTEXT" = "플래그 (paleinfo) 는 palera1n 2.0.0 CLI에 사용한 플레그와 대응합니다. (개발자에게 유용함)";
 "TYPE_INFO" = "유형";
 "INSTALL_INFO" = "설치됨";
 "ARCH_INFO" = "아키텍처";
@@ -61,7 +61,7 @@ English
 "OPEN_FILZA" = "Filza에서 열기";
 "OPEN_SANTANDER" = "Santander에서 열기";
 "COPY" = "복사";
-"INSTALL_FR" = "강제 복귀됨";
+"INSTALL_FR" = "강제 제거됨";
 "HELPER" = "헬퍼";
 "HELPER_PATH" = "헬퍼 저장소";
 "SILEO_INSTALLED" = "Sileo 설치 여부";
@@ -77,7 +77,7 @@ English
 "CONFIRM" = "확인";
 "CLOSE" = "닫기";
 "PROCEED" = "계속";
-"NO_PROCEED" = "계속 못함";
+"NO_PROCEED" = "계속할 수 없음";
 "NO_PROCEED_SIDELOADING" = "사이드로딩은 지원하지 않습니다.";
 "NO_PROCEED_FR" = "--force-revert 사용 후 재시작을 해야만 bootstrap을 다시 할 수 있습니다.";
 "SET" = "설정";
@@ -115,7 +115,7 @@ English
 "CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
 "UNHID_ENV" = "더이상 탈옥을 숨기지 않습니다.";
 
-"DL_NOSTRAP" = "부트스트랩과 %@은 설치되지 않았습니다. 지금 설치할까요?";
+"DL_NOSTRAP" = "부트스트랩과 %@은(는) 설치되지 않았습니다. 지금 설치할까요?";
 "DL_STRAP_NOPM" = "%@을(를) 설치할까요?";
 "DL_STRAP_PM" = "%@은 이미 %@에 설치되어 있습니다.";
 
