@@ -12,6 +12,7 @@ import Foundation
 public struct loaderJSON: Codable {
     let bootstraps: [Bootstrap]
     let managers: [Manager]
+    let assets: [Asset]
 }
 
 // Bootstrap
@@ -38,6 +39,18 @@ struct ManagerItem: Codable {
     let uri: String
     let icon: String
     let filePaths: [String] // Updated the type to [String]
+}
+
+struct Asset: Codable {
+    let label: String
+    let repositories: [AssetRepository]
+    let packages: [String]
+}
+
+struct AssetRepository: Codable {
+    let uri: String
+    let suite: String
+    let component: String
 }
 
 
@@ -95,6 +108,32 @@ public func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
     
     return nil
 }
+
+public func getAssetsInfo(_ json: loaderJSON) -> (repositories: [String], packages: [String])? {
+    let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    var packages: [String] = []
+    var repositories: [String] = []
+
+    for asset in json.assets {
+        if asset.label == jailbreakType {
+            packages = asset.packages
+            for repository in asset.repositories {
+                let repositoryInfo = "Types: deb\nURI: \(repository.uri)\nSuite: \(repository.suite)\nComponent: \(repository.component)\n\n"
+                repositories.append(repositoryInfo)
+            }
+        }
+    }
+
+    if packages.isEmpty && repositories.isEmpty {
+        log(type: .error, msg: "Failed to find assets info for \(jailbreakType).")
+        return nil
+    }
+
+    return (packages, repositories)
+}
+
+
+
 
 public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"

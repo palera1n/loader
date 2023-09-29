@@ -14,7 +14,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         [local("TYPE_INFO"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
         
-        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX"), local("STRAP_FR_PATH")],
+        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX")],
                 
         [local("SILEO_INSTALLED"), local("ZEBRA_INSTALLED")]
     ]
@@ -68,29 +68,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             var filePath = ""
             
             switch (indexPath.section, indexPath.row) {
-            case (2, 3) where !envInfo.isRootful:
-                let filzaInstalled = UIApplication.shared.canOpenURL(URL(string: "filza://")!)
-                let santanderInstalled = UIApplication.shared.canOpenURL(URL(string: "santander://")!)
-                
-                if filzaInstalled {
-                    let openInFilza = UIAction(title: local("OPEN_FILZA"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
-                        UIApplication.shared.open(URL(string: "filza://\(filePath)")!, options: [:], completionHandler: nil)
-                    }
-                    menuOptions.append(openInFilza)
-                }
-                
-                if santanderInstalled {
-                    let openInSantander = UIAction(title: local("OPEN_SANTANDER"), image: UIImage(systemName: "arrow.uturn.forward"), identifier: nil, discoverabilityTitle: nil) { action in
-                        UIApplication.shared.open(URL(string: "santander://\(filePath)")!, options: [:], completionHandler: nil)
-                    }
-                    menuOptions.append(openInSantander)
-                }
-                
-                if let detailText = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text {
-                    filePath = detailText
-                    return UIMenu(title: detailText, image: nil, identifier: nil, options: [], children: menuOptions)
-                }
-                
             case (1, 2), (1, 3):
                 let flags = indexPath.row == 2 ? envInfo.kinfoFlagsStr : envInfo.pinfoFlagsStr
                 return UIMenu(title: flags, image: nil, identifier: nil, options: [], children: [copyAction])
@@ -104,8 +81,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             default:
                 return UIMenu(image: nil, identifier: nil, options: [], children: [copyAction])
             }
-            
-            return nil
         }
     }
 
@@ -143,17 +118,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             } else {
                 cell.detailTextLabel?.text = local("NONE")
             }
-        case local("STRAP_FR_PATH"):
-            cell.textLabel?.text = local("STRAP_FR_PATH")
-            if !envInfo.isRootful {
-                if (envInfo.jbFolder == "") {
-                    cell.detailTextLabel?.text = local("NONE")
-                } else {
-                    cell.detailTextLabel?.text = "\(envInfo.jbFolder)/procursus"
-                }
-            } else {
-                cell.detailTextLabel?.text = local("NONE")
-            }
         case local("KINFO_FLAGS"):
             cell.textLabel?.text = local("KINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.kinfoFlags
@@ -182,10 +146,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             \(local("CREDITS_SUBTEXT"))
             @ssalggnikool (Samara) & @staturnzdev (Staturnz)
-            """
-        case 1:
-            return """
-            \(local("PINFO_SUBTEXT"))
             """
         default:
             return nil

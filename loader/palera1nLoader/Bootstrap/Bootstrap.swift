@@ -74,7 +74,7 @@ class bootstrap {
             completion(local("ERROR_UICACHE"), ret)
             return
         }
-
+        
         cleanUp()
         completion(local("DONE_INSTALL"), 0)
         return

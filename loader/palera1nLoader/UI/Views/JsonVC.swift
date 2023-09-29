@@ -210,10 +210,10 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             return
             
-        case (envInfo.CF == 2000):
+        case (envInfo.CF > 1900):
             if envInfo.isRootful {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    let alertController = whichAlert(title: "Oopsy :3", message: "Rootful on iOS 17 is not supported. You will get no support, and you're on your own.")
+                    let alertController = whichAlert(title: "Oopsy :3", message: "Rootful on iOS 17+ is not supported. You will get no support, and you're on your own.")
                     let cancelAction = UIAlertAction(title: local("CLOSE"), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     
@@ -268,7 +268,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         NSLayoutConstraint.activate([
             button.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
             button.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 12),
+            titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 13),
             titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
         ])
       let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(restartButtonTapped))
@@ -343,7 +343,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 self.sectionTitles = [""]
                 
                 log(msg: "[JSON CELL DATA] \(self.tableData)")
-                
+              
                 DispatchQueue.global().async {
                     let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
                         guard let iconURL = URL(string: iconURLString),
