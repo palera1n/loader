@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Logjet";
 "LOG_CELL_VIEW" = "Shihni Logjet";
 "NONE" = "Asnje";
-"LOG_CLEAR" = "Fshij Logjet";
 
 // Debug
 "DEBUG_CELL" = "Debugim";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Pastroni FakeFS-in";
 "DEBUG_EXIT_SAFEMODE" = "Dilni nga modaliteti i sigurt";
 "DEBUG_ENTER_SAFEMODE" = "Hyr ne modaliteti i sigurt";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
