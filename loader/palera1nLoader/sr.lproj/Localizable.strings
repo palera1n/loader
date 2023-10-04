@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Записи";
 "LOG_CELL_VIEW" = "Погледај све записе";
 "NONE" = "Ништа";
-"LOG_CLEAR" = "Обриши записе";
 
 // Debug
 "DEBUG_CELL" = "Отклањање грешака";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Обриши fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Изађи из сигурног мода";
 "DEBUG_ENTER_SAFEMODE" = "Уђи у сигуран мод";
-"DEBUG_CLEAR_CACHE" = "Обриши кеш меморију";
 "DEBUG_CLEAR_JSON" = "Обриши JSON подешавања";
 
 // Diags
