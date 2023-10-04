@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "گزارش رویدادها";
 "LOG_CELL_VIEW" = "دیدن گزارش وقایع";
 "NONE" = "هیچ یک";
-"LOG_CLEAR" = "پاک کردن گزارش های رویداد";
 
 // Debug
 "DEBUG_CELL" = "اشکال زدایی";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "تمیز کردن FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "از حالت ایمن خارج شوید";
 "DEBUG_ENTER_SAFEMODE" = "وارد حالت امن شوید";
-"DEBUG_CLEAR_CACHE" = "پاک کردن حافظه پنهان";
 "DEBUG_CLEAR_JSON" = "تنظیمات JSON را پاک کنید";
 
 // Diags
