@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Αρχεία καταγραφής";
 "LOG_CELL_VIEW" = "Προβολή logs";
 "NONE" = "Τίποτα";
-"LOG_CLEAR" = "Εκκαθάριση καταγραφών";
 
 // Debug
 "DEBUG_CELL" = "Εντοπισμός σφαλμάτων";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Εγκαθάριση FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "Έξοδος από το safemode";
 "DEBUG_ENTER_SAFEMODE" = "Επανεκκίνηση σε safemode";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
