@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Kayıtlar";
 "LOG_CELL_VIEW" = "Kayıtları Görüntüle";
 "NONE" = "Hiçbiri";
-"LOG_CLEAR" = "Kayıtları Temizle";
 
 // Debug
 "DEBUG_CELL" = "Hata Ayıklama";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "FakeFS'i Temizle";
 "DEBUG_EXIT_SAFEMODE" = "Güvenli Mod'dan Çıkış Yap";
 "DEBUG_ENTER_SAFEMODE" = "Güvenli Mod'a Gir";
-"DEBUG_CLEAR_CACHE" = "Önbelleği Temizle";
 "DEBUG_CLEAR_JSON" = "JSON Yapılandırmasını Temizle";
 
 // Diags
