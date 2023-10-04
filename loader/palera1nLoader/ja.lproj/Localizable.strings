@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "ログ";
 "LOG_CELL_VIEW" = "ログを確認";
 "NONE" = "なし";
-"LOG_CLEAR" = "ログを消去";
 
 // Debug
 "DEBUG_CELL" = "デバッグ";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Fakefsを消去";
 "DEBUG_EXIT_SAFEMODE" = "Safemodeを終了";
 "DEBUG_ENTER_SAFEMODE" = "Safemodeに入る";
-"DEBUG_CLEAR_CACHE" = "キャッシュを削除";
 "DEBUG_CLEAR_JSON" = "JSON設定を消去";
 
 // Diags
