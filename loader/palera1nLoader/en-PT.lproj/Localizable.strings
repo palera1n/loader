@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Stumps";
 "LOG_CELL_VIEW" = "Look at Report";
 "NONE" = "Norr";
-"LOG_CLEAR" = "Clear Cap'n's log";
 
 // Debug
 "DEBUG_CELL" = "Fly Swatter";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Swab fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Exit safemode";
 "DEBUG_ENTER_SAFEMODE" = "Enter safemode";
-"DEBUG_CLEAR_CACHE" = "Sweep the cache";
 "DEBUG_CLEAR_JSON" = "Sweep the JSON config";
 
 // Diags
