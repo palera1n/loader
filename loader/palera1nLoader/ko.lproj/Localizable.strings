@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "로그";
 "LOG_CELL_VIEW" = "로그 보기";
 "NONE" = "없음";
-"LOG_CLEAR" = "로그 지우기";
 
 // Debug
 "DEBUG_CELL" = "디버그";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "FakeFs 지우기";
 "DEBUG_EXIT_SAFEMODE" = "안전모드 나가기";
 "DEBUG_ENTER_SAFEMODE" = "안전모드 시작하기";
-"DEBUG_CLEAR_CACHE" = "캐시 삭제";
 "DEBUG_CLEAR_JSON" = "JSON 설정 초기화";
 
 // Diags
