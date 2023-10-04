@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Логи";
 "LOG_CELL_VIEW" = "Показати логи";
 "NONE" = "Пусто";
-"LOG_CLEAR" = "Очистити логи";
 
 // Debug
 "DEBUG_CELL" = "Налагодження";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Очистити fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Вийти з безпечного режиму";
 "DEBUG_ENTER_SAFEMODE" = "Увійти в безпечний режим";
-"DEBUG_CLEAR_CACHE" = "Очистити кеш";
 "DEBUG_CLEAR_JSON" = "Очистити конфігурацію JSON";
 
 // Diags
