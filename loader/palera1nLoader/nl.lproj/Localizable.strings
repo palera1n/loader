@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Logboek";
 "LOG_CELL_VIEW" = "Bekijk Logs";
 "NONE" = "Niets";
-"LOG_CLEAR" = "Wis logs";
 
 // Debug
 "DEBUG_CELL" = "Debuggen";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Opschonen fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Verlaat veilige modus";
 "DEBUG_ENTER_SAFEMODE" = "Betreed veilige modus";
-"DEBUG_CLEAR_CACHE" = "Cache wissen";
 "DEBUG_CLEAR_JSON" = "Wis JSON-configuratie";
 
 // Diags
