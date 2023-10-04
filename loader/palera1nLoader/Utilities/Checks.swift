@@ -61,7 +61,7 @@ class Check {
     static public func loaderDirectories() -> Bool {
         if (!fileExists("/tmp/palera1n")) {
             
-            let dirs = ["/tmp/palera1n/logs"]
+            let dirs = ["/tmp/palera1n/logs", "/tmp/palera1n/temp"]
             
             do {
                 for path in dirs { try fm.createDirectory(atPath: path, withIntermediateDirectories: true) }

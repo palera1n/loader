@@ -135,7 +135,13 @@ class bootstrap {
 
     // Ran after bootstrap/deb install
     static public func cleanUp() -> Void {
-        
+      let pathsToClear = ["/tmp/palera1n/temp"]
+      for path in pathsToClear {
+        let files = try! FileManager.default.contentsOfDirectory(atPath: path)
+        for file in files {
+          binpack.rm("\(path)/\(file)")
+        }
+      }
         let palera1nDir = try! FileManager.default.contentsOfDirectory(atPath: "/tmp/palera1n")
         for file in palera1nDir {
             if (file.contains("loader.log")) {
