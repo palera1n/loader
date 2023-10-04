@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Jurnalele";
 "LOG_CELL_VIEW" = "Vizualizați Jurnalele";
 "NONE" = "Niciuna";
-"LOG_CLEAR" = "Ștergeți Jurnalele";
 
 // Debug
 "DEBUG_CELL" = "Corectarea erorilor";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Curățați fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Ieșiți din modul sigur";
 "DEBUG_ENTER_SAFEMODE" = "Intrați în modul sigur";
-"DEBUG_CLEAR_CACHE" = "Goliți memoria cache";
 "DEBUG_CLEAR_JSON" = "Ștergeți configurația JSON";
 
 // Diags
