@@ -13,7 +13,7 @@ private func checkBinpack() -> Bool {
 
 @discardableResult
 public func helper(args: [String]) -> Int {
-   return spawn(command: "/var/mobile/Library/palera1n/helper", args: args, root: true)
+   return spawn(command: "/tmp/palera1n/helper", args: args, root: true)
 }
 
 class binpack {

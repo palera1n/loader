@@ -72,3 +72,14 @@ class ErrorCell: UITableViewCell {
         retryAction?()
     }
 }
+
+extension JsonVC {
+  func showErrorCell(with message: String) {
+      isError = true
+      errorMessage = message
+      DispatchQueue.main.async {
+          self.isLoading = false
+          self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+      }
+  }
+}

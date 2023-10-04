@@ -136,10 +136,10 @@ class bootstrap {
     // Ran after bootstrap/deb install
     static public func cleanUp() -> Void {
         
-        let palera1nDir = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n")
+        let palera1nDir = try! FileManager.default.contentsOfDirectory(atPath: "/tmp/palera1n")
         for file in palera1nDir {
             if (file.contains("loader.log")) {
-                binpack.rm("/var/mobile/Library/palera1n/\(file)")
+                binpack.rm("/tmp/palera1n/\(file)")
             }
         }
 

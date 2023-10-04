@@ -14,8 +14,6 @@ public var fromAlert = false
 
 class LogViewer: UIViewController {
     
-    let dummytext = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris semper aliquam leo, placerat luctus massa vestibulum vitae. Curabitur maximus, neque sed finibus gravida, ante mauris mattis quam, eget placerat ante urna vitae lorem. Nam erat est, varius nec ligula ut, interdum hendrerit metus. Donec vulputate diam porttitor, lobortis massa id, feugiat leo. Morbi at velit sed lacus pretium euismod non quis est. Nam sem enim, malesuada ac sagittis sit amet, elementum ut erat. Nullam sit amet nisl aliquam, fermentum odio non, cursus orci. Aenean ut erat felis. Sed et libero id mauris iaculis maximus vel vel tellus. In hac habitasse platea dictumst."
-    
     @objc func closeWithDelay(){
       UIApplication.shared.openSpringBoard()
       exit(0)
@@ -57,12 +55,9 @@ class LogViewer: UIViewController {
             let logFileContents = try String(contentsOfFile: logInfo.logFile, encoding: .utf8)
             textView.text = logFileContents
         } catch {
-            log(type: .error, msg: "Reading log file: \(logInfo.logFile)")
-            if (envInfo.isSimulator) {
-                textView.text = "\(dummytext)"
-            } else {
-                textView.text = "Error: Failed to read loader log file."
-            }
+            let t = "Reading log file: \(logInfo.logFile)"
+            log(type: .error, msg: t)
+            textView.text = t
         }
         
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))

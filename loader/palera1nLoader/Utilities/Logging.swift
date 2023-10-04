@@ -16,7 +16,7 @@ public enum logTypes {
 }
 
 public struct logInfo {
-    static var logPath: String = "/var/mobile/Library/palera1n/logs"
+    static var logPath: String = "/tmp/palera1n/logs"
     static var logFile: String = ""
     static var isDebug: Bool = false
     static var isRelease: Bool = false
@@ -50,15 +50,15 @@ public func initLogs() -> Void {
     }
     
     do {
-        try FileManager.default.createDirectory(atPath: "/var/mobile/Library/palera1n/logs", withIntermediateDirectories: true)
+        try FileManager.default.createDirectory(atPath: "/tmp/palera1n/logs", withIntermediateDirectories: true)
     } catch {
-        NSLog("[ERROR] Failed to created log directory at: /var/mobile/Library/palera1n/logs")
+        NSLog("[ERROR] Failed to created log directory at: /tmp/palera1n/logs")
     }
     
     let timestamp = NSDate().timeIntervalSince1970
-    FileManager.default.createFile(atPath: "/var/mobile/Library/palera1n/logs/\(timestamp)-loader.log", contents: nil)
-    NSLog("[INFO] Created log file at: /var/mobile/Library/palera1n/logs/\(timestamp)-loader.log")
-    logInfo.logFile = "/var/mobile/Library/palera1n/logs/\(timestamp)-loader.log"
+    FileManager.default.createFile(atPath: "/tmp/palera1n/logs/\(timestamp)-loader.log", contents: nil)
+    NSLog("[INFO] Created log file at: /tmp/palera1n/logs/\(timestamp)-loader.log")
+    logInfo.logFile = "/tmp/palera1n/logs/\(timestamp)-loader.log"
 }
 
 // Prints log message with type

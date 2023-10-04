@@ -26,8 +26,6 @@ struct envInfo {
     static var systemArch: String = "unset"
     static var isInstalled: Bool = false
     static var hasForceReverted: Bool = false
-    static var sileoInstalled: Bool = false
-    static var zebraInstalled: Bool = false
     static var hasChecked: Bool = false
     static var kinfoFlags: String = ""
     static var pinfoFlags: String = ""

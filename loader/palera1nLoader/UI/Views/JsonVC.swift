@@ -28,7 +28,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         #if !targetEnvironment(simulator)
         switch true {
-        case !fileExists("/var/mobile/Library/palera1n/helper"):
+        case !fileExists("/tmp/palera1n/helper"):
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
                 self.present(alert, animated: true)
@@ -70,148 +70,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         setNavigationBar()
         setTableView()
-    }
-    
-    private func setNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-        customView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        button.layer.cornerRadius = 7
-        button.clipsToBounds = true
-        button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
-        button.layer.borderWidth = 0.7
-        button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-        customView.addSubview(button)
-        
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "palera1n"
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        customView.addSubview(titleLabel)
-        
-        NSLayoutConstraint.activate([
-            button.leadingAnchor.constraint(equalTo: customView.leadingAnchor),
-            button.centerYAnchor.constraint(equalTo: customView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: button.trailingAnchor, constant: 13),
-            titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
-        ])
-      let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(restartButtonTapped))
-      navigationItem.rightBarButtonItem = restartButton
-        /// Add triple tap gesture recognizer to navigation bar
-        let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
-        tripleTapGestureRecognizer.numberOfTapsRequired = 3
-        navigationController?.navigationBar.addGestureRecognizer(tripleTapGestureRecognizer)
-        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
-    }
-    
-    private func setTableView() {
-      tableView = UITableView(frame: view.bounds, style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        tableView.register(ErrorCell.self, forCellReuseIdentifier: "ErrorCell")
-        tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
-    }
-    
-    @objc func tripleTapDebug(sender: UIButton) {
-            let debugVC = DebugVC()
-            let navController = UINavigationController(rootViewController: debugVC)
-            navController.modalPresentationStyle = .formSheet
-            present(navController, animated: true, completion: nil)
-    }
-    
-    @objc func restartButtonTapped() {
-        self.retryFetchJSON()
-    }
-    
-    func fetchJSON() {
-        guard let url = URL(string: "\(envInfo.jsonURI)") else {
-            log(type: .error, msg: "Invalid JSON URL")
-            self.showErrorCell(with: errorMessage)
-            self.isLoading = false
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let self = self else { return }
-            
-            if let error = error {
-                log(type: .error, msg: "Error parsing JSON: \(error)")
-                self.showErrorCell(with: self.errorMessage)
-                self.isLoading = false
-                return
-            }
-            
-            guard let data = data else {
-                log(type: .error, msg: "No data received")
-                self.showErrorCell(with: self.errorMessage)
-                self.isLoading = false
-                return
-            }
-            
-            do {
-                //let json = try JSONSerialization.jsonObject(with: data, options: [])
-                let jsonapi = try JSONDecoder().decode(loaderJSON.self, from: data)
-                envInfo.jsonInfo = jsonapi
-                self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]
-                self.sectionTitles = [""]
-                
-                log(msg: "[JSON CELL DATA] \(self.tableData)")
-              
-                DispatchQueue.global().async {
-                    let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
-                        guard let iconURL = URL(string: iconURLString),
-                              let data = try? Data(contentsOf: iconURL),
-                              let image = UIImage(data: data) else {
-                            return nil
-                        }
-                        return image
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.iconImages = iconImages
-                        self.isLoading = false
-                        self.tableView.reloadData()
-                    }
-                }
-                
-            } catch {
-                log(type: .error, msg: "Error parsing JSON: \(error)")
-                self.showErrorCell(with: self.errorMessage)
-                self.isLoading = false
-                
-            }
-        }
-        
-        /// Start the network request
-        task.resume()
-    }
-    
-    func showErrorCell(with message: String) {
-        isError = true
-        errorMessage = message
-        DispatchQueue.main.async {
-            self.isLoading = false
-            self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -424,14 +282,5 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-    func retryFetchJSON() {
-        isLoading = true
-        isError = false
-        tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-        
-        fetchJSON()
-    }
-    
 }
 

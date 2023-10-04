@@ -14,12 +14,10 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         [local("TYPE_INFO"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
         
-        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX")],
-                
-        [local("SILEO_INSTALLED"), local("ZEBRA_INSTALLED")]
+        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX")]
     ]
     
-    let sectionTitles = ["", "PALERA1N", local("STRAP_INFO"), local("INSTALL_INFO")]
+    let sectionTitles = ["", "PALERA1N", local("STRAP_INFO")]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
@@ -63,9 +61,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     UIPasteboard.general.string = text
                 }
             }
-            
-            var menuOptions = [copyAction]
-            var filePath = ""
             
             switch (indexPath.section, indexPath.row) {
             case (1, 2), (1, 3):
@@ -124,13 +119,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case local("PINFO_FLAGS"):
             cell.textLabel?.text = local("PINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.pinfoFlags
-            
-        case local("SILEO_INSTALLED"):
-            cell.textLabel?.text = local("SILEO_INSTALLED")
-            cell.detailTextLabel?.text = envInfo.sileoInstalled ? local("TRUE") : local("FALSE")
-        case local("ZEBRA_INSTALLED"):
-            cell.textLabel?.text = local("ZEBRA_INSTALLED")
-            cell.detailTextLabel?.text = envInfo.zebraInstalled ? local("TRUE") : local("FALSE")
         default:
             break
         }

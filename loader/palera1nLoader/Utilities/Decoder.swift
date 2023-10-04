@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 // loader.json
@@ -168,4 +169,76 @@ public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     }
     
     return cellInfo(names: names, icons: icons, paths: paths)
+}
+
+extension JsonVC {
+  func fetchJSON() {
+      guard let url = URL(string: "\(envInfo.jsonURI)") else {
+          log(type: .error, msg: "Invalid JSON URL")
+          self.showErrorCell(with: errorMessage)
+          self.isLoading = false
+          return
+      }
+      
+      let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+          guard let self = self else { return }
+          
+          if let error = error {
+              log(type: .error, msg: "Error parsing JSON: \(error)")
+              self.showErrorCell(with: self.errorMessage)
+              self.isLoading = false
+              return
+          }
+          
+          guard let data = data else {
+              log(type: .error, msg: "No data received")
+              self.showErrorCell(with: self.errorMessage)
+              self.isLoading = false
+              return
+          }
+          
+          do {
+              //let json = try JSONSerialization.jsonObject(with: data, options: [])
+              let jsonapi = try JSONDecoder().decode(loaderJSON.self, from: data)
+              envInfo.jsonInfo = jsonapi
+              self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]
+              self.sectionTitles = [""]
+              
+              log(msg: "[JSON CELL DATA] \(self.tableData)")
+            
+              DispatchQueue.global().async {
+                  let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
+                      guard let iconURL = URL(string: iconURLString),
+                            let data = try? Data(contentsOf: iconURL),
+                            let image = UIImage(data: data) else {
+                          return nil
+                      }
+                      return image
+                  }
+                  
+                  DispatchQueue.main.async {
+                      self.iconImages = iconImages
+                      self.isLoading = false
+                      self.tableView.reloadData()
+                  }
+              }
+              
+          } catch {
+              log(type: .error, msg: "Error parsing JSON: \(error)")
+              self.showErrorCell(with: self.errorMessage)
+              self.isLoading = false
+              
+          }
+      }
+      
+      /// Start the network request
+      task.resume()
+  }
+  func retryFetchJSON() {
+      isLoading = true
+      isError = false
+      tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+      
+      fetchJSON()
+  }
 }

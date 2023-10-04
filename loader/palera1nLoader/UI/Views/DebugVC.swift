@@ -12,10 +12,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
     var tableData = [
         [local("LOG_CELL_VIEW")],
-        //[local("DEBUG_CLEAN_FAKEFS"), local("DEBUG_ENTER_SAFEMODE"), local("DEBUG_EXIT_SAFEMODE"), local("LOG_CLEAR")],
-        //[local("DEBUG_CLEAN_FAKEFS"), local("LOG_CLEAR")],
         ["json"],
-        [local("DEBUG_CLEAR_JSON"), local("LOG_CLEAR"), local("DEBUG_CLEAR_CACHE"), local("FR_SWITCH")]
+        [local("DEBUG_CLEAR_JSON"), local("FR_SWITCH")]
     ]
     
     var customMessage: String?
@@ -97,12 +95,6 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
             cell.accessoryType = .none
 
-        case local("DEBUG_CLEAR_CACHE"):
-            mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-            cell.textLabel?.text = local("DEBUG_CLEAR_CACHE")
-        case local("LOG_CLEAR"):
-            mods.applySymbolModifications(to: cell, with: "folder.badge.minus", backgroundColor: .systemRed)
-            cell.textLabel?.text = local("LOG_CLEAR")
         case local("LOG_CELL_VIEW"):
             cell.textLabel?.text = local("LOG_CELL_VIEW")
             cell.textLabel?.textColor = .systemBlue
@@ -133,36 +125,6 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             log(type: .info, msg: "Opening Log View")
             let LogViewVC = LogViewer()
             navigationController?.pushViewController(LogViewVC, animated: true)
-//        case local("DEBUG_ENTER_SAFEMODE"):
-//            let alertController = whichAlert(title: "\(local("DEBUG_ENTER_SAFEMODE"))?", message: nil)
-//            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-//            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "1"]) }
-//            alertController.addAction(cancelAction)
-//            alertController.addAction(confirmAction)
-//            present(alertController, animated: true, completion: nil)
-//        case local("DEBUG_EXIT_SAFEMODE"):
-//            let alertController = whichAlert(title: "\(local("DEBUG_EXIT_SAFEMODE"))?", message: nil)
-//            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-//            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .default) {_ in helper(args: ["--safemode", "0"]) }
-//            alertController.addAction(cancelAction)
-//            alertController.addAction(confirmAction)
-//            present(alertController, animated: true, completion: nil)
-        case local("DEBUG_CLEAR_CACHE"):
-            let alertController = whichAlert(title: "\(local("DEBUG_CLEAR_CACHE"))?", message: nil)
-            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("CONFIRM"), style: .destructive) {_ in
-                binpack.rm("/var/mobile/Library/palera1n")
-                let alert = UIAlertController.error(title: local("DOWNLOAD_FAIL"), message: "")
-                self.present(alert, animated: true)
-            }
-            alertController.addAction(cancelAction)
-            alertController.addAction(confirmAction)
-            present(alertController, animated: true, completion: nil)
-        case local("LOG_CLEAR"):
-            let files = try! FileManager.default.contentsOfDirectory(atPath: "/var/mobile/Library/palera1n/logs")
-            for file in files {
-                binpack.rm("/var/mobile/Library/palera1n/logs/\(file)")
-            }
         default:
             break
         }

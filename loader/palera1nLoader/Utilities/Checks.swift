@@ -59,9 +59,9 @@ class Check {
     
     @discardableResult
     static public func loaderDirectories() -> Bool {
-        if (!fileExists("/var/mobile/Library/palera1n")) {
+        if (!fileExists("/tmp/palera1n")) {
             
-            let dirs = ["/var/mobile/Library/", "/var/mobile/Library/palera1n/logs"]
+            let dirs = ["/tmp/palera1n/logs"]
             
             do {
                 for path in dirs { try fm.createDirectory(atPath: path, withIntermediateDirectories: true) }
@@ -76,7 +76,7 @@ class Check {
     
     @discardableResult
     static public func helperSymlink() -> Bool {
-        let path = "/var/mobile/Library/palera1n/helper"
+        let path = "/tmp/palera1n/helper"
         if (fileExists("/cores/jbloader")) {
             if (fileExists(path)) {
                 log(type: .info, msg: "helper symlink already exists.")
@@ -129,19 +129,7 @@ class Check {
         
         // jb-XXXXXXXX and /var/jb checks
         envInfo.envType = Check.installation().env_type
-        //envInfo.jbFolder = strapCheck().jbFolders[0]
-        
-        // sileo installed check
-        if (fileExists("/Applications/Sileo.app") || fileExists("/var/jb/Applications/Sileo.app") ||
-            fileExists("/Applications/Sileo-Nightly.app") || fileExists("/var/jb/Applications/Sileo-Nightly.app")) {
-            envInfo.sileoInstalled = true
-        }
-        
-        // zebra installed check
-        if (fileExists("/Applications/Zebra.app") || fileExists("/var/jb/Applications/Zebra.app")) {
-            envInfo.zebraInstalled = true
-        }
-        
+      
         envInfo.hasChecked = true
         log(msg: "## palera1nLoader logs ##")
         log(msg: "Jailbreak Type: \(envInfo.isRootful ? "Rootful" : "Rootless")")
@@ -150,8 +138,6 @@ class Check {
         log(msg: "Arch: \(envInfo.systemArch)")
         log(msg: "Installed: \(envInfo.isInstalled)")
         log(msg: "Force Reverted: \(envInfo.hasForceReverted)")
-        log(msg: "Sileo Installed: \(envInfo.sileoInstalled)")
-        log(msg: "Zebra Installed: \(envInfo.zebraInstalled)")
         log(msg: "kinfo: \(envInfo.kinfoFlags)")
         log(msg: "pinfo: \(envInfo.pinfoFlags)")
         log(msg: "CoreFoundation: \(envInfo.CF)")
