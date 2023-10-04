@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Įrašai";
 "LOG_CELL_VIEW" = "Peržiūrėti įrašus";
 "NONE" = "Niekas";
-"LOG_CLEAR" = "Išvalyti įrašus";
 
 // Debug
 "DEBUG_CELL" = "Derinti";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Išvalyti fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Išeiti iš saugaus režimo";
 "DEBUG_ENTER_SAFEMODE" = "Įeiti į saugų režimą";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
