@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Nhật ký";
 "LOG_CELL_VIEW" = "Xem các nhật ký";
 "NONE" = "Không có";
-"LOG_CLEAR" = "Xóa các bản ghi";
 
 // Debug
 "DEBUG_CELL" = "Gỡ lỗi";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Làm sạch hàng giả";
 "DEBUG_EXIT_SAFEMODE" = "Thoát chế độ an toàn";
 "DEBUG_ENTER_SAFEMODE" = "Vào chế độ an toàn";
-"DEBUG_CLEAR_CACHE" = "Dọn bộ nhớ đệm";
 "DEBUG_CLEAR_JSON" = "Dọn cấu hình JSON";
 
 // Diags
