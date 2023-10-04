@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Logz";
 "LOG_CELL_VIEW" = "View Logz";
 "NONE" = "None";
-"LOG_CLEAR" = "Clearz Logz";
 
 // Debug
 "DEBUG_CELL" = "Debugz";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Exit safemode";
 "DEBUG_ENTER_SAFEMODE" = "Enter safemode";
-"DEBUG_CLEAR_CACHE" = "cler cash";
 "DEBUG_CLEAR_JSON" = "cler json cunfig";
 
 // Diags
