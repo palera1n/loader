@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Journaux";
 "LOG_CELL_VIEW" = "Afficher Journaux";
 "NONE" = "Aucun";
-"LOG_CLEAR" = "Effacer les journaux";
 
 // Debug
 "DEBUG_CELL" = "Déboguer";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Nettoyer fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Quitter le mode sans échec";
 "DEBUG_ENTER_SAFEMODE" = "Activer le mode sans échec";
-"DEBUG_CLEAR_CACHE" = "Vider le cache";
 "DEBUG_CLEAR_JSON" = "Effacer la configuration JSON";
 
 // Diags
