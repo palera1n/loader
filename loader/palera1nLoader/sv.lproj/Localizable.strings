@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Loggar";
 "LOG_CELL_VIEW" = "Visa Loggar";
 "NONE" = "Inga";
-"LOG_CLEAR" = "Rensa Loggar";
 
 // Debug
 "DEBUG_CELL" = "Felsök";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Rensa fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Avsluta felsäkert läge";
 "DEBUG_ENTER_SAFEMODE" = "Aktivera felsäkert läge";
-"DEBUG_CLEAR_CACHE" = "Rensa Cache";
 "DEBUG_CLEAR_JSON" = "Rensa JSON-konfiguration";
 
 // Diags
