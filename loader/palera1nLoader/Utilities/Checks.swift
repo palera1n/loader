@@ -61,10 +61,7 @@ class Check {
     static public func loaderDirectories() -> Bool {
         if (!fileExists("/var/mobile/Library/palera1n")) {
             
-            let dirs = ["/var/mobile/Library/",
-                        "/var/mobile/Library/palera1n/temp",
-                        "/var/mobile/Library/palera1n/downloads",
-                        "/var/mobile/Library/palera1n/logs"]
+            let dirs = ["/var/mobile/Library/", "/var/mobile/Library/palera1n/logs"]
             
             do {
                 for path in dirs { try fm.createDirectory(atPath: path, withIntermediateDirectories: true) }
@@ -72,13 +69,6 @@ class Check {
                 log(type: .error, msg: "Failed to create temp directories: \(error)")
                 return false
             }
-        }
-     
-        if let revision = Bundle.main.infoDictionary?["REVISION"] as? String {
-            FileManager.default.createFile(atPath: "/var/mobile/Library/palera1n/.revision-\(revision)", contents: nil)
-        } else {
-            log(type: .error, msg: "Failed to find revision string")
-            return false
         }
         
         return true
