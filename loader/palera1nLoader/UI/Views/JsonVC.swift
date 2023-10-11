@@ -113,36 +113,31 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
             return nil
         }
-        switch section {
-        case 1:
+        if section == 1 {
             return "palera1n loader • 1.2 (\(revision))"
-        default:
-            return nil
         }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
-        
-        switch (isLoading, isError, indexPath.section) {
-        case (true, _, 0):
-            let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
-            loadingCell.isUserInteractionEnabled = false
-            loadingCell.startLoading()
-            return loadingCell
-            
-        case (_, true, 0):
-            let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath) as! ErrorCell
-            errorCell.errorMessage = errorMessage
-            errorCell.isUserInteractionEnabled = false
-            errorCell.retryAction = { [weak self] in
-                self?.retryFetchJSON()
+
+        if indexPath.section == 0 {
+            if isLoading {
+                let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
+                loadingCell.isUserInteractionEnabled = false
+                loadingCell.startLoading()
+                return loadingCell
+            } else if isError {
+                let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath) as! ErrorCell
+                errorCell.errorMessage = errorMessage
+                errorCell.isUserInteractionEnabled = false
+                errorCell.retryAction = { [weak self] in
+                    self?.retryFetchJSON()
+                }
+                return errorCell
             }
-            return errorCell
-            
-        default:
-            break
         }
         
         switch (indexPath.section, indexPath.row) {
