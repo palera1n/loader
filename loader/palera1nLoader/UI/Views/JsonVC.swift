@@ -138,47 +138,49 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 return errorCell
             }
-        }
-        
-        switch (indexPath.section, indexPath.row) {
-        case (1, 0):
-            cell.textLabel?.text = local("ACTIONS")
-            cell.accessoryType = .disclosureIndicator
-            cell.isUserInteractionEnabled = true
-            cell.textLabel?.textColor = .label
-            cell.imageView?.alpha = 1.0
-          mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
-        case (1, 1):
-            cell.textLabel?.text = local("DIAGNOSTICS")
-            cell.accessoryType = .disclosureIndicator
-            cell.isUserInteractionEnabled = true
-            cell.textLabel?.textColor = .label
-            cell.imageView?.alpha = 1.0
-            mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
-        case (1, 2):
-            mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-            cell.textLabel?.text = local("REVERT_CELL")
-            if envInfo.isRootful {
-                cell.isUserInteractionEnabled = false
-                cell.textLabel?.textColor = .gray
-                cell.imageView?.alpha = 0.4
-            } else {
-                let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
-                cell.isUserInteractionEnabled = isProcursusStrapped
-                cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
-                cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
-                cell.imageView?.alpha = isProcursusStrapped ? 1.0 : 0.4
-            }
-        default:
             cell.isUserInteractionEnabled = true
             cell.selectionStyle = .default
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.textColor = .label
             cell.imageView?.alpha = 1.0
-            
+
             cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
             mods.applyImageModifications(to: cell, with: iconImages[indexPath.row]!)
+        } else {
+            /* there are only two sections in JsonVC so we know indexPath.section == 1 */
+            let row = indexPath.row
+            if row == 0 {
+                cell.textLabel?.text = local("ACTIONS")
+                cell.accessoryType = .disclosureIndicator
+                cell.isUserInteractionEnabled = true
+                cell.textLabel?.textColor = .label
+                cell.imageView?.alpha = 1.0
+                mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
+            } else if row == 1 {
+                cell.textLabel?.text = local("DIAGNOSTICS")
+                cell.accessoryType = .disclosureIndicator
+                cell.isUserInteractionEnabled = true
+                cell.textLabel?.textColor = .label
+                cell.imageView?.alpha = 1.0
+                mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
+            } else {
+                /* this section only has 3 rows so we know row == 2 */
+                mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+                cell.textLabel?.text = local("REVERT_CELL")
+                if envInfo.isRootful {
+                    cell.isUserInteractionEnabled = false
+                    cell.textLabel?.textColor = .gray
+                    cell.imageView?.alpha = 0.4
+                } else {
+                    let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+                    cell.isUserInteractionEnabled = isProcursusStrapped
+                    cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
+                    cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
+                    cell.imageView?.alpha = isProcursusStrapped ? 1.0 : 0.4
+                }
+            }
         }
+
         
         return cell
     }
