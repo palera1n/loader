@@ -127,17 +127,15 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case tableData.count - 1:
+        if section == tableData.count - 1 {
             return """
             © 2023, palera1n team
             
             \(local("CREDITS_SUBTEXT"))
             @ssalggnikool (Samara) & @staturnzdev (Staturnz)
             """
-        default:
-            return nil
         }
+        return nil
     }
 }
 
