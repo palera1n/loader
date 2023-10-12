@@ -40,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             launchedShortcutItem = shortcutItem
             switch shortcutItem.type {
             case "qa_respring":
-                spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true)
+                spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
             case "qa_uicache":
-                spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"], root: true)
+                spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
             default:
                 print("Unknown Option")
             }
@@ -55,9 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         switch shortcutItem.type {
         case "qa_respring":
-            spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true)
+            spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case "qa_uicache":
-            spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"], root: true)
+            spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         default:
             print("Unknown Option")
         }
