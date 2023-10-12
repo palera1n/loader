@@ -122,7 +122,6 @@ class Check {
         }
         
         // device info
-        envInfo.systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
         envInfo.systemArch = String(cString: NXGetLocalArchInfo().pointee.name)
         
         // jb-XXXXXXXX and /var/jb checks
@@ -132,7 +131,7 @@ class Check {
         log(msg: "## palera1nLoader logs ##")
         log(msg: "Jailbreak Type: \(envInfo.isRootful ? "Rootful" : "Rootless")")
         log(msg: "Environment: \(envInfo.envType)")
-        log(msg: "iOS: \(envInfo.systemVersion)")
+        log(msg: "iOS: \(local("VERSION_INFO")) \(UIDevice.current.systemVersion)")
         log(msg: "Arch: \(envInfo.systemArch)")
         log(msg: "Installed: \(envInfo.isInstalled)")
         log(msg: "Force Reverted: \(envInfo.hasForceReverted)")
