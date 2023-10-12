@@ -140,14 +140,13 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case tableData.count - 1:
+        let dataCount = tableData.count
+        if section == dataCount - 1 {
             return local("ACTION_MOUNT_SUBTEXT")
-        case tableData.count - 3:
+        } else if section == dataCount - 3 {
             return local("OPENER_SUBTEXT")
-        default:
-            return nil
         }
+        return nil
     }
     
     private func HideEnv(viewController: UIViewController) {
