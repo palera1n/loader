@@ -13,7 +13,7 @@ private func checkBinpack() -> Bool {
 
 @discardableResult
 public func helper(args: [String]) -> Int {
-   return spawn(command: "/tmp/palera1n/helper", args: args, root: true)
+   return spawn(command: "/tmp/palera1n/helper", args: args)
 }
 
 class binpack {
@@ -21,7 +21,7 @@ class binpack {
     @discardableResult
     static public func ln(_ src: String,_ dest: String) -> Int {
         if (checkBinpack()) {
-            return spawn(command: "/cores/binpack/bin/ln", args: ["-s", src, dest], root: true)
+            return spawn(command: "/cores/binpack/bin/ln", args: ["-s", src, dest])
         } else {
             log(type: .error, msg: "Failed to access binpack.")
             return -1
@@ -31,7 +31,7 @@ class binpack {
     @discardableResult
     static public func rm(_ file: String) -> Int {
         if (checkBinpack()) {
-            return spawn(command: "/cores/binpack/bin/rm", args: ["-rf", file], root: true)
+            return spawn(command: "/cores/binpack/bin/rm", args: ["-rf", file])
             
         } else {
             log(type: .error, msg: "Failed to access binpack.")
@@ -42,7 +42,7 @@ class binpack {
     @discardableResult
     static public func mv(_ src: String,_ dest: String) -> Int {
         if (checkBinpack()) {
-            return spawn(command: "/cores/binpack/bin/ln", args: ["-s", src, dest], root: true)
+            return spawn(command: "/cores/binpack/bin/ln", args: ["-s", src, dest])
         } else {
             log(type: .error, msg: "Failed to access binpack.")
             return -1
