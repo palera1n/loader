@@ -157,7 +157,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 #if !targetEnvironment(simulator)
                 let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                     if fileExists("/tmp/palera1n/helper") {
-                        if (!envInfo.isRootful) && fileExists("/var/jb") {
+                        if fileExists("/var/jb") {
                             binpack.rm("/var/jb")
                         }
                         spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"], root: true)
