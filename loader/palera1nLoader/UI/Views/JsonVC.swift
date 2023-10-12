@@ -162,14 +162,12 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.textColor = .gray
                 cell.imageView?.alpha = 0.4
-            } else if !envInfo.isRootful {
+            } else {
                 let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
                 cell.isUserInteractionEnabled = isProcursusStrapped
                 cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
                 cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
-                cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
-            } else {
-                cell.isUserInteractionEnabled = false
+                cell.imageView?.alpha = isProcursusStrapped ? 1.0 : 0.4
             }
         default:
             cell.isUserInteractionEnabled = true
