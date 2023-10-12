@@ -77,35 +77,27 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: // Fetching section
-            switch (isLoading, isError) {
-            case (true, _):
+        if section == 0 {
+            if isLoading {
                 return 1
-            case (_, true):
+            } else if isError {
                 return 1
-            default:
-                return tableData[section].count
             }
-        case 1:
-            return 3
-        default:
-            return 0
+            return tableData[section].count
         }
+        return 3
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (section, isLoading, isError) {
-        case (0, true, _):
-            return local("DOWNLOADING")
-        case (0, _, true):
-            return local("DOWNLOAD_ERROR")
-        case (0, _, _):
+        if section == 0 {
+            if isLoading {
+                return local("DOWNLOADING")
+            } else if isError {
+                return local("DOWNLOAD_ERROR")
+            }
             return local("INSTALL")
-        case (1, _, _):
+        } else {
             return local("DEBUG")
-        default:
-            return nil
         }
     }
 
