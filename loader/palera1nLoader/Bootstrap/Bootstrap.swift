@@ -170,7 +170,7 @@ class bootstrap {
             return
         }
 
-        ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"], root: true)
+        ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         if (ret != 0) {
             completion(local("ERROR_UICACHE"), ret)
             return
@@ -190,7 +190,7 @@ class bootstrap {
             return
         }
         
-        ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"], root: true)
+        ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         if (ret != 0) {
             completion(local("ERROR_UICACHE"), ret)
             return
