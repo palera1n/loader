@@ -85,6 +85,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             return tableData[section].count
         }
+        /* JsonVC has two sections, so if section is not 0, it must be 1. */
         return 3
     }
 
@@ -97,6 +98,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             return local("INSTALL")
         } else {
+            /* JsonVC has two sections, so if section is not 0, it must be 1. */
             return local("DEBUG")
         }
     }
