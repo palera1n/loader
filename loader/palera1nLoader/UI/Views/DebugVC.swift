@@ -106,12 +106,10 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
   
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case tableData.count - 2:
-          return "WARNING: JSON functionality is limited at its current state, don't use unless you know what you're doing.\n\nSet currently: \"\(envInfo.jsonURI)\""
-        default:
-          return nil
+        if section == tableData.count - 2 {
+            return "WARNING: JSON functionality is limited at its current state, don't use unless you know what you're doing.\n\nSet currently: \"\(envInfo.jsonURI)\""
         }
+        return nil
     }
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
