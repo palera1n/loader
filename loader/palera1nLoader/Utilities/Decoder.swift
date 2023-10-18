@@ -138,7 +138,6 @@ public func getAssetsInfo(_ json: loaderJSON) -> (repositories: [String], packag
 
 public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
-    //let jailbreakType = "Rootful"
     var items: [ManagerItem]?
     var names: [String] = []
     var icons: [String] = []
@@ -173,7 +172,7 @@ public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
 
 extension JsonVC {
   func fetchJSON() {
-      guard let url = URL(string: "\(envInfo.jsonURI)") else {
+      guard let url = URL(string: envInfo.jsonURI) else {
           log(type: .error, msg: "Invalid JSON URL")
           self.showErrorCell(with: errorMessage)
           self.isLoading = false
@@ -198,7 +197,6 @@ extension JsonVC {
           }
           
           do {
-              //let json = try JSONSerialization.jsonObject(with: data, options: [])
               let jsonapi = try JSONDecoder().decode(loaderJSON.self, from: data)
               envInfo.jsonInfo = jsonapi
               self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]

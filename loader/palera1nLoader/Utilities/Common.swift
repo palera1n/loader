@@ -14,7 +14,6 @@ let fm = FileManager.default
 
 struct envInfo {
     static var isRootful: Bool = false
-    static var isSimulator: Bool = false
     static var installPrefix: String = "unset"
     static var rebootAfter: Bool = true
     static var jsonURI: String {
@@ -22,7 +21,6 @@ struct envInfo {
         set { UserDefaults.standard.set(newValue, forKey: "JsonURI") }
     }
     static var envType: Int = -1
-    static var systemVersion: String = "unset"
     static var systemArch: String = "unset"
     static var isInstalled: Bool = false
     static var hasForceReverted: Bool = false
