@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "ꞁꞁɐʇsuI";
+"INSTALL" = "Install";
 "DEBUG" = "ƃnqǝp";
 "DIAGNOSTICS" = "uoᴉʇɐɯɹoɟuI ǝɔᴉʌǝp";
 "ACTIONS" = "suoᴉʇɔ∀";
@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "sƃo˥";
 "LOG_CELL_VIEW" = "sƃo˥ ʍǝᴉΛ";
 "NONE" = "ǝuoN";
-"LOG_CLEAR" = "sƃo˥ ɹɐǝlƆ";
 
 // Debug
 "DEBUG_CELL" = "ƃnqǝp";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "sɟǝʞɐɟ uɐǝlƆ";
 "DEBUG_EXIT_SAFEMODE" = "ǝpoɯǝɟɐs ʇᴉxƎ";
 "DEBUG_ENTER_SAFEMODE" = "ǝpoɯǝɟɐs ɹǝʇuƎ";
-"DEBUG_CLEAR_CACHE" = "ǝɥɔɐƆ ɹɐǝlƆ";
 "DEBUG_CLEAR_JSON" = "ƃᴉɟuoɔ NOSſ ɹɐǝlƆ";
 
 // Diags
