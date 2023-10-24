@@ -183,7 +183,7 @@ class bootstrap {
     
     
     static public func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
-        let debPath = "/tmp/\(deb)"
+        let debPath = "/tmp/palera1n/\(deb)"
         var ret = helper(args: ["--install", tar, debPath])
         if (ret != 0) {
             completion(local("ERROR_STRAP"), ret)
