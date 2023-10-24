@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"DEBUG" = "Derinti";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Veiksmai";
 "JBINIT_LOG" = "Registravimas";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Paslėpta aplinka";
 "ACTION_HIDEJB" = "Paslėpti aplinką";
-"OPEN_CELL" = "Lango varikliai";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Atverti Sileo";
 "OPENER_ZEBRA" = "Atverti Zebra";
 "OPENER_TH" = "Atverti TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Derinti";
 "DEBUG_OPTIONS" = "Nustatymai";
 "DEBUG_CLEAN_FAKEFS" = "Išvalyti fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Išeiti iš saugaus režimo";
-"DEBUG_ENTER_SAFEMODE" = "Įeiti į saugų režimą";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "„Kernel“ versija:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Programą sukūrė:";
-"PINFO_SUBTEXT" = "Vėliavos (paleinfo) atitinka vėliavas, kurias naudojote per palera1n 2.0.0 CLI, naudinga programų kūrėjams.";
 "TYPE_INFO" = "Tipas";
 "INSTALL_INFO" = "Įdiegta";
 "ARCH_INFO" = "Architektūra";
 "VERSION_INFO" = "Versija";
 "STRAP_INFO" = "Aplinka";
 "STRAP_FR_PREFIX" = "Fakeroot priešdėlis";
-"STRAP_FR_PATH" = "Fakeroot vieta";
-"OPEN_FILZA" = "Atidaryti naudojant \"Filza\"";
-"OPEN_SANTANDER" = "Atidaryti naudojant \"Santander\"";
 "COPY" = "Kopijuoti";
 "INSTALL_FR" = "Priverstinis atšaukimas";
 "HELPER" = "Pagalbininkas";
 "HELPER_PATH" = "Pagalbininko vieta";
-"SILEO_INSTALLED" = "Sileo instaliuotas";
-"ZEBRA_INSTALLED" = "Zebra instaliuotas";
 "KINFO_FLAGS" = "Žymos (kerninfo)";
 "PINFO_FLAGS" = "Žymos (paleinfo)";
 
