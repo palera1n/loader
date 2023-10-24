@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Instal";
-"DEBUG" = "DEBUG";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "devise infomashin";
 "ACTIONS" = "Acshunz";
 "JBINIT_LOG" = "Loggin";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Hidden Environment";
 "ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Open Sileo";
 "OPENER_ZEBRA" = "Open Zebra";
 "OPENER_TH" = "Open TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Debugz";
 "DEBUG_OPTIONS" = "Opshuns";
 "DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
 "DEBUG_CLEAR_JSON" = "cler json cunfig";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Kernel Vershun:";
 "DEVICE_MODEL_CF" = "CFVershun:";
 "CREDITS_SUBTEXT" = "Loadr made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond 2 flags u usd via palera1n 2.0.0 CLI, useful 4 developers.";
 "TYPE_INFO" = "Type";
 "INSTALL_INFO" = "Installd";
 "ARCH_INFO" = "Architecchur";
 "VERSION_INFO" = "Vershun";
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santandr";
 "COPY" = "Copy";
 "INSTALL_FR" = "Force Reverted";
 "HELPER" = "Helpr";
 "HELPER_PATH" = "Helpr Path";
-"SILEO_INSTALLED" = "Sileo Installd";
-"ZEBRA_INSTALLED" = "Zebra Installd";
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flags (paleinfo)";
 
