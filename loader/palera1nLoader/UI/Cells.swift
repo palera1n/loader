@@ -26,7 +26,11 @@ class LoadingCell: UITableViewCell {
     }
     
     private func setupActivityIndicatorView() {
-        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        if #available(iOS 13.0, *) {
+            activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        } else {
+            activityIndicator = UIActivityIndicatorView(style: .gray)
+        }
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(activityIndicator)
         

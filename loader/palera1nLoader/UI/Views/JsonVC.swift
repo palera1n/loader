@@ -30,14 +30,14 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         switch true {
         case !fileExists("/tmp/palera1n/helper"):
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_SIDELOADING"))
+                let alert = UIAlertController.error(title: LocalizationManager.shared.local("NO_PROCEED"), message: LocalizationManager.shared.local("NO_PROCEED_SIDELOADING"))
                 self.present(alert, animated: true)
             }
             return
 
         case envInfo.hasForceReverted:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                let alert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NO_PROCEED_FR"))
+                let alert = UIAlertController.error(title: LocalizationManager.shared.local("NO_PROCEED"), message: LocalizationManager.shared.local("NO_PROCEED_FR"))
                 self.present(alert, animated: true)
             }
             return
@@ -46,7 +46,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if envInfo.isRootful {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     let alertController = whichAlert(title: "Oopsy :3", message: "Rootful on iOS 17+ is not supported. You will get no support, and you're on your own.")
-                    let cancelAction = UIAlertAction(title: local("CLOSE"), style: .cancel, handler: nil)
+                    let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CLOSE"), style: .cancel, handler: nil)
                     alertController.addAction(cancelAction)
                     
                     self.present(alertController, animated: true, completion: nil)
@@ -92,14 +92,14 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             if isLoading {
-                return local("DOWNLOADING")
+                return LocalizationManager.shared.local("DOWNLOADING")
             } else if isError {
-                return local("DOWNLOAD_ERROR")
+                return LocalizationManager.shared.local("DOWNLOAD_ERROR")
             }
-            return local("INSTALL")
+            return LocalizationManager.shared.local("INSTALL")
         } else {
             /* JsonVC has two sections, so if section is not 0, it must be 1. */
-            return local("DEBUG")
+            return LocalizationManager.shared.local("DEBUG")
         }
     }
 
@@ -117,6 +117,17 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let reuseIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
 
+        cell.isUserInteractionEnabled = true
+        cell.selectionStyle = .default
+        cell.accessoryType = .disclosureIndicator
+        if #available(iOS 13.0, *) {
+            cell.textLabel?.textColor = .label
+        } else {
+            cell.textLabel?.textColor = .black
+        }
+        cell.imageView?.alpha = 1.0
+        cell.imageView?.image = nil
+
         if indexPath.section == 0 {
             if isLoading {
                 let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
@@ -132,35 +143,26 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 return errorCell
             }
-            cell.isUserInteractionEnabled = true
-            cell.selectionStyle = .default
-            cell.accessoryType = .disclosureIndicator
-            cell.textLabel?.textColor = .label
-            cell.imageView?.alpha = 1.0
 
             cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
             mods.applyImageModifications(to: cell, with: iconImages[indexPath.row]!)
         } else {
-            /* there are only two sections in JsonVC so we know indexPath.section == 1 */
             let row = indexPath.row
             if row == 0 {
-                cell.textLabel?.text = local("ACTIONS")
-                cell.accessoryType = .disclosureIndicator
-                cell.isUserInteractionEnabled = true
-                cell.textLabel?.textColor = .label
-                cell.imageView?.alpha = 1.0
-                mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
+                cell.textLabel?.text = LocalizationManager.shared.local("ACTIONS")
+                if #available(iOS 13.0, *) {
+                    mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
+                }
             } else if row == 1 {
-                cell.textLabel?.text = local("DIAGNOSTICS")
-                cell.accessoryType = .disclosureIndicator
-                cell.isUserInteractionEnabled = true
-                cell.textLabel?.textColor = .label
-                cell.imageView?.alpha = 1.0
-                mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
+                cell.textLabel?.text = LocalizationManager.shared.local("DIAGNOSTICS")
+                if #available(iOS 13.0, *) {
+                    mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
+                }
             } else {
-                /* this section only has 3 rows so we know row == 2 */
-                mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-                cell.textLabel?.text = local("REVERT_CELL")
+                if #available(iOS 13.0, *) {
+                    mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+                }
+                cell.textLabel?.text = LocalizationManager.shared.local("REVERT_CELL")
                 if envInfo.isRootful {
                     cell.isUserInteractionEnabled = false
                     cell.textLabel?.textColor = .gray
@@ -175,9 +177,9 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
 
-        
         return cell
     }
+
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -193,7 +195,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
 
             let alertController = whichAlert(title: "", message: nil)
-            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CANCEL"), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
 
             log(msg: "[JSON PATH DATA] \(getCellInfo(envInfo.jsonInfo!)!.paths)")
@@ -223,13 +225,13 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
               if procursusStrappedExists {
                   alertController.message = exists ? String(format: NSLocalizedString("DL_STRAP_PM", comment: ""), name, filePath) : String(format: NSLocalizedString("DL_STRAP_NOPM", comment: ""), name)
-                  let pkgAction = UIAlertAction(title: exists ? local("REINSTALL") : local("INSTALL"), style: .default) { _ in
+                  let pkgAction = UIAlertAction(title: exists ? LocalizationManager.shared.local("REINSTALL") : LocalizationManager.shared.local("INSTALL"), style: .default) { _ in
                       self.installDebFile(file: "\(lowercaseName)")
                   }
                   alertController.addAction(pkgAction)
               } else {
                   alertController.message = String(format: NSLocalizedString("DL_NOSTRAP", comment: ""), name)
-                  let installAction = UIAlertAction(title: local("INSTALL"), style: .default) { _ in
+                  let installAction = UIAlertAction(title: LocalizationManager.shared.local("INSTALL"), style: .default) { _ in
                       self.installStrap(file: name.lowercased()) {}
                   }
                   alertController.addAction(installAction)
@@ -256,9 +258,9 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
           navigationController?.pushViewController(diagnosticsVC, animated: true)
             
         case (1, 2):
-            let alertController = whichAlert(title: local("CONFIRM"), message: envInfo.rebootAfter ? local("REVERT_WARNING") : nil)
-            let cancelAction = UIAlertAction(title: local("CANCEL"), style: .cancel, handler: nil)
-            let confirmAction = UIAlertAction(title: local("REVERT_CELL"), style: .destructive) { _ in bootstrap.revert(viewController: self) }
+            let alertController = whichAlert(title: LocalizationManager.shared.local("CONFIRM"), message: envInfo.rebootAfter ? LocalizationManager.shared.local("REVERT_WARNING") : nil)
+            let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CANCEL"), style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: LocalizationManager.shared.local("REVERT_CELL"), style: .destructive) { _ in bootstrap.revert(viewController: self) }
             
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)

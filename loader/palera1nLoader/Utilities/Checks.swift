@@ -131,7 +131,7 @@ class Check {
         log(msg: "## palera1nLoader logs ##")
         log(msg: "Jailbreak Type: \(envInfo.isRootful ? "Rootful" : "Rootless")")
         log(msg: "Environment: \(envInfo.envType)")
-        log(msg: "iOS: \(local("VERSION_INFO")) \(UIDevice.current.systemVersion)")
+        log(msg: "iOS: \(LocalizationManager.shared.local("VERSION_INFO")) \(UIDevice.current.systemVersion)")
         log(msg: "Arch: \(envInfo.systemArch)")
         log(msg: "Installed: \(envInfo.isInstalled)")
         log(msg: "Force Reverted: \(envInfo.hasForceReverted)")

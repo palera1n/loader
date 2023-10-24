@@ -36,9 +36,21 @@ struct envInfo {
     static var jsonInfo: loaderJSON?
 }
 
-// String Localization
-public func local(_ str: String.LocalizationValue) -> String {
-    return String(localized: str)
+class LocalizationManager {
+    static let shared = LocalizationManager()
+
+    private var localizedStrings: [String: String] = [:]
+
+    private init() {
+        if let path = Bundle.main.path(forResource: "Localizable", ofType: "strings"),
+            let dictionary = NSDictionary(contentsOfFile: path) as? [String: String] {
+            localizedStrings = dictionary
+        }
+    }
+
+    func local(_ key: String) -> String {
+        return localizedStrings[key] ?? key
+    }
 }
 
 public func fileExists(_ path: String) -> Bool {

@@ -22,7 +22,7 @@ extension UIAlertController {
         if let destructiveTitle = destructiveBtnTitle, let handler = destructiveHandler {
             alertController.addAction(UIAlertAction(title: destructiveTitle, style: .destructive) { _ in handler() })
         }
-        alertController.addAction(UIAlertAction(title: local("CANCEL"), style: .cancel) { _ in return })
+        alertController.addAction(UIAlertAction(title: LocalizationManager.shared.local("CANCEL"), style: .cancel) { _ in return })
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.warning)
         return alertController
@@ -31,12 +31,12 @@ extension UIAlertController {
     // Error Alert
     static func error(title: String, message: String) -> UIAlertController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: local("CLOSE"), style: .default) { _ in
+        alertController.addAction(UIAlertAction(title: LocalizationManager.shared.local("CLOSE"), style: .default) { _ in
             bootstrap.cleanUp()
           UIApplication.shared.openSpringBoard()
           exit(0)
         })
-        alertController.addAction(UIAlertAction(title: local("LOG_CELL_VIEW"), style: .default, handler: { (_) in
+        alertController.addAction(UIAlertAction(title: LocalizationManager.shared.local("LOG_CELL_VIEW"), style: .default, handler: { (_) in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 log(type: .info, msg: "Opening Log View")
                 fromAlert = true
@@ -52,8 +52,8 @@ extension UIAlertController {
     }
 
     // Downloading Alert
-    static func downloading(_ msg: String.LocalizationValue) -> UIAlertController {
-        let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
+    static func downloading(_ msg: String) -> UIAlertController {
+        let alertController = UIAlertController(title: nil, message: LocalizationManager.shared.local(msg), preferredStyle: .alert)
         let constraintHeight = NSLayoutConstraint(item: alertController.view!, attribute: NSLayoutConstraint.Attribute.height,
                                                   relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute:
                                                     NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 75)
@@ -65,8 +65,8 @@ extension UIAlertController {
     }
     
     // Spinner/Installing Alert
-    static func spinnerAlert(_ msg: String.LocalizationValue) -> UIAlertController {
-        let alertController = UIAlertController(title: nil, message: local(msg), preferredStyle: .alert)
+    static func spinnerAlert(_ msg: String) -> UIAlertController {
+        let alertController = UIAlertController(title: nil, message: LocalizationManager.shared.local(msg), preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         alertController.view.addSubview(loadingIndicator)
         loadingIndicator.hidesWhenStopped = true

@@ -22,24 +22,34 @@ class LogViewer: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (fromAlert) {
-            let closeButton = UIBarButtonItem(title: local("CLOSE"), style: .done, target: self, action: #selector(closeWithDelay))
+            let closeButton = UIBarButtonItem(title: LocalizationManager.shared.local("CLOSE"), style: .done, target: self, action: #selector(closeWithDelay))
             self.navigationItem.leftBarButtonItem = closeButton
             fromAlert = false
         }
  
         let textView = UITextView()
-        self.navigationItem.title = local("LOG_CELL")
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
         
-        textView.backgroundColor = .systemBackground
+        self.navigationItem.title = LocalizationManager.shared.local("LOG_CELL")
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.systemBackground
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
+        if #available(iOS 13.0, *) {
+            textView.backgroundColor = .systemBackground
+        }
         textView.textContainerInset = UIEdgeInsets(top: self.navigationController!.navigationBar.frame.size.height - 25, left: 5, bottom: 8, right: 5)
         textView.isEditable = false
         textView.isSelectable = true
         textView.isScrollEnabled = true
         textView.textContainer.lineBreakMode = .byClipping
-        textView.font = UIFont.monospacedSystemFont(ofSize: 12, weight: .regular)
+        if #available(iOS 13.0, *) {
+            textView.font = UIFont.monospacedSystemFont(ofSize: 12, weight: .regular)
+        } else {
+            textView.font = UIFont.systemFont(ofSize: 12)
+        }
         
         view.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +72,6 @@ class LogViewer: UIViewController {
         
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareButtonTapped(_:)))
         self.navigationItem.rightBarButtonItem = shareButton
-        self.isModalInPresentation = true
     }
     
     @objc func shareButtonTapped(_ sender: UIBarButtonItem) {

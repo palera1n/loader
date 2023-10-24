@@ -11,13 +11,13 @@ import UIKit
 class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [local("ACTION_HIDEJB")],
+        [LocalizationManager.shared.local("ACTION_HIDEJB")],
         
-        [local("OPENER_SILEO"), local("OPENER_ZEBRA"), local("OPENER_TH")],
+        [LocalizationManager.shared.local("OPENER_SILEO"), LocalizationManager.shared.local("OPENER_ZEBRA"), LocalizationManager.shared.local("OPENER_TH")],
         
-        [local("ACTION_RESPRING"), local("ACTION_UICACHE"), local("ACTION_TWEAKS")],
+        [LocalizationManager.shared.local("ACTION_RESPRING"), LocalizationManager.shared.local("ACTION_UICACHE"), LocalizationManager.shared.local("ACTION_TWEAKS")],
         
-        [local("ACTION_USREBOOT"), local("ACTION_DAEMONS"), local("ACTION_MOUNT")]
+        [LocalizationManager.shared.local("ACTION_USREBOOT"), LocalizationManager.shared.local("ACTION_DAEMONS"), LocalizationManager.shared.local("ACTION_MOUNT")]
     ]
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,13 +25,24 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         envInfo.nav = navigationController!
     }
   
-    var sectionTitles = ["", local("OPEN_CELL"), local("UTIL_CELL"), ""]
+    var sectionTitles = ["", LocalizationManager.shared.local("OPEN_CELL"), LocalizationManager.shared.local("UTIL_CELL"), ""]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
-        self.title = local("ACTIONS")
+        self.title = LocalizationManager.shared.local("ACTIONS")
         
-        let tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.systemBackground
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
+        let tableView: UITableView
+        if #available(iOS 13.0, *) {
+            tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
+        } else {
+            tableView = UITableView(frame: view.bounds, style: .grouped)
+        }
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
@@ -66,40 +77,40 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .default
         
         switch tableData[indexPath.section][indexPath.row] {
-        case local("ACTION_HIDEJB"):
-            mods.applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .systemIndigo)
-            cell.textLabel?.text = local("ACTION_HIDEJB")
-        case local("OPENER_SILEO"):
-            mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
-            cell.textLabel?.text = local("OPENER_SILEO")
-        case local("OPENER_ZEBRA"):
-            mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
-            cell.textLabel?.text = local("OPENER_ZEBRA")
-        case local("OPENER_TH"):
-            mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray)
-            cell.textLabel?.text = local("OPENER_TH")
+        case LocalizationManager.shared.local("ACTION_HIDEJB"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "eye.slash.circle", backgroundColor: .purple) }
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_HIDEJB")
+        case LocalizationManager.shared.local("OPENER_SILEO"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray) }
+            cell.textLabel?.text = LocalizationManager.shared.local("OPENER_SILEO")
+        case LocalizationManager.shared.local("OPENER_ZEBRA"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray) }
+            cell.textLabel?.text = LocalizationManager.shared.local("OPENER_ZEBRA")
+        case LocalizationManager.shared.local("OPENER_TH"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "arrow.uturn.forward", backgroundColor: .systemGray) }
+            cell.textLabel?.text = LocalizationManager.shared.local("OPENER_TH")
             
-        case local("ACTION_RESPRING"):
-            mods.applySymbolModifications(to: cell, with: "arrow.counterclockwise.circle", backgroundColor: .systemBlue)
-            cell.textLabel?.text = local("ACTION_RESPRING")
-        case local("ACTION_UICACHE"):
-            mods.applySymbolModifications(to: cell, with: "iphone.circle", backgroundColor: .systemPurple)
-            cell.textLabel?.text = local("ACTION_UICACHE")
-        case local("ACTION_TWEAKS"):
-            mods.applySymbolModifications(to: cell, with: "hammer.circle", backgroundColor: .systemPink)
-            cell.textLabel?.text = local("ACTION_TWEAKS")
+        case LocalizationManager.shared.local("ACTION_RESPRING"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "arrow.counterclockwise.circle", backgroundColor: .systemBlue) }
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_RESPRING")
+        case LocalizationManager.shared.local("ACTION_UICACHE"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "iphone.circle", backgroundColor: .systemPurple) }
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_UICACHE")
+        case LocalizationManager.shared.local("ACTION_TWEAKS"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "hammer.circle", backgroundColor: .systemPink) }
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_TWEAKS")
             
-        case local("ACTION_USREBOOT"):
-            mods.applySymbolModifications(to: cell, with: "bolt.circle", backgroundColor: .systemOrange)
-            cell.textLabel?.text = local("ACTION_USREBOOT")
+        case LocalizationManager.shared.local("ACTION_USREBOOT"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "bolt.circle", backgroundColor: .systemOrange) }
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_USREBOOT")
             cell.textLabel?.textColor = .systemOrange
-        case local("ACTION_DAEMONS"):
-            mods.applySymbolModifications(to: cell, with: "eject.circle", backgroundColor: .systemOrange)
-            cell.textLabel?.text = local("ACTION_DAEMONS")
+        case LocalizationManager.shared.local("ACTION_DAEMONS"):
+            if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "eject.circle", backgroundColor: .systemOrange) }
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_DAEMONS")
             cell.textLabel?.textColor = .systemOrange
-        case local("ACTION_MOUNT"):
-            mods.applySymbolModifications(to: cell, with: "tray.circle", backgroundColor: .systemOrange)
-            cell.textLabel?.text = local("ACTION_MOUNT")
+        case LocalizationManager.shared.local("ACTION_MOUNT"):
+            if #available(iOS 13.0, *) {  mods.applySymbolModifications(to: cell, with: "tray.circle", backgroundColor: .systemOrange) }
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_MOUNT")
             cell.textLabel?.textColor = .systemOrange
         default:
             break
@@ -111,26 +122,26 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let prefix = envInfo.installPrefix
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case local("ACTION_HIDEJB"):
+        case LocalizationManager.shared.local("ACTION_HIDEJB"):
             HideEnv(viewController: self)
-        case local("OPENER_SILEO"):
+        case LocalizationManager.shared.local("OPENER_SILEO"):
             if opener.openApp("org.coolstar.SileoStore") {} else if opener.openApp("org.coolstar.SileoNightly") {}
-        case local("OPENER_ZEBRA"):
+        case LocalizationManager.shared.local("OPENER_ZEBRA"):
             if opener.openApp("xyz.willy.Zebra") {}
-        case local("OPENER_TH"):
+        case LocalizationManager.shared.local("OPENER_TH"):
             opener.TrollHelper()
-        case local("ACTION_RESPRING"):
+        case LocalizationManager.shared.local("ACTION_RESPRING"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
-        case local("ACTION_UICACHE"):
+        case LocalizationManager.shared.local("ACTION_UICACHE"):
             spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"])
-        case local("ACTION_TWEAKS"):
+        case LocalizationManager.shared.local("ACTION_TWEAKS"):
             helper(args: ["-l"])
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"]) }
-        case local("ACTION_USREBOOT"):
+        case LocalizationManager.shared.local("ACTION_USREBOOT"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
-        case local("ACTION_DAEMONS"):
+        case LocalizationManager.shared.local("ACTION_DAEMONS"):
             helper(args: ["-L"])
-        case local("ACTION_MOUNT"):
+        case LocalizationManager.shared.local("ACTION_MOUNT"):
             helper(args: ["-M"])
         default:
             break
@@ -142,9 +153,9 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let dataCount = tableData.count
         if section == dataCount - 1 {
-            return local("ACTION_MOUNT_SUBTEXT")
+            return LocalizationManager.shared.local("ACTION_MOUNT_SUBTEXT")
         } else if section == dataCount - 3 {
-            return local("OPENER_SUBTEXT")
+            return LocalizationManager.shared.local("OPENER_SUBTEXT")
         }
         return nil
     }
@@ -155,7 +166,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             switch strapValue {
             case 1:
                 #if !targetEnvironment(simulator)
-                let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
+                let alert = UIAlertController.warning(title: LocalizationManager.shared.local("ACTION_HIDEJB"), message: LocalizationManager.shared.local("HIDE_NOTICE"), destructiveBtnTitle: LocalizationManager.shared.local("PROCEED"), destructiveHandler: {
                     if fileExists("/tmp/palera1n/helper") {
                         if fileExists("/var/jb") {
                             binpack.rm("/var/jb")
@@ -166,11 +177,11 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 viewController.present(alert, animated: true)
                 #endif
             default:
-                let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: "\(local("STRAP_INFO")) \(strapValue)")
+                let errorAlert = UIAlertController.error(title: LocalizationManager.shared.local("NO_PROCEED"), message: "\(LocalizationManager.shared.local("STRAP_INFO")) \(strapValue)")
                 viewController.present(errorAlert, animated: true)
             }
         } else {
-            let errorAlert = UIAlertController.error(title: local("NO_PROCEED"), message: local("NOTICE_ROOTLESS"))
+            let errorAlert = UIAlertController.error(title: LocalizationManager.shared.local("NO_PROCEED"), message: LocalizationManager.shared.local("NOTICE_ROOTLESS"))
             viewController.present(errorAlert, animated: true)
             return
         }

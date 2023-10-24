@@ -11,27 +11,35 @@ import UIKit
 class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     var tableData = [
-        [local("LOG_CELL_VIEW")],
+        [LocalizationManager.shared.local("LOG_CELL_VIEW")],
         ["json"],
-        [local("DEBUG_CLEAR_JSON"), local("FR_SWITCH")]
+        [LocalizationManager.shared.local("DEBUG_CLEAR_JSON"),
+         LocalizationManager.shared.local("FR_SWITCH")]
     ]
     
     var customMessage: String?
     
-    var sectionTitles = ["", "JSON", local("DEBUG_OPTIONS")]
+    var sectionTitles = ["", "JSON", LocalizationManager.shared.local("DEBUG_OPTIONS")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
-        self.title = local("DEBUG_CELL")
+        self.title = LocalizationManager.shared.local("DEBUG_CELL")
+
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.systemBackground
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
         
-        let appearance = UINavigationBarAppearance()
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
+        let tableView: UITableView
+        if #available(iOS 13.0, *) {
+            tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
+        } else {
+            tableView = UITableView(frame: view.bounds, style: .grouped)
+        }
+
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(closeSheet))
-        
-        let tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
@@ -70,16 +78,24 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         cell.accessoryType = .disclosureIndicator
         
         switch tableData[indexPath.section][indexPath.row] {
-        case local("DEBUG_CLEAR_JSON"):
-            mods.applySymbolModifications(to: cell, with: "arrow.clockwise", backgroundColor: .systemGray)
-            cell.textLabel?.text = local("DEBUG_CLEAR_JSON")
-        case local("FR_SWITCH"):
-            mods.applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
+        case LocalizationManager.shared.local("DEBUG_CLEAR_JSON"):
+            if #available(iOS 13.0, *) {
+                mods.applySymbolModifications(to: cell, with: "arrow.clockwise", backgroundColor: .systemGray)
+            } else {
+                cell.imageView?.image = nil
+            }
+            cell.textLabel?.text = LocalizationManager.shared.local("DEBUG_CLEAR_JSON")
+        case LocalizationManager.shared.local("FR_SWITCH"):
+            if #available(iOS 13.0, *) {
+                mods.applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
+            } else {
+                cell.imageView?.image = nil
+            }
             let switchControl = UISwitch()
             switchControl.isOn = envInfo.rebootAfter
             switchControl.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
             cell.accessoryView = switchControl
-            cell.textLabel?.text = local("FR_SWITCH")
+            cell.textLabel?.text = LocalizationManager.shared.local("FR_SWITCH")
             cell.selectionStyle = .none
         case "json":
             let textField = UITextField()
@@ -95,8 +111,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
             cell.accessoryType = .none
 
-        case local("LOG_CELL_VIEW"):
-            cell.textLabel?.text = local("LOG_CELL_VIEW")
+        case LocalizationManager.shared.local("LOG_CELL_VIEW"):
+            cell.textLabel?.text = LocalizationManager.shared.local("LOG_CELL_VIEW")
             cell.textLabel?.textColor = .systemBlue
         default:
             break
@@ -115,11 +131,11 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case local("DEBUG_CLEAR_JSON"):
+        case LocalizationManager.shared.local("DEBUG_CLEAR_JSON"):
           resetField()
           UIApplication.shared.openSpringBoard()
           exit(0)
-        case local("LOG_CELL_VIEW"):
+        case LocalizationManager.shared.local("LOG_CELL_VIEW"):
             log(type: .info, msg: "Opening Log View")
             let LogViewVC = LogViewer()
             navigationController?.pushViewController(LogViewVC, animated: true)

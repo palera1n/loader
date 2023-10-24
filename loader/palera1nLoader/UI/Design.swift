@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class mods {
+    @available(iOS 13.0, *)
     static public func applySymbolModifications(to cell: UITableViewCell, with symbolName: String, backgroundColor: UIColor) {
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .medium)
         let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?
@@ -28,9 +29,9 @@ class mods {
         cell.imageView?.image = mergedImage
         cell.imageView?.layer.cornerRadius = 7
         cell.imageView?.clipsToBounds = true
-        cell.imageView?.layer.borderWidth = 1
         cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     }
+
 
     static public func applyImageModifications(to cell: UITableViewCell, with originalImage: UIImage) {
         let resizedImage = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { context in
@@ -47,9 +48,11 @@ class mods {
 
 extension JsonVC {
   public func setNavigationBar() {
-      let appearance = UINavigationBarAppearance()
-      navigationController?.navigationBar.standardAppearance = appearance
-      navigationController?.navigationBar.scrollEdgeAppearance = appearance
+      if #available(iOS 13.0, *) {
+          let appearance = UINavigationBarAppearance()
+          navigationController?.navigationBar.standardAppearance = appearance
+          navigationController?.navigationBar.scrollEdgeAppearance = appearance
+      }
       
       let customView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
       customView.translatesAutoresizingMaskIntoConstraints = false

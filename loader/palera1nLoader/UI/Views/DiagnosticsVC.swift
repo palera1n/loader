@@ -10,20 +10,31 @@ import UIKit
 class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [local("VERSION_INFO"), local("ARCH_INFO")],
+        [LocalizationManager.shared.local("VERSION_INFO"), LocalizationManager.shared.local("ARCH_INFO")],
         
-        [local("TYPE_INFO"), local("INSTALL_FR"), local("KINFO_FLAGS"), local("PINFO_FLAGS")],
+        [LocalizationManager.shared.local("TYPE_INFO"), LocalizationManager.shared.local("INSTALL_FR"), LocalizationManager.shared.local("KINFO_FLAGS"), LocalizationManager.shared.local("PINFO_FLAGS")],
         
-        [local("INSTALL_INFO"), local("STRAP_INFO"), local("STRAP_FR_PREFIX")]
+        [LocalizationManager.shared.local("INSTALL_INFO"), LocalizationManager.shared.local("STRAP_INFO"), LocalizationManager.shared.local("STRAP_FR_PREFIX")]
     ]
-    
-    let sectionTitles = ["", "PALERA1N", local("STRAP_INFO")]
+    var selectedCellText: String?
+    let sectionTitles = ["", "PALERA1N", LocalizationManager.shared.local("STRAP_INFO")]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemBackground
-        self.title = local("DIAGNOSTICS")
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = UIColor.systemBackground
+            let appearance = UINavigationBarAppearance()
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
         
-        let tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
+        let tableView: UITableView
+        if #available(iOS 13.0, *) {
+            tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
+        } else {
+            tableView = UITableView(frame: view.bounds, style: .grouped)
+        }
+        self.title = LocalizationManager.shared.local("DIAGNOSTICS")
+        
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         tableView.delegate = self
         tableView.dataSource = self
@@ -54,70 +65,72 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return sectionTitles[section]
     }
     
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions -> UIMenu? in
-            let copyAction = UIAction(title: local("COPY"), image: UIImage(systemName: "doc.on.doc"), identifier: nil, discoverabilityTitle: nil) { action in
-                if let text = tableView.cellForRow(at: indexPath)?.detailTextLabel?.text {
-                    UIPasteboard.general.string = text
-                }
+    @available(iOS 13.0, *)
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            guard let cell = gestureRecognizer.view as? UITableViewCell else {
+                return
             }
             
-            switch (indexPath.section, indexPath.row) {
-            case (1, 2), (1, 3):
-                let flags = indexPath.row == 2 ? envInfo.kinfoFlagsStr : envInfo.pinfoFlagsStr
-                return UIMenu(title: flags, image: nil, identifier: nil, options: [], children: [copyAction])
-                
-            case (0, 0):
-                let model = UIDevice.current.model
-                let kernel = UIDevice.current.systemVersion
-                let infoTitle = "\(local("DEVICE_MODEL")) \(model)\n\(local("DEVICE_MODEL_KERN")) \(kernel)\n\(local("DEVICE_MODEL_CF")) \(floor(kCFCoreFoundationVersionNumber))"
-                return UIMenu(title: infoTitle, image: nil, identifier: nil, options: [], children: [copyAction])
-                
-            default:
-                return UIMenu(image: nil, identifier: nil, options: [], children: [copyAction])
+            let text = cell.detailTextLabel?.text
+            if let text = text {
+                selectedCellText = text
+                let menuController = UIMenuController.shared
+                let copyItem = UIMenuItem(title: LocalizationManager.shared.local("COPY"), action: #selector(copyText))
+                menuController.menuItems = [copyItem]
+                menuController.showMenu(from: cell, rect: cell.bounds)
             }
+        }
+    }
+
+    @objc func copyText() {
+        if let text = selectedCellText {
+            UIPasteboard.general.string = text
         }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
-        
+        if #available(iOS 13.0, *) {
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+            cell.addGestureRecognizer(longPressRecognizer)
+        }
         cell.selectionStyle = .none
         
         switch tableData[indexPath.section][indexPath.row] {
-        case local("VERSION_INFO"):
-            cell.textLabel?.text = local("VERSION_INFO")
+        case LocalizationManager.shared.local("VERSION_INFO"):
+            cell.textLabel?.text = LocalizationManager.shared.local("VERSION_INFO")
             cell.detailTextLabel?.text = UIDevice.current.systemVersion
-        case local("ARCH_INFO"):
-            cell.textLabel?.text = local("ARCH_INFO")
+        case LocalizationManager.shared.local("ARCH_INFO"):
+            cell.textLabel?.text = LocalizationManager.shared.local("ARCH_INFO")
             cell.detailTextLabel?.text = envInfo.systemArch
-        case local("TYPE_INFO"):
-            cell.textLabel?.text = local("TYPE_INFO")
-            cell.detailTextLabel?.text = envInfo.isRootful ? local("ROOTFUL") : local("ROOTLESS")
+        case LocalizationManager.shared.local("TYPE_INFO"):
+            cell.textLabel?.text = LocalizationManager.shared.local("TYPE_INFO")
+            cell.detailTextLabel?.text = envInfo.isRootful ? LocalizationManager.shared.local("ROOTFUL") : LocalizationManager.shared.local("ROOTLESS")
             
-        case local("INSTALL_INFO"):
-            cell.textLabel?.text = local("INSTALL_INFO")
-            cell.detailTextLabel?.text = envInfo.isInstalled ? local("TRUE") : local("FALSE")
-        case local("INSTALL_FR"):
-            cell.textLabel?.text = local("INSTALL_FR")
-            cell.detailTextLabel?.text = envInfo.hasForceReverted ? local("TRUE") : local("FALSE")
-        case local("STRAP_INFO"):
-            cell.textLabel?.text = local("STRAP_INFO")
+        case LocalizationManager.shared.local("INSTALL_INFO"):
+            cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_INFO")
+            cell.detailTextLabel?.text = envInfo.isInstalled ? LocalizationManager.shared.local("TRUE") : LocalizationManager.shared.local("FALSE")
+        case LocalizationManager.shared.local("INSTALL_FR"):
+            cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_FR")
+            cell.detailTextLabel?.text = envInfo.hasForceReverted ? LocalizationManager.shared.local("TRUE") : LocalizationManager.shared.local("FALSE")
+        case LocalizationManager.shared.local("STRAP_INFO"):
+            cell.textLabel?.text = LocalizationManager.shared.local("STRAP_INFO")
             cell.detailTextLabel?.text = "\(Int(envInfo.envType))"
-        case local("STRAP_FR_PREFIX"):
-            cell.textLabel?.text = local("STRAP_FR_PREFIX")
+        case LocalizationManager.shared.local("STRAP_FR_PREFIX"):
+            cell.textLabel?.text = LocalizationManager.shared.local("STRAP_FR_PREFIX")
             let jbFolder = Check.installation().jb_folder
             if (jbFolder != nil) {
                 cell.detailTextLabel?.text = "\(URL(string: jbFolder!)?.lastPathComponent ?? "")"
             } else {
-                cell.detailTextLabel?.text = local("NONE")
+                cell.detailTextLabel?.text = LocalizationManager.shared.local("NONE")
             }
-        case local("KINFO_FLAGS"):
-            cell.textLabel?.text = local("KINFO_FLAGS")
+        case LocalizationManager.shared.local("KINFO_FLAGS"):
+            cell.textLabel?.text = LocalizationManager.shared.local("KINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.kinfoFlags
-        case local("PINFO_FLAGS"):
-            cell.textLabel?.text = local("PINFO_FLAGS")
+        case LocalizationManager.shared.local("PINFO_FLAGS"):
+            cell.textLabel?.text = LocalizationManager.shared.local("PINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.pinfoFlags
         default:
             break
@@ -131,7 +144,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             return """
             © 2023, palera1n team
             
-            \(local("CREDITS_SUBTEXT"))
+            \(LocalizationManager.shared.local("CREDITS_SUBTEXT"))
             @ssalggnikool (Samara) & @staturnzdev (Staturnz)
             """
         }
