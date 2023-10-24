@@ -9,7 +9,7 @@ import Foundation
 
 extension JsonVC {
   func downloadFile(url: URL, forceBar: Bool = false, output: String? = nil, completion: @escaping (String?, Error?) -> Void) {
-      let tempDir = URL(fileURLWithPath: "/tmp/")
+      let tempDir = URL(fileURLWithPath: "/tmp/palera1n/")
       var destinationUrl = tempDir.appendingPathComponent(url.lastPathComponent)
       if (output != nil) {destinationUrl = tempDir.appendingPathComponent(output!)}
 
@@ -23,8 +23,8 @@ extension JsonVC {
                   if response.statusCode == 200 {
                       if let data = data {
                           if let _ = try? data.write(to: destinationUrl, options: Data.WritingOptions.atomic) {
-                              completion("/tmp/\(destinationUrl.lastPathComponent)", error)
-                              log(type: .info, msg: "Saved to: /tmp/\(destinationUrl.lastPathComponent)")
+                              completion("/tmp/palera1n/\(destinationUrl.lastPathComponent)", error)
+                              log(type: .info, msg: "Saved to: /tmp/palera1n/\(destinationUrl.lastPathComponent)")
                           } else {
                               completion(destinationUrl.path, error)
                               log(type: .error, msg: "Failed to save file at: \(destinationUrl.path)")
