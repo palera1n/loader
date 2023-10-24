@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"DEBUG" = "Debug";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Información del Dispositivo";
 "ACTIONS" = "Acciones";
 "JBINIT_LOG" = "Registro";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Entorno oculto";
 "ACTION_HIDEJB" = "Ocultar Entorno";
-"OPEN_CELL" = "Abridores";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Abrir Sileo";
 "OPENER_ZEBRA" = "Abrir Zebra";
 "OPENER_TH" = "Abrir TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Depurar";
 "DEBUG_OPTIONS" = "Opciones";
 "DEBUG_CLEAN_FAKEFS" = "Limpiar fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Salir del modo seguro";
-"DEBUG_ENTER_SAFEMODE" = "Entrar del modo seguro";
 "DEBUG_CLEAR_JSON" = "Borrar configuración JSON";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Versión del Kernel:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Cargador hecho por:";
-"PINFO_SUBTEXT" = "Las banderas (paleinfo) corresponden a las banderas que utilizaste a través de la interfaz de línea de comandos (CLI) de palera1n 2.0.0, útiles para desarrolladores.";
 "TYPE_INFO" = "Tipo";
 "INSTALL_INFO" = "Instalado";
 "ARCH_INFO" = "Arquitectura";
 "VERSION_INFO" = "Versión";
 "STRAP_INFO" = "Ambiente";
 "STRAP_FR_PREFIX" = "Prefijo de fakeroot";
-"STRAP_FR_PATH" = "Ruta de fakeroot";
-"OPEN_FILZA" = "Abierto con Fliza";
-"OPEN_SANTANDER" = "Abierto con Santander";
 "COPY" = "Copiar";
 "INSTALL_FR" = "Fuerza revertida";
 "HELPER" = "Ayudante";
 "HELPER_PATH" = "Ruta de ayudante";
-"SILEO_INSTALLED" = "Sileo instalado";
-"ZEBRA_INSTALLED" = "Zebra instalado";
 "KINFO_FLAGS" = "Banderas (kerninfo)";
 "PINFO_FLAGS" = "Banderas (paleinfo)";
 
