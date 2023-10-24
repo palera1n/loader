@@ -15,6 +15,7 @@
 		2FC154322A36B84D00AC9346 /* Opener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154312A36B84D00AC9346 /* Opener.swift */; };
 		2FC154342A36C02000AC9346 /* Binpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154332A36C02000AC9346 /* Binpack.swift */; };
 		2FC154362A36C2E500AC9346 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154352A36C2E500AC9346 /* Design.swift */; };
+		337311AB2AE86F2E00A9E0CB /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 337311AA2AE86F2E00A9E0CB /* Makefile */; };
 		33A420D92A0ED59D005AE29C /* DebugVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A420D82A0ED59D005AE29C /* DebugVC.swift */; };
 		33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4DF2A30050A006EC0B4 /* JsonVC.swift */; };
 		33CCDA552ACD1255000E0111 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CCDA542ACD1255000E0111 /* Download.swift */; };
@@ -49,6 +50,7 @@
 		334B55232A4E518A00F243BE /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		334B55252A4E526B00F243BE /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		334B55262A4E52DB00F243BE /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = sk.lproj/Localizable.strings; sourceTree = "<group>"; };
+		337311AA2AE86F2E00A9E0CB /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../Makefile; sourceTree = "<group>"; };
 		3384F5972A1EAAC000F8BF22 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F5982A1EAACC00F8BF22 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F59A2A1EAB2400F8BF22 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		E181BACD28CF914300CD25A6 = {
 			isa = PBXGroup;
 			children = (
+				337311AA2AE86F2E00A9E0CB /* Makefile */,
 				E181BAD828CF914300CD25A6 /* palera1nLoader */,
 				E181BAD728CF914300CD25A6 /* Products */,
 				2F12BB092A30BF5A0095972E /* Frameworks */,
@@ -283,6 +286,7 @@
 				2FC154302A36B83300AC9346 /* Checks.swift in Sources */,
 				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				2FC154342A36C02000AC9346 /* Binpack.swift in Sources */,
+				337311AB2AE86F2E00A9E0CB /* Makefile in Sources */,
 				33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */,
 				2FC154322A36B84D00AC9346 /* Opener.swift in Sources */,
 				2FC1542D2A36B7A900AC9346 /* Cells.swift in Sources */,

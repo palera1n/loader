@@ -120,11 +120,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.isUserInteractionEnabled = true
         cell.selectionStyle = .default
         cell.accessoryType = .disclosureIndicator
-        if #available(iOS 13.0, *) {
-            cell.textLabel?.textColor = .label
-        } else {
-            cell.textLabel?.textColor = .black
-        }
+        cell.textLabel?.textColor = .none
         cell.imageView?.alpha = 1.0
         cell.imageView?.image = nil
 
@@ -150,18 +146,12 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let row = indexPath.row
             if row == 0 {
                 cell.textLabel?.text = LocalizationManager.shared.local("ACTIONS")
-                if #available(iOS 13.0, *) {
-                    mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
-                }
+                if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray) }
             } else if row == 1 {
                 cell.textLabel?.text = LocalizationManager.shared.local("DIAGNOSTICS")
-                if #available(iOS 13.0, *) {
-                    mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
-                }
+                if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue) }
             } else {
-                if #available(iOS 13.0, *) {
-                    mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-                }
+                if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed) }
                 cell.textLabel?.text = LocalizationManager.shared.local("REVERT_CELL")
                 if envInfo.isRootful {
                     cell.isUserInteractionEnabled = false

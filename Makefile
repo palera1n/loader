@@ -17,6 +17,12 @@ else
 $(error Please specify either IOS=1 or TVOS=1)
 endif
 
+ifeq ($(DEV),1)
+	CONFIGURATION = Debug
+else
+	CONFIGURATION = Release
+endif
+
 P1_TMP         = $(TMPDIR)/$(NAME)
 P1_STAGE_DIR   = $(P1_TMP)/stage
 P1_APP_DIR 	   = $(P1_TMP)/Build/Products/$(RELEASE)/$(NAME).app
@@ -25,7 +31,7 @@ package:
 	/usr/libexec/PlistBuddy -c "Set :REVISION ${GIT_REV}" "loader/palera1nLoader/Info.plist"
 
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme palera1nLoader -configuration Release -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(VOLNAME)/palera1nLoader.xcodeproj' -scheme palera1nLoader -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(P1_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf Payload
 	@rm -rf $(P1_STAGE_DIR)/
@@ -43,10 +49,8 @@ package:
 
 ifeq ($(TIPA),1)
 	@zip -r9 packages/$(NAME).tipa Payload
-	#@7zz a -mx=9 packages/$(NAME).tipa Payload
 else
 	@zip -r9 packages/$(NAME).ipa Payload
-	#@7zz a -mx=9 packages/$(NAME).tipa Payload
 endif
 ifneq ($(NO_DMG),1)
 	@hdiutil create out.dmg -volname "$(VOLNAME)" -fs HFS+ -srcfolder Payload

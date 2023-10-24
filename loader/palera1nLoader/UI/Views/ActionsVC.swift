@@ -28,21 +28,19 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var sectionTitles = ["", LocalizationManager.shared.local("OPEN_CELL"), LocalizationManager.shared.local("UTIL_CELL"), ""]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = LocalizationManager.shared.local("ACTIONS")
-        
+        let tableView: UITableView
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = UIColor.systemBackground
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
-        
-        let tableView: UITableView
-        if #available(iOS 13.0, *) {
             tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
         } else {
             tableView = UITableView(frame: view.bounds, style: .grouped)
         }
+        
+        self.title = LocalizationManager.shared.local("ACTIONS")
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)

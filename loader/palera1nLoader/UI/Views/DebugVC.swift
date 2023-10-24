@@ -23,21 +23,18 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = LocalizationManager.shared.local("DEBUG_CELL")
-
+        let tableView: UITableView
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = UIColor.systemBackground
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
-        
-        let tableView: UITableView
-        if #available(iOS 13.0, *) {
             tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
         } else {
             tableView = UITableView(frame: view.bounds, style: .grouped)
         }
+        
+        self.title = LocalizationManager.shared.local("DEBUG_CELL")
 
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(closeSheet))
         tableView.delegate = self

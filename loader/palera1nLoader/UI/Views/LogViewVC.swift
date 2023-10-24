@@ -35,9 +35,6 @@ class LogViewer: UIViewController {
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
-        
-        if #available(iOS 13.0, *) {
             textView.backgroundColor = .systemBackground
         }
         textView.textContainerInset = UIEdgeInsets(top: self.navigationController!.navigationBar.frame.size.height - 25, left: 5, bottom: 8, right: 5)

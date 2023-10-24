@@ -20,19 +20,18 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     let sectionTitles = ["", "PALERA1N", LocalizationManager.shared.local("STRAP_INFO")]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tableView: UITableView
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = UIColor.systemBackground
             let appearance = UINavigationBarAppearance()
             navigationController?.navigationBar.standardAppearance = appearance
             navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
-        
-        let tableView: UITableView
-        if #available(iOS 13.0, *) {
             tableView = UITableView(frame: view.bounds, style: isIpad == .pad ? .insetGrouped : .grouped)
         } else {
             tableView = UITableView(frame: view.bounds, style: .grouped)
         }
+
         self.title = LocalizationManager.shared.local("DIAGNOSTICS")
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
