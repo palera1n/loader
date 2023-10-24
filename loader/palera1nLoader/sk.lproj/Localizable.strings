@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "~Inštalovať";
-"DEBUG" = "Odstraňovať chyby";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Informácie o zariadení";
 "ACTIONS" = "Akcie";
 "JBINIT_LOG" = "Zápis logu";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Skryté prostredie";
 "ACTION_HIDEJB" = "Skryť prostredie";
-"OPEN_CELL" = "Otvárače";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Otvoriť Sileo";
 "OPENER_ZEBRA" = "Otvoriť Zebra";
 "OPENER_TH" = "Otvoriť TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Odstraňovať chyby";
 "DEBUG_OPTIONS" = "Nastavenia";
 "DEBUG_CLEAN_FAKEFS" = "Vyčistiť fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Ukončenie bezpečného režimu";
-"DEBUG_ENTER_SAFEMODE" = "Zapnúť bezpečný režim";
 "DEBUG_CLEAR_JSON" = "Vymazať JSON config";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Verzia jadro:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader vytvorili:";
-"PINFO_SUBTEXT" = "Vlajky (paleinfo) zodpovedajú vlajkám, ktoré ste použili v CLI palera1n 2.0.0, užitočné pre vývojár.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Inštalované";
 "ARCH_INFO" = "Architektúra";
 "VERSION_INFO" = "Verzia";
 "STRAP_INFO" = "Prostredie";
 "STRAP_FR_PREFIX" = "Predpona Fakerootu";
-"STRAP_FR_PATH" = "Lokalizácia Fakerootu";
-"OPEN_FILZA" = "Otvoriť v Filza";
-"OPEN_SANTANDER" = "Otvoriť v Santander";
 "COPY" = "Kopírovať";
 "INSTALL_FR" = "Vrátené silou";
 "HELPER" = "Pomocník";
 "HELPER_PATH" = "Lokalizácia pomocníka";
-"SILEO_INSTALLED" = "Sileo nainštalovaný";
-"ZEBRA_INSTALLED" = "Zebra nainštalovaný";
 "KINFO_FLAGS" = "Vlajky (kerninfo)";
 "PINFO_FLAGS" = "Vlajky (paleinfo)";
 
