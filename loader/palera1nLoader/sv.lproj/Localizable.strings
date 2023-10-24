@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installera";
-"DEBUG" = "Felsök";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Enhetsinformation";
 "ACTIONS" = "Åtgärder";
 "JBINIT_LOG" = "Logg";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Gömd Jailbreakmiljö";
 "ACTION_HIDEJB" = "Göm Jailbreakmiljö";
-"OPEN_CELL" = "Appöppnare";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Öppna Sileo";
 "OPENER_ZEBRA" = "Öppna Zebra";
 "OPENER_TH" = "Öppna TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Felsök";
 "DEBUG_OPTIONS" = "Inställningar";
 "DEBUG_CLEAN_FAKEFS" = "Rensa fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Avsluta felsäkert läge";
-"DEBUG_ENTER_SAFEMODE" = "Aktivera felsäkert läge";
 "DEBUG_CLEAR_JSON" = "Rensa JSON-konfiguration";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Kernelversion:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader gjord av:";
-"PINFO_SUBTEXT" = "Flaggor (paleinfo) motsvarar flaggor du använde via palera1n 2.0.0 CLI, användbart för utvecklare.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Installerad";
 "ARCH_INFO" = "Arkitektur";
 "VERSION_INFO" = "Version";
 "STRAP_INFO" = "Jailbreak";
 "STRAP_FR_PREFIX" = "Fakeroot-Prefix";
-"STRAP_FR_PATH" = "Fakeroot Sökväg";
-"OPEN_FILZA" = "Öppna i Filza";
-"OPEN_SANTANDER" = "Öppna i Santander";
 "COPY" = "Kopiera";
 "INSTALL_FR" = "Tvångsåterställd";
 "HELPER" = "Hjälpare";
 "HELPER_PATH" = "Sökväg för hjälpare";
-"SILEO_INSTALLED" = "Sileo Installerad";
-"ZEBRA_INSTALLED" = "Zebra Installerad";
 "KINFO_FLAGS" = "Flaggor (kerninfo)";
 "PINFO_FLAGS" = "Flaggor (paleinfo)";
 
