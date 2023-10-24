@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "安装了";
-"DEBUG" = "开发人员调试版q";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "设备信息o";
 "ACTIONS" = "行动";
 "JBINIT_LOG" = "记录日志";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "已隐藏环境";
 "ACTION_HIDEJB" = "隐藏环境";
-"OPEN_CELL" = "打开";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "打开 Sileo";
 "OPENER_ZEBRA" = "打开 Zebra";
 "OPENER_TH" = "打开 TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "调试";
 "DEBUG_OPTIONS" = "选项";
 "DEBUG_CLEAN_FAKEFS" = "清理FakeFS";
-"DEBUG_EXIT_SAFEMODE" = "退出安全模式";
-"DEBUG_ENTER_SAFEMODE" = "进入安全模式";
 "DEBUG_CLEAR_JSON" = "清除 JSON 配置";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "内核版本：";
 "DEVICE_MODEL_CF" = "CF版本：";
 "CREDITS_SUBTEXT" = "加载器由：";
-"PINFO_SUBTEXT" = "标记(paleinfo)对应于您通过palera1.0.0CLI使用的标志，对开发者有用。";
 "TYPE_INFO" = "类型";
 "INSTALL_INFO" = "已安装";
 "ARCH_INFO" = "软件架构";
 "VERSION_INFO" = "版本";
 "STRAP_INFO" = "環境";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot 路径";
-"OPEN_FILZA" = "在 Filza 中打开";
-"OPEN_SANTANDER" = "在 Santander 中打开";
 "COPY" = "复制";
 "INSTALL_FR" = "强制还原";
 "HELPER" = "助手";
 "HELPER_PATH" = "助手路径";
-"SILEO_INSTALLED" = "Sileo 已安装";
-"ZEBRA_INSTALLED" = "已安装 Zebra";
 "KINFO_FLAGS" = "标记 (kerninfo)";
 "PINFO_FLAGS" = "标志(paleinfo)";
 
