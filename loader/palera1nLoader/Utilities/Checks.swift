@@ -17,9 +17,9 @@ struct environment {
 class Check {
     
     static public func installation() -> environment {
-        if (envInfo.isSimulator) {
-            return environment(env_type: -1, jb_folder: nil)
-        }
+        #if targetEnvironment(simulator)
+        return environment(env_type: -1, jb_folder: nil)
+        #else
         
         if (envInfo.isRootful) {
             return environment(env_type: 0, jb_folder: nil)
@@ -55,6 +55,7 @@ class Check {
         } else {
             return environment(env_type: value, jb_folder: "\(dir)/\(jbFolders[0])")
         }
+        #endif
     }
     
     @discardableResult
@@ -98,9 +99,6 @@ class Check {
     
     static public func prerequisites() -> Void {
         Check.helperSymlink()
-        #if targetEnvironment(simulator)
-            envInfo.isSimulator = true
-        #endif
         
         // rootless/rootful check
         helper(args: ["-t"])
@@ -124,7 +122,6 @@ class Check {
         }
         
         // device info
-        envInfo.systemVersion = "\(local("VERSION_INFO")) \(UIDevice.current.systemVersion)"
         envInfo.systemArch = String(cString: NXGetLocalArchInfo().pointee.name)
         
         // jb-XXXXXXXX and /var/jb checks
@@ -134,7 +131,7 @@ class Check {
         log(msg: "## palera1nLoader logs ##")
         log(msg: "Jailbreak Type: \(envInfo.isRootful ? "Rootful" : "Rootless")")
         log(msg: "Environment: \(envInfo.envType)")
-        log(msg: "iOS: \(envInfo.systemVersion)")
+        log(msg: "iOS: \(local("VERSION_INFO")) \(UIDevice.current.systemVersion)")
         log(msg: "Arch: \(envInfo.systemArch)")
         log(msg: "Installed: \(envInfo.isInstalled)")
         log(msg: "Force Reverted: \(envInfo.hasForceReverted)")

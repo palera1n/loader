@@ -120,14 +120,14 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case local("OPENER_TH"):
             opener.TrollHelper()
         case local("ACTION_RESPRING"):
-            spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true)
+            spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case local("ACTION_UICACHE"):
-            spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"], root: true)
+            spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"])
         case local("ACTION_TWEAKS"):
             helper(args: ["-l"])
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"], root: true) }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"]) }
         case local("ACTION_USREBOOT"):
-            spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"], root: true)
+            spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
         case local("ACTION_DAEMONS"):
             helper(args: ["-L"])
         case local("ACTION_MOUNT"):
@@ -140,14 +140,13 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case tableData.count - 1:
+        let dataCount = tableData.count
+        if section == dataCount - 1 {
             return local("ACTION_MOUNT_SUBTEXT")
-        case tableData.count - 3:
+        } else if section == dataCount - 3 {
             return local("OPENER_SUBTEXT")
-        default:
-            return nil
         }
+        return nil
     }
     
     private func HideEnv(viewController: UIViewController) {
@@ -158,10 +157,10 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 #if !targetEnvironment(simulator)
                 let alert = UIAlertController.warning(title: local("ACTION_HIDEJB"), message: local("HIDE_NOTICE"), destructiveBtnTitle: local("PROCEED"), destructiveHandler: {
                     if fileExists("/tmp/palera1n/helper") {
-                        if (!envInfo.isRootful) && fileExists("/var/jb") {
+                        if fileExists("/var/jb") {
                             binpack.rm("/var/jb")
                         }
-                        spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"], root: true)
+                        spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"])
                     }
                 })
                 viewController.present(alert, animated: true)

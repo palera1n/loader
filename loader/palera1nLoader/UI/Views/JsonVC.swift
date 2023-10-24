@@ -77,35 +77,29 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: // Fetching section
-            switch (isLoading, isError) {
-            case (true, _):
+        if section == 0 {
+            if isLoading {
                 return 1
-            case (_, true):
+            } else if isError {
                 return 1
-            default:
-                return tableData[section].count
             }
-        case 1:
-            return 3
-        default:
-            return 0
+            return tableData[section].count
         }
+        /* JsonVC has two sections, so if section is not 0, it must be 1. */
+        return 3
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (section, isLoading, isError) {
-        case (0, true, _):
-            return local("DOWNLOADING")
-        case (0, _, true):
-            return local("DOWNLOAD_ERROR")
-        case (0, _, _):
+        if section == 0 {
+            if isLoading {
+                return local("DOWNLOADING")
+            } else if isError {
+                return local("DOWNLOAD_ERROR")
+            }
             return local("INSTALL")
-        case (1, _, _):
+        } else {
+            /* JsonVC has two sections, so if section is not 0, it must be 1. */
             return local("DEBUG")
-        default:
-            return nil
         }
     }
 
@@ -113,79 +107,74 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
             return nil
         }
-        switch section {
-        case 1:
+        if section == 1 {
             return "palera1n loader • 1.2 (\(revision))"
-        default:
-            return nil
         }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
-        
-        switch (isLoading, isError, indexPath.section) {
-        case (true, _, 0):
-            let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
-            loadingCell.isUserInteractionEnabled = false
-            loadingCell.startLoading()
-            return loadingCell
-            
-        case (_, true, 0):
-            let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath) as! ErrorCell
-            errorCell.errorMessage = errorMessage
-            errorCell.isUserInteractionEnabled = false
-            errorCell.retryAction = { [weak self] in
-                self?.retryFetchJSON()
+
+        if indexPath.section == 0 {
+            if isLoading {
+                let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
+                loadingCell.isUserInteractionEnabled = false
+                loadingCell.startLoading()
+                return loadingCell
+            } else if isError {
+                let errorCell = tableView.dequeueReusableCell(withIdentifier: "ErrorCell", for: indexPath) as! ErrorCell
+                errorCell.errorMessage = errorMessage
+                errorCell.isUserInteractionEnabled = false
+                errorCell.retryAction = { [weak self] in
+                    self?.retryFetchJSON()
+                }
+                return errorCell
             }
-            return errorCell
-            
-        default:
-            break
-        }
-        
-        switch (indexPath.section, indexPath.row) {
-        case (1, 0):
-            cell.textLabel?.text = local("ACTIONS")
-            cell.accessoryType = .disclosureIndicator
-            cell.isUserInteractionEnabled = true
-            cell.textLabel?.textColor = .label
-            cell.imageView?.alpha = 1.0
-          mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
-        case (1, 1):
-            cell.textLabel?.text = local("DIAGNOSTICS")
-            cell.accessoryType = .disclosureIndicator
-            cell.isUserInteractionEnabled = true
-            cell.textLabel?.textColor = .label
-            cell.imageView?.alpha = 1.0
-            mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
-        case (1, 2):
-            mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
-            cell.textLabel?.text = local("REVERT_CELL")
-            if envInfo.isRootful {
-                cell.isUserInteractionEnabled = false
-                cell.textLabel?.textColor = .gray
-                cell.imageView?.alpha = 0.4
-            } else if !envInfo.isRootful {
-                let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
-                cell.isUserInteractionEnabled = isProcursusStrapped
-                cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
-                cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
-                cell.imageView?.alpha = cell.isUserInteractionEnabled ? 1.0 : 0.4
-            } else {
-                cell.isUserInteractionEnabled = false
-            }
-        default:
             cell.isUserInteractionEnabled = true
             cell.selectionStyle = .default
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.textColor = .label
             cell.imageView?.alpha = 1.0
-            
+
             cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
             mods.applyImageModifications(to: cell, with: iconImages[indexPath.row]!)
+        } else {
+            /* there are only two sections in JsonVC so we know indexPath.section == 1 */
+            let row = indexPath.row
+            if row == 0 {
+                cell.textLabel?.text = local("ACTIONS")
+                cell.accessoryType = .disclosureIndicator
+                cell.isUserInteractionEnabled = true
+                cell.textLabel?.textColor = .label
+                cell.imageView?.alpha = 1.0
+                mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray)
+            } else if row == 1 {
+                cell.textLabel?.text = local("DIAGNOSTICS")
+                cell.accessoryType = .disclosureIndicator
+                cell.isUserInteractionEnabled = true
+                cell.textLabel?.textColor = .label
+                cell.imageView?.alpha = 1.0
+                mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue)
+            } else {
+                /* this section only has 3 rows so we know row == 2 */
+                mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed)
+                cell.textLabel?.text = local("REVERT_CELL")
+                if envInfo.isRootful {
+                    cell.isUserInteractionEnabled = false
+                    cell.textLabel?.textColor = .gray
+                    cell.imageView?.alpha = 0.4
+                } else {
+                    let isProcursusStrapped = FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+                    cell.isUserInteractionEnabled = isProcursusStrapped
+                    cell.textLabel?.textColor = isProcursusStrapped ? .systemRed : .gray
+                    cell.accessoryType = isProcursusStrapped ? .disclosureIndicator : .none
+                    cell.imageView?.alpha = isProcursusStrapped ? 1.0 : 0.4
+                }
+            }
         }
+
         
         return cell
     }

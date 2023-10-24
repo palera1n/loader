@@ -11,7 +11,7 @@ import Darwin.POSIX
 import Extras
 
 
-@discardableResult func spawn(command: String, args: [String], root: Bool = true) -> Int {
+@discardableResult func spawn(command: String, args: [String]) -> Int {
     var pipestdout: [Int32] = [0, 0]
     var pipestderr: [Int32] = [0, 0]
 
@@ -34,15 +34,13 @@ import Extras
     defer { for case let arg? in argv { free(arg) } }
     
     var fileActions: posix_spawn_file_actions_t?
-    if root {
-        posix_spawn_file_actions_init(&fileActions)
-        posix_spawn_file_actions_addclose(&fileActions, pipestdout[0])
-        posix_spawn_file_actions_addclose(&fileActions, pipestderr[0])
-        posix_spawn_file_actions_adddup2(&fileActions, pipestdout[1], STDOUT_FILENO)
-        posix_spawn_file_actions_adddup2(&fileActions, pipestderr[1], STDERR_FILENO)
-        posix_spawn_file_actions_addclose(&fileActions, pipestdout[1])
-        posix_spawn_file_actions_addclose(&fileActions, pipestderr[1])
-    }
+    posix_spawn_file_actions_init(&fileActions)
+    posix_spawn_file_actions_addclose(&fileActions, pipestdout[0])
+    posix_spawn_file_actions_addclose(&fileActions, pipestderr[0])
+    posix_spawn_file_actions_adddup2(&fileActions, pipestdout[1], STDOUT_FILENO)
+    posix_spawn_file_actions_adddup2(&fileActions, pipestderr[1], STDERR_FILENO)
+    posix_spawn_file_actions_addclose(&fileActions, pipestdout[1])
+    posix_spawn_file_actions_addclose(&fileActions, pipestderr[1])
     
     var attr: posix_spawnattr_t?
     posix_spawnattr_init(&attr)
