@@ -5,124 +5,122 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
-"DEBUG" = "Debug";
-"DIAGNOSTICS" = "Device Information";
-"ACTIONS" = "Actions";
-"JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Revert Install";
+"INSTALL" = "Инсталирај";
+"DEBUG" = "Отклони грешке";
+"DIAGNOSTICS" = "Информације о уређају";
+"ACTIONS" = "Радње";
+"JBINIT_LOG" = "Евидентирање";
+"REVERT_CELL" = "Врати у првобитно стање";
 
 // ActionsVC
-"HIDDEN" = "Hidden Environment";
-"ACTION_HIDEJB" = "Hide Environment";
-"OPEN_CELL" = "Openers";
-"OPENER_SILEO" = "Open Sileo";
-"OPENER_ZEBRA" = "Open Zebra";
-"OPENER_TH" = "Open TrollHelper";
-"UTIL_CELL" = "Utilities";
-"ACTION_RESPRING" = "Respring";
-"ACTION_USREBOOT" = "Userspace Reboot";
-"ACTION_UICACHE" = "UICache";
-"ACTION_DAEMONS" = "Launch Daemons";
-"ACTION_MOUNT" = "Mount Directories";
-"ACTION_TWEAKS" = "Enable Tweaks";
-"FR_SWITCH" = "Reboot on revert";
-"ACTION_MOUNT_SUBTEXT" = "\"Mount Directories\" only attempts to mount root and preboot as read/write.";
-"OPENER_SUBTEXT" = "When using palera1n on an iPad, there are cases where you would need to use these actions to open the installed applications when they don't appear on the homescreen.";
+"HIDDEN" = "Сакриј џејлбрејк околину";
+"ACTION_HIDEJB" = "Сакриј џејлбрејк околину";
+"OPEN_CELL" = "Отварачи";
+"OPENER_SILEO" = "Отвори Силео";
+"OPENER_ZEBRA" = "Отвори Зебру";
+"OPENER_TH" = "Отвори ТролХелпер";
+"UTIL_CELL" = "Услуге";
+"ACTION_RESPRING" = "Ресетуј Спрингборд";
+"ACTION_USREBOOT" = "Рестартовање корисничког простора";
+"ACTION_UICACHE" = "Кеш меморија корисничког интерфејса";
+"ACTION_DAEMONS" = "Покрени споредне процесе";
+"ACTION_MOUNT" = "Монтирај директоријуме";
+"ACTION_TWEAKS" = "Укључи подешавања";
+"FR_SWITCH" = "Ресетуј при враћању подешавања";
+"ACTION_MOUNT_SUBTEXT" = ",, Монтирај директоријуме\" покушава да монтира директоријуме пре покретања као читљиве и писљиве.";
+"OPENER_SUBTEXT" = "Када користите Палера1н на иПад, постоје шансе да ћете морати да користите ове опције да отворите инсталиране апликације када се не појаве на почетном екрану.";
 
 // Logging View
-"LOG_CELL" = "Logs";
-"LOG_CELL_VIEW" = "View Logs";
-"NONE" = "None";
-"LOG_CLEAR" = "Clear Logs";
+"LOG_CELL" = "Записи";
+"LOG_CELL_VIEW" = "Погледај све записе";
+"NONE" = "Ништа";
 
 // Debug
-"DEBUG_CELL" = "Debug";
-"DEBUG_OPTIONS" = "Options";
-"DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CELL" = "Отклањање грешака";
+"DEBUG_OPTIONS" = "Опције";
+"DEBUG_CLEAN_FAKEFS" = "Обриши fakefs";
+"DEBUG_EXIT_SAFEMODE" = "Изађи из сигурног мода";
+"DEBUG_ENTER_SAFEMODE" = "Уђи у сигуран мод";
+"DEBUG_CLEAR_JSON" = "Обриши JSON подешавања";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
-"TYPE_INFO" = "Type";
-"INSTALL_INFO" = "Installed";
-"ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
-"STRAP_INFO" = "Environment";
-"STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Path";
-"OPEN_FILZA" = "Open in Filza";
-"OPEN_SANTANDER" = "Open in Santander";
-"COPY" = "Copy";
-"INSTALL_FR" = "Force Reverted";
-"HELPER" = "Helper";
-"HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Installed";
-"ZEBRA_INSTALLED" = "Zebra Installed";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"DEVICE_MODEL" = "Модел уређаја:";
+"DEVICE_MODEL_KERN" = "Верзија керенела:";
+"DEVICE_MODEL_CF" = "Верзија ЦФ-а:";
+"CREDITS_SUBTEXT" = "Покретач направио:";
+"PINFO_SUBTEXT" = "Заставе (paleinfo) одговарају заставама које сте користили у палера1н 2.0.0 ЦЛИ, корисно за програмере.";
+"TYPE_INFO" = "Врста";
+"INSTALL_INFO" = "Инсталиран";
+"ARCH_INFO" = "Архитектура";
+"VERSION_INFO" = "Верзија";
+"STRAP_INFO" = "Окружење";
+"STRAP_FR_PREFIX" = "Префикс Fakeroot-а";
+"STRAP_FR_PATH" = "Локација Fakeroot-а";
+"OPEN_FILZA" = "Отвори у Filza";
+"OPEN_SANTANDER" = "Отвори у Santander-у";
+"COPY" = "Копирај";
+"INSTALL_FR" = "Присилно враћен";
+"HELPER" = "Помоћници";
+"HELPER_PATH" = "Локација помоћника";
+"SILEO_INSTALLED" = "Силео је инсталиран";
+"ZEBRA_INSTALLED" = "Зебра је инсталирана";
+"KINFO_FLAGS" = "Заставе (kerninfo)";
+"PINFO_FLAGS" = "Заставе (paleinfo)";
 
-"TRUE" = "Yes";
-"FALSE" = "No";
-"ROOTFUL" = "Rootful";
-"ROOTLESS" = "Rootless";
-"CANCEL" = "Cancel";
-"CONFIRM" = "Confirm";
-"CLOSE" = "Close";
-"PROCEED" = "Proceed";
-"NO_PROCEED" = "Unable to proceed";
-"NO_PROCEED_SIDELOADING" = "Sideloading is not supported.";
-"NO_PROCEED_FR" = "After using --force-revert, you must manually reboot and jailbreak your device again to be able to bootstrap.";
-"SET" = "Set";
-"TOO_LONG" = "Too Long";
+"TRUE" = "Да";
+"FALSE" = "Не";
+"ROOTFUL" = "Приступ роот-у";
+"ROOTLESS" = "Без приступа роот-у";
+"CANCEL" = "Откажи";
+"CONFIRM" = "Потврди";
+"CLOSE" = "Затвори";
+"PROCEED" = "Настави";
+"NO_PROCEED" = "Неуспешно настављање";
+"NO_PROCEED_SIDELOADING" = "Сајдлојдовање није подржано.";
+"NO_PROCEED_FR" = "Након употребе --force-revert, морате ручно поново покренути и поново џејлбрејковати свој уређај да бисте могли да покренете џејлбрејк.";
+"SET" = "Постави";
+"TOO_LONG" = "Предугачко";
 
 // DL / BS
-"DL_STRAP" = "Downloading Base System";
-"DOWNLOADING" = "Downloading...";
-"INSTALLING" = "Installing...";
-"DOWNLOAD_FAIL" = "Unable to fetch file";
-"DOWNLOAD_ERROR" = "Unknown error";
-"SAVE_FAIL" = "Could not copy file to disk";
-"DONE_INSTALL" = "Install Completed";
-"ERROR_INSTALL" = "Install Failed";
-"DONE_INSTALL_SUB" = "You may close the app.";
-"DONE_REVERT" = "Remove Completed";
-"REMOVING" = "Removing...";
+"DL_STRAP" = "Преузимање основног система";
+"DOWNLOADING" = "Преузимање...";
+"INSTALLING" = "Инсталирање...";
+"DOWNLOAD_FAIL" = "Неуспешно преузимање фајла";
+"DOWNLOAD_ERROR" = "Непозната грешка";
+"SAVE_FAIL" = "Неуспешно копирање фајла на диск";
+"DONE_INSTALL" = "Инсталација је завршена";
+"ERROR_INSTALL" = "Инсталација није успела";
+"DONE_INSTALL_SUB" = "Сада можете да затворите апликацију.";
+"DONE_REVERT" = "Уклањање завршено";
+"REMOVING" = "Уклањање...";
 
-"PASSWORD" = "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)";
-"PASSWORD_REPEAT" = "Repeat Password";
-"PASSWORD_SET" = "Set Password";
-"PASSWORD_TEXT" = "Password";
+"PASSWORD" = "Да бисте користили алате командне линије као што је \"sudo\" након џејлбрејковања, мораћете да поставите лозинку за терминал. (Ово не може бити празно)";
+"PASSWORD_REPEAT" = "Поновите Лозинку";
+"PASSWORD_SET" = "Поставите шифру";
+"PASSWORD_TEXT" = "Лозинка";
 
 // hehe
-"REINSTALL" = "Re-install";
-"ENJOY" = "Enjoy!";
+"REINSTALL" = "Реинсталирај";
+"ENJOY" = "Уживајте!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Your fakeroot is still intact while /var/jb isn't, this will re-symlink /var/jb back to it's original fakeroot. You may need to run uicache in utilities after proceeding.";
-"NOTICE_ROOTLESS" = "You may not use this button if you're on a non rootless jailbreak.";
-"HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
-"REVERT_SUBTEXT" = "Rootful cannot use this button :(";
-"PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
-"CLOSE_APP" = "You may close the app.";
-"UNHID_ENV" = "Unhid the environment";
+"HIDDEN_NOTICE" = "Ваш лажан роот је и даље нетакнут док /var/jb није, ово ће поново симболизовати /var/jb назад на његов оригинални лажан роот. Можда ћете морати да покренете уи кеш меморију у услугама након што наставите.";
+"NOTICE_ROOTLESS" = "Не можете да користите ово дугме ако користите јаилбреак без приступа роот-у.";
+"HIDE_NOTICE" = "Настављање ће уклонити /var/jb symlink и ресетовати уређај.";
+"REVERT_SUBTEXT" = "Џејлбрејк са приступом роот-у не може да користи ово дугме :(";
+"PM_SUBTEXT" = "Овде изаберите свој омиљени менаџер пакета који желите да инсталирате, Силео се препоручује ако сте нови.";
+"REVERT_WARNING" = "Брише /var/jb и поништава регистрацију џејлбрејк апликација, након што се то уради, уређај ће се поново покренути у не џејлбрејковано стање.";
+"CLOSE_APP" = "Сада можете да затворите апликацију.";
+"UNHID_ENV" = "Открити џејлбрејк окружење";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Боотстрап и %@ није инсталиран. Да ли желите да га инсталирате сада?";
+"DL_STRAP_NOPM" = "Инсталирај %@?";
+"DL_STRAP_PM" = "%@ је већ инсталиран на %@";
 
 // errors
-"STATUS" = "Status";
-"ERROR_STRAP" = "Error installing bootstrap";
-"ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
-"ERROR_UNREGISTER" = "Failed to unregister";
-"ERROR_REVERT" = "Failed to remove jailbreak";
+"STATUS" = "Стање";
+"ERROR_STRAP" = "Грешка у инсталирању боотстрепа";
+"ERROR_DPKG" = "Неуспешно инсталирање пакета";
+"ERROR_UICACHE" = "Неуспешно покретање кеш меморије корисничког интерфејса(UICache)";
+"ERROR_UNREGISTER" = "Неуспешно одрегистеовање";
+"ERROR_REVERT" = "Неуспешно уклањање џејлбрејка";
