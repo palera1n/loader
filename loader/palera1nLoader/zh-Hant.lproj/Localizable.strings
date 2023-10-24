@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "日誌";
 "LOG_CELL_VIEW" = "查看日誌";
 "NONE" = "無";
-"LOG_CLEAR" = "清除日誌";
 
 // Debug
 "DEBUG_CELL" = "除錯";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "清理fakefs";
 "DEBUG_EXIT_SAFEMODE" = "離開安全模式";
 "DEBUG_ENTER_SAFEMODE" = "進入安全模式";
-"DEBUG_CLEAR_CACHE" = "清除緩存";
 "DEBUG_CLEAR_JSON" = "清除 JSON 配置";
 
 // Diags
@@ -115,8 +113,8 @@ English
 "CLOSE_APP" = "你現在可關閉這個應用程式。";
 "UNHID_ENV" = "取消隱藏環境";
 
-"DL_NOSTRAP" = "Bootstrap 和 %@ 還麽有安裝。現在安裝嗎？";
-"DL_STRAP_NOPM" = "安裝 %@?";
+"DL_NOSTRAP" = "底層越獄檔案和 %@ 還未安裝。現在安裝嗎？";
+"DL_STRAP_NOPM" = "安裝 %@？";
 "DL_STRAP_PM" = "%@ 已經安裝在 %@";
 
 // errors
