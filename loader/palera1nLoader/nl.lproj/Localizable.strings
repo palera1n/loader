@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installeren";
-"DEBUG" = "Debuggen";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Apparaat Informatie";
 "ACTIONS" = "Acties";
 "JBINIT_LOG" = "Logboekregistratie";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Verborgen omgeving";
 "ACTION_HIDEJB" = "Verberg omgeving";
-"OPEN_CELL" = "Openers";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Open Sileo";
 "OPENER_ZEBRA" = "Open Zebra";
 "OPENER_TH" = "Open TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Debuggen";
 "DEBUG_OPTIONS" = "Opties";
 "DEBUG_CLEAN_FAKEFS" = "Opschonen fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Verlaat veilige modus";
-"DEBUG_ENTER_SAFEMODE" = "Betreed veilige modus";
 "DEBUG_CLEAR_JSON" = "Wis JSON-configuratie";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Kernelversie:";
 "DEVICE_MODEL_CF" = "CFVersie:";
 "CREDITS_SUBTEXT" = "Lader gemaakt door:";
-"PINFO_SUBTEXT" = "De vlaggen (paleinfo) komen overeen met de vlaggen die je hebt gebruikt via de palera1n 2.0.0 CLI, nuttig voor ontwikkelaars.";
 "TYPE_INFO" = "Soort";
 "INSTALL_INFO" = "Geïnstalleerd";
 "ARCH_INFO" = "Architectuur";
 "VERSION_INFO" = "Versie";
 "STRAP_INFO" = "Omgeving";
 "STRAP_FR_PREFIX" = "Fakeroot-voorvoegsel";
-"STRAP_FR_PATH" = "Fakeroot Pad";
-"OPEN_FILZA" = "Openen in Filza";
-"OPEN_SANTANDER" = "Openen in Santander";
 "COPY" = "Kopiëer";
 "INSTALL_FR" = "Geforceerd omgekeerd";
 "HELPER" = "Helper";
 "HELPER_PATH" = "Helper pad";
-"SILEO_INSTALLED" = "Sileo geïnstalleerd";
-"ZEBRA_INSTALLED" = "Zebra geïnstalleerd";
 "KINFO_FLAGS" = "Vlaggen (kerninfo)";
 "PINFO_FLAGS" = "Vlaggen (paleinfo)";
 
