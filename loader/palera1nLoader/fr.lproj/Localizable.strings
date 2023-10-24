@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installer";
-"DEBUG" = "Déboguer";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Informations sur l'appareil";
 "ACTIONS" = "Actions";
 "JBINIT_LOG" = "Enregistrement";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Environnement masqué";
 "ACTION_HIDEJB" = "Masquer l'environnement";
-"OPEN_CELL" = "Ouvreurs";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Ouvrir Sileo";
 "OPENER_ZEBRA" = "Ouvrir Zebra";
 "OPENER_TH" = "Ouvrir TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Déboguer";
 "DEBUG_OPTIONS" = "Options";
 "DEBUG_CLEAN_FAKEFS" = "Nettoyer fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Quitter le mode sans échec";
-"DEBUG_ENTER_SAFEMODE" = "Activer le mode sans échec";
 "DEBUG_CLEAR_JSON" = "Effacer la configuration JSON";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Version Du Noyau:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Application faite par:";
-"PINFO_SUBTEXT" = "Les drapeaux (paleinfo) correspondent aux drapeaux que vous avez utilisés sur palera1n 2.0.0, utiles pour les développeurs.";
 "TYPE_INFO" = "Type";
 "INSTALL_INFO" = "Installé";
 "ARCH_INFO" = "Architecture";
 "VERSION_INFO" = "Version";
 "STRAP_INFO" = "Environnement";
 "STRAP_FR_PREFIX" = "Préfixe du fakeroot";
-"STRAP_FR_PATH" = "Emplacement du fakeroot";
-"OPEN_FILZA" = "Ouvrir dans Filza";
-"OPEN_SANTANDER" = "Ouvrir dans Santander";
 "COPY" = "Copier";
 "INSTALL_FR" = "Restauré";
 "HELPER" = "Assistant";
 "HELPER_PATH" = "Location de l'assistant";
-"SILEO_INSTALLED" = "Sileo Installé";
-"ZEBRA_INSTALLED" = "Zebra Installé";
 "KINFO_FLAGS" = "Marques (kerninfo)";
 "PINFO_FLAGS" = "Marques (paleinfo)";
 
