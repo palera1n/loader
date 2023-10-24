@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "السجلات";
 "LOG_CELL_VIEW" = "عرض السجلات";
 "NONE" = "لا شيء";
-"LOG_CLEAR" = "مسح السجلات";
 
 // Debug
 "DEBUG_CELL" = "تصحيح";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "مسح fakefs";
 "DEBUG_EXIT_SAFEMODE" = "الخروج من الوضع الآمن";
 "DEBUG_ENTER_SAFEMODE" = "الدخول إلى الوضع الآمن";
-"DEBUG_CLEAR_CACHE" = "مسح التخزين المؤقت";
 "DEBUG_CLEAR_JSON" = "مسح تكوين JSON";
 
 // Diags
