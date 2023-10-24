@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"DEBUG" = "ƃnqǝp";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "uoᴉʇɐɯɹoɟuI ǝɔᴉʌǝp";
 "ACTIONS" = "suoᴉʇɔ∀";
 "JBINIT_LOG" = "ƃuᴉƃƃo˥";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "ʇuǝɯuoɹᴉʌuƎ uǝppᴉH";
 "ACTION_HIDEJB" = "ʇuǝɯuoɹᴉʌuƎ ǝpᴉH";
-"OPEN_CELL" = "sɹǝuǝdO";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "oǝlᴉS uǝdO";
 "OPENER_ZEBRA" = "ɐɹqǝZ uǝdO";
 "OPENER_TH" = "ɹǝdlǝHlloɹ┴ uǝdO";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "ƃnqǝp";
 "DEBUG_OPTIONS" = "suoᴉʇdO";
 "DEBUG_CLEAN_FAKEFS" = "sɟǝʞɐɟ uɐǝlƆ";
-"DEBUG_EXIT_SAFEMODE" = "ǝpoɯǝɟɐs ʇᴉxƎ";
-"DEBUG_ENTER_SAFEMODE" = "ǝpoɯǝɟɐs ɹǝʇuƎ";
 "DEBUG_CLEAR_JSON" = "ƃᴉɟuoɔ NOSſ ɹɐǝlƆ";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = ":uoᴉsɹǝΛ lǝuɹǝʞ";
 "DEVICE_MODEL_CF" = ":uoᴉsɹǝΛℲƆ";
 "CREDITS_SUBTEXT" = ":ʎq ǝpɐɯ ɹǝpɐo˥";
-"PINFO_SUBTEXT" = "˙sɹǝdolǝʌǝp ɹoɟ lnɟǝsn 'I˥Ɔ 0˙0˙ᄅ uƖɐɹǝlɐd ɐᴉʌ pǝsn noʎ sƃɐlɟ oʇ puodsǝɹɹoɔ (oɟuᴉǝlɐd) sƃɐlℲ";
 "TYPE_INFO" = "ǝdʎ┴";
 "INSTALL_INFO" = "pǝllɐʇsuI";
 "ARCH_INFO" = "ǝɹnʇɔǝʇᴉɥɔɹ∀";
 "VERSION_INFO" = "uoᴉsɹǝΛ";
 "STRAP_INFO" = "ʇuǝɯuoɹᴉʌuƎ";
 "STRAP_FR_PREFIX" = "xᴉɟǝɹԀ ʇooɹǝʞɐℲ";
-"STRAP_FR_PATH" = "ɥʇɐԀ ʇooɹǝʞɐℲ";
-"OPEN_FILZA" = "ɐzlᴉℲ uᴉ uǝdO";
-"OPEN_SANTANDER" = "ɹǝpuɐʇuɐS uᴉ uǝdO";
 "COPY" = "ʎdoƆ";
 "INSTALL_FR" = "pǝʇɹǝʌǝɹ ǝɔɹoℲ";
 "HELPER" = "ɹǝdlǝH";
 "HELPER_PATH" = "ɥʇɐԀ ɹǝdlǝH";
-"SILEO_INSTALLED" = "pǝllɐʇsuI oǝlᴉS";
-"ZEBRA_INSTALLED" = "pǝllɐʇsuI ɐɹqǝZ";
 "KINFO_FLAGS" = "(oɟuᴉuɹǝʞ) sƃɐlℲ";
 "PINFO_FLAGS" = "(oɟuᴉǝlɐd) sƃɐlℲ";
 
