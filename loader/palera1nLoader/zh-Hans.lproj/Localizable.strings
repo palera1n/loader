@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "安装";
-"DEBUG" = "调试";
-"DIAGNOSTICS" = "设备信息";
+"INSTALL" = "安装了";
+"DEBUG" = "开发人员调试版q";
+"DIAGNOSTICS" = "设备信息o";
 "ACTIONS" = "行动";
 "JBINIT_LOG" = "记录日志";
 "REVERT_CELL" = "还原安装";
@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "记录";
 "LOG_CELL_VIEW" = "查看Logs";
 "NONE" = "没有";
-"LOG_CLEAR" = "清除 Logs";
 
 // Debug
 "DEBUG_CELL" = "调试";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "清理FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "退出安全模式";
 "DEBUG_ENTER_SAFEMODE" = "进入安全模式";
-"DEBUG_CLEAR_CACHE" = "清除缓存";
 "DEBUG_CLEAR_JSON" = "清除 JSON 配置";
 
 // Diags
