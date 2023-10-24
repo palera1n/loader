@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Instaluj";
-"DEBUG" = "Debuguj";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Informacje o urządzeniu";
 "ACTIONS" = "Działania";
 "JBINIT_LOG" = "Logi";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Ukryte środowisko";
 "ACTION_HIDEJB" = "Ukryj środowisko";
-"OPEN_CELL" = "Otwórz";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Otwórz Sileo";
 "OPENER_ZEBRA" = "Otwórz Zebra";
 "OPENER_TH" = "Otwórz TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Debugować";
 "DEBUG_OPTIONS" = "Opcje";
 "DEBUG_CLEAN_FAKEFS" = "Wyczyść fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Wyjście z trybu bezpiecznego";
-"DEBUG_ENTER_SAFEMODE" = "Wejście do trybu bezpiecznego";
 "DEBUG_CLEAR_JSON" = "Wyczyść konfigurację JSON";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Wersja jądra:";
 "DEVICE_MODEL_CF" = "Wersja CF:";
 "CREDITS_SUBTEXT" = "Instalator stworzony przez:";
-"PINFO_SUBTEXT" = "Flagi (paleinfo) odpowiadają flagom, których użyłeś za pomocą wiersza poleceń palera1n 2.0.0, przydatne dla programistów.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Zainstalowane";
 "ARCH_INFO" = "Architektura";
 "VERSION_INFO" = "Wersja";
 "STRAP_INFO" = "Środowisko";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Ścieżka fakeroot";
-"OPEN_FILZA" = "Otwórz w Filza";
-"OPEN_SANTANDER" = "Otwórz w Santander";
 "COPY" = "Kopiuj";
 "INSTALL_FR" = "Odwrócone";
 "HELPER" = "Pomocnik";
 "HELPER_PATH" = "Ścieżka pomocnika";
-"SILEO_INSTALLED" = "Sileo zainstalowane";
-"ZEBRA_INSTALLED" = "Zebra zainstalowana";
 "KINFO_FLAGS" = "Flagi (kerninfo)";
 "PINFO_FLAGS" = "Flagi (paleinfo)";
 
