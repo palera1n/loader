@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Pasang";
-"DEBUG" = "Debug";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Informasi Perangkat";
 "ACTIONS" = "Tindakan";
 "JBINIT_LOG" = "Pencatatan Log";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Jailbreak Disembunyikan";
 "ACTION_HIDEJB" = "Sembunyikan Jailbreak";
-"OPEN_CELL" = "Pembuka";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Buka Sileo";
 "OPENER_ZEBRA" = "Buka Zebra";
 "OPENER_TH" = "Buka TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Debug";
 "DEBUG_OPTIONS" = "Opsi";
 "DEBUG_CLEAN_FAKEFS" = "Bersihkan fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Keluar dari safemode";
-"DEBUG_ENTER_SAFEMODE" = "Memasuki safemode";
 "DEBUG_CLEAR_JSON" = "Bersihkan konfigurasi JSON";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Versi Kernel:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader dibuat oleh:";
-"PINFO_SUBTEXT" = "Penanda (paleinfo) sesuai dengan penanda yang Anda gunakan melalui CLI palera1n 2.0.0, berguna untuk pengembang.";
 "TYPE_INFO" = "Tipe";
 "INSTALL_INFO" = "Terpasang";
 "ARCH_INFO" = "Arsitektur";
 "VERSION_INFO" = "Versi";
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Prefiks Fakeroot";
-"STRAP_FR_PATH" = "Path Fakeroot";
-"OPEN_FILZA" = "Buka di Filza";
-"OPEN_SANTANDER" = "Buka di Santander";
 "COPY" = "Salin";
 "INSTALL_FR" = "Dikembalikan Secara Paksa";
 "HELPER" = "Pembantu";
 "HELPER_PATH" = "Path Pembantu";
-"SILEO_INSTALLED" = "Sileo Terpasang";
-"ZEBRA_INSTALLED" = "Zebra Terpasang";
 "KINFO_FLAGS" = "Penanda (kerninfo)";
 "PINFO_FLAGS" = "Penanda (paleinfo)";
 
