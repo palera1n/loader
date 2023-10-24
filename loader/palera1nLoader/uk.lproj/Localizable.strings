@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Встановити";
-"DEBUG" = "Налагодження";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Інформація про пристрій";
 "ACTIONS" = "Дії";
 "JBINIT_LOG" = "Логування";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Приховане середовище";
 "ACTION_HIDEJB" = "Приховати середовище";
-"OPEN_CELL" = "Відкрити";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Відкрити Sileo";
 "OPENER_ZEBRA" = "Відкрити Zebra";
 "OPENER_TH" = "Відкрити TrollHelper";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "Налагодження";
 "DEBUG_OPTIONS" = "Параметри";
 "DEBUG_CLEAN_FAKEFS" = "Очистити fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Вийти з безпечного режиму";
-"DEBUG_ENTER_SAFEMODE" = "Увійти в безпечний режим";
 "DEBUG_CLEAR_JSON" = "Очистити конфігурацію JSON";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "Версія ядра:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader зробили:";
-"PINFO_SUBTEXT" = "Прапорці (paleinfo) відповідають прапорцям, які ви використовували через palera1n 2.0.0 CLI, корисно для розробників.";
 "TYPE_INFO" = "Тип";
 "INSTALL_INFO" = "Встановлено";
 "ARCH_INFO" = "Архітектура";
 "VERSION_INFO" = "Версія";
 "STRAP_INFO" = "Середовище";
 "STRAP_FR_PREFIX" = "Префікс Fakeroot";
-"STRAP_FR_PATH" = "Шлях до Fakeroot";
-"OPEN_FILZA" = "Відкрити в Filza";
-"OPEN_SANTANDER" = "Відкрити в Santander";
 "COPY" = "Скопіювати";
 "INSTALL_FR" = "Примусово відновлено";
 "HELPER" = "Помічник";
 "HELPER_PATH" = "Шлях до помічника";
-"SILEO_INSTALLED" = "Sileo встановлено";
-"ZEBRA_INSTALLED" = "Zebra встановлено";
 "KINFO_FLAGS" = "Прапорці (kerninfo)";
 "PINFO_FLAGS" = "Прапорці (paleinfo)";
 
