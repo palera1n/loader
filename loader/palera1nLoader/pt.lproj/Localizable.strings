@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Histórica";
 "LOG_CELL_VIEW" = "Ver Registros";
 "NONE" = "Nenhum";
-"LOG_CLEAR" = "Limpar registros";
 
 // Debug
 "DEBUG_CELL" = "Depurar";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Falsificações limpas";
 "DEBUG_EXIT_SAFEMODE" = "Sair do modo de segurança";
 "DEBUG_ENTER_SAFEMODE" = "Entre no modo de segurança";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags

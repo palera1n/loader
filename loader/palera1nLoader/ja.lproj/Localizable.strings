@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "インストール";
 "DEBUG" = "デバッグ";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "端末情報";
 "ACTIONS" = "アクション";
 "JBINIT_LOG" = "ログ";
 "REVERT_CELL" = "Jailbreak環境を削除";
@@ -27,29 +27,27 @@ English
 "ACTION_MOUNT" = "ディレクトリの再マウント";
 "ACTION_TWEAKS" = "Tweakの有効化";
 "FR_SWITCH" = "復元後の再起動";
-"ACTION_MOUNT_SUBTEXT" = "\"ディレクトリの再マウント\" では、rootとprebootをread/writeで再マウントします。";
+"ACTION_MOUNT_SUBTEXT" = "\"ディレクトリの再マウント\" では、rootとprebootのみを読み書きで再マウントします。";
 "OPENER_SUBTEXT" = "iPadでpalera1nを使用する場合、ホームスクリーンに表示されないアプリケーションを開くために、これらのアクションを使用する必要がある場合があります。";
 
 // Logging View
 "LOG_CELL" = "ログ";
 "LOG_CELL_VIEW" = "ログを確認";
-"NONE" = "None";
-"LOG_CLEAR" = "ログを消去";
+"NONE" = "なし";
 
 // Debug
 "DEBUG_CELL" = "デバッグ";
 "DEBUG_OPTIONS" = "オプション";
-"DEBUG_CLEAN_FAKEFS" = "fakefsを消去";
-"DEBUG_EXIT_SAFEMODE" = "safemodeを終了";
-"DEBUG_ENTER_SAFEMODE" = "safemodeに入る";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAN_FAKEFS" = "Fakefsを消去";
+"DEBUG_EXIT_SAFEMODE" = "Safemodeを終了";
+"DEBUG_ENTER_SAFEMODE" = "Safemodeに入る";
+"DEBUG_CLEAR_JSON" = "JSON設定を消去";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
+"DEVICE_MODEL" = "モデル番号:";
+"DEVICE_MODEL_KERN" = "カーネルバージョン:";
 "DEVICE_MODEL_CF" = "CFVersion:";
-"CREDITS_SUBTEXT" = "Loader made by:";
+"CREDITS_SUBTEXT" = "ローダーの作成者:";
 "PINFO_SUBTEXT" = "フラグ (paleinfo) は、palera1n 2.0.0 CLIのフラグに対応しています。これは開発者にとって役立つものです。";
 "TYPE_INFO" = "種類";
 "INSTALL_INFO" = "インストール状況";
@@ -60,10 +58,10 @@ English
 "STRAP_FR_PATH" = "Fakerootのパス";
 "OPEN_FILZA" = "Filzaで開く";
 "OPEN_SANTANDER" = "Santanderで開く";
-"COPY" = "Copy";
+"COPY" = "コピー";
 "INSTALL_FR" = "強制復元";
-"HELPER" = "Helper";
-"HELPER_PATH" = "Helperのパス";
+"HELPER" = "ヘルパー";
+"HELPER_PATH" = "ヘルパーのパス";
 "SILEO_INSTALLED" = "Sileo";
 "ZEBRA_INSTALLED" = "Zebra";
 "KINFO_FLAGS" = "フラグ (kerninfo)";
@@ -79,12 +77,12 @@ English
 "PROCEED" = "続ける";
 "NO_PROCEED" = "作業を続行できませんでした";
 "NO_PROCEED_SIDELOADING" = "サイドローディングには対応していません。";
-"NO_PROCEED_FR" = "--force-revertを使用した場合、bootstrapをインストールするには手動でデバイスを再起動してから再度jailbreakを実行する必要があります。";
+"NO_PROCEED_FR" = "--force-revertを使用した場合、ブートストラップをインストールするには手動でデバイスを再起動してから再度jailbreakを実行する必要があります。";
 "SET" = "セット";
 "TOO_LONG" = "パスワードが長すぎます";
 
 // DL / BS
-"DL_STRAP" = "Bootstrapをダウンロード中";
+"DL_STRAP" = "ベースシステムをダウンロード中";
 "DOWNLOADING" = "ダウンロード中...";
 "INSTALLING" = "インストール中...";
 "DOWNLOAD_FAIL" = "ファイルをダウンロードできませんでした";
@@ -107,7 +105,7 @@ English
 
 // WARNINGS / NOTICES
 "HIDDEN_NOTICE" = "jb-XXXXXXXXディレクトリは存在しますが、/var/jbにシンボリックリンクが存在しません。 この作業を続行すると、/var/jbに元のディレクトリに対するシンボリックリンクが再度作成されます。この作業を行った後、ユーティリティからuicacheを実行する必要がある場合があります。";
-"NOTICE_ROOTLESS" = "rootless jailbreakではない場合、このボタンは使用できません。";
+"NOTICE_ROOTLESS" = "Rootless jailbreakではない場合、このボタンは使用できません。";
 "HIDE_NOTICE" = "この操作を行うと、/var/jbのシンボリックリンクが削除され、デバイスはuserspaceで再起動します。再びloaderを開くと、シンボリックリンクを戻すように促され、jailbreak環境を元に戻すことができます。";
 "REVERT_SUBTEXT" = "Rootfulモードではこのボタンは使用できません。";
 "PM_SUBTEXT" = "インストールしたいパッケージマネージャーをここで選択できます。一般的にはSileoが推奨されています。";
@@ -115,13 +113,13 @@ English
 "CLOSE_APP" = "アプリを終了します。";
 "UNHID_ENV" = "環境を再表示";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "ブートストラップと %@ がインストールされていません。インストールしますか？";
+"DL_STRAP_NOPM" = "%@ をインストールしますか？";
+"DL_STRAP_PM" = "%@ は既に %@ にインストールされています";
 
 // errors
 "STATUS" = "ステータス";
-"ERROR_STRAP" = "Bootstrapのインストールに失敗しました";
+"ERROR_STRAP" = "ブートストラップのインストールに失敗しました";
 "ERROR_DPKG" = "パッケージのインストールに失敗しました";
 "ERROR_UICACHE" = "UICacheの実行に失敗しました";
 "ERROR_UNREGISTER" = "アプリケーションの登録解除に失敗しました。";

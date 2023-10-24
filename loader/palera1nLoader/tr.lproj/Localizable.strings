@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
+"INSTALL" = "Yükle";
 "DEBUG" = "Hata Ayıklama";
-"DIAGNOSTICS" = "Device Information";
+"DIAGNOSTICS" = "Cihaz Bilgisi";
 "ACTIONS" = "İşlemler";
 "JBINIT_LOG" = "Kayda Alma";
 "REVERT_CELL" = "Jailbreak'i Kaldır";
@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Kayıtlar";
 "LOG_CELL_VIEW" = "Kayıtları Görüntüle";
 "NONE" = "Hiçbiri";
-"LOG_CLEAR" = "Kayıtları Temizle";
 
 // Debug
 "DEBUG_CELL" = "Hata Ayıklama";
@@ -42,8 +41,7 @@ English
 "DEBUG_CLEAN_FAKEFS" = "FakeFS'i Temizle";
 "DEBUG_EXIT_SAFEMODE" = "Güvenli Mod'dan Çıkış Yap";
 "DEBUG_ENTER_SAFEMODE" = "Güvenli Mod'a Gir";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "JSON Yapılandırmasını Temizle";
 
 // Diags
 "DEVICE_MODEL" = "Cihaz Modeli:";
@@ -79,7 +77,7 @@ English
 "PROCEED" = "Devam Et";
 "NO_PROCEED" = "Devam edilemiyor";
 "NO_PROCEED_SIDELOADING" = "Sideloadlama desteklenmiyor.";
-"NO_PROCEED_FR" = "Jailbreak kaldırıldıktan sonra, cihazınızı yeniden başlatmalı ve jailbreak dosyalarını dağıtmak için yeniden jailbreak yapmalısınız.";
+"NO_PROCEED_FR" = "Jailbreaki kaldırdıktan sonra, cihazınızı yeniden başlatmalı ve jailbreak dosyalarını dağıtmak için yeniden jailbreak yapmalısınız.";
 "SET" = "Ayarla";
 "TOO_LONG" = "Çok Uzun";
 
@@ -115,9 +113,9 @@ English
 "CLOSE_APP" = "Uygulamayı kapatabilirsiniz.";
 "UNHID_ENV" = "Çevreyi Gizli Durumdan Çıkar";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Jailbreak dosyaları dağıtılmadı ve %@ yüklenmedi. Şimdi yüklensin mi?";
+"DL_STRAP_NOPM" = "%@ Yükle?";
+"DL_STRAP_PM" = "%@ zaten %@ konumunda yüklü";
 
 // errors
 "STATUS" = "Durum";

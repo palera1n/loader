@@ -6,11 +6,11 @@ English
 // ViewController Cells
 
 "INSTALL" = "Cài đặt";
-"DEBUG" = "Sửa lỗi";
+"DEBUG" = "Gỡ lỗi";
 "DIAGNOSTICS" = "Thông tin thiết bị";
 "ACTIONS" = "Các chức năng";
 "JBINIT_LOG" = "Logging";
-"REVERT_CELL" = "Hoàn trả quá trình cài đặt";
+"REVERT_CELL" = "Hoàn trả môi trường gốc";
 
 // ActionsVC
 "HIDDEN" = "Đã Ẩn Môi Trường Jailbreak";
@@ -20,7 +20,7 @@ English
 "OPENER_ZEBRA" = "Mở Zebra";
 "OPENER_TH" = "Mở TrollHelper";
 "UTIL_CELL" = "Tiện ích";
-"ACTION_RESPRING" = "Khởi Động lại";
+"ACTION_RESPRING" = "Khởi Động lại SpringBoard";
 "ACTION_USREBOOT" = "Khởi động lại Không gian người dùng";
 "ACTION_UICACHE" = "UICache";
 "ACTION_DAEMONS" = "Khởi chạy Daemon";
@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Nhật ký";
 "LOG_CELL_VIEW" = "Xem các nhật ký";
 "NONE" = "Không có";
-"LOG_CLEAR" = "Xóa các bản ghi";
 
 // Debug
 "DEBUG_CELL" = "Gỡ lỗi";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Làm sạch hàng giả";
 "DEBUG_EXIT_SAFEMODE" = "Thoát chế độ an toàn";
 "DEBUG_ENTER_SAFEMODE" = "Vào chế độ an toàn";
-"DEBUG_CLEAR_CACHE" = "Dọn bộ nhớ đệm";
 "DEBUG_CLEAR_JSON" = "Dọn cấu hình JSON";
 
 // Diags
@@ -106,14 +104,14 @@ English
 "ENJOY" = "Hãy tận hưởng!";
 
 // WARNINGS / NOTICES
-"HIDDEN_NOTICE" = "Fakeroot của bạn vẫn còn nguyên vẹn trong khi /var/jb thì không, điều này sẽ liên kết lại /var/jb trở lại với fakeroot ban đầu. Bạn có thể cần chạy uicache trong các tiện ích sau khi tiếp tục.";
-"NOTICE_ROOTLESS" = "Bạn không thể sử dụng nút này nếu bạn đang bẻ khóa không root.";
+"HIDDEN_NOTICE" = "Fakeroot của bạn vẫn còn nguyên vẹn trong khi /var/jb thì không, điều này sẽ liên kết /var/jb trở lại với fakeroot ban đầu. Bạn có thể cần chạy uicache trong tiện ích sau khi tiếp tục.";
+"NOTICE_ROOTLESS" = "Bạn không thể sử dụng nút này nếu bạn đang dùng rootless jailbreak.";
 "HIDE_NOTICE" = "Việc tiếp tục sẽ xóa tệp tin /var/jb và khởi động lại thiết bị.";
 "REVERT_SUBTEXT" = "Rootful không thể sử dụng chức năng này :(";
 "PM_SUBTEXT" = "Chọn trình quản lý gói yêu thích của bạn tại đây mà bạn muốn cài đặt, Sileo được khuyến nghị nếu bạn là người mới.";
 "REVERT_WARNING" = "Xóa /var/jb và hủy đăng ký các ứng dụng bẻ khóa, sau khi hoàn tất, thiết bị sẽ khởi động lại ở trạng thái chưa bẻ khóa.";
 "CLOSE_APP" = "Bạn có thể đóng ứng dụng.";
-"UNHID_ENV" = "Bỏ ẩn môi trường";
+"UNHID_ENV" = "Bỏ ẩn Jailbreak";
 
 "DL_NOSTRAP" = "Bootstrap và %@ chưa được cài đặt. Cài đặt ngay bây giờ?";
 "DL_STRAP_NOPM" = "Cài đặt %@?";

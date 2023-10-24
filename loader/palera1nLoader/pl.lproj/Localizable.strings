@@ -7,10 +7,10 @@ English
 
 "INSTALL" = "Instaluj";
 "DEBUG" = "Debuguj";
-"DIAGNOSTICS" = "Informacja urządzenia";
+"DIAGNOSTICS" = "Informacje o urządzeniu";
 "ACTIONS" = "Działania";
 "JBINIT_LOG" = "Logi";
-"REVERT_CELL" = "Przywróć instalacje";
+"REVERT_CELL" = "Odwróć instalację";
 
 // ActionsVC
 "HIDDEN" = "Ukryte środowisko";
@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Logi";
 "LOG_CELL_VIEW" = "Zobacz logi";
 "NONE" = "Żaden";
-"LOG_CLEAR" = "Wyczyść logi";
 
 // Debug
 "DEBUG_CELL" = "Debugować";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Wyczyść fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Wyjście z trybu bezpiecznego";
 "DEBUG_ENTER_SAFEMODE" = "Wejście do trybu bezpiecznego";
-"DEBUG_CLEAR_CACHE" = "Wyczyść cache";
 "DEBUG_CLEAR_JSON" = "Wyczyść konfigurację JSON";
 
 // Diags

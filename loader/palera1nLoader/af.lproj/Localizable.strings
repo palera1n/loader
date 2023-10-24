@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Logs";
 "LOG_CELL_VIEW" = "Bekyk logs";
 "NONE" = "Geen";
-"LOG_CLEAR" = "Vee logs uit";
 
 // Debug
 "DEBUG_CELL" = "Ontfout";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Skoon fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Verlaat veilige modus";
 "DEBUG_ENTER_SAFEMODE" = "Gaan in veilige modus";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags

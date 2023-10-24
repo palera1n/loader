@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Log";
 "LOG_CELL_VIEW" = "Vedi Log";
 "NONE" = "Nessuno";
-"LOG_CLEAR" = "Pulisci Log";
 
 // Debug
 "DEBUG_CELL" = "Debug";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Pulisci FakeFS";
 "DEBUG_EXIT_SAFEMODE" = "Esci dalla modalità di sicurezza";
 "DEBUG_ENTER_SAFEMODE" = "Entra nella modalità di sicurezza";
-"DEBUG_CLEAR_CACHE" = "Clear Cache";
 "DEBUG_CLEAR_JSON" = "Clear JSON config";
 
 // Diags

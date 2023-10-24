@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Log";
 "LOG_CELL_VIEW" = "Lihat Log";
 "NONE" = "Kosong";
-"LOG_CLEAR" = "Hapus log";
 
 // Debug
 "DEBUG_CELL" = "Debug";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Bersihkan fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Keluar dari safemode";
 "DEBUG_ENTER_SAFEMODE" = "Memasuki safemode";
-"DEBUG_CLEAR_CACHE" = "Hapus Cache";
 "DEBUG_CLEAR_JSON" = "Bersihkan konfigurasi JSON";
 
 // Diags

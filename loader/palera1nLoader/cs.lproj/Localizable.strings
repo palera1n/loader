@@ -34,7 +34,6 @@ English
 "LOG_CELL" = "Logy";
 "LOG_CELL_VIEW" = "Zobrazit logy";
 "NONE" = "Žádný";
-"LOG_CLEAR" = "Odstranit logy";
 
 // Debug
 "DEBUG_CELL" = "Debug";
@@ -42,7 +41,6 @@ English
 "DEBUG_CLEAN_FAKEFS" = "Vyčistit fakefs";
 "DEBUG_EXIT_SAFEMODE" = "Odejít z bezpečného režimu";
 "DEBUG_ENTER_SAFEMODE" = "Spustit bezpečný režim";
-"DEBUG_CLEAR_CACHE" = "Vymazat mezipaměť";
 "DEBUG_CLEAR_JSON" = "Vymazat konfiguraci JSON";
 
 // Diags
