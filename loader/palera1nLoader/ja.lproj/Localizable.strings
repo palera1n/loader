@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "インストール";
-"DEBUG" = "デバッグ";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "端末情報";
 "ACTIONS" = "アクション";
 "JBINIT_LOG" = "ログ";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "隠されたJailbreak環境を検出";
 "ACTION_HIDEJB" = "Jailbreak環境を隠す";
-"OPEN_CELL" = "アプリケーションを開く";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Sileoを開く";
 "OPENER_ZEBRA" = "Zebraを開く";
 "OPENER_TH" = "TrollHelperを開く";
@@ -39,8 +39,6 @@ English
 "DEBUG_CELL" = "デバッグ";
 "DEBUG_OPTIONS" = "オプション";
 "DEBUG_CLEAN_FAKEFS" = "Fakefsを消去";
-"DEBUG_EXIT_SAFEMODE" = "Safemodeを終了";
-"DEBUG_ENTER_SAFEMODE" = "Safemodeに入る";
 "DEBUG_CLEAR_JSON" = "JSON設定を消去";
 
 // Diags
@@ -48,22 +46,16 @@ English
 "DEVICE_MODEL_KERN" = "カーネルバージョン:";
 "DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "ローダーの作成者:";
-"PINFO_SUBTEXT" = "フラグ (paleinfo) は、palera1n 2.0.0 CLIのフラグに対応しています。これは開発者にとって役立つものです。";
 "TYPE_INFO" = "種類";
 "INSTALL_INFO" = "インストール状況";
 "ARCH_INFO" = "アーキテクチャ";
 "VERSION_INFO" = "バージョン";
 "STRAP_INFO" = "環境";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakerootのパス";
-"OPEN_FILZA" = "Filzaで開く";
-"OPEN_SANTANDER" = "Santanderで開く";
 "COPY" = "コピー";
 "INSTALL_FR" = "強制復元";
 "HELPER" = "ヘルパー";
 "HELPER_PATH" = "ヘルパーのパス";
-"SILEO_INSTALLED" = "Sileo";
-"ZEBRA_INSTALLED" = "Zebra";
 "KINFO_FLAGS" = "フラグ (kerninfo)";
 "PINFO_FLAGS" = "フラグ (paleinfo)";
 
