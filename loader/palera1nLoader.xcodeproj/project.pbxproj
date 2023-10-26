@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F07EDFA2AD874E5008DD58C /* paleinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F07EDF92AD874E5008DD58C /* paleinfo.swift */; };
 		2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F12BB0A2A30BF5B0095972E /* CoreServices.framework */; };
 		2F12BB102A30C4970095972E /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12BB0F2A30C4970095972E /* Decoder.swift */; };
 		2FC1542B2A36B71300AC9346 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1542A2A36B71300AC9346 /* Alerts.swift */; };
@@ -15,6 +16,11 @@
 		2FC154322A36B84D00AC9346 /* Opener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154312A36B84D00AC9346 /* Opener.swift */; };
 		2FC154342A36C02000AC9346 /* Binpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154332A36C02000AC9346 /* Binpack.swift */; };
 		2FC154362A36C2E500AC9346 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154352A36C2E500AC9346 /* Design.swift */; };
+		2FCD4B262ACDDEF500E0F6E2 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD4B252ACDDEF500E0F6E2 /* Register.swift */; };
+		2FCD4B282ACDDFFB00E0F6E2 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD4B272ACDDFFB00E0F6E2 /* Container.swift */; };
+		2FCD4B2C2ACDE28300E0F6E2 /* zstdHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD4B2B2ACDE28300E0F6E2 /* zstdHelper.swift */; };
+		2FCD4B2F2ACDE2A700E0F6E2 /* libzstd in Frameworks */ = {isa = PBXBuildFile; productRef = 2FCD4B2E2ACDE2A700E0F6E2 /* libzstd */; };
+		2FCD4B312ACDE35F00E0F6E2 /* Untar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCD4B302ACDE35F00E0F6E2 /* Untar.swift */; };
 		33A420D92A0ED59D005AE29C /* DebugVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A420D82A0ED59D005AE29C /* DebugVC.swift */; };
 		33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4DF2A30050A006EC0B4 /* JsonVC.swift */; };
 		33CCDA552ACD1255000E0111 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CCDA542ACD1255000E0111 /* Download.swift */; };
@@ -31,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F07EDF92AD874E5008DD58C /* paleinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paleinfo.swift; sourceTree = "<group>"; };
 		2F12BB0A2A30BF5B0095972E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		2F12BB0F2A30C4970095972E /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		2FC1542A2A36B71300AC9346 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -39,6 +46,10 @@
 		2FC154312A36B84D00AC9346 /* Opener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opener.swift; sourceTree = "<group>"; };
 		2FC154332A36C02000AC9346 /* Binpack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binpack.swift; sourceTree = "<group>"; };
 		2FC154352A36C2E500AC9346 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
+		2FCD4B252ACDDEF500E0F6E2 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		2FCD4B272ACDDFFB00E0F6E2 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		2FCD4B2B2ACDE28300E0F6E2 /* zstdHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zstdHelper.swift; sourceTree = "<group>"; };
+		2FCD4B302ACDE35F00E0F6E2 /* Untar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untar.swift; sourceTree = "<group>"; };
 		3340404F2A21C37B000884CC /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
 		334B551A2A4E4F0E00F243BE /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		334B551B2A4E4F1500F243BE /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -83,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */,
+				2FCD4B2F2ACDE2A700E0F6E2 /* libzstd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +134,24 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		2FCD4B232ACDDE9F00E0F6E2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD4B242ACDDEE300E0F6E2 /* Utilities */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		2FCD4B242ACDDEE300E0F6E2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2FCD4B252ACDDEF500E0F6E2 /* Register.swift */,
+				2FCD4B272ACDDFFB00E0F6E2 /* Container.swift */,
+				2F07EDF92AD874E5008DD58C /* paleinfo.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		3313A75629ECE2690021665E /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +169,8 @@
 				33CCDA542ACD1255000E0111 /* Download.swift */,
 				4509BACB29E7970300D36328 /* Bootstrap.swift */,
 				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+				2FCD4B2B2ACDE28300E0F6E2 /* zstdHelper.swift */,
+				2FCD4B302ACDE35F00E0F6E2 /* Untar.swift */,
 			);
 			path = Bootstrap;
 			sourceTree = "<group>";
@@ -167,6 +199,7 @@
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
 				2FC1542E2A36B81900AC9346 /* Utilities */,
+				2FCD4B232ACDDE9F00E0F6E2 /* Helper */,
 				3313A75629ECE2690021665E /* UI */,
 				3313A75729ECE2710021665E /* Bootstrap */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
@@ -192,6 +225,7 @@
 			);
 			name = palera1nLoader;
 			packageProductDependencies = (
+				2FCD4B2E2ACDE2A700E0F6E2 /* libzstd */,
 			);
 			productName = Pogo;
 			productReference = E181BAD628CF914300CD25A6 /* palera1nLoader.app */;
@@ -252,6 +286,7 @@
 			);
 			mainGroup = E181BACD28CF914300CD25A6;
 			packageReferences = (
+				2FCD4B2D2ACDE2A700E0F6E2 /* XCRemoteSwiftPackageReference "zstd" */,
 			);
 			productRefGroup = E181BAD728CF914300CD25A6 /* Products */;
 			projectDirPath = "";
@@ -280,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33E15DB129F4F03A00D2770A /* LogViewVC.swift in Sources */,
+				2FCD4B262ACDDEF500E0F6E2 /* Register.swift in Sources */,
 				2FC154302A36B83300AC9346 /* Checks.swift in Sources */,
 				33E15DAD29F4DC8F00D2770A /* DiagnosticsVC.swift in Sources */,
 				2FC154342A36C02000AC9346 /* Binpack.swift in Sources */,
@@ -287,14 +323,18 @@
 				2FC154322A36B84D00AC9346 /* Opener.swift in Sources */,
 				2FC1542D2A36B7A900AC9346 /* Cells.swift in Sources */,
 				2F12BB102A30C4970095972E /* Decoder.swift in Sources */,
+				2FCD4B2C2ACDE28300E0F6E2 /* zstdHelper.swift in Sources */,
 				2FC154362A36C2E500AC9346 /* Design.swift in Sources */,
 				33CCDA552ACD1255000E0111 /* Download.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
+				2FCD4B312ACDE35F00E0F6E2 /* Untar.swift in Sources */,
 				33E15DAF29F4E6CA00D2770A /* ActionsVC.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
+				2F07EDFA2AD874E5008DD58C /* paleinfo.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */,
+				2FCD4B282ACDDFFB00E0F6E2 /* Container.swift in Sources */,
 				2FC1542B2A36B71300AC9346 /* Alerts.swift in Sources */,
 				33A420D92A0ED59D005AE29C /* DebugVC.swift in Sources */,
 			);
@@ -571,6 +611,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2FCD4B2D2ACDE2A700E0F6E2 /* XCRemoteSwiftPackageReference "zstd" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/zstd.git";
+			requirement = {
+				branch = dev;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2FCD4B2E2ACDE2A700E0F6E2 /* libzstd */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2FCD4B2D2ACDE2A700E0F6E2 /* XCRemoteSwiftPackageReference "zstd" */;
+			productName = libzstd;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E181BACE28CF914300CD25A6 /* Project object */;
 }

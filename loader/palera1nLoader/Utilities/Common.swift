@@ -36,6 +36,7 @@ struct envInfo {
     static var bmHash: String = ""
     static var nav: UINavigationController = UINavigationController()
     static var jsonInfo: loaderJSON?
+    static var tmpDir = create_temp_dir()
 }
 
 // String Localization
@@ -47,9 +48,31 @@ public func fileExists(_ path: String) -> Bool {
     return fm.fileExists(atPath: path)
 }
 
+public func create_temp_dir() -> String? {
+    let fm = FileManager.default
+    let hash = container.generate_hash()
+    var path = String()
+    
+    if (fileExists("/private/var/tmp")) {
+        path = "/private/var/tmp/" + hash
+    } else {
+        path = fm.urls(for: .documentDirectory, in: .userDomainMask)[0].path + "/\(hash)"
+    }
+    
+    do {
+        try fm.createDirectory(atPath: path, withIntermediateDirectories: false)
+    } catch {
+        log(type: .warning, msg: "failed to create \(path): \(error)")
+        return nil
+    }
+    
+    chmod(path, 0777)
+    chown(path, 501, 501)
+    return path
+}
+
 extension UIApplication {
-  public func openSpringBoard() {
-    let workspace = LSApplicationWorkspace.default() as! LSApplicationWorkspace
-  workspace.openApplication(withBundleID: "com.apple.springboard")
-  }
+    public func openSpringBoard() {
+        opener.openApp("com.apple.springboard")
+    }
 }
