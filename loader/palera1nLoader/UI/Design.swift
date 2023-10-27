@@ -108,6 +108,7 @@ extension JsonVC {
         tableView.register(ErrorCell.self, forCellReuseIdentifier: "ErrorCell")
         tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
     }
+    
     @objc func tripleTapDebug(sender: UIButton) {
         let debugVC = DebugVC()
         let navController = UINavigationController(rootViewController: debugVC)
@@ -116,5 +117,17 @@ extension JsonVC {
     }
     @objc func restartButtonTapped() {
         self.retryFetchJSON()
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
+            return nil
+        }
+        if section == 1 {
+            if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                return "Loader • \(appVersion) (\(revision))"
+            }
+        }
+        return nil
     }
 }

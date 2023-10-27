@@ -102,16 +102,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return LocalizationManager.shared.local("DEBUG")
         }
     }
-
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        guard let revision = Bundle.main.infoDictionary?["REVISION"] as? String else {
-            return nil
-        }
-        if section == 1 {
-            return "palera1n loader • 1.2 (\(revision))"
-        }
-        return nil
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
