@@ -188,8 +188,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CANCEL"), style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
 
-            log(msg: "[JSON PATH DATA] \(getCellInfo(envInfo.jsonInfo!)!.paths)")
-
             if (0..<filePaths.count).contains(row) {
                 let filePath = filePaths[row]
                 let regex = try! NSRegularExpression(pattern: "\"(.*?)\"")
@@ -210,8 +208,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
 
                 let lowercaseName = name.lowercased()
-
-                log(msg: "[JSON PATH DATA] \(filePath) exists? \(exists).")
 
               if procursusStrappedExists {
                   alertController.message = exists ? String(format: NSLocalizedString("DL_STRAP_PM", comment: ""), name, filePath) : String(format: NSLocalizedString("DL_STRAP_NOPM", comment: ""), name)

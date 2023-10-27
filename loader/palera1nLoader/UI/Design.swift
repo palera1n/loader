@@ -82,11 +82,11 @@ extension JsonVC {
         ])
         let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(restartButtonTapped))
         navigationItem.rightBarButtonItem = restartButton
-        #if DEBUG
-            let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
-            tripleTapGestureRecognizer.numberOfTapsRequired = 3
-            navigationController?.navigationBar.addGestureRecognizer(tripleTapGestureRecognizer)
-        #endif
+        
+        let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
+        tripleTapGestureRecognizer.numberOfTapsRequired = 3
+        navigationController?.navigationBar.addGestureRecognizer(tripleTapGestureRecognizer)
+        
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
     }
     

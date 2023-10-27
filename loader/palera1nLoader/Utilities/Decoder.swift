@@ -61,30 +61,29 @@ public struct cellInfo {
     let paths: [String]
 }
 
+/* How this works is that anything lower than what the loader.json has will cause it to return nil, however if it's higher than it will get the latest available version and bootstrap with that instead, maybe I should add a cf version override but not too sure on what to do else for this, for the sake of apple intentionally being moronic */
+
 public func getBootstrapURL(_ json: loaderJSON) -> String? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
     let cfver = String(envInfo.CF)
-    var items: [BootstrapItem]?
     
-    for type in json.bootstraps {
-        if (type.label == jailbreakType) {
-            items = type.items
+    if let items = json.bootstraps.first(where: { $0.label == jailbreakType })?.items {
+        let sortedItems = items.sorted { $0.cfver > $1.cfver }
+        
+        if let _ = sortedItems.first {
+            if let bootstrap = sortedItems.first(where: { $0.cfver == cfver }) {
+                return bootstrap.uri
+            } else if let latestBootstrap = sortedItems.first(where: { $0.cfver < cfver }) {
+                return latestBootstrap.uri
+            }
         }
     }
     
-    if (items == nil) {
-        log(type: .error, msg: "Failed to find bootstrap url.")
-        return nil
-    }
-
-    for bootstrap in items! {
-        if (bootstrap.cfver == cfver) {
-            return bootstrap.uri
-        }
-    }
-    
+    log(type: .error, msg: "Failed to find bootstrap URL.")
     return nil
 }
+
+
 
 public func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
     let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
@@ -202,7 +201,11 @@ extension JsonVC {
               self.tableData = [getCellInfo(jsonapi)!.names, getCellInfo(jsonapi)!.icons]
               self.sectionTitles = [""]
               
-              log(msg: "[JSON CELL DATA] \(self.tableData)")
+              if getBootstrapURL(jsonapi) == nil {
+                  self.showErrorCell(with: self.errorMessage)
+                  self.isLoading = false
+                  return
+              }
             
               DispatchQueue.global().async {
                   let iconImages = getCellInfo(jsonapi)!.icons.map { iconURLString -> UIImage? in
