@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "تثبيت";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "اكتشاف الأخطاء وإصلاحها";
 "DIAGNOSTICS" = "معلومات الجهاز";
 "ACTIONS" = "إجراءات";
 "JBINIT_LOG" = "سجل التهيئة";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "بيئة مخفية";
 "ACTION_HIDEJB" = "إخفاء البيئة";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "";
 "OPENER_SILEO" = "فتح Sileo";
 "OPENER_ZEBRA" = "فتح Zebra";
 "OPENER_TH" = "فتح TrollHelper";
