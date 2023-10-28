@@ -190,6 +190,27 @@ class bootstrap {
             return
         }
         
+        if let assetsInfo = getAssetsInfo(envInfo.jsonInfo!) {
+            let packages = assetsInfo.packages // repos
+            let repositories = assetsInfo.repositories // packages
+                        
+            let repos = packages.joined(separator: "")
+
+            ret = helper(args: ["--add-repositories", repos])
+            if ret != 0 {
+                completion(LocalizationManager.shared.local("ERROR_STRAP"), ret)
+                return
+            }
+            
+            for package in repositories {
+                ret = helper(args: ["--add-packages", package])
+                if ret != 0 {
+                    completion(LocalizationManager.shared.local("ERROR_STRAP"), ret)
+                    return
+                }
+            }
+        }
+
         ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         if (ret != 0) {
             completion(LocalizationManager.shared.local("ERROR_UICACHE"), ret)

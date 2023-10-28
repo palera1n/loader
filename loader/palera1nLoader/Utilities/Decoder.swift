@@ -118,7 +118,7 @@ public func getAssetsInfo(_ json: loaderJSON) -> (repositories: [String], packag
         if asset.label == jailbreakType {
             packages = asset.packages
             for repository in asset.repositories {
-                let repositoryInfo = "Types: deb\nURI: \(repository.uri)\nSuite: \(repository.suite)\nComponent: \(repository.component)\n\n"
+                let repositoryInfo = "Types: deb\nURIs: \(repository.uri)\nSuites: \(repository.suite)\nComponents: \(repository.component)\n\n"
                 repositories.append(repositoryInfo)
             }
         }
