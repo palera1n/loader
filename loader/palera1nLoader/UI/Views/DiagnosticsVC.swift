@@ -64,38 +64,10 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
-    
-    @available(iOS 13.0, *)
-    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            guard let cell = gestureRecognizer.view as? UITableViewCell else {
-                return
-            }
-            
-            let text = cell.detailTextLabel?.text
-            if let text = text {
-                selectedCellText = text
-                let menuController = UIMenuController.shared
-                let copyItem = UIMenuItem(title: LocalizationManager.shared.local("COPY"), action: #selector(copyText))
-                menuController.menuItems = [copyItem]
-                menuController.showMenu(from: cell, rect: cell.bounds)
-            }
-        }
-    }
-
-    @objc func copyText() {
-        if let text = selectedCellText {
-            UIPasteboard.general.string = text
-        }
-    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
-        if #available(iOS 13.0, *) {
-            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
-            cell.addGestureRecognizer(longPressRecognizer)
-        }
         cell.selectionStyle = .none
         
         switch tableData[indexPath.section][indexPath.row] {

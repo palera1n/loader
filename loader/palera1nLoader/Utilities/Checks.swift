@@ -19,7 +19,6 @@ enum installStatus {
     case rootful
     case rootless
     case rootless_installed
-    case rootless_deleted_symlink
 }
 
 class Check {
@@ -44,13 +43,12 @@ class Check {
             
             if jbFolderExists && jbSymlinkExists {
                 return .rootless_installed
-            } else if jbFolderExists && !jbSymlinkExists {
-                return .rootless_deleted_symlink
             } else {
                 return .rootless
             }
         } catch {
             log(type: .fatal, msg: "Failed to get contents of directory: \(error.localizedDescription)")
+            return .rootless
         }
         #endif
     }
