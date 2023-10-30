@@ -39,7 +39,7 @@ struct ManagerItem: Codable {
     let name: String
     let uri: String
     let icon: String
-    let filePaths: [String] // Updated the type to [String]
+    let filePaths: [String]
 }
 
 struct Asset: Codable {
@@ -232,7 +232,6 @@ extension JsonVC {
           }
       }
       
-      /// Start the network request
       task.resume()
   }
   func retryFetchJSON() {

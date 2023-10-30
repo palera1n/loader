@@ -172,7 +172,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
 
           var filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
-            let procursusStrappedExists = FileManager.default.fileExists(atPath: "/.procursus_strapped") || FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped")
+            let procursusStrappedExists = FileManager.default.fileExists(atPath: "\(envInfo.installPrefix)/.procursus_strapped")
 
             let alertController = whichAlert(title: "", message: nil)
             let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CANCEL"), style: .cancel, handler: nil)

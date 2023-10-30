@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import MachO
 
 class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
         [LocalizationManager.shared.local("VERSION_INFO"), LocalizationManager.shared.local("ARCH_INFO")],
         
-        [LocalizationManager.shared.local("TYPE_INFO"), LocalizationManager.shared.local("INSTALL_FR"), LocalizationManager.shared.local("KINFO_FLAGS"), LocalizationManager.shared.local("PINFO_FLAGS")],
+        [LocalizationManager.shared.local("TYPE_INFO"), LocalizationManager.shared.local("KINFO_FLAGS"), LocalizationManager.shared.local("PINFO_FLAGS")],
         
-        [LocalizationManager.shared.local("INSTALL_INFO"), LocalizationManager.shared.local("STRAP_INFO"), LocalizationManager.shared.local("STRAP_FR_PREFIX")]
+        [LocalizationManager.shared.local("STRAP_INFO")]
     ]
     var selectedCellText: String?
     let sectionTitles = ["", "PALERA1N", LocalizationManager.shared.local("STRAP_INFO")]
@@ -103,28 +104,13 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.detailTextLabel?.text = UIDevice.current.systemVersion
         case LocalizationManager.shared.local("ARCH_INFO"):
             cell.textLabel?.text = LocalizationManager.shared.local("ARCH_INFO")
-            cell.detailTextLabel?.text = envInfo.systemArch
+            cell.detailTextLabel?.text = String(cString: NXGetLocalArchInfo().pointee.name)
         case LocalizationManager.shared.local("TYPE_INFO"):
             cell.textLabel?.text = LocalizationManager.shared.local("TYPE_INFO")
             cell.detailTextLabel?.text = envInfo.isRootful ? LocalizationManager.shared.local("ROOTFUL") : LocalizationManager.shared.local("ROOTLESS")
-            
-        case LocalizationManager.shared.local("INSTALL_INFO"):
-            cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_INFO")
-            cell.detailTextLabel?.text = envInfo.isInstalled ? LocalizationManager.shared.local("TRUE") : LocalizationManager.shared.local("FALSE")
         case LocalizationManager.shared.local("INSTALL_FR"):
             cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_FR")
             cell.detailTextLabel?.text = envInfo.hasForceReverted ? LocalizationManager.shared.local("TRUE") : LocalizationManager.shared.local("FALSE")
-        case LocalizationManager.shared.local("STRAP_INFO"):
-            cell.textLabel?.text = LocalizationManager.shared.local("STRAP_INFO")
-            cell.detailTextLabel?.text = "\(Int(envInfo.envType))"
-        case LocalizationManager.shared.local("STRAP_FR_PREFIX"):
-            cell.textLabel?.text = LocalizationManager.shared.local("STRAP_FR_PREFIX")
-            let jbFolder = Check.installation().jb_folder
-            if (jbFolder != nil) {
-                cell.detailTextLabel?.text = "\(URL(string: jbFolder!)?.lastPathComponent ?? "")"
-            } else {
-                cell.detailTextLabel?.text = LocalizationManager.shared.local("NONE")
-            }
         case LocalizationManager.shared.local("KINFO_FLAGS"):
             cell.textLabel?.text = LocalizationManager.shared.local("KINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.kinfoFlags

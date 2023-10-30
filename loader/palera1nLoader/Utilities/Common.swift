@@ -14,22 +14,18 @@ let fm = FileManager.default
 
 struct envInfo {
     static var isRootful: Bool = false
-    static var installPrefix: String = "unset"
+    static var installPrefix: String = ""
     static var rebootAfter: Bool = true
     static var jsonURI: String {
         get { UserDefaults.standard.string(forKey: "JsonURI") ?? "https://palera.in/loader.json" }
         set { UserDefaults.standard.set(newValue, forKey: "JsonURI") }
     }
-    static var envType: Int = -1
-    static var systemArch: String = "unset"
-    static var isInstalled: Bool = false
     static var hasForceReverted: Bool = false
     static var hasChecked: Bool = false
     static var kinfoFlags: String = ""
     static var pinfoFlags: String = ""
     static var kinfoFlagsStr: String = ""
     static var pinfoFlagsStr: String = ""
-    static var jbFolder: String = ""
     static var CF = Int(floor(kCFCoreFoundationVersionNumber / 100) * 100)
     static var bmHash: String = ""
     static var nav: UINavigationController = UINavigationController()

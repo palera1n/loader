@@ -117,7 +117,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let prefix = envInfo.installPrefix
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
         case LocalizationManager.shared.local("ACTION_HIDEJB"):
@@ -131,7 +130,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case LocalizationManager.shared.local("ACTION_RESPRING"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case LocalizationManager.shared.local("ACTION_UICACHE"):
-            spawn(command: "\(prefix)/usr/bin/uicache", args: ["-a"])
+            spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"])
         case LocalizationManager.shared.local("ACTION_TWEAKS"):
             helper(args: ["-l"])
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"]) }
@@ -160,9 +159,9 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private func HideEnv(viewController: UIViewController) {
         if (!envInfo.isRootful) {
-            let strapValue = envInfo.envType
+            let strapValue = Check.installation()
             switch strapValue {
-            case 1:
+            case .rootless_installed:
                 #if !targetEnvironment(simulator)
                 let alert = UIAlertController.warning(title: LocalizationManager.shared.local("ACTION_HIDEJB"), message: LocalizationManager.shared.local("HIDE_NOTICE"), destructiveBtnTitle: LocalizationManager.shared.local("PROCEED"), destructiveHandler: {
                     if fileExists("/tmp/palera1n/helper") {
