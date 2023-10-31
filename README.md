@@ -1,26 +1,19 @@
-# palera1n Loader
+# Loader
+A "loader" application used in palera1n, this app will appear on the homescreen once you've jailbroken.
 
-## Building
+## Building on macOS
+| Command          | Action                                     | 
+| ---------------  | ------------------------------------------ |
+| `make IOS=1`     | Compiles loader for iOS & creates `.dmg` for use   |
+| `make TVOS=1`    | Compiles the appleTV loader varient & creates `.dmg` for use |
 
-Optional Flags:
-- TIPA=1 (outputs as .tipa)
-- NO_DMG=1 (does not build dmg)
+## Optional Flags
+You can use these optional flags when compiling.
 
-For iOS
-```
-make IOS=1
-```
+| Flag       | Description                           |
+| ---------- | ------------------------------------- |
+| `TIPA=1`   | Outputs as `.tipa` (if you're testing it on Trollstore), instead of `.ipa` |
+| `NO_DMG=1` | Does not create `.dmg`                 |
 
-For tvOS (in development)
-```
-make TVOS=1
-```
-## Downloads
-Don't use unless you know what you're doing.
-
-- https://static.palera.in/artifacts/loader/universal_lite/palera1nLoader.ipa
-- https://static.palera.in/artifacts/loader/universal_lite/loader.dmg
-
-(These links may not be accessible)
-- https://static.palera.in/artifacts/loader/universal_lite/palera1nTVLoader.ipa
-- https://static.palera.in/artifacts/loader/universal_lite/tvloader.dmg
+## Contributions
+Pull requests are welcome <3
