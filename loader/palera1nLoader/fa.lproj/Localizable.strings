@@ -6,16 +6,16 @@ English
 // ViewController Cells
 
 "INSTALL" = "نصب";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "عیب یابی";
 "DIAGNOSTICS" = "اطلاعات دستگاه";
 "ACTIONS" = "اقدامات";
-"JBINIT_LOG" = "Logging";
+"JBINIT_LOG" = "درحال ورود";
 "REVERT_CELL" = "برگرداندن نصب";
 
 // ActionsVC
 "HIDDEN" = "محیط پنهان";
 "ACTION_HIDEJB" = "مخفی کردن محیط";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "باز کردن";
 "OPENER_SILEO" = "Sileo را باز کنید";
 "OPENER_ZEBRA" = "Zebra را باز کنید";
 "OPENER_TH" = "TrollHelper را باز کنید";
@@ -49,15 +49,15 @@ English
 "TYPE_INFO" = "تایپ کنید";
 "INSTALL_INFO" = "نصب شده است";
 "ARCH_INFO" = "Architecture";
-"VERSION_INFO" = "Version";
+"VERSION_INFO" = "نسخه";
 "STRAP_INFO" = "محیط";
 "STRAP_FR_PREFIX" = "پیشوند Fakeroot";
-"COPY" = "Copy";
+"COPY" = "کپی";
 "INSTALL_FR" = "Force reverted";
 "HELPER" = "یاور";
 "HELPER_PATH" = "Helper Path";
-"KINFO_FLAGS" = "Flags (kerninfo)";
-"PINFO_FLAGS" = "Flags (paleinfo)";
+"KINFO_FLAGS" = "پرچم ها (kerninfo)";
+"PINFO_FLAGS" = "پرچم ها (paleinfo)";
 
 "TRUE" = "آره";
 "FALSE" = "خیر";
@@ -70,7 +70,7 @@ English
 "NO_PROCEED" = "قادر به ادامه نیست";
 "NO_PROCEED_SIDELOADING" = "Sideloading پشتیبانی نمی شود.";
 "NO_PROCEED_FR" = "پس از استفاده از --force-revert، باید به صورت دستی دستگاه خود را ریبوت کرده و دوباره جیلبریک کنید تا بتوانید بوت استرپ کنید.";
-"SET" = "Set";
+"SET" = "اعمال";
 "TOO_LONG" = "خیلی طولانی است";
 
 // DL / BS
@@ -110,7 +110,7 @@ English
 "DL_STRAP_PM" = "%@ قبلاً در %@ نصب شده است";
 
 // errors
-"STATUS" = "Status";
+"STATUS" = "وضعیت";
 "ERROR_STRAP" = "خطا در نصب بوت استرپ";
 "ERROR_DPKG" = "بسته ها نصب نشد";
 "ERROR_UICACHE" = "UIcache اجرا نشد";
