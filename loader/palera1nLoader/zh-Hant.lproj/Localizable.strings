@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "安装";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "疑難排解";
 "DIAGNOSTICS" = "設備信息";
 "ACTIONS" = "動作";
 "JBINIT_LOG" = "日誌";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "隱藏環境";
 "ACTION_HIDEJB" = "隱藏環境";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "開啟";
 "OPENER_SILEO" = "開啟 Sileo";
 "OPENER_ZEBRA" = "開啟 Zebra";
 "OPENER_TH" = "開啟 TrollHelper";
