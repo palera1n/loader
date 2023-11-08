@@ -143,16 +143,21 @@ import Extras
     }
     if (args[1] == "-p") {
         let str = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
-        let pflags_dec = Int(str)!
-        let pflags_hex = String(pflags_dec, radix: 16)
-        envInfo.pinfoFlags = "0x\(pflags_hex) (\(str))"
+        if let int_val = UInt32(str) {
+            envInfo.pinfoFlags = String(format: "0x%lx (\(str))", int_val)
+        } else {
+            envInfo.pinfoFlags = "0x0"
+        }
     }
     
     if (args[1] == "-k") {
         let str = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
-        let kflags_dec = Int(str)!
-        let kflags_hex = String(kflags_dec, radix: 16)
-        envInfo.kinfoFlags = "0x\(kflags_hex) (\(str))"
+        if let int_val = UInt32(str) {
+            envInfo.kinfoFlags = String(format: "0x%lx (\(str))", int_val)
+        } else {
+            envInfo.kinfoFlags = "0x0"
+        }
+        
     }
     
     if (args[1] == "-s") {
