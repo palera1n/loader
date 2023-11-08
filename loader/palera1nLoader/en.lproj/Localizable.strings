@@ -113,6 +113,6 @@ English
 "STATUS" = "Status";
 "ERROR_STRAP" = "Error installing bootstrap";
 "ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UICache";
+"ERROR_UICACHE" = "Failed to run UIC ache";
 "ERROR_UNREGISTER" = "Failed to unregister";
 "ERROR_REVERT" = "Failed to remove jailbreak";
