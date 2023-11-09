@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installs";
-"DEBUG" = "troubleshoot";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Actions";
 "JBINIT_LOG" = "Logging";
@@ -101,7 +101,7 @@ English
 "HIDE_NOTICE" = "Proceeding will remove the /var/jb symlink and reboot the device.";
 "REVERT_SUBTEXT" = "Rootful cannot use this button :(";
 "PM_SUBTEXT" = "Select your favorite package manager here that you would like to install, Sileo is recommended if you're new.";
-"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into a jailbroken state.";
+"REVERT_WARNING" = "Wipes /var/jb and unregisters jailbreak applications, after it is done the device will reboot into an unjailbroken state.";
 "CLOSE_APP" = "You may close the app.";
 "UNHID_ENV" = "Unhid the environment";
 
@@ -113,6 +113,6 @@ English
 "STATUS" = "Status";
 "ERROR_STRAP" = "Error installing bootstrap";
 "ERROR_DPKG" = "Failed to install packages";
-"ERROR_UICACHE" = "Failed to run UI cache";
+"ERROR_UICACHE" = "Failed to run UICache";
 "ERROR_UNREGISTER" = "Failed to unregister";
 "ERROR_REVERT" = "Failed to remove jailbreak";
