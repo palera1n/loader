@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Felsök";
 "DEBUG_OPTIONS" = "Inställningar";
 "DEBUG_CLEAN_FAKEFS" = "Rensa fakefs";
-"DEBUG_CLEAR_JSON" = "Rensa JSON-konfiguration";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Enhetsmodell:";
