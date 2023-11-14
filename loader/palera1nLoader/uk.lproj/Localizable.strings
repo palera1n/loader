@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Налагодження";
 "DEBUG_OPTIONS" = "Параметри";
 "DEBUG_CLEAN_FAKEFS" = "Очистити fakefs";
-"DEBUG_CLEAR_JSON" = "Очистити конфігурацію JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Модель пристрою:";
