@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Отклањање грешака";
 "DEBUG_OPTIONS" = "Опције";
 "DEBUG_CLEAN_FAKEFS" = "Обриши fakefs";
-"DEBUG_CLEAR_JSON" = "Обриши JSON подешавања";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Модел уређаја:";
