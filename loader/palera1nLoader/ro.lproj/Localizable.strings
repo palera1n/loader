@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Corectarea erorilor";
 "DEBUG_OPTIONS" = "Opțiuni";
 "DEBUG_CLEAN_FAKEFS" = "Curățați fakefs";
-"DEBUG_CLEAR_JSON" = "Ștergeți configurația JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Modelul dispozitivului:";
