@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "デバッグ";
 "DEBUG_OPTIONS" = "オプション";
 "DEBUG_CLEAN_FAKEFS" = "Fakefsを消去";
-"DEBUG_CLEAR_JSON" = "JSON設定を消去";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "モデル番号:";
