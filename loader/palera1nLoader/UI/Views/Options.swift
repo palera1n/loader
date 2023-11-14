@@ -1,25 +1,24 @@
 //
-//  DebugVC.swift
+//  Options.swift
 //  palera1nLoader
 //
-//  Created by samara on 5/12/23.
+//  Created by samara on 11/13/23.
 //
 
 import Foundation
 import UIKit
 
-class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     var tableData = [
-        [LocalizationManager.shared.local("LOG_CELL_VIEW")],
-        ["json"],
-        [LocalizationManager.shared.local("DEBUG_CLEAR_JSON"),
-         LocalizationManager.shared.local("FR_SWITCH")]
+        ["json", LocalizationManager.shared.local("DEBUG_CLEAR_JSON")],
+        [LocalizationManager.shared.local("FR_SWITCH")],
+        [LocalizationManager.shared.local("LOG_CELL_VIEW"), LocalizationManager.shared.local("ACTIONS"), LocalizationManager.shared.local("DIAGNOSTICS")]
     ]
     
     var customMessage: String?
     
-    var sectionTitles = ["", "JSON", LocalizationManager.shared.local("DEBUG_OPTIONS")]
+    var sectionTitles = ["JSON", LocalizationManager.shared.local("DEBUG_OPTIONS"), "ADVANCED"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +33,8 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
             tableView = UITableView(frame: view.bounds, style: .grouped)
         }
         
-        self.title = LocalizationManager.shared.local("DEBUG_CELL")
+        self.title = LocalizationManager.shared.local("DEBUG_OPTIONS")
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .done, target: self, action: #selector(closeSheet))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
@@ -52,9 +50,6 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         ])
     }
     
-    @objc func closeSheet() {
-        dismiss(animated: true, completion: nil)
-    }
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
@@ -72,22 +67,20 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .default
-        cell.accessoryType = .disclosureIndicator
-        
+        cell.accessoryType = .none
+        cell.imageView?.image = nil
+
         switch tableData[indexPath.section][indexPath.row] {
         case LocalizationManager.shared.local("DEBUG_CLEAR_JSON"):
-            if #available(iOS 13.0, *) {
-                mods.applySymbolModifications(to: cell, with: "arrow.clockwise", backgroundColor: .systemGray)
-            } else {
-                cell.imageView?.image = nil
-            }
             cell.textLabel?.text = LocalizationManager.shared.local("DEBUG_CLEAR_JSON")
+            cell.textLabel?.textColor = .systemBlue
+        case LocalizationManager.shared.local("DIAGNOSTICS"):
+            cell.textLabel?.text = LocalizationManager.shared.local("DIAGNOSTICS")
+            cell.accessoryType = .disclosureIndicator
+        case LocalizationManager.shared.local("ACTIONS"):
+            cell.textLabel?.text = LocalizationManager.shared.local("ACTIONS")
+            cell.accessoryType = .disclosureIndicator
         case LocalizationManager.shared.local("FR_SWITCH"):
-            if #available(iOS 13.0, *) {
-                mods.applySymbolModifications(to: cell, with: "arrow.forward.circle", backgroundColor: .systemPurple)
-            } else {
-                cell.imageView?.image = nil
-            }
             let switchControl = UISwitch()
             switchControl.isOn = envInfo.rebootAfter
             switchControl.addTarget(self, action: #selector(switchToggled(_:)), for: .valueChanged)
@@ -103,14 +96,15 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
 
             textField.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 16).isActive = true
             textField.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -16).isActive = true
-            textField.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 8).isActive = true
-            textField.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -8).isActive = true
+            textField.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 10).isActive = true
+            textField.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -10).isActive = true
 
             cell.accessoryType = .none
 
         case LocalizationManager.shared.local("LOG_CELL_VIEW"):
             cell.textLabel?.text = LocalizationManager.shared.local("LOG_CELL_VIEW")
-            cell.textLabel?.textColor = .systemBlue
+            cell.accessoryType = .disclosureIndicator
+
         default:
             break
         }
@@ -119,8 +113,19 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     }
   
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section == tableData.count - 2 {
-            return "WARNING: JSON functionality is limited at its current state, don't use unless you know what you're doing.\n\nSet currently: \"\(envInfo.jsonURI)\""
+        if section == tableData.count - 3 {
+            return  """
+                    This will allow you to change where the loader application will download from with a custom URL to a json file, this can change the package manager, bootstrap, and repos included. If you don't know what you're doing, you can use the default configuration.
+                    
+                    Set currently: \"\(envInfo.jsonURI)\"
+                    """
+        } else if section == tableData.count - 1 {
+            return """
+            © 2023, palera1n team
+            
+            \(LocalizationManager.shared.local("CREDITS_SUBTEXT"))
+            @ssalggnikool & @staturnzdev
+            """
         }
         return nil
     }
@@ -133,9 +138,17 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
           UIApplication.shared.openSpringBoard()
           exit(0)
         case LocalizationManager.shared.local("LOG_CELL_VIEW"):
-            log(type: .info, msg: "Opening Log View")
-            let LogViewVC = LogViewer()
-            navigationController?.pushViewController(LogViewVC, animated: true)
+            let lv = LogListVC()
+
+            navigationController?.pushViewController(lv, animated: true)
+        case LocalizationManager.shared.local("ACTIONS"):
+          let actionsVC = ActionsVC()
+
+            navigationController?.pushViewController(actionsVC, animated: true)
+        case LocalizationManager.shared.local("DIAGNOSTICS"):
+            let dVC = DiagnosticsVC()
+
+              navigationController?.pushViewController(dVC, animated: true)
         default:
             break
         }
@@ -154,16 +167,17 @@ class DebugVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIT
     @objc func switchToggled(_ sender: UISwitch) {
         envInfo.rebootAfter.toggle()
     }
-        
-  @objc private func resetField() {
-      log(msg: "[JSON EDITING] https://palera.in/loader.json")
-      UserDefaults.standard.set("https://palera.in/loader.json", forKey: "JsonURI")
+    
+    @objc private func resetField() {
+        UserDefaults.standard.set("https://palera.in/loader.json", forKey: "JsonURI")
     }
-        
+    
     @objc private func textFieldDidChange(_ textField: UITextField) {
         if let newValue = textField.text {
-            log(msg: "[JSON EDITING] \(newValue)")
-            UserDefaults.standard.set(newValue, forKey: "JsonURI")
-      }
+            if !newValue.isEmpty, newValue.hasSuffix(".json"), newValue.contains("://") {
+                UserDefaults.standard.set(newValue, forKey: "JsonURI")
+            }
+        }
     }
+
 }

@@ -17,6 +17,7 @@ struct environment {
 enum installStatus {
     case simulated
     case rootful
+    case rootful_installed
     case rootless
     case rootless_installed
 }
@@ -28,7 +29,11 @@ class Check {
         return .simulated
         #else
         if envInfo.isRootful {
-            return .rootful
+            if fm.fileExists(atPath: "/.procursus_strapped") {
+                return .rootful_installed
+            } else {
+                return .rootful
+            }
         }
         
         let dir = "/private/preboot/\(envInfo.bmHash)"

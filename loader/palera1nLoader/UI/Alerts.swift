@@ -36,16 +36,6 @@ extension UIAlertController {
           UIApplication.shared.openSpringBoard()
           exit(0)
         })
-        alertController.addAction(UIAlertAction(title: LocalizationManager.shared.local("LOG_CELL_VIEW"), style: .default, handler: { (_) in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                log(type: .info, msg: "Opening Log View")
-                fromAlert = true
-                let LogViewVC = LogViewer()
-                let navController = UINavigationController(rootViewController: LogViewVC)
-                navController.modalPresentationStyle = .formSheet
-                envInfo.nav.present(navController, animated: true, completion: nil)
-            }
-        }))
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
         return alertController

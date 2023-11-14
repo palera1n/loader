@@ -15,7 +15,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         [LocalizationManager.shared.local("TYPE_INFO"), LocalizationManager.shared.local("KINFO_FLAGS"), LocalizationManager.shared.local("PINFO_FLAGS")],
         
-        [LocalizationManager.shared.local("STRAP_INFO")]
+        [LocalizationManager.shared.local("STRAP_INFO"), LocalizationManager.shared.local("INSTALL_FR")]
     ]
     var selectedCellText: String?
     let sectionTitles = ["", "PALERA1N", LocalizationManager.shared.local("STRAP_INFO")]
@@ -83,6 +83,21 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case LocalizationManager.shared.local("INSTALL_FR"):
             cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_FR")
             cell.detailTextLabel?.text = envInfo.hasForceReverted ? LocalizationManager.shared.local("TRUE") : LocalizationManager.shared.local("FALSE")
+        case LocalizationManager.shared.local("STRAP_INFO"):
+            let strapValue = Check.installation()
+            switch strapValue {
+            case .rootful:
+                cell.detailTextLabel?.text = LocalizationManager.shared.local("FALSE")
+            case .simulated:
+                cell.detailTextLabel?.text = "Simulated"
+            case .rootless:
+                cell.detailTextLabel?.text = LocalizationManager.shared.local("FALSE")
+            case .rootless_installed:
+                cell.detailTextLabel?.text = LocalizationManager.shared.local("TRUE")
+            case .rootful_installed:
+                cell.detailTextLabel?.text = LocalizationManager.shared.local("TRUE")
+            }
+            cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_INFO")
         case LocalizationManager.shared.local("KINFO_FLAGS"):
             cell.textLabel?.text = LocalizationManager.shared.local("KINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.kinfoFlags
@@ -94,18 +109,6 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section == tableData.count - 1 {
-            return """
-            © 2023, palera1n team
-            
-            \(LocalizationManager.shared.local("CREDITS_SUBTEXT"))
-            @ssalggnikool (Samara) & @staturnzdev (Staturnz)
-            """
-        }
-        return nil
     }
 }
 

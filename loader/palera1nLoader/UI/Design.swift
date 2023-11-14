@@ -83,10 +83,6 @@ extension JsonVC {
         let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(restartButtonTapped))
         navigationItem.rightBarButtonItem = restartButton
         
-        let tripleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tripleTapDebug))
-        tripleTapGestureRecognizer.numberOfTapsRequired = 3
-        navigationController?.navigationBar.addGestureRecognizer(tripleTapGestureRecognizer)
-        
         navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
     }
     
@@ -107,13 +103,6 @@ extension JsonVC {
         ])
         tableView.register(ErrorCell.self, forCellReuseIdentifier: "ErrorCell")
         tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
-    }
-    
-    @objc func tripleTapDebug(sender: UIButton) {
-        let debugVC = DebugVC()
-        let navController = UINavigationController(rootViewController: debugVC)
-        navController.modalPresentationStyle = .formSheet
-        present(navController, animated: true, completion: nil)
     }
     @objc func restartButtonTapped() {
         self.retryFetchJSON()

@@ -86,7 +86,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return tableData[section].count
         }
         /* JsonVC has two sections, so if section is not 0, it must be 1. */
-        return 3
+        return 2
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -135,11 +135,8 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else {
             let row = indexPath.row
             if row == 0 {
-                cell.textLabel?.text = LocalizationManager.shared.local("ACTIONS")
+                cell.textLabel?.text = LocalizationManager.shared.local("DEBUG_OPTIONS")
                 if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "hammer.fill", backgroundColor: .systemGray) }
-            } else if row == 1 {
-                cell.textLabel?.text = LocalizationManager.shared.local("DIAGNOSTICS")
-                if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "note.text", backgroundColor: .systemBlue) }
             } else {
                 if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed) }
                 cell.textLabel?.text = LocalizationManager.shared.local("REVERT_CELL")
@@ -217,23 +214,13 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             present(alertController, animated: true, completion: nil)
             
         case (1, 0):
-          let actionsVC = ActionsVC()
+          let actionsVC = OptionsVC()
 
           UIDevice.current.userInterfaceIdiom == .pad ?
           
           showDetailViewController(UINavigationController(rootViewController: actionsVC), sender: nil) :
           navigationController?.pushViewController(actionsVC, animated: true)
-
-            
         case (1, 1):
-          let diagnosticsVC = DiagnosticsVC()
-
-          UIDevice.current.userInterfaceIdiom == .pad ?
-          
-          showDetailViewController(UINavigationController(rootViewController: diagnosticsVC), sender: nil) :
-          navigationController?.pushViewController(diagnosticsVC, animated: true)
-            
-        case (1, 2):
             let alertController = whichAlert(title: LocalizationManager.shared.local("CONFIRM"), message: envInfo.rebootAfter ? LocalizationManager.shared.local("REVERT_WARNING") : nil)
             let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CANCEL"), style: .cancel, handler: nil)
             let confirmAction = UIAlertAction(title: LocalizationManager.shared.local("REVERT_CELL"), style: .destructive) { _ in bootstrap.revert(viewController: self) }
