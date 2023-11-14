@@ -4,7 +4,11 @@
 
 This is a json that the palera1n loader application will try to retrieve when opening the app, this config will tell the loader where to download from, for example package managers, bootstraps, and repositories. 
 
-This is the URI that by default the loader retrieves from: https://palera.in/loader.json
+You can change the configuration by typing the URL in the uitextfield inside of the loader app, its located in the `Options` page. If you're on b8 loader build then you would need to triple tap the palera1n icon inside of the main view.
+
+https://github.com/palera1n/loader/assets/97859147/b5c6442f-993c-453a-896a-d0addced464d
+
+Reminder: it needs to be vaild json.
 
 ---
 
@@ -22,8 +26,6 @@ This is the URI that by default the loader retrieves from: https://palera.in/loa
 <!--te-->
 
 ---
-
-
 
 
 
