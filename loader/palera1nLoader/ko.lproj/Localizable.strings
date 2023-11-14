@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "디버그";
 "DEBUG_OPTIONS" = "옵션";
 "DEBUG_CLEAN_FAKEFS" = "FakeFs 지우기";
-"DEBUG_CLEAR_JSON" = "JSON 설정 초기화";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "디바이스 모델:";
