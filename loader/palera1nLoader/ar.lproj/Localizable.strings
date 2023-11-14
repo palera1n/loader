@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "تصحيح";
 "DEBUG_OPTIONS" = "الخيارات";
 "DEBUG_CLEAN_FAKEFS" = "مسح fakefs";
-"DEBUG_CLEAR_JSON" = "مسح تكوين JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "طراز الجهاز:";
