@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "اشکال زدایی";
 "DEBUG_OPTIONS" = "گزینه ها";
 "DEBUG_CLEAN_FAKEFS" = "تمیز کردن FakeFS";
-"DEBUG_CLEAR_JSON" = "تنظیمات JSON را پاک کنید";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "مدل دستگاه:";
