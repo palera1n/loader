@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Derinti";
 "DEBUG_OPTIONS" = "Nustatymai";
 "DEBUG_CLEAN_FAKEFS" = "Išvalyti fakefs";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Prietaiso modelis:";
