@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Hata Ayıklama";
 "DEBUG_OPTIONS" = "Ayarlar";
 "DEBUG_CLEAN_FAKEFS" = "FakeFS'i Temizle";
-"DEBUG_CLEAR_JSON" = "JSON Yapılandırmasını Temizle";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Cihaz Modeli:";
