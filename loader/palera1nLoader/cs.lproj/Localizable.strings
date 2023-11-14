@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Debug";
 "DEBUG_OPTIONS" = "Možnosti";
 "DEBUG_CLEAN_FAKEFS" = "Vyčistit fakefs";
-"DEBUG_CLEAR_JSON" = "Vymazat konfiguraci JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Model zařízení:";
