@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Εντοπισμός σφαλμάτων";
 "DEBUG_OPTIONS" = "Επιλογές";
 "DEBUG_CLEAN_FAKEFS" = "Εγκαθάριση FakeFS";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Μοντέλο συσκευής:";
