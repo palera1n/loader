@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Depurar";
 "DEBUG_OPTIONS" = "Opcions";
 "DEBUG_CLEAN_FAKEFS" = "Rentar fakefs";
-"DEBUG_CLEAR_JSON" = "Netejar configuració JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Model del dispositiu:";
