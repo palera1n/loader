@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Gỡ lỗi";
 "DEBUG_OPTIONS" = "Tùy chọn";
 "DEBUG_CLEAN_FAKEFS" = "Làm sạch hàng giả";
-"DEBUG_CLEAR_JSON" = "Dọn cấu hình JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
 "DEVICE_MODEL" = "Kiểu thiết bị:";
