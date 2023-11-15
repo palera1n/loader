@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Yükle";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "Sorun Giderme";
 "DIAGNOSTICS" = "Cihaz Bilgisi";
 "ACTIONS" = "İşlemler";
 "JBINIT_LOG" = "Kayda Alma";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Gizli Çevre";
 "ACTION_HIDEJB" = "Çevreyi Gizle";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "Aç";
 "OPENER_SILEO" = "Sileo'yu Aç";
 "OPENER_ZEBRA" = "Zebra'yı Aç";
 "OPENER_TH" = "TrollHelper'ı Aç";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Hata Ayıklama";
 "DEBUG_OPTIONS" = "Ayarlar";
 "DEBUG_CLEAN_FAKEFS" = "FakeFS'i Temizle";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "Konfigürasyonu Temizle";
 
 // Diags
 "DEVICE_MODEL" = "Cihaz Modeli:";
