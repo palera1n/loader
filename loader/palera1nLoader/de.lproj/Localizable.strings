@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Gerätemodell:";
-"DEVICE_MODEL_KERN" = "Kernel-Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader erstellt von:";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Installiert";
