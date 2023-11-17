@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Modelul dispozitivului:";
-"DEVICE_MODEL_KERN" = "Versiunea Kernel:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Încărcător realizat de:";
 "TYPE_INFO" = "Tip";
 "INSTALL_INFO" = "Instalat";
