@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Prietaiso modelis:";
-"DEVICE_MODEL_KERN" = "„Kernel“ versija:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Programą sukūrė:";
 "TYPE_INFO" = "Tipas";
 "INSTALL_INFO" = "Įdiegta";
