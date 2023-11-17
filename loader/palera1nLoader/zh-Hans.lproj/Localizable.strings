@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "装置型号：";
-"DEVICE_MODEL_KERN" = "内核版本：";
-"DEVICE_MODEL_CF" = "CF版本：";
 "CREDITS_SUBTEXT" = "加载器由：";
 "TYPE_INFO" = "类型";
 "INSTALL_INFO" = "已安装";
