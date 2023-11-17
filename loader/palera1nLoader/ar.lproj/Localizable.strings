@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "طراز الجهاز:";
-"DEVICE_MODEL_KERN" = "إصدار النواة:";
-"DEVICE_MODEL_CF" = "إصدار CF:";
 "CREDITS_SUBTEXT" = "تم تطوير المحمل بواسطة:";
 "TYPE_INFO" = "النوع";
 "INSTALL_INFO" = "تم التثبيت";
