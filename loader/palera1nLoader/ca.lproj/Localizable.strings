@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Model del dispositiu:";
-"DEVICE_MODEL_KERN" = "Versió del Kernel:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Carregador fet per:";
 "TYPE_INFO" = "Tipus";
 "INSTALL_INFO" = "Instal·lat";
