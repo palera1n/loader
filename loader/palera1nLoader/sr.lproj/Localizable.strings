@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Модел уређаја:";
-"DEVICE_MODEL_KERN" = "Верзија керенела:";
-"DEVICE_MODEL_CF" = "Верзија ЦФ-а:";
 "CREDITS_SUBTEXT" = "Покретач направио:";
 "TYPE_INFO" = "Врста";
 "INSTALL_INFO" = "Инсталиран";
