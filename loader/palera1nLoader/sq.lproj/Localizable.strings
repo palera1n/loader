@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Modeli i paisjes:";
-"DEVICE_MODEL_KERN" = "Versioni i kernelit:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Aplikacioni i krijuar nga:";
 "TYPE_INFO" = "Lloji";
 "INSTALL_INFO" = "Instaluar";
