@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Kiểu thiết bị:";
-"DEVICE_MODEL_KERN" = "Phiên bản Kernel:";
-"DEVICE_MODEL_CF" = "Phiên Bản CF:";
 "CREDITS_SUBTEXT" = "Trình khởi chạy được thực hiện bởi:";
 "TYPE_INFO" = "Kiểu";
 "INSTALL_INFO" = "Đã cài đặt";
