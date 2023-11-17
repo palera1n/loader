@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Model Perangkat:";
-"DEVICE_MODEL_KERN" = "Versi Kernel:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader dibuat oleh:";
 "TYPE_INFO" = "Tipe";
 "INSTALL_INFO" = "Terpasang";
