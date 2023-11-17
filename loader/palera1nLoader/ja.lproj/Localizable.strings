@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "モデル番号:";
-"DEVICE_MODEL_KERN" = "カーネルバージョン:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "ローダーの作成者:";
 "TYPE_INFO" = "種類";
 "INSTALL_INFO" = "インストール状況";
