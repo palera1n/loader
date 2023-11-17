@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Μοντέλο συσκευής:";
-"DEVICE_MODEL_KERN" = "Έκδοση Kernel:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader από:";
 "TYPE_INFO" = "Τύπος";
 "INSTALL_INFO" = "Εγκατεστημένο";
