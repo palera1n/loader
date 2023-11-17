@@ -8,30 +8,11 @@
 import Foundation
 import Extras
 
-@objc private protocol LSApplicationWorkspace {
-    static func defaultWorkspace() -> Self
-    func openApplication(withBundleID arg1: String) -> Bool
-}
-
 class opener {
+    
     @discardableResult
-    public static func openApp(_ bundle: String) -> Bool {
-        guard let LSApplicationWorkspace = NSClassFromString("LSApplicationWorkspace") else {
-            log(type: .error, msg: "failed to find the LSApplicationWorkspace class")
-            return false
-        }
-
-        guard let defaultWorkspace = (LSAppWorkspace as AnyObject).perform(
-            NSSelectorFromString("defaultWorkspace"))?.takeUnretainedValue() else {
-            log(type: .error, msg: "failed to find the defaultWorkspace")
-            return false
-        }
-
-        let selector = NSSelectorFromString("openApplicationWithBundleID:")
-        let method = class_getMethodImplementation(LSApplicationWorkspace, selector)
-
-        typealias f = @convention(c) (AnyObject, Selector, NSString) -> Bool
-        return unsafeBitCast(method, to: f.self)(defaultWorkspace, selector, bundle as NSString)
+    static public func openApp(_ bundle: String) -> Bool {
+        return LSApplicationWorkspace.default().openApplication(withBundleID: bundle)
     }
     
     static public func TrollHelper() -> Void {
