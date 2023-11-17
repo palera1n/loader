@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Модель пристрою:";
-"DEVICE_MODEL_KERN" = "Версія ядра:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader зробили:";
 "TYPE_INFO" = "Тип";
 "INSTALL_INFO" = "Встановлено";
