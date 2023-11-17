@@ -39,7 +39,7 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         view.addSubview(tableView)
 
         NSLayoutConstraint.activate([
@@ -48,6 +48,11 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
+            #if targetEnvironment(simulator)
+            tableData.insert(["WOW_button"], at: tableData.count - 1)
+            sectionTitles.insert("DEBUGGING", at: sectionTitles.count - 1)
+            #endif
     }
     
 
@@ -80,6 +85,13 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         case LocalizationManager.shared.local("ACTIONS"):
             cell.textLabel?.text = LocalizationManager.shared.local("ACTIONS")
             cell.accessoryType = .disclosureIndicator
+        case "WOW_button":
+            let switchControl = UISwitch()
+            switchControl.isOn = envInfo.w_button
+            switchControl.addTarget(self, action: #selector(wowToggled(_:)), for: .valueChanged)
+            cell.accessoryView = switchControl
+            cell.textLabel?.text = "Switch config \"label\" key"
+            cell.selectionStyle = .none
         case LocalizationManager.shared.local("FR_SWITCH"):
             let switchControl = UISwitch()
             switchControl.isOn = envInfo.rebootAfter
@@ -117,15 +129,19 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             return  """
                     This will allow you to change where the loader application will download from with a custom URL to a json file, this can change the package manager, bootstrap, and repos included. If you don't know what you're doing, you can use the default configuration.
                     
-                    Set currently: \"\(envInfo.jsonURI)\"
+                    CONFIG-SET
+                    
+                    \(envInfo.jsonURI)
                     """
         } else if section == tableData.count - 1 {
             return """
-            © 2023, palera1n team
-            
-            \(LocalizationManager.shared.local("CREDITS_SUBTEXT"))
-            @ssalggnikool & @staturnzdev
-            """
+                   
+                   
+                   © 2023, palera1n team
+                   
+                   \(LocalizationManager.shared.local("CREDITS_SUBTEXT"))
+                   @ssalggnikool & @staturnzdev
+                   """
         }
         return nil
     }
@@ -166,6 +182,10 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     
     @objc func switchToggled(_ sender: UISwitch) {
         envInfo.rebootAfter.toggle()
+    }
+    
+    @objc func wowToggled(_ sender: UISwitch) {
+        envInfo.w_button.toggle()
     }
     
     @objc private func resetField() {

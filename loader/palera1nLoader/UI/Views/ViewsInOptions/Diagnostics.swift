@@ -18,7 +18,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         [LocalizationManager.shared.local("STRAP_INFO"), LocalizationManager.shared.local("INSTALL_FR")]
     ]
     var selectedCellText: String?
-    let sectionTitles = ["palera1n", "iOS", LocalizationManager.shared.local("STRAP_INFO")]
+    let sectionTitles = ["palera1n", LocalizationManager.shared.local("DIAGNOSTICS"), LocalizationManager.shared.local("STRAP_INFO")]
     override func viewDidLoad() {
         super.viewDidLoad()
         

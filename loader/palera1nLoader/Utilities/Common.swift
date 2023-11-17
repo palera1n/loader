@@ -16,6 +16,7 @@ struct envInfo {
     static var isRootful: Bool = false
     static var installPrefix: String = ""
     static var rebootAfter: Bool = true
+    static var w_button: Bool = false
     static var jsonURI: String {
         get { UserDefaults.standard.string(forKey: "JsonURI") ?? "https://palera.in/loader.json" }
         set { UserDefaults.standard.set(newValue, forKey: "JsonURI") }

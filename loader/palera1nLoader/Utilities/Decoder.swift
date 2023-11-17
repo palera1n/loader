@@ -63,8 +63,20 @@ public struct cellInfo {
 
 /* How this works is that anything lower than what the loader.json has will cause it to return nil, however if it's higher than it will get the latest available version and bootstrap with that instead, maybe I should add a cf version override but not too sure on what to do else for this, for the sake of apple intentionally being moronic */
 
+public func jbType() -> String {
+    var jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    if (envInfo.w_button) {
+        if jailbreakType == "Rootless" {
+            jailbreakType = "Rootful"
+        } else if jailbreakType == "Rootful" {
+            jailbreakType = "Rootless"
+        }
+    }
+    return jailbreakType
+}
+
 public func getBootstrapURL(_ json: loaderJSON) -> String? {
-    let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    let jailbreakType = jbType()
     let cfver = String(envInfo.CF)
     
     if let items = json.bootstraps.first(where: { $0.label == jailbreakType })?.items {
@@ -86,7 +98,7 @@ public func getBootstrapURL(_ json: loaderJSON) -> String? {
 
 
 public func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
-    let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    let jailbreakType = jbType()
     var items: [ManagerItem]?
     
     for type in json.managers {
@@ -110,7 +122,7 @@ public func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
 }
 
 public func getAssetsInfo(_ json: loaderJSON) -> (repositories: [String], packages: [String])? {
-    let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    let jailbreakType = jbType()
     var packages: [String] = []
     var repositories: [String] = []
 
@@ -136,7 +148,7 @@ public func getAssetsInfo(_ json: loaderJSON) -> (repositories: [String], packag
 
 
 public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
-    let jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    let jailbreakType = jbType()
     var items: [ManagerItem]?
     var names: [String] = []
     var icons: [String] = []
