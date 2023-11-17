@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "مدل دستگاه:";
-"DEVICE_MODEL_KERN" = "نسخه Kernel:";
-"DEVICE_MODEL_CF" = "نسخه CF:";
 "CREDITS_SUBTEXT" = "لودر ساخته شده توسط:";
 "TYPE_INFO" = "تایپ کنید";
 "INSTALL_INFO" = "نصب شده است";
