@@ -53,6 +53,41 @@ public func fileExists(_ path: String) -> Bool {
     return fm.fileExists(atPath: path)
 }
 
+func getDeviceCode() -> String? {
+    var systemInfo = utsname()
+    uname(&systemInfo)
+    let modelCode = withUnsafePointer(to: &systemInfo.machine) {
+        $0.withMemoryRebound(to: CChar.self, capacity: 1) {
+            ptr in String.init(validatingUTF8: ptr)
+        }
+    }
+    if modelCode!.contains("arm64") || modelCode!.contains("x86_64") {
+        return "Simulated"
+    }
+    return modelCode
+}
+
+func bootargsObviouslyProbably() -> String {
+    var size: size_t = 0
+    sysctlbyname("kern.bootargs", nil, &size, nil, 0)
+    var machine = [CChar](repeating: 0, count: size)
+    sysctlbyname("kern.bootargs", &machine, &size, nil, 0)
+    let bootArgs = String(cString: machine)
+    return bootArgs
+}
+
+func kernelVersion() -> String {
+    var utsnameInfo = utsname()
+    uname(&utsnameInfo)
+
+    let releaseCopy = withUnsafeBytes(of: &utsnameInfo.release) { bytes in
+        Array(bytes)
+    }
+
+    let version = String(cString: releaseCopy)
+    return version
+}
+
 extension UIApplication {
   public func openSpringBoard() {
     let workspace = LSApplicationWorkspace.default() as! LSApplicationWorkspace

@@ -79,7 +79,7 @@ class LogListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = filteredLogFiles[indexPath.row]
         cell.accessoryType = .disclosureIndicator
-        cell.selectionStyle = .none
+        cell.selectionStyle = .default
         return cell
     }
 
@@ -87,6 +87,7 @@ class LogListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let selectedLog = filteredLogFiles[indexPath.row]
         let logViewer = LogViewer()
         logViewer.logFilename = selectedLog
+        tableView.deselectRow(at: indexPath, animated: true)
         navigationController?.pushViewController(logViewer, animated: true)
     }
 
