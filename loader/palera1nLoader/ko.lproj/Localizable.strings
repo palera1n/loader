@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "디바이스 모델:";
-"DEVICE_MODEL_KERN" = "커널 버전";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "로더 제작자:";
 "TYPE_INFO" = "유형";
 "INSTALL_INFO" = "설치됨";
