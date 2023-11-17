@@ -42,9 +42,6 @@ English
 "DEBUG_CLEAR_JSON" = "Konfigürasyonu Temizle";
 
 // Diags
-"DEVICE_MODEL" = "Cihaz Modeli:";
-"DEVICE_MODEL_KERN" = "Çekirdek Sürümü:";
-"DEVICE_MODEL_CF" = "CF Sürümü:";
 "CREDITS_SUBTEXT" = "Yükleyiciyi yapanlar:";
 "TYPE_INFO" = "Tür";
 "INSTALL_INFO" = "Yüklendi";
