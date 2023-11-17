@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Установить";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "Устранение неполадок";
 "DIAGNOSTICS" = "Информация об устройстве";
 "ACTIONS" = "Действия";
 "JBINIT_LOG" = "Логирование";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Скрытое окружение";
 "ACTION_HIDEJB" = "Скрыть окружение";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "Открыть";
 "OPENER_SILEO" = "Открыть Sileo";
 "OPENER_ZEBRA" = "Открыть Zebra";
 "OPENER_TH" = "Открыть TrollHelper";
@@ -39,12 +39,9 @@ English
 "DEBUG_CELL" = "Отладка";
 "DEBUG_OPTIONS" = "Настройки";
 "DEBUG_CLEAN_FAKEFS" = "Очистить fakefs";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "Очистить конфиг";
 
 // Diags
-"DEVICE_MODEL" = "Модель устройства:";
-"DEVICE_MODEL_KERN" = "Версия ядра:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Загрузчик создан:";
 "TYPE_INFO" = "Тип";
 "INSTALL_INFO" = "Установлено";
