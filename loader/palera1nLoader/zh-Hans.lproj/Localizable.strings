@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "安装";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "疑难解答";
 "DIAGNOSTICS" = "设备信息";
 "ACTIONS" = "操作";
 "JBINIT_LOG" = "记录日志";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "隐藏环境";
 "ACTION_HIDEJB" = "隐藏环境";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "打开";
 "OPENER_SILEO" = "打开 Sileo";
 "OPENER_ZEBRA" = "打开 Zebra";
 "OPENER_TH" = "打开 TrollHelper";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "调试";
 "DEBUG_OPTIONS" = "选项";
 "DEBUG_CLEAN_FAKEFS" = "清理FakeFS";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "清空配置";
 
 // Diags
 "CREDITS_SUBTEXT" = "加载器作者:";
@@ -63,7 +63,7 @@ English
 "CANCEL" = "取消";
 "CONFIRM" = "确定";
 "CLOSE" = "关闭";
-"PROCEED" = "进行";
+"PROCEED" = "继续";
 "NO_PROCEED" = "无法进行";
 "NO_PROCEED_SIDELOADING" = "不支持侧载";
 "NO_PROCEED_FR" = "使用 --force-revert 后，您必须手动重启您的iPhone然后再次越狱才能完成Bootstrap";
