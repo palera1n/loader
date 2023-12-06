@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "بيئة مخفية";
 "ACTION_HIDEJB" = "إخفاء البيئة";
-"OPEN_CELL" = "";
+"OPEN_CELL" = "الافتتاحات";
 "OPENER_SILEO" = "فتح Sileo";
 "OPENER_ZEBRA" = "فتح Zebra";
 "OPENER_TH" = "فتح TrollHelper";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "تصحيح";
 "DEBUG_OPTIONS" = "الخيارات";
 "DEBUG_CLEAN_FAKEFS" = "مسح fakefs";
-"DEBUG_CLEAR_JSON" = "";
+"DEBUG_CLEAR_JSON" = "مسح التكوين";
 
 // Diags
 "CREDITS_SUBTEXT" = "تم تطوير المحمل بواسطة:";
