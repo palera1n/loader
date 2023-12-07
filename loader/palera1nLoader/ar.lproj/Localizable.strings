@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "تثبيت";
-"DEBUG" = "اكتشاف الأخطاء وإصلاحها";
+"DEBUG" = "استكشاف الاخطاء";
 "DIAGNOSTICS" = "معلومات الجهاز";
 "ACTIONS" = "إجراءات";
 "JBINIT_LOG" = "سجل التهيئة";
