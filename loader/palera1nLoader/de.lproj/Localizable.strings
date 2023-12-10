@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installieren";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "Fehlerbehebung";
 "DIAGNOSTICS" = "Geräteinformationen";
 "ACTIONS" = "Aktionen";
 "JBINIT_LOG" = "Loggen";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Jailbreak versteckt";
 "ACTION_HIDEJB" = "Jailbreak verstecken";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "Öffnen";
 "OPENER_SILEO" = "Öffne Sileo";
 "OPENER_ZEBRA" = "Öffne Zebra";
 "OPENER_TH" = "Öffne TrollHelper";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Fehlersuche";
 "DEBUG_OPTIONS" = "Optionen";
 "DEBUG_CLEAN_FAKEFS" = "Fakefs bereinigen";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "Konfiguration löschen";
 
 // Diags
 "CREDITS_SUBTEXT" = "Loader erstellt von:";
