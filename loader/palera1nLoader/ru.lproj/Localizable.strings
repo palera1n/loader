@@ -6,8 +6,8 @@ English
 // ViewController Cells
 
 "INSTALL" = "Установить";
-"DEBUG" = "Устранение неполадок";
-"DIAGNOSTICS" = "Информация об устройстве";
+"DEBUG" = "Устранение неисправностей";
+"DIAGNOSTICS" = "Инфор. оборуд";
 "ACTIONS" = "Действия";
 "JBINIT_LOG" = "Логирование";
 "REVERT_CELL" = "Откатить установку";
