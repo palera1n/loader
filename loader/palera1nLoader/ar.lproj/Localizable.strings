@@ -7,7 +7,7 @@ English
 
 "INSTALL" = "تثبيت";
 "DEBUG" = "استكشاف الاخطاء";
-"DIAGNOSTICS" = "معلومات الجهاز";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "إجراءات";
 "JBINIT_LOG" = "سجل التهيئة";
 "REVERT_CELL" = "إلغاء التثبيت";
