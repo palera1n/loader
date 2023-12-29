@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 // loader.json
 public struct loaderJSON: Codable {
     let bootstraps: [Bootstrap]
@@ -64,7 +63,7 @@ public struct cellInfo {
 /* How this works is that anything lower than what the loader.json has will cause it to return nil, however if it's higher than it will get the latest available version and bootstrap with that instead, maybe I should add a cf version override but not too sure on what to do else for this, for the sake of apple intentionally being moronic */
 
 public func jbType() -> String {
-    var jailbreakType = envInfo.isRootful ? "Rootful" : "Rootless"
+    var jailbreakType = paleInfo.palerain_option_rootful ? "Rootful" : "Rootless"
     if (envInfo.w_button) {
         if jailbreakType == "Rootless" {
             jailbreakType = "Rootful"
@@ -77,7 +76,7 @@ public func jbType() -> String {
 
 public func getBootstrapURL(_ json: loaderJSON) -> String? {
     let jailbreakType = jbType()
-    let cfver = String(envInfo.CF)
+    let cfver = String(VersionSeeker.corefoundationVersionShort)
     
     if let items = json.bootstraps.first(where: { $0.label == jailbreakType })?.items {
         let sortedItems = items.sorted { $0.cfver > $1.cfver }
@@ -94,8 +93,6 @@ public func getBootstrapURL(_ json: loaderJSON) -> String? {
     log(type: .error, msg: "Failed to find bootstrap URL.")
     return nil
 }
-
-
 
 public func getManagerURL(_ json: loaderJSON,_ pkgMgr: String) -> String? {
     let jailbreakType = jbType()
@@ -144,9 +141,6 @@ public func getAssetsInfo(_ json: loaderJSON) -> (repositories: [String], packag
     return (packages, repositories)
 }
 
-
-
-
 public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     let jailbreakType = jbType()
     var items: [ManagerItem]?
@@ -180,6 +174,12 @@ public func getCellInfo(_ json: loaderJSON) -> cellInfo? {
     
     return cellInfo(names: names, icons: icons, paths: paths)
 }
+
+
+
+// MARK: - fetch json URI to determine if you're able to press on the json vc cells
+
+
 
 extension JsonVC {
   func fetchJSON() {

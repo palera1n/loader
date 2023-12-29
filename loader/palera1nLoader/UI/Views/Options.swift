@@ -49,10 +49,10 @@ class OptionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-            #if targetEnvironment(simulator)
-            tableData.insert(["WOW_button"], at: tableData.count - 1)
-            sectionTitles.insert("DEBUGGING", at: sectionTitles.count - 1)
-            #endif
+        #if targetEnvironment(simulator)
+        tableData.insert(["WOW_button"], at: tableData.count - 1)
+        sectionTitles.insert("DEBUGGING", at: sectionTitles.count - 1)
+        #endif
     }
     
 

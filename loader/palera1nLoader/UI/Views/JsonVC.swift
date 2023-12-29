@@ -21,6 +21,8 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var errorMessage = "Unable to fetch bootstraps."
     var tableView: UITableView!
     
+    // MARK: - alerts for yea
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         envInfo.nav = navigationController!
@@ -28,30 +30,10 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         #if !targetEnvironment(simulator)
         switch true {
-        case !fileExists("/tmp/palera1n/helper"):
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                let alert = UIAlertController.error(title: LocalizationManager.shared.local("NO_PROCEED"), message: LocalizationManager.shared.local("NO_PROCEED_SIDELOADING"))
-                self.present(alert, animated: true)
-            }
-            return
-
-        case envInfo.hasForceReverted:
+        case paleInfo.palerain_option_force_revert:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 let alert = UIAlertController.error(title: LocalizationManager.shared.local("NO_PROCEED"), message: LocalizationManager.shared.local("NO_PROCEED_FR"))
                 self.present(alert, animated: true)
-            }
-            return
-            
-        case (envInfo.CF > 1900):
-            if envInfo.isRootful {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    let alertController = whichAlert(title: "Oopsy :3", message: "Rootful on iOS 17+ is not supported. You will get no support, and you're on your own.")
-                    let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CLOSE"), style: .cancel, handler: nil)
-                    alertController.addAction(cancelAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                return
             }
             return
         default:
@@ -61,13 +43,12 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    
+    // MARK: - Main view stuff
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if !envInfo.hasChecked {
-            Check.prerequisites()
-        }
-        
         setNavigationBar()
         setTableView()
     }
@@ -84,9 +65,18 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 return 1
             }
             return tableData[section].count
+        } else {
+            let strapValue = Check.installation()
+            switch strapValue {
+            case .rootful, .rootless, .rootful_installed:
+                return 1
+            case .rootless_installed:
+                return 2
+            case .simulated:
+                return 2
+            }
         }
-        /* JsonVC has two sections, so if section is not 0, it must be 1. */
-        return 2
+        
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -98,7 +88,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
             return LocalizationManager.shared.local("INSTALL")
         } else {
-            /* JsonVC has two sections, so if section is not 0, it must be 1. */
             return LocalizationManager.shared.local("DEBUG")
         }
     }
@@ -140,7 +129,7 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 if #available(iOS 13.0, *) { mods.applySymbolModifications(to: cell, with: "trash", backgroundColor: .systemRed) }
                 cell.textLabel?.text = LocalizationManager.shared.local("REVERT_CELL")
-                if envInfo.isRootful {
+                if paleInfo.palerain_option_rootful {
                     cell.isUserInteractionEnabled = false
                     cell.textLabel?.textColor = .gray
                     cell.imageView?.alpha = 0.4
@@ -169,7 +158,6 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
 
           var filePaths = getCellInfo(envInfo.jsonInfo!)!.paths
-            let procursusStrappedExists = FileManager.default.fileExists(atPath: "\(envInfo.installPrefix)/.procursus_strapped")
 
             let alertController = whichAlert(title: "", message: nil)
             let cancelAction = UIAlertAction(title: LocalizationManager.shared.local("CANCEL"), style: .cancel, handler: nil)
@@ -194,21 +182,23 @@ class JsonVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     return FileManager.default.fileExists(atPath: trimmedPath)
                 }
 
-                let lowercaseName = name.lowercased()
-
-              if procursusStrappedExists {
-                  alertController.message = exists ? String(format: NSLocalizedString("DL_STRAP_PM", comment: ""), name, filePath) : String(format: NSLocalizedString("DL_STRAP_NOPM", comment: ""), name)
-                  let pkgAction = UIAlertAction(title: exists ? LocalizationManager.shared.local("REINSTALL") : LocalizationManager.shared.local("INSTALL"), style: .default) { _ in
-                      self.installDebFile(file: "\(lowercaseName)")
-                  }
-                  alertController.addAction(pkgAction)
-              } else {
-                  alertController.message = String(format: NSLocalizedString("DL_NOSTRAP", comment: ""), name)
-                  let installAction = UIAlertAction(title: LocalizationManager.shared.local("INSTALL"), style: .default) { _ in
-                      self.installStrap(file: name.lowercased()) {}
-                  }
-                  alertController.addAction(installAction)
-              }
+                let strapValue = Check.installation()
+                switch strapValue {
+                case .rootful, .rootless:
+                    alertController.message = String(format: NSLocalizedString("DL_NOSTRAP", comment: ""), name)
+                    let installAction = UIAlertAction(title: LocalizationManager.shared.local("INSTALL"), style: .default) { _ in
+                        self.installStrap(file: name.lowercased()) {}
+                    }
+                    alertController.addAction(installAction)
+                case .rootless_installed, .rootful_installed:
+                    alertController.message = exists ? String(format: NSLocalizedString("DL_STRAP_PM", comment: ""), name, filePath) : String(format: NSLocalizedString("DL_STRAP_NOPM", comment: ""), name)
+                    let pkgAction = UIAlertAction(title: exists ? LocalizationManager.shared.local("REINSTALL") : LocalizationManager.shared.local("INSTALL"), style: .default) { _ in
+                        self.installDebFile(file: "\(name.lowercased())")
+                    }
+                    alertController.addAction(pkgAction)
+                case .simulated:
+                    break
+                }
             }
 
             present(alertController, animated: true, completion: nil)

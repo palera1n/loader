@@ -55,12 +55,6 @@ import Extras
     var pid: pid_t = 0
     let spawnStatus = posix_spawn(&pid, command, &fileActions, &attr, argv + [nil], proenv + [nil])
     if spawnStatus != 0 {
-        let noLog = ["-p","-P","-k","-b","-t","-f"]
-        if (args.count > 1) {
-            if (!noLog.contains(args[1]) && args[0] != "mv") {
-                log(type: .error, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n")
-            }
-        }
         return Int(spawnStatus)
     }
 
@@ -137,53 +131,10 @@ import Extras
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    let noLog = ["-p","-k","-b","-t","-f","-P","-s","-S", "-rf"]
-    if (!noLog.contains(args[1]) && args[0] != "mv") {
-        log(type: .info, msg: "Spawn:\n\tStatus: \(spawnStatus)\n\tCommand: \(command.description)\n\tArgs: \(args)\n\tStdout: \(stdoutStr)\n\tStderr: \(stderrStr)\n")
-    }
-    if (args[1] == "-p") {
+    if args[1] == "palera1n_flags" {
         let str = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
-        if let int_val = UInt32(str) {
-            envInfo.pinfoFlags = String(format: "0x%lx (\(str))", int_val)
-        } else {
-            envInfo.pinfoFlags = "0x0"
-        }
-    }
-    
-    if (args[1] == "-k") {
-        let str = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
-        if let int_val = UInt32(str) {
-            envInfo.kinfoFlags = String(format: "0x%lx (\(str))", int_val)
-        } else {
-            envInfo.kinfoFlags = "0x0"
-        }
-        
-    }
-    
-    if (args[1] == "-s") {
-        let flags = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
-        let flags_list = flags.replacingOccurrences(of: ",", with: "\n")
-        envInfo.pinfoFlagsStr = String(flags_list.dropLast())
-    }
-    
-    if (args[1] == "-S") {
-        let flags = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
-        let flags_list = flags.replacingOccurrences(of: ",", with: "\n")
-        envInfo.kinfoFlagsStr = String(flags_list.dropLast())
-    }
-    
-    if (args[1] == "-f") {
-        let temp = "\(stdoutStr)".trimmingCharacters(in: .newlines)
-        envInfo.hasForceReverted = Int(temp) == 1 ? true : false
-    }
-    
-    if (args[1] == "-t") {
-        let temp = "\(stdoutStr)".trimmingCharacters(in: .newlines)
-        envInfo.isRootful = Int(temp) == 1 ? true : false
-    }
-    
-    if (args[1] == "-b") {
-        envInfo.bmHash = "\(stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines))"
+        log(msg: str)
+        envInfo.pinfoFlags = str.isEmpty ? "" : str
     }
     
     return Int(status)

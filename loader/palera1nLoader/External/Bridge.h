@@ -1,4 +1,6 @@
 #include <spawn.h>
+#include <CoreFoundation/CoreFoundation.h>
+#include <IOKit/IOKitLib.h>
 
 @import Foundation;
 

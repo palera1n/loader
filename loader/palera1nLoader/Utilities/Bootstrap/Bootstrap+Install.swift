@@ -224,7 +224,7 @@ class bootstrap {
     
     
     static public func revert(viewController: UIViewController) -> Void {
-        if !envInfo.isRootful {
+        if paleInfo.palerain_option_rootless {
             let alert = UIAlertController.spinnerAlert("REMOVING")
             viewController.present(alert, animated: true)
             helper(args: ["-R"])

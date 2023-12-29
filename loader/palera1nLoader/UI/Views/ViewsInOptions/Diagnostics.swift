@@ -11,14 +11,11 @@ import Extras
 class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
-        [LocalizationManager.shared.local("TYPE_INFO"), LocalizationManager.shared.local("KINFO_FLAGS"), LocalizationManager.shared.local("PINFO_FLAGS")],
-        [LocalizationManager.shared.local("VERSION_INFO"), LocalizationManager.shared.local("ARCH_INFO"), "Device ID", "Kernel", "CF"],
-
-        
-        [LocalizationManager.shared.local("STRAP_INFO"), LocalizationManager.shared.local("INSTALL_FR")]
+        [LocalizationManager.shared.local("TYPE_INFO"),  LocalizationManager.shared.local("PINFO_FLAGS")],
+        [LocalizationManager.shared.local("VERSION_INFO"), LocalizationManager.shared.local("ARCH_INFO"), "Device ID", "Kernel", "CF"]
     ]
     var selectedCellText: String?
-    let sectionTitles = ["palera1n", LocalizationManager.shared.local("DIAGNOSTICS"), LocalizationManager.shared.local("STRAP_INFO")]
+    let sectionTitles = ["palera1n", LocalizationManager.shared.local("DIAGNOSTICS")]
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,54 +49,9 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    func getDeviceCode() -> String? {
-        var systemInfo = utsname()
-        uname(&systemInfo)
-        let modelCode = withUnsafePointer(to: &systemInfo.machine) {
-            $0.withMemoryRebound(to: CChar.self, capacity: 1) {
-                ptr in String.init(validatingUTF8: ptr)
-            }
-        }
-        if modelCode!.contains("arm64") || modelCode!.contains("x86_64") {
-            return "Simulated"
-        }
-        return modelCode
-    }
-    
-    func bootargsObviouslyProbably() -> String {
-        var size: size_t = 0
-        sysctlbyname("kern.bootargs", nil, &size, nil, 0)
-
-        var machine = [CChar](repeating: 0, count: size)
-        sysctlbyname("kern.bootargs", &machine, &size, nil, 0)
-
-        let bootArgs = String(cString: machine)
-        return bootArgs
-    }
-    
-    func kernelVersion() -> String {
-        var utsnameInfo = utsname()
-        uname(&utsnameInfo)
-
-        let releaseCopy = withUnsafeBytes(of: &utsnameInfo.release) { bytes in
-            Array(bytes)
-        }
-
-        let version = String(cString: releaseCopy)
-        return version
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionTitles.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData[section].count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
@@ -112,10 +64,10 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.detailTextLabel?.text = UIDevice.current.systemVersion
         case "Device ID":
             cell.textLabel?.text = "Device ID"
-            cell.detailTextLabel?.text = getDeviceCode()
+            cell.detailTextLabel?.text = VersionSeeker.deviceId()
         case "Kernel":
             cell.textLabel?.text = "Kernel Version"
-            cell.detailTextLabel?.text = kernelVersion()
+            cell.detailTextLabel?.text = VersionSeeker.kernelVersion()
         case "CF":
             cell.textLabel?.text = "CF Version"
             cell.detailTextLabel?.text = "\(Int(floor((kCFCoreFoundationVersionNumber))))"
@@ -124,28 +76,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.detailTextLabel?.text = String(cString: NXGetLocalArchInfo().pointee.name)
         case LocalizationManager.shared.local("TYPE_INFO"):
             cell.textLabel?.text = LocalizationManager.shared.local("TYPE_INFO")
-            cell.detailTextLabel?.text = envInfo.isRootful ? LocalizationManager.shared.local("ROOTFUL") : LocalizationManager.shared.local("ROOTLESS")
-        case LocalizationManager.shared.local("INSTALL_FR"):
-            cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_FR")
-            cell.detailTextLabel?.text = envInfo.hasForceReverted ? LocalizationManager.shared.local("TRUE") : LocalizationManager.shared.local("FALSE")
-        case LocalizationManager.shared.local("STRAP_INFO"):
-            let strapValue = Check.installation()
-            switch strapValue {
-            case .rootful:
-                cell.detailTextLabel?.text = LocalizationManager.shared.local("FALSE")
-            case .simulated:
-                cell.detailTextLabel?.text = "Simulated"
-            case .rootless:
-                cell.detailTextLabel?.text = LocalizationManager.shared.local("FALSE")
-            case .rootless_installed:
-                cell.detailTextLabel?.text = LocalizationManager.shared.local("TRUE")
-            case .rootful_installed:
-                cell.detailTextLabel?.text = LocalizationManager.shared.local("TRUE")
-            }
-            cell.textLabel?.text = LocalizationManager.shared.local("INSTALL_INFO")
-        case LocalizationManager.shared.local("KINFO_FLAGS"):
-            cell.textLabel?.text = LocalizationManager.shared.local("KINFO_FLAGS")
-            cell.detailTextLabel?.text = envInfo.kinfoFlags
+            cell.detailTextLabel?.text = paleInfo.palerain_option_rootful ? LocalizationManager.shared.local("ROOTFUL") : LocalizationManager.shared.local("ROOTLESS")
         case LocalizationManager.shared.local("PINFO_FLAGS"):
             cell.textLabel?.text = LocalizationManager.shared.local("PINFO_FLAGS")
             cell.detailTextLabel?.text = envInfo.pinfoFlags
@@ -163,7 +94,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             BOOT-ARGS
             
-            \(bootargsObviouslyProbably())
+            \(VersionSeeker.deviceBoot_Args())
             """
         }
         return nil

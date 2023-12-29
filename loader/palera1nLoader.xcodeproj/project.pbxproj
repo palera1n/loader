@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F12BB0A2A30BF5B0095972E /* CoreServices.framework */; };
-		2F12BB102A30C4970095972E /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12BB0F2A30C4970095972E /* Decoder.swift */; };
+		2F12BB102A30C4970095972E /* Decoder+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12BB0F2A30C4970095972E /* Decoder+Fetch.swift */; };
 		2FC1542B2A36B71300AC9346 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1542A2A36B71300AC9346 /* Alerts.swift */; };
 		2FC1542D2A36B7A900AC9346 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1542C2A36B7A900AC9346 /* Cells.swift */; };
-		2FC154302A36B83300AC9346 /* Checks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1542F2A36B83300AC9346 /* Checks.swift */; };
-		2FC154322A36B84D00AC9346 /* Opener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154312A36B84D00AC9346 /* Opener.swift */; };
+		2FC154302A36B83300AC9346 /* InstallStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1542F2A36B83300AC9346 /* InstallStatus.swift */; };
 		2FC154342A36C02000AC9346 /* Binpack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154332A36C02000AC9346 /* Binpack.swift */; };
 		2FC154362A36C2E500AC9346 /* Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC154352A36C2E500AC9346 /* Design.swift */; };
 		337311AB2AE86F2E00A9E0CB /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 337311AA2AE86F2E00A9E0CB /* Makefile */; };
+		3388E25F2B34CEF20001EE20 /* paleinfo+envinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E25E2B34CEF20001EE20 /* paleinfo+envinfo.swift */; };
+		3388E2612B34D2AB0001EE20 /* Device+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E2602B34D2AB0001EE20 /* Device+Info.swift */; };
+		3388E2632B34D32D0001EE20 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3388E2622B34D32D0001EE20 /* IOKit.framework */; };
 		33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4DF2A30050A006EC0B4 /* JsonVC.swift */; };
 		33CCDA552ACD1255000E0111 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CCDA542ACD1255000E0111 /* Download.swift */; };
 		33E15DAD29F4DC8F00D2770A /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAC29F4DC8F00D2770A /* Diagnostics.swift */; };
@@ -24,7 +26,7 @@
 		33F0A3F82B0355E100BF1C0E /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F0A3F72B0355E100BF1C0E /* Options.swift */; };
 		33F0A3FA2B0366F200BF1C0E /* LogList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F0A3F92B0366F200BF1C0E /* LogList.swift */; };
 		4501473829FC1AEB0001834C /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4501473729FC1AEB0001834C /* Logging.swift */; };
-		4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap.swift */; };
+		4509BACC29E7970300D36328 /* Bootstrap+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4509BACB29E7970300D36328 /* Bootstrap+Install.swift */; };
 		45E7E0F329E4EC5B0057741A /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7E0F229E4EC5B0057741A /* Common.swift */; };
 		45E7E0F829E650C30057741A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 45E7E0FA29E650C30057741A /* Localizable.strings */; };
 		E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181BAD928CF914300CD25A6 /* AppDelegate.swift */; };
@@ -34,11 +36,10 @@
 
 /* Begin PBXFileReference section */
 		2F12BB0A2A30BF5B0095972E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
-		2F12BB0F2A30C4970095972E /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		2F12BB0F2A30C4970095972E /* Decoder+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Fetch.swift"; sourceTree = "<group>"; };
 		2FC1542A2A36B71300AC9346 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		2FC1542C2A36B7A900AC9346 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
-		2FC1542F2A36B83300AC9346 /* Checks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checks.swift; sourceTree = "<group>"; };
-		2FC154312A36B84D00AC9346 /* Opener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opener.swift; sourceTree = "<group>"; };
+		2FC1542F2A36B83300AC9346 /* InstallStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallStatus.swift; sourceTree = "<group>"; };
 		2FC154332A36C02000AC9346 /* Binpack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binpack.swift; sourceTree = "<group>"; };
 		2FC154352A36C2E500AC9346 /* Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Design.swift; sourceTree = "<group>"; };
 		3340404F2A21C37B000884CC /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = ca.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -56,6 +57,9 @@
 		3384F5982A1EAACC00F8BF22 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F59A2A1EAB2400F8BF22 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3384F59B2A1EAB3600F8BF22 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3388E25E2B34CEF20001EE20 /* paleinfo+envinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "paleinfo+envinfo.swift"; sourceTree = "<group>"; };
+		3388E2602B34D2AB0001EE20 /* Device+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Info.swift"; sourceTree = "<group>"; };
+		3388E2622B34D32D0001EE20 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		33AA48DC2A19675E0070F207 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33AA48DE2A1967800070F207 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33AA48E12A1967950070F207 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -69,7 +73,7 @@
 		33F0A3F72B0355E100BF1C0E /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		33F0A3F92B0366F200BF1C0E /* LogList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogList.swift; sourceTree = "<group>"; };
 		4501473729FC1AEB0001834C /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		4509BACB29E7970300D36328 /* Bootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrap.swift; sourceTree = "<group>"; };
+		4509BACB29E7970300D36328 /* Bootstrap+Install.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bootstrap+Install.swift"; sourceTree = "<group>"; };
 		45E7E0F229E4EC5B0057741A /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		45E7E0F929E650C30057741A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		45E7E0FB29E650CB0057741A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */,
+				3388E2632B34D32D0001EE20 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +101,7 @@
 		2F12BB092A30BF5A0095972E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3388E2622B34D32D0001EE20 /* IOKit.framework */,
 				2F12BB0A2A30BF5B0095972E /* CoreServices.framework */,
 			);
 			name = Frameworks;
@@ -114,12 +120,13 @@
 		2FC1542E2A36B81900AC9346 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				2FC1542F2A36B83300AC9346 /* Checks.swift */,
+				2FC1542F2A36B83300AC9346 /* InstallStatus.swift */,
 				4501473729FC1AEB0001834C /* Logging.swift */,
-				2FC154312A36B84D00AC9346 /* Opener.swift */,
-				2FC154332A36C02000AC9346 /* Binpack.swift */,
 				45E7E0F229E4EC5B0057741A /* Common.swift */,
-				2F12BB0F2A30C4970095972E /* Decoder.swift */,
+				3388E2642B34E8860001EE20 /* Spawn */,
+				3313A75729ECE2710021665E /* Bootstrap */,
+				3388E25E2B34CEF20001EE20 /* paleinfo+envinfo.swift */,
+				3388E2602B34D2AB0001EE20 /* Device+Info.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -138,11 +145,20 @@
 		3313A75729ECE2710021665E /* Bootstrap */ = {
 			isa = PBXGroup;
 			children = (
+				2F12BB0F2A30C4970095972E /* Decoder+Fetch.swift */,
 				33CCDA542ACD1255000E0111 /* Download.swift */,
-				4509BACB29E7970300D36328 /* Bootstrap.swift */,
-				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+				4509BACB29E7970300D36328 /* Bootstrap+Install.swift */,
 			);
 			path = Bootstrap;
+			sourceTree = "<group>";
+		};
+		3388E2642B34E8860001EE20 /* Spawn */ = {
+			isa = PBXGroup;
+			children = (
+				2FC154332A36C02000AC9346 /* Binpack.swift */,
+				E1C440AB28D0EDFB000DBB1A /* CommandRunner.swift */,
+			);
+			path = Spawn;
 			sourceTree = "<group>";
 		};
 		33F0A3FB2B03727800BF1C0E /* ViewsInOptions */ = {
@@ -182,7 +198,6 @@
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
 				2FC1542E2A36B81900AC9346 /* Utilities */,
 				3313A75629ECE2690021665E /* UI */,
-				3313A75729ECE2710021665E /* Bootstrap */,
 				33DE13AA29DCAD7800DF3D5E /* External */,
 				45E7E0FA29E650C30057741A /* Localizable.strings */,
 			);
@@ -218,11 +233,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					E181BAD528CF914300CD25A6 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -294,24 +310,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				33E15DB129F4F03A00D2770A /* LogView.swift in Sources */,
-				2FC154302A36B83300AC9346 /* Checks.swift in Sources */,
+				2FC154302A36B83300AC9346 /* InstallStatus.swift in Sources */,
 				33F0A3FA2B0366F200BF1C0E /* LogList.swift in Sources */,
 				33E15DAD29F4DC8F00D2770A /* Diagnostics.swift in Sources */,
 				2FC154342A36C02000AC9346 /* Binpack.swift in Sources */,
 				337311AB2AE86F2E00A9E0CB /* Makefile in Sources */,
 				33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */,
-				2FC154322A36B84D00AC9346 /* Opener.swift in Sources */,
 				2FC1542D2A36B7A900AC9346 /* Cells.swift in Sources */,
 				33F0A3F82B0355E100BF1C0E /* Options.swift in Sources */,
-				2F12BB102A30C4970095972E /* Decoder.swift in Sources */,
+				2F12BB102A30C4970095972E /* Decoder+Fetch.swift in Sources */,
+				3388E2612B34D2AB0001EE20 /* Device+Info.swift in Sources */,
 				2FC154362A36C2E500AC9346 /* Design.swift in Sources */,
 				33CCDA552ACD1255000E0111 /* Download.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
 				33E15DAF29F4E6CA00D2770A /* Actions.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
+				3388E25F2B34CEF20001EE20 /* paleinfo+envinfo.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
-				4509BACC29E7970300D36328 /* Bootstrap.swift in Sources */,
+				4509BACC29E7970300D36328 /* Bootstrap+Install.swift in Sources */,
 				2FC1542B2A36B71300AC9346 /* Alerts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,12 +476,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+				SYSTEM_HEADER_SEARCH_PATHS = "../apple-include";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -475,6 +494,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
@@ -513,8 +533,10 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = "../apple-include";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -525,6 +547,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
@@ -563,6 +586,7 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

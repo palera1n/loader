@@ -13,7 +13,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData = [
         [LocalizationManager.shared.local("ACTION_HIDEJB")],
         [LocalizationManager.shared.local("ACTION_RESPRING"), LocalizationManager.shared.local("ACTION_UICACHE"), LocalizationManager.shared.local("ACTION_TWEAKS")],
-        [LocalizationManager.shared.local("OPENER_SILEO"), LocalizationManager.shared.local("OPENER_ZEBRA"), LocalizationManager.shared.local("OPENER_TH")],
+        [LocalizationManager.shared.local("OPENER_SILEO"), LocalizationManager.shared.local("OPENER_ZEBRA")],
         [LocalizationManager.shared.local("ACTION_USREBOOT"), LocalizationManager.shared.local("ACTION_DAEMONS"), LocalizationManager.shared.local("ACTION_MOUNT")]
     ]
     
@@ -82,9 +82,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case LocalizationManager.shared.local("OPENER_ZEBRA"):
             cell.textLabel?.textColor = .systemBlue
             cell.textLabel?.text = LocalizationManager.shared.local("OPENER_ZEBRA")
-        case LocalizationManager.shared.local("OPENER_TH"):
-            cell.textLabel?.textColor = .systemBlue
-            cell.textLabel?.text = LocalizationManager.shared.local("OPENER_TH")
             
         case LocalizationManager.shared.local("ACTION_RESPRING"):
             cell.textLabel?.text = LocalizationManager.shared.local("ACTION_RESPRING")
@@ -121,8 +118,6 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if opener.openApp("org.coolstar.SileoStore") {} else if opener.openApp("org.coolstar.SileoNightly") {}
         case LocalizationManager.shared.local("OPENER_ZEBRA"):
             if opener.openApp("xyz.willy.Zebra") {}
-        case LocalizationManager.shared.local("OPENER_TH"):
-            opener.TrollHelper()
         case LocalizationManager.shared.local("ACTION_RESPRING"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case LocalizationManager.shared.local("ACTION_UICACHE"):
@@ -152,7 +147,7 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     private func HideEnv(viewController: UIViewController) {
-            if (!envInfo.isRootful) {
+            if (paleInfo.palerain_option_rootless) {
                 let strapValue = Check.installation()
                 switch strapValue {
                 case .rootless_installed:
