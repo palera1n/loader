@@ -15,10 +15,10 @@ jobs:
         run: |
           curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
           sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
-          brew install 7zip
+          brew install 7zip gnu-sed
 
       - name: Compile
-        run: IOS=1 FINAL=1 make
+        run: IOS=1 FINAL=1 make package
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
