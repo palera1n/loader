@@ -12,9 +12,9 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var tableData = [
         [LocalizationManager.shared.local("ACTION_HIDEJB")],
-        [LocalizationManager.shared.local("ACTION_RESPRING"), LocalizationManager.shared.local("ACTION_UICACHE"), LocalizationManager.shared.local("ACTION_TWEAKS")],
+        [LocalizationManager.shared.local("ACTION_RESPRING"), LocalizationManager.shared.local("ACTION_UICACHE")],
         [LocalizationManager.shared.local("OPENER_SILEO"), LocalizationManager.shared.local("OPENER_ZEBRA")],
-        [LocalizationManager.shared.local("ACTION_USREBOOT"), LocalizationManager.shared.local("ACTION_DAEMONS"), LocalizationManager.shared.local("ACTION_MOUNT")]
+        [LocalizationManager.shared.local("ACTION_USREBOOT")]
     ]
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,19 +89,10 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case LocalizationManager.shared.local("ACTION_UICACHE"):
             cell.textLabel?.textColor = .systemBlue
             cell.textLabel?.text = LocalizationManager.shared.local("ACTION_UICACHE")
-        case LocalizationManager.shared.local("ACTION_TWEAKS"):
-            cell.textLabel?.textColor = .systemBlue
-            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_TWEAKS")
-            cell.textLabel?.textColor = .systemBlue
-            
+    
         case LocalizationManager.shared.local("ACTION_USREBOOT"):
             cell.textLabel?.text = LocalizationManager.shared.local("ACTION_USREBOOT")
             cell.textLabel?.textColor = .systemOrange
-        case LocalizationManager.shared.local("ACTION_DAEMONS"):
-            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_DAEMONS")
-            cell.textLabel?.textColor = .systemOrange
-        case LocalizationManager.shared.local("ACTION_MOUNT"):
-            cell.textLabel?.text = LocalizationManager.shared.local("ACTION_MOUNT")
             cell.textLabel?.textColor = .systemOrange
         default:
             break
@@ -122,15 +113,8 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case LocalizationManager.shared.local("ACTION_UICACHE"):
             spawn(command: "\(envInfo.installPrefix)/usr/bin/uicache", args: ["-a"])
-        case LocalizationManager.shared.local("ACTION_TWEAKS"):
-            helper(args: ["-l"])
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"]) }
         case LocalizationManager.shared.local("ACTION_USREBOOT"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
-        case LocalizationManager.shared.local("ACTION_DAEMONS"):
-            helper(args: ["-L"])
-        case LocalizationManager.shared.local("ACTION_MOUNT"):
-            helper(args: ["-M"])
         default:
             break
         }
@@ -153,12 +137,10 @@ class ActionsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 case .rootless_installed:
                     #if !targetEnvironment(simulator)
                     let alert = UIAlertController.warning(title: LocalizationManager.shared.local("ACTION_HIDEJB"), message: LocalizationManager.shared.local("HIDE_NOTICE"), destructiveBtnTitle: LocalizationManager.shared.local("PROCEED"), destructiveHandler: {
-                        if fileExists("/tmp/palera1n/helper") {
-                            if fileExists("/var/jb") {
-                                binpack.rm("/var/jb")
-                            }
-                            spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"])
+                        if fileExists("/var/jb") {
+                            binpack.rm("/var/jb")
                         }
+                        spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"])
                     })
                     viewController.present(alert, animated: true)
                     #endif

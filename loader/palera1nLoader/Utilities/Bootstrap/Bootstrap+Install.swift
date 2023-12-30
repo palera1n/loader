@@ -72,50 +72,10 @@ extension JsonVC {
                           bootstrap.installBootstrap(tar: path!, deb: "\(file).deb", completion:{(msg:String?, error:Int?) in
                               installingAlert.dismiss(animated: true) {
                                   if (error == 0) {
-                                      let message = LocalizationManager.shared.local("PASSWORD")
-                                      let alertController = UIAlertController(title: LocalizationManager.shared.local("PASSWORD_SET"), message: message, preferredStyle: .alert)
-                                      alertController.addTextField() { (password) in
-                                          password.placeholder = LocalizationManager.shared.local("PASSWORD_TEXT")
-                                          password.isSecureTextEntry = true
-                                          password.keyboardType = UIKeyboardType.asciiCapable
-                                      }
-
-                                      alertController.addTextField() { (repeatPassword) in
-                                          repeatPassword.placeholder = LocalizationManager.shared.local("PASSWORD_REPEAT")
-                                          repeatPassword.isSecureTextEntry = true
-                                          repeatPassword.keyboardType = UIKeyboardType.asciiCapable
-                                      }
-
-                                      let setPassword = UIAlertAction(title: LocalizationManager.shared.local("SET"), style: .default) { _ in
-                                          helper(args: ["-P", alertController.textFields![0].text!])
-                      
-                                          alertController.dismiss(animated: true) {
-                                              let alert = UIAlertController.error(title: LocalizationManager.shared.local("DONE_INSTALL"), message: LocalizationManager.shared.local("DONE_INSTALL_SUB"))
-                                              self.present(alert, animated: true)
-                                              completion()
-                                          }
-                                      }
-                                      setPassword.isEnabled = false
-                                      alertController.addAction(setPassword)
-
-                                      NotificationCenter.default.addObserver(
-                                          forName: UITextField.textDidChangeNotification,
-                                          object: nil,
-                                          queue: .main
-                                      ) { notification in
-                                          let passOne = alertController.textFields![0].text
-                                          let passTwo = alertController.textFields![1].text
-                                          if (passOne!.count > 253 || passOne!.count > 253) {
-                                              setPassword.setValue(LocalizationManager.shared.local("TOO_LONG"), forKeyPath: "title")
-                                          } else {
-                                              setPassword.setValue(LocalizationManager.shared.local("SET"), forKeyPath: "title")
-                                              setPassword.isEnabled = (passOne == passTwo) && !passOne!.isEmpty && !passTwo!.isEmpty
-                                          }
-                                      }
-                                      self.present(alertController, animated: true)
+                                      UIApplication.shared.openSpringBoard()
+                                      exit(0)
                                   } else {
-                                      let errStr = String(cString: strerror(Int32(error!)))
-                                      let alert = UIAlertController.error(title: LocalizationManager.shared.local("ERROR_INSTALL"), message: errStr)
+                                      let alert = UIAlertController.error(title: LocalizationManager.shared.local("ERROR_INSTALL"), message: "Status: \(errorString(Int32(error!)))")
                                       self.present(alert, animated: true)
                                   }
                               }
@@ -133,7 +93,6 @@ extension JsonVC {
 
 class bootstrap {
 
-    // Ran after bootstrap/deb install
     static public func cleanUp() -> Void {
       let pathsToClear = ["/tmp/palera1n/temp"]
       for path in pathsToClear {
@@ -164,10 +123,11 @@ class bootstrap {
     
 
     static public func installDebian(deb: String, completion: @escaping (String?, Int?) -> Void) {
-        var ret = helper(args: ["-d", deb])
-        if (ret != 0) {
-            completion(LocalizationManager.shared.local("DPKG_ERROR"), ret)
-            return
+        var prefix = ""
+        if paleInfo.palerain_option_rootless { prefix = "/var/jb" }
+        var ret = spawn(command: "\(prefix)/usr/bin/dpkg", args: ["-i", deb])
+        if ret != 0 {
+            log(type: .error, msg: String(format:"Failed to finalize bootstrap, installing libjbdrw failed with error code: \(ret)"))
         }
 
         ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
@@ -183,35 +143,23 @@ class bootstrap {
     
     
     static public func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
-        let debPath = "/tmp/palera1n/\(deb)"
-        var ret = helper(args: ["--install", tar, debPath])
-        if (ret != 0) {
-            completion(LocalizationManager.shared.local("ERROR_STRAP"), ret)
-            return
+        
+        do {
+            try Bootstrapper.extractBootstrap(tar: tar)
+        } catch {
+            log(msg: "Bootstrapper error occurred: \(error)")
         }
         
-        if let assetsInfo = getAssetsInfo(envInfo.jsonInfo!) {
-            let packages = assetsInfo.packages // repos
-            let repositories = assetsInfo.repositories // packages
-                        
-            let repos = packages.joined(separator: "")
-
-            ret = helper(args: ["--add-repositories", repos])
-            if ret != 0 {
-                completion(LocalizationManager.shared.local("ERROR_STRAP"), ret)
-                return
-            }
-            
-            for package in repositories {
-                ret = helper(args: ["--add-packages", package])
-                if ret != 0 {
-                    completion(LocalizationManager.shared.local("ERROR_STRAP"), ret)
-                    return
-                }
+        if Bootstrapper.needsFinalize() {
+            log(msg: "Status: Finalizing Bootstrap")
+            do {
+                try Bootstrapper.finalizeBootstrap(deb: deb)
+            } catch {
+                log(msg: "Finalization error occurred: \(error)")
             }
         }
 
-        ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
+        var ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         if (ret != 0) {
             completion(LocalizationManager.shared.local("ERROR_UICACHE"), ret)
             return
@@ -222,15 +170,16 @@ class bootstrap {
         return
     }
     
-    
     static public func revert(viewController: UIViewController) -> Void {
         if paleInfo.palerain_option_rootless {
             let alert = UIAlertController.spinnerAlert("REMOVING")
             viewController.present(alert, animated: true)
-            helper(args: ["-R"])
+            do {
+                Bootstrapper.uninstallBootstrap()
+            }
             
             if (envInfo.rebootAfter) {
-                helper(args: ["-r"])
+                spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"])
             } else {
                 let errorAlert = UIAlertController.error(title: LocalizationManager.shared.local("DONE_REVERT"), message: LocalizationManager.shared.local("CLOSE_APP"))
                 alert.dismiss(animated: true) {

@@ -18,6 +18,7 @@
 		3388E25F2B34CEF20001EE20 /* paleinfo+envinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E25E2B34CEF20001EE20 /* paleinfo+envinfo.swift */; };
 		3388E2612B34D2AB0001EE20 /* Device+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3388E2602B34D2AB0001EE20 /* Device+Info.swift */; };
 		3388E2632B34D32D0001EE20 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3388E2622B34D32D0001EE20 /* IOKit.framework */; };
+		33A452DD2B40994E00E5D73F /* Bootstrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A452DC2B40994E00E5D73F /* Bootstrapper.swift */; };
 		33AED4E02A30050A006EC0B4 /* JsonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AED4DF2A30050A006EC0B4 /* JsonVC.swift */; };
 		33CCDA552ACD1255000E0111 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CCDA542ACD1255000E0111 /* Download.swift */; };
 		33E15DAD29F4DC8F00D2770A /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E15DAC29F4DC8F00D2770A /* Diagnostics.swift */; };
@@ -60,6 +61,7 @@
 		3388E25E2B34CEF20001EE20 /* paleinfo+envinfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "paleinfo+envinfo.swift"; sourceTree = "<group>"; };
 		3388E2602B34D2AB0001EE20 /* Device+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Info.swift"; sourceTree = "<group>"; };
 		3388E2622B34D32D0001EE20 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		33A452DC2B40994E00E5D73F /* Bootstrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bootstrapper.swift; sourceTree = "<group>"; };
 		33AA48DC2A19675E0070F207 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33AA48DE2A1967800070F207 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		33AA48E12A1967950070F207 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				2F12BB0F2A30C4970095972E /* Decoder+Fetch.swift */,
 				33CCDA542ACD1255000E0111 /* Download.swift */,
 				4509BACB29E7970300D36328 /* Bootstrap+Install.swift */,
+				33A452DC2B40994E00E5D73F /* Bootstrapper.swift */,
 			);
 			path = Bootstrap;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				33E15DAF29F4E6CA00D2770A /* Actions.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				3388E25F2B34CEF20001EE20 /* paleinfo+envinfo.swift in Sources */,
+				33A452DD2B40994E00E5D73F /* Bootstrapper.swift in Sources */,
 				E1C440AC28D0EDFB000DBB1A /* CommandRunner.swift in Sources */,
 				4509BACC29E7970300D36328 /* Bootstrap+Install.swift in Sources */,
 				2FC1542B2A36B71300AC9346 /* Alerts.swift in Sources */,
