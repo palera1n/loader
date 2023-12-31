@@ -101,15 +101,6 @@ public class Bootstrapper {
         return false
     }
     
-    static func createSymbolicLink(atPath path: String, withDestinationPath pathContent: String) throws {
-        let components = path.split(separator: "/")
-        let directoryPath = components.dropLast(1).map(String.init).joined(separator: "/")
-        if !FileManager.default.fileExists(atPath: directoryPath) {
-            try FileManager.default.createDirectory(atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
-        }
-        try FileManager.default.createSymbolicLink(atPath: path, withDestinationPath: pathContent)
-    }
-    
     static func extractBootstrap(tar: String) throws {
         let bootstrapTmpTarPath = "/tmp/palera1n/temp/bootstrap.tar"
         var fakeRootPath = locateExistingFakeRoot()
@@ -139,8 +130,8 @@ public class Bootstrapper {
             // delete previous fakeroot if any
             binpack.rm(procursusPath)
                     
-            // create /var/jb
-            try createSymbolicLink(atPath: jbPath, withDestinationPath: procursusPath)
+            // create /var/jb symlink
+            binpack.mv(procursusPath, jbPath)
         }
         
         
