@@ -132,6 +132,8 @@ public class Bootstrapper {
                     
             // create /var/jb symlink
             binpack.mv(procursusPath, jbPath)
+        } else if paleInfo.palerain_option_rootful {
+            spawn(command: "/sbin/mount", args: ["-uw", "/"])
         }
         
         
@@ -189,13 +191,13 @@ public class Bootstrapper {
         
         // install packages from json
         if (spawn(command: "\(prefix)/usr/bin/apt-get", args: ["update", "--allow-insecure-repositories"]) != 1) {
+            spawn(command: "\(prefix)/usr/bin/apt-get", args: ["--fix-broken", "--allow-downgrades", "-y", "--allow-unauthenticated", "dist-upgrade"])
             if let assetsInfo = getAssetsInfo(envInfo.jsonInfo!) {
                 let packages = assetsInfo.packages
                 let repositories = assetsInfo.repositories
                 
-                print(packages)
+                //print(packages)
                 let repos = packages.joined(separator: "")
-                
                 for package in repositories {
                     let command = ["\(prefix)/usr/bin/apt-get", "-o", "Dpkg::Options::=--force-confnew", "install", package, "-y", "--allow-unauthenticated"]
 

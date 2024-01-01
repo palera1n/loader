@@ -148,6 +148,7 @@ class bootstrap {
             try Bootstrapper.extractBootstrap(tar: tar)
         } catch {
             log(msg: "Bootstrapper error occurred: \(error)")
+            return
         }
         
         if Bootstrapper.needsFinalize() {
@@ -156,6 +157,7 @@ class bootstrap {
                 try Bootstrapper.finalizeBootstrap(deb: deb)
             } catch {
                 log(msg: "Finalization error occurred: \(error)")
+                return
             }
         }
 
