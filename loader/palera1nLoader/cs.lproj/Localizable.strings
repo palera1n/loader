@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Nainstalovat";
-"DEBUG" = "Debug";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Informace o zařízení";
 "ACTIONS" = "Akce";
 "JBINIT_LOG" = "Logování";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Skryté prostředí";
 "ACTION_HIDEJB" = "Skrýt prostředí";
-"OPEN_CELL" = "Otevíráky";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Otevřít Sileo";
 "OPENER_ZEBRA" = "Otevřít Zebru";
 "OPENER_TH" = "Otevřít TrollHelper";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Debug";
 "DEBUG_OPTIONS" = "Možnosti";
 "DEBUG_CLEAN_FAKEFS" = "Vyčistit fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Odejít z bezpečného režimu";
-"DEBUG_ENTER_SAFEMODE" = "Spustit bezpečný režim";
-"DEBUG_CLEAR_JSON" = "Vymazat konfiguraci JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Model zařízení:";
-"DEVICE_MODEL_KERN" = "Verze kernelu:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader od:";
-"PINFO_SUBTEXT" = "Flagy (paleinfo) odpovídají flagům které jste použil(a) pomocí palera1n 2.0.0 CLI, užitečné pro vývojáře.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Nainstalováno";
 "ARCH_INFO" = "Architektura";
 "VERSION_INFO" = "Verze";
 "STRAP_INFO" = "Prostředí";
 "STRAP_FR_PREFIX" = "Prefix fakerootu";
-"STRAP_FR_PATH" = "Cesta fakerootu";
-"OPEN_FILZA" = "Otevřít v Filza";
-"OPEN_SANTANDER" = "Otevřít v Santander";
 "COPY" = "Kopírovat";
 "INSTALL_FR" = "Vynuceně obnoveno";
 "HELPER" = "Helper";
 "HELPER_PATH" = "Cesta k helperu";
-"SILEO_INSTALLED" = "Sileo nainstalováno";
-"ZEBRA_INSTALLED" = "Zebra nainstalovaná";
 "KINFO_FLAGS" = "Flagy (kerninfo)";
 "PINFO_FLAGS" = "Flagy (paleinfo)";
 

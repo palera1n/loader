@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"DEBUG" = "Εντοπισμός σφαλμάτων";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Ενέργειες";
 "JBINIT_LOG" = "Καταγραφή";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Περιβάλλον κρυμμένο";
 "ACTION_HIDEJB" = "Απόκρυψη περιβάλλοντος jailbreak";
-"OPEN_CELL" = "Σύνδεσμοι";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Άνοιγμα Sileo";
 "OPENER_ZEBRA" = "Άνοιγμα Zebra";
 "OPENER_TH" = "Άνοιγμα TrollHelper";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Εντοπισμός σφαλμάτων";
 "DEBUG_OPTIONS" = "Επιλογές";
 "DEBUG_CLEAN_FAKEFS" = "Εγκαθάριση FakeFS";
-"DEBUG_EXIT_SAFEMODE" = "Έξοδος από το safemode";
-"DEBUG_ENTER_SAFEMODE" = "Επανεκκίνηση σε safemode";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Μοντέλο συσκευής:";
-"DEVICE_MODEL_KERN" = "Έκδοση Kernel:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader από:";
-"PINFO_SUBTEXT" = "Τα Flags (paleinfo) αντιστοιχούν στα flags που χρησιμοποιήθηκαν μέσω του palera1n 2.0.0 CLI, χρήσιμα για προγραμματιστές.";
 "TYPE_INFO" = "Τύπος";
 "INSTALL_INFO" = "Εγκατεστημένο";
 "ARCH_INFO" = "Αρχιτεκτονική";
 "VERSION_INFO" = "Έκδοση";
 "STRAP_INFO" = "Περιβάλλον";
 "STRAP_FR_PREFIX" = "Πρόθεμα Fakeroot";
-"STRAP_FR_PATH" = "Τοποθεσία Fakeroot";
-"OPEN_FILZA" = "Άνοιγμα με Filza";
-"OPEN_SANTANDER" = "Άνοιγμα με Santader";
 "COPY" = "Αντιγραφή";
 "INSTALL_FR" = "Απεγκατεστημένο";
 "HELPER" = "Βοηθός";
 "HELPER_PATH" = "Τοποθεσία βοηθού";
-"SILEO_INSTALLED" = "Sileo Εγκατεστημένο";
-"ZEBRA_INSTALLED" = "Zebra Εγκατεστημένο";
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flags (paleinfo)";
 

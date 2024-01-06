@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "安装";
-"DEBUG" = "除錯";
+"DEBUG" = "疑難排解";
 "DIAGNOSTICS" = "設備信息";
 "ACTIONS" = "動作";
 "JBINIT_LOG" = "日誌";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "隱藏環境";
 "ACTION_HIDEJB" = "隱藏環境";
-"OPEN_CELL" = "開啟器";
+"OPEN_CELL" = "開啟";
 "OPENER_SILEO" = "開啟 Sileo";
 "OPENER_ZEBRA" = "開啟 Zebra";
 "OPENER_TH" = "開啟 TrollHelper";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "除錯";
 "DEBUG_OPTIONS" = "選項";
 "DEBUG_CLEAN_FAKEFS" = "清理fakefs";
-"DEBUG_EXIT_SAFEMODE" = "離開安全模式";
-"DEBUG_ENTER_SAFEMODE" = "進入安全模式";
-"DEBUG_CLEAR_JSON" = "清除 JSON 配置";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "裝置型號：";
-"DEVICE_MODEL_KERN" = "核心版本：";
-"DEVICE_MODEL_CF" = "CF版本：";
 "CREDITS_SUBTEXT" = "載入器作者：";
-"PINFO_SUBTEXT" = "旗幟 (paleinfo) 對應於你在palera1n 2.0.0命令列上使用的選項，對開發者有用。";
 "TYPE_INFO" = "類型";
 "INSTALL_INFO" = "已安裝";
 "ARCH_INFO" = "架構";
 "VERSION_INFO" = "版本";
 "STRAP_INFO" = "環境";
 "STRAP_FR_PREFIX" = "偽根前綴";
-"STRAP_FR_PATH" = "偽根路徑";
-"OPEN_FILZA" = "在Filza中開啟";
-"OPEN_SANTANDER" = "在Santander中開啟";
 "COPY" = "複製";
 "INSTALL_FR" = "強制還原";
 "HELPER" = "輔助程式";
 "HELPER_PATH" = "輔助程式路徑";
-"SILEO_INSTALLED" = "己安裝Sileo";
-"ZEBRA_INSTALLED" = "己安裝Zebra";
 "KINFO_FLAGS" = "標籤 (kerninfo)";
 "PINFO_FLAGS" = "標籤 (paleinfo)";
 

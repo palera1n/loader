@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Yükle";
-"DEBUG" = "Hata Ayıklama";
+"DEBUG" = "Sorun Giderme";
 "DIAGNOSTICS" = "Cihaz Bilgisi";
 "ACTIONS" = "İşlemler";
 "JBINIT_LOG" = "Kayda Alma";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Gizli Çevre";
 "ACTION_HIDEJB" = "Çevreyi Gizle";
-"OPEN_CELL" = "Açıcılar";
+"OPEN_CELL" = "Aç";
 "OPENER_SILEO" = "Sileo'yu Aç";
 "OPENER_ZEBRA" = "Zebra'yı Aç";
 "OPENER_TH" = "TrollHelper'ı Aç";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Hata Ayıklama";
 "DEBUG_OPTIONS" = "Ayarlar";
 "DEBUG_CLEAN_FAKEFS" = "FakeFS'i Temizle";
-"DEBUG_EXIT_SAFEMODE" = "Güvenli Mod'dan Çıkış Yap";
-"DEBUG_ENTER_SAFEMODE" = "Güvenli Mod'a Gir";
-"DEBUG_CLEAR_JSON" = "JSON Yapılandırmasını Temizle";
+"DEBUG_CLEAR_JSON" = "Konfigürasyonu Temizle";
 
 // Diags
-"DEVICE_MODEL" = "Cihaz Modeli:";
-"DEVICE_MODEL_KERN" = "Çekirdek Sürümü:";
-"DEVICE_MODEL_CF" = "CF Sürümü:";
 "CREDITS_SUBTEXT" = "Yükleyiciyi yapanlar:";
-"PINFO_SUBTEXT" = "İşaretler, (paleinfo) palera1n 2.0.0 CLI aracılığıyla kullandığınız işaretlere karşılık gelir ve geliştiriciler için yararlıdır.";
 "TYPE_INFO" = "Tür";
 "INSTALL_INFO" = "Yüklendi";
 "ARCH_INFO" = "Mimari";
 "VERSION_INFO" = "Sürüm";
 "STRAP_INFO" = "Çevre";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix'i";
-"STRAP_FR_PATH" = "Fakeroot Yolu";
-"OPEN_FILZA" = "Filza'da Aç";
-"OPEN_SANTANDER" = "Santander'de Aç";
 "COPY" = "Kopyala";
 "INSTALL_FR" = "Zorla Kaldırılmış";
 "HELPER" = "Yardımcı";
 "HELPER_PATH" = "Yardımcı Yolu";
-"SILEO_INSTALLED" = "Sileo Yüklendi";
-"ZEBRA_INSTALLED" = "Zebra Yüklendi";
 "KINFO_FLAGS" = "İşaretler (kerninfo)";
 "PINFO_FLAGS" = "İşaretler (paleinfo)";
 

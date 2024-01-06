@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Инсталирај";
-"DEBUG" = "Отклони грешке";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Информације о уређају";
 "ACTIONS" = "Радње";
 "JBINIT_LOG" = "Евидентирање";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Сакриј џејлбрејк околину";
 "ACTION_HIDEJB" = "Сакриј џејлбрејк околину";
-"OPEN_CELL" = "Отварачи";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Отвори Силео";
 "OPENER_ZEBRA" = "Отвори Зебру";
 "OPENER_TH" = "Отвори ТролХелпер";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Отклањање грешака";
 "DEBUG_OPTIONS" = "Опције";
 "DEBUG_CLEAN_FAKEFS" = "Обриши fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Изађи из сигурног мода";
-"DEBUG_ENTER_SAFEMODE" = "Уђи у сигуран мод";
-"DEBUG_CLEAR_JSON" = "Обриши JSON подешавања";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Модел уређаја:";
-"DEVICE_MODEL_KERN" = "Верзија керенела:";
-"DEVICE_MODEL_CF" = "Верзија ЦФ-а:";
 "CREDITS_SUBTEXT" = "Покретач направио:";
-"PINFO_SUBTEXT" = "Заставе (paleinfo) одговарају заставама које сте користили у палера1н 2.0.0 ЦЛИ, корисно за програмере.";
 "TYPE_INFO" = "Врста";
 "INSTALL_INFO" = "Инсталиран";
 "ARCH_INFO" = "Архитектура";
 "VERSION_INFO" = "Верзија";
 "STRAP_INFO" = "Окружење";
 "STRAP_FR_PREFIX" = "Префикс Fakeroot-а";
-"STRAP_FR_PATH" = "Локација Fakeroot-а";
-"OPEN_FILZA" = "Отвори у Filza";
-"OPEN_SANTANDER" = "Отвори у Santander-у";
 "COPY" = "Копирај";
 "INSTALL_FR" = "Присилно враћен";
 "HELPER" = "Помоћници";
 "HELPER_PATH" = "Локација помоћника";
-"SILEO_INSTALLED" = "Силео је инсталиран";
-"ZEBRA_INSTALLED" = "Зебра је инсталирана";
 "KINFO_FLAGS" = "Заставе (kerninfo)";
 "PINFO_FLAGS" = "Заставе (paleinfo)";
 

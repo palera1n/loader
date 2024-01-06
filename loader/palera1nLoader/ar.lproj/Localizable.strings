@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "تثبيت";
-"DEBUG" = "تصحيح";
-"DIAGNOSTICS" = "معلومات الجهاز";
+"INSTALL" = "تثبيت ";
+"DEBUG" = "استكشاف الاخطاء";
+"DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "إجراءات";
 "JBINIT_LOG" = "سجل التهيئة";
 "REVERT_CELL" = "إلغاء التثبيت";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "تصحيح";
 "DEBUG_OPTIONS" = "الخيارات";
 "DEBUG_CLEAN_FAKEFS" = "مسح fakefs";
-"DEBUG_EXIT_SAFEMODE" = "الخروج من الوضع الآمن";
-"DEBUG_ENTER_SAFEMODE" = "الدخول إلى الوضع الآمن";
-"DEBUG_CLEAR_JSON" = "مسح تكوين JSON";
+"DEBUG_CLEAR_JSON" = "مسح التكوين";
 
 // Diags
-"DEVICE_MODEL" = "طراز الجهاز:";
-"DEVICE_MODEL_KERN" = "إصدار النواة:";
-"DEVICE_MODEL_CF" = "إصدار CF:";
 "CREDITS_SUBTEXT" = "تم تطوير المحمل بواسطة:";
-"PINFO_SUBTEXT" = "العلامات (paleinfo) تتوافق مع العلامات التي استخدمتها عبر واجهة سطر الأوامر palera1n 2.0.0، مفيدة للمطورين.";
 "TYPE_INFO" = "النوع";
 "INSTALL_INFO" = "تم التثبيت";
 "ARCH_INFO" = "البنية";
 "VERSION_INFO" = "الإصدار";
 "STRAP_INFO" = "البيئة";
 "STRAP_FR_PREFIX" = "بادئة التشويه";
-"STRAP_FR_PATH" = "مسار التشويه";
-"OPEN_FILZA" = "فتح في Filza";
-"OPEN_SANTANDER" = "فتح في Santander";
 "COPY" = "نسخ";
 "INSTALL_FR" = "إلغاء جبري";
 "HELPER" = "المساعد";
 "HELPER_PATH" = "مسار المساعد";
-"SILEO_INSTALLED" = "تم تثبيت Sileo";
-"ZEBRA_INSTALLED" = "تم تثبيت Zebra";
 "KINFO_FLAGS" = "العلامات (kerninfo)";
 "PINFO_FLAGS" = "العلامات (paleinfo)";
 

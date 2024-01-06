@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"DEBUG" = "Hibakeresés";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Műveletek";
 "JBINIT_LOG" = "Naplózás";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Rejtett környezet";
 "ACTION_HIDEJB" = "Környezet elrejtése";
-"OPEN_CELL" = "Nyitók";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Sileo megnyitása";
 "OPENER_ZEBRA" = "Zebra megnyitása";
 "OPENER_TH" = "TrollHelper megnyitása";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Debug";
 "DEBUG_OPTIONS" = "Options";
 "DEBUG_CLEAN_FAKEFS" = "Clean fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Exit safemode";
-"DEBUG_ENTER_SAFEMODE" = "Enter safemode";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Device Model:";
-"DEVICE_MODEL_KERN" = "Kernel Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader made by:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) correspond to flags you used via palera1n 2.0.0 CLI, useful for developers.";
 "TYPE_INFO" = "Típus";
 "INSTALL_INFO" = "Telepítve";
 "ARCH_INFO" = "Architektúra";
 "VERSION_INFO" = "Verzió";
 "STRAP_INFO" = "Környezet";
 "STRAP_FR_PREFIX" = "Hamis gyökérkönyvtár Előtag";
-"STRAP_FR_PATH" = "Hamis gyökérkönyvtár útvonal";
-"OPEN_FILZA" = "Megnyitás Filza-ban";
-"OPEN_SANTANDER" = "Megnyitás Santander-ben";
 "COPY" = "Másolás";
 "INSTALL_FR" = "Kényszerített visszaállítás";
 "HELPER" = "Segítő";
 "HELPER_PATH" = "Segítő útvonal";
-"SILEO_INSTALLED" = "Sileo telepítve";
-"ZEBRA_INSTALLED" = "Zebra telepítve";
 "KINFO_FLAGS" = "Zászlók (kerninfo)";
 "PINFO_FLAGS" = "Zászlók (paleinfo)";
 

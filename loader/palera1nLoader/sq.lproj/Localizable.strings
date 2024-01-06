@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"DEBUG" = "Debugim";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Aksione";
 "JBINIT_LOG" = "Logime";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "I Fshehur";
 "ACTION_HIDEJB" = "Beje Te Fshehur";
-"OPEN_CELL" = "Hapesit";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Hap Sileo-n";
 "OPENER_ZEBRA" = "Hap Zebra-n";
 "OPENER_TH" = "Hap TrollHelper-in";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Debugim";
 "DEBUG_OPTIONS" = "Opsionet";
 "DEBUG_CLEAN_FAKEFS" = "Pastroni FakeFS-in";
-"DEBUG_EXIT_SAFEMODE" = "Dilni nga modaliteti i sigurt";
-"DEBUG_ENTER_SAFEMODE" = "Hyr ne modaliteti i sigurt";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Modeli i paisjes:";
-"DEVICE_MODEL_KERN" = "Versioni i kernelit:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Aplikacioni i krijuar nga:";
-"PINFO_SUBTEXT" = "Flag-sat (paleinfo) korrespondojnë me flag-sat që keni përdorur nëpërmjet palera1n 2.0.0 CLI, i dobishëm për developera-t.";
 "TYPE_INFO" = "Lloji";
 "INSTALL_INFO" = "Instaluar";
 "ARCH_INFO" = "Arkitektura e pajisjes";
 "VERSION_INFO" = "Versioni";
 "STRAP_INFO" = "Ambienti";
 "STRAP_FR_PREFIX" = "Prefiksi i Fakeroot";
-"STRAP_FR_PATH" = "Vendndodhja e Fakeroot-it";
-"OPEN_FILZA" = "Hap ne Filza";
-"OPEN_SANTANDER" = "Hap ne Santander";
 "COPY" = "Kopjo";
 "INSTALL_FR" = "Force Reverted";
 "HELPER" = "Ndihmes";
 "HELPER_PATH" = "Helper Path";
-"SILEO_INSTALLED" = "Sileo Instaluar";
-"ZEBRA_INSTALLED" = "Zebra Instaluar";
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flags (paleinfo)";
 

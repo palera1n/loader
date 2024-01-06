@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installieren";
-"DEBUG" = "Debug";
+"DEBUG" = "Fehlerbehebung";
 "DIAGNOSTICS" = "Geräteinformationen";
 "ACTIONS" = "Aktionen";
 "JBINIT_LOG" = "Loggen";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Jailbreak versteckt";
 "ACTION_HIDEJB" = "Jailbreak verstecken";
-"OPEN_CELL" = "Öffner";
+"OPEN_CELL" = "Öffnen";
 "OPENER_SILEO" = "Öffne Sileo";
 "OPENER_ZEBRA" = "Öffne Zebra";
 "OPENER_TH" = "Öffne TrollHelper";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Fehlersuche";
 "DEBUG_OPTIONS" = "Optionen";
 "DEBUG_CLEAN_FAKEFS" = "Fakefs bereinigen";
-"DEBUG_EXIT_SAFEMODE" = "Sicherheitsmodus beenden";
-"DEBUG_ENTER_SAFEMODE" = "Sicherheitsmodus aktivieren";
-"DEBUG_CLEAR_JSON" = "JSON-Konfiguration löschen";
+"DEBUG_CLEAR_JSON" = "Konfiguration löschen";
 
 // Diags
-"DEVICE_MODEL" = "Gerätemodell:";
-"DEVICE_MODEL_KERN" = "Kernel-Version:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Loader erstellt von:";
-"PINFO_SUBTEXT" = "Flags (paleinfo) entsprechen den Flags, die Sie mit palera1n 2.0.0 CLI verwendet haben, nützlich für Entwickler.";
 "TYPE_INFO" = "Typ";
 "INSTALL_INFO" = "Installiert";
 "ARCH_INFO" = "Architektur";
 "VERSION_INFO" = "Version";
 "STRAP_INFO" = "Umgebung";
 "STRAP_FR_PREFIX" = "Fakeroot Prefix";
-"STRAP_FR_PATH" = "Fakeroot Pfad";
-"OPEN_FILZA" = "Öffne in Filza";
-"OPEN_SANTANDER" = "Öffne in Santander";
 "COPY" = "Kopieren";
 "INSTALL_FR" = "Zwangsweise zurückgesetzt";
 "HELPER" = "Helfer";
 "HELPER_PATH" = "Helfer Pfad";
-"SILEO_INSTALLED" = "Sileo installiert";
-"ZEBRA_INSTALLED" = "Zebra installiert";
 "KINFO_FLAGS" = "Flags (kerninfo)";
 "PINFO_FLAGS" = "Flaggen (paleinfo)";
 

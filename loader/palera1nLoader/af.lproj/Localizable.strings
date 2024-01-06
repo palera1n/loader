@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Install";
-"DEBUG" = "Ontfout";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Device Information";
 "ACTIONS" = "Aksies";
 "JBINIT_LOG" = "Tekening";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Versteekte omgewing";
 "ACTION_HIDEJB" = "Versteek omgewing";
-"OPEN_CELL" = "Openers";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Maak Sileo oop";
 "OPENER_ZEBRA" = "Maak Zebra oop";
 "OPENER_TH" = "Maak TrollHelper oop";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Ontfout";
 "DEBUG_OPTIONS" = "Opsies";
 "DEBUG_CLEAN_FAKEFS" = "Skoon fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Verlaat veilige modus";
-"DEBUG_ENTER_SAFEMODE" = "Gaan in veilige modus";
-"DEBUG_CLEAR_JSON" = "Clear JSON config";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Toestelmodel:";
-"DEVICE_MODEL_KERN" = "Kernel weergawe:";
-"DEVICE_MODEL_CF" = "CFVersie:";
 "CREDITS_SUBTEXT" = "Laaier gemaak deur:";
-"PINFO_SUBTEXT" = "Vlae (paleinfo) stem ooreen met vlae wat jy via palera1n 2.0.0 CLI gebruik het, nuttig vir ontwikkelaars.";
 "TYPE_INFO" = "Tik";
 "INSTALL_INFO" = "Geïnstalleer";
 "ARCH_INFO" = "Argitektuur";
 "VERSION_INFO" = "Weergawe";
 "STRAP_INFO" = "Omgewing";
 "STRAP_FR_PREFIX" = "Fakeroot Voorvoegsel";
-"STRAP_FR_PATH" = "Fakeroot Pad";
-"OPEN_FILZA" = "Maak oop in Filza";
-"OPEN_SANTANDER" = "Oop in Santander";
 "COPY" = "Kopieer";
 "INSTALL_FR" = "Krag teruggekeer";
 "HELPER" = "Helper";
 "HELPER_PATH" = "Helperpad";
-"SILEO_INSTALLED" = "Sileo geïnstalleer";
-"ZEBRA_INSTALLED" = "Zebra geïnstalleer";
 "KINFO_FLAGS" = "Vlae (kerninfo)";
 "PINFO_FLAGS" = "Vlae (paleinfo)";
 

@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Cài đặt";
-"DEBUG" = "Gỡ lỗi";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Thông tin thiết bị";
 "ACTIONS" = "Các chức năng";
 "JBINIT_LOG" = "Logging";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Đã Ẩn Môi Trường Jailbreak";
 "ACTION_HIDEJB" = "Ẩn Môi Trường Jailbreak";
-"OPEN_CELL" = "Mở";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Mở Sileo";
 "OPENER_ZEBRA" = "Mở Zebra";
 "OPENER_TH" = "Mở TrollHelper";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Gỡ lỗi";
 "DEBUG_OPTIONS" = "Tùy chọn";
 "DEBUG_CLEAN_FAKEFS" = "Làm sạch hàng giả";
-"DEBUG_EXIT_SAFEMODE" = "Thoát chế độ an toàn";
-"DEBUG_ENTER_SAFEMODE" = "Vào chế độ an toàn";
-"DEBUG_CLEAR_JSON" = "Dọn cấu hình JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Kiểu thiết bị:";
-"DEVICE_MODEL_KERN" = "Phiên bản Kernel:";
-"DEVICE_MODEL_CF" = "Phiên Bản CF:";
 "CREDITS_SUBTEXT" = "Trình khởi chạy được thực hiện bởi:";
-"PINFO_SUBTEXT" = "Cờ (paleinfo) tương ứng với cờ bạn đã sử dụng qua palera1n 2.0.0 CLI, hữu ích cho nhà phát triển.";
 "TYPE_INFO" = "Kiểu";
 "INSTALL_INFO" = "Đã cài đặt";
 "ARCH_INFO" = "Cấu trúc";
 "VERSION_INFO" = "Phiên bản";
 "STRAP_INFO" = "Môi trường";
 "STRAP_FR_PREFIX" = "Tiền tố Fakeroot";
-"STRAP_FR_PATH" = "Đường dẫn Fakeroot";
-"OPEN_FILZA" = "Mở trong Filza";
-"OPEN_SANTANDER" = "Mở trong Santander";
 "COPY" = "Sao chép";
 "INSTALL_FR" = "Đã xóa bản bẻ khóa";
 "HELPER" = "Công cụ hỗ trợ";
 "HELPER_PATH" = "Đường dẫn công cụ hỗ trợ";
-"SILEO_INSTALLED" = "Đã cài đặt Sileo";
-"ZEBRA_INSTALLED" = "Đã cài đặt Zebra";
 "KINFO_FLAGS" = "Cờ (kerninfo)";
 "PINFO_FLAGS" = "Cờ (paleinfo)";
 

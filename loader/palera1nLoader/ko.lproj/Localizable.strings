@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "설치";
-"DEBUG" = "디버그";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "디바이스 정보";
 "ACTIONS" = "액션";
 "JBINIT_LOG" = "로그";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "탈옥 숨김";
 "ACTION_HIDEJB" = "탈옥 숨기기";
-"OPEN_CELL" = "쇼트컷";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Sileo 열기";
 "OPENER_ZEBRA" = "Zebra 열기";
 "OPENER_TH" = "TrollHelper 열기";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "디버그";
 "DEBUG_OPTIONS" = "옵션";
 "DEBUG_CLEAN_FAKEFS" = "FakeFs 지우기";
-"DEBUG_EXIT_SAFEMODE" = "안전모드 나가기";
-"DEBUG_ENTER_SAFEMODE" = "안전모드 시작하기";
-"DEBUG_CLEAR_JSON" = "JSON 설정 초기화";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "디바이스 모델:";
-"DEVICE_MODEL_KERN" = "커널 버전";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "로더 제작자:";
-"PINFO_SUBTEXT" = "플래그 (paleinfo) 는 palera1n 2.0.0 CLI에 사용한 플레그와 대응합니다. (개발자에게 유용함)";
 "TYPE_INFO" = "유형";
 "INSTALL_INFO" = "설치됨";
 "ARCH_INFO" = "아키텍처";
 "VERSION_INFO" = "버전";
 "STRAP_INFO" = "환경";
 "STRAP_FR_PREFIX" = "Fakeroot 접두사";
-"STRAP_FR_PATH" = "Fakeroot 위치";
-"OPEN_FILZA" = "Filza에서 열기";
-"OPEN_SANTANDER" = "Santander에서 열기";
 "COPY" = "복사";
 "INSTALL_FR" = "강제 제거됨";
 "HELPER" = "헬퍼";
 "HELPER_PATH" = "헬퍼 저장소";
-"SILEO_INSTALLED" = "Sileo 설치 여부";
-"ZEBRA_INSTALLED" = "Zebra 설치 여부";
 "KINFO_FLAGS" = "플래그 (kerninfo)";
 "PINFO_FLAGS" = "플래그 (paleinfo)";
 

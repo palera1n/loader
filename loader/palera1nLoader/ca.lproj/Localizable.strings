@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Instal·lar";
-"DEBUG" = "Depuració";
+"DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "Informació del Dispositiu";
 "ACTIONS" = "Accions";
 "JBINIT_LOG" = "Registrament";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Entorn Ocult";
 "ACTION_HIDEJB" = "Amagar Entorn";
-"OPEN_CELL" = "Obridors";
+"OPEN_CELL" = "Open";
 "OPENER_SILEO" = "Obrir Sileo";
 "OPENER_ZEBRA" = "Obrir Zebra";
 "OPENER_TH" = "Obrir TrollHelper";
@@ -39,31 +39,20 @@ English
 "DEBUG_CELL" = "Depurar";
 "DEBUG_OPTIONS" = "Opcions";
 "DEBUG_CLEAN_FAKEFS" = "Rentar fakefs";
-"DEBUG_EXIT_SAFEMODE" = "Sortir del mode segur";
-"DEBUG_ENTER_SAFEMODE" = "Entrar al mode segur";
-"DEBUG_CLEAR_JSON" = "Netejar configuració JSON";
+"DEBUG_CLEAR_JSON" = "Clear config";
 
 // Diags
-"DEVICE_MODEL" = "Model del dispositiu:";
-"DEVICE_MODEL_KERN" = "Versió del Kernel:";
-"DEVICE_MODEL_CF" = "CFVersion:";
 "CREDITS_SUBTEXT" = "Carregador fet per:";
-"PINFO_SUBTEXT" = "Les banderes (paleinfo) corresponen amb les banderes usades via la interfície de línia de comandaments (CLI) de palera1n 2.0.0, útil per a desenvolupadors.";
 "TYPE_INFO" = "Tipus";
 "INSTALL_INFO" = "Instal·lat";
 "ARCH_INFO" = "Arquitectura";
 "VERSION_INFO" = "Versió";
 "STRAP_INFO" = "Entorn";
 "STRAP_FR_PREFIX" = "Prefix de fakeroot";
-"STRAP_FR_PATH" = "Ruta de fakeroot";
-"OPEN_FILZA" = "Obrir en Filza";
-"OPEN_SANTANDER" = "Obrir en Santander";
 "COPY" = "Copiar";
 "INSTALL_FR" = "Revertit a força";
 "HELPER" = "Ajudant";
 "HELPER_PATH" = "Ruta de l'ajudant";
-"SILEO_INSTALLED" = "Sileo Instal·lat";
-"ZEBRA_INSTALLED" = "Zebra Instal·lat";
 "KINFO_FLAGS" = "Banderes (kerninfo)";
 "PINFO_FLAGS" = "Banderes (paleinfo)";
 
