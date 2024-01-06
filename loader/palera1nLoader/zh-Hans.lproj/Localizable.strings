@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "安装";
+"INSTALL" = "Installs";
 "DEBUG" = "疑难解答";
 "DIAGNOSTICS" = "设备信息";
 "ACTIONS" = "操作";
