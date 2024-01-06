@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "설치";
+"INSTALL" = "Installs";
 "DEBUG" = "Troubleshoot";
 "DIAGNOSTICS" = "디바이스 정보";
 "ACTIONS" = "액션";
