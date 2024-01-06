@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Install";
-"DEBUG" = "Troubleshoot";
-"DIAGNOSTICS" = "Device Information";
+"INSTALL" = "Instalar";
+"DEBUG" = "Solução de problemas";
+"DIAGNOSTICS" = "Informações do Dispositivo";
 "ACTIONS" = "Ações";
 "JBINIT_LOG" = "Registro de eventos";
 "REVERT_CELL" = "Reverter instalação";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Ambiente Oculto";
 "ACTION_HIDEJB" = "Ocultar Ambiente";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "Abrir";
 "OPENER_SILEO" = "Abrir Sileo";
 "OPENER_ZEBRA" = "Abrir Zebra";
 "OPENER_TH" = "Abrir TrollHelper";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Depurar";
 "DEBUG_OPTIONS" = "Opções";
 "DEBUG_CLEAN_FAKEFS" = "Limpar fakefs";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "Limpar configuração";
 
 // Diags
 "CREDITS_SUBTEXT" = "Loader feito por:";
@@ -50,7 +50,7 @@ English
 "STRAP_INFO" = "Environment";
 "STRAP_FR_PREFIX" = "Prefixo Fakeroot";
 "COPY" = "Copiar";
-"INSTALL_FR" = "Forçar Revertido";
+"INSTALL_FR" = "Forçar Reversão";
 "HELPER" = "Assistente";
 "HELPER_PATH" = "Caminho do Helper";
 "KINFO_FLAGS" = "Flags (kerninfo)";
@@ -102,9 +102,9 @@ English
 "CLOSE_APP" = "Você pode fechar o app.";
 "UNHID_ENV" = "Exiba o ambiente";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap e %@ não estão instalados. Instalar agora?";
+"DL_STRAP_NOPM" = "Instalar %@?";
+"DL_STRAP_PM" = "%@ já está instalado em %@";
 
 // errors
 "STATUS" = "Status";
