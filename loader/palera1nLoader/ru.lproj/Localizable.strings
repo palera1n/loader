@@ -5,8 +5,8 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Installs";
-"DEBUG" = "Устранение неисправностей";
+"INSTALL" = "Установить";
+"DEBUG" = "Диагностика";
 "DIAGNOSTICS" = "Инфор. оборуд";
 "ACTIONS" = "Действия";
 "JBINIT_LOG" = "Логирование";
