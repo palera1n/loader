@@ -5,8 +5,8 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Installs";
-"DEBUG" = "Troubleshoot";
+"INSTALL" = "설치";
+"DEBUG" = "문제 해결";
 "DIAGNOSTICS" = "디바이스 정보";
 "ACTIONS" = "액션";
 "JBINIT_LOG" = "로그";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "탈옥 숨김";
 "ACTION_HIDEJB" = "탈옥 숨기기";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "열기";
 "OPENER_SILEO" = "Sileo 열기";
 "OPENER_ZEBRA" = "Zebra 열기";
 "OPENER_TH" = "TrollHelper 열기";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "디버그";
 "DEBUG_OPTIONS" = "옵션";
 "DEBUG_CLEAN_FAKEFS" = "FakeFs 지우기";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "콘피그 비우기";
 
 // Diags
 "CREDITS_SUBTEXT" = "로더 제작자:";
@@ -83,7 +83,7 @@ English
 "DONE_REVERT" = "제거 완료";
 "REMOVING" = "제거 중...";
 
-"PASSWORD" = "\"sudo\"와 같은 툴을 사용하러면, 암호를 설정하셔야 합니다. (필수)";
+"PASSWORD" = "\"sudo\"와 같은 툴을 사용하러면, 암호를 설정해야 합니다. (필수)";
 "PASSWORD_REPEAT" = "다시 입력";
 "PASSWORD_SET" = "비밀번호 설정";
 "PASSWORD_TEXT" = "비밀번호";
@@ -96,7 +96,7 @@ English
 "HIDDEN_NOTICE" = "Fakeroot는 /var/jb와 달리 보존 되어 있습니다. 이 것은 /var/jb를 다시 연결시킵니다. Uicache를 다시 실행 하셔야 할 수도 있습니다.";
 "NOTICE_ROOTLESS" = "Rootless가 아니면 이 기능을 못 사용합니다.";
 "HIDE_NOTICE" = "계속하면 /var/jb 연결을 지우고 재부팅 합니다.";
-"REVERT_SUBTEXT" = "Rootful은 이 버튼을 사용할 수 없습니다. :(";
+"REVERT_SUBTEXT" = "Rootful은 이 버튼을 사용할 수 없습니다 :(";
 "PM_SUBTEXT" = "좋아하시는 패키지 관리자를 고르세요. 처음이면 Sileo를 추천합니다.";
 "REVERT_WARNING" = "/var/jb를 지우고 탈옥 앱들을 지웁니다. 끝난 후 탈옥이 제거된 상태로 재부팅 됩니다.";
 "CLOSE_APP" = "이제 앱을 닫으셔도 됩니다.";
