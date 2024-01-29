@@ -42,6 +42,7 @@ extension JsonVC {
               }
           }
       })
+      
   }
   
   func installStrap(file: String, completion: @escaping () -> Void) {
@@ -67,20 +68,54 @@ extension JsonVC {
           DispatchQueue.main.async {
               downloadAlert.dismiss(animated: true) {
                   if (error == nil) {
-                      let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
-                      self.present(installingAlert, animated: true) {
-                          bootstrap.installBootstrap(tar: path!, deb: "\(file).deb", completion:{(msg:String?, error:Int?) in
-                              installingAlert.dismiss(animated: true) {
-                                  if (error == 0) {
-                                      UIApplication.shared.openSpringBoard()
-                                      exit(0)
-                                  } else {
-                                      let alert = UIAlertController.error(title: LocalizationManager.shared.local("ERROR_INSTALL"), message: "Status: \(errorString(Int32(error!)))")
-                                      self.present(alert, animated: true)
-                                  }
-                              }
-                          })
+                      let message = LocalizationManager.shared.local("PASSWORD")
+                      let alertController = UIAlertController(title: LocalizationManager.shared.local("PASSWORD_SET"), message: message, preferredStyle: .alert)
+                      alertController.addTextField() { (password) in
+                          password.placeholder = LocalizationManager.shared.local("PASSWORD_TEXT")
+                          password.isSecureTextEntry = true
+                          password.keyboardType = UIKeyboardType.asciiCapable
                       }
+                      
+                      alertController.addTextField() { (repeatPassword) in
+                          repeatPassword.placeholder = LocalizationManager.shared.local("PASSWORD_REPEAT")
+                          repeatPassword.isSecureTextEntry = true
+                          repeatPassword.keyboardType = UIKeyboardType.asciiCapable
+                      }
+                      
+                      let setPassword = UIAlertAction(title: LocalizationManager.shared.local("SET"), style: .default) { _ in
+                          let installingAlert = UIAlertController.spinnerAlert("INSTALLING")
+                          self.present(installingAlert, animated: true) {
+                              bootstrap.installBootstrap(tar: path!, deb: "\(file).deb", p: alertController.textFields![0].text!,completion:{(msg:String?, error:Int?) in
+                                  installingAlert.dismiss(animated: true) {
+                                      if (error == 0) {
+                                          UIApplication.shared.openSpringBoard()
+                                          exit(0)
+                                      } else {
+                                          let alert = UIAlertController.error(title: LocalizationManager.shared.local("ERROR_INSTALL"), message: "Status: \(errorString(Int32(error!)))")
+                                          self.present(alert, animated: true)
+                                      }
+                                  }
+                              })
+                          }
+                      }
+                      setPassword.isEnabled = false
+                      alertController.addAction(setPassword)
+                      
+                      NotificationCenter.default.addObserver(
+                        forName: UITextField.textDidChangeNotification,
+                        object: nil,
+                        queue: .main
+                      ) { notification in
+                          let passOne = alertController.textFields![0].text
+                          let passTwo = alertController.textFields![1].text
+                          if (passOne!.count > 253 || passOne!.count > 253) {
+                              setPassword.setValue(LocalizationManager.shared.local("TOO_LONG"), forKeyPath: "title")
+                          } else {
+                              setPassword.setValue(LocalizationManager.shared.local("SET"), forKeyPath: "title")
+                              setPassword.isEnabled = (passOne == passTwo) && !passOne!.isEmpty && !passTwo!.isEmpty
+                          }
+                      }
+                      self.present(alertController, animated: true)
                   } else {
                       let alert = UIAlertController.error(title: LocalizationManager.shared.local("DOWNLOAD_FAIL"), message: error.debugDescription)
                       self.present(alert, animated: true)
@@ -142,11 +177,11 @@ class bootstrap {
     }
     
     
-    static public func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
+    static public func installBootstrap(tar: String, deb: String, p: String, completion: @escaping (String?, Int?) -> Void) {
         if (paleInfo.palerain_option_rootless) {
             binpack.rm("/var/jb")
         }
-        let (deployBootstrap_ret, resultDescription) = DeployBootstrap(path: tar, password: "alpine");
+        let (deployBootstrap_ret, resultDescription) = DeployBootstrap(path: tar, password: p);
      
         if (deployBootstrap_ret != 0) {
             log(msg: "Bootstrapper error occurred: \(resultDescription)")
@@ -154,14 +189,12 @@ class bootstrap {
         }
         
         
-        if Bootstrapper.needsFinalize() {
-            log(msg: "Status: Finalizing Bootstrap")
-            do {
-                try Bootstrapper.finalizeBootstrap(deb: deb)
-            } catch {
-                log(msg: "Finalization error occurred: \(error)")
-                return
-            }
+        log(msg: "Status: Finalizing Bootstrap")
+        do {
+            try Bootstrapper.finalizeBootstrap(deb: deb)
+        } catch {
+            log(msg: "Finalization error occurred: \(error)")
+            return
         }
 
         var ret = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])

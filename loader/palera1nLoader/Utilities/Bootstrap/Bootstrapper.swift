@@ -86,98 +86,6 @@ public class Bootstrapper {
         return ""
     }
     
-    static func fileOrSymlinkExists(atPath path: String) -> Bool {
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: path) {
-            return true
-        }
-        do {
-            let attributes = try fileManager.attributesOfItem(atPath: path)
-            if let fileType = attributes[.type] as? FileAttributeType, fileType == .typeSymbolicLink {
-                return true
-            }
-        } catch _ { }
-        
-        return false
-    }
-    
-    static func extractBootstrap(tar: String) throws {
-        let bootstrapTmpTarPath = "/tmp/palera1n/temp/bootstrap.tar"
-        var fakeRootPath = locateExistingFakeRoot()
-        if fakeRootPath == nil && paleInfo.palerain_option_rootless {
-            fakeRootPath = generateFakeRootPath()
-            spawn(command: "/cores/binpack/bin/mkdir", args: ["-p", fakeRootPath!])
-        }
-        let procursusPath = fakeRootPath! + "/procursus"
-        var installedFilePath = ""
-        
-        // dotfile path
-        if paleInfo.palerain_option_rootless {
-            installedFilePath = procursusPath + "/.installed_palera1n"
-        } else {
-            installedFilePath = "/.installed_palera1n"
-        }
-
-        if paleInfo.palerain_option_rootless {
-            let jbPath = "/var/jb"
-            
-            // Remount
-            if remountPrebootPartition(writable: true) != 0 {
-                log(type: .error, msg: "Failed to remount /private/preboot partition as writable")
-            }
-            binpack.rm(jbPath)
-            
-            // delete previous fakeroot if any
-            binpack.rm(procursusPath)
-                    
-            // create /var/jb symlink
-            binpack.mv(procursusPath, jbPath)
-        } else if paleInfo.palerain_option_rootful {
-            spawn(command: "/sbin/mount", args: ["-uw", "/"])
-        }
-        
-        
-        // tar
-        let bootManifestHash = VersionSeeker.bootmanifestHash()
-        let ppURL = "/private/preboot/" + bootManifestHash! + "/temp"
-        spawn(command: "/cores/binpack/bin/mkdir", args: ["-p", ppURL])
-        
-        if FileManager.default.fileExists(atPath: bootstrapTmpTarPath) {
-             binpack.rm(bootstrapTmpTarPath);
-         }
-         let zstdRet = zstdDecompress(zstdPath: tar, targetTarPath: bootstrapTmpTarPath)
-         if zstdRet != 0 {
-             log(type: .error, msg: String(format:"Failed to decompress bootstrap: \(String(describing: zstdRet))"))
-         }
-         // untar
-         if paleInfo.palerain_option_rootless {
-             let untarRet = untar(tarPath: bootstrapTmpTarPath, target: ppURL)
-             if untarRet != 0 {
-                 log(type: .error, msg: String(format:"Failed to untar bootstrap: \(String(describing: untarRet))"))
-             }
-         } else {
-             let untarRet = untar(tarPath: bootstrapTmpTarPath, target: "/")
-             if untarRet != 0 {
-                 log(type: .error, msg: String(format:"Failed to untar bootstrap: \(String(describing: untarRet))"))
-             }
-         }
-         
-         binpack.rm(bootstrapTmpTarPath);
-         if paleInfo.palerain_option_rootless {
-             spawn(command: "/cores/binpack/bin/mv", args: ["-f", ppURL + "/var/jb", procursusPath])
-         }
-        
-        //
-    }
-    
-    static func needsFinalize() -> Bool {
-        if paleInfo.palerain_option_rootless {
-            return FileManager.default.fileExists(atPath: "/var/jb/prep_bootstrap.sh")
-        } else {
-            return FileManager.default.fileExists(atPath: "/prep_bootstrap.sh")
-        }
-    }
-    
     static func finalizeBootstrap(deb: String) throws {
         var prefix = ""
         if paleInfo.palerain_option_rootless { prefix = "/var/jb" }
@@ -196,12 +104,10 @@ public class Bootstrapper {
                 let packages = assetsInfo.packages
                 let repositories = assetsInfo.repositories
                 
-                //print(packages)
-                let repos = packages.joined(separator: "")
                 for package in repositories {
                     let command = ["\(prefix)/usr/bin/apt-get", "-o", "Dpkg::Options::=--force-confnew", "install", package, "-y", "--allow-unauthenticated"]
 
-                    var ret = spawn(command: command[0], args: Array(command[1...]))
+                    let ret = spawn(command: command[0], args: Array(command[1...]))
                     if ret != 0 {
                         log(type: .error, msg: String(format: "Failed to execute command: %@, error code: %d", command.joined(separator: " "), ret))
                         return
@@ -214,31 +120,6 @@ public class Bootstrapper {
         let debRet = spawn(command: "\(prefix)/usr/bin/dpkg", args: ["-i", debPath])
         if debRet != 0 {
             log(type: .error, msg: String(format:"Failed to finalize bootstrap, installing libjbdrw failed with error code: \(debRet)"))
-        }
-    }
-    
-    static func uninstallBootstrap() {
-        let jbPath = "/var/jb"
-        
-        if remountPrebootPartition(writable: true) != 0 {
-            print("Failed to remount /private/preboot partition as writable")
-            return
-        }
-        
-        // Delete /var/jb symlink
-        binpack.rm(jbPath)
-        
-        // Delete fake root
-        let fakeRootPath = locateExistingFakeRoot()
-        if fakeRootPath != nil {
-            do {
-                binpack.rm(fakeRootPath!)
-            }
-        }
-        
-        if remountPrebootPartition(writable: false) != 0 {
-            print("Failed to remount /private/preboot partition as non-writable")
-            return
         }
     }
 }
