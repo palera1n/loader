@@ -18,18 +18,8 @@ struct paleinfo {
     var palera1n_option_flower_chain: Bool
     
     init() {
-        let hex = envInfo.pinfoFlags
-        let new = hex.replacingOccurrences(of: "[^0-9a-fA-F]", with: "", options: .regularExpression)
-        
-        guard let flags = UInt64(new, radix: 16) else {
-            self.palerain_option_rootful = false
-            self.palerain_option_rootless = false
-            self.palerain_option_force_revert = false
-            self.palerain_option_safemode = false
-            self.palera1n_option_flower_chain = false
-            return
-        }
-
+        let flags = GetPinfoFlags();
+        envInfo.pinfoFlags = flags;
         self.palerain_option_rootful = (flags & (1 << 0)) != 0
         self.palerain_option_rootless = (flags & (1 << 1)) != 0
         self.palerain_option_force_revert = (flags & (1 << 24)) != 0
@@ -39,7 +29,7 @@ struct paleinfo {
 }
 
 struct envInfo {
-    static var pinfoFlags: String = ""
+    static var pinfoFlags: UInt64 = 0;
     static var installPrefix: String = ""
     
     static var rebootAfter: Bool = true

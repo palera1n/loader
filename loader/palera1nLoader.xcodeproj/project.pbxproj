@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01BFF4A92B6627280080854B /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = 01BFF4A82B6627280080854B /* jailbreakd.c */; };
+		01BFF4AB2B6639030080854B /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BFF4AA2B6639030080854B /* Wrapper.swift */; };
 		2F12BB0C2A30BF5E0095972E /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F12BB0A2A30BF5B0095972E /* CoreServices.framework */; };
 		2F12BB102A30C4970095972E /* Decoder+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F12BB0F2A30C4970095972E /* Decoder+Fetch.swift */; };
 		2FC1542B2A36B71300AC9346 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC1542A2A36B71300AC9346 /* Alerts.swift */; };
@@ -36,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01BFF4A72B6627280080854B /* jailbreakd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jailbreakd.h; sourceTree = "<group>"; };
+		01BFF4A82B6627280080854B /* jailbreakd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = jailbreakd.c; sourceTree = "<group>"; };
+		01BFF4AA2B6639030080854B /* Wrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrapper.swift; sourceTree = "<group>"; };
+		01BFF4AC2B6639DC0080854B /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		2F12BB0A2A30BF5B0095972E /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		2F12BB0F2A30C4970095972E /* Decoder+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decoder+Fetch.swift"; sourceTree = "<group>"; };
 		2FC1542A2A36B71300AC9346 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -100,6 +106,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01BFF4A62B6627060080854B /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+				01BFF4A72B6627280080854B /* jailbreakd.h */,
+				01BFF4AA2B6639030080854B /* Wrapper.swift */,
+				01BFF4A82B6627280080854B /* jailbreakd.c */,
+			);
+			path = XPC;
+			sourceTree = "<group>";
+		};
 		2F12BB092A30BF5A0095972E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +138,7 @@
 		2FC1542E2A36B81900AC9346 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				01BFF4A62B6627060080854B /* XPC */,
 				2FC1542F2A36B83300AC9346 /* InstallStatus.swift */,
 				4501473729FC1AEB0001834C /* Logging.swift */,
 				45E7E0F229E4EC5B0057741A /* Common.swift */,
@@ -196,6 +213,7 @@
 		E181BAD828CF914300CD25A6 /* palera1nLoader */ = {
 			isa = PBXGroup;
 			children = (
+				01BFF4AC2B6639DC0080854B /* bridge.h */,
 				E181BAE228CF914500CD25A6 /* Assets.xcassets */,
 				E181BAE728CF914500CD25A6 /* Info.plist */,
 				E181BAD928CF914300CD25A6 /* AppDelegate.swift */,
@@ -241,7 +259,7 @@
 				TargetAttributes = {
 					E181BAD528CF914300CD25A6 = {
 						CreatedOnToolsVersion = 13.4.1;
-						LastSwiftMigration = 1500;
+						LastSwiftMigration = 1530;
 					};
 				};
 			};
@@ -327,7 +345,9 @@
 				33CCDA552ACD1255000E0111 /* Download.swift in Sources */,
 				4501473829FC1AEB0001834C /* Logging.swift in Sources */,
 				45E7E0F329E4EC5B0057741A /* Common.swift in Sources */,
+				01BFF4A92B6627280080854B /* jailbreakd.c in Sources */,
 				33E15DAF29F4E6CA00D2770A /* Actions.swift in Sources */,
+				01BFF4AB2B6639030080854B /* Wrapper.swift in Sources */,
 				E181BADA28CF914300CD25A6 /* AppDelegate.swift in Sources */,
 				3388E25F2B34CEF20001EE20 /* paleinfo+envinfo.swift in Sources */,
 				33A452DD2B40994E00E5D73F /* Bootstrapper.swift in Sources */,
@@ -537,7 +557,7 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = palera1nLoader/bridge.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "../apple-include";
@@ -590,7 +610,7 @@
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/External";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = palera1nLoader/bridge.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

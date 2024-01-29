@@ -143,13 +143,16 @@ class bootstrap {
     
     
     static public func installBootstrap(tar: String, deb: String, completion: @escaping (String?, Int?) -> Void) {
-        
-        do {
-            try Bootstrapper.extractBootstrap(tar: tar)
-        } catch {
-            log(msg: "Bootstrapper error occurred: \(error)")
+        if (paleInfo.palerain_option_rootless) {
+            binpack.rm("/var/jb")
+        }
+        let (deployBootstrap_ret, resultDescription) = DeployBootstrap(path: tar, password: "alpine");
+     
+        if (deployBootstrap_ret != 0) {
+            log(msg: "Bootstrapper error occurred: \(resultDescription)")
             return
         }
+        
         
         if Bootstrapper.needsFinalize() {
             log(msg: "Status: Finalizing Bootstrap")
@@ -167,6 +170,8 @@ class bootstrap {
             return
         }
         
+        ReloadLaunchdJailbreakEnvironment()
+        
         cleanUp()
         completion(LocalizationManager.shared.local("DONE_INSTALL"), 0)
         return
@@ -177,7 +182,8 @@ class bootstrap {
             let alert = UIAlertController.spinnerAlert("REMOVING")
             viewController.present(alert, animated: true)
             do {
-                Bootstrapper.uninstallBootstrap()
+                ObliterateJailbreak()
+                ReloadLaunchdJailbreakEnvironment()
             }
             
             if (envInfo.rebootAfter) {

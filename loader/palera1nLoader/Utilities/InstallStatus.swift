@@ -60,7 +60,7 @@ class Check {
     }
     
     static public func prerequisites() -> Void {
-        helper(args: ["palera1n_flags"])
+        envInfo.pinfoFlags = GetPinfoFlags()
         
         envInfo.installPrefix = paleInfo.palerain_option_rootful ? "" : "/var/jb"
         

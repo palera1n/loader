@@ -8,23 +8,26 @@
 	<true/>
 	<key>com.apple.private.security.no-container</key>
 	<true/>
-	<key>com.apple.private.security.no-sandbox</key>
-	<true/>
 	<key>com.apple.private.security.system-application</key>
-	<true/>
-	<key>com.apple.private.skip-library-validation</key>
 	<true/>
 	<key>com.apple.security.iokit-user-client-class</key>
 	<array>
-		<string>IOSurfaceRootUserClient</string>
-		<string>AGXDeviceUserClient</string>
+		<string>IOUserClient</string>
 	</array>
+	<key>in.palera.pinfo.kernel-info</key>
+	<true/>
+	<key>in.palera.loader.bootstrapper</key>
+	<true/>
+	<key>in.palera.loader.allow-obliterate-jailbreak</key>
+	<true/>
+	<key>in.palera.private.launchd-commands.client</key>
+	<true/>
 	<key>com.apple.security.exception.files.absolute-path.read-write</key>
 	<array>
 		<string>/</string>
 	</array>
 	<key>get-task-allow</key>
-    <true/>
+	<true/>
 	<key>com.apple.AutoWake-write-access</key>
 	<true/>
 </dict>

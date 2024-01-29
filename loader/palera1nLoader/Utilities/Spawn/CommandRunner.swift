@@ -131,11 +131,6 @@ import Extras
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
-    if args[1] == "palera1n_flags" {
-        let str = stdoutStr.trimmingCharacters(in: .whitespacesAndNewlines)
-        log(msg: str)
-        envInfo.pinfoFlags = str.isEmpty ? "" : str
-    }
-    
+
     return Int(status)
 }

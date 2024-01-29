@@ -79,7 +79,7 @@ class DiagnosticsVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.detailTextLabel?.text = paleInfo.palerain_option_rootful ? LocalizationManager.shared.local("ROOTFUL") : LocalizationManager.shared.local("ROOTLESS")
         case LocalizationManager.shared.local("PINFO_FLAGS"):
             cell.textLabel?.text = LocalizationManager.shared.local("PINFO_FLAGS")
-            cell.detailTextLabel?.text = envInfo.pinfoFlags
+            cell.detailTextLabel?.text = String(format: "0x%llx", envInfo.pinfoFlags)
         default:
             break
         }
