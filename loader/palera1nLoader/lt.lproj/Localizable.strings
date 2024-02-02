@@ -5,9 +5,9 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Installs";
-"DEBUG" = "Troubleshoot";
-"DIAGNOSTICS" = "Device Information";
+"INSTALL" = "Įdiegia";
+"DEBUG" = "Taisyti";
+"DIAGNOSTICS" = "Įrenginio informacija";
 "ACTIONS" = "Veiksmai";
 "JBINIT_LOG" = "Registravimas";
 "REVERT_CELL" = "Atšaukti diegimą";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Paslėpta aplinka";
 "ACTION_HIDEJB" = "Paslėpti aplinką";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "Atidaryti";
 "OPENER_SILEO" = "Atverti Sileo";
 "OPENER_ZEBRA" = "Atverti Zebra";
 "OPENER_TH" = "Atverti TrollHelper";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "Derinti";
 "DEBUG_OPTIONS" = "Nustatymai";
 "DEBUG_CLEAN_FAKEFS" = "Išvalyti fakefs";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "Išvalyti konfigūraciją";
 
 // Diags
 "CREDITS_SUBTEXT" = "Programą sukūrė:";
@@ -102,9 +102,9 @@ English
 "CLOSE_APP" = "Galite uždaryti programą.";
 "UNHID_ENV" = "Neslėpti aplinkos";
 
-"DL_NOSTRAP" = "Bootstrap and %@ is not installed. Install now?";
-"DL_STRAP_NOPM" = "Install %@?";
-"DL_STRAP_PM" = "%@ is already installed at %@";
+"DL_NOSTRAP" = "Bootstrap ir %@ nėra įdiegtas. Diegti dabar?";
+"DL_STRAP_NOPM" = "Diegti %@?";
+"DL_STRAP_PM" = "%@ jau įdiegta į %@";
 
 // errors
 "STATUS" = "Būsena";
