@@ -1,0 +1,426 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Bootstrap Install" : {
+      "comment" : "✅ Prompt action will have a message for you to install the tapped package manager. (i.e \"Install Cydia\")",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install %@"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "comment" : "✅ The cancel action for alerts",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Change Download URL" : {
+      "comment" : "✅ A tableview button and title that prompts you to change where the loader downloads from",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Download URL"
+          }
+        }
+      }
+    },
+    "Change Download URL Explanation" : {
+      "comment" : "✅ The section footer explanation for changing download URL",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will allow you to change where the loader application will download from with a custom URL to a json file, this can change the package manager, bootstrap, and repos included."
+          }
+        }
+      }
+    },
+    "Done" : {
+      "comment" : "✅ If the action is completed",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Download" : {
+      "comment" : "✅ Section title for changing download URL",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download"
+          }
+        }
+      }
+    },
+    "Download Item" : {
+      "comment" : "✅ This is text that is displayed when in the download process of installing the bootstrap. (i.e \"Downloading Cydia\")",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading %@"
+          }
+        }
+      }
+    },
+    "Downloading Base System" : {
+      "comment" : "✅ This is text that is displayed when downloading the bootstrap file",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading Base System"
+          }
+        }
+      }
+    },
+    "Exit" : {
+      "comment" : "✅ The exit action for alerts, which would close the application and put you to the home screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        }
+      }
+    },
+    "Install" : {
+      "comment" : "✅ Title for first section in the main screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install"
+          }
+        }
+      }
+    },
+    "Installed Manager" : {
+      "comment" : "✅ Prompt will have a message for you to reinstall the tapped package manager. (i.e \"Cydia is already installed\")",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ is already installed."
+          }
+        }
+      }
+    },
+    "Installing Item" : {
+      "comment" : "✅ This is text that is displayed when in the install process of installing the bootstrap. (i.e \"Installing Cydia\")",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installing %@"
+          }
+        }
+      }
+    },
+    "Is Force Reverted" : {
+      "comment" : "✅ Prompt message that tells you to reboot the device",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have used the force-revert option when using palera1n, please reboot the device."
+          }
+        }
+      }
+    },
+    "Language" : {
+      "comment" : "✅ Tableview cell and section title for changing preferred language",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
+    "Loader Update" : {
+      "comment" : "✅ You're using a very old version of the loader application",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Loader version is too old and may have unforeseen issues. It is recommended that you update to the latest version of palera1n."
+          }
+        }
+      }
+    },
+    "Loading" : {
+      "comment" : "✅ A tableview cell would appear with this label when its trying to retrieve the configuration through palera1ns website",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading"
+          }
+        }
+      }
+    },
+    "Options" : {
+      "comment" : "✅ A tableview cell which would bring up the options page",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        }
+      }
+    },
+    "Password" : {
+      "comment" : "✅ Placeholder text for the first text field in the password prompt",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        }
+      }
+    },
+    "Password Explanation" : {
+      "comment" : "✅ The description in the password prompt telling you what the password is exactly for",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)"
+          }
+        }
+      }
+    },
+    "Reboot after Restore" : {
+      "comment" : "✅ If the user wants to reboot after restoring system / reverting jailbreak installation",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reboot after Restore"
+          }
+        }
+      }
+    },
+    "Reinstall Manager" : {
+      "comment" : "✅ Prompt action will have a message for you to reinstall the tapped package manager. (i.e \"ReInstall Cydia\")",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reinstall %@"
+          }
+        }
+      }
+    },
+    "Repeat Password" : {
+      "comment" : "✅ Placeholder text for the second text field in the password prompt",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repeat Password"
+          }
+        }
+      }
+    },
+    "Reset Configuration" : {
+      "comment" : "✅ Tableview cell which gives the user an option to go back to the original URL to where the loader downloads from",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Configuration"
+          }
+        }
+      }
+    },
+    "Restart Application for changes to fully apply" : {
+      "comment" : "✅ Prompt the user to restart the palera1n loader for localization changes to take into effect",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart Application for changes to fully apply"
+          }
+        }
+      }
+    },
+    "Restore System" : {
+      "comment" : "✅ A tableview cell which would prompt you to uninstall your jailbreak",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore System"
+          }
+        }
+      }
+    },
+    "Restore System Explanation" : {
+      "comment" : "✅ Prompt will have a message for you to uninstall the jailbreak, \"This will reboot your %@\", here will either show if you have an iPhone or iPad, i.e \"This will reboot your iPad\"",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall jailbreak files and other changes made to the operating system, without erasing your data. This will reboot your %@."
+          }
+        }
+      }
+    },
+    "Retry" : {
+      "comment" : "✅ A tableview cell would appear with this button label if it ever fails to retrieve the loader configuration through palera1ns website",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        }
+      }
+    },
+    "Set" : {
+      "comment" : "✅ The set action for alerts, this is mainly used for when changing the URL where the loader downloads from",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set"
+          }
+        }
+      }
+    },
+    "Set Password" : {
+      "comment" : "✅ Title of the password prompt",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Password"
+          }
+        }
+      }
+    },
+    "Too Long" : {
+      "comment" : "✅ If your set password is over the 254 char limit in the password prompt",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too Long"
+          }
+        }
+      }
+    },
+    "Troubleshoot" : {
+      "comment" : "✅ Title for second section in the main screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Troubleshoot"
+          }
+        }
+      }
+    },
+    "Unable to fetch bootstraps." : {
+      "comment" : "✅ A tableview cell would appear with this label if it ever fails to retrieve the loader configuration through palera1ns website",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to fetch bootstraps."
+          }
+        }
+      }
+    },
+    "Use System Language" : {
+      "comment" : "✅ Toggle if the user wants to use their system language instead of a preferred",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use System Language"
+          }
+        }
+      }
+    },
+    "Utilities" : {
+      "comment" : "✅ Section title for utilities, such as respiring, and reboot",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilities"
+          }
+        }
+      }
+    },
+    "Utilities Explanation" : {
+      "comment" : "✅ The section footer explanation for \"Utilities\"",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If your installed manager doesn't appear, you can use these options and they should appear afterwards."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

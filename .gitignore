@@ -1,10 +1,6 @@
-Payload
+
 *.DS_Store
+Payload
 packages
-loader/palera1nLoader.xcodeproj/project.xcworkspace/xcuserdata/
-loader/palera1nLoader.xcodeproj/xcuserdata/
-tvloader/palera1nLoader.xcodeproj/project.xcworkspace/xcuserdata/
-tvloader/palera1nLoader.xcodeproj/xcuserdata/
-tvloader/palera1nLoader.xcodeproj/project.xcworkspace/xcuserdata/
 apple-include
 *UserInterfaceState.xcuserstate

@@ -1,0 +1,12 @@
+//
+//  module.modulemap
+//  loader-rewrite
+//
+//  Created by samara on 1/30/24.
+//
+
+module Bridge {
+    header "posixspawn.h"
+
+    export *
+}

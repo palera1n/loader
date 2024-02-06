@@ -1,5 +1,0 @@
-commit_message: 'feat(lang): Update %language% translations'
-append_commit_message: false
-files:
-  - source: /loader/palera1nLoader/en.lproj/*
-    translation: /loader/palera1nLoader/%osx_code%/%original_file_name%
