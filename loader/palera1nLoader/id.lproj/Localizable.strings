@@ -6,7 +6,7 @@ English
 // ViewController Cells
 
 "INSTALL" = "Installs";
-"DEBUG" = "Troubleshoot";
+"DEBUG" = "";
 "DIAGNOSTICS" = "Informasi Perangkat";
 "ACTIONS" = "Tindakan";
 "JBINIT_LOG" = "Pencatatan Log";
@@ -15,7 +15,7 @@ English
 // ActionsVC
 "HIDDEN" = "Jailbreak Disembunyikan";
 "ACTION_HIDEJB" = "Sembunyikan Jailbreak";
-"OPEN_CELL" = "Open";
+"OPEN_CELL" = "";
 "OPENER_SILEO" = "Buka Sileo";
 "OPENER_ZEBRA" = "Buka Zebra";
 "OPENER_TH" = "Buka TrollHelper";
