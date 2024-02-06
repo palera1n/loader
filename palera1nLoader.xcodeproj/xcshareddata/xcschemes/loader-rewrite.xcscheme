@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "33FA4F852B6849B0008E44A4"
-               BuildableName = "loader-rewrite.app"
-               BlueprintName = "loader-rewrite"
-               ReferencedContainer = "container:loader-rewrite.xcodeproj">
+               BuildableName = "palera1nLoader.app"
+               BlueprintName = "palera1nLoader"
+               ReferencedContainer = "container:palera1nLoader.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "33FA4F852B6849B0008E44A4"
-            BuildableName = "loader-rewrite.app"
-            BlueprintName = "loader-rewrite"
-            ReferencedContainer = "container:loader-rewrite.xcodeproj">
+            BuildableName = "palera1nLoader.app"
+            BlueprintName = "palera1nLoader"
+            ReferencedContainer = "container:palera1nLoader.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "33FA4F852B6849B0008E44A4"
-            BuildableName = "loader-rewrite.app"
-            BlueprintName = "loader-rewrite"
-            ReferencedContainer = "container:loader-rewrite.xcodeproj">
+            BuildableName = "palera1nLoader.app"
+            BlueprintName = "palera1nLoader"
+            ReferencedContainer = "container:palera1nLoader.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

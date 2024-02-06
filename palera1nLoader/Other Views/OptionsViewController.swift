@@ -114,7 +114,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
     @objc func rebootOnRevertToggled(_ sender: UISwitch) { Preferences.rebootOnRevert?.toggle() }
     @objc func overrideConfigTypeToggled(_ sender: UISwitch) { Preferences.overrideConfigType?.toggle() }
     @objc func doPasswordPromptToggled(_ sender: UISwitch) { Preferences.doPasswordPrompt?.toggle() }
@@ -125,6 +124,10 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         let cellText = tableData[indexPath.section][indexPath.row]
 
         switch cellText {
+        case "Respring":
+            spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
+        case "Userspace Reboot":
+            spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
         case .localized("Change Download URL"):
             showChangeDownloadURLAlert()
         case .localized("Reset Configuration"):

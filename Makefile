@@ -4,7 +4,7 @@ MACOSX_SYSROOT = $(shell xcrun -sdk macosx --show-sdk-path)
 TARGET_SYSROOT = $(shell xcrun -sdk $(PLATFORM) --show-sdk-path)
 
 PLATFORM = iphoneos
-NAME = loader-rewrite
+NAME = palera1nLoader
 RELEASE = Release-iphoneos
 CONFIGURATION = Release
 

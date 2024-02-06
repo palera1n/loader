@@ -50,7 +50,7 @@
 		338B005D2B6FEBF500BA0CF5 /* PreferredLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredLanguageViewController.swift; sourceTree = "<group>"; };
 		338B00602B706FE400BA0CF5 /* Post-Install.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post-Install.swift"; sourceTree = "<group>"; };
 		338B00622B70A7C800BA0CF5 /* Documentation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
-		33FA4F862B6849B0008E44A4 /* loader-rewrite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loader-rewrite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		33FA4F862B6849B0008E44A4 /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33FA4F892B6849B0008E44A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33FA4F8D2B6849B0008E44A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		33FA4F922B6849B2008E44A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 				33FA4FAE2B685737008E44A4 /* README.md */,
 				338B00622B70A7C800BA0CF5 /* Documentation.md */,
 				33FA4F9D2B684C3B008E44A4 /* loader.entitlements */,
-				33FA4F882B6849B0008E44A4 /* loader-rewrite */,
+				33FA4F882B6849B0008E44A4 /* palera1nLoader */,
 				33FA4F872B6849B0008E44A4 /* Products */,
 				33628E932B69C77F00EB4887 /* Frameworks */,
 			);
@@ -147,12 +147,12 @@
 		33FA4F872B6849B0008E44A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				33FA4F862B6849B0008E44A4 /* loader-rewrite.app */,
+				33FA4F862B6849B0008E44A4 /* palera1nLoader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		33FA4F882B6849B0008E44A4 /* loader-rewrite */ = {
+		33FA4F882B6849B0008E44A4 /* palera1nLoader */ = {
 			isa = PBXGroup;
 			children = (
 				33FA4F892B6849B0008E44A4 /* AppDelegate.swift */,
@@ -169,7 +169,7 @@
 				33FA4F972B6849B2008E44A4 /* Info.plist */,
 				338B005A2B6FEB3600BA0CF5 /* Localization */,
 			);
-			path = "loader-rewrite";
+			path = palera1nLoader;
 			sourceTree = "<group>";
 		};
 		33FA4FA32B684DB4008E44A4 /* XPC */ = {
@@ -226,9 +226,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		33FA4F852B6849B0008E44A4 /* loader-rewrite */ = {
+		33FA4F852B6849B0008E44A4 /* palera1nLoader */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33FA4F9A2B6849B2008E44A4 /* Build configuration list for PBXNativeTarget "loader-rewrite" */;
+			buildConfigurationList = 33FA4F9A2B6849B2008E44A4 /* Build configuration list for PBXNativeTarget "palera1nLoader" */;
 			buildPhases = (
 				33FA4F822B6849B0008E44A4 /* Sources */,
 				33FA4F832B6849B0008E44A4 /* Frameworks */,
@@ -238,9 +238,9 @@
 			);
 			dependencies = (
 			);
-			name = "loader-rewrite";
+			name = palera1nLoader;
 			productName = "loader-rewrite";
-			productReference = 33FA4F862B6849B0008E44A4 /* loader-rewrite.app */;
+			productReference = 33FA4F862B6849B0008E44A4 /* palera1nLoader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -259,7 +259,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 33FA4F812B6849B0008E44A4 /* Build configuration list for PBXProject "loader-rewrite" */;
+			buildConfigurationList = 33FA4F812B6849B0008E44A4 /* Build configuration list for PBXProject "palera1nLoader" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -272,7 +272,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				33FA4F852B6849B0008E44A4 /* loader-rewrite */,
+				33FA4F852B6849B0008E44A4 /* palera1nLoader */,
 			);
 		};
 /* End PBXProject section */
@@ -452,7 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "loader-rewrite/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/palera1nLoader/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -470,8 +470,8 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/loader-rewrite/Bridge";
-				SWIFT_OBJC_BRIDGING_HEADER = "loader-rewrite/XPC/bridge.h";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/Bridge";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
@@ -490,7 +490,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "loader-rewrite/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/palera1nLoader/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -508,8 +508,8 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/loader-rewrite/Bridge";
-				SWIFT_OBJC_BRIDGING_HEADER = "loader-rewrite/XPC/bridge.h";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/Bridge";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
 				SWIFT_VERSION = 5.0;
 				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -519,7 +519,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		33FA4F812B6849B0008E44A4 /* Build configuration list for PBXProject "loader-rewrite" */ = {
+		33FA4F812B6849B0008E44A4 /* Build configuration list for PBXProject "palera1nLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33FA4F982B6849B2008E44A4 /* Debug */,
@@ -528,7 +528,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		33FA4F9A2B6849B2008E44A4 /* Build configuration list for PBXNativeTarget "loader-rewrite" */ = {
+		33FA4F9A2B6849B2008E44A4 /* Build configuration list for PBXNativeTarget "palera1nLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				33FA4F9B2B6849B2008E44A4 /* Debug */,
