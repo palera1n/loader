@@ -21,7 +21,8 @@ class PreferredLanguageViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return Preferences.preferredLanguageCode != nil ? 2 : 1
     }
-    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:

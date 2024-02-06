@@ -11,17 +11,19 @@ import UIKit
 class OptionsViewController: UIViewController {
 
     var tableData = [
-        ["Respring", "Userspace Reboot"],
-        [.localized("Change Download URL")],
-        [.localized("Reboot after Restore"), .localized("Show Password Prompt")],
-        [.localized("Language")]
+        [String.localized("About"), String.localized("Utilities")],
+        [String.localized("Change Download URL")],
+        [String.localized("Reboot after Restore"), String.localized("Show Password Prompt")],
+        [String.localized("Language")],
+        [String.localized("Credits")]
     ]
     
     var sectionTitles = [
-        String.localized("Utilities"),
+        String.localized("General"),
         String.localized("Download"),
         String.localized("Options"),
-        String.localized("Language")
+        String.localized("Language"),
+        String.localized("Credits")
     ]
     
     var tableView: UITableView!
@@ -53,11 +55,10 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
     func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        case 0:
-            return .localized("Utilities Explanation")
         case 1:
             return .localized("Change Download URL Explanation")
         default:
@@ -74,8 +75,8 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = cellText
         
         switch cellText {
-        case "Respring", "Userspace Reboot":
-            cell.textLabel?.textColor = UIColor.systemBlue
+        case String.localized("Utilities"), String.localized("About"), String.localized("Credits"):
+            cell.accessoryType = .disclosureIndicator
         case .localized("Change Download URL"):
             if Preferences.installPath != Preferences.defaultInstallPath {
                 cell.textLabel?.textColor = UIColor.systemGray
@@ -124,10 +125,12 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         let cellText = tableData[indexPath.section][indexPath.row]
 
         switch cellText {
-        case "Respring":
-            spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
-        case "Userspace Reboot":
-            spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
+        case .localized("About"):
+            let i = InfoViewController()
+            navigationController?.pushViewController(i, animated: true)
+        case .localized("Utilities"):
+            let u = UtilitiesViewController()
+            navigationController?.pushViewController(u, animated: true)
         case .localized("Change Download URL"):
             showChangeDownloadURLAlert()
         case .localized("Reset Configuration"):
@@ -135,6 +138,9 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         case .localized("Language"):
             navigationController?.pushViewController(PreferredLanguageViewController(style: .grouped),
                                                      animated: true)
+        case "Credits":
+            let c = CreditsViewController()
+            navigationController?.pushViewController(c, animated: true)
         default:
             break
         }

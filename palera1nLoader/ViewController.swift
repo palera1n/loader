@@ -139,6 +139,7 @@ extension ViewController: BootstrapLabelDelegate {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int { return 2 }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let strapValue = Status.installation()
@@ -275,7 +276,7 @@ extension ViewController {
 
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Loader"
+        titleLabel.text = "palera1n"
         titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
         customView.addSubview(titleLabel)
         

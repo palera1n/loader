@@ -1,6 +1,30 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "About" : {
+      "comment" : "✅ Tableview cell and section title for the about page in the loader",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "Architecture" : {
+      "comment" : "✅ Tableview cell label which shows your arch or cpu type, i.e arm64 or arm4e",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Architecture"
+          }
+        }
+      }
+    },
     "Bootstrap Install" : {
       "comment" : "✅ Prompt action will have a message for you to install the tapped package manager. (i.e \"Install Cydia\")",
       "extractionState" : "manual",
@@ -45,6 +69,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This will allow you to change where the loader application will download from with a custom URL to a json file, this can change the package manager, bootstrap, and repos included."
+          }
+        }
+      }
+    },
+    "Credits" : {
+      "comment" : "✅ Tableview cell and section title for the credits page in the loader",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
           }
         }
       }
@@ -105,6 +141,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exit"
+          }
+        }
+      }
+    },
+    "Flags" : {
+      "comment" : "✅ Tableview cell label which shows the hex value of paleinfo, which this value tells the loader if you're currently rootless or rootful, and others",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flags"
+          }
+        }
+      }
+    },
+    "General" : {
+      "comment" : "✅ Tableview section title for general options",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
           }
         }
       }
@@ -373,6 +433,18 @@
         }
       }
     },
+    "Type" : {
+      "comment" : "✅ Tableview cell label which shows if you're currently rootless or rootful with palera1n",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        }
+      }
+    },
     "Unable to fetch bootstraps." : {
       "comment" : "✅ A tableview cell would appear with this label if it ever fails to retrieve the loader configuration through palera1ns website",
       "extractionState" : "manual",
@@ -417,6 +489,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "If your installed manager doesn't appear, you can use these options and they should appear afterwards."
+          }
+        }
+      }
+    },
+    "Version" : {
+      "comment" : "✅ Tableview cell label which shows your iOS version",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         }
       }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536C2B722712004F2177 /* UtilitiesViewController.swift */; };
+		3332536F2B72271D004F2177 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536E2B72271D004F2177 /* InfoViewController.swift */; };
+		333253732B72AC96004F2177 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333253722B72AC96004F2177 /* CreditsViewController.swift */; };
 		335342C62B69C4B1000583E5 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = 335342C52B69C4B1000583E5 /* jailbreakd.c */; };
 		335342C82B69C59E000583E5 /* OpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335342C72B69C59E000583E5 /* OpenApp.swift */; };
 		33628E952B69C77F00EB4887 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33628E942B69C77F00EB4887 /* CoreServices.framework */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3332536C2B722712004F2177 /* UtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewController.swift; sourceTree = "<group>"; };
+		3332536E2B72271D004F2177 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		333253722B72AC96004F2177 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		335342C32B69C4B0000583E5 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		335342C42B69C4B1000583E5 /* jailbreakd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jailbreakd.h; sourceTree = "<group>"; };
 		335342C52B69C4B1000583E5 /* jailbreakd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = jailbreakd.c; sourceTree = "<group>"; };
@@ -123,7 +129,10 @@
 			isa = PBXGroup;
 			children = (
 				33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */,
+				3332536C2B722712004F2177 /* UtilitiesViewController.swift */,
+				3332536E2B72271D004F2177 /* InfoViewController.swift */,
 				338B005D2B6FEBF500BA0CF5 /* PreferredLanguageViewController.swift */,
+				333253722B72AC96004F2177 /* CreditsViewController.swift */,
 			);
 			path = "Other Views";
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33FA4FB92B68609E008E44A4 /* Fetch+Decode.swift in Sources */,
+				3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */,
 				338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */,
 				338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */,
 				33628EC62B6C023D00EB4887 /* CommandRunner.swift in Sources */,
@@ -305,6 +315,7 @@
 				33FA4FC72B69B9C2008E44A4 /* ManagerActions.swift in Sources */,
 				33FA4FB42B685EC4008E44A4 /* Preferences.swift in Sources */,
 				33FA4FA02B684D62008E44A4 /* Wrapper.swift in Sources */,
+				333253732B72AC96004F2177 /* CreditsViewController.swift in Sources */,
 				33628E9C2B69D63500EB4887 /* Download+Install.swift in Sources */,
 				33FA4FC32B68D5AC008E44A4 /* BasicLayoutAnchors.swift in Sources */,
 				33FA4FBB2B68617A008E44A4 /* Directory+Logging.swift in Sources */,
@@ -315,6 +326,7 @@
 				33628E9A2B69CE7800EB4887 /* UIAlertAction.swift in Sources */,
 				335342C62B69C4B1000583E5 /* jailbreakd.c in Sources */,
 				33FA4FC52B68F6C8008E44A4 /* Status.swift in Sources */,
+				3332536F2B72271D004F2177 /* InfoViewController.swift in Sources */,
 				335342C82B69C59E000583E5 /* OpenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
