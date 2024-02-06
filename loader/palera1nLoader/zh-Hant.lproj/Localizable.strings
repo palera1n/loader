@@ -5,7 +5,7 @@ English
 */
 // ViewController Cells
 
-"INSTALL" = "Installs";
+"INSTALL" = "安裝";
 "DEBUG" = "疑難排解";
 "DIAGNOSTICS" = "設備信息";
 "ACTIONS" = "動作";
@@ -39,7 +39,7 @@ English
 "DEBUG_CELL" = "除錯";
 "DEBUG_OPTIONS" = "選項";
 "DEBUG_CLEAN_FAKEFS" = "清理fakefs";
-"DEBUG_CLEAR_JSON" = "Clear config";
+"DEBUG_CLEAR_JSON" = "清除配置";
 
 // Diags
 "CREDITS_SUBTEXT" = "載入器作者：";
