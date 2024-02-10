@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkMinimumRequiredVersion()
-        fetchJSON()
+        retryFetchJSON()
     }
     
     override func viewDidLoad() {
@@ -220,7 +220,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let errorCell = tableView.dequeueReusableCell(withIdentifier: ErrorCell.reuseIdentifier, for: indexPath) as! ErrorCell
             errorCell.selectionStyle = .none
             errorCell.retryAction = { [weak self] in
-                self?.fetchJSON()
+                self?.retryFetchJSON()
             }
             return errorCell
         }
@@ -234,7 +234,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         case (0, let row):
             if isError || isLoading { break }
             let cellData = tableData[indexPath.section][row] as? String
-            #warning("clean up this code for later")
             showAlert(for: indexPath, row: row, cellData: cellData, sourceView: tableView.cellForRow(at: indexPath)!)
         case (1, 0):
             let options = OptionsViewController()

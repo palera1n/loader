@@ -125,8 +125,8 @@ class ErrorCell: UITableViewCell {
 
 extension ViewController {
     func showErrorCell() {
-        isError = true
         DispatchQueue.main.async {
+            self.isError = true
             self.isLoading = false
             self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }

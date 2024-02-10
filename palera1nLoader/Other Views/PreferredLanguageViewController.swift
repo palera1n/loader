@@ -4,7 +4,7 @@
 //
 //  Created by Serena on 24/02/2023.
 //
-
+/*
 import UIKit
 
 #warning("This is taken from https://github.com/NSAntoine/Antoine, thank you.")
@@ -83,3 +83,4 @@ class PreferredLanguageViewController: UITableViewController {
         }
     }
 }
+*/

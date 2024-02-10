@@ -14,7 +14,6 @@ class OptionsViewController: UIViewController {
         [String.localized("About"), String.localized("Utilities")],
         [String.localized("Change Download URL")],
         [String.localized("Reboot after Restore"), String.localized("Show Password Prompt")],
-        [String.localized("Language")],
         [String.localized("Credits")]
     ]
     
@@ -22,7 +21,6 @@ class OptionsViewController: UIViewController {
         String.localized("General"),
         String.localized("Download"),
         String.localized("Options"),
-        String.localized("Language"),
         String.localized("Credits")
     ]
     
@@ -106,8 +104,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             switchControl.isOn = Preferences.overrideConfigType!
             switchControl.addTarget(self, action: #selector(overrideConfigTypeToggled(_:)), for: .valueChanged)
             cell.accessoryView = switchControl
-        case .localized("Language"):
-            cell.accessoryType = .disclosureIndicator
         default:
             break
         }
@@ -135,9 +131,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             showChangeDownloadURLAlert()
         case .localized("Reset Configuration"):
             resetConfigDefault()
-        case .localized("Language"):
-            navigationController?.pushViewController(PreferredLanguageViewController(style: .grouped),
-                                                     animated: true)
         case "Credits":
             let c = CreditsViewController()
             navigationController?.pushViewController(c, animated: true)

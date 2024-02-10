@@ -13,11 +13,14 @@ class CreditsViewController: UITableViewController {
         let name: String
         let github: String
         let desc: String?
-        let lang: String?
     }
 
-    var credits: [[Credit]] = []
-    var sectionTitles: [String] = []
+    struct CreditsSection: Decodable {
+        let name: String
+        let data: [Credit]
+    }
+
+    var creditsSections: [CreditsSection] = []
     var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
@@ -55,15 +58,13 @@ class CreditsViewController: UITableViewController {
 
                 do {
                     let decoder = JSONDecoder()
-                    let creditsData = try decoder.decode([String: [Credit]].self, from: data)
+                    let container = try decoder.decode([String: [CreditsSection]].self, from: data)
 
-                    let sectionOrder = ["credits", "thanks", "translations"]
-
-                    self?.sectionTitles = sectionOrder.compactMap { creditsData[$0] != nil ? $0 : nil }
-                    self?.credits = sectionOrder.compactMap { creditsData[$0] }
-
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
+                    if let sections = container["sections"] {
+                        self?.creditsSections = sections
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                        }
                     }
                 } catch {
                     print("Error decoding JSON: \(error)")
@@ -75,29 +76,18 @@ class CreditsViewController: UITableViewController {
 }
 
 extension CreditsViewController {
-    override func numberOfSections(in tableView: UITableView) -> Int { return credits.count }
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return credits[section].count }
-    
-    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        let totalSections = tableView.numberOfSections
-        if section == totalSections - 1 {
-            return "Thank you to everyone who made and contributed to palera1n <3"
-        }
-
-        return nil
-    }
+    override func numberOfSections(in tableView: UITableView) -> Int { return creditsSections.count }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return creditsSections[section].data.count }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "CreditCell")
 
-        let credit = credits[indexPath.section][indexPath.row]
+        let credit = creditsSections[indexPath.section].data[indexPath.row]
         cell.textLabel?.text = credit.name
         cell.textLabel?.textColor = .systemBlue
 
         if let desc = credit.desc {
             cell.detailTextLabel?.text = desc
-        } else if let lang = credit.lang {
-            cell.detailTextLabel?.text = lang
         }
 
         cell.detailTextLabel?.textColor = .systemGray
@@ -107,7 +97,7 @@ extension CreditsViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let credit = credits[indexPath.section][indexPath.row]
+        let credit = creditsSections[indexPath.section].data[indexPath.row]
         if let githubURL = URL(string: "https://github.com/\(credit.github)") {
             UIApplication.shared.open(githubURL, options: [:], completionHandler: nil)
         }
@@ -115,10 +105,10 @@ extension CreditsViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard section < sectionTitles.count else {
+        guard section < creditsSections.count else {
             return nil
         }
 
-        return section < sectionTitles.count ? sectionTitles[section].capitalized : nil
+        return creditsSections[section].name.capitalized
     }
 }

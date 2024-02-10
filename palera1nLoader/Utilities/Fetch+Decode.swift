@@ -304,14 +304,10 @@ extension ViewController {
             }
             
             DispatchQueue.main.async {
-                self.showMinimumRequiredAlert(message: .localized("Loader Update"))
+                let lame = UIAlertAction(title: "Lame", style: .default, handler: nil)
+                let alert = UIAlertController.error(title: "", message: .localized("Loader Update"), actions: [lame])
+                self.present(alert, animated: true)
             }
         }
-    }
-
-    func showMinimumRequiredAlert(message: String) {
-        let additionalAction = UIAlertAction(title: "Lame", style: .default, handler: nil)
-        let alert = UIAlertController.error(title: "", message: message, actions: [additionalAction])
-        self.present(alert, animated: true)
     }
 }

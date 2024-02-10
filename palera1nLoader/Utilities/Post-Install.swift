@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class Finalize {
-    weak var delegate: BootstrapLabelDelegate?
+    var delegate: BootstrapLabelDelegate?
     func finalizeBootstrap(deb: String) throws {
         var prefix = ""
         if paleInfo.palerain_option_rootless { prefix = "/var/jb" }
@@ -74,7 +74,9 @@ class Finalize {
         _ = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         #endif
         Go.cleanUp()
-        UIApplication.prepareForExitAndSuspend()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIApplication.prepareForExitAndSuspend()
+        }
     }
 }
 
@@ -87,7 +89,9 @@ extension Go {
         
         downloadFile(url: URL(string: pkgmgrUrl)!) { pkgmgrFilePath, pkgmgrError in
             if let pkgmgrFilePath = pkgmgrFilePath {
-                self.updateBootstrapLabel(file: file) {
+                self.delegate?.updateBootstrapLabel(withText: .localized("Installing Item", arguments: "\(file.capitalized)"))
+                
+                DispatchQueue(label: "Install manager").async {
                     Finalize().postManagerInstall(deb: pkgmgrFilePath)
                 }
             }

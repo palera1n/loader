@@ -13,7 +13,7 @@ import UIKit
 class Go {
     
     static let shared = Go()
-    weak var delegate: BootstrapLabelDelegate?
+    var delegate: BootstrapLabelDelegate?
     
     /// Install
     func attemptInstall(file: String) {
@@ -28,28 +28,24 @@ class Go {
             if let bootstrapFilePath = bootstrapFilePath {
                 downloadFile(url: URL(string: pkgmgrUrl)!) { [self] pkgmgrFilePath, pkgmgrError in
                     if let pkgmgrFilePath = pkgmgrFilePath {
-                        DispatchQueue.main.async {
-                            self.updateBootstrapLabel(file: file) {
-                                if Preferences.doPasswordPrompt! {
-                                    self.displayPrompt { password in
-                                        if let password = password {
-                                            self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: password)
-                                        }
+                        
+                        delegate?.updateBootstrapLabel(withText: .localized("Installing Item", arguments: "\(file.capitalized)"))
+                        
+                        DispatchQueue(label: "Install Strap").async {
+                            if Preferences.doPasswordPrompt! {
+                                self.displayPrompt { password in
+                                    if let password = password {
+                                        self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: password)
                                     }
-                                } else {
-                                    self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: "alpine")
                                 }
+                            } else {
+                                self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: "alpine")
                             }
                         }
                     }
                 }
             }
         }
-    }
-    
-    func updateBootstrapLabel(file: String?, completion: @escaping () -> Void) {
-        delegate?.updateBootstrapLabel(withText: .localized("Installing Item", arguments: file!))
-        completion()
     }
 }
 
@@ -197,7 +193,9 @@ extension Go {
         ReloadLaunchdJailbreakEnvironment()
         
         Go.cleanUp()
-        UIApplication.prepareForExitAndSuspend()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            UIApplication.prepareForExitAndSuspend()
+        }
     }
 }
 
