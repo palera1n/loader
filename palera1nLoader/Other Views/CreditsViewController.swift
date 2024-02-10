@@ -29,10 +29,14 @@ class CreditsViewController: UITableViewController {
         tableView = UITableView(frame: tableView.frame, style: .grouped)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CreditCell")
 
-        if #available(iOS 13.0, *) {
+        if #available(iOS 13.0, *), #available(tvOS 15.0, *) {
             activityIndicator = UIActivityIndicatorView(style: .medium)
         } else {
+            #if os(tvOS)
+            activityIndicator = UIActivityIndicatorView(style: .white)
+            #else
             activityIndicator = UIActivityIndicatorView(style: .gray)
+            #endif
         }
 
         activityIndicator.center = CGPoint(x: view.center.x, y: view.safeAreaInsets.top + activityIndicator.bounds.height / 2 + 40)

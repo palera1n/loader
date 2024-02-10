@@ -46,9 +46,10 @@ extension UIAlertController {
         for action in actions {
             alertController.addAction(action)
         }
-
+        #if os(iOS)
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
+        #endif
         return alertController
     }
 }

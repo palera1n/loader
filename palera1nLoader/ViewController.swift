@@ -79,11 +79,15 @@ extension ViewController: BootstrapLabelDelegate {
         containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
+        #if !os(tvOS)
         if #available(iOS 13.0, *) {
             containerView.backgroundColor = UIColor.systemGroupedBackground.withAlphaComponent(1.0)
         } else {
             containerView.backgroundColor = UIColor.white.withAlphaComponent(1.0)
         }
+        #else
+        containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+        #endif
         
         view.addSubview(containerView)
 
