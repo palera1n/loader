@@ -6,7 +6,6 @@
 //
 
 import Foundation
-#warning("fix overwrite file")
 #if targetEnvironment(simulator)
 func GetPinfoFlags() -> UInt64 {
     //return 0xc0002; // rootless
@@ -27,7 +26,12 @@ func OverwriteFile(destination: String, content: String) -> (Int, String) {
 @discardableResult func ObliterateJailbreak() -> Int {
     return 0;
 }
+
 @discardableResult func ReloadLaunchdJailbreakEnvironment() -> Int {
+    return 0;
+}
+
+@discardableResult func ExitFailureSafeMode() -> Int {
     return 0;
 }
 
@@ -99,6 +103,10 @@ func GetPinfoKernelInfo() -> (UInt64, UInt64) {
 
 @discardableResult func ReloadLaunchdJailbreakEnvironment() -> Int {
     return Int(ReloadLaunchdJailbreakEnvironment_impl());
+}
+
+@discardableResult func ExitFailureSafeMode() -> Int {
+    return Int(ExitFailureSafeMode_impl());
 }
 
 #endif

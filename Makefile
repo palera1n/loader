@@ -6,7 +6,7 @@ RELEASE = Release-iphoneos
 CONFIGURATION = Release
 
 MACOSX_SYSROOT = $(shell xcrun -sdk macosx --show-sdk-path)
-TARGET_SYSROOT = $(shell xcrun -sdk appletvsimulator --show-sdk-path)
+TARGET_SYSROOT = $(shell xcrun -sdk $(PLATFORM) --show-sdk-path)
 
 P1_TMP         = $(TMPDIR)/$(NAME)
 P1_STAGE_DIR   = $(P1_TMP)/stage

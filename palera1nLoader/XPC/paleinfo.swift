@@ -18,6 +18,8 @@ struct paleinfo {
     var palerain_option_force_revert: Bool
     /// User specified `-s` (safemode)
     var palerain_option_safemode: Bool
+    /// If user has happened to have an rsod
+    var palerain_option_failure: Bool
     /// eta
     var palera1n_option_flower_chain: Bool
     
@@ -27,6 +29,7 @@ struct paleinfo {
         self.palerain_option_rootless = (flags & (1 << 1)) != 0
         self.palerain_option_force_revert = (flags & (1 << 24)) != 0
         self.palerain_option_safemode = (flags & (1 << 25)) != 0
+        self.palerain_option_failure = (flags & (1 << 60)) != 0
         self.palera1n_option_flower_chain = (flags & (1 << 61)) != 0
     }
 }

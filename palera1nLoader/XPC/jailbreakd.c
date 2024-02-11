@@ -11,6 +11,7 @@
 
 enum {
     JBD_CMD_GET_PINFO_FLAGS = 1,
+    JBD_CMD_EXIT_SAFE_MODE = 10,
     JBD_CMD_GET_PREBOOTPATH,
     JBD_CMD_GET_PINFO_KERNEL_INFO,
     JBD_CMD_GET_PINFO_ROOTDEV,
@@ -209,6 +210,15 @@ int ReloadLaunchdJailbreakEnvironment_impl(void) {
     xpc_release(launchd_dict);
     xpc_release(launchd_reply);
     return ret;
+}
+
+int ExitFailureSafeMode_impl(void) {
+    xpc_object_t xreply = jailbreak_send_jailbreakd_command_with_reply_sync(JBD_CMD_EXIT_SAFE_MODE);
+    if (xpc_get_type(xreply) == XPC_TYPE_ERROR) return -1;
+    int error = (int)xpc_dictionary_get_int64(xreply, "error");
+    xpc_release(xreply);
+    if (error) return error;
+    else return 0;
 }
 
 #endif

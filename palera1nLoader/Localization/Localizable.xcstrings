@@ -145,6 +145,30 @@
         }
       }
     },
+    "Exit Safemode" : {
+      "comment" : "✅ Alert action that exits safemode for the user incase a failure happened",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit Safemode"
+          }
+        }
+      }
+    },
+    "Failure Alert" : {
+      "comment" : "✅ Alert action that cancels if the user chooses to cancel in the exit safemode alert",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To exit safe mode press \"Exit Safemode\""
+          }
+        }
+      }
+    },
     "Flags" : {
       "comment" : "✅ Tableview cell label which shows the hex value of paleinfo, which this value tells the loader if you're currently rootless or rootful, and others",
       "extractionState" : "manual",

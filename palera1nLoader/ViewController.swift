@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class ViewController: UIViewController {
     
     var tableData: [[Any]] = [[]]
@@ -50,6 +49,13 @@ class ViewController: UIViewController {
     func checkForceRevert() {
         if paleInfo.palerain_option_force_revert {
             log(type: .fatal, msg: .localized("Is Force Reverted"))
+        } else if paleInfo.palerain_option_failure {
+            let nah = UIAlertAction(title: "Nah", style: .cancel, handler: nil)
+            let exit = UIAlertAction(title: .localized("Exit Safemode"), style: .default) { _ in
+                ExitFailureSafeMode()
+            }
+            let alert = UIAlertController.coolAlert(title: "", message: .localized("Failure Alert"), actions: [nah, exit])
+            self.present(alert, animated: true)
         }
     }
 }

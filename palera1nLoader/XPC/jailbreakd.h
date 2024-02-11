@@ -81,6 +81,7 @@ int OverwriteFile_impl(
 int ObliterateJailbreak_impl(void);
 int GetPinfoKernelInfo_impl(uint64_t* kbase, uint64_t* kslide);
 int ReloadLaunchdJailbreakEnvironment_impl(void);
+int ExitFailureSafeMode_impl(void);
 #endif
 
 #endif /* jailbreakd_h */

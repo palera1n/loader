@@ -52,5 +52,19 @@ extension UIAlertController {
         #endif
         return alertController
     }
+    
+    static func coolAlert(title: String, message: String, actions: [UIAlertAction]) -> UIAlertController {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        for action in actions {
+            alertController.addAction(action)
+        }
+        #if os(iOS)
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
+        #endif
+        return alertController
+    }
+    
 }
 
