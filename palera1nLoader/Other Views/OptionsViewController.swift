@@ -131,7 +131,7 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             showChangeDownloadURLAlert()
         case .localized("Reset Configuration"):
             resetConfigDefault()
-        case "Credits":
+        case .localized("Credits"):
             let c = CreditsViewController()
             navigationController?.pushViewController(c, animated: true)
         default:
