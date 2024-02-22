@@ -275,6 +275,17 @@
 			knownRegions = (
 				en,
 				Base,
+				ca,
+				ar,
+				"zh-HK",
+				cs,
+				da,
+				ko,
+				vi,
+				tr,
+				ja,
+				de,
+				fr,
 			);
 			mainGroup = 33FA4F7D2B6849B0008E44A4;
 			productRefGroup = 33FA4F872B6849B0008E44A4 /* Products */;
