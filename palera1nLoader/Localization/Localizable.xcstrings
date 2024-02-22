@@ -16,6 +16,12 @@
             "state" : "translated",
             "value" : "情報"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rreth"
+          }
         }
       }
     },
@@ -33,6 +39,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "アーキテクチャ"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arkitektura"
           }
         }
       }
@@ -52,6 +64,12 @@
             "state" : "translated",
             "value" : "%@をインストール"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalo %@"
+          }
         }
       }
     },
@@ -69,6 +87,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "キャンセル"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anullo"
           }
         }
       }
@@ -88,6 +112,12 @@
             "state" : "translated",
             "value" : "ダウンロードURLを変更"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ndrysho URL-ne e shkarkimit"
+          }
         }
       }
     },
@@ -105,6 +135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "カスタムURLを使用することでloaderアプリケーションが jsonファイルをダウンロードするアドレスを変更できるようになります。これにより、パッケージマネージャー、bootstrap、およびリポジトリが変更される可能性があります。"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kjo do te lejoje ty qe te ndryshosh ku aplikacioni loader do shkarkoje me nje url ndryshe ne nje json, kjo do te ndryshoje manaxhuesin e paketave, bootstrap-in, dhe repot te vendosura."
           }
         }
       }
@@ -124,6 +160,12 @@
             "state" : "translated",
             "value" : "クレジット"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kredite"
+          }
         }
       }
     },
@@ -141,6 +183,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "完了"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mbaroi"
           }
         }
       }
@@ -160,6 +208,12 @@
             "state" : "translated",
             "value" : "ダウンロード"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shkarko"
+          }
         }
       }
     },
@@ -177,6 +231,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@をダウンロード"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Po shkarkon %@"
           }
         }
       }
@@ -196,6 +256,12 @@
             "state" : "translated",
             "value" : "Base Systemをダウンロード"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Po shkarkon sistemin baze"
+          }
         }
       }
     },
@@ -213,6 +279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "終了"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil"
           }
         }
       }
@@ -232,6 +304,12 @@
             "state" : "translated",
             "value" : " Safemodeを終了"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dil nga mënyra e sigurt"
+          }
         }
       }
     },
@@ -249,6 +327,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "セーフモードを終了するには、\"Safemodeを終了\"を選択してください"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per te dalë nga menyra e sigurt, kliko, \"Dil nga menyra e sigurt\""
           }
         }
       }
@@ -268,6 +352,12 @@
             "state" : "translated",
             "value" : "フラグ"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flamuret"
+          }
         }
       }
     },
@@ -285,6 +375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一般"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gjeneral"
           }
         }
       }
@@ -304,6 +400,12 @@
             "state" : "translated",
             "value" : "インストール"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instalo"
+          }
         }
       }
     },
@@ -321,6 +423,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@はすでにインストールされています。"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ eshte e instaluar."
           }
         }
       }
@@ -340,6 +448,12 @@
             "state" : "translated",
             "value" : "%@をインストール"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duke instaluar %@"
+          }
         }
       }
     },
@@ -357,6 +471,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "palera1nを使用する際に強制復帰オプションを使用した場合、デバイスを再起動してください。"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ti ke perdorur opsionin \"force-revert\", ju lutemi qe te restartoni pajisjen."
           }
         }
       }
@@ -376,6 +496,12 @@
             "state" : "translated",
             "value" : "言語"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gjuha"
+          }
         }
       }
     },
@@ -393,6 +519,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "このloaderのバージョンは古すぎるため、予期せぬ問題が発生する可能性があります。最新版のpalera1nにアップデートすることをお勧めします。"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versioni i Aplikacionit Loader eshte shume i vjeter dhe mund te kete probleme te papara. Ju rekomandojme qe ju te shkarkoni versionin me te ri te palera1n."
           }
         }
       }
@@ -412,6 +544,12 @@
             "state" : "translated",
             "value" : "読み込み中"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duke u hapur"
+          }
         }
       }
     },
@@ -429,6 +567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "オプション"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opsionet"
           }
         }
       }
@@ -448,6 +592,12 @@
             "state" : "translated",
             "value" : "パスワード"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fjalëkalimi"
+          }
         }
       }
     },
@@ -465,6 +615,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jailbreak後に \"sudo \"のようなコマンドラインツールを使うには、terminalのパスコードを設定する必要があります。(空にすることはできません)"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per te perdorur mjetet ne terminal si \"sudo\" pasi te kini bere jailbreak, ju duhet te vendosni nje password terminali. (Ky password nuk mund te jete bosh.)"
           }
         }
       }
@@ -484,6 +640,12 @@
             "state" : "translated",
             "value" : "復元後に再起動"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restarto pas restaurimit"
+          }
         }
       }
     },
@@ -501,6 +663,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@を再インストール"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ri-Instalo %@"
           }
         }
       }
@@ -520,6 +688,12 @@
             "state" : "translated",
             "value" : "パスワードを再度入力"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rivendos fjalëkalimin"
+          }
         }
       }
     },
@@ -537,6 +711,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URLの変更をリセット"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rikthe ne gjendje fillestare konfigurimin"
           }
         }
       }
@@ -556,6 +736,12 @@
             "state" : "translated",
             "value" : "この変更を完全に適用するためには、アプリケーションを再起動する必要があります"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Restarto aplikacionin qe ndryshimet te aplikohen 100%"
+          }
         }
       }
     },
@@ -573,6 +759,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "システムを復元"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kthe ne gjendje fillestare sistemin e jailbreak"
           }
         }
       }
@@ -592,6 +784,12 @@
             "state" : "translated",
             "value" : "データを消去せずに、jailbreakファイルとOSに加えられたその他の変更をアンインストールします。その後、%@は再起動します。"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çinstalo dosjet e jailbreak dhe ndryshime te tjera te bere ne sistem, kjo do heqe gjerat e jailbreakut, pa prekur sistemin e operimit tend. Kjo do te restartoje %@"
+          }
         }
       }
     },
@@ -609,6 +807,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "再試行"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riprovo"
           }
         }
       }
@@ -628,6 +832,12 @@
             "state" : "translated",
             "value" : "設定"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vendos"
+          }
         }
       }
     },
@@ -645,6 +855,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "パスワードを設定"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vendos Fjalëkalimin"
           }
         }
       }
@@ -664,6 +880,12 @@
             "state" : "translated",
             "value" : "パスワードプロンプトを表示"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trego menune e vendosjes se fjalëkalimit"
+          }
         }
       }
     },
@@ -681,6 +903,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "パスワードが長すぎます"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shume vone"
           }
         }
       }
@@ -700,6 +928,12 @@
             "state" : "translated",
             "value" : "トラブルシューティング"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgjidh Problemet"
+          }
         }
       }
     },
@@ -717,6 +951,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "種類"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipi"
           }
         }
       }
@@ -736,6 +976,12 @@
             "state" : "translated",
             "value" : "Bootstrapを取得できませんでした。"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuk mund te merrja bootstrap-in"
+          }
         }
       }
     },
@@ -753,6 +999,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "システム言語を使用する"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perdor gjuhen e sistemit"
           }
         }
       }
@@ -772,6 +1024,12 @@
             "state" : "translated",
             "value" : "ユーティリティ"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mjetet"
+          }
         }
       }
     },
@@ -790,6 +1048,12 @@
             "state" : "translated",
             "value" : "インストールしたパッケージマネージャーが表示されない場合、このオプションを使用することで改善される場合があります。"
           }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nese manaxhuesi qe ke instaluar nuk del, ti mund te perdores keto opsione dhe menxaxhuesi duhet te dale me pas."
+          }
         }
       }
     },
@@ -807,6 +1071,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "バージョン"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versioni"
           }
         }
       }

@@ -286,6 +286,7 @@
 				ja,
 				de,
 				fr,
+				"sq-AL",
 			);
 			mainGroup = 33FA4F7D2B6849B0008E44A4;
 			productRefGroup = 33FA4F872B6849B0008E44A4 /* Products */;
