@@ -13,15 +13,12 @@ class InfoViewController: UIViewController {
     
     var tableData = [
         [String.localized("Type"), String.localized("Flags")],
-        [String.localized("Version"), String.localized("Architecture")],
-        ["Kernel", "CF"]
+        [String.localized("Version"), String.localized("Architecture"), "Kernel", "CF"],
+        ["App Version"]
     ]
-    var device: String {
-        return UIDevice.current.userInterfaceIdiom == .pad ? "iPad" : "iPhone"
-    }
 
     var sectionTitles: [String] {
-        return ["palera1n", device, ""]
+        return ["palera1n", device, "App Info"]
     }
     
     var tableView: UITableView!
@@ -67,6 +64,10 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.detailTextLabel?.text = paleInfo.palerain_option_rootful ? "Rootful" : "Rootless"
         case String.localized("Flags"):
             cell.detailTextLabel?.text = String(format: "0x%llx", GetPinfoFlags())
+        case "App Version":
+            if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                cell.detailTextLabel?.text = appVersion
+            }
         default:
             break
         }

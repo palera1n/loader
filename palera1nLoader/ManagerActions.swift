@@ -67,7 +67,7 @@ extension ViewController {
     
     func showRestoreAlert(sourceView: UIView) {
         var actions: [UIAlertAction] = []
-        let device = UIDevice.current.userInterfaceIdiom == .pad ? "iPad" : "iPhone"
+
         let message = String.localized("Restore System Explanation", arguments: device)
         
         

@@ -11,7 +11,7 @@ import UIKit
 class UtilitiesViewController: UIViewController {
     
     var tableData = [
-        ["Respring", "UICache", "Userspace Reboot"]
+        ["UICache", "Restart Springboard", "Userspace Reboot"]
     ]
   
     var sectionTitles = [String.localized("Utilities")]

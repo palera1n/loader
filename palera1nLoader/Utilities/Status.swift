@@ -42,3 +42,22 @@ class Status {
         #endif
     }
 }
+
+var device: String {
+    let currentDevice = UIDevice.current
+    
+    switch currentDevice.userInterfaceIdiom {
+    case .pad:
+        return "iPad"
+    case .phone:
+        return "iPhone"
+    case .tv:
+        return "Apple TV"
+    case .vision:
+        return "Vision Pro"
+    case .carPlay:
+        return "CarPlay"
+    default:
+        return "Unknown Device"
+    }
+}
