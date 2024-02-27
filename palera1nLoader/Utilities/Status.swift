@@ -53,8 +53,6 @@ var device: String {
         return "iPhone"
     case .tv:
         return "Apple TV"
-    case .vision:
-        return "Vision Pro"
     case .carPlay:
         return "CarPlay"
     default:
