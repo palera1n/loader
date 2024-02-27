@@ -22,6 +22,7 @@ class UtilitiesViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         title = .localized("Utilities")
+        determineIfUserShouldBeAbleToUseTheseButtons()
     }
     
     func setupViews() {
@@ -32,6 +33,14 @@ class UtilitiesViewController: UIViewController {
         view.addSubview(tableView)
         tableView.constraintCompletely(to: view)
     }
+    
+    func determineIfUserShouldBeAbleToUseTheseButtons() {
+        if paleInfo.palerain_option_safemode || paleInfo.palerain_option_failure {
+            tableData.insert([.localized("Exit Safemode")], at: tableData.count)
+            sectionTitles.insert("palera1n", at: sectionTitles.count)
+        }
+    }
+    
 }
 
 extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -58,9 +67,9 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
         let cellText = tableData[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellText
         switch cellText {
-        case "Respring", "UICache", "Userspace Reboot":
+        case "Restart Springboard", "UICache", "Userspace Reboot":
             cell.textLabel?.textColor = .systemBlue
-        case "Exit Safemode", "Revert Snapshot":
+        case .localized("Exit Safemode"), "Revert Snapshot":
             cell.textLabel?.textColor = .systemRed
             cell.accessoryType = .disclosureIndicator
         default:
@@ -72,12 +81,14 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case "Respring":
+        case "Restart Springboard":
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case "Userspace Reboot":
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
         case "UICache":
             spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
+        case .localized("Exit Safemode"):
+            ExitFailureSafeMode()
         default:
             break
         }

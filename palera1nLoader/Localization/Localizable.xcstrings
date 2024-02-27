@@ -169,6 +169,18 @@
         }
       }
     },
+    "Dismiss" : {
+      "comment" : "✅ Dismiss UIAlert",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
     "Done" : {
       "comment" : "✅ If the action is completed",
       "extractionState" : "manual",

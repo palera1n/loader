@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         if paleInfo.palerain_option_force_revert {
             log(type: .fatal, msg: .localized("Is Force Reverted"))
         } else if paleInfo.palerain_option_failure {
-            let nah = UIAlertAction(title: "Nah", style: .cancel, handler: nil)
+            let nah = UIAlertAction(title: .localized("Dismiss"), style: .cancel, handler: nil)
             let exit = UIAlertAction(title: .localized("Exit Safemode"), style: .default) { _ in
                 ExitFailureSafeMode()
             }

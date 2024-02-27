@@ -19,7 +19,6 @@
 		33628EC62B6C023D00EB4887 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628EC52B6C023D00EB4887 /* CommandRunner.swift */; };
 		33628F0F2B6E926B00EB4887 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */; };
 		338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005B2B6FEB5400BA0CF5 /* Language.swift */; };
-		338B005E2B6FEBF500BA0CF5 /* PreferredLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005D2B6FEBF500BA0CF5 /* PreferredLanguageViewController.swift */; };
 		338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B00602B706FE400BA0CF5 /* Post-Install.swift */; };
 		33FA4F8A2B6849B0008E44A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F892B6849B0008E44A4 /* AppDelegate.swift */; };
 		33FA4F8E2B6849B0008E44A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F8D2B6849B0008E44A4 /* ViewController.swift */; };
@@ -53,7 +52,6 @@
 		33628EC52B6C023D00EB4887 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 		33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		338B005B2B6FEB5400BA0CF5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
-		338B005D2B6FEBF500BA0CF5 /* PreferredLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredLanguageViewController.swift; sourceTree = "<group>"; };
 		338B00602B706FE400BA0CF5 /* Post-Install.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post-Install.swift"; sourceTree = "<group>"; };
 		338B00622B70A7C800BA0CF5 /* Documentation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
 		33FA4F862B6849B0008E44A4 /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +129,6 @@
 				33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */,
 				3332536C2B722712004F2177 /* UtilitiesViewController.swift */,
 				3332536E2B72271D004F2177 /* InfoViewController.swift */,
-				338B005D2B6FEBF500BA0CF5 /* PreferredLanguageViewController.swift */,
 				333253722B72AC96004F2177 /* CreditsViewController.swift */,
 			);
 			path = "Other Views";
@@ -333,7 +330,6 @@
 				33FA4FBB2B68617A008E44A4 /* Directory+Logging.swift in Sources */,
 				33628F0F2B6E926B00EB4887 /* OptionsViewController.swift in Sources */,
 				33FA4FB22B685A86008E44A4 /* Foundation.swift in Sources */,
-				338B005E2B6FEBF500BA0CF5 /* PreferredLanguageViewController.swift in Sources */,
 				33FA4FA22B684D87008E44A4 /* paleinfo.swift in Sources */,
 				33628E9A2B69CE7800EB4887 /* UIAlertAction.swift in Sources */,
 				335342C62B69C4B1000583E5 /* jailbreakd.c in Sources */,
