@@ -355,11 +355,12 @@ extension ViewController {
             tableView.tableHeaderView = headerView
             
             observation = tableView.observe(\.contentSize, options: [.new]) { [weak self] (_, change) in
-                guard let self = self else { return }
+                guard let _ = self else { return }
                 if change.newValue != nil {
-                    updateTableViewContentInset()
+                    self!.updateTableViewContentInset()
                 }
             }
+
         }
     }
     
