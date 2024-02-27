@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = ViewController()
         let navController = UINavigationController(rootViewController: viewController)
         window = UIWindow(frame: UIScreen.main.bounds)
+        if #available(iOS 13.0, *) {
+            window?.backgroundColor = .systemGroupedBackground
+        } else {
+            window?.backgroundColor = .systemGray
+        }
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
         return true

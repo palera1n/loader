@@ -38,3 +38,4 @@ extension String {
         return String.localized(self)
     }
 }
+

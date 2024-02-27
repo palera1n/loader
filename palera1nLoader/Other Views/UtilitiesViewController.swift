@@ -26,7 +26,11 @@ class UtilitiesViewController: UIViewController {
     }
     
     func setupViews() {
-        self.tableView = UITableView(frame: .zero, style: .grouped)
+        if #available(iOS 13.0, *), UIDevice.current.userInterfaceIdiom == .pad {
+            self.tableView = UITableView(frame: .zero, style: .insetGrouped)
+        } else {
+            self.tableView = UITableView(frame: .zero, style: .grouped)
+        }
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
@@ -48,7 +52,10 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableData[section].count }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .pad { return 60.0 } else { return UITableView.automaticDimension }
+    }
+    
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case 0:

@@ -26,7 +26,11 @@ class CreditsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = .localized("Credits")
-        tableView = UITableView(frame: tableView.frame, style: .grouped)
+        if #available(iOS 13.0, *), UIDevice.current.userInterfaceIdiom == .pad {
+            tableView = UITableView(frame: .zero, style: .insetGrouped)
+        } else {
+            tableView = UITableView(frame: .zero, style: .grouped)
+        }
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CreditCell")
 
         if #available(iOS 13.0, *), #available(tvOS 15.0, *) {
