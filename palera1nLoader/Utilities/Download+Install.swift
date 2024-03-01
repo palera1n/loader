@@ -33,13 +33,13 @@ class Go {
                         
                         DispatchQueue(label: "Install Strap").async {
                             if Preferences.doPasswordPrompt! {
-                                self.displayPrompt { password in
-                                    if let password = password {
-                                        self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: password)
+                                DispatchQueue.main.async {
+                                    self.displayPrompt { password in
+                                        if let p = password {
+                                            self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: p)
+                                        }
                                     }
                                 }
-                            } else {
-                                self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: "alpine")
                             }
                         }
                     }
@@ -141,7 +141,6 @@ extension Go {
                 setPassword.isEnabled = (passOne == passTwo) && !passOne!.isEmpty && !passTwo!.isEmpty
             }
         }
-        
         if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
             rootViewController.present(alertController, animated: true)
         }
@@ -155,7 +154,6 @@ extension Go {
     /// Remove environment
     static public func restoreSystem() -> Void {
         if paleInfo.palerain_option_rootless {
-            #warning("Someone need to add checks incase this fails")
             do {
                 ObliterateJailbreak()
                 ReloadLaunchdJailbreakEnvironment()

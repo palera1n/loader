@@ -89,7 +89,9 @@ protocol BootstrapLabelDelegate: AnyObject {
 }
 
 extension ViewController: BootstrapLabelDelegate {
-    
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+        return .all
+    }
     func updateBootstrapLabel(withText text: String) {
         DispatchQueue.main.async {
             self.bootstrapLabel.text = text
@@ -391,11 +393,9 @@ extension ViewController {
 
     func updateiPadConstraints() {
         let isIpad = self.view.frame.width >= 568 && UIDevice.current.userInterfaceIdiom == .pad
-        let isRunningInFullScreen = UIApplication.shared.delegate?.window??.frame == UIApplication.shared.delegate?.window??.screen.bounds
-        let landscapeMultiplier: CGFloat = UIDevice.current.orientation.isLandscape && isRunningInFullScreen ? 2.0 : 1.0
 
-        let leadingConstant: CGFloat = isIpad ? 150 * landscapeMultiplier : 0
-        let trailingConstant: CGFloat = isIpad ? -150 * landscapeMultiplier : 0
+        let leadingConstant: CGFloat = isIpad ? 150 : 0
+        let trailingConstant: CGFloat = isIpad ? -150 : 0
 
 
         [leadingConstraint, trailingConstraint, topConstraint, bottomConstraint].forEach { constraint in

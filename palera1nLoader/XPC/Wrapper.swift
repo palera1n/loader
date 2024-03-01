@@ -8,9 +8,9 @@
 import Foundation
 #if targetEnvironment(simulator)
 func GetPinfoFlags() -> UInt64 {
-    //return 0xc0002; // rootless
-   // return 0xc0081 // rootful
-    return 0x1000000002c00082
+    return 0xc0002; // rootless
+    //return 0xc0081 // rootful
+    //return 0x1000000002c00082
     //return 0x2000000
 
 }

@@ -23,7 +23,7 @@ extension ViewController {
 
         let strapValue = Status.installation()
         switch strapValue {
-        case .rootful, .rootless:
+        case .rootful, .rootless, .simulated:
             let bootstrapActionTitle = String.localized("Bootstrap Install", arguments: cellData!)                  // Install %@
             let bootstrapAction = UIAlertAction.customAction(title: bootstrapActionTitle, style: .default) { [self] _ in
                 
@@ -35,7 +35,7 @@ extension ViewController {
 
             
             actions.append(bootstrapAction)
-        case .rootless_installed, .rootful_installed, .simulated:
+        case .rootless_installed, .rootful_installed:
             message = exists                ? String.localized("Installed Manager", arguments: cellData!)           // %@ is already installed.
                                             : nil
             
