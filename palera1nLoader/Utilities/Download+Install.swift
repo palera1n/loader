@@ -10,10 +10,15 @@ import UIKit
 
 // MARK: - Attempt to install
 
-class Go {
+class Go: NSObject {
     
     static let shared = Go()
     var delegate: BootstrapLabelDelegate?
+    
+    var destinationUrl: URL?
+    var downloadCompletion: ((String?, Error?) -> Void)?
+    var startTime: Date?
+    var bytesReceived: Int64 = 0
     
     /// Install
     func attemptInstall(file: String) {
@@ -23,7 +28,7 @@ class Go {
             log(type: .fatal, msg: "Invalid URLs?")
             return
         }
-                
+        
         downloadFile(url: URL(string: bootstrapUrl)!) { [self] bootstrapFilePath, bootstrapError in
             if let bootstrapFilePath = bootstrapFilePath {
                 downloadFile(url: URL(string: pkgmgrUrl)!) { [self] pkgmgrFilePath, pkgmgrError in
@@ -51,11 +56,11 @@ class Go {
 
 // MARK: - Download url
 
-extension Go {
-    /// Download a file depending on url
+extension Go: URLSessionDownloadDelegate {
+    
     func downloadFile(url: URL, completion: @escaping (String?, Error?) -> Void) {
-        let destinationUrl = URL(fileURLWithPath: "/tmp/palera1n/").appendingPathComponent(url.lastPathComponent)
-
+        destinationUrl = URL(fileURLWithPath: "/tmp/palera1n/").appendingPathComponent(url.lastPathComponent)
+        
         if url.lastPathComponent.contains("tar") || url.lastPathComponent.contains("zst") {
             delegate?.updateBootstrapLabel(withText: .localized("Downloading Base System"))
         } else {
@@ -63,42 +68,68 @@ extension Go {
             delegate?.updateBootstrapLabel(withText: .localized("Download Item", arguments: "\(fileNameWithoutExtension.capitalized)"))
         }
         
-        let request = URLRequest(url: url)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                if let error = error {
-                    completion(destinationUrl.path, error)
-                    log(type: .fatal, msg: "Failed to download: \(request), \(String(describing: error))")
-                    return
-                }
-                
-                guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
-                    completion(destinationUrl.path, error)
-                    log(type: .fatal, msg: "Unknown error on download: \((response as? HTTPURLResponse)?.statusCode ?? -1) - \(request), \(String(describing: error))")
-                    return
-                }
-                
-                if let data = data {
-                    do {
-                        try FileManager.default.createDirectory(at: destinationUrl.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
-                        try data.write(to: destinationUrl, options: .atomic)
-                        completion(destinationUrl.path, nil)
-                        log(type: .info, msg: "Saved to: \(destinationUrl.path)")
-                    } catch {
-                        completion(destinationUrl.path, error)
-                        log(type: .fatal, msg: "Failed to save file at: \(destinationUrl.path), \(String(describing: error))")
-                    }
-                } else {
-                    completion(destinationUrl.path, error)
-                    log(type: .fatal, msg: "Failed to download: \(request), \(String(describing: error))")
-                }
-            }
+        downloadCompletion = completion
+        startTime = Date()
+        bytesReceived = 0
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)
+        let downloadTask = session.downloadTask(with: url)
+        downloadTask.resume()
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        guard let destinationUrl = destinationUrl else {
+            return
         }
         
-        task.resume()
+        let fileManager = FileManager.default
+        do {
+            if fileManager.fileExists(atPath: destinationUrl.path) {
+                try fileManager.removeItem(at: destinationUrl)
+            }
+            
+            try fileManager.moveItem(at: location, to: destinationUrl)
+            downloadCompletion?(destinationUrl.path, nil)
+            log(type: .info, msg: "Saved to: \(destinationUrl.path)")
+        } catch {
+            downloadCompletion?(destinationUrl.path, error)
+            log(type: .fatal, msg: "Failed to save file at: \(destinationUrl.path), \(String(describing: error))")
+        }
     }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        guard let destinationUrl = destinationUrl else {
+            return
+        }
+        
+        if let error = error {
+            downloadCompletion?(destinationUrl.path, error)
+            log(type: .fatal, msg: "Failed to download: \(task.originalRequest?.url?.absoluteString ?? "Unknown URL"), \(error.localizedDescription)")
+        }
+    }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        let currentTime = Date()
+        if startTime == nil {
+            startTime = currentTime
+        }
+        
+        let elapsedTime = currentTime.timeIntervalSince(startTime!)
+        let speed = Double(totalBytesWritten) / elapsedTime
+        let speedInMB = speed / (1024 * 1024)
+        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        let formattedSpeedInMB = String(format: "%.0f", speedInMB)
+        
+        log(msg: "Download progress: \(progress * 100)%, \(formattedSpeedInMB) MB/s")
+        delegate?.updateDownloadProgress(progress: Double(progress))
+        delegate?.updateSpeedLabel(withText: "Download Speed: " + "\(formattedSpeedInMB) MB/s")
+    }
+
+
+    
 }
+
+
 
 
 // MARK: - Password Prompt
@@ -113,20 +144,20 @@ extension Go {
             password.isSecureTextEntry = true
             password.keyboardType = UIKeyboardType.asciiCapable
         }
-
+        
         alertController.addTextField() { (repeatPassword) in
             repeatPassword.placeholder = .localized("Repeat Password")
             repeatPassword.isSecureTextEntry = true
             repeatPassword.keyboardType = UIKeyboardType.asciiCapable
         }
-
+        
         let setPassword = UIAlertAction(title: String.localized("Set"), style: .default) { _ in
             let password = alertController.textFields?[0].text
             completion(password)
         }
         setPassword.isEnabled = false
         alertController.addAction(setPassword)
-
+        
         NotificationCenter.default.addObserver(
             forName: UITextField.textDidChangeNotification,
             object: nil,
@@ -178,9 +209,9 @@ extension Go {
     private func installBootstrap(tar: String, deb: String, p: String) {
         print("Tar: \(tar) \nDeb: \(deb) \nPassword: \(p) ")
         print("do the thing!")
-        #if !targetEnvironment(simulator)
+#if !targetEnvironment(simulator)
         if paleInfo.palerain_option_rootless { spawn(command: "/cores/binpack/bin/rm", args: ["-rf", "/var/jb"]) }
-        #endif
+#endif
         
         let (deployBootstrap_ret, resultDescription) = DeployBootstrap(path: tar, deb: deb, password: p);
         if (deployBootstrap_ret != 0) {
@@ -214,5 +245,5 @@ extension Go {
             return
         }
     }
-
+    
 }

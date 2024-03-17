@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var tableView: UITableView!
     
     var bootstrapLabel: UILabel!
+    var speedLabel: UILabel!
     var progressBar: UIProgressView!
     
     var leadingConstraint: NSLayoutConstraint?
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
         updateiPadConstraints()
     }
-
+    
     func setupViews() {
         var tableViewStyle: UITableView.Style = .grouped
         
@@ -87,6 +88,7 @@ class ViewController: UIViewController {
 
 protocol BootstrapLabelDelegate: AnyObject {
     func updateBootstrapLabel(withText text: String)
+    func updateSpeedLabel(withText text: String)
     func updateDownloadProgress(progress: Double)
 }
 
@@ -94,11 +96,18 @@ extension ViewController: BootstrapLabelDelegate {
     override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
         return .all
     }
+    
     func updateBootstrapLabel(withText text: String) {
         DispatchQueue.main.async {
             self.bootstrapLabel.text = text
         }
     }
+    
+    func updateSpeedLabel(withText text: String) {
+            DispatchQueue.main.async {
+                self.speedLabel.text = text
+            }
+        }
     
     func updateDownloadProgress(progress: Double) {
         DispatchQueue.main.async {
@@ -110,15 +119,15 @@ extension ViewController: BootstrapLabelDelegate {
         containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         
-#if !os(tvOS)
+        #if !os(tvOS)
         if #available(iOS 13.0, *) {
             containerView.backgroundColor = UIColor.systemGroupedBackground.withAlphaComponent(1.0)
         } else {
-            containerView.backgroundColor = UIColor.white.withAlphaComponent(1.0)
+            containerView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
         }
-#else
-        containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
-#endif
+        #else
+        containerView.backgroundColor = UIColor.black.withAlphaComponent(1.0)
+        #endif
         
         view.addSubview(containerView)
         
@@ -136,9 +145,9 @@ extension ViewController: BootstrapLabelDelegate {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(activityIndicator)
         
-        //        progressBar = UIProgressView(progressViewStyle: .default)
-        //        progressBar.translatesAutoresizingMaskIntoConstraints = false
-        //        containerView.addSubview(progressBar)
+        progressBar = UIProgressView(progressViewStyle: .default)
+        progressBar.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(progressBar)
         
         bootstrapLabel = UILabel()
         bootstrapLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -148,24 +157,33 @@ extension ViewController: BootstrapLabelDelegate {
         
         containerView.addSubview(bootstrapLabel)
         
+        speedLabel = UILabel()
+        speedLabel.translatesAutoresizingMaskIntoConstraints = false
+        speedLabel.textColor = .white
+        speedLabel.font = UIFont.systemFont(ofSize: 12)
+        speedLabel.textAlignment = .center
+        speedLabel.text = "Download Speed: 0 MB/s"
+        containerView.addSubview(speedLabel)
+        
         NSLayoutConstraint.activate([
-            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: -activityIndicator.bounds.height),
+            activityIndicator.trailingAnchor.constraint(equalTo: bootstrapLabel.leadingAnchor, constant: -8),
+            activityIndicator.centerYAnchor.constraint(equalTo: bootstrapLabel.centerYAnchor),
             
             bootstrapLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            bootstrapLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: activityIndicator.bounds.height/2),
+            bootstrapLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: -activityIndicator.bounds.height/2),
             
-            //            progressBar.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            //            progressBar.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            //            progressBar.widthAnchor.constraint(equalTo: containerView.widthAnchor, constant: -16),
+            progressBar.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            progressBar.topAnchor.constraint(equalTo: bootstrapLabel.bottomAnchor, constant: 16),
+            progressBar.widthAnchor.constraint(equalToConstant: 300),
+            
+            speedLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            speedLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -56)
         ])
-        
+
         
         activityIndicator.startAnimating()
     }
-    
-    
-    
+
 }
 
 
@@ -237,9 +255,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             if let specialCell = createSpecialCell(for: tableView, at: indexPath) { return specialCell }
             cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
             if indexPath.row < iconImages.count {
-                SectionIcons.sectionImage(to: cell, with: iconImages[indexPath.row])
+                SectionIcons.sectionImage(to: cell, with: iconImages[indexPath.row]!)
             }
-
+            
         } else {
             let row = indexPath.row
             if row == 0 {

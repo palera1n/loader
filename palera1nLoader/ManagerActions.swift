@@ -26,7 +26,7 @@ extension ViewController {
         case .rootful, .rootless, .simulated:
             let bootstrapActionTitle = String.localized("Bootstrap Install", arguments: cellData!)                  // Install %@
             let bootstrapAction = UIAlertAction.customAction(title: bootstrapActionTitle, style: .default) { [self] _ in
-                
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
                 self.setupContainerView()
                 DispatchQueue.main.async {
                     Go.shared.attemptInstall(file: cellData!.lowercased())
@@ -43,7 +43,7 @@ extension ViewController {
                                             : String.localized("Bootstrap Install", arguments: cellData!)           // Install %@
             
             let managerAction = UIAlertAction.customAction(title: managerActionTitle, style: .default) { _ in
-                
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
                 self.setupContainerView()
                 DispatchQueue.main.async {
                     Go.shared.attemptManagerInstall(file: cellData!.lowercased())
