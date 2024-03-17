@@ -20,6 +20,9 @@
 		33628F0F2B6E926B00EB4887 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */; };
 		338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005B2B6FEB5400BA0CF5 /* Language.swift */; };
 		338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B00602B706FE400BA0CF5 /* Post-Install.swift */; };
+		33BA31D92BA6AA510063B2B7 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31D82BA6AA510063B2B7 /* UIImage.swift */; };
+		33BA31DB2BA6AEF30063B2B7 /* OpenApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31DA2BA6AEF30063B2B7 /* OpenApplication.swift */; };
+		33BA31DD2BA6AF2E0063B2B7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31DC2BA6AF2E0063B2B7 /* Header.swift */; };
 		33FA4F8A2B6849B0008E44A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F892B6849B0008E44A4 /* AppDelegate.swift */; };
 		33FA4F8E2B6849B0008E44A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F8D2B6849B0008E44A4 /* ViewController.swift */; };
 		33FA4F932B6849B2008E44A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33FA4F922B6849B2008E44A4 /* Assets.xcassets */; };
@@ -54,6 +57,9 @@
 		338B005B2B6FEB5400BA0CF5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		338B00602B706FE400BA0CF5 /* Post-Install.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post-Install.swift"; sourceTree = "<group>"; };
 		338B00622B70A7C800BA0CF5 /* Documentation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
+		33BA31D82BA6AA510063B2B7 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		33BA31DA2BA6AEF30063B2B7 /* OpenApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenApplication.swift; sourceTree = "<group>"; };
+		33BA31DC2BA6AF2E0063B2B7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		33FA4F862B6849B0008E44A4 /* palera1nLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33FA4F892B6849B0008E44A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33FA4F8D2B6849B0008E44A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 				335342C72B69C59E000583E5 /* OpenApp.swift */,
 				33FA4FB12B685A86008E44A4 /* Foundation.swift */,
 				33FA4FC22B68D5AC008E44A4 /* BasicLayoutAnchors.swift */,
+				33BA31D82BA6AA510063B2B7 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -207,6 +214,7 @@
 				33FA4FBA2B68617A008E44A4 /* Directory+Logging.swift */,
 				33628E9B2B69D63500EB4887 /* Download+Install.swift */,
 				338B00602B706FE400BA0CF5 /* Post-Install.swift */,
+				33BA31DA2BA6AEF30063B2B7 /* OpenApplication.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 		33FA4FC12B68D46C008E44A4 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				33BA31DC2BA6AF2E0063B2B7 /* Header.swift */,
 				33FA4FBF2B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift */,
 				33FA4FBD2B68D140008E44A4 /* SectionIcons.swift */,
 			);
@@ -312,7 +321,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33BA31DB2BA6AEF30063B2B7 /* OpenApplication.swift in Sources */,
 				33FA4FB92B68609E008E44A4 /* Fetch+Decode.swift in Sources */,
+				33BA31D92BA6AA510063B2B7 /* UIImage.swift in Sources */,
 				3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */,
 				338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */,
 				338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */,
@@ -320,6 +331,7 @@
 				33FA4F8E2B6849B0008E44A4 /* ViewController.swift in Sources */,
 				33FA4FC02B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift in Sources */,
 				33FA4F8A2B6849B0008E44A4 /* AppDelegate.swift in Sources */,
+				33BA31DD2BA6AF2E0063B2B7 /* Header.swift in Sources */,
 				33FA4FBE2B68D140008E44A4 /* SectionIcons.swift in Sources */,
 				33FA4FC72B69B9C2008E44A4 /* ManagerActions.swift in Sources */,
 				33FA4FB42B685EC4008E44A4 /* Preferences.swift in Sources */,

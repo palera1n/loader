@@ -7,8 +7,6 @@
 
 import Foundation
 
-#warning("This is taken from https://github.com/NSAntoine/Antoine, thank you.")
-
 /// A set of user controlled preferences.
 enum Preferences {
     

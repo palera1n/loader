@@ -77,10 +77,7 @@ class ErrorCell: UITableViewCell {
 
     var retryAction: (() -> Void)?
     private var stackView: UIStackView!
-    private var retryButton: UIButton!
     private var errorLabel: UILabel!
-    
-    @objc private func retryButtonTapped() { retryAction?() }
 
     required init?(coder: NSCoder) { super.init(coder: coder) }
 
@@ -89,7 +86,6 @@ class ErrorCell: UITableViewCell {
 
         setupStackView()
         setupErrorLabel()
-        setupRetryButton()
     }
     
     private func setupStackView() {
@@ -108,13 +104,6 @@ class ErrorCell: UITableViewCell {
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
-    }
-    
-    private func setupRetryButton() {
-        retryButton = UIButton(type: .system)
-        retryButton.setTitle(String.localized("Retry"), for: .normal)
-        retryButton.addTarget(self, action: #selector(retryButtonTapped), for: .touchUpInside)
-        stackView.addArrangedSubview(retryButton)
     }
     
     private func setupErrorLabel() {

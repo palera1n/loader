@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-#warning("This is taken from https://github.com/NSAntoine/Antoine, thank you.")
-
 /// A protocol describing a type which containing basic layout anchors
 protocol BasicLayoutAnchorsHolding {
     var leadingAnchor: NSLayoutXAxisAnchor { get }

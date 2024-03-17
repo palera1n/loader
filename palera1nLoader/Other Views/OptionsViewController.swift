@@ -13,15 +13,13 @@ class OptionsViewController: UIViewController {
     var tableData = [
         [String.localized("About"), String.localized("Utilities")],
         [String.localized("Change Download URL")],
-        [String.localized("Reboot after Restore"), String.localized("Show Password Prompt")],
-        [String.localized("Credits")]
+        [String.localized("Reboot after Restore"), String.localized("Show Password Prompt")]
     ]
     
     var sectionTitles = [
         String.localized("General"),
         String.localized("Download"),
-        String.localized("Options"),
-        String.localized("Credits")
+        String.localized("Options")
     ]
     
     var tableView: UITableView!
@@ -138,9 +136,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             showChangeDownloadURLAlert()
         case .localized("Reset Configuration"):
             resetConfigDefault()
-        case .localized("Credits"):
-            let c = CreditsViewController()
-            navigationController?.pushViewController(c, animated: true)
         default:
             break
         }

@@ -75,6 +75,8 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
             if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 cell.detailTextLabel?.text = appVersion
             }
+        case String.localized("Credits"):
+            cell.accessoryType = .disclosureIndicator
         default:
             break
         }
@@ -93,6 +95,18 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
             """
         }
         return nil
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cellText = tableData[indexPath.section][indexPath.row]
+        switch cellText {
+        case .localized("Credits"):
+            let c = CreditsViewController()
+            navigationController?.pushViewController(c, animated: true)
+        default:
+            break
+        }
     }
 }
 extension InfoViewController {

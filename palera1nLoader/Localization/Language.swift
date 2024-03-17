@@ -7,8 +7,6 @@
 
 import Foundation
 
-#warning("This is taken from https://github.com/NSAntoine/Antoine, thank you.")
-
 struct Language {
     static var availableLanguages: [Language] {
         return Bundle.main.localizations.compactMap { languageCode in
