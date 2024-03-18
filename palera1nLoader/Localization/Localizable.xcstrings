@@ -253,6 +253,18 @@
         }
       }
     },
+    "Download Speed" : {
+      "comment" : "✅ Download speed display when downloading resources. I.e. \"Download Speed: 4.03 MB/s\"",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download Speed: %@"
+          }
+        }
+      }
+    },
     "Downloading Base System" : {
       "comment" : "✅ This is text that is displayed when downloading the bootstrap file",
       "extractionState" : "manual",

@@ -66,8 +66,8 @@ public func initLogs() {
     if LogInfo.isDebug {
         log(type: .info, msg: "Printing Debug Logs")
     }
-    #if !targetEnvironment(simulator)
     createLogDirectory()
+    #if !targetEnvironment(simulator)
     createLogFile()
     #endif
 }

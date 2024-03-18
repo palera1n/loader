@@ -162,7 +162,6 @@ extension ViewController: BootstrapLabelDelegate {
         speedLabel.textColor = .white
         speedLabel.font = UIFont.systemFont(ofSize: 12)
         speedLabel.textAlignment = .center
-        speedLabel.text = "Download Speed: 0 MB/s"
         containerView.addSubview(speedLabel)
         
         NSLayoutConstraint.activate([

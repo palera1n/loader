@@ -116,17 +116,30 @@ extension Go: URLSessionDownloadDelegate {
         
         let elapsedTime = currentTime.timeIntervalSince(startTime!)
         let speed = Double(totalBytesWritten) / elapsedTime
-        let speedInMB = speed / (1024 * 1024)
-        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-        let formattedSpeedInMB = String(format: "%.0f", speedInMB)
         
-        log(msg: "Download progress: \(progress * 100)%, \(formattedSpeedInMB) MB/s")
+        let speedWithUnit = formattedSpeed(speed)
+        
+        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        
+        log(msg: "Download progress: \(progress * 100)%, \(speedWithUnit)")
         delegate?.updateDownloadProgress(progress: Double(progress))
-        delegate?.updateSpeedLabel(withText: "Download Speed: " + "\(formattedSpeedInMB) MB/s")
+        delegate?.updateSpeedLabel(withText: String.localized("Download Speed", arguments: speedWithUnit))
     }
-
-
     
+    func formattedSpeed(_ speed: Double) -> String {
+        let absSpeed = abs(speed)
+        let units = ["B/s", "KB/s", "MB/s", "GB/s", "TB/s"]
+        var index = 0
+        var speedInBytes = absSpeed
+        
+        while speedInBytes >= 1024 && index < units.count - 1 {
+            speedInBytes /= 1024
+            index += 1
+        }
+        
+        let formattedSpeed = String(format: "%.2f", speedInBytes)
+        return "\(formattedSpeed) \(units[index])"
+    }
 }
 
 
