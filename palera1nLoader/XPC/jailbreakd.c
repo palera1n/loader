@@ -18,6 +18,8 @@ enum {
     JBD_CMD_OBLITERATE_JAILBREAK,
     JBD_CMD_PERFORM_REBOOT3,
     JBD_CMD_OVERWRITE_FILE_WITH_CONTENT,
+    JBD_CMD_INTERCEPT_USERSPACE_PANIC,
+    JBD_CMD_EXIT_SAFE_MODE
 };
 
 enum {
@@ -139,7 +141,7 @@ int DeployBootstrap_impl(
     }
     return retval;
 }
-// MARK: - set repos
+
 int OverwriteFile_impl(
                        const char* distinationPath,
                        const char* repositoriesContent,
@@ -177,10 +179,6 @@ int OverwriteFile_impl(
     return retval;
 }
 
-
-
-
-
 int ObliterateJailbreak_impl(void) {
     xpc_object_t xreply = jailbreak_send_jailbreakd_command_with_reply_sync(JBD_CMD_OBLITERATE_JAILBREAK);
     if (xpc_get_type(xreply) == XPC_TYPE_ERROR) return -1;
@@ -212,7 +210,7 @@ int ReloadLaunchdJailbreakEnvironment_impl(void) {
 }
 
 int ExitFailureSafeMode_impl(void) {
-    xpc_object_t xreply = jailbreak_send_jailbreakd_command_with_reply_sync(10);
+    xpc_object_t xreply = jailbreak_send_jailbreakd_command_with_reply_sync(JBD_CMD_EXIT_SAFE_MODE);
     if (xpc_get_type(xreply) == XPC_TYPE_ERROR) return -1;
     int error = (int)xpc_dictionary_get_int64(xreply, "error");
     xpc_release(xreply);

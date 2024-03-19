@@ -100,6 +100,8 @@ extension ViewController: BootstrapLabelDelegate {
     func updateBootstrapLabel(withText text: String) {
         DispatchQueue.main.async {
             self.bootstrapLabel.text = text
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
         }
     }
     
@@ -253,10 +255,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             if let specialCell = createSpecialCell(for: tableView, at: indexPath) { return specialCell }
             cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
-            if indexPath.row < iconImages.count {
-                SectionIcons.sectionImage(to: cell, with: iconImages[indexPath.row]!)
-            }
-            
+            SectionIcons.sectionImage(to: cell, with: iconImages[indexPath.row]!)
         } else {
             let row = indexPath.row
             if row == 0 {

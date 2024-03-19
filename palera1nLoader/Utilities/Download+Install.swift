@@ -45,6 +45,8 @@ class Go: NSObject {
                                         }
                                     }
                                 }
+                            } else {
+                                self.installBootstrap(tar: bootstrapFilePath, deb: pkgmgrFilePath, p: "alpine")
                             }
                         }
                     }

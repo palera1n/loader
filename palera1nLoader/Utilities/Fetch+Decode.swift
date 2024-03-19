@@ -229,7 +229,7 @@ extension ViewController: RetryFetchJSONDelegate {
                         guard let iconURL = URL(string: iconURLString),
                               let data = try? Data(contentsOf: iconURL),
                               let image = UIImage(data: data) else {
-                            return nil
+                            return UIImage(named: "unknown")
                         }
                         return image
                     }
@@ -240,6 +240,7 @@ extension ViewController: RetryFetchJSONDelegate {
                         self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
                     }
                 }
+
                 
             } catch {
                 log(type: .error, msg: "Error parsing JSON: \(error)")

@@ -63,7 +63,6 @@ class Finalize {
     func postManagerInstall(deb: String) {
         var prefix = ""
         if paleInfo.palerain_option_rootless { prefix = "/var/jb" }
-        self.delegate?.updateBootstrapLabel(withText: .localized("Installing Item", arguments: ")"))
 
         #if !targetEnvironment(simulator)
         let debRet = spawn(command: "\(prefix)/usr/bin/dpkg", args: ["-i", deb])
