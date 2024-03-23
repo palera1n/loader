@@ -10,21 +10,16 @@ import UIKit
 
 class LoadingCell: UITableViewCell {
     static let reuseIdentifier = "LoadingCell"
-    
     private var stackView: UIStackView!
     private var activityIndicator: UIActivityIndicatorView!
     private var loadingLabel: UILabel!
     
+    required init?(coder: NSCoder) { super.init(coder: coder) }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setupStackView()
         setupActivityIndicatorView()
         setupLoadingLabel()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
     }
     
     private func setupStackView() {
@@ -43,20 +38,10 @@ class LoadingCell: UITableViewCell {
             stackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
-
     }
     
     private func setupActivityIndicatorView() {
-        #if !os(tvOS)
-        if #available(iOS 13.0, *) {
-            activityIndicator = UIActivityIndicatorView(style: .medium)
-        } else {
-            activityIndicator = UIActivityIndicatorView(style: .gray)
-        }
-        #else
-        activityIndicator = UIActivityIndicatorView(style: .medium)
-        #endif
-        
+        activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.defaultStyle)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(activityIndicator)
         activityIndicator.startAnimating()
@@ -71,19 +56,15 @@ class LoadingCell: UITableViewCell {
     }
 }
 
-
 class ErrorCell: UITableViewCell {
     static let reuseIdentifier = "ErrorCell"
-
     var retryAction: (() -> Void)?
     private var stackView: UIStackView!
     private var errorLabel: UILabel!
 
     required init?(coder: NSCoder) { super.init(coder: coder) }
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
         setupStackView()
         setupErrorLabel()
     }

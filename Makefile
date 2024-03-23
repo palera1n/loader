@@ -1,16 +1,17 @@
 TARGET_CODESIGN = $(shell which ldid)
-
-PLATFORM = iphoneos
+# gmake PLATFORM=appletvos SCHEME=palera1nLoaderTV
+PLATFORM ?= iphoneos
+SCHEME ?= palera1nLoader
 NAME = palera1nLoader
-RELEASE = Release-iphoneos
+RELEASE = Release-$(PLATFORM)
 CONFIGURATION = Release
 
 MACOSX_SYSROOT = $(shell xcrun -sdk macosx --show-sdk-path)
 TARGET_SYSROOT = $(shell xcrun -sdk $(PLATFORM) --show-sdk-path)
 
-P1_TMP         = $(TMPDIR)/$(NAME)
+P1_TMP         = $(TMPDIR)/$(SCHEME)
 P1_STAGE_DIR   = $(P1_TMP)/stage
-P1_APP_DIR 	   = $(P1_TMP)/Build/Products/$(RELEASE)/$(NAME).app
+P1_APP_DIR 	   = $(P1_TMP)/Build/Products/$(RELEASE)/$(SCHEME).app
 
 all: package
 
@@ -46,26 +47,26 @@ apple-include:
 package: apple-include
 	@rm -rf $(P1_TMP)
 	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(NAME).xcodeproj' -scheme $(NAME) -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(NAME).xcodeproj' -scheme $(SCHEME) -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(P1_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 	@rm -rf Payload
 	@rm -rf $(P1_STAGE_DIR)/
 	@mkdir -p $(P1_STAGE_DIR)/Payload
-	@mv $(P1_APP_DIR) $(P1_STAGE_DIR)/Payload/$(NAME).app
+	@mv $(P1_APP_DIR) $(P1_STAGE_DIR)/Payload/$(SCHEME).app
 	@echo $(P1_TMP)
 	@echo $(P1_STAGE_DIR)
 
-	@$(TARGET_CODESIGN) -Sloader.entitlements $(P1_STAGE_DIR)/Payload/$(NAME).app/
+	@$(TARGET_CODESIGN) -Sloader.entitlements $(P1_STAGE_DIR)/Payload/$(SCHEME).app/
 	
-	@rm -rf $(P1_STAGE_DIR)/Payload/$(NAME).app/_CodeSignature
+	@rm -rf $(P1_STAGE_DIR)/Payload/$(SCHEME).app/_CodeSignature
 	@ln -sf $(P1_STAGE_DIR)/Payload Payload
 	@rm -rf packages
 	@mkdir -p packages
 
 ifeq ($(TIPA),1)
-	@zip -r9 packages/$(NAME).tipa Payload
+	@zip -r9 packages/$(SCHEME).tipa Payload
 else
-	@zip -r9 packages/$(NAME).ipa Payload
+	@zip -r9 packages/$(SCHEME).ipa Payload
 endif
 
 clean:

@@ -5,9 +5,7 @@
 //  Created by samara on 1/21/24.
 //
 
-import Foundation
 import UIKit
-import Bridge
 
 extension Bundle {
     static func makeLocalizationBundle(preferredLanguageCode: String? = Preferences.preferredLanguageCode) -> Bundle {

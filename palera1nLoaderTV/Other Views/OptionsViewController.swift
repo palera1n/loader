@@ -1,8 +1,8 @@
 //
 //  OptionsViewController.swift
-//  loader-rewrite
+//  palera1nLoaderTV
 //
-//  Created by samara on 2/3/24.
+//  Created by samara on 3/23/24.
 //
 
 import Foundation
@@ -17,9 +17,9 @@ class OptionsViewController: UIViewController {
     ]
     
     var sectionTitles = [
-        String.localized("General"),
+        "",
         String.localized("Download"),
-        String.localized("Options")
+        ""
     ]
     
     var tableView: UITableView!
@@ -32,12 +32,36 @@ class OptionsViewController: UIViewController {
     }
     
     func setupViews() {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
+        let imageView = UIImageView(image: UIImage(named: "render"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.5
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(imageView)
+        
         self.tableView = UITableView(frame: .zero, style: .grouped)
+        self.tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.reuseIdentifier)
+        self.tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.view.addSubview(tableView)
-        self.tableView.constraintCompletely(to: view)
+        
+        stackView.addArrangedSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor) // I
+        ])
     }
     
     deinit { Preferences.installPathChangedCallback = nil }
@@ -62,7 +86,7 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
         cell.selectionStyle = .default
         cell.accessoryType = .none
         let cellText = tableData[indexPath.section][indexPath.row]
@@ -73,28 +97,20 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
         case .localized("Change Download URL"):
             if Preferences.installPath != Preferences.defaultInstallPath {
-                cell.textLabel?.textColor = UIColor.systemGray
+                cell.textLabel?.textColor = UIColor.black.withAlphaComponent(0.8)
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.text = Preferences.installPath!
             } else {
                 cell.textLabel?.textColor = UIColor.systemBlue
-            } 
+            }
         case .localized("Reset Configuration"):
             cell.textLabel?.textColor = .systemRed
             cell.textLabel?.textAlignment = .center
             
         case .localized("Reboot after Restore"):
-            let switchControl = UISwitch()
-            switchControl.isOn = Preferences.rebootOnRevert!
-            switchControl.addTarget(self, action: #selector(rebootOnRevertToggled(_:)), for: .valueChanged)
-            cell.accessoryView = switchControl
-            cell.selectionStyle = .none
+            cell.detailTextLabel?.text = Preferences.rebootOnRevert! ? "YES" : "NO"
         case .localized("Show Password Prompt"):
-            let switchControl = UISwitch()
-            switchControl.isOn = Preferences.doPasswordPrompt!
-            switchControl.addTarget(self, action: #selector(doPasswordPromptToggled(_:)), for: .valueChanged)
-            cell.accessoryView = switchControl
-            cell.selectionStyle = .none
+            cell.detailTextLabel?.text = Preferences.doPasswordPrompt! ? "YES" : "NO"
         default:
             break
         }
@@ -102,9 +118,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    @objc func rebootOnRevertToggled(_ sender: UISwitch) { Preferences.rebootOnRevert?.toggle() }
-    @objc func doPasswordPromptToggled(_ sender: UISwitch) { Preferences.doPasswordPrompt?.toggle() }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -112,6 +125,13 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         let cellText = tableData[indexPath.section][indexPath.row]
 
         switch cellText {
+        case .localized("Reboot after Restore"):
+            Preferences.rebootOnRevert?.toggle()
+            print(Preferences.rebootOnRevert!)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        case .localized("Show Password Prompt"):
+            Preferences.doPasswordPrompt?.toggle()
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         case .localized("About"):
             let i = InfoViewController()
             navigationController?.pushViewController(i, animated: true)
@@ -156,7 +176,7 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
 extension OptionsViewController {
     func resetConfigDefault() {
         Preferences.installPath = Preferences.defaultInstallPath
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             UIApplication.prepareForExitAndSuspend()
         }
     }
@@ -174,7 +194,7 @@ extension OptionsViewController {
             guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
 
             Preferences.installPath = enteredURL
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 UIApplication.prepareForExitAndSuspend()
             }
         }

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536C2B722712004F2177 /* UtilitiesViewController.swift */; };
 		3332536F2B72271D004F2177 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536E2B72271D004F2177 /* InfoViewController.swift */; };
-		333253732B72AC96004F2177 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333253722B72AC96004F2177 /* CreditsViewController.swift */; };
 		335342C62B69C4B1000583E5 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = 335342C52B69C4B1000583E5 /* jailbreakd.c */; };
 		335342C82B69C59E000583E5 /* OpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335342C72B69C59E000583E5 /* OpenApp.swift */; };
 		33628E952B69C77F00EB4887 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33628E942B69C77F00EB4887 /* CoreServices.framework */; };
@@ -18,6 +17,39 @@
 		33628E9C2B69D63500EB4887 /* Download+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628E9B2B69D63500EB4887 /* Download+Install.swift */; };
 		33628EC62B6C023D00EB4887 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628EC52B6C023D00EB4887 /* CommandRunner.swift */; };
 		33628F0F2B6E926B00EB4887 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */; };
+		336A9D852BAE9D9700134693 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9D842BAE9D9700134693 /* DownloadView.swift */; };
+		336A9D882BAEA3B700134693 /* OsDeterminators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9D872BAEA3B700134693 /* OsDeterminators.swift */; };
+		336A9D992BAEB22300134693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 336A9D982BAEB22300134693 /* Assets.xcassets */; };
+		336A9DA02BAEB43100134693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F892B6849B0008E44A4 /* AppDelegate.swift */; };
+		336A9DA12BAEB44500134693 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 33FA4FAF2B685863008E44A4 /* Localizable.xcstrings */; };
+		336A9DA22BAEB44800134693 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005B2B6FEB5400BA0CF5 /* Language.swift */; };
+		336A9DA32BAEB45700134693 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = 335342C52B69C4B1000583E5 /* jailbreakd.c */; };
+		336A9DA42BAEB45900134693 /* paleinfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FA12B684D87008E44A4 /* paleinfo.swift */; };
+		336A9DA52BAEB45B00134693 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F9F2B684D62008E44A4 /* Wrapper.swift */; };
+		336A9DA62BAEB46100134693 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB32B685EC4008E44A4 /* Preferences.swift */; };
+		336A9DA72BAEB46A00134693 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FC42B68F6C8008E44A4 /* Status.swift */; };
+		336A9DA82BAEB47000134693 /* Fetch+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB82B68609D008E44A4 /* Fetch+Decode.swift */; };
+		336A9DA92BAEB47300134693 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628EC52B6C023D00EB4887 /* CommandRunner.swift */; };
+		336A9DAA2BAEB47400134693 /* Directory+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBA2B68617A008E44A4 /* Directory+Logging.swift */; };
+		336A9DAB2BAEB47600134693 /* Download+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628E9B2B69D63500EB4887 /* Download+Install.swift */; };
+		336A9DAC2BAEB47800134693 /* Post-Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B00602B706FE400BA0CF5 /* Post-Install.swift */; };
+		336A9DAD2BAEB47E00134693 /* OpenApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31DA2BA6AEF30063B2B7 /* OpenApplication.swift */; };
+		336A9DAE2BAEB48300134693 /* UIAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628E992B69CE7800EB4887 /* UIAlertAction.swift */; };
+		336A9DAF2BAEB48500134693 /* OpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335342C72B69C59E000583E5 /* OpenApp.swift */; };
+		336A9DB02BAEB48800134693 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB12B685A86008E44A4 /* Foundation.swift */; };
+		336A9DB12BAEB48A00134693 /* BasicLayoutAnchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FC22B68D5AC008E44A4 /* BasicLayoutAnchors.swift */; };
+		336A9DB22BAEB48D00134693 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31D82BA6AA510063B2B7 /* UIImage.swift */; };
+		336A9DB32BAEB48F00134693 /* OsDeterminators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9D872BAEA3B700134693 /* OsDeterminators.swift */; };
+		336A9DB52BAEB49700134693 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBD2B68D140008E44A4 /* SectionIcons.swift */; };
+		336A9DB92BAEB4A300134693 /* DownloadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9D842BAE9D9700134693 /* DownloadView.swift */; };
+		336A9DBA2BAEB4A500134693 /* ManagerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FC62B69B9C2008E44A4 /* ManagerActions.swift */; };
+		336A9DBB2BAEB4A700134693 /* LoadingCell+ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBF2B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift */; };
+		336A9DBE2BAEB56C00134693 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336A9DBD2BAEB56C00134693 /* CoreServices.framework */; };
+		336A9DC12BAEB5FD00134693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9D932BAEB22200134693 /* ViewController.swift */; };
+		336A9DC32BAEBEB700134693 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DC22BAEBEB700134693 /* OptionsViewController.swift */; };
+		336A9DC52BAEC01800134693 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DC42BAEC01800134693 /* UtilitiesViewController.swift */; };
+		336A9DC72BAEC02000134693 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DC62BAEC02000134693 /* InfoViewController.swift */; };
+		336A9DCA2BAECCCB00134693 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336A9DBF2BAEB57400134693 /* IOKit.framework */; };
 		338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005B2B6FEB5400BA0CF5 /* Language.swift */; };
 		338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B00602B706FE400BA0CF5 /* Post-Install.swift */; };
 		33BA31D92BA6AA510063B2B7 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31D82BA6AA510063B2B7 /* UIImage.swift */; };
@@ -43,7 +75,6 @@
 /* Begin PBXFileReference section */
 		3332536C2B722712004F2177 /* UtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewController.swift; sourceTree = "<group>"; };
 		3332536E2B72271D004F2177 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		333253722B72AC96004F2177 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		335342C32B69C4B0000583E5 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
 		335342C42B69C4B1000583E5 /* jailbreakd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jailbreakd.h; sourceTree = "<group>"; };
 		335342C52B69C4B1000583E5 /* jailbreakd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = jailbreakd.c; sourceTree = "<group>"; };
@@ -54,6 +85,16 @@
 		33628E9B2B69D63500EB4887 /* Download+Install.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Download+Install.swift"; sourceTree = "<group>"; };
 		33628EC52B6C023D00EB4887 /* CommandRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandRunner.swift; sourceTree = "<group>"; };
 		33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		336A9D842BAE9D9700134693 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
+		336A9D872BAEA3B700134693 /* OsDeterminators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsDeterminators.swift; sourceTree = "<group>"; };
+		336A9D8F2BAEB22200134693 /* palera1nLoaderTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoaderTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		336A9D932BAEB22200134693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		336A9D982BAEB22300134693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		336A9DBD2BAEB56C00134693 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS17.0.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
+		336A9DBF2BAEB57400134693 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator17.0.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		336A9DC22BAEBEB700134693 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		336A9DC42BAEC01800134693 /* UtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewController.swift; sourceTree = "<group>"; };
+		336A9DC62BAEC02000134693 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		338B005B2B6FEB5400BA0CF5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		338B00602B706FE400BA0CF5 /* Post-Install.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post-Install.swift"; sourceTree = "<group>"; };
 		338B00622B70A7C800BA0CF5 /* Documentation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
@@ -88,6 +129,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		336A9D8C2BAEB22200134693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				336A9DBE2BAEB56C00134693 /* CoreServices.framework in Frameworks */,
+				336A9DCA2BAECCCB00134693 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		33FA4F832B6849B0008E44A4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -103,6 +153,8 @@
 		33628E932B69C77F00EB4887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				336A9DBF2BAEB57400134693 /* IOKit.framework */,
+				336A9DBD2BAEB56C00134693 /* CoreServices.framework */,
 				33628E962B69C78600EB4887 /* IOKit.framework */,
 				33628E942B69C77F00EB4887 /* CoreServices.framework */,
 			);
@@ -117,8 +169,48 @@
 				33FA4FB12B685A86008E44A4 /* Foundation.swift */,
 				33FA4FC22B68D5AC008E44A4 /* BasicLayoutAnchors.swift */,
 				33BA31D82BA6AA510063B2B7 /* UIImage.swift */,
+				336A9D872BAEA3B700134693 /* OsDeterminators.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		336A9D862BAE9EFA00134693 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				33FA4F8D2B6849B0008E44A4 /* ViewController.swift */,
+				33FA4FBF2B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift */,
+				336A9D842BAE9D9700134693 /* DownloadView.swift */,
+				33FA4FC62B69B9C2008E44A4 /* ManagerActions.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		336A9D902BAEB22200134693 /* palera1nLoaderTV */ = {
+			isa = PBXGroup;
+			children = (
+				336A9DC92BAEC05800134693 /* View */,
+				336A9DC82BAEC05100134693 /* Other Views */,
+				336A9D982BAEB22300134693 /* Assets.xcassets */,
+			);
+			path = palera1nLoaderTV;
+			sourceTree = "<group>";
+		};
+		336A9DC82BAEC05100134693 /* Other Views */ = {
+			isa = PBXGroup;
+			children = (
+				336A9DC22BAEBEB700134693 /* OptionsViewController.swift */,
+				336A9DC42BAEC01800134693 /* UtilitiesViewController.swift */,
+				336A9DC62BAEC02000134693 /* InfoViewController.swift */,
+			);
+			path = "Other Views";
+			sourceTree = "<group>";
+		};
+		336A9DC92BAEC05800134693 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				336A9D932BAEB22200134693 /* ViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		338B005A2B6FEB3600BA0CF5 /* Localization */ = {
@@ -136,7 +228,6 @@
 				33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */,
 				3332536C2B722712004F2177 /* UtilitiesViewController.swift */,
 				3332536E2B72271D004F2177 /* InfoViewController.swift */,
-				333253722B72AC96004F2177 /* CreditsViewController.swift */,
 			);
 			path = "Other Views";
 			sourceTree = "<group>";
@@ -152,6 +243,7 @@
 				338B00622B70A7C800BA0CF5 /* Documentation.md */,
 				33FA4F9D2B684C3B008E44A4 /* loader.entitlements */,
 				33FA4F882B6849B0008E44A4 /* palera1nLoader */,
+				336A9D902BAEB22200134693 /* palera1nLoaderTV */,
 				33FA4F872B6849B0008E44A4 /* Products */,
 				33628E932B69C77F00EB4887 /* Frameworks */,
 			);
@@ -161,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				33FA4F862B6849B0008E44A4 /* palera1nLoader.app */,
+				336A9D8F2BAEB22200134693 /* palera1nLoaderTV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -169,8 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				33FA4F892B6849B0008E44A4 /* AppDelegate.swift */,
-				33FA4F8D2B6849B0008E44A4 /* ViewController.swift */,
-				33FA4FC62B69B9C2008E44A4 /* ManagerActions.swift */,
+				336A9D862BAE9EFA00134693 /* View */,
 				338B005F2B6FEC6800BA0CF5 /* Other Views */,
 				33FA4FC12B68D46C008E44A4 /* Design */,
 				33628E982B69CE2F00EB4887 /* Extensions */,
@@ -223,7 +315,6 @@
 			isa = PBXGroup;
 			children = (
 				33BA31DC2BA6AF2E0063B2B7 /* Header.swift */,
-				33FA4FBF2B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift */,
 				33FA4FBD2B68D140008E44A4 /* SectionIcons.swift */,
 			);
 			path = Design;
@@ -241,6 +332,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		336A9D8E2BAEB22200134693 /* palera1nLoaderTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 336A9D9D2BAEB22300134693 /* Build configuration list for PBXNativeTarget "palera1nLoaderTV" */;
+			buildPhases = (
+				336A9D8B2BAEB22200134693 /* Sources */,
+				336A9D8C2BAEB22200134693 /* Frameworks */,
+				336A9D8D2BAEB22200134693 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = palera1nLoaderTV;
+			productName = palera1nLoaderTV;
+			productReference = 336A9D8F2BAEB22200134693 /* palera1nLoaderTV.app */;
+			productType = "com.apple.product-type.application";
+		};
 		33FA4F852B6849B0008E44A4 /* palera1nLoader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 33FA4F9A2B6849B2008E44A4 /* Build configuration list for PBXNativeTarget "palera1nLoader" */;
@@ -268,6 +376,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					336A9D8E2BAEB22200134693 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 					33FA4F852B6849B0008E44A4 = {
 						CreatedOnToolsVersion = 15.0.1;
 						LastSwiftMigration = 1500;
@@ -300,11 +411,21 @@
 			projectRoot = "";
 			targets = (
 				33FA4F852B6849B0008E44A4 /* palera1nLoader */,
+				336A9D8E2BAEB22200134693 /* palera1nLoaderTV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		336A9D8D2BAEB22200134693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				336A9DA12BAEB44500134693 /* Localizable.xcstrings in Resources */,
+				336A9D992BAEB22300134693 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		33FA4F842B6849B0008E44A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,6 +438,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		336A9D8B2BAEB22200134693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				336A9DBA2BAEB4A500134693 /* ManagerActions.swift in Sources */,
+				336A9DA22BAEB44800134693 /* Language.swift in Sources */,
+				336A9DA62BAEB46100134693 /* Preferences.swift in Sources */,
+				336A9DC72BAEC02000134693 /* InfoViewController.swift in Sources */,
+				336A9DAD2BAEB47E00134693 /* OpenApplication.swift in Sources */,
+				336A9DB32BAEB48F00134693 /* OsDeterminators.swift in Sources */,
+				336A9DAE2BAEB48300134693 /* UIAlertAction.swift in Sources */,
+				336A9DB02BAEB48800134693 /* Foundation.swift in Sources */,
+				336A9DAA2BAEB47400134693 /* Directory+Logging.swift in Sources */,
+				336A9DC52BAEC01800134693 /* UtilitiesViewController.swift in Sources */,
+				336A9DA02BAEB43100134693 /* AppDelegate.swift in Sources */,
+				336A9DB92BAEB4A300134693 /* DownloadView.swift in Sources */,
+				336A9DB12BAEB48A00134693 /* BasicLayoutAnchors.swift in Sources */,
+				336A9DA72BAEB46A00134693 /* Status.swift in Sources */,
+				336A9DA42BAEB45900134693 /* paleinfo.swift in Sources */,
+				336A9DAC2BAEB47800134693 /* Post-Install.swift in Sources */,
+				336A9DA92BAEB47300134693 /* CommandRunner.swift in Sources */,
+				336A9DAB2BAEB47600134693 /* Download+Install.swift in Sources */,
+				336A9DC12BAEB5FD00134693 /* ViewController.swift in Sources */,
+				336A9DAF2BAEB48500134693 /* OpenApp.swift in Sources */,
+				336A9DB52BAEB49700134693 /* SectionIcons.swift in Sources */,
+				336A9DBB2BAEB4A700134693 /* LoadingCell+ErrorCell.swift in Sources */,
+				336A9DC32BAEBEB700134693 /* OptionsViewController.swift in Sources */,
+				336A9DA82BAEB47000134693 /* Fetch+Decode.swift in Sources */,
+				336A9DA32BAEB45700134693 /* jailbreakd.c in Sources */,
+				336A9DB22BAEB48D00134693 /* UIImage.swift in Sources */,
+				336A9DA52BAEB45B00134693 /* Wrapper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		33FA4F822B6849B0008E44A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +480,7 @@
 				33FA4FB92B68609E008E44A4 /* Fetch+Decode.swift in Sources */,
 				33BA31D92BA6AA510063B2B7 /* UIImage.swift in Sources */,
 				3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */,
+				336A9D852BAE9D9700134693 /* DownloadView.swift in Sources */,
 				338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */,
 				338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */,
 				33628EC62B6C023D00EB4887 /* CommandRunner.swift in Sources */,
@@ -336,7 +492,6 @@
 				33FA4FC72B69B9C2008E44A4 /* ManagerActions.swift in Sources */,
 				33FA4FB42B685EC4008E44A4 /* Preferences.swift in Sources */,
 				33FA4FA02B684D62008E44A4 /* Wrapper.swift in Sources */,
-				333253732B72AC96004F2177 /* CreditsViewController.swift in Sources */,
 				33628E9C2B69D63500EB4887 /* Download+Install.swift in Sources */,
 				33FA4FC32B68D5AC008E44A4 /* BasicLayoutAnchors.swift in Sources */,
 				33FA4FBB2B68617A008E44A4 /* Directory+Logging.swift in Sources */,
@@ -348,12 +503,69 @@
 				33FA4FC52B68F6C8008E44A4 /* Status.swift in Sources */,
 				3332536F2B72271D004F2177 /* InfoViewController.swift in Sources */,
 				335342C82B69C59E000583E5 /* OpenApp.swift in Sources */,
+				336A9D882BAEA3B700134693 /* OsDeterminators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		336A9D9E2BAEB22300134693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.palera1nLoaderTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/Bridge";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Debug;
+		};
+		336A9D9F2BAEB22300134693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.palera1nLoaderTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/Bridge";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
+				SWIFT_VERSION = 5.0;
+				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Release;
+		};
 		33FA4F982B6849B2008E44A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -555,6 +767,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		336A9D9D2BAEB22300134693 /* Build configuration list for PBXNativeTarget "palera1nLoaderTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				336A9D9E2BAEB22300134693 /* Debug */,
+				336A9D9F2BAEB22300134693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		33FA4F812B6849B0008E44A4 /* Build configuration list for PBXProject "palera1nLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

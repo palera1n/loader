@@ -9,42 +9,30 @@ import Foundation
 
 /// A set of user controlled preferences.
 enum Preferences {
-    
-    
-    
+    static var installPathChangedCallback: ((String?) -> Void)?
+    #if os(tvOS)
+    static let defaultInstallPath: String = "https://palera.in/tvloader.json"
+    #else
+    static let defaultInstallPath: String = "https://palera.in/loader.json"
+    #endif
+
     @Storage(key: "UserPreferredLanguageCode", defaultValue: nil, callback: preferredLangChangedCallback)
     /// Preferred language
     static var preferredLanguageCode: String?
     
-    
-    
-    static var installPathChangedCallback: ((String?) -> Void)?
-    @Storage(key: "UserSpecifiedInstallPath", defaultValue: "https://palera.in/loader.json")
+    @Storage(key: "UserSpecifiedInstallPath", defaultValue: defaultInstallPath)
     /// User specified download path
     static var installPath: String? {
         didSet { installPathChangedCallback?(installPath) }
     }
-
-    static var defaultInstallPath: String { return _installPath.defaultValue! }
-    
-    
     
     @Storage(key: "UserSpecifiedRebootOnRevert", defaultValue: true)
     /// If the user wants to reboot when restoring system
     static var rebootOnRevert: Bool?
     
-    
-    
-    @Storage(key: "OverrideConfigType", defaultValue: false)
-    /// Override type get in configuration,, switch from `rootless => rootless`, `rootful => rootless` etc.
-    static var overrideConfigType: Bool?
-    
     @Storage(key: "UserSpecifiedDoDisplayPasswordPrompt", defaultValue: true)
     /// Show whether the psasword prompt is not displayed during installation, default will display the prompt for password
     static var doPasswordPrompt: Bool?
-    
-    
-    
 }
 
 // MARK: - Callbacks

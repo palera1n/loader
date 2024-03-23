@@ -20,7 +20,7 @@ class InfoViewController: UIViewController {
     ]
 
     var sectionTitles: [String] {
-        return ["palera1n", device, "App Info"]
+        return ["", device, ""]
     }
     
     override func viewDidLoad() {
@@ -30,12 +30,37 @@ class InfoViewController: UIViewController {
     }
     
     func setupViews() {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
+        let imageView = UIImageView(image: UIImage(named: "render"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.5
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(imageView)
+        
         self.tableView = UITableView(frame: .zero, style: .grouped)
+        self.tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.reuseIdentifier)
+        self.tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.view.addSubview(tableView)
-        self.tableView.constraintCompletely(to: view)
+        self.tableView.allowsSelection = false
+
+        stackView.addArrangedSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor) // I
+        ])
     }
 }
 
@@ -49,7 +74,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .none
-        
+
         let cellText = tableData[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellText
         switch cellText {

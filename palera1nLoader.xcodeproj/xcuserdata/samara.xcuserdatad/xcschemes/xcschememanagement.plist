@@ -7,11 +7,21 @@
 		<key>palera1nLoader.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>palera1nLoaderTV.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>336A9D8E2BAEB22200134693</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>33FA4F852B6849B0008E44A4</key>
 		<dict>
 			<key>primary</key>

@@ -65,9 +65,7 @@ public struct JailbreakConfiguration {
 
     // Function to determine jailbreak type
     public func jbType() -> String {
-        let initialType = paleInfo.palerain_option_rootful ? "Rootful" : "Rootless"
-        
-        return Preferences.overrideConfigType! ? toggleJailbreakType(initialType) : initialType
+        return paleInfo.palerain_option_rootful ? "Rootful" : "Rootless"
     }
 
     private func toggleJailbreakType(_ type: String) -> String {
