@@ -36,7 +36,7 @@ class InfoViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
         
-        let imageView = UIImageView(image: UIImage(named: "render"))
+        let imageView = UIImageView(image: UIImage(named: "apple-tv"))
         imageView.contentMode = .scaleAspectFit
         imageView.alpha = 0.5
         imageView.translatesAutoresizingMaskIntoConstraints = false
