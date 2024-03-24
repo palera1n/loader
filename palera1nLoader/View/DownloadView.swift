@@ -60,6 +60,7 @@ extension ViewController: BootstrapLabelDelegate {
         bootstrapLabel.translatesAutoresizingMaskIntoConstraints = false
         bootstrapLabel.textColor = .none
         bootstrapLabel.font = UIFont.systemFont(ofSize: 15)
+        bootstrapLabel.numberOfLines = 0
         bootstrapLabel.textAlignment = .center
         containerView.addSubview(bootstrapLabel)
         
@@ -67,6 +68,7 @@ extension ViewController: BootstrapLabelDelegate {
         speedLabel.translatesAutoresizingMaskIntoConstraints = false
         speedLabel.textColor = .white.withAlphaComponent(0.5)
         speedLabel.font = UIFont.systemFont(ofSize: 12)
+        speedLabel.numberOfLines = 0
         speedLabel.textAlignment = .center
         containerView.addSubview(speedLabel)
         
@@ -82,7 +84,8 @@ extension ViewController: BootstrapLabelDelegate {
             progressBar.widthAnchor.constraint(equalToConstant: 250),
             
             speedLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            speedLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -56)
+            speedLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -56),
+            speedLabel.widthAnchor.constraint(equalToConstant: 250)
         ])
 
         activityIndicator.startAnimating()

@@ -35,7 +35,7 @@ class Go: NSObject {
                     if let pkgmgrFilePath = pkgmgrFilePath {
                         
                         delegate?.updateBootstrapLabel(withText: .localized("Installing Item", arguments: "\(file.capitalized)"))
-                        
+                        delegate?.updateSpeedLabel(withText: .localized("Installing Explanation"))
                         DispatchQueue(label: "Install Strap").async {
                             if Preferences.doPasswordPrompt! {
                                 DispatchQueue.main.async {

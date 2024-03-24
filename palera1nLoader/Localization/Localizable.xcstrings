@@ -457,6 +457,18 @@
         }
       }
     },
+    "Installing Explanation" : {
+      "comment" : "✅ Text to the the user not to exit the app while bootstrapping",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do not exit the app during this process, it may lead to unforeseen issues."
+          }
+        }
+      }
+    },
     "Installing Item" : {
       "comment" : "✅ This is text that is displayed when in the install process of installing the bootstrap. (i.e \"Installing Cydia\")",
       "extractionState" : "manual",
