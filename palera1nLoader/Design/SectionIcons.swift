@@ -15,8 +15,11 @@ class SectionIcons {
         guard let symbolImage = UIImage(systemName: symbolName, withConfiguration: symbolConfig)?.withTintColor(.white, renderingMode: .alwaysOriginal) else {
             return
         }
-
+        #if os(tvOS)
+        let imageSize = CGSize(width: 75, height: 75)
+        #else
         let imageSize = CGSize(width: 30, height: 30)
+        #endif
         let insetAmount: CGFloat = 3
         let scaledSymbolSize = symbolImage.size.aspectFit(in: imageSize, insetBy: insetAmount)
 

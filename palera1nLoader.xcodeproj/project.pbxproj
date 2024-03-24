@@ -51,7 +51,7 @@
 		338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005B2B6FEB5400BA0CF5 /* Language.swift */; };
 		338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B00602B706FE400BA0CF5 /* Post-Install.swift */; };
 		338E24A12BB01B5E00561B18 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33628E962B69C78600EB4887 /* IOKit.framework */; };
-		338E24A32BB021EE00561B18 /* IOKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 017796DC2BAFB63D00BCC2C3 /* IOKit.tbd */; };
+		338E24A42BB0DED800561B18 /* IOKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 017796DC2BAFB63D00BCC2C3 /* IOKit.tbd */; };
 		33BA31D92BA6AA510063B2B7 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31D82BA6AA510063B2B7 /* UIImage.swift */; };
 		33BA31DB2BA6AEF30063B2B7 /* OpenApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31DA2BA6AEF30063B2B7 /* OpenApplication.swift */; };
 		33BA31DD2BA6AF2E0063B2B7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31DC2BA6AF2E0063B2B7 /* Header.swift */; };
@@ -135,7 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				336A9DBE2BAEB56C00134693 /* CoreServices.framework in Frameworks */,
-				338E24A32BB021EE00561B18 /* IOKit.tbd in Frameworks */,
+				338E24A42BB0DED800561B18 /* IOKit.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +522,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_KEY_CFBundleDisplayName = palera1nTV;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -532,9 +533,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.palera1nLoaderTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.loadertv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -557,6 +558,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_KEY_CFBundleDisplayName = palera1nTV;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -567,9 +569,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.0;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.palera1nLoaderTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.loadertv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -74,7 +74,8 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
     func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 120 }
+
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case 1:
@@ -107,8 +108,8 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.textColor = .systemRed
             cell.textLabel?.textAlignment = .center
             
-        case .localized("Reboot after Restore"):
-            cell.detailTextLabel?.text = Preferences.rebootOnRevert! ? "YES" : "NO"
+        case .localized("Show Password Prompt"):
+            cell.detailTextLabel?.text = Preferences.doPasswordPrompt! ? "YES" : "NO"
         default:
             break
         }
@@ -123,9 +124,9 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         let cellText = tableData[indexPath.section][indexPath.row]
 
         switch cellText {
-        case .localized("Reboot after Restore"):
-            Preferences.rebootOnRevert?.toggle()
-            print(Preferences.rebootOnRevert!)
+        case .localized("Show Password Prompt"):
+            Preferences.doPasswordPrompt?.toggle()
+            print(Preferences.doPasswordPrompt!)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         case .localized("About"):
             let i = InfoViewController()

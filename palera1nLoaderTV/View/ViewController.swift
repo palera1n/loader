@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setNavigationBar()
+        updateTableViewContentOffset()
         appCheckUp()
         checkMinimumRequiredVersion()
         retryFetchJSON()
@@ -41,12 +42,14 @@ class ViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addBackground(image: UIImage(named: "thetvbg")!, alpha: 0.6)
         view.addSubview(stackView)
         
         let imageView = UIImageView(image: UIImage(named: "apple-tv"))
         imageView.contentMode = .scaleAspectFit
-        imageView.alpha = 0.5
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
         
         stackView.addArrangedSubview(imageView)
         
@@ -68,6 +71,21 @@ class ViewController: UIViewController {
             imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor) // I
         ])
     }
+    
+    func updateTableViewContentOffset() {
+        let screenHeight = UIScreen.main.bounds.size.height
+        let tableViewContentHeight = tableView.contentSize.height
+
+        var contentOffsetY = (screenHeight - tableViewContentHeight) / 2.0
+
+        // Ensure the content offset doesn't go beyond the limits
+        contentOffsetY = max(-tableView.contentInset.top, contentOffsetY)
+        contentOffsetY = min(tableView.contentSize.height - tableView.frame.size.height + tableView.contentInset.bottom, contentOffsetY)
+
+        tableView.contentOffset = CGPoint(x: 0, y: -contentOffsetY)
+    }
+
+
 
     func appCheckUp() {
         if paleInfo.palerain_option_force_revert {
@@ -85,18 +103,36 @@ class ViewController: UIViewController {
         let restartButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartButtonTapped))
         
         self.title = "palera1n"
+        self.navigationItem.title = nil
         self.navigationItem.rightBarButtonItem = restartButton
     }
     
     @objc func restartButtonTapped() { self.retryFetchJSON() }
 }
 
+extension UIStackView {
+    func addBackground(image: UIImage, alpha: CGFloat) {
+        let imageView = UIImageView(image: image)
+        imageView.frame = bounds
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(imageView, at: 0)
+
+        let overlayView = UIView(frame: bounds)
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(alpha)
+        overlayView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(overlayView, aboveSubview: imageView)
+    }
+}
+
+
 // MARK: -  UITableView
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int { return 2 }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 120 }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let strapValue = Status.installation()
         if section == 0 && (isLoading || isError) {
