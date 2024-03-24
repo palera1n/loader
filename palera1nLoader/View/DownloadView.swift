@@ -46,9 +46,6 @@ extension ViewController: BootstrapLabelDelegate {
         
         let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.defaultStyle)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        #if os(tvOS)
-        activityIndicator.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
-        #endif
         containerView.addSubview(activityIndicator)
         
         progressBar = UIProgressView(progressViewStyle: .default)
@@ -59,7 +56,11 @@ extension ViewController: BootstrapLabelDelegate {
         bootstrapLabel = UILabel()
         bootstrapLabel.translatesAutoresizingMaskIntoConstraints = false
         bootstrapLabel.textColor = .none
+        #if os(tvOS)
+        bootstrapLabel.font = UIFont.boldSystemFont(ofSize: UIFont.preferredFont(forTextStyle: .subheadline).pointSize)
+        #else
         bootstrapLabel.font = UIFont.systemFont(ofSize: 15)
+        #endif
         bootstrapLabel.numberOfLines = 0
         bootstrapLabel.textAlignment = .center
         containerView.addSubview(bootstrapLabel)
@@ -67,7 +68,11 @@ extension ViewController: BootstrapLabelDelegate {
         speedLabel = UILabel()
         speedLabel.translatesAutoresizingMaskIntoConstraints = false
         speedLabel.textColor = .white.withAlphaComponent(0.5)
+        #if os(tvOS)
+        speedLabel.font = UIFont.systemFont(ofSize: 32)
+        #else
         speedLabel.font = UIFont.systemFont(ofSize: 12)
+        #endif
         speedLabel.numberOfLines = 0
         speedLabel.textAlignment = .center
         containerView.addSubview(speedLabel)
@@ -81,11 +86,11 @@ extension ViewController: BootstrapLabelDelegate {
             
             progressBar.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             progressBar.topAnchor.constraint(equalTo: bootstrapLabel.bottomAnchor, constant: 16),
-            progressBar.widthAnchor.constraint(equalToConstant: 250),
-            
+            progressBar.widthAnchor.constraint(equalTo: containerView.widthAnchor, constant: -100),
+
             speedLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             speedLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -56),
-            speedLabel.widthAnchor.constraint(equalToConstant: 250)
+            speedLabel.widthAnchor.constraint(equalTo: containerView.widthAnchor, constant: -100)
         ])
 
         activityIndicator.startAnimating()
