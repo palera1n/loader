@@ -13,7 +13,7 @@ class OptionsViewController: UIViewController {
     var tableData = [
         [String.localized("About"), String.localized("Utilities")],
         [String.localized("Change Download URL")],
-        [String.localized("Reboot after Restore"), String.localized("Show Password Prompt")]
+        [String.localized("Show Password Prompt")]
     ]
     
     var sectionTitles = [
@@ -109,8 +109,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             
         case .localized("Reboot after Restore"):
             cell.detailTextLabel?.text = Preferences.rebootOnRevert! ? "YES" : "NO"
-        case .localized("Show Password Prompt"):
-            cell.detailTextLabel?.text = Preferences.doPasswordPrompt! ? "YES" : "NO"
         default:
             break
         }
@@ -128,9 +126,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         case .localized("Reboot after Restore"):
             Preferences.rebootOnRevert?.toggle()
             print(Preferences.rebootOnRevert!)
-            tableView.reloadRows(at: [indexPath], with: .automatic)
-        case .localized("Show Password Prompt"):
-            Preferences.doPasswordPrompt?.toggle()
             tableView.reloadRows(at: [indexPath], with: .automatic)
         case .localized("About"):
             let i = InfoViewController()

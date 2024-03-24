@@ -199,12 +199,12 @@ extension Go {
     
     /// Remove environment
     static public func restoreSystem() -> Void {
-        if paleInfo.palerain_option_rootless {
-            do {
-                ObliterateJailbreak()
-                ReloadLaunchdJailbreakEnvironment()
-            }
-            
+        do {
+            ObliterateJailbreak()
+            ReloadLaunchdJailbreakEnvironment()
+        }
+        
+        if paleInfo.palerain_option_ssv {
             if Preferences.rebootOnRevert! {
                 spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot"])
             } else {
@@ -215,7 +215,6 @@ extension Go {
             }
         }
     }
-    
 }
 
 // MARK: - Install enviornment
