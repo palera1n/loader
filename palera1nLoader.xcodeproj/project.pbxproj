@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		017796DD2BAFB63D00BCC2C3 /* IOKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 017796DC2BAFB63D00BCC2C3 /* IOKit.tbd */; };
+		017796DE2BAFB64800BCC2C3 /* IOKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 017796DC2BAFB63D00BCC2C3 /* IOKit.tbd */; };
 		3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536C2B722712004F2177 /* UtilitiesViewController.swift */; };
 		3332536F2B72271D004F2177 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536E2B72271D004F2177 /* InfoViewController.swift */; };
 		335342C62B69C4B1000583E5 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = 335342C52B69C4B1000583E5 /* jailbreakd.c */; };
 		335342C82B69C59E000583E5 /* OpenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335342C72B69C59E000583E5 /* OpenApp.swift */; };
 		33628E952B69C77F00EB4887 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33628E942B69C77F00EB4887 /* CoreServices.framework */; };
-		33628E972B69C78600EB4887 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33628E962B69C78600EB4887 /* IOKit.framework */; };
 		33628E9A2B69CE7800EB4887 /* UIAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628E992B69CE7800EB4887 /* UIAlertAction.swift */; };
 		33628E9C2B69D63500EB4887 /* Download+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628E9B2B69D63500EB4887 /* Download+Install.swift */; };
 		33628EC62B6C023D00EB4887 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628EC52B6C023D00EB4887 /* CommandRunner.swift */; };
@@ -49,7 +50,6 @@
 		336A9DC32BAEBEB700134693 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DC22BAEBEB700134693 /* OptionsViewController.swift */; };
 		336A9DC52BAEC01800134693 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DC42BAEC01800134693 /* UtilitiesViewController.swift */; };
 		336A9DC72BAEC02000134693 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DC62BAEC02000134693 /* InfoViewController.swift */; };
-		336A9DCA2BAECCCB00134693 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336A9DBF2BAEB57400134693 /* IOKit.framework */; };
 		338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005B2B6FEB5400BA0CF5 /* Language.swift */; };
 		338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B00602B706FE400BA0CF5 /* Post-Install.swift */; };
 		33BA31D92BA6AA510063B2B7 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BA31D82BA6AA510063B2B7 /* UIImage.swift */; };
@@ -73,6 +73,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		017796DC2BAFB63D00BCC2C3 /* IOKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = IOKit.tbd; path = loader/IOKit.tbd; sourceTree = "<group>"; };
 		3332536C2B722712004F2177 /* UtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewController.swift; sourceTree = "<group>"; };
 		3332536E2B72271D004F2177 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		335342C32B69C4B0000583E5 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
@@ -133,8 +134,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017796DD2BAFB63D00BCC2C3 /* IOKit.tbd in Frameworks */,
 				336A9DBE2BAEB56C00134693 /* CoreServices.framework in Frameworks */,
-				336A9DCA2BAECCCB00134693 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017796DE2BAFB64800BCC2C3 /* IOKit.tbd in Frameworks */,
 				33628E952B69C77F00EB4887 /* CoreServices.framework in Frameworks */,
-				33628E972B69C78600EB4887 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +154,7 @@
 		33628E932B69C77F00EB4887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				017796DC2BAFB63D00BCC2C3 /* IOKit.tbd */,
 				336A9DBF2BAEB57400134693 /* IOKit.framework */,
 				336A9DBD2BAEB56C00134693 /* CoreServices.framework */,
 				33628E962B69C78600EB4887 /* IOKit.framework */,
@@ -513,18 +515,25 @@
 		336A9D9E2BAEB22300134693 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/loader",
+				);
 				MARKETING_VERSION = 1.0;
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.palera1nLoaderTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -532,7 +541,7 @@
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/Bridge";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/apple-include-$(PLATFORM_NAME)";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
@@ -541,18 +550,25 @@
 		336A9D9F2BAEB22300134693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/loader",
+				);
 				MARKETING_VERSION = 1.0;
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.palera1nLoaderTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
@@ -560,7 +576,7 @@
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/Bridge";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/apple-include-$(PLATFORM_NAME)";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
@@ -690,6 +706,7 @@
 		33FA4F9B2B6849B2008E44A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
@@ -698,6 +715,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/palera1nLoader/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -709,7 +727,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/loader",
+				);
 				MARKETING_VERSION = 2.0;
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -720,7 +743,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/apple-include-$(PLATFORM_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};
@@ -729,6 +752,7 @@
 		33FA4F9C2B6849B2008E44A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
@@ -737,6 +761,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/palera1nLoader/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -748,7 +773,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/loader",
+				);
 				MARKETING_VERSION = 2.0;
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -758,7 +788,7 @@
 				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/palera1nLoader/Bridge";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/palera1nLoader/XPC/bridge.h";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_HEADER_SEARCH_PATHS = "apple-include";
+				SYSTEM_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/apple-include-$(PLATFORM_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 15.0;
 			};

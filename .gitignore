@@ -2,5 +2,6 @@
 *.DS_Store
 Payload
 packages
-apple-include
+apple-include-*
 *UserInterfaceState.xcuserstate
+palera1nLoader.xcodeproj/xcuserdata*
