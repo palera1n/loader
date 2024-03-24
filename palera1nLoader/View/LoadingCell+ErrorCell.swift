@@ -50,7 +50,9 @@ class LoadingCell: UITableViewCell {
     private func setupLoadingLabel() {
         loadingLabel = UILabel()
         loadingLabel.text = String.localized("Loading")
-        loadingLabel.font = UIFont.systemFont(ofSize: 15)
+        #if !os(tvOS)
+            loadingLabel.font = UIFont.systemFont(ofSize: 15)
+        #endif
         loadingLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.addArrangedSubview(loadingLabel)
     }
