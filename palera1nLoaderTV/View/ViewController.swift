@@ -42,7 +42,6 @@ class ViewController: UIViewController {
         stackView.axis = .horizontal
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.addBackground(image: UIImage(named: "thetvbg")!, alpha: 0.6)
         view.addSubview(stackView)
         
         let imageView = UIImageView(image: UIImage(named: "apple-tv"))
@@ -78,7 +77,6 @@ class ViewController: UIViewController {
 
         var contentOffsetY = (screenHeight - tableViewContentHeight) / 2.0
 
-        // Ensure the content offset doesn't go beyond the limits
         contentOffsetY = max(-tableView.contentInset.top, contentOffsetY)
         contentOffsetY = min(tableView.contentSize.height - tableView.frame.size.height + tableView.contentInset.bottom, contentOffsetY)
 
