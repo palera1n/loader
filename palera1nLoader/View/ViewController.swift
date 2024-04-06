@@ -30,9 +30,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setNavigationBar()
-        appCheckUp()
-        checkMinimumRequiredVersion()
-        retryFetchJSON()
+		fetch()
         Go.shared.delegate = self
     }
     
@@ -49,20 +47,65 @@ class ViewController: UIViewController {
         self.view.addSubview(tableView)
         self.tableView.constraintCompletely(to: view)
     }
-    
-    func appCheckUp() {
-        if paleInfo.palerain_option_force_revert {
-            log(type: .info, msg: .localized("Is Force Reverted"))
-        } else if paleInfo.palerain_option_failure {
-            let nah = UIAlertAction(title: .localized("Dismiss"), style: .cancel, handler: nil)
-            let exit = UIAlertAction(title: .localized("Exit Safemode"), style: .default) { _ in
-                ExitFailureSafeMode()
-            }
-            let alert = UIAlertController.coolAlert(title: "", message: .localized("Failure Alert"), actions: [nah, exit])
-            self.present(alert, animated: true)
-        }
-    }
 }
+
+extension ViewController {
+	func fetch() {
+		fetchLoaderData(cfver: corefoundationVersionShort, option: .rootless) { result in
+			switch result {
+			case .success(let filteredData):
+				if filteredData.bootstraps.first?.items.isEmpty ?? true {
+					DispatchQueue.main.async {
+						let error = NSError(domain: "No Bootstrap Items Data", code: -5, userInfo: nil)
+						print("Failed to fetch filtered data: \(error)")
+						self.isLoading = false
+						self.isError = true
+						self.tableView.reloadData()
+					}
+				} else {
+					DispatchQueue.main.async {
+						print(filteredData)
+						
+						// Reset icon images
+						self.iconImages.removeAll()
+						for _ in filteredData.managers {
+							self.iconImages.append(nil)
+						}
+						
+						for (_, manager) in filteredData.managers.enumerated() {
+							for managerItem in manager.items {
+								guard let imageURL = URL(string: managerItem.icon) else { continue }
+								URLSession.shared.dataTask(with: imageURL) { data, _, error in
+									guard let data = data, error == nil else { return }
+									DispatchQueue.main.async {
+										if let image = UIImage(data: data) {
+											let managerItemIndex = manager.items.firstIndex(where: { $0.name == managerItem.name })
+											if let index = managerItemIndex {
+												let rowIndex = self.tableData[0].firstIndex(where: { ($0 as? Loader.ManagerItem)?.name == managerItem.name })
+												if let rowIndex = rowIndex {
+													self.iconImages[rowIndex] = image
+													self.tableView.reloadRows(at: [IndexPath(row: rowIndex, section: 0)], with: .none)
+												}
+											}
+										}
+									}
+								}.resume()
+							}
+						}
+					}
+				}
+			case .failure(let error):
+				DispatchQueue.main.async {
+					print("Failed to fetch filtered data: \(error)")
+					self.isLoading = false
+					self.isError = true
+					self.tableView.reloadData()
+				}
+			}
+		}
+	}
+}
+
 
 // MARK: -  UITableView
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -163,7 +206,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         case (0, let row):
             if isError || isLoading { break }
             let cellData = tableData[indexPath.section][row] as? String
-            showAlert(for: indexPath, row: row, cellData: cellData, sourceView: tableView.cellForRow(at: indexPath)!)
+            //showAlert(for: indexPath, row: row, cellData: cellData, sourceView: tableView.cellForRow(at: indexPath)!)
         case (1, 0):
             if #available(iOS 13.0, *), UIDevice.current.userInterfaceIdiom == .pad {
                 let sViewController = OptionsViewController()
@@ -174,7 +217,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 navigationController?.pushViewController(options, animated: true)
             }
         case (1, 1):
-            showRestoreAlert(sourceView: tableView.cellForRow(at: indexPath)!)
+			break
+            //showRestoreAlert(sourceView: tableView.cellForRow(at: indexPath)!)
         default:
             break
         }
