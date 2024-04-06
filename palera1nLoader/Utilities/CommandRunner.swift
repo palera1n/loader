@@ -130,6 +130,9 @@ import Bridge
     mutex.wait()
     var status: Int32 = 0
     waitpid(pid, &status, 0)
+    
+    NSLog("stdout = \n%@", stdoutStr);
+    NSLog("stderr = \n%@", stdoutStr);
 
     return Int(status)
 }
