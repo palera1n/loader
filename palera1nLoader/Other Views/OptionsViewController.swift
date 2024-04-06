@@ -156,9 +156,6 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
 extension OptionsViewController {
     func resetConfigDefault() {
         Preferences.installPath = Preferences.defaultInstallPath
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            UIApplication.prepareForExitAndSuspend()
-        }
     }
     
     func showChangeDownloadURLAlert() {
@@ -174,9 +171,6 @@ extension OptionsViewController {
             guard let textField = alert.textFields?.first, let enteredURL = textField.text else { return }
 
             Preferences.installPath = enteredURL
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                UIApplication.prepareForExitAndSuspend()
-            }
         }
 
         setAction.isEnabled = false
