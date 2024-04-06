@@ -13,6 +13,7 @@ class Finalize {
     func finalizeBootstrap(deb: String) throws {
         var prefix = ""
         if paleInfo.palerain_option_rootless { prefix = "/var/jb" }
+        self.setRepositories()
         
         // install packages from json
         if (spawn(command: "\(prefix)/usr/bin/apt-get", args: ["update", "--allow-insecure-repositories"]) != 1) {
@@ -39,7 +40,6 @@ class Finalize {
         }
         _ = spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         
-        self.setRepositories()
     }
     
     func setRepositories() {
