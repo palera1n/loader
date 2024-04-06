@@ -10,13 +10,16 @@ import UIKit
 
 extension ViewController {
     
-    fileprivate func performCommonActions() {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.setupContainerView()
-        #if !os(tvOS)
-        self.hideStatusBar = true
-        #endif
-    }
+	fileprivate func performCommonActions() {
+		self.containerView.isHidden = false
+		self.tableView.allowsSelection = false
+		#if !os(tvOS)
+		self.hideStatusBar = true
+		#endif
+		self.navigationController?.setNavigationBarHidden(true, animated: true)
+		UIView.transition(with: self.containerView, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
+	}
+
     
     public func showAlert(for indexPath: IndexPath, row: Int?, cellData: String? = nil, sourceView: UIView) {
         guard let jsonInfo = jsonInfo else { return }

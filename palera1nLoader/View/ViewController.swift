@@ -48,6 +48,7 @@ class ViewController: UIViewController {
         
         self.view.addSubview(tableView)
         self.tableView.constraintCompletely(to: view)
+		self.setupContainerView()
     }
     
     func appCheckUp() {

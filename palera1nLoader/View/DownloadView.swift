@@ -35,6 +35,7 @@ extension ViewController: BootstrapLabelDelegate {
     
     func setupContainerView() {
         containerView = UIView()
+		containerView.isHidden = true
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = UIColor.defaultContainerBackgroundColor
         view.addSubview(containerView)

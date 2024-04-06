@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
+		self.setupContainerView()
         stackView.addArrangedSubview(tableView)
         
         NSLayoutConstraint.activate([
