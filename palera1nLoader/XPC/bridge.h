@@ -10,5 +10,6 @@
 #include <IOKit/IOKitLib.h>
 #include "jailbreakd.h"
 
+const char* xpc_strerror(int err);
 
 #endif /* bridge_h */

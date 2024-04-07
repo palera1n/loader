@@ -67,7 +67,7 @@ func DeployBootstrap(path: String, deb: String, password: String) -> (Int, Strin
         result = "";
     }
     if (retval != 0) {
-        let errorString = "Bootstrapper XPC Error occured: " + (retval < 0 ? result : result + ": " + String(errno) + String(cString: strerror(errno)));
+        let errorString = "Bootstrapper XPC Error occured: " + (retval < 0 ? result : result + ": " + String(retval) + String(cString: xpc_strerror(retval)));
         log(type: .fatal, msg: errorString)
     }
     do {
