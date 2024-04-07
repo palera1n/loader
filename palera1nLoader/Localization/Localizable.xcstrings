@@ -163,7 +163,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uninstall jailbreak files, but does not remove FakeFS. This will allow setting up a new jailbreak environment without creating FakeFS again."
+            "value" : "Uninstall jailbreak files, but does not remove FakeFS. This will allow setting up a new jailbreak environment without creating FakeFS again. This will reboot your %@."
           }
         }
       }

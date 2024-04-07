@@ -91,7 +91,7 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
         let cellText = tableData[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellText
         switch cellText {
-        case "Restart Springboard", "UICache", "Userspace Reboot":
+        case "Restart PineBoard", "UICache", "Userspace Reboot":
             cell.textLabel?.textColor = .systemBlue
         case .localized("Exit Safemode"), "Revert Snapshot":
             cell.textLabel?.textColor = .systemRed
@@ -105,7 +105,7 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case "Restart Springboard":
+        case "Restart PineBoard":
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case "Userspace Reboot":
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
