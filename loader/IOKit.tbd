@@ -1,6 +1,6 @@
 --- !tapi-tbd
 tbd-version:     4
-targets:         [ arm64-tvos, arm64e-tvos, arm64-ios, arm64e-ios, arm64-macos, arm64e-macos, x86_64-macos ]
+targets:         [ arm64-tvos, arm64e-tvos, arm64-ios, arm64e-ios, arm64-macos, arm64e-macos, x86_64-macos, arm64-ios-simulator, arm64-tvos-simulator ]
 uuids:
   - target:          arm64-tvos
     value:           B076C6CA-A277-3870-94E5-5C5C984C445E

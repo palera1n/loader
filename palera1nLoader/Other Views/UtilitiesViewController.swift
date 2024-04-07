@@ -20,6 +20,9 @@ class UtilitiesViewController: UIViewController {
     ]
 
     override func viewDidLoad() {
+        #if os(tvOS)
+        tableData[0][1] = "Restart PineBoard";
+        #endif
         super.viewDidLoad()
         self.setupViews()
         self.title = .localized("Utilities")
@@ -31,8 +34,37 @@ class UtilitiesViewController: UIViewController {
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        #if os(tvOS)
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
+        let imageView = UIImageView(image: UIImage(named: "apple-tv"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.5
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(imageView)
+        
+        self.tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.reuseIdentifier)
+        self.tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
+        
+        stackView.addArrangedSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor) // I
+        ])
+        #else
         self.view.addSubview(tableView)
         self.tableView.constraintCompletely(to: view)
+        #endif
     }
     
     func determineIfUserShouldBeAbleToUseTheseButtons() {
@@ -67,7 +99,7 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
         let cellText = tableData[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellText
         switch cellText {
-        case "Restart SpringBoard", "UICache", "Userspace Reboot":
+        case "Restart SpringBoard", "Restart PineBoard", "UICache", "Userspace Reboot":
             cell.textLabel?.textColor = .systemBlue
         case .localized("Exit Safemode"), "Revert Snapshot":
             cell.textLabel?.textColor = .systemRed
@@ -81,7 +113,7 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case "Restart SpringBoard":
+        case "Restart SpringBoard", "Restart PineBoard":
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
         case "Userspace Reboot":
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])

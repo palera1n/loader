@@ -25,7 +25,7 @@ func OverwriteFile(destination: String, content: String) -> (Int, String) {
     return (0, "");
 }
 
-@discardableResult func ObliterateJailbreak() -> Int {
+@discardableResult func ObliterateJailbreak(isCleanFakeFS: Bool) -> Int {
     return 0;
 }
 

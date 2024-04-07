@@ -20,7 +20,11 @@ class InfoViewController: UIViewController {
     ]
 
     var sectionTitles: [String] {
+        #if os(tvOS)
+        return ["", device, ""]
+        #else
         return ["palera1n", device, "App Info"]
+        #endif
     }
     
     override func viewDidLoad() {
@@ -34,8 +38,37 @@ class InfoViewController: UIViewController {
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
+
+        #if os(tvOS)
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
+        let imageView = UIImageView(image: UIImage(named: "apple-tv"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.alpha = 0.5
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(imageView)
+
+        self.tableView.allowsSelection = false
+
+        stackView.addArrangedSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor) // I
+        ])
+        #else
         self.view.addSubview(tableView)
         self.tableView.constraintCompletely(to: view)
+        #endif
     }
 }
 
