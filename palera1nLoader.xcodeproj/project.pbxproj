@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0132ED6A2BC30709006A24F9 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536C2B722712004F2177 /* UtilitiesViewController.swift */; };
 		0132ED702BC30C3A006A24F9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536E2B72271D004F2177 /* InfoViewController.swift */; };
+		0132ED712BC31401006A24F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F8D2B6849B0008E44A4 /* ViewController.swift */; };
 		3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536C2B722712004F2177 /* UtilitiesViewController.swift */; };
 		3332536F2B72271D004F2177 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536E2B72271D004F2177 /* InfoViewController.swift */; };
 		335342C62B69C4B1000583E5 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = 335342C52B69C4B1000583E5 /* jailbreakd.c */; };
@@ -46,7 +47,6 @@
 		336A9DBA2BAEB4A500134693 /* ManagerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FC62B69B9C2008E44A4 /* ManagerActions.swift */; };
 		336A9DBB2BAEB4A700134693 /* LoadingCell+ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBF2B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift */; };
 		336A9DBE2BAEB56C00134693 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 336A9DBD2BAEB56C00134693 /* CoreServices.framework */; };
-		336A9DC12BAEB5FD00134693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9D932BAEB22200134693 /* ViewController.swift */; };
 		336A9DC32BAEBEB700134693 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336A9DC22BAEBEB700134693 /* OptionsViewController.swift */; };
 		338B005C2B6FEB5400BA0CF5 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B005B2B6FEB5400BA0CF5 /* Language.swift */; };
 		338B00612B706FE400BA0CF5 /* Post-Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 338B00602B706FE400BA0CF5 /* Post-Install.swift */; };
@@ -89,7 +89,6 @@
 		336A9D842BAE9D9700134693 /* DownloadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadView.swift; sourceTree = "<group>"; };
 		336A9D872BAEA3B700134693 /* OsDeterminators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsDeterminators.swift; sourceTree = "<group>"; };
 		336A9D8F2BAEB22200134693 /* palera1nLoaderTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = palera1nLoaderTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		336A9D932BAEB22200134693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		336A9D982BAEB22300134693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		336A9DBD2BAEB56C00134693 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS17.0.sdk/System/Library/Frameworks/CoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		336A9DBF2BAEB57400134693 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator17.0.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -188,7 +187,6 @@
 		336A9D902BAEB22200134693 /* palera1nLoaderTV */ = {
 			isa = PBXGroup;
 			children = (
-				336A9DC92BAEC05800134693 /* View */,
 				336A9DC82BAEC05100134693 /* Other Views */,
 				336A9D982BAEB22300134693 /* Assets.xcassets */,
 			);
@@ -201,14 +199,6 @@
 				336A9DC22BAEBEB700134693 /* OptionsViewController.swift */,
 			);
 			path = "Other Views";
-			sourceTree = "<group>";
-		};
-		336A9DC92BAEC05800134693 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				336A9D932BAEB22200134693 /* ViewController.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		338B005A2B6FEB3600BA0CF5 /* Localization */ = {
@@ -457,7 +447,7 @@
 				336A9DAC2BAEB47800134693 /* Post-Install.swift in Sources */,
 				336A9DA92BAEB47300134693 /* CommandRunner.swift in Sources */,
 				336A9DAB2BAEB47600134693 /* Download+Install.swift in Sources */,
-				336A9DC12BAEB5FD00134693 /* ViewController.swift in Sources */,
+				0132ED712BC31401006A24F9 /* ViewController.swift in Sources */,
 				336A9DAF2BAEB48500134693 /* OpenApp.swift in Sources */,
 				336A9DB52BAEB49700134693 /* SectionIcons.swift in Sources */,
 				336A9DBB2BAEB4A700134693 /* LoadingCell+ErrorCell.swift in Sources */,

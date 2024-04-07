@@ -30,6 +30,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setNavigationBar()
+        #if os(tvOS)
+        updateTableViewContentOffset()
+        #endif
         appCheckUp()
         checkMinimumRequiredVersion()
         retryFetchJSON()
@@ -38,17 +41,39 @@ class ViewController: UIViewController {
     
     func setupViews() {
         self.tableView = UITableView(frame: .zero, style: .grouped)
-        
         self.tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.reuseIdentifier)
         self.tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
-        
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        #if os(tvOS)
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        
+        let imageView = UIImageView(image: UIImage(named: "apple-tv"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor) // I
+        ])
+        #else
         
         self.view.addSubview(tableView)
         self.tableView.constraintCompletely(to: view)
-		self.setupContainerView()
+        #endif
+        self.setupContainerView()
     }
     
     func appCheckUp() {
@@ -63,13 +88,58 @@ class ViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
+    #if os(tvOS)
+    func updateTableViewContentOffset() {
+        let screenHeight = UIScreen.main.bounds.size.height
+        let tableViewContentHeight = tableView.contentSize.height
+
+        var contentOffsetY = (screenHeight - tableViewContentHeight) / 2.0
+
+        contentOffsetY = max(-tableView.contentInset.top, contentOffsetY)
+        contentOffsetY = min(tableView.contentSize.height - tableView.frame.size.height + tableView.contentInset.bottom, contentOffsetY)
+
+        tableView.contentOffset = CGPoint(x: 0, y: -contentOffsetY)
+    }
+    
+    public func setNavigationBar() {
+        let restartButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartButtonTapped))
+        
+        self.title = "palera1n"
+        self.navigationItem.title = nil
+        self.navigationItem.rightBarButtonItem = restartButton
+    }
+    
+    @objc func restartButtonTapped() { self.retryFetchJSON() }
+    #endif
 }
+
+#if os(tvOS)
+extension UIStackView {
+    func addBackground(image: UIImage, alpha: CGFloat) {
+        let imageView = UIImageView(image: image)
+        imageView.frame = bounds
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(imageView, at: 0)
+
+        let overlayView = UIView(frame: bounds)
+        overlayView.backgroundColor = UIColor.black.withAlphaComponent(alpha)
+        overlayView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        insertSubview(overlayView, aboveSubview: imageView)
+    }
+}
+#endif
 
 // MARK: -  UITableView
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int { return 2 }
+    #if os(tvOS)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 120 }
+    #else
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
+    #endif
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let strapValue = Status.installation()
@@ -109,10 +179,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         }
 
+        #if os(tvOS)
+        var footerText = "palera1n Loader (TV) • \(appVersion)"
+        #else
         var footerText = "palera1n Loader • \(appVersion)"
         if paleInfo.palerain_option_rootful {
             footerText += " (rootful)"
         }
+        #endif
 
         return footerText
     }
