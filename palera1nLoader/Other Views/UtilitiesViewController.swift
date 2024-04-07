@@ -20,9 +20,6 @@ class UtilitiesViewController: UIViewController {
     ]
 
     override func viewDidLoad() {
-        #if os(tvOS)
-        tableData[0][1] = "Restart PineBoard";
-        #endif
         super.viewDidLoad()
         self.setupViews()
         self.title = .localized("Utilities")
@@ -90,25 +87,40 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reuseIdentifier = "Cell"
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
-        cell.accessoryType = .none
-        cell.selectionStyle = .default
-        
-        let cellText = tableData[indexPath.section][indexPath.row]
-        cell.textLabel?.text = cellText
-        switch cellText {
-        case "Restart SpringBoard", "Restart PineBoard", "UICache", "Userspace Reboot":
-            cell.textLabel?.textColor = .systemBlue
-        case .localized("Exit Safemode"), "Revert Snapshot":
-            cell.textLabel?.textColor = .systemRed
-            cell.accessoryType = .disclosureIndicator
-        default:
-            break
-        }
-        return cell
-    }
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let reuseIdentifier = "Cell"
+		let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
+		cell.accessoryType = .none
+		cell.selectionStyle = .default
+		
+		let cellText = tableData[indexPath.section][indexPath.row]
+		
+		switch cellText {
+		case "Restart SpringBoard":
+			cell.textLabel?.text = cellText
+			cell.textLabel?.textColor = .systemBlue
+		case "Restart PineBoard":
+			cell.textLabel?.text = "Restart PineBoard"
+			cell.textLabel?.textColor = .systemBlue
+		case 
+			"UICache",
+			"Userspace Reboot":
+			cell.textLabel?.text = cellText
+			cell.textLabel?.textColor = .systemBlue
+		case .localized("Exit Safemode"):
+			cell.textLabel?.text = cellText
+			cell.textLabel?.textColor = .systemRed
+			cell.accessoryType = .disclosureIndicator
+		case "Revert Snapshot":
+			cell.textLabel?.text = cellText
+			cell.textLabel?.textColor = .systemRed
+			cell.accessoryType = .disclosureIndicator
+		default:
+			break
+		}
+		return cell
+	}
+
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
