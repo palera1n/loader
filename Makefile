@@ -45,6 +45,7 @@ $(CUSTOM_INCLUDE_PATH):
 	gsed -E /'__API_UNAVAILABLE'/d < $(TARGET_SYSROOT)/usr/include/pthread.h > $(CUSTOM_INCLUDE_PATH)/pthread.h
 	gsed -i -E s/'__API_UNAVAILABLE\(.*\)'// $(CUSTOM_INCLUDE_PATH)/IOKit/IOKitLib.h
 	gsed -i -E s/'__API_UNAVAILABLE\(.*\)'// $(CUSTOM_INCLUDE_PATH)/spawn.h
+	gsed -i -E s/'API_UNAVAILABLE\(.*\)'// $(CUSTOM_INCLUDE_PATH)/xpc/*.h
 	gsed -i 's|// __XPC_INDIRECT__|\n#include "$(TARGET_SYSROOT)/usr/include/bsm/audit.h"\n|' $(CUSTOM_INCLUDE_PATH)/xpc/connection.h
 
 package: $(CUSTOM_INCLUDE_PATH)
