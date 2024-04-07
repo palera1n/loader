@@ -78,7 +78,7 @@ int OverwriteFile_impl(
                        char* _Null_unspecified * _Nonnull result_description
                        );
 
-int ObliterateJailbreak_impl(void);
+int ObliterateJailbreak_impl(bool isCleanFakeFS);
 int GetPinfoKernelInfo_impl(uint64_t* kbase, uint64_t* kslide);
 int ReloadLaunchdJailbreakEnvironment_impl(void);
 int ExitFailureSafeMode_impl(void);

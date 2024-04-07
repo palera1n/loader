@@ -145,6 +145,29 @@
         }
       }
     },
+    "Clean FakeFS" : {
+      "comment" : "On rootful with fakefs, remove jailbreak files without removing fakers",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean FakeFS"
+          }
+        }
+      }
+    },
+    "Clean FakeFS Explanation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall jailbreak files, but does not remove FakeFS. This will allow setting up a new jailbreak environment without creating FakeFS again."
+          }
+        }
+      }
+    },
     "Credits" : {
       "comment" : "✅ Tableview cell and section title for the credits page in the loader",
       "extractionState" : "manual",

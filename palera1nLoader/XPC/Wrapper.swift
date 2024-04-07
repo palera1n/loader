@@ -96,8 +96,8 @@ func OverwriteFile(destination: String, content: String) -> (Int, String) {
     return (Int(retval), result)
 }
 
-@discardableResult func ObliterateJailbreak() -> Int {
-    return Int(ObliterateJailbreak_impl());
+@discardableResult func ObliterateJailbreak(isCleanFakeFS: Bool) -> Int {
+    return Int(ObliterateJailbreak_impl(isCleanFakeFS));
 }
 
 func GetPinfoKernelInfo() -> (UInt64, UInt64) {

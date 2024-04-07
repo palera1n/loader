@@ -78,10 +78,10 @@ extension ViewController {
     public func showRestoreAlert(sourceView: UIView) {
         var actions: [UIAlertAction] = []
 
-        let message = String.localized("Restore System Explanation", arguments: device)
-        let restoreActionTitle = String.localized("Restore System")
+        let message = (paleInfo.palerain_option_ssv && paleInfo.palerain_option_rootful) ? String.localized("Clean FakeFS Explanation", arguments: device) : String.localized("Restore System Explanation", arguments: device)
+        let restoreActionTitle = (paleInfo.palerain_option_ssv && paleInfo.palerain_option_rootful) ? String.localized("Clean FakeFS") : String.localized("Restore System")
         let restoreAction = UIAlertAction.customAction(title: restoreActionTitle, style: .destructive) { _ in
-            Go.restoreSystem()
+            Go.restoreSystem(isCleanFakeFS: (paleInfo.palerain_option_ssv && paleInfo.palerain_option_rootful))
         }
         actions.append(restoreAction)
             

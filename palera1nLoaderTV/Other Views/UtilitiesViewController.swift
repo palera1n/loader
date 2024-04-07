@@ -12,7 +12,7 @@ class UtilitiesViewController: UIViewController {
     var tableView: UITableView!
 
     var tableData = [
-        ["UICache", "Restart Springboard", "Userspace Reboot"]
+        ["UICache", "Restart PineBoard", "Userspace Reboot"]
     ]
   
     var sectionTitles = [

@@ -140,9 +140,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             return tableData[section].count
         }
         if section == 1 {
-            return (strapValue == .rootless_installed 
-                    || strapValue == .simulated
-                    || (!paleInfo.palerain_option_ssv && strapValue == .rootful_installed)
+            return (
+                strapValue == .rootless_installed
+             || strapValue == .simulated
+             || strapValue == .rootful_installed
             )
             ? 2
             : 1

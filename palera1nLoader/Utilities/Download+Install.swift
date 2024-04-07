@@ -198,9 +198,9 @@ extension Go {
 extension Go {
     
     /// Remove environment
-    static public func restoreSystem() -> Void {
+    static public func restoreSystem(isCleanFakeFS: Bool) -> Void {
         do {
-            ObliterateJailbreak()
+            ObliterateJailbreak(isCleanFakeFS: isCleanFakeFS)
             ReloadLaunchdJailbreakEnvironment()
         }
         

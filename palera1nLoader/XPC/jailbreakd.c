@@ -179,8 +179,12 @@ int OverwriteFile_impl(
     return retval;
 }
 
-int ObliterateJailbreak_impl(void) {
-    xpc_object_t xreply = jailbreak_send_jailbreakd_command_with_reply_sync(JBD_CMD_OBLITERATE_JAILBREAK);
+int ObliterateJailbreak_impl(bool isCleanFakeFS) {
+    xpc_object_t xdict = xpc_dictionary_create(NULL, NULL, 0);
+    xpc_dictionary_set_uint64(xdict, "cmd", JBD_CMD_OBLITERATE_JAILBREAK);
+    xpc_dictionary_set_bool(xdict, "keep-fakefs", isCleanFakeFS);
+    xpc_object_t xreply = jailbreak_send_jailbreakd_message_with_reply_sync(xdict);
+    xpc_release(xdict);
     if (xpc_get_type(xreply) == XPC_TYPE_ERROR) return -1;
     int error = (int)xpc_dictionary_get_int64(xreply, "error");
     xpc_release(xreply);

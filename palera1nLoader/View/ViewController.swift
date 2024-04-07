@@ -80,9 +80,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             return tableData[section].count
         }
         if section == 1 {
-            return (strapValue == .rootless_installed
-                    || strapValue == .simulated
-                    || (!paleInfo.palerain_option_ssv && strapValue == .rootful_installed)
+            return (
+                strapValue == .rootless_installed
+             || strapValue == .simulated
+             || strapValue == .rootful_installed
             )
             ? 2
             : 1
@@ -136,7 +137,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             if row == 0 {
                 cell.textLabel?.text = .localized("Options")
             } else {
-                cell.textLabel?.text = .localized("Restore System")
+                if (paleInfo.palerain_option_ssv && paleInfo.palerain_option_rootful) {
+                    cell.textLabel?.text = .localized("Clean FakeFS")
+                } else {
+                    cell.textLabel?.text = .localized("Restore System")
+                }
                 cell.textLabel?.textColor = .systemRed
             }
         }
