@@ -113,10 +113,17 @@ The loader will check if any of the `filePaths` exist and change what it will pr
 | Property in `repositories` array      | Description                                         |
 | --------------------------            | --------------------------------------------------- |
 | Repository URL (`uri`)                | URL to repository                                   |
-| Repository suites (`suite`)           | Suite for repository                                |
-| Repository components (`component`)   | Component for repository                            |
+| Repository suites (`suite`)           | Suite(s) for repository                             |
+| Repository components (`component`)   | Component(s) for repository                         |
 
+The following properties are optional:
+| Optional property in `repositories` array | Description                                    |
+| --------------------------                | ---------------------------------------------- |
+| Repository types (`types`)                | Type(s) of repository. Set to `deb` if absent  |
+| Repository options (`options`)            | Extra repository options                       |
 
+The extra options takes the form of an object, whose keys and values are described in `sources.list(5)`.
+Deb822 keys and values are accepted.
 
 ---
 
@@ -178,9 +185,13 @@ Example JSON:
             "label": "Rootful",
             "repositories": [
                 {
+                    "types": "deb",
                     "uri": "https://repo.palera.in",
                     "suite": "./",
-                    "component": ""
+                    "component": "",
+                    "options": {
+                            "Signed-by": "/etc/apt/trusted.gpg.d/palera1n.sources"
+                        }
                 }
             ],
             "packages": [
@@ -191,9 +202,13 @@ Example JSON:
             "label": "Rootless",
             "repositories": [
                 {
+                    "types": "deb",
                     "uri": "https://repo.palera.in",
                     "suite": "./",
-                    "component": ""
+                    "component": "",
+                    "options": {
+                            "Signed-by": "/etc/apt/trusted.gpg.d/palera1n.sources"
+                        }
                 }
             ],
             "packages": [

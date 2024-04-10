@@ -48,9 +48,11 @@ public struct Configuration {
     }
 
     public struct AssetRepository: Codable {
+        let types: String?
         let uri: String
         let suite: String
         let component: String
+        let options: Dictionary<String,String>?
     }
 
     // Helper struct for cell information
@@ -121,7 +123,22 @@ public struct JailbreakConfiguration {
         for asset in json.assets {
             if asset.label == jailbreakType {
                 packages = asset.packages
-                repositories = asset.repositories.map { "Types: deb\nURIs: \($0.uri)\nSuites: \($0.suite)\nComponents: \($0.component)\n\n" }
+                repositories = asset.repositories.map {
+                    var repoDeb822: String = "";
+                    if ($0.types == nil) {
+                        repoDeb822 += "Types: deb\n"
+                    } else {
+                        repoDeb822 += "Types: \($0.types!)\n"
+                    }
+                    repoDeb822 += "URIs: \($0.uri)\nSuites: \($0.suite)\nComponents: \($0.component)\n"
+                    if ($0.options != nil) {
+                        for (optionKey, optionValue) in $0.options! {
+                            repoDeb822 += "\(optionKey): \(optionValue)\n"
+                        }
+                    }
+                    repoDeb822 += "\n";
+                    return repoDeb822;
+                }
             }
         }
         
