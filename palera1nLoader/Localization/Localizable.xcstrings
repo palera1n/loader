@@ -367,18 +367,18 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To exit safe mode press \"Exit Safemode\""
+            "value" : "You've entered safemode by either manually or palera1n saved you from it, if you wish to exit it then press \"Exit Safemode\"."
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "セーフモードを終了するには、\"Safemodeを終了\"を選択してください"
           }
         },
         "sq-AL" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Per te dalë nga menyra e sigurt, kliko, \"Dil nga menyra e sigurt\""
           }
         }
@@ -523,18 +523,18 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You have used the force-revert option when using palera1n, please reboot the device."
+            "value" : "You have used the force-revert option when using palera1n, please finish the process by fully rebooting the %@."
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "palera1nを使用する際に強制復帰オプションを使用した場合、デバイスを再起動してください。"
           }
         },
         "sq-AL" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ti ke perdorur opsionin \"force-revert\", ju lutemi qe te restartoni pajisjen."
           }
         }

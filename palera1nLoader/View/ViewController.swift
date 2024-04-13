@@ -78,7 +78,7 @@ class ViewController: UIViewController {
     
     func appCheckUp() {
         if paleInfo.palerain_option_force_revert {
-			log(type: .fatal, msg: .localized("Is Force Reverted"))
+			log(type: .fatal, msg: .localized("Is Force Reverted", arguments: device))
         } else if paleInfo.palerain_option_failure {
             let nah = UIAlertAction(title: .localized("Dismiss"), style: .cancel, handler: nil)
             let exit = UIAlertAction(title: .localized("Exit Safemode"), style: .default) { _ in
