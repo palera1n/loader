@@ -876,6 +876,17 @@
         }
       }
     },
+    "Revert Without Reboot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successfully reverted your jailbreak, however not rebooting could lead to issues relating to UICache not properly updating and daemons still being active. Proceed at your own risk. Also, using this option you agree to not ask for support relating to it."
+          }
+        }
+      }
+    },
     "Set" : {
       "comment" : "✅ The set action for alerts, this is mainly used for when changing the URL where the loader downloads from",
       "extractionState" : "manual",

@@ -17,7 +17,7 @@ func GetPinfoFlags() -> UInt64 {
 func GetPrebootPath() -> String? {
     return nil;
 }
-func DeployBootstrap(path: String, deb: String, password: String) -> (Int, String) {
+func DeployBootstrap(path: String, password: String) -> (Int, String) {
     return (0, "");
 }
 
@@ -54,7 +54,7 @@ func GetPrebootPath() -> String? {
     }
 }
 
-func DeployBootstrap(path: String, deb: String, password: String) -> (Int, String) {
+func DeployBootstrap(path: String, password: String) -> (Int, String) {
     let bootstrapperVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String;
     let bootstrapperName = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String;
     var resultDescription: UnsafeMutablePointer<CChar>!;
@@ -69,11 +69,6 @@ func DeployBootstrap(path: String, deb: String, password: String) -> (Int, Strin
     if (retval != 0) {
         let errorString = "Bootstrapper XPC Error occured: " + (retval < 0 ? result : result + ": " + String(retval) + String(cString: xpc_strerror(retval)));
         log(type: .fatal, msg: errorString)
-    }
-    do {
-        try Finalize().finalizeBootstrap(deb: deb)
-    } catch {
-        log(type: .fatal, msg: "\(error.localizedDescription)")
     }
     resultDescription.deallocate();
     return (Int(retval), result);

@@ -6,26 +6,31 @@
 //
 
 import UIKit
+
 class ViewController: UIViewController {
     
-        
     var isLoading = true
     var isError = false
     
-    var tableData: [[Any]] = [[]]
-    var iconImages: [UIImage?] = []
     var tableView: UITableView!
+	var iconImages: [UIImage?] = []
     var containerView: UIView!
 
     var bootstrapLabel: UILabel!
     var speedLabel: UILabel!
     var progressBar: UIProgressView!
     
+	public var data: LoaderConfiguration?
+	let rootType = Status.installation()
+	var platform: UInt32!
+	var basePath: ContentDetails?
+
     public var observation: NSKeyValueObservation?
     #if !os(tvOS)
     var hideStatusBar: Bool = false { didSet { setNeedsStatusBarAppearanceUpdate() } }
     override var prefersStatusBarHidden: Bool { return hideStatusBar }
     #endif
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -34,9 +39,8 @@ class ViewController: UIViewController {
         updateTableViewContentOffset()
         #endif
         appCheckUp()
-        checkMinimumRequiredVersion()
-        retryFetchJSON()
         Go.shared.delegate = self
+		loadConfig()
     }
     
     func setupViews() {
@@ -102,14 +106,12 @@ class ViewController: UIViewController {
     }
     
     public func setNavigationBar() {
-        let restartButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(restartButtonTapped))
+        let restartButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshConfig))
         
         self.title = "palera1n"
         self.navigationItem.title = nil
         self.navigationItem.rightBarButtonItem = restartButton
     }
-    
-    @objc func restartButtonTapped() { self.retryFetchJSON() }
     #endif
 }
 
@@ -143,17 +145,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let strapValue = Status.installation()
+		let strapValue2 = Status.checkInstallStatus()
         if section == 0 && (isLoading || isError) {
             return 1
         }
         if section == 0 {
-            return tableData[section].count
+			return (basePath?.managers.count)!
         }
         if section == 1 {
             return (
-                strapValue == .rootless_installed
+				strapValue2 == .rootless_installed
              || strapValue == .simulated
-             || strapValue == .rootful_installed
+             || strapValue2 == .rootful_installed
             )
             ? 2
             : 1
@@ -171,9 +174,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        guard section == tableView.numberOfSections - 1 else {
-            return nil
-        }
+		if section == 0 && (isLoading || isError) {
+			return nil
+		}
+		if section == 0 {
+			return data?.footerNotice
+		}
 
         guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
             return nil
@@ -190,6 +196,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
         return footerText
     }
+	
+	func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+		// Check if the next focused item is a table view cell
+		if let nextFocusedIndexPath = context.nextFocusedIndexPath,
+		   let _ = tableView.cellForRow(at: nextFocusedIndexPath) {
+			// Print the focused section and row index
+			print("Focused section: \(nextFocusedIndexPath.section), row: \(nextFocusedIndexPath.row)")
+		}
+	}
+
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
@@ -204,8 +221,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 0 {
             if let specialCell = createSpecialCell(for: tableView, at: indexPath) { return specialCell }
-            cell.textLabel?.text = tableData[indexPath.section][indexPath.row] as? String
-            SectionIcons.sectionImage(to: cell, with: iconImages[indexPath.row]!)
+			let source = basePath?.managers[indexPath.row]
+			cell.textLabel?.text = source?.name
+			#if !os(tvOS)
+			SectionIcons.sectionImage(to: cell, with: iconImages[indexPath.row]!)
+			#endif
         } else {
             let row = indexPath.row
             if row == 0 {
@@ -242,8 +262,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         switch (indexPath.section, indexPath.row) {
         case (0, let row):
             if isError || isLoading { break }
-            let cellData = tableData[indexPath.section][row] as? String
-            showAlert(for: indexPath, row: row, cellData: cellData, sourceView: tableView.cellForRow(at: indexPath)!)
+            let cellData = basePath?.managers[row]
+			print(cellData!)
+			//break
+			showAlert(row: row, title: cellData?.name, sourceView: tableView.cellForRow(at: indexPath)!)
         case (1, 0):
             if #available(iOS 13.0, *), UIDevice.current.userInterfaceIdiom == .pad {
                 let sViewController = OptionsViewController()
@@ -263,3 +285,90 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: -  Getting data!
+extension ViewController {
+	@objc public func refreshConfig(_ sender: Any) {
+		DispatchQueue.main.async {
+			self.isLoading = true
+			self.isError = false
+			self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+		}
+		
+		loadConfig()
+	}
+	
+	func loadConfig() {
+		let config = Config()
+		
+		config.getURL(from: URL(string: Preferences.installPath!)!) { result in
+			switch result {
+			case .success(let data):
+				let parseResult = config.parse(data: data)
+				switch parseResult {
+				case .success(let config):
+					self.data = config
+					
+					self.platform = Status().getActivePlatform().rawValue
+					print(self.platform!)
+					print(self.rootType)
+					self.basePath = {
+						guard let content = self.data?.contents.first(where: { $0.platform == self.platform }) else { return nil }
+						switch self.rootType {
+						case .rootful: return content.rootful
+						case .rootless: return content.rootless
+						case .simulated: return content.rootful
+						}
+					}()
+					
+					let iconImages = self.basePath?.managers.compactMap { manager in
+						guard let iconURL = URL(string: manager.icon),
+							  let data = try? Data(contentsOf: iconURL),
+							  let image = UIImage(data: data) else {
+							return UIImage(named: "unknown")
+						}
+						return image
+					}
+
+					self.iconImages = iconImages!
+
+					DispatchQueue.main.async {
+						self.isLoading = false
+						self.isError = false
+						self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+					}
+					self.checkMinimumRequiredVersion()
+					break
+				case .failure(_):
+					DispatchQueue.main.async {
+						self.isLoading = false
+						self.isError = true
+						self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+					}
+					break
+				}
+			case .failure(_):
+				DispatchQueue.main.async {
+					self.isLoading = false
+					self.isError = true
+					self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+				}
+				break
+			}
+		}
+	}
+	
+	func checkMinimumRequiredVersion() {
+		guard let minimumRequiredString = data?.minLoaderVersion,
+			  let minimumRequired = Double(minimumRequiredString),
+			  let appVersionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+			  let appVersion = Double(appVersionString),
+			  appVersion < minimumRequired else {
+			return
+		}
+		DispatchQueue.main.async {
+			let lame = UIAlertAction(title: .localized("Dismiss"), style: .default, handler: nil)
+			let alert = UIAlertController.error(title: "", message: .localized("Loader Update"), actions: [lame])
+			self.present(alert, animated: true)
+		}
+	}
+}

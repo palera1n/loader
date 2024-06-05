@@ -43,13 +43,11 @@ extension ViewController {
             titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
         ])
         
-        let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(restartButtonTapped))
+        let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshConfig))
         
         self.title = "palera1n"
         self.navigationItem.title = nil
         self.navigationItem.rightBarButtonItem = restartButton
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: customView)]
     }
-    
-    @objc func restartButtonTapped() { self.retryFetchJSON() }
 }

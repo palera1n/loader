@@ -30,7 +30,7 @@
 		336A9DA52BAEB45B00134693 /* Wrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F9F2B684D62008E44A4 /* Wrapper.swift */; };
 		336A9DA62BAEB46100134693 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB32B685EC4008E44A4 /* Preferences.swift */; };
 		336A9DA72BAEB46A00134693 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FC42B68F6C8008E44A4 /* Status.swift */; };
-		336A9DA82BAEB47000134693 /* Fetch+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB82B68609D008E44A4 /* Fetch+Decode.swift */; };
+		336A9DA82BAEB47000134693 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB82B68609D008E44A4 /* Configuration.swift */; };
 		336A9DA92BAEB47300134693 /* CommandRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628EC52B6C023D00EB4887 /* CommandRunner.swift */; };
 		336A9DAA2BAEB47400134693 /* Directory+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBA2B68617A008E44A4 /* Directory+Logging.swift */; };
 		336A9DAB2BAEB47600134693 /* Download+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628E9B2B69D63500EB4887 /* Download+Install.swift */; };
@@ -63,7 +63,7 @@
 		33FA4FB02B685863008E44A4 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 33FA4FAF2B685863008E44A4 /* Localizable.xcstrings */; };
 		33FA4FB22B685A86008E44A4 /* Foundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB12B685A86008E44A4 /* Foundation.swift */; };
 		33FA4FB42B685EC4008E44A4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB32B685EC4008E44A4 /* Preferences.swift */; };
-		33FA4FB92B68609E008E44A4 /* Fetch+Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB82B68609D008E44A4 /* Fetch+Decode.swift */; };
+		33FA4FB92B68609E008E44A4 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FB82B68609D008E44A4 /* Configuration.swift */; };
 		33FA4FBB2B68617A008E44A4 /* Directory+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBA2B68617A008E44A4 /* Directory+Logging.swift */; };
 		33FA4FBE2B68D140008E44A4 /* SectionIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBD2B68D140008E44A4 /* SectionIcons.swift */; };
 		33FA4FC02B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4FBF2B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift */; };
@@ -115,7 +115,7 @@
 		33FA4FAF2B685863008E44A4 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		33FA4FB12B685A86008E44A4 /* Foundation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foundation.swift; sourceTree = "<group>"; };
 		33FA4FB32B685EC4008E44A4 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		33FA4FB82B68609D008E44A4 /* Fetch+Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fetch+Decode.swift"; sourceTree = "<group>"; };
+		33FA4FB82B68609D008E44A4 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		33FA4FBA2B68617A008E44A4 /* Directory+Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Directory+Logging.swift"; sourceTree = "<group>"; };
 		33FA4FBD2B68D140008E44A4 /* SectionIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionIcons.swift; sourceTree = "<group>"; };
 		33FA4FBF2B68D3ED008E44A4 /* LoadingCell+ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoadingCell+ErrorCell.swift"; sourceTree = "<group>"; };
@@ -148,6 +148,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		332C61532C0D36AD005D2B25 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				33FA4FC42B68F6C8008E44A4 /* Status.swift */,
+				33FA4FB82B68609D008E44A4 /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		33628E932B69C77F00EB4887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +208,15 @@
 				336A9DC22BAEBEB700134693 /* OptionsViewController.swift */,
 			);
 			path = "Other Views";
+			sourceTree = "<group>";
+		};
+		338A455C2C11093200315DAC /* Bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				33628E9B2B69D63500EB4887 /* Download+Install.swift */,
+				338B00602B706FE400BA0CF5 /* Post-Install.swift */,
+			);
+			path = Bootstrap;
 			sourceTree = "<group>";
 		};
 		338B005A2B6FEB3600BA0CF5 /* Localization */ = {
@@ -254,7 +272,9 @@
 				338B005F2B6FEC6800BA0CF5 /* Other Views */,
 				33FA4FC12B68D46C008E44A4 /* Design */,
 				33628E982B69CE2F00EB4887 /* Extensions */,
+				332C61532C0D36AD005D2B25 /* Configuration */,
 				33FA4FBC2B68D0FA008E44A4 /* Utilities */,
+				338A455C2C11093200315DAC /* Bootstrap */,
 				33FA4FB72B685FF3008E44A4 /* Preferences */,
 				33FA4FC82B69C0A2008E44A4 /* Bridge */,
 				33FA4FA32B684DB4008E44A4 /* XPC */,
@@ -288,12 +308,8 @@
 		33FA4FBC2B68D0FA008E44A4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				33FA4FC42B68F6C8008E44A4 /* Status.swift */,
-				33FA4FB82B68609D008E44A4 /* Fetch+Decode.swift */,
 				33628EC52B6C023D00EB4887 /* CommandRunner.swift */,
 				33FA4FBA2B68617A008E44A4 /* Directory+Logging.swift */,
-				33628E9B2B69D63500EB4887 /* Download+Install.swift */,
-				338B00602B706FE400BA0CF5 /* Post-Install.swift */,
 				33BA31DA2BA6AEF30063B2B7 /* OpenApplication.swift */,
 			);
 			path = Utilities;
@@ -453,7 +469,7 @@
 				336A9DBB2BAEB4A700134693 /* LoadingCell+ErrorCell.swift in Sources */,
 				336A9DC32BAEBEB700134693 /* OptionsViewController.swift in Sources */,
 				0132ED6A2BC30709006A24F9 /* UtilitiesViewController.swift in Sources */,
-				336A9DA82BAEB47000134693 /* Fetch+Decode.swift in Sources */,
+				336A9DA82BAEB47000134693 /* Configuration.swift in Sources */,
 				336A9DA32BAEB45700134693 /* jailbreakd.c in Sources */,
 				336A9DB22BAEB48D00134693 /* UIImage.swift in Sources */,
 				336A9DA52BAEB45B00134693 /* Wrapper.swift in Sources */,
@@ -465,7 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33BA31DB2BA6AEF30063B2B7 /* OpenApplication.swift in Sources */,
-				33FA4FB92B68609E008E44A4 /* Fetch+Decode.swift in Sources */,
+				33FA4FB92B68609E008E44A4 /* Configuration.swift in Sources */,
 				33BA31D92BA6AA510063B2B7 /* UIImage.swift in Sources */,
 				3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */,
 				336A9D852BAE9D9700134693 /* DownloadView.swift in Sources */,
@@ -518,9 +534,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.loadertv;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.loadertv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -552,9 +568,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ssalggnikool.loadertv;
+				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.loadertv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -715,7 +731,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -761,7 +777,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";

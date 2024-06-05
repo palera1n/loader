@@ -21,48 +21,52 @@ extension ViewController {
 	}
 
     
-    public func showAlert(for indexPath: IndexPath, row: Int?, cellData: String? = nil, sourceView: UIView) {
-        guard let jsonInfo = jsonInfo else { return }
+    public func showAlert(row: Int?, title: String? = nil, sourceView: UIView) {
 
         var actions: [UIAlertAction] = []
-        let filePaths = JailbreakConfiguration.getCellInfo(jsonInfo)!.paths
-        let selectedFilePath: String?
+		let filePaths = basePath?.managers[row!].filePath
         var message: String? = nil
         var exists = false
         
-        if let row = row, row < filePaths.count { selectedFilePath = filePaths[row] } else { selectedFilePath = filePaths.first }
-        if let filePath = selectedFilePath, FileManager.default.fileExists(atPath: filePath) { exists = true }
+        if let filePath = filePaths, FileManager.default.fileExists(atPath: filePath) { exists = true }
 
         let strapValue = Status.installation()
-        switch strapValue {
-        case .rootful, .rootless, .simulated:
-            let bootstrapActionTitle = String.localized("Bootstrap Install", arguments: cellData!)
-            let bootstrapAction = UIAlertAction.customAction(title: bootstrapActionTitle, style: .default) { [self] _ in
-                DispatchQueue.main.async {
-                    self.performCommonActions()
-                    Go.shared.attemptInstall(file: cellData!.lowercased())
-                }
-            }
-
-            actions.append(bootstrapAction)
-        case .rootless_installed, .rootful_installed:
-            message = exists
-            ? String.localized("Installed Manager", arguments: cellData!)
-            : nil
-            
-            let managerActionTitle = exists 
-            ? String.localized("Reinstall Manager", arguments: cellData!)
-            : String.localized("Bootstrap Install", arguments: cellData!)
-            
-            let managerAction = UIAlertAction.customAction(title: managerActionTitle, style: .default) { _ in
-                DispatchQueue.main.async {
-                    self.performCommonActions()
-                    Go.shared.attemptManagerInstall(file: cellData!.lowercased())
-                }
-            }
-            
-            actions.append(managerAction)
-        }
+		let meowValue = Status.checkInstallStatus()
+		
+		switch (strapValue, meowValue) {
+		case (.rootless, .none), (.rootful, .none)
+			,(.simulated, .none)
+			:
+			let bootstrapActionTitle = String.localized("Bootstrap Install", arguments: title!)
+			let bootstrapAction = UIAlertAction.customAction(title: bootstrapActionTitle, style: .default) { [self] _ in
+				DispatchQueue.main.async {
+					self.performCommonActions()
+					Go.shared.downloadFiles(file: self.basePath?.managers[row!].uri ?? "", basePath: self.basePath)
+				}
+			}
+			
+			actions.append(bootstrapAction)
+		case (.rootful, .rootful_installed), (.rootless, .rootless_installed)
+			//,(.simulated, .rootful_installed)
+			:
+			message = exists
+			? String.localized("Installed Manager", arguments: title!)
+			: nil
+			
+			let managerActionTitle = exists
+			? String.localized("Reinstall Manager", arguments: title!)
+			: String.localized("Bootstrap Install", arguments: title!)
+			
+			let managerAction = UIAlertAction.customAction(title: managerActionTitle, style: .default) { _ in
+				DispatchQueue.main.async {
+					self.performCommonActions()
+					Go.shared.attemptManagerInstall(file: self.basePath?.managers[row!].uri ?? "")
+				}
+			}
+			
+			actions.append(managerAction)
+		default: break
+		}
             
         let alertController = UIAlertAction.makeActionSheetOrAlert(
             title: nil,
