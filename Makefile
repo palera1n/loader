@@ -56,6 +56,9 @@ package: $(CUSTOM_INCLUDE_PATH)
 	@rm -rf Payload
 	@rm -rf $(P1_STAGE_DIR)/
 	@mkdir -p $(P1_STAGE_DIR)/Payload
+ifeq ($(PLATFORM),appletvos)
+	plutil -insert itemId -integer 995367539 $(P1_APP_DIR)/Info.plist
+endif
 	@mv $(P1_APP_DIR) $(P1_STAGE_DIR)/Payload/$(SCHEME).app
 	@echo $(P1_TMP)
 	@echo $(P1_STAGE_DIR)
