@@ -8,8 +8,10 @@
 #include <spawn.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
+#include <xpc/xpc.h>
 #include "jailbreakd.h"
 
 const char* xpc_strerror(int err);
+static xpc_object_t jailbreak_send_jailbreakd_message_with_reply_sync(xpc_object_t xdict);
 
 #endif /* bridge_h */
