@@ -43,6 +43,28 @@
         }
       }
     },
+    "App Info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "應用程式資料"
+          }
+        }
+      }
+    },
+    "App Version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "應用程式版本"
+          }
+        }
+      }
+    },
     "Architecture" : {
       "comment" : "✅ Tableview cell label which shows your arch or cpu type, i.e arm64 or arm64e",
       "extractionState" : "manual",
@@ -218,7 +240,7 @@
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "清除偽檔案系統"
+            "value" : "清理偽檔案系統"
           }
         }
       }
@@ -962,6 +984,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "還原後重啟"
+          }
+        }
+      }
+    },
+    "Refresh" : {
+      "comment" : "Refresh button in top bar on iOS",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新載入"
           }
         }
       }

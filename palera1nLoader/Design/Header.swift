@@ -43,7 +43,7 @@ extension ViewController {
             titleLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
         ])
         
-        let restartButton = UIBarButtonItem(title: "Refresh", style: .plain, target: self, action: #selector(refreshConfig))
+        let restartButton = UIBarButtonItem(title: String.localized("Refresh"), style: .plain, target: self, action: #selector(refreshConfig))
         
         self.title = "palera1n"
         self.navigationItem.title = nil
