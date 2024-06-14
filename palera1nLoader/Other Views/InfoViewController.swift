@@ -15,15 +15,15 @@ class InfoViewController: UIViewController {
 
     var tableData = [
         [String.localized("Type"), String.localized("Flags")],
-        [String.localized("Version"), String.localized("Architecture"), "Kernel", "CF"],
-        ["App Version"]
+        [String.localized("Version"), String.localized("Architecture"), String.localized("Kernel"), "CF"],
+        [String.localized("App Version")]
     ]
 
     var sectionTitles: [String] {
         #if os(tvOS)
         return ["", device, ""]
         #else
-        return ["palera1n", device, "App Info"]
+        return ["palera1n", device, String.localized("App Info")]
         #endif
     }
     
@@ -88,17 +88,17 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         switch cellText {
         case String.localized("Version"):
             cell.detailTextLabel?.text = UIDevice.current.systemVersion
-        case "Kernel":
+        case String.localized("Kernel"):
             cell.detailTextLabel?.text = kernelVersion()
         case "CF":
             cell.detailTextLabel?.text = "\(Int(floor((kCFCoreFoundationVersionNumber))))"
         case String.localized("Architecture"):
             cell.detailTextLabel?.text = String(cString: NXGetLocalArchInfo().pointee.name)
         case String.localized("Type"):
-            cell.detailTextLabel?.text = paleInfo.palerain_option_rootful ? "Rootful" : "Rootless"
+            cell.detailTextLabel?.text = paleInfo.palerain_option_rootful ? String.localized("Rootful") : String.localized("Rootless")
         case String.localized("Flags"):
             cell.detailTextLabel?.text = String(format: "0x%llx", GetPinfoFlags())
-        case "App Version":
+        case String.localized("App Version"):
             if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 cell.detailTextLabel?.text = appVersion
             }
@@ -116,7 +116,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
             return """
             
             
-            BOOT-ARGS
+            \(String.localized("BOOT-ARGS"))
             
             \(deviceBoot_Args())
             """

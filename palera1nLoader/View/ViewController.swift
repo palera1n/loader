@@ -186,11 +186,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         #if os(tvOS)
-        var footerText = "palera1n Loader (TV) • \(appVersion)"
+        var footerText = "palera1n \(String.localized("Loader")) (TV) • \(appVersion)"
         #else
-        var footerText = "palera1n Loader • \(appVersion)"
+        var footerText = "palera1n \(String.localized("Loader")) • \(appVersion)"
         if paleInfo.palerain_option_rootful {
-            footerText += " (rootful)"
+            footerText += " \(String.localized("(rootful)"))"
         }
         #endif
 

@@ -12,7 +12,7 @@ class UtilitiesViewController: UIViewController {
     var tableView: UITableView!
 
     var tableData = [
-        ["UICache", "Restart SpringBoard", "Userspace Reboot"]
+        [String.localized("UICache"), String.localized("Restart SpringBoard"), String.localized("Userspace Reboot")]
     ]
   
     var sectionTitles = [
@@ -21,6 +21,9 @@ class UtilitiesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if os(tvOS)
+            self.tableData[0][1] = String.localized("Restart PineBoard")
+        #endif
         self.setupViews()
         self.title = .localized("Utilities")
         self.determineIfUserShouldBeAbleToUseTheseButtons()
@@ -96,22 +99,22 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
 		let cellText = tableData[indexPath.section][indexPath.row]
 		
 		switch cellText {
-		case "Restart SpringBoard":
+        case String.localized("Restart SpringBoard"):
 			cell.textLabel?.text = cellText
 			cell.textLabel?.textColor = .systemBlue
-		case "Restart PineBoard":
+        case String.localized("Restart PineBoard"):
 			cell.textLabel?.text = "Restart PineBoard"
 			cell.textLabel?.textColor = .systemBlue
 		case 
-			"UICache",
-			"Userspace Reboot":
+            String.localized("UICache"),
+            String.localized("Userspace Reboot"):
 			cell.textLabel?.text = cellText
 			cell.textLabel?.textColor = .systemBlue
 		case .localized("Exit Safemode"):
 			cell.textLabel?.text = cellText
 			cell.textLabel?.textColor = .systemRed
 			cell.accessoryType = .disclosureIndicator
-		case "Revert Snapshot":
+        case String.localized("Revert Snapshot"):
 			cell.textLabel?.text = cellText
 			cell.textLabel?.textColor = .systemRed
 			cell.accessoryType = .disclosureIndicator
@@ -125,11 +128,11 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let itemTapped = tableData[indexPath.section][indexPath.row]
         switch itemTapped {
-        case "Restart SpringBoard", "Restart PineBoard":
+        case String.localized("Restart SpringBoard"), String.localized("Restart PineBoard"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
-        case "Userspace Reboot":
+        case String.localized("Userspace Reboot"):
             spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
-        case "UICache":
+        case String.localized("UICache"):
             spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
         case .localized("Exit Safemode"):
             ExitFailureSafeMode()

@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "(rootful)" : {
+      "comment" : "Part of the footer on the main screen if the user is using rootful",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（有根）"
+          }
+        }
+      }
+    },
     "About" : {
       "comment" : "✅ Tableview cell and section title for the about page in the loader",
       "extractionState" : "manual",
@@ -57,6 +69,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "架構"
+          }
+        }
+      }
+    },
+    "BOOT-ARGS" : {
+      "comment" : "boot arguments footer in about screen, should be capitalized in languages with this concept",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開機參數"
           }
         }
       }
@@ -517,7 +541,7 @@
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "標籤"
+            "value" : "標記"
           }
         }
       }
@@ -690,6 +714,18 @@
         }
       }
     },
+    "Kernel" : {
+      "comment" : "Kernel version in about screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "內核"
+          }
+        }
+      }
+    },
     "Language" : {
       "comment" : "✅ Tableview cell and section title for changing preferred language",
       "extractionState" : "manual",
@@ -716,6 +752,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "語言"
+          }
+        }
+      }
+    },
+    "Loader" : {
+      "comment" : "Part of the footer in main screen, next to \"palera1n\"",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安裝程式"
           }
         }
       }
@@ -1038,6 +1086,30 @@
         }
       }
     },
+    "Restart PineBoard" : {
+      "comment" : "Option to restart home screen on tvOS in utilities view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新啟動主畫面"
+          }
+        }
+      }
+    },
+    "Restart SpringBoard" : {
+      "comment" : "Option to restart home screen on iOS in utilities view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新啟動主畫面"
+          }
+        }
+      }
+    },
     "Restore System" : {
       "comment" : "✅ A tableview cell which would prompt you to uninstall your jailbreak",
       "extractionState" : "manual",
@@ -1141,6 +1213,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "成功移除了你的越獄，但是不重新啟動可能會導致圖示快取以及仍在運行的越獄守護程序發生問題。了解風險後方可繼續。這是一個不受支援的選項，請不要對這個選項要求支援。"
+          }
+        }
+      }
+    },
+    "Rootful" : {
+      "comment" : "Jailbreak type in about screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有根"
+          }
+        }
+      }
+    },
+    "Rootless" : {
+      "comment" : "Jailbreak type in about screen",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無根"
           }
         }
       }
@@ -1325,6 +1421,24 @@
         }
       }
     },
+    "UICache" : {
+      "comment" : "Option to rebuild icon cache in utilities view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rebuild Icon Cache"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重建圖示快取"
+          }
+        }
+      }
+    },
     "Unable to fetch bootstraps." : {
       "comment" : "✅ A tableview cell would appear with this label if it ever fails to retrieve the loader configuration through palera1ns website",
       "extractionState" : "manual",
@@ -1381,6 +1495,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用系統語言"
+          }
+        }
+      }
+    },
+    "Userspace Reboot" : {
+      "comment" : "Option to reboot the userspace in utilities view",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重啟用戶空間"
           }
         }
       }
