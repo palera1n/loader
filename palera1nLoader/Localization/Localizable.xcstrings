@@ -958,25 +958,25 @@
         }
       }
     },
-    "Reboot after Restore" : {
+    "Reboot After Restore" : {
       "comment" : "✅ If the user wants to reboot after restoring system / reverting jailbreak installation",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reboot after Restore"
+            "value" : "Reboot After Restore"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "復元後に再起動"
           }
         },
         "sq-AL" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Restarto pas restaurimit"
           }
         },

@@ -11,6 +11,9 @@ import Darwin.POSIX
 import Bridge
 
 @discardableResult func spawn(command: String, args: [String]) -> Int {
+    #if targetEnvironment(simulator)
+    return 0;
+    #else
     var pipestdout: [Int32] = [0, 0]
     var pipestderr: [Int32] = [0, 0]
 
@@ -135,4 +138,5 @@ import Bridge
     NSLog("stderr = \n%@", stdoutStr);
 
     return Int(status)
+    #endif
 }
