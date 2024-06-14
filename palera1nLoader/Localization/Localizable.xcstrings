@@ -9,6 +9,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "（有根）"
+          },
+		  "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（有根）"
           }
         }
       }
@@ -39,6 +44,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關於"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於"
           }
         }
       }
@@ -50,6 +60,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "應用程式資料"
+          },
+		  "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "應用程式資訊"
           }
         }
       }
@@ -58,6 +73,11 @@
       "extractionState" : "manual",
       "localizations" : {
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "應用程式版本"
+          },
+		  "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "應用程式版本"
@@ -91,6 +111,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "架構"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "架構"
           }
         }
       }
@@ -100,6 +125,11 @@
       "extractionState" : "manual",
       "localizations" : {
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開機參數"
+          },
+		  "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "開機參數"
@@ -133,6 +163,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安裝 %@"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安裝 %@"
           }
         }
       }
@@ -160,6 +195,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "取消"
@@ -193,6 +233,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更改下載網址"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改下載網址"
           }
         }
       }
@@ -223,6 +268,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "這允許你改變JSON 配置文件的網址，這能夠改變包含的包管理器，基本越獄檔案和軟體庫。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這將允許您更改載入程式從自訂URL下載客製化json檔案，這可以更改包含的套件管理器、引導程式和軟體源。"
           }
         }
       }
@@ -241,6 +291,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "清理偽檔案系統"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清理偽裝檔案系統"
           }
         }
       }
@@ -258,6 +313,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除越獄文件，但不移除偽檔案系統。 這允許在不重新創建偽檔案系統的情況下設置新的越獄環境。你的%@將會重新啟動。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除越獄檔案，但不刪除 FakeFS。這將允許設定新的越獄環境，而無需再次建立 FakeFS。這將重新啟動您的%@。"
           }
         }
       }
@@ -288,6 +348,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "鳴謝"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "銘謝"
           }
         }
       }
@@ -303,6 +368,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "關閉"
@@ -336,6 +406,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "完成"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
           }
         }
       }
@@ -363,6 +438,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下載"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載"
@@ -396,6 +476,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在下載%@"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在下載%@"
           }
         }
       }
@@ -411,6 +496,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下載速度：%@"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "下載速度：%@"
@@ -444,6 +534,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在下載基本越獄檔案"
+          },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在下載越獄所需檔案"
           }
         }
       }
@@ -471,6 +566,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出"
@@ -504,6 +604,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出安全模式"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出安全模式"
           }
         }
       }
@@ -530,6 +635,11 @@
             "value" : "Per te dalë nga menyra e sigurt, kliko, \"Dil nga menyra e sigurt\""
           }
         },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你手動進入了安全模式或palera1n偵測到異常而進入安全模式。如要退出安全模式，請按「退出安全模式」 。"
+          },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -564,6 +674,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "標記"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "標記"
           }
         }
       }
@@ -591,6 +706,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "一般"
@@ -624,6 +744,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安裝"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安裝"
           }
         }
       }
@@ -654,6 +779,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@已安裝。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@已安裝。"
           }
         }
       }
@@ -672,6 +802,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "請不要退出應用程式，否則可能會發生問題。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請不要退出應用程式，否則可能會產生問題。"
           }
         }
       }
@@ -699,6 +834,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在安裝%@"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在安裝%@"
@@ -732,6 +872,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你使用了palera1n中的--force-revert（強制還原）選項，請重新啟動裝置以完成這個程序。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你使用了palera1n中的--force-revert（強制還原）選項，請重新啟動裝置以完成這個流程。"
           }
         }
       }
@@ -744,6 +889,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "內核"
+          },
+		  "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "核心"
           }
         }
       }
@@ -774,6 +924,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "語言"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語言"
           }
         }
       }
@@ -786,6 +941,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安裝程式"
+          },
+		  "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "載入程式"
           }
         }
       }
@@ -816,6 +976,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此安裝程式版本太舊，可能發生問題。建議更新到最新版的palera1n。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此載入程式版本太舊，可能存在問題。建議您更新至palera1n的最新版本。"
           }
         }
       }
@@ -846,6 +1011,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "載入中"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "載入中"
           }
         }
       }
@@ -861,6 +1031,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "否"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "否"
@@ -894,6 +1069,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "選項"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選項"
           }
         }
       }
@@ -921,6 +1101,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "密碼"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "密碼"
@@ -953,7 +1138,12 @@
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "要使用例如「sudo」 等命令行工具，你需要設定一個命令行密碼。（這不能為空）"
+            "value" : "要使用例如「sudo」 等命令行工具，你需要設定一個密碼。（這不能為空）"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "為了在越獄後使用「sudo」等命令列工具，您需要設定終端密碼。（此項不能為空）"
           }
         }
       }
@@ -984,6 +1174,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "還原後重啟"
+          },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "系統還原後重新開機"
           }
         }
       }
@@ -993,6 +1188,11 @@
       "extractionState" : "manual",
       "localizations" : {
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新載入"
+          },
+		  "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新載入"
@@ -1026,6 +1226,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新安裝%@"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新安裝%@"
           }
         }
       }
@@ -1053,6 +1258,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再次輸入密碼"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "再次輸入密碼"
@@ -1086,6 +1296,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重設配置文件"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置設定"
           }
         }
       }
@@ -1116,6 +1331,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新啟動應用程式以完整地套用更變。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新啟動應用程式以套用更變。"
           }
         }
       }
@@ -1128,6 +1348,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新啟動主畫面"
+          },
+		  "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新啟動主畫面"
           }
         }
       }
@@ -1137,6 +1362,11 @@
       "extractionState" : "manual",
       "localizations" : {
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新啟動主畫面"
+          },
+		  "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "重新啟動主畫面"
@@ -1170,6 +1400,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "還原系統"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "還原系統"
           }
         }
       }
@@ -1200,6 +1435,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "移除列用文件和其他操作系統修改，但不移除你的數據。你的%@將會重新啟動。"
+          },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除越獄檔案和對作業系統所做的其他修改，但不會刪除您的資料。這將重新啟動您的%@。"
           }
         }
       }
@@ -1230,6 +1470,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重試"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重試"
           }
         }
       }
@@ -1247,6 +1492,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "成功移除了你的越獄，但是不重新啟動可能會導致圖示快取以及仍在運行的越獄守護程序發生問題。了解風險後方可繼續。這是一個不受支援的選項，請不要對這個選項要求支援。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成功移除越獄，但是不重新啟動可能會導致圖示快取及仍在運行的越獄常駐程式發生問題。了解風險後方可繼續。這是一個不受支援的選項，請不要對這個選項要求支援。"
           }
         }
       }
@@ -1259,7 +1509,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "有根"
-          }
+          },
+		  "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有根"
         }
       }
     },
@@ -1268,6 +1522,11 @@
       "extractionState" : "manual",
       "localizations" : {
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無根"
+          },
+		  "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "無根"
@@ -1301,6 +1560,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
           }
         }
       }
@@ -1328,6 +1592,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定密碼"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定密碼"
@@ -1361,6 +1630,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "要求設定密碼"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "顯示密碼彈出視窗"
           }
         }
       }
@@ -1391,6 +1665,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "太長"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "超過長度限制"
           }
         }
       }
@@ -1418,6 +1697,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "除錯"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "除錯"
@@ -1451,6 +1735,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "類型"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "類型"
           }
         }
       }
@@ -1466,6 +1755,11 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重建圖示快取"
+          },
+        "zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "重建圖示快取"
@@ -1499,6 +1793,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "無法取得配置"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法取得引導程式"
           }
         }
       }
@@ -1529,6 +1828,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用系統語言"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用系統語言"
           }
         }
       }
@@ -1541,6 +1845,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重啟用戶空間"
+          },
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新啟動使用者空間"
           }
         }
       }
@@ -1571,6 +1881,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "工具"
+          },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "公用程式"
           }
         }
       }
@@ -1601,6 +1916,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "如果你安裝了的包管理器沒有出現，你可以使用這些選項，然後它們應該就會出現。"
+          },
+        "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您安裝的套件管理器沒有出現，您可以使用這些選項，然後它們應該就會出現。"
           }
         }
       }
@@ -1631,6 +1951,11 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "版本"
+          },
+		  "zh-TW" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
           }
         }
       }
@@ -1646,6 +1971,12 @@
           }
         },
         "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是"
+          },
+        }
+		"zh-TW" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "是"
