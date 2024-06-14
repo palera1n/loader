@@ -8,8 +8,11 @@
 #include <spawn.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <IOKit/IOKitLib.h>
+#include <stdint.h>
+#include <mach-o/loader.h>
 #include "jailbreakd.h"
 
 const char* xpc_strerror(int err);
+uint32_t dyld_get_active_platform(void);
 
 #endif /* bridge_h */

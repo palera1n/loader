@@ -612,6 +612,18 @@
         }
       }
     },
+    "NO" : {
+      "comment" : "✅ Shown on tvOS next to the option this value is supposed to represent",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NO"
+          }
+        }
+      }
+    },
     "Options" : {
       "comment" : "✅ A tableview cell which would bring up the options page",
       "extractionState" : "manual",
@@ -1147,6 +1159,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versioni"
+          }
+        }
+      }
+    },
+    "YES" : {
+      "comment" : "✅ Shown on tvOS next to the option this value is supposed to represent",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YES"
           }
         }
       }

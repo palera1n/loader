@@ -13,14 +13,22 @@ class OptionsViewController: UIViewController {
     var tableData = [
         [String.localized("About"), String.localized("Utilities")],
         [String.localized("Change Download URL")],
-        [String.localized("Reboot after Restore"), String.localized("Show Password Prompt")]
+        [String.localized("Show Password Prompt")]
     ]
     
+    #if os(tvOS)
+    var sectionTitles = [
+        "",
+        String.localized("Download"),
+        "",
+    ]
+    #else
     var sectionTitles = [
         String.localized("General"),
         String.localized("Download"),
         String.localized("Options")
     ]
+    #endif
     
     var tableView: UITableView!
 
@@ -36,8 +44,45 @@ class OptionsViewController: UIViewController {
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.view.addSubview(tableView)
-        self.tableView.constraintCompletely(to: view)
+        if (paleInfo.palerain_option_rootless) {
+            tableData[2].append(String.localized("Reboot After Restore"));
+        }
+        
+        #if os(tvOS)
+            let stackView = UIStackView()
+            stackView.axis = .horizontal
+            stackView.spacing = 20
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(stackView)
+            
+            let imageView = UIImageView(image: UIImage(named: "apple-tv"))
+            imageView.contentMode = .scaleAspectFit
+            imageView.alpha = 0.5
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            stackView.addArrangedSubview(imageView)
+            
+            self.tableView = UITableView(frame: .zero, style: .grouped)
+            self.tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.reuseIdentifier)
+            self.tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
+            self.tableView.translatesAutoresizingMaskIntoConstraints = false
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+            
+            stackView.addArrangedSubview(tableView)
+            
+            NSLayoutConstraint.activate([
+                stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+                stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+                imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5),
+                imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor) // I
+            ])
+        #else
+            self.view.addSubview(tableView)
+            self.tableView.constraintCompletely(to: view)
+        #endif
     }
     
     deinit { Preferences.installPathChangedCallback = nil }
@@ -50,6 +95,9 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionTitles[section] }
     func numberOfSections(in tableView: UITableView) -> Int { return sectionTitles.count }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return 40 }
+    #if os(tvOS)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 120 }
+    #endif
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
@@ -62,7 +110,11 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        #if os(tvOS)
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
+        #else
+            let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        #endif
         cell.selectionStyle = .default
         cell.accessoryType = .none
         let cellText = tableData[indexPath.section][indexPath.row]
@@ -73,7 +125,7 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.accessoryType = .disclosureIndicator
         case .localized("Change Download URL"):
             if Preferences.installPath != Preferences.defaultInstallPath {
-                cell.textLabel?.textColor = UIColor.systemGray
+                cell.textLabel?.textColor = dyld_get_active_platform() == PLATFORM_IOS ? UIColor.systemGray : UIColor.black.withAlphaComponent(0.8);
                 cell.isUserInteractionEnabled = false
                 cell.textLabel?.text = Preferences.installPath!
             } else {
@@ -83,18 +135,28 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.textColor = .systemRed
             cell.textLabel?.textAlignment = .center
             
-        case .localized("Reboot after Restore"):
-            let switchControl = UISwitch()
-            switchControl.isOn = Preferences.rebootOnRevert!
-            switchControl.addTarget(self, action: #selector(rebootOnRevertToggled(_:)), for: .valueChanged)
-            cell.accessoryView = switchControl
-            cell.selectionStyle = .none
+        case .localized("Reboot After Restore"):
+            if paleInfo.palerain_option_rootless {
+                #if os(iOS)
+                    let switchControl = UISwitch()
+                    switchControl.isOn = Preferences.rebootOnRevert!
+                    switchControl.addTarget(self, action: #selector(rebootOnRevertToggled(_:)), for: .valueChanged)
+                    cell.accessoryView = switchControl
+                    cell.selectionStyle = .none
+                #else
+                cell.detailTextLabel?.text = Preferences.rebootOnRevert! ? String.localized("YES") : String.localized("NO")
+                #endif
+            }
         case .localized("Show Password Prompt"):
-            let switchControl = UISwitch()
-            switchControl.isOn = Preferences.doPasswordPrompt!
-            switchControl.addTarget(self, action: #selector(doPasswordPromptToggled(_:)), for: .valueChanged)
-            cell.accessoryView = switchControl
-            cell.selectionStyle = .none
+            #if os(iOS)
+                let switchControl = UISwitch()
+                switchControl.isOn = Preferences.doPasswordPrompt!
+                switchControl.addTarget(self, action: #selector(doPasswordPromptToggled(_:)), for: .valueChanged)
+                cell.accessoryView = switchControl
+                cell.selectionStyle = .none
+            #else
+                cell.detailTextLabel?.text = Preferences.doPasswordPrompt! ? String.localized("YES") : String.localized("NO")
+            #endif
         default:
             break
         }
@@ -103,9 +165,11 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    #if os(iOS)
     @objc func rebootOnRevertToggled(_ sender: UISwitch) { Preferences.rebootOnRevert?.toggle() }
     @objc func doPasswordPromptToggled(_ sender: UISwitch) { Preferences.doPasswordPrompt?.toggle() }
-
+    #endif
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
@@ -122,6 +186,16 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
             showChangeDownloadURLAlert()
         case .localized("Reset Configuration"):
             resetConfigDefault()
+        #if os(tvOS)
+        case .localized("Show Password Prompt"):
+            Preferences.doPasswordPrompt?.toggle()
+            print(Preferences.doPasswordPrompt!)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        case .localized("Reboot After Restore"):
+            Preferences.rebootOnRevert?.toggle()
+            print(Preferences.rebootOnRevert!)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        #endif
         default:
             break
         }
@@ -156,6 +230,11 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
 extension OptionsViewController {
     func resetConfigDefault() {
         Preferences.installPath = Preferences.defaultInstallPath
+        #if os(tvOS)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    UIApplication.prepareForExitAndSuspend()
+                }
+        #endif
     }
     
     func showChangeDownloadURLAlert() {
