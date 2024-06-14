@@ -57,27 +57,8 @@ struct xpc_global_data {
 
 extern struct _os_alloc_once_s _os_alloc_once_table[];
 
-
-enum {
-    JBD_CMD_GET_PINFO_FLAGS = 1,
-    JBD_CMD_GET_PREBOOTPATH,
-    JBD_CMD_GET_PINFO_KERNEL_INFO,
-    JBD_CMD_GET_PINFO_ROOTDEV,
-    JBD_CMD_DEPLOY_BOOTSTRAP,
-    JBD_CMD_OBLITERATE_JAILBREAK,
-    JBD_CMD_PERFORM_REBOOT3,
-    JBD_CMD_OVERWRITE_FILE_WITH_CONTENT,
-    JBD_CMD_INTERCEPT_USERSPACE_PANIC,
-    JBD_CMD_EXIT_SAFE_MODE,
-    JBD_CMD_RUN_AS_ROOT
-};
-
-enum {
-    LAUNCHD_CMD_RELOAD_JB_ENV = 1,
-    LAUNCHD_CMD_SET_TWEAKLOADER_PATH,
-};
-
 #define OS_ALLOC_ONCE_KEY_LIBXPC                    1
+
 
 
 uint64_t GetPinfoFlags_impl(void);

@@ -9,9 +9,27 @@
 
 #if !TARGET_OS_SIMULATOR
 
+enum {
+    JBD_CMD_GET_PINFO_FLAGS = 1,
+    JBD_CMD_GET_PREBOOTPATH,
+    JBD_CMD_GET_PINFO_KERNEL_INFO,
+    JBD_CMD_GET_PINFO_ROOTDEV,
+    JBD_CMD_DEPLOY_BOOTSTRAP,
+    JBD_CMD_OBLITERATE_JAILBREAK,
+    JBD_CMD_PERFORM_REBOOT3,
+    JBD_CMD_OVERWRITE_FILE_WITH_CONTENT,
+    JBD_CMD_INTERCEPT_USERSPACE_PANIC,
+    JBD_CMD_EXIT_SAFE_MODE
+};
+
+enum {
+    LAUNCHD_CMD_RELOAD_JB_ENV = 1,
+    LAUNCHD_CMD_SET_TWEAKLOADER_PATH,
+};
+
 const char* xpc_strerror(int error);
 
-xpc_object_t jailbreak_send_jailbreakd_message_with_reply_sync(xpc_object_t xdict) {
+static xpc_object_t jailbreak_send_jailbreakd_message_with_reply_sync(xpc_object_t xdict) {
     xpc_connection_t connection = xpc_connection_create_mach_service("in.palera.palera1nd.systemwide", NULL, 0);
     if (xpc_get_type(connection) == XPC_TYPE_ERROR) {
         return connection;
