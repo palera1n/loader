@@ -11,6 +11,7 @@
 		0132ED702BC30C3A006A24F9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536E2B72271D004F2177 /* InfoViewController.swift */; };
 		0132ED712BC31401006A24F9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FA4F8D2B6849B0008E44A4 /* ViewController.swift */; };
 		01B803E52C1C2828003C0055 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33628F0E2B6E926B00EB4887 /* OptionsViewController.swift */; };
+		01EE04692C1C5489003FBB6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EE04672C1C5458003FBB6C /* Assets.xcassets */; };
 		3332536D2B722712004F2177 /* UtilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536C2B722712004F2177 /* UtilitiesViewController.swift */; };
 		3332536F2B72271D004F2177 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3332536E2B72271D004F2177 /* InfoViewController.swift */; };
 		335342C62B69C4B1000583E5 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = 335342C52B69C4B1000583E5 /* jailbreakd.c */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		017796DC2BAFB63D00BCC2C3 /* IOKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = IOKit.tbd; path = loader/IOKit.tbd; sourceTree = "<group>"; };
+		01EE04672C1C5458003FBB6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3332536C2B722712004F2177 /* UtilitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesViewController.swift; sourceTree = "<group>"; };
 		3332536E2B72271D004F2177 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		335342C32B69C4B0000583E5 /* bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01EE04682C1C5458003FBB6C /* palera1nLoaderTV */ = {
+			isa = PBXGroup;
+			children = (
+				01EE04672C1C5458003FBB6C /* Assets.xcassets */,
+			);
+			path = palera1nLoaderTV;
+			sourceTree = "<group>";
+		};
 		332C61532C0D36AD005D2B25 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +239,7 @@
 				338B00622B70A7C800BA0CF5 /* Documentation.md */,
 				33FA4F9D2B684C3B008E44A4 /* loader.entitlements */,
 				33FA4F882B6849B0008E44A4 /* palera1nLoader */,
+				01EE04682C1C5458003FBB6C /* palera1nLoaderTV */,
 				33FA4F872B6849B0008E44A4 /* Products */,
 				33628E932B69C77F00EB4887 /* Frameworks */,
 			);
@@ -404,6 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01EE04692C1C5489003FBB6C /* Assets.xcassets in Resources */,
 				336A9DA12BAEB44500134693 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
