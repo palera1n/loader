@@ -178,12 +178,12 @@ extension Go: URLSessionDownloadDelegate {
     
     func formattedSpeed(_ speed: Double) -> String {
         let absSpeed = abs(speed)
-        let units = ["B/s", "KB/s", "MB/s", "GB/s", "TB/s"]
+        let units = ["B/s", "KB/s", "MB/s", "GB/s", "TB/s", "PB/s"]
         var index = 0
         var speedInBytes = absSpeed
         
-        while speedInBytes >= 1024 && index < units.count - 1 {
-            speedInBytes /= 1024
+        while speedInBytes >= 1000 && index < units.count - 1 {
+            speedInBytes /= 1000
             index += 1
         }
         
