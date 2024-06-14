@@ -22,11 +22,17 @@
             "state" : "translated",
             "value" : "Rreth"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關於"
+          }
         }
       }
     },
     "Architecture" : {
-      "comment" : "✅ Tableview cell label which shows your arch or cpu type, i.e arm64 or arm4e",
+      "comment" : "✅ Tableview cell label which shows your arch or cpu type, i.e arm64 or arm64e",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -45,6 +51,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Arkitektura"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "架構"
           }
         }
       }
@@ -70,6 +82,12 @@
             "state" : "translated",
             "value" : "Instalo %@"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安裝 %@"
+          }
         }
       }
     },
@@ -93,6 +111,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anullo"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消"
           }
         }
       }
@@ -118,6 +142,12 @@
             "state" : "translated",
             "value" : "Ndrysho URL-ne e shkarkimit"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改下載網址"
+          }
         }
       }
     },
@@ -142,17 +172,29 @@
             "state" : "translated",
             "value" : "Kjo do te lejoje ty qe te ndryshosh ku aplikacioni loader do shkarkoje me nje url ndryshe ne nje json, kjo do te ndryshoje manaxhuesin e paketave, bootstrap-in, dhe repot te vendosura."
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "這允許你改變JSON 配置文件的網址，這能夠改變包含的包管理器，基本越獄檔案和軟體庫。"
+          }
         }
       }
     },
     "Clean FakeFS" : {
-      "comment" : "On rootful with fakefs, remove jailbreak files without removing fakers",
+      "comment" : "On rootful with fakefs, remove jailbreak files without removing fakefs",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clean FakeFS"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除偽檔案系統"
           }
         }
       }
@@ -164,6 +206,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uninstall jailbreak files, but does not remove FakeFS. This will allow setting up a new jailbreak environment without creating FakeFS again. This will reboot your %@."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除越獄文件，但不移除偽檔案系統。 這允許在不重新創建偽檔案系統的情況下設置新的越獄環境。你的%@將會重新啟動。"
           }
         }
       }
@@ -189,6 +237,12 @@
             "state" : "translated",
             "value" : "Kredite"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鳴謝"
+          }
         }
       }
     },
@@ -200,6 +254,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dismiss"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
           }
         }
       }
@@ -225,6 +285,12 @@
             "state" : "translated",
             "value" : "Mbaroi"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完成"
+          }
         }
       }
     },
@@ -248,6 +314,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shkarko"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下載"
           }
         }
       }
@@ -273,6 +345,12 @@
             "state" : "translated",
             "value" : "Po shkarkon %@"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在下載%@"
+          }
         }
       }
     },
@@ -284,6 +362,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Download Speed: %@"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下載速度：%@"
           }
         }
       }
@@ -309,6 +393,12 @@
             "state" : "translated",
             "value" : "Po shkarkon sistemin baze"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在下載基本越獄檔案"
+          }
         }
       }
     },
@@ -332,6 +422,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dil"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出"
           }
         }
       }
@@ -357,6 +453,12 @@
             "state" : "translated",
             "value" : "Dil nga mënyra e sigurt"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "退出安全模式"
+          }
         }
       }
     },
@@ -380,6 +482,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Per te dalë nga menyra e sigurt, kliko, \"Dil nga menyra e sigurt\""
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你手動進入了安全模式或palera1n偵測到異常而進入安全模式。如要退出安全模式，請按「退出安全模式」 。"
           }
         }
       }
@@ -405,6 +513,12 @@
             "state" : "translated",
             "value" : "Flamuret"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "標籤"
+          }
         }
       }
     },
@@ -428,6 +542,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gjeneral"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
           }
         }
       }
@@ -453,6 +573,12 @@
             "state" : "translated",
             "value" : "Instalo"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安裝"
+          }
         }
       }
     },
@@ -477,6 +603,12 @@
             "state" : "translated",
             "value" : "%@ eshte e instaluar."
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@已安裝。"
+          }
         }
       }
     },
@@ -488,6 +620,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Do not exit the app during this process, it may lead to unforeseen issues."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請不要退出應用程式，否則可能會發生問題。"
           }
         }
       }
@@ -513,6 +651,12 @@
             "state" : "translated",
             "value" : "Duke instaluar %@"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在安裝%@"
+          }
         }
       }
     },
@@ -536,6 +680,12 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Ti ke perdorur opsionin \"force-revert\", ju lutemi qe te restartoni pajisjen."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你使用了palera1n中的--force-revert（強制還原）選項，請重新啟動裝置以完成這個程序。"
           }
         }
       }
@@ -561,6 +711,12 @@
             "state" : "translated",
             "value" : "Gjuha"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "語言"
+          }
         }
       }
     },
@@ -584,6 +740,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versioni i Aplikacionit Loader eshte shume i vjeter dhe mund te kete probleme te papara. Ju rekomandojme qe ju te shkarkoni versionin me te ri te palera1n."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此安裝程式版本太舊，可能發生問題。建議更新到最新版的palera1n。"
           }
         }
       }
@@ -609,6 +771,12 @@
             "state" : "translated",
             "value" : "Duke u hapur"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "載入中"
+          }
         }
       }
     },
@@ -620,6 +788,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "NO"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "否"
           }
         }
       }
@@ -645,6 +819,12 @@
             "state" : "translated",
             "value" : "Opsionet"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選項"
+          }
         }
       }
     },
@@ -668,6 +848,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fjalëkalimi"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "密碼"
           }
         }
       }
@@ -693,6 +879,12 @@
             "state" : "translated",
             "value" : "Per te perdorur mjetet ne terminal si \"sudo\" pasi te kini bere jailbreak, ju duhet te vendosni nje password terminali. (Ky password nuk mund te jete bosh.)"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要使用例如「sudo」 等命令行工具，你需要設定一個命令行密碼。（這不能為空）"
+          }
         }
       }
     },
@@ -716,6 +908,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restarto pas restaurimit"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "還原後重啟"
           }
         }
       }
@@ -741,6 +939,12 @@
             "state" : "translated",
             "value" : "Ri-Instalo %@"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新安裝%@"
+          }
         }
       }
     },
@@ -764,6 +968,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rivendos fjalëkalimin"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再次輸入密碼"
           }
         }
       }
@@ -789,6 +999,12 @@
             "state" : "translated",
             "value" : "Rikthe ne gjendje fillestare konfigurimin"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重設配置文件"
+          }
         }
       }
     },
@@ -812,6 +1028,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : " Restarto aplikacionin qe ndryshimet te aplikohen 100%"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重新啟動應用程式以完整地套用更變。"
           }
         }
       }
@@ -837,6 +1059,12 @@
             "state" : "translated",
             "value" : "Kthe ne gjendje fillestare sistemin e jailbreak"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "還原系統"
+          }
         }
       }
     },
@@ -860,6 +1088,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çinstalo dosjet e jailbreak dhe ndryshime te tjera te bere ne sistem, kjo do heqe gjerat e jailbreakut, pa prekur sistemin e operimit tend. Kjo do te restartoje %@"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移除列用文件和其他操作系統修改，但不移除你的數據。你的%@將會重新啟動。"
           }
         }
       }
@@ -885,6 +1119,12 @@
             "state" : "translated",
             "value" : "Riprovo"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重試"
+          }
         }
       }
     },
@@ -895,6 +1135,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Successfully reverted your jailbreak, however not rebooting could lead to issues relating to UICache not properly updating and daemons still being active. Proceed at your own risk. Also, using this option you agree to not ask for support relating to it."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成功移除了你的越獄，但是不重新啟動可能會導致圖示快取以及仍在運行的越獄守護程序發生問題。了解風險後方可繼續。這是一個不受支援的選項，請不要對這個選項要求支援。"
           }
         }
       }
@@ -920,6 +1166,12 @@
             "state" : "translated",
             "value" : "Vendos"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
         }
       }
     },
@@ -943,6 +1195,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vendos Fjalëkalimin"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定密碼"
           }
         }
       }
@@ -968,6 +1226,12 @@
             "state" : "translated",
             "value" : "Trego menune e vendosjes se fjalëkalimit"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "要求設定密碼"
+          }
         }
       }
     },
@@ -991,6 +1255,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shume vone"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "太長"
           }
         }
       }
@@ -1016,6 +1286,12 @@
             "state" : "translated",
             "value" : "Zgjidh Problemet"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "除錯"
+          }
         }
       }
     },
@@ -1039,6 +1315,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tipi"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "類型"
           }
         }
       }
@@ -1064,6 +1346,12 @@
             "state" : "translated",
             "value" : "Nuk mund te merrja bootstrap-in"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法取得配置"
+          }
         }
       }
     },
@@ -1087,6 +1375,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Perdor gjuhen e sistemit"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用系統語言"
           }
         }
       }
@@ -1112,6 +1406,12 @@
             "state" : "translated",
             "value" : "Mjetet"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "工具"
+          }
         }
       }
     },
@@ -1135,6 +1435,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nese manaxhuesi qe ke instaluar nuk del, ti mund te perdores keto opsione dhe menxaxhuesi duhet te dale me pas."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果你安裝了的包管理器沒有出現，你可以使用這些選項，然後它們應該就會出現。"
           }
         }
       }
@@ -1160,6 +1466,12 @@
             "state" : "translated",
             "value" : "Versioni"
           }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
+          }
         }
       }
     },
@@ -1171,6 +1483,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "YES"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是"
           }
         }
       }
