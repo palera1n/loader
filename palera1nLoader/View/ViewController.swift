@@ -29,6 +29,9 @@ class ViewController: UIViewController {
     #if !os(tvOS)
     var hideStatusBar: Bool = false { didSet { setNeedsStatusBarAppearanceUpdate() } }
     override var prefersStatusBarHidden: Bool { return hideStatusBar }
+    #else
+    let stackView = UIStackView()
+    var imageView: UIImageView!
     #endif
 
     override func viewDidLoad() {
@@ -51,13 +54,12 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         #if os(tvOS)
-        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 20
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
         
-        let imageView = UIImageView(image: UIImage(named: "apple-tv"))
+        imageView = UIImageView(image: UIImage(named: "apple-tv"))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -203,10 +205,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 		   let _ = tableView.cellForRow(at: nextFocusedIndexPath) {
 			// Print the focused section and row index
 			print("Focused section: \(nextFocusedIndexPath.section), row: \(nextFocusedIndexPath.row)")
-		}
+            #if os(tvOS)
+            if nextFocusedIndexPath.section == 0 {
+                imageView.image = iconImages[nextFocusedIndexPath.row]!;
+            } else {
+                imageView.image = UIImage(named: "apple-tv")
+                imageView.sizeToFit();
+            }
+            #endif
+        } else {
+            #if os(tvOS)
+            imageView.image = UIImage(named: "apple-tv")
+            #endif
+        }
 	}
-
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
