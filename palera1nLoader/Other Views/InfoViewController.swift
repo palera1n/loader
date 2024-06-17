@@ -37,6 +37,7 @@ class InfoViewController: UIViewController {
         self.tableView = UITableView(frame: .zero, style: .grouped)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
+		self.tableView.backgroundColor = UIColor(named: "Background")
         self.tableView.delegate = self
 
         #if os(tvOS)
@@ -82,7 +83,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
         cell.selectionStyle = .none
-        
+		cell.backgroundColor = UIColor(named: "Cell")
         let cellText = tableData[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellText
         switch cellText {

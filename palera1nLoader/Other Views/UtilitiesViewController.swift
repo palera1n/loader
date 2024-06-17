@@ -33,6 +33,7 @@ class UtilitiesViewController: UIViewController {
         self.tableView = UITableView(frame: .zero, style: .grouped)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
+		self.tableView.backgroundColor = UIColor(named: "Background")
         self.tableView.delegate = self
         #if os(tvOS)
         let stackView = UIStackView()
@@ -95,7 +96,7 @@ extension UtilitiesViewController: UITableViewDelegate, UITableViewDataSource {
 		let cell = UITableViewCell(style: .value1, reuseIdentifier: reuseIdentifier)
 		cell.accessoryType = .none
 		cell.selectionStyle = .default
-		
+		cell.backgroundColor = UIColor(named: "Cell")
 		let cellText = tableData[indexPath.section][indexPath.row]
 		
 		switch cellText {

@@ -51,6 +51,7 @@ class ViewController: UIViewController {
         self.tableView.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.reuseIdentifier)
         self.tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.reuseIdentifier)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
+		self.tableView.backgroundColor = UIColor(named: "Background")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         #if os(tvOS)
@@ -117,24 +118,6 @@ class ViewController: UIViewController {
     #endif
 }
 
-#if os(tvOS)
-extension UIStackView {
-    func addBackground(image: UIImage, alpha: CGFloat) {
-        let imageView = UIImageView(image: image)
-        imageView.frame = bounds
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        insertSubview(imageView, at: 0)
-
-        let overlayView = UIView(frame: bounds)
-        overlayView.backgroundColor = UIColor.black.withAlphaComponent(alpha)
-        overlayView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        insertSubview(overlayView, aboveSubview: imageView)
-    }
-}
-#endif
-
 // MARK: -  UITableView
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -198,28 +181,23 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 
         return footerText
     }
-	
+#if os(tvOS)
 	func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
 		// Check if the next focused item is a table view cell
 		if let nextFocusedIndexPath = context.nextFocusedIndexPath,
 		   let _ = tableView.cellForRow(at: nextFocusedIndexPath) {
-			// Print the focused section and row index
 			print("Focused section: \(nextFocusedIndexPath.section), row: \(nextFocusedIndexPath.row)")
-            #if os(tvOS)
             if nextFocusedIndexPath.section == 0 {
                 imageView.image = iconImages[nextFocusedIndexPath.row]!;
             } else {
                 imageView.image = UIImage(named: "apple-tv")
                 imageView.sizeToFit();
             }
-            #endif
         } else {
-            #if os(tvOS)
             imageView.image = UIImage(named: "apple-tv")
-            #endif
         }
 	}
-    
+#endif
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
         let cell = UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
@@ -230,7 +208,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.textLabel?.textColor = .none
         cell.imageView?.alpha = 1.0
         cell.imageView?.image = nil
-        
+		cell.backgroundColor = UIColor(named: "Cell")
+		
         if indexPath.section == 0 {
             if let specialCell = createSpecialCell(for: tableView, at: indexPath) { return specialCell }
 			let source = basePath?.managers[indexPath.row]

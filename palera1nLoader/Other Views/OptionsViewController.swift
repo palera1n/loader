@@ -43,6 +43,7 @@ class OptionsViewController: UIViewController {
         self.tableView = UITableView(frame: .zero, style: .grouped)
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.tableView.dataSource = self
+		self.tableView.backgroundColor = UIColor(named: "Background")
         self.tableView.delegate = self
         if (paleInfo.palerain_option_rootless) {
             tableData[2].append(String.localized("Reboot After Restore"));
@@ -119,7 +120,7 @@ extension OptionsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.accessoryType = .none
         let cellText = tableData[indexPath.section][indexPath.row]
         cell.textLabel?.text = cellText
-        
+		cell.backgroundColor = UIColor(named: "Cell")
         switch cellText {
         case String.localized("Utilities"), String.localized("About"), String.localized("Credits"):
             cell.accessoryType = .disclosureIndicator
