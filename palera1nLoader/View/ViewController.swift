@@ -199,15 +199,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 			}
 			
 			if imageView.image != newImage {
-				UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+				UIView.transition(with: imageView, duration: 0.3, options: .transitionFlipFromLeft, animations: {
 					self.imageView.image = newImage
-					self.imageView.sizeToFit()
 				}, completion: nil)
 			}
 		} else {
 			let defaultImage = UIImage(named: "apple-tv")
 			if imageView.image != defaultImage {
-				UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+				UIView.transition(with: imageView, duration: 0.3, options: .transitionFlipFromLeft, animations: {
 					self.imageView.image = defaultImage
 				}, completion: nil)
 			}
