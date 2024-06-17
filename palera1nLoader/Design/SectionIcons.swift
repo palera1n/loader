@@ -55,6 +55,7 @@ class SectionIcons {
         cell.imageView?.layer.cornerRadius = 7
         cell.imageView?.clipsToBounds = true
         cell.imageView?.layer.borderWidth = 0.7
+		cell.imageView?.layer.cornerCurve = .continuous
         cell.imageView?.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
     }
 }

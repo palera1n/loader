@@ -27,6 +27,7 @@ extension ViewController {
         button.clipsToBounds = true
         button.setBackgroundImage(UIImage(named: "AppIcon"), for: .normal)
         button.layer.borderWidth = 0.7
+		button.layer.cornerCurve = .continuous
         button.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         customView.addSubview(button)
         
