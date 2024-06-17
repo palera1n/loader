@@ -94,7 +94,11 @@ class ErrorCell: UITableViewCell {
         errorLabel.textAlignment = .center
         errorLabel.numberOfLines = 0
         errorLabel.text = String.localized("Unable to fetch bootstraps.")
+		#if !os(tvOS)
         errorLabel.font = UIFont.systemFont(ofSize: 15)
+		#else
+		errorLabel.font = UIFont.systemFont(ofSize: 35)
+		#endif
         stackView.addArrangedSubview(errorLabel)
     }
 }

@@ -270,7 +270,7 @@ extension OptionsViewController {
     }
 
     func isValidURL(_ url: String) -> Bool {
-        let urlPredicate = NSPredicate(format: "SELF MATCHES %@", "https://.*\\.json$")
+        let urlPredicate = NSPredicate(format: "SELF MATCHES %@", "https?://.*\\.json$")
         return urlPredicate.evaluate(with: url)
     }
 }

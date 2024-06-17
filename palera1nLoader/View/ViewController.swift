@@ -183,20 +183,39 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 #if os(tvOS)
 	func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-		// Check if the next focused item is a table view cell
 		if let nextFocusedIndexPath = context.nextFocusedIndexPath,
 		   let _ = tableView.cellForRow(at: nextFocusedIndexPath) {
 			print("Focused section: \(nextFocusedIndexPath.section), row: \(nextFocusedIndexPath.row)")
-            if nextFocusedIndexPath.section == 0 {
-                imageView.image = iconImages[nextFocusedIndexPath.row]!;
-            } else {
-                imageView.image = UIImage(named: "apple-tv")
-                imageView.sizeToFit();
-            }
-        } else {
-            imageView.image = UIImage(named: "apple-tv")
-        }
+			
+			let newImage: UIImage?
+			if nextFocusedIndexPath.section == 0 {
+				if nextFocusedIndexPath.row < iconImages.count {
+					newImage = iconImages[nextFocusedIndexPath.row]
+				} else {
+					return
+				}
+			} else {
+				newImage = UIImage(named: "apple-tv")
+			}
+			
+			if imageView.image != newImage {
+				UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+					self.imageView.image = newImage
+					self.imageView.sizeToFit()
+				}, completion: nil)
+			}
+		} else {
+			let defaultImage = UIImage(named: "apple-tv")
+			if imageView.image != defaultImage {
+				UIView.transition(with: imageView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+					self.imageView.image = defaultImage
+				}, completion: nil)
+			}
+		}
 	}
+
+
+
 #endif
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reuseIdentifier = "Cell"
@@ -238,10 +257,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if isLoading {
             let loadingCell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.reuseIdentifier, for: indexPath) as! LoadingCell
             loadingCell.isUserInteractionEnabled = false
+			loadingCell.selectionStyle = .none
             return loadingCell
         } else if isError {
             let errorCell = tableView.dequeueReusableCell(withIdentifier: ErrorCell.reuseIdentifier, for: indexPath) as! ErrorCell
             errorCell.selectionStyle = .none
+			errorCell.isUserInteractionEnabled = false
             return errorCell
         }
         
@@ -289,6 +310,7 @@ extension ViewController {
 	}
 	
 	func loadConfig() {
+		self.iconImages = []
 		let config = Config()
 		
 		config.getURL(from: URL(string: Preferences.installPath!)!) { result in
