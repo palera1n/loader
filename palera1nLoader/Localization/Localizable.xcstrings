@@ -5,6 +5,12 @@
       "comment" : "Part of the footer on the main screen if the user is using rootful",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(rootful)"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -46,6 +52,12 @@
     "App Info" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリの情報"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -57,6 +69,12 @@
     "App Version" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリのバージョン"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -99,6 +117,12 @@
       "comment" : "boot arguments footer in about screen, should be capitalized in languages with this concept",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "起動引数"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -237,6 +261,12 @@
             "value" : "Clean FakeFS"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FakeFSを削除"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -252,6 +282,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uninstall jailbreak files, but does not remove FakeFS. This will allow setting up a new jailbreak environment without creating FakeFS again. This will reboot your %@."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jailbreak環境を削除(※FakeFSは削除されません) FakeFSを再度作成することなく新しいJailbreak環境を作成できます。"
           }
         },
         "zh-HK" : {
@@ -300,6 +336,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dismiss"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
           }
         },
         "zh-HK" : {
@@ -408,6 +450,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Download Speed: %@"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ダウンロード速度"
           }
         },
         "zh-HK" : {
@@ -520,7 +568,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "セーフモードを終了するには、\"Safemodeを終了\"を選択してください"
           }
         },
@@ -668,6 +716,12 @@
             "value" : "Do not exit the app during this process, it may lead to unforeseen issues."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリを閉じないでください。予期せぬ問題が発生することがあります。"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -718,8 +772,8 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "palera1nを使用する際に強制復帰オプションを使用した場合、デバイスを再起動してください。"
+            "state" : "translated",
+            "value" : "palera1nを使用する際に強制復元オプションを使用した場合、デバイスを再起動してください。"
           }
         },
         "sq-AL" : {
@@ -740,6 +794,12 @@
       "comment" : "Kernel version in about screen",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kernel"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -782,6 +842,12 @@
       "comment" : "Part of the footer in main screen, next to \"palera1n\"",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loader"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -855,6 +921,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NO"
+          }
+        },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "NO"
@@ -970,7 +1042,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "復元後に再起動"
           }
         },
@@ -992,6 +1064,12 @@
       "comment" : "Refresh button in top bar on iOS",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1124,6 +1202,12 @@
       "comment" : "Option to restart home screen on tvOS in utilities view",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PineBoardを再起動"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1136,6 +1220,12 @@
       "comment" : "Option to restart home screen on iOS in utilities view",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SpringBoardを再起動"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1243,6 +1333,12 @@
             "value" : "Successfully reverted your jailbreak, however not rebooting could lead to issues relating to UICache not properly updating and daemons still being active. Proceed at your own risk. Also, using this option you agree to not ask for support relating to it."
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jailbreak環境は正常に削除されました。削除後に再起動しない場合、UICacheの更新やまだ稼働中のdaemonによる問題が起きる場合があります。このオプションを使用することは、それらのサポートを受けないことに同意したことになります。"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1255,6 +1351,12 @@
       "comment" : "Jailbreak type in about screen",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootful"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1267,6 +1369,12 @@
       "comment" : "Jailbreak type in about screen",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootless"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1465,6 +1573,12 @@
             "value" : "Rebuild Icon Cache"
           }
         },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アイコンキャッシュを更新"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1537,6 +1651,12 @@
       "comment" : "Option to reboot the userspace in utilities view",
       "extractionState" : "manual",
       "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Userspaceを再起動"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1640,6 +1760,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "YES"
+          }
+        },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "YES"
