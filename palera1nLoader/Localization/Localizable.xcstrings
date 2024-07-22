@@ -568,7 +568,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "セーフモードを終了するには、\"Safemodeを終了\"を選択してください"
           }
         },
@@ -1042,7 +1042,7 @@
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "復元後に再起動"
           }
         },
