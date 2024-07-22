@@ -929,7 +929,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NO"
+            "value" : "未"
           }
         },
         "zh-HK" : {
@@ -1768,7 +1768,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "YES"
+            "value" : "済"
           }
         },
         "zh-HK" : {
