@@ -16,6 +16,7 @@ extension ViewController {
 		#if !os(tvOS)
 		self.hideStatusBar = true
 		#endif
+		UIApplication.shared.isIdleTimerDisabled = true
 		self.navigationController?.setNavigationBarHidden(true, animated: true)
 		UIView.transition(with: self.containerView, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
 	}
