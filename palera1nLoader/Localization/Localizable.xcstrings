@@ -556,6 +556,18 @@
         }
       }
     },
+    "Extracting Bootstrap" : {
+      "comment" : "✅ Notice in download view when bootstrap is being extracted by palera1n daemon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在解包越獄檔案"
+          }
+        }
+      }
+    },
     "Failure Alert" : {
       "comment" : "✅ Alert action that cancels if the user chooses to cancel in the exit safemode alert",
       "extractionState" : "manual",
@@ -756,6 +768,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在安裝%@"
+          }
+        }
+      }
+    },
+    "Installing Packages" : {
+      "comment" : "✅ Notice in download view when installing packages",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在安裝套件"
           }
         }
       }
