@@ -87,7 +87,7 @@ ssh_output=$(ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile=/dev/null"
     uicache -u /cores/binpack/Applications/palera1nLoader.app
     /private/var/containers/Bundle/Application/*/TrollStore.app/trollstorehelper install custom /var/root/palera1nLoader.ipa
     if [ $? -ne 0 ]; then
-        error "trollstorehelper command failed"
+        echo "trollstorehelper command failed"
         exit 1
     fi
 
