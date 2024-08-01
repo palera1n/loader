@@ -150,7 +150,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ARGUMENTS"
+            "value" : "BOOT-ARGS"
           }
         },
         "ja" : {
@@ -659,7 +659,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quitter safemode"
+            "value" : "Quitter safe mode"
           }
         },
         "ja" : {
@@ -713,7 +713,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vous êtes présentement en safemode, soit à cause d'une erreur, ou à cause que vous avez entré manuellement. Pour quitter, appuyez \"Quitter safemode\""
+            "value" : "Vous êtes présentement en safe mode, soit à cause d'une erreur, ou à cause que vous avez entré manuellement. Pour quitter, appuyez \"Quitter safe mode\""
           }
         },
         "ja" : {
@@ -1169,7 +1169,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NO"
+            "value" : "NON"
           }
         },
         "ja" : {
