@@ -353,7 +353,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ceci va supprimer tout les fichiers liés au jailbreak, ce qui permet de créer un nouveau environnement sans créer le FakeFS une deuxième fois. Cette option va redémarrer votre %@"
+            "value" : "Ceci va supprimer tous les fichiers liés au jailbreak, ce qui permet de créer un nouveau environnement sans créer le FakeFS une deuxième fois. Cette option va redémarrer votre %@"
           }
         },
         "ja" : {
