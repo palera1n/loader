@@ -5,6 +5,12 @@
       "comment" : "Part of the footer on the main screen if the user is using rootful",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(rootful)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -27,6 +33,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À propos"
           }
         },
         "ja" : {
@@ -52,6 +64,12 @@
     "App Info" : {
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informations de l'application"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -69,6 +87,12 @@
     "App Version" : {
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version de l'application"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -88,6 +112,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Architecture"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Architecture"
@@ -117,6 +147,12 @@
       "comment" : "boot arguments footer in about screen, should be capitalized in languages with this concept",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ARGUMENTS"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -139,6 +175,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Install %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installer %@"
           }
         },
         "ja" : {
@@ -171,6 +213,12 @@
             "value" : "Cancel"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -199,6 +247,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Change Download URL"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer l'URL"
           }
         },
         "ja" : {
@@ -231,6 +285,12 @@
             "value" : "This will allow you to change where the loader application will download from with a custom URL to a json file, this can change the package manager, bootstrap, and repos included."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ceci vous permet de changer d'où l'application va télécharger le gestionnaire de paquets, les répertoires, etc. L'URL doit diriger vers un fichier json valide."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -261,6 +321,12 @@
             "value" : "Clean FakeFS"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialiser le FakeFS"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -284,6 +350,12 @@
             "value" : "Uninstall jailbreak files, but does not remove FakeFS. This will allow setting up a new jailbreak environment without creating FakeFS again. This will reboot your %@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ceci va supprimer tout les fichiers liés au jailbreak, ce qui permet de créer un nouveau environnement sans créer le FakeFS une deuxième fois. Cette option va redémarrer votre %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -303,6 +375,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Credits"
@@ -338,6 +416,12 @@
             "value" : "Dismiss"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -360,6 +444,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Done"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminé"
           }
         },
         "ja" : {
@@ -392,6 +482,12 @@
             "value" : "Download"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Télécharger"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -420,6 +516,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Downloading %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En train de télécharger %@"
           }
         },
         "ja" : {
@@ -452,6 +554,12 @@
             "value" : "Download Speed: %@"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vitesse: %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -474,6 +582,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Downloading Base System"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En train de télécharger le système de base"
           }
         },
         "ja" : {
@@ -506,6 +620,12 @@
             "value" : "Exit"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -536,6 +656,12 @@
             "value" : "Exit Safemode"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitter safemode"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -560,6 +686,12 @@
       "comment" : "✅ Notice in download view when bootstrap is being extracted by palera1n daemon",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extraction du bootstrap"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -576,6 +708,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You've entered safemode by either manually or palera1n saved you from it, if you wish to exit it then press \"Exit Safemode\"."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous êtes présentement en safemode, soit à cause d'une erreur, ou à cause que vous avez entré manuellement. Pour quitter, appuyez \"Quitter safemode\""
           }
         },
         "ja" : {
@@ -608,6 +746,12 @@
             "value" : "Flags"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drapeaux"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -636,6 +780,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "General"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Générale"
           }
         },
         "ja" : {
@@ -668,6 +818,12 @@
             "value" : "Install"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installer"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -696,6 +852,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ is already installed."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ est déjà téléchargé"
           }
         },
         "ja" : {
@@ -728,6 +890,12 @@
             "value" : "Do not exit the app during this process, it may lead to unforeseen issues."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne quittez pas l'application. Ça peut causer des problèmes."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -750,6 +918,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installing %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation de %@"
           }
         },
         "ja" : {
@@ -776,6 +950,12 @@
       "comment" : "✅ Notice in download view when installing packages",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installation de paquets"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -792,6 +972,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You have used the force-revert option when using palera1n, please finish the process by fully rebooting the %@."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez utilisé l'option \"force-revert\". Terminer le processus en redémarrant votre %@"
           }
         },
         "ja" : {
@@ -818,6 +1004,12 @@
       "comment" : "Kernel version in about screen",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kernel"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -840,6 +1032,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Language"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
           }
         },
         "ja" : {
@@ -866,6 +1064,12 @@
       "comment" : "Part of the footer in main screen, next to \"palera1n\"",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargeur"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -888,6 +1092,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This Loader version is too old and may have unforeseen issues. It is recommended that you update to the latest version of palera1n."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cet version du chargeur est désormais obsolète et peut causer des problèmes. Nous vous recommandions de  mettre palera1n à jour."
           }
         },
         "ja" : {
@@ -920,6 +1130,12 @@
             "value" : "Loading"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chargement"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -950,6 +1166,12 @@
             "value" : "NO"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NO"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -969,6 +1191,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Options"
@@ -1004,6 +1232,12 @@
             "value" : "Password"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1032,6 +1266,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour utiliser des commandes comme \"sudo\" après l'application du jailbreak, vous devez choisir un mot de passe pour le terminal. (Vous ne pouvez pas laisser ça vide)"
           }
         },
         "ja" : {
@@ -1064,6 +1304,12 @@
             "value" : "Reboot After Restore"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redémarrer après réinitialisation"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1088,6 +1334,12 @@
       "comment" : "Refresh button in top bar on iOS",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rafraîchir "
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1110,6 +1362,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reinstall %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinstaller %@"
           }
         },
         "ja" : {
@@ -1142,6 +1400,12 @@
             "value" : "Repeat Password"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Répéter le mot de passe"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1170,6 +1434,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Configuration"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réinitialisaer le configuration"
           }
         },
         "ja" : {
@@ -1202,6 +1472,12 @@
             "value" : "Restart Application for changes to fully apply"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rouvrir l'application pour appliquer les changements"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1226,6 +1502,12 @@
       "comment" : "Option to restart home screen on tvOS in utilities view",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redémarrer PineBoard"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1244,6 +1526,12 @@
       "comment" : "Option to restart home screen on iOS in utilities view",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redémarrer SpringBoard"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1266,6 +1554,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restore System"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le jailbreak"
           }
         },
         "ja" : {
@@ -1298,6 +1592,12 @@
             "value" : "Uninstall jailbreak files and other changes made to the operating system, without erasing your data. This will reboot your %@."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer les fichiers liés au jailbreak et les autres changements portés sans effacer vos donnés. Ceci va redémarrer vote %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1326,6 +1626,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Retry"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayer"
           }
         },
         "ja" : {
@@ -1357,6 +1663,12 @@
             "value" : "Successfully reverted your jailbreak, however not rebooting could lead to issues relating to UICache not properly updating and daemons still being active. Proceed at your own risk. Also, using this option you agree to not ask for support relating to it."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jailbreak supprimé avec succès. Si vous ne redémarrez pas, ça peut entrainer des problèmes avec la cacher d'icônes étant incorrecte et certaines daemons restant actifs. De plus, en utilisant cet option, vous allez recevoir aucune support de notre part. Continuez à vos propres risques."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1375,6 +1687,12 @@
       "comment" : "Jailbreak type in about screen",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootful"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1393,6 +1711,12 @@
       "comment" : "Jailbreak type in about screen",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rootless"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1415,6 +1739,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Set"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir"
           }
         },
         "ja" : {
@@ -1447,6 +1777,12 @@
             "value" : "Set Password"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Définir le mot de passe"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1475,6 +1811,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show Password Prompt"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Montrer "
           }
         },
         "ja" : {
@@ -1507,6 +1849,12 @@
             "value" : "Too Long"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trop long"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1537,6 +1885,12 @@
             "value" : "Troubleshoot"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dépannage"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1562,6 +1916,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Type"
@@ -1597,6 +1957,12 @@
             "value" : "Rebuild Icon Cache"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reconstruire le cacher d'icônes"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1619,6 +1985,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unable to fetch bootstraps."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incapable de télécharger les bootstraps"
           }
         },
         "ja" : {
@@ -1651,6 +2023,12 @@
             "value" : "Use System Language"
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utiliser la langue du système"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1675,6 +2053,12 @@
       "comment" : "Option to reboot the userspace in utilities view",
       "extractionState" : "manual",
       "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redémarrer l'espace d'utilisateur "
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1697,6 +2081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Utilities"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilités"
           }
         },
         "ja" : {
@@ -1729,6 +2119,12 @@
             "value" : "If your installed manager doesn't appear, you can use these options and they should appear afterwards."
           }
         },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si le gestionnaire de paquets n'apparait, ces options peuvent être utilisés pour le faire apparaître"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1754,6 +2150,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        },
+        "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
@@ -1787,6 +2189,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "YES"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OUI"
           }
         },
         "ja" : {
