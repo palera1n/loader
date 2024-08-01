@@ -953,7 +953,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Installation de paquets"
+            "value" : "Installation des paquets"
           }
         },
         "zh-HK" : {
@@ -1271,7 +1271,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pour utiliser des commandes comme \"sudo\" après l'application du jailbreak, vous devez choisir un mot de passe pour le terminal. (Vous ne pouvez pas laisser ça vide)"
+            "value" : "Pour utiliser des commandes comme \"sudo\" après l'installation du jailbreak, vous devez choisir un mot de passe pour le terminal. (Vous ne pouvez pas laisser ça vide)"
           }
         },
         "ja" : {
@@ -1816,7 +1816,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Montrer "
+            "value" : "Demander pour le mot de passe "
           }
         },
         "ja" : {
@@ -2122,7 +2122,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Si le gestionnaire de paquets n'apparait, ces options peuvent être utilisés pour le faire apparaître"
+            "value" : "Si le gestionnaire de paquets n'apparait pas, ces options peuvent être utilisés pour le faire apparaître"
           }
         },
         "ja" : {
