@@ -23,14 +23,15 @@ var device: String {
 }
 
 enum jbStatus {
-    case simulated
-    case rootful
-    case rootless
+	case simulated
+	case rootful
+	case rootless
 }
 
 enum installStatus {
 	case rootful_installed
 	case rootless_installed
+	case rootless_partial
 	case none
 }
 
@@ -58,20 +59,31 @@ class Status {
 		}()
 	}
 	
-    static public func installation() -> jbStatus {
-        #if targetEnvironment(simulator)
-        return .simulated
-        #else
-        if paleInfo.palerain_option_rootful {
+	static func bootmanifestHash() -> String? {
+		let registryEntry = IORegistryEntryFromPath(kIOMasterPortDefault, "IODeviceTree:/chosen")
+		
+		guard let bootManifestHashUnmanaged = IORegistryEntryCreateCFProperty(registryEntry, "boot-manifest-hash" as CFString, kCFAllocatorDefault, 0),
+			  let bootManifestHash = bootManifestHashUnmanaged.takeRetainedValue() as? Data else {
+			return nil
+		}
+		
+		return bootManifestHash.map { String(format: "%02X", $0) }.joined()
+	}
+	
+	static public func installation() -> jbStatus {
+		#if targetEnvironment(simulator)
+		return .simulated
+		#else
+		if paleInfo.palerain_option_rootful {
 			return .rootful
-        }
+		}
 
-        if paleInfo.palerain_option_rootless {
+		if paleInfo.palerain_option_rootless {
 			return .rootless
-        }
-        return .rootless
-        #endif
-    }
+		}
+		return .rootless
+		#endif
+	}
 	
 	static public func checkInstallStatus() -> installStatus {
 		#if targetEnvironment(simulator)
@@ -87,9 +99,26 @@ class Status {
 			if FileManager.default.fileExists(atPath: "/var/jb/.procursus_strapped") {
 				return .rootless_installed
 			}
+
+			if let bootManifestHash = bootmanifestHash() {
+				let directoryPath = "/private/preboot/\(bootManifestHash)"
+				let fileManager = FileManager.default
+				
+				do {
+					let fileURLs = try fileManager.contentsOfDirectory(at: URL(fileURLWithPath: directoryPath), includingPropertiesForKeys: nil)
+					let matchingFiles = fileURLs.filter { $0.lastPathComponent.hasPrefix("jb-") }
+					
+					if !matchingFiles.isEmpty {
+						return .rootless_partial
+					}
+				} catch {
+					print("Error accessing directory: \(error)")
+				}
+			}
 		}
+		
 		return .none
 		#endif
 	}
-	
 }
+

@@ -66,6 +66,9 @@ extension ViewController {
 			}
 			
 			actions.append(managerAction)
+		case (.rootless, .rootless_partial):
+			log(type: .fatal, msg: String.localized("Detected partial rootless installation (missing /var/jb). Please rejailbreak with palera1n and try again"))
+			return
 		default: break
 		}
             
