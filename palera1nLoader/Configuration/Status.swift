@@ -58,7 +58,7 @@ class Status {
 			#endif
 		}()
 	}
-	
+	#if !targetEnvironment(simulator)
 	static func bootmanifestHash() -> String? {
 		let registryEntry = IORegistryEntryFromPath(kIOMasterPortDefault, "IODeviceTree:/chosen")
 		
@@ -69,7 +69,7 @@ class Status {
 		
 		return bootManifestHash.map { String(format: "%02X", $0) }.joined()
 	}
-	
+	#endif
 	static public func installation() -> jbStatus {
 		#if targetEnvironment(simulator)
 		return .simulated
