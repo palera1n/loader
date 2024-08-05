@@ -340,6 +340,15 @@ extension ViewController {
 						}
 						return image
 					}
+					
+					if (iconImages == nil) {
+						DispatchQueue.main.async {
+							self.isLoading = false
+							self.isError = true
+							self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+						}
+						break
+					}
 
 					self.iconImages = iconImages!
 
