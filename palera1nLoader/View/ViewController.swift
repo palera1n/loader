@@ -135,7 +135,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             return 1
         }
         if section == 0 {
-			return (basePath?.managers.count)!
+			return (basePath?.managers.count) ?? 0
         }
         if section == 1 {
             return (
@@ -328,9 +328,32 @@ extension ViewController {
 						switch self.rootType {
 						case .rootful: return content.rootful
 						case .rootless: return content.rootless
-						case .simulated: return content.rootful
+						case .simulated: return content.rootless
 						}
 					}()
+					self.checkMinimumRequiredVersion()
+					if (self.basePath == nil) {
+						self.configError()
+						
+						if (Preferences.installPath == Preferences.defaultInstallPath) &&
+							(device == "Apple TV") &&
+							paleInfo.palerain_option_rootless
+						{
+							DispatchQueue.main.async {
+								let lame = UIAlertAction(title: .localized("Dismiss"), style: .default, handler: nil)
+								let alert = UIAlertController.coolAlert(title: "Not Supported", message: "Apple TV Rootless is not supported, please switch to rootful.\n\n(Advanced) Custom configuration may be specified at Options -> Change Download URL.", actions: [lame])
+								self.present(alert, animated: true)
+							}
+						} else {
+							DispatchQueue.main.async {
+								let lame = UIAlertAction(title: .localized("Dismiss"), style: .default, handler: nil)
+								let alert = UIAlertController.coolAlert(title: "Not Supported", message: "The current jailbreak environment is not supported by the current loader configuration file.\n\nSwitch to a supported jailbreak environment, or change configuration in options -> Change Download URL.\n\nPlatform: \(device)\nJailbreak type: \(paleInfo.palerain_option_rootful ? String.localized("Rootful") : String.localized("Rootless"))\nCF: \(Int(floor((kCFCoreFoundationVersionNumber))))", actions: [lame])
+								self.present(alert, animated: true)
+							}
+						}
+
+						break
+					}
 					
 					let iconImages = self.basePath?.managers.compactMap { manager in
 						guard let iconURL = URL(string: manager.icon),
@@ -340,41 +363,36 @@ extension ViewController {
 						}
 						return image
 					}
-					
-					if (iconImages == nil) {
-						DispatchQueue.main.async {
-							self.isLoading = false
-							self.isError = true
-							self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-						}
-						break
-					}
 
-					self.iconImages = iconImages!
+					self.iconImages = iconImages ?? [UIImage(named: "unknown")]
 
-					DispatchQueue.main.async {
-						self.isLoading = false
-						self.isError = false
-						self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-					}
-					self.checkMinimumRequiredVersion()
+					self.configSuccess()
 					break
 				case .failure(_):
-					DispatchQueue.main.async {
-						self.isLoading = false
-						self.isError = true
-						self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-					}
+					self.configError()
 					break
 				}
 			case .failure(_):
-				DispatchQueue.main.async {
-					self.isLoading = false
-					self.isError = true
-					self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-				}
+				self.configError()
 				break
 			}
+		}
+	}
+	
+	func configError() {
+		DispatchQueue.main.async {
+			self.isLoading = false
+			self.isError = true
+			self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+		}
+		
+	}
+	
+	func configSuccess() {
+		DispatchQueue.main.async {
+			self.isLoading = false
+			self.isError = false
+			self.tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
 		}
 	}
 	
@@ -388,7 +406,7 @@ extension ViewController {
 		}
 		DispatchQueue.main.async {
 			let lame = UIAlertAction(title: .localized("Dismiss"), style: .default, handler: nil)
-			let alert = UIAlertController.error(title: "", message: .localized("Loader Update"), actions: [lame])
+			let alert = UIAlertController.error(title: "New Update Available", message: .localized("Loader Update"), actions: [lame])
 			self.present(alert, animated: true)
 		}
 	}
