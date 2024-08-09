@@ -524,7 +524,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.loadertv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -558,7 +558,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = kh.crysalis.loadertv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -721,7 +721,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -767,7 +767,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/loader",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.1.1;
 				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.samiiau.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
