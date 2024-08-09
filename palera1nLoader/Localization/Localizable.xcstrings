@@ -83,6 +83,18 @@
         }
       }
     },
+    "Apple TV Rootless is not supported, please switch to rootful.\\n\\n(Advanced) Custom configuration may be specified at Options -> Change Download URL." : {
+      "comment" : "✅ Alert body trying to use rootless on Apple TV, and the configuration URL is unchanged.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不支援Apple TV 無根越獄，請轉到有根越獄。\\n\\n（進階） 配置文件可以在選項 -> 更改下載網址中更改。"
+          }
+        }
+      }
+    },
     "Architecture" : {
       "comment" : "✅ Tableview cell label which shows your arch or cpu type, i.e arm64 or arm64e",
       "extractionState" : "manual",
@@ -964,6 +976,18 @@
         }
       }
     },
+    "Not Supported" : {
+      "comment" : "✅ Alert title trying to use rootless on Apple TV",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不支援"
+          }
+        }
+      }
+    },
     "Options" : {
       "comment" : "✅ A tableview cell which would bring up the options page",
       "extractionState" : "manual",
@@ -1497,6 +1521,18 @@
         }
       }
     },
+    "The current jailbreak environment is not supported by the current loader configuration file.\\n\\nSwitch to a supported jailbreak environment, or change configuration in options -> Change Download URL.\\n\\nPlatform: %@\\nJailbreak type: %@\\nCF: %d" : {
+      "comment" : "✅ Alert body when the custom configuration file does not support the current jailbreak environment",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當前的越獄環境不被當前的配置文件支援。\\n\\n 請切換到一個支援的越獄環境或在選項 -> 更改下載網址中更改配置文件。\\n\\n 平台： %@\\n 越獄類型：%@\\nCF： %d"
+          }
+        }
+      }
+    },
     "Too Long" : {
       "comment" : "✅ If your set password is over the 254 char limit in the password prompt",
       "extractionState" : "manual",
@@ -1637,6 +1673,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "無法取得配置"
+          }
+        }
+      }
+    },
+    "Update Required" : {
+      "comment" : "✅ Alert title when current loader version is lower than the minimum loader version in JSON.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要更新"
           }
         }
       }
