@@ -341,13 +341,13 @@ extension ViewController {
 						{
 							DispatchQueue.main.async {
 								let lame = UIAlertAction(title: .localized("Dismiss"), style: .default, handler: nil)
-                                let alert = UIAlertController.coolAlert(title: .localized("Not Supported"), message: .localized("Apple TV Rootless is not supported, please switch to rootful.\n\n(Advanced) Custom configuration may be specified at Options -> Change Download URL."), actions: [lame])
+                                let alert = UIAlertController.coolAlert(title: .localized("Not Supported"), message: .localized("Apple TV Rootless not supported"), actions: [lame])
 								self.present(alert, animated: true)
 							}
                         } else {
                             DispatchQueue.main.async {
                                 let lame = UIAlertAction(title: .localized("Dismiss"), style: .default, handler: nil)
-                                let alert = UIAlertController.coolAlert(title: .localized("Not Supported"), message: .localized("The current jailbreak environment is not supported by the current loader configuration file.\n\nSwitch to a supported jailbreak environment, or change configuration in options -> Change Download URL.\n\nPlatform: %@\nJailbreak type: %@\nCF: %d", arguments: device, paleInfo.palerain_option_rootful ? String.localized("Rootful") : String.localized("Rootless"), Int(floor((kCFCoreFoundationVersionNumber)))), actions: [lame])
+                                let alert = UIAlertController.coolAlert(title: .localized("Not Supported"), message: .localized("Jailbreak environment not supported by current configuration", arguments: device, paleInfo.palerain_option_rootful ? String.localized("Rootful") : String.localized("Rootless"), Int(floor((kCFCoreFoundationVersionNumber)))), actions: [lame])
                                 self.present(alert, animated: true)
                             }
                         }
