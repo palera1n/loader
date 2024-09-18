@@ -24,11 +24,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        if let host = url.host {
-            if host == "restart-pineboard" {
-                spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
-            }
-        }
+		if let host = url.host {
+
+			if host == "restart-pineboard" || host == "restart-springboard" {
+				spawn(command: "/cores/binpack/bin/launchctl", args: ["kickstart", "-k", "system/com.apple.backboardd"])
+			}
+
+			if host == "userspace-reboot" {
+				spawn(command: "/cores/binpack/bin/launchctl", args: ["reboot", "userspace"])
+			}
+
+			if host == "uicache" {
+				spawn(command: "/cores/binpack/usr/bin/uicache", args: ["-a"])
+			}
+
+			if let config = url.absoluteString.range(of: "/config/") {
+				let fullPath = String(url.absoluteString[config.upperBound...])
+				
+				if OptionsViewController().isValidURL(fullPath) {
+					Preferences.installPath = fullPath
+				} else {
+					log(type: .fatal, msg: "The URL must be a valid json URL!")
+				}
+			}
+
+
+		}
         return true
     }
 }
