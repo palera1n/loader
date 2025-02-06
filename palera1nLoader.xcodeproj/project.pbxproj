@@ -94,7 +94,6 @@
 		336A9DBF2BAEB57400134693 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/AppleTVSimulator.platform/Developer/SDKs/AppleTVSimulator17.0.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		338B005B2B6FEB5400BA0CF5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		338B00602B706FE400BA0CF5 /* Post-Install.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post-Install.swift"; sourceTree = "<group>"; };
-		338B00622B70A7C800BA0CF5 /* Documentation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
 		33BA31D82BA6AA510063B2B7 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		33BA31DA2BA6AEF30063B2B7 /* OpenApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenApplication.swift; sourceTree = "<group>"; };
 		33BA31DC2BA6AF2E0063B2B7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -236,7 +235,6 @@
 				33FA4FA62B6856CB008E44A4 /* Makefile */,
 				33FA4FAD2B685723008E44A4 /* LICENSE */,
 				33FA4FAE2B685737008E44A4 /* README.md */,
-				338B00622B70A7C800BA0CF5 /* Documentation.md */,
 				33FA4F9D2B684C3B008E44A4 /* loader.entitlements */,
 				33FA4F882B6849B0008E44A4 /* palera1nLoader */,
 				01EE04682C1C5458003FBB6C /* palera1nLoaderTV */,

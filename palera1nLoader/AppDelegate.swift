@@ -13,8 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        initLogs()
-        
         let viewController = ViewController()
         let navController = UINavigationController(rootViewController: viewController)
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -47,8 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 					log(type: .fatal, msg: "The URL must be a valid json URL!")
 				}
 			}
-
-
 		}
         return true
     }
