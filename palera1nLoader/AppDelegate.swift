@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+		createTmpDir()
+		
         let viewController = ViewController()
         let navController = UINavigationController(rootViewController: viewController)
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -48,5 +50,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
         return true
     }
+	
+	private func createTmpDir() {
+		let fileManager = FileManager.default
+		let directoryPath = "/tmp/palera1n"
+		
+		do {
+			try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
+			print("Directory created successfully at \(directoryPath)")
+		} catch {
+			print("Failed to create directory: \(error.localizedDescription)")
+		}
+	}
+
 }
 
