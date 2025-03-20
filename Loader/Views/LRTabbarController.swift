@@ -22,7 +22,7 @@ class LRTabbarController: UITabBarController {
 		)
 		
 		let apps = self._createNavigation(
-			with: "Settings",
+			with: .localized("Settings"),
 			and: UIImage(systemName: "gear"),
 			vc: LRSettingsViewController()
 		)

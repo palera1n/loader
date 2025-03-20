@@ -1,186 +1,60 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "(rootful)" : {
-      "comment" : "Part of the footer on the main screen if the user is using rootful",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "(rootful)"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "（有根）"
-          }
-        }
-      }
-    },
-    "About" : {
-      "comment" : "✅ Tableview cell and section title for the about page in the loader",
+    "%@ is already installed." : {
+      "comment" : "Prompt will have a message for you to reinstall the tapped package manager. (i.e \"Cydia is already installed\")",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "About"
+            "value" : "%@ is already installed."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "情報"
+            "value" : "%@はすでにインストールされています。"
           }
         },
         "sq-AL" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Rreth"
+            "value" : "%@ eshte e instaluar."
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "關於"
+            "value" : "%@已安裝。"
           }
         }
       }
     },
-    "App Info" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリの情報"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "應用程式資料"
-          }
-        }
-      }
-    },
-    "App Version" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリのバージョン"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "應用程式版本"
-          }
-        }
-      }
-    },
-    "Apple TV Rootless not supported" : {
-      "comment" : "✅ Alert body trying to use rootless on Apple TV, and the configuration URL is unchanged.",
+    "Authentication is required to change your sudo password." : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple TV Rootless is not supported, please switch to rootful.\n\n(Advanced) Custom configuration may be specified at Options -> Change Download URL."
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不支援Apple TV 無根越獄，請轉到有根越獄。\n\n（進階） 配置文件可以在選項 -> 更改下載網址中更改。"
+            "value" : "Authentication is required to change your sudo password."
           }
         }
       }
     },
-    "Architecture" : {
-      "comment" : "✅ Tableview cell label which shows your arch or cpu type, i.e arm64 or arm64e",
+    "Bootstrap" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Architecture"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アーキテクチャ"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Arkitektura"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "架構"
-          }
-        }
-      }
-    },
-    "BOOT-ARGS" : {
-      "comment" : "boot arguments footer in about screen, should be capitalized in languages with this concept",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "起動引数"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開機參數"
-          }
-        }
-      }
-    },
-    "Bootstrap Install" : {
-      "comment" : "✅ Prompt action will have a message for you to install the tapped package manager. (i.e \"Install Cydia\")",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Install %@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@をインストール"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Instalo %@"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "安裝 %@"
+            "value" : "Bootstrap"
           }
         }
       }
     },
     "Cancel" : {
-      "comment" : "✅ The cancel action for alerts",
+      "comment" : "The cancel action for alerts",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -210,7 +84,7 @@
       }
     },
     "Change Download URL" : {
-      "comment" : "✅ A tableview button and title that prompts you to change where the loader downloads from",
+      "comment" : "A tableview button and title that prompts you to change where the loader downloads from",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -240,7 +114,7 @@
       }
     },
     "Change Download URL Explanation" : {
-      "comment" : "✅ The section footer explanation for changing download URL",
+      "comment" : "The section footer explanation for changing download URL",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -265,6 +139,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "這允許你改變JSON 配置文件的網址，這能夠改變包含的包管理器，基本越獄檔案和軟體庫。"
+          }
+        }
+      }
+    },
+    "Change Sudo Password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Sudo Password"
           }
         }
       }
@@ -317,7 +202,7 @@
       }
     },
     "Credits" : {
-      "comment" : "✅ Tableview cell and section title for the credits page in the loader",
+      "comment" : "Tableview cell and section title for the credits page in the loader",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -346,32 +231,38 @@
         }
       }
     },
-    "Dismiss" : {
-      "comment" : "✅ Dismiss UIAlert",
+    "Device Info" : {
+      "comment" : "Tableview cell and section title for the about page in the loader",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dismiss"
+            "value" : "Device Info"
           }
         },
         "ja" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "閉じる"
+            "state" : "needs_review",
+            "value" : "情報"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Rreth"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "關閉"
+            "state" : "needs_review",
+            "value" : "關於"
           }
         }
       }
     },
     "Done" : {
-      "comment" : "✅ If the action is completed",
+      "comment" : "If the action is completed",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -401,7 +292,7 @@
       }
     },
     "Download" : {
-      "comment" : "✅ Section title for changing download URL",
+      "comment" : "Section title for changing download URL",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -431,7 +322,7 @@
       }
     },
     "Download Item" : {
-      "comment" : "✅ This is text that is displayed when in the download process of installing the bootstrap. (i.e \"Downloading Cydia\")",
+      "comment" : "This is text that is displayed when in the download process of installing the bootstrap. (i.e \"Downloading Cydia\")",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -460,32 +351,8 @@
         }
       }
     },
-    "Download Speed" : {
-      "comment" : "✅ Download speed display when downloading resources. I.e. \"Download Speed: 4.03 MB/s\"",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download Speed: %@"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ダウンロード速度"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下載速度：%@"
-          }
-        }
-      }
-    },
     "Downloading Base System" : {
-      "comment" : "✅ This is text that is displayed when downloading the bootstrap file",
+      "comment" : "This is text that is displayed when downloading the bootstrap file",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -514,8 +381,30 @@
         }
       }
     },
+    "Downloading Package Managers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading Package Managers"
+          }
+        }
+      }
+    },
+    "Downloading Required Packages" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloading Required Packages"
+          }
+        }
+      }
+    },
     "Exit" : {
-      "comment" : "✅ The exit action for alerts, which would close the application and put you to the home screen",
+      "comment" : "The exit action for alerts, which would close the application and put you to the home screen",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -545,7 +434,7 @@
       }
     },
     "Exit Safemode" : {
-      "comment" : "✅ Alert action that exits safemode for the user incase a failure happened",
+      "comment" : "Alert action that exits safemode for the user incase a failure happened",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -574,80 +463,8 @@
         }
       }
     },
-    "Extracting Bootstrap" : {
-      "comment" : "✅ Notice in download view when bootstrap is being extracted by palera1n daemon",
-      "extractionState" : "manual",
-      "localizations" : {
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "正在解包越獄檔案"
-          }
-        }
-      }
-    },
-    "Failure Alert" : {
-      "comment" : "✅ Alert action that cancels if the user chooses to cancel in the exit safemode alert",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You've entered safemode by either manually or palera1n saved you from it, if you wish to exit it then press \"Exit Safemode\"."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "セーフモードを終了するには、\"Safemodeを終了\"を選択してください"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Per te dalë nga menyra e sigurt, kliko, \"Dil nga menyra e sigurt\""
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你手動進入了安全模式或palera1n偵測到異常而進入安全模式。如要退出安全模式，請按「退出安全模式」 。"
-          }
-        }
-      }
-    },
-    "Flags" : {
-      "comment" : "✅ Tableview cell label which shows the hex value of paleinfo, which this value tells the loader if you're currently rootless or rootful, and others",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Flags"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "フラグ"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Flamuret"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "標記"
-          }
-        }
-      }
-    },
     "General" : {
-      "comment" : "✅ Tableview section title for general options",
+      "comment" : "Tableview section title for general options",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -677,7 +494,7 @@
       }
     },
     "Install" : {
-      "comment" : "✅ Title for first section in the main screen",
+      "comment" : "Title for first section in the main screen",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -706,38 +523,50 @@
         }
       }
     },
-    "Installed Manager" : {
-      "comment" : "✅ Prompt will have a message for you to reinstall the tapped package manager. (i.e \"Cydia is already installed\")",
+    "Install %@" : {
+      "comment" : "Prompt action will have a message for you to install the tapped package manager. (i.e \"Install Cydia\")",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ is already installed."
+            "value" : "Install %@"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@はすでにインストールされています。"
+            "value" : "%@をインストール"
           }
         },
         "sq-AL" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@ eshte e instaluar."
+            "value" : "Instalo %@"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@已安裝。"
+            "value" : "安裝 %@"
+          }
+        }
+      }
+    },
+    "Installing Base Bootstrap" : {
+      "comment" : "Notice in download view when bootstrap is being extracted by palera1n daemon",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在解包越獄檔案"
           }
         }
       }
     },
     "Installing Explanation" : {
-      "comment" : "✅ Text to the the user not to exit the app while bootstrapping",
+      "comment" : "Text to the the user not to exit the app while bootstrapping",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -761,7 +590,7 @@
       }
     },
     "Installing Item" : {
-      "comment" : "✅ This is text that is displayed when in the install process of installing the bootstrap. (i.e \"Installing Cydia\")",
+      "comment" : "This is text that is displayed when in the install process of installing the bootstrap. (i.e \"Installing Cydia\")",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -791,19 +620,25 @@
       }
     },
     "Installing Packages" : {
-      "comment" : "✅ Notice in download view when installing packages",
+      "comment" : "Notice in download view when installing packages",
       "extractionState" : "manual",
       "localizations" : {
-        "zh-HK" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Installing Packages"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "正在安裝套件"
           }
         }
       }
     },
     "Is Force Reverted" : {
-      "comment" : "✅ Prompt message that tells you to reboot the device",
+      "comment" : "Prompt message that tells you to reboot the device",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -833,7 +668,7 @@
       }
     },
     "Jailbreak environment not supported by current configuration" : {
-      "comment" : "✅ Alert body when the custom configuration file does not support the current jailbreak environment",
+      "comment" : "Alert body when the custom configuration file does not support the current jailbreak environment",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -850,74 +685,8 @@
         }
       }
     },
-    "Kernel" : {
-      "comment" : "Kernel version in about screen",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kernel"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "內核"
-          }
-        }
-      }
-    },
-    "Language" : {
-      "comment" : "✅ Tableview cell and section title for changing preferred language",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Language"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "言語"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gjuha"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "語言"
-          }
-        }
-      }
-    },
-    "Loader" : {
-      "comment" : "Part of the footer in main screen, next to \"palera1n\"",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loader"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "安裝程式"
-          }
-        }
-      }
-    },
     "Loader Update" : {
-      "comment" : "✅ You're using a very old version of the loader application",
+      "comment" : "You're using a very old version of the loader application",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -947,7 +716,7 @@
       }
     },
     "Loading" : {
-      "comment" : "✅ A tableview cell would appear with this label when its trying to retrieve the configuration through palera1ns website",
+      "comment" : "A tableview cell would appear with this label when its trying to retrieve the configuration through palera1ns website",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -976,74 +745,19 @@
         }
       }
     },
-    "NO" : {
-      "comment" : "✅ Shown on tvOS next to the option this value is supposed to represent",
+    "Open %@" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "NO"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "未"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "否"
-          }
-        }
-      }
-    },
-    "Not Supported" : {
-      "comment" : "✅ Alert title trying to use rootless on Apple TV",
-      "extractionState" : "manual",
-      "localizations" : {
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不支援"
-          }
-        }
-      }
-    },
-    "Options" : {
-      "comment" : "✅ A tableview cell which would bring up the options page",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Options"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "オプション"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Opsionet"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選項"
+            "value" : "Open %@"
           }
         }
       }
     },
     "Password" : {
-      "comment" : "✅ Placeholder text for the first text field in the password prompt",
+      "comment" : "Placeholder text for the first text field in the password prompt",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1073,7 +787,7 @@
       }
     },
     "Password Explanation" : {
-      "comment" : "✅ The description in the password prompt telling you what the password is exactly for",
+      "comment" : "The description in the password prompt telling you what the password is exactly for",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1102,32 +816,35 @@
         }
       }
     },
-    "Reboot After Restore" : {
-      "comment" : "✅ If the user wants to reboot after restoring system / reverting jailbreak installation",
+    "Preparing Environment" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Reboot After Restore"
+            "value" : "Preparing Environment"
           }
-        },
-        "ja" : {
+        }
+      }
+    },
+    "Preparing Repositories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "復元後に再起動"
+            "value" : "Preparing Repositories"
           }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Restarto pas restaurimit"
-          }
-        },
-        "zh-HK" : {
+        }
+      }
+    },
+    "Reboot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "還原後重啟"
+            "value" : "Reboot"
           }
         }
       }
@@ -1136,22 +853,28 @@
       "comment" : "Refresh button in top bar on iOS",
       "extractionState" : "manual",
       "localizations" : {
-        "ja" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Refresj"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "更新"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "重新載入"
           }
         }
       }
     },
-    "Reinstall Manager" : {
-      "comment" : "✅ Prompt action will have a message for you to reinstall the tapped package manager. (i.e \"ReInstall Cydia\")",
+    "Reinstall %@" : {
+      "comment" : "Prompt action will have a message for you to reinstall the tapped package manager. (i.e \"ReInstall Cydia\")",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1181,7 +904,7 @@
       }
     },
     "Repeat Password" : {
-      "comment" : "✅ Placeholder text for the second text field in the password prompt",
+      "comment" : "Placeholder text for the second text field in the password prompt",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1210,8 +933,19 @@
         }
       }
     },
+    "Reset" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        }
+      }
+    },
     "Reset Configuration" : {
-      "comment" : "✅ Tableview cell which gives the user an option to go back to the original URL to where the loader downloads from",
+      "comment" : "Tableview cell which gives the user an option to go back to the original URL to where the loader downloads from",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1240,74 +974,8 @@
         }
       }
     },
-    "Restart Application for changes to fully apply" : {
-      "comment" : "✅ Prompt the user to restart the palera1n loader for localization changes to take into effect",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restart Application for changes to fully apply"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "この変更を完全に適用するためには、アプリケーションを再起動する必要があります"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : " Restarto aplikacionin qe ndryshimet te aplikohen 100%"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新啟動應用程式以完整地套用更變。"
-          }
-        }
-      }
-    },
-    "Restart PineBoard" : {
-      "comment" : "Option to restart home screen on tvOS in utilities view",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PineBoardを再起動"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新啟動主畫面"
-          }
-        }
-      }
-    },
-    "Restart SpringBoard" : {
-      "comment" : "Option to restart home screen on iOS in utilities view",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SpringBoardを再起動"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重新啟動主畫面"
-          }
-        }
-      }
-    },
     "Restore System" : {
-      "comment" : "✅ A tableview cell which would prompt you to uninstall your jailbreak",
+      "comment" : "A tableview cell which would prompt you to uninstall your jailbreak",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1337,7 +1005,7 @@
       }
     },
     "Restore System Explanation" : {
-      "comment" : "✅ Prompt will have a message for you to uninstall the jailbreak, \"This will reboot your %@\", here will either show if you have an iPhone or iPad, i.e \"This will reboot your iPad\"",
+      "comment" : "Prompt will have a message for you to uninstall the jailbreak, \"This will reboot your %@\", here will either show if you have an iPhone or iPad, i.e \"This will reboot your iPad\"",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1367,7 +1035,7 @@
       }
     },
     "Retry" : {
-      "comment" : "✅ A tableview cell would appear with this button label if it ever fails to retrieve the loader configuration through palera1ns website",
+      "comment" : "A tableview cell would appear with this button label if it ever fails to retrieve the loader configuration through palera1ns website",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1396,67 +1064,8 @@
         }
       }
     },
-    "Revert Without Reboot" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Successfully reverted your jailbreak, however not rebooting could lead to issues relating to UICache not properly updating and daemons still being active. Proceed at your own risk. Also, using this option you agree to not ask for support relating to it."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jailbreak環境は正常に削除されました。削除後に再起動しない場合、UICacheの更新やまだ稼働中のdaemonによる問題が起きる場合があります。このオプションを使用することは、それらのサポートを受けないことに同意したことになります。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "成功移除了你的越獄，但是不重新啟動可能會導致圖示快取以及仍在運行的越獄守護程序發生問題。了解風險後方可繼續。這是一個不受支援的選項，請不要對這個選項要求支援。"
-          }
-        }
-      }
-    },
-    "Rootful" : {
-      "comment" : "Jailbreak type in about screen",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rootful"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "有根"
-          }
-        }
-      }
-    },
-    "Rootless" : {
-      "comment" : "Jailbreak type in about screen",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rootless"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無根"
-          }
-        }
-      }
-    },
     "Set" : {
-      "comment" : "✅ The set action for alerts, this is mainly used for when changing the URL where the loader downloads from",
+      "comment" : "The set action for alerts, this is mainly used for when changing the URL where the loader downloads from",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1486,7 +1095,7 @@
       }
     },
     "Set Password" : {
-      "comment" : "✅ Title of the password prompt",
+      "comment" : "Title of the password prompt",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1515,8 +1124,38 @@
         }
       }
     },
+    "Settings" : {
+      "comment" : "A tabor item to bring up the settings page",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "オプション"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Opsionet"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "選項"
+          }
+        }
+      }
+    },
     "Show Password Prompt" : {
-      "comment" : "✅ A tableview cell which toggles if the password alert should prompt you",
+      "comment" : "A tableview cell which toggles if the password alert should prompt you",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1546,7 +1185,7 @@
       }
     },
     "Too Long" : {
-      "comment" : "✅ If your set password is over the 254 char limit in the password prompt",
+      "comment" : "If your set password is over the 254 char limit in the password prompt",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1576,7 +1215,7 @@
       }
     },
     "Troubleshoot" : {
-      "comment" : "✅ Title for second section in the main screen",
+      "comment" : "Title for second section in the main screen",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1606,7 +1245,7 @@
       }
     },
     "Type" : {
-      "comment" : "✅ Tableview cell label which shows if you're currently rootless or rootful with palera1n",
+      "comment" : "Tableview cell label which shows if you're currently rootless or rootful with palera1n",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1635,62 +1274,8 @@
         }
       }
     },
-    "UICache" : {
-      "comment" : "Option to rebuild icon cache in utilities view",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rebuild Icon Cache"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アイコンキャッシュを更新"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重建圖示快取"
-          }
-        }
-      }
-    },
-    "Unable to fetch bootstraps." : {
-      "comment" : "✅ A tableview cell would appear with this label if it ever fails to retrieve the loader configuration through palera1ns website",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to fetch bootstraps."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bootstrapを取得できませんでした。"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuk mund te merrja bootstrap-in"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "無法取得配置"
-          }
-        }
-      }
-    },
     "Update Required" : {
-      "comment" : "✅ Alert title when current loader version is lower than the minimum loader version in JSON.",
+      "comment" : "Alert title when current loader version is lower than the minimum loader version in JSON.",
       "extractionState" : "manual",
       "localizations" : {
         "zh-HK" : {
@@ -1701,116 +1286,8 @@
         }
       }
     },
-    "Use System Language" : {
-      "comment" : "✅ Toggle if the user wants to use their system language instead of a preferred",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use System Language"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "システム言語を使用する"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perdor gjuhen e sistemit"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "使用系統語言"
-          }
-        }
-      }
-    },
-    "Userspace Reboot" : {
-      "comment" : "Option to reboot the userspace in utilities view",
-      "extractionState" : "manual",
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Userspaceを再起動"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "重啟用戶空間"
-          }
-        }
-      }
-    },
-    "Utilities" : {
-      "comment" : "✅ Section title for utilities, such as respiring, and reboot",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilities"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ユーティリティ"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mjetet"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "工具"
-          }
-        }
-      }
-    },
-    "Utilities Explanation" : {
-      "comment" : "✅ The section footer explanation for \"Utilities\"",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "If your installed manager doesn't appear, you can use these options and they should appear afterwards."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "インストールしたパッケージマネージャーが表示されない場合、このオプションを使用することで改善される場合があります。"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nese manaxhuesi qe ke instaluar nuk del, ti mund te perdores keto opsione dhe menxaxhuesi duhet te dale me pas."
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "如果你安裝了的包管理器沒有出現，你可以使用這些選項，然後它們應該就會出現。"
-          }
-        }
-      }
-    },
     "Version" : {
-      "comment" : "✅ Tableview cell label which shows your iOS version",
+      "comment" : "Tableview cell label which shows your iOS version",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1835,6 +1312,47 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "版本"
+          }
+        }
+      }
+    },
+    "You've entered safemode by either manually or palera1n saved you from it." : {
+      "comment" : "Alert action that cancels if the user chooses to cancel in the exit safemode alert",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've entered safemode by either manually or palera1n saved you from it."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "セーフモードを終了するには、\"Safemodeを終了\"を選択してください"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Per te dalë nga menyra e sigurt, kliko, \"Dil nga menyra e sigurt\""
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "你手動進入了安全模式或palera1n偵測到異常而進入安全模式。如要退出安全模式，請按「退出安全模式」 。"
+          }
+        }
+      }
+    },
+    "You've removed the jailbreak!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You've removed the jailbreak!"
           }
         }
       }

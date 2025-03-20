@@ -20,7 +20,7 @@ class LRSettingsCreditsViewController: LRBaseTableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "Credits"
+		title = .localized("Credits")
 		
 		self._setupActivityIndicator()
 		self._load()
@@ -57,7 +57,7 @@ class LRSettingsCreditsViewController: LRBaseTableViewController {
 			self?.navigationController?.popViewController(animated: true)
 		}
 		
-		let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+		let retry = UIAlertAction(title: .localized("Retry"), style: .default) { [weak self] _ in
 			self?._load()
 		}
 		

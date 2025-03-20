@@ -20,6 +20,7 @@ class LRBootstrapper: NSObject {
 	public let callback: LRBootstrapperDelegate?
 	private var _shouldBootstrap: Bool
 	private let _config: LRConfig?
+	private let _password: String
 	private let _manager: LRManager?
 	
 	enum LRBootstrapperError: Error, LocalizedError  {
@@ -40,11 +41,13 @@ class LRBootstrapper: NSObject {
 		callback: LRBootstrapperDelegate? = nil,
 		config: LRConfig? = nil,
 		manager: LRManager? = nil,
+		sudo_password: String,
 		shouldBootstrap: Bool = true
 	) {
 		self.callback = callback
 		self._config = config
 		self._manager = manager
+		self._password = sudo_password
 		self._shouldBootstrap = shouldBootstrap
 		super.init()
 	}
@@ -60,18 +63,31 @@ class LRBootstrapper: NSObject {
 			
 			func downloadResource(urls: [URL], itemLabel: String) {
 				dispatchGroup.enter()
-				self.setItemStatus("Download", item: itemLabel, with: .inProgress)
+				
+				self.setItemStatus(
+					.localized("Download"),
+					item: itemLabel,
+					with: .inProgress
+				)
 				
 				download(urls) { results in
 					if let (_, error) = results.first(where: { _, error in error != nil }) {
 						errorLock.lock()
 						if firstError == nil, let downloadError = error {
 							firstError = LRBootstrapperError.downloadFailed(downloadError)
-							self.setItemStatus("Download", item: itemLabel, with: .failed)
+							self.setItemStatus(
+								.localized("Download"),
+								item: itemLabel,
+								with: .failed
+							)
 						}
 						errorLock.unlock()
 					} else {
-						self.setItemStatus("Download", item: itemLabel, with: .completed)
+						self.setItemStatus(
+							.localized("Download"),
+							item: itemLabel,
+							with: .completed
+						)
 					}
 					
 					dispatchGroup.leave()
@@ -79,15 +95,15 @@ class LRBootstrapper: NSObject {
 			}
 
 			if _shouldBootstrap, let url = _config?.content()?.bootstrap()?.uri {
-				downloadResource(urls: [url], itemLabel: "Downloading Base Bootstrap")
+				downloadResource(urls: [url], itemLabel: .localized("Downloading Base Bootstrap"))
 			}
 			
 			if _shouldBootstrap, let urls = _config?.content()?.bootstrap()?.bootstrap_deb_uris {
-				downloadResource(urls: urls, itemLabel: "Downloading Required Packages")
+				downloadResource(urls: urls, itemLabel: .localized("Downloading Required Packages"))
 			}
 			
 			if let url = _manager?.uri {
-				downloadResource(urls: [url], itemLabel: "Downloading Package Managers")
+				downloadResource(urls: [url], itemLabel: .localized("Downloading Package Managers"))
 			}
 			
 			// wait for all downloads to complete
@@ -110,7 +126,10 @@ class LRBootstrapper: NSObject {
 	// MARK: Bootstrap
 	
 	public func bootstrap() async throws {
-		self.setLastItemStatusInProgressAndSetLastAsCompleted("Bootstrap", item: "Preparing Environment")
+		self.setLastItemStatusAndNew(
+			.localized("Bootstrap"),
+			item: .localized("Preparing Environment")
+		)
 		
 		#if !targetEnvironment(simulator) && !DEBUG
 		// jailbreak utilities like Filza will create /var/jb if opened before bootstrapping
@@ -120,18 +139,28 @@ class LRBootstrapper: NSObject {
 		}
 		#endif
 		
-		self.setLastItemStatusInProgressAndSetLastAsCompleted("Bootstrap", item: "Installing Base Bootstrap")
-		
+		self.setLastItemStatusAndNew(
+			.localized("Bootstrap"),
+			item: .localized("Installing Base Bootstrap")
+		)
+				
 		let (ret, resultDescription) = LREnvironment.jbd.deployBootstrap(
 			with: bootstrapFilePath!,
-			password: "alpine"
+			password: _password
 		)
 		if ret != 0 {
-			self.setItemStatus("Bootstrap", item: "Installing Base Bootstrap", with: .failed)
+			self.setItemStatus(
+				.localized("Bootstrap"),
+				item: .localized("Installing Base Bootstrap"),
+				with: .failed
+			)
 			throw LRBootstrapperError.bootstrapFailed(resultDescription)
 		}
 		
-		self.setLastItemStatusInProgressAndSetLastAsCompleted("Bootstrap", item: "Preparing Repositories")
+		self.setLastItemStatusAndNew(
+			.localized("Bootstrap"),
+			item: .localized("Preparing Repositories")
+		)
 		
 		if let repos = _config?.content()?.repositories {
 			let data = repos.map {
@@ -145,7 +174,11 @@ class LRBootstrapper: NSObject {
 				to: .jb_prefix("/etc/apt/sources.list.d/palera1n.sources")
 			)
 			if ret != 0 {
-				self.setItemStatus("Bootstrap", item: "Preparing Repositories", with: .failed)
+				self.setItemStatus(
+					.localized("Bootstrap"),
+					item: .localized("Preparing Repositories"),
+					with: .failed
+				)
 				throw LRBootstrapperError.bootstrapFailed(resultDescription)
 			}
 		}
@@ -157,20 +190,25 @@ class LRBootstrapper: NSObject {
 	// MARK: Post bootstrap - packages
 	
 	public func installPackages() async throws {
-		self.setLastItemStatusInProgressAndSetLastAsCompleted("Install", item: "Installing Packages")
+		self.setLastItemStatusAndNew(
+			.localized("Install"),
+			item: .localized("Installing Packages")
+		)
 		
 		if !packageFilePaths.isEmpty {
 			let ret = LREnvironment.execute(.jb_prefix("/usr/bin/dpkg"), ["-i"] + packageFilePaths,
 				environmentPath: ["/usr/bin"]
 			)
 			if ret != 0 {
-				self.setItemStatus("Install", item: "Installing Packages", with: .failed)
+				self.setItemStatus(
+					.localized("Install"),
+					item: .localized("Installing Packages"),
+					with: .failed
+				)
 				throw LRBootstrapperError.dpkgFailed
 			}
 			
 			LREnvironment.execute(.binpack("/usr/bin/uicache"), ["-a"])
-			
-			self.setItemStatus("Install", item: "Installing Packages", with: .completed)
 		}
 		
 		try? await Task.sleep(nanoseconds: 1_000_000)

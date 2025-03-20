@@ -13,7 +13,7 @@ class LRSettingsAboutViewController: LRBaseStructuredTableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "Device Info"
+		title = .localized("Device Info")
 	}
 	
 	override func setupSections() {
@@ -26,7 +26,7 @@ class LRSettingsAboutViewController: LRBaseStructuredTableViewController {
 //						subtitle: Bundle.appVersionShort
 //					),
 					SectionItem(
-						title: "Type",
+						title: .localized("Type"),
 						subtitle: device.palera1n.palerain_option_rootless ? "rootless" : "rootful"
 					),
 					SectionItem(
@@ -44,7 +44,7 @@ class LRSettingsAboutViewController: LRBaseStructuredTableViewController {
 				title: device.marketingModel,
 				items: [
 					SectionItem(
-						title: "Version",
+						title: .localized("Version"),
 						subtitle: device.systemVersion
 					),
 					SectionItem(
@@ -71,7 +71,7 @@ class LRSettingsAboutViewController: LRBaseStructuredTableViewController {
 				]
 			),
 			(
-				title: "Other",
+				title: "",
 				items: [
 					SectionItem(
 						title: "boot-manifest-hash",

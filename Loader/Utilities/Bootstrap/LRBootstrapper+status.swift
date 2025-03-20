@@ -14,7 +14,7 @@ extension LRBootstrapper {
 	}
 	
 	
-	public func setLastItemStatusInProgressAndSetLastAsCompleted(_ section: String, item: String) {
+	public func setLastItemStatusAndNew(_ section: String, item: String) {
 		if let last = lastStatusItem {
 			setItemStatus(last.section, item: last.item, with: .completed)
 		}

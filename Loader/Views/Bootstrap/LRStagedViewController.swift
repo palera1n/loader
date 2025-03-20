@@ -29,30 +29,30 @@ class LRStagedViewController: LRBaseStagedViewController {
 	override func setupView() {
 		steps = [
 			StepGroup(
-				name: "Download",
+				name: .localized("Download"),
 				items: [
-					StepGroupItem(name: "Downloading Package Managers"),
+					StepGroupItem(name: .localized("Downloading Package Managers")),
 				]
 			),
 			StepGroup(
-				name: "Install",
+				name: .localized("Install"),
 				items: [
-					StepGroupItem(name: "Installing Packages"),
+					StepGroupItem(name: .localized("Installing Packages")),
 				]
 			),
 		]
 		
 		if _shouldBootstrap {
-			steps[0].items.insert(StepGroupItem(name: "Downloading Base Bootstrap"), at: 0)
-			steps[0].items.insert(StepGroupItem(name: "Downloading Required Packages"), at: 1)
+			steps[0].items.insert(StepGroupItem(name: .localized("Downloading Base Bootstrap")), at: 0)
+			steps[0].items.insert(StepGroupItem(name: .localized("Downloading Required Packages")), at: 1)
 			
 			steps.insert(
 				StepGroup(
-					name: "Bootstrap",
+					name: .localized("Bootstrap"),
 					items: [
-						StepGroupItem(name: "Preparing Environment"),
-						StepGroupItem(name: "Installing Base Bootstrap"),
-						StepGroupItem(name: "Preparing Repositories"),
+						StepGroupItem(name: .localized("Preparing Environment")),
+						StepGroupItem(name: .localized("Installing Base Bootstrap")),
+						StepGroupItem(name: .localized("Preparing Repositories")),
 					]
 				),
 			at: 1)
@@ -60,6 +60,20 @@ class LRStagedViewController: LRBaseStagedViewController {
 	}
 	
 	override func start() {
+		if _shouldBootstrap {
+			UIAlertController.showAlertForPassword(
+				self,
+				title: .localized("Set Password"),
+				message: .localized("Password Explanation")
+			) { password in
+				self._proceedInstallation(password: password)
+			}
+		} else {
+			self._proceedInstallation()
+		}
+	}
+	
+	private func _proceedInstallation(password: String = "alpine") {
 		Task.detached {
 			try? await Task.sleep(nanoseconds: 1_000_000)
 			
@@ -71,6 +85,7 @@ class LRStagedViewController: LRBaseStagedViewController {
 				callback: self,
 				config: self._config,
 				manager: self._manager,
+				sudo_password: password,
 				shouldBootstrap: self._shouldBootstrap
 			)
 			

@@ -54,7 +54,6 @@ class LRBootstrapViewController: LRBaseTableViewController {
 				switch result {
 				case .success(let data):
 					self._data = data
-					dump(data)
 					self.tableView.reloadDataWithTransition(with: .transitionCrossDissolve, duration: 0.4)
 				case .failure(let error):
 					self._showError(error.localizedDescription)
@@ -66,14 +65,14 @@ class LRBootstrapViewController: LRBaseTableViewController {
 	#warning("may simplify later")
 	private func _notifyUserIfCertainFlags() {
 		if UIDevice.current.palera1n.palerain_option_force_revert {
-			let rebootAction = UIAlertAction(title: "Reboot", style: .default) { _ in
+			let rebootAction = UIAlertAction(title: .localized("Reboot"), style: .default) { _ in
 				LREnvironment.shared.reboot()
 			}
 			
 			UIAlertController.showAlertWithCancel(
 				self,
-				title: "You've removed the jailbreak!",
-				message: "You have used the force-revert option when using palera1n, please finish the process by fully rebooting your \(UIDevice.current.marketingModel)",
+				title: .localized("You've removed the jailbreak!"),
+				message: .localized("Is Force Reverted", arguments: UIDevice.current.marketingModel),
 				actions: [rebootAction]
 			)
 		}
@@ -81,27 +80,27 @@ class LRBootstrapViewController: LRBaseTableViewController {
 		if UIDevice.current.palera1n.palerain_option_failure ||
 			UIDevice.current.palera1n.palerain_option_safemode {
 			
-			let safemodeAction = UIAlertAction(title: "Exit", style: .default) { _ in
+			let safemodeAction = UIAlertAction(title: .localized("Exit"), style: .default) { _ in
 				LREnvironment.jbd.exitFailureSafeMode()
 			}
 			
 			UIAlertController.showAlertWithCancel(
 				self,
 				title: "Safemode",
-				message: "You've entered safemode by either manually or palera1n saved you from it",
+				message: .localized("You've entered safemode by either manually or palera1n saved you from it."),
 				actions: [safemodeAction]
 			)
 		}
 	}
 	
 	private func _showError(_ message: String) {
-		let retry = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+		let retry = UIAlertAction(title: .localized("Retry"), style: .default) { [weak self] _ in
 			self?._load()
 		}
 		
 		UIAlertController.showAlertWithCancel(
 			self,
-			title: "Error",
+			title: "err",
 			message: message,
 			actions: [retry]
 		)
@@ -138,21 +137,26 @@ extension LRBootstrapViewController {
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
+	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+		guard let data = _data else { return nil }
+		return data.footer_notice
+	}
+	
 	private func _showManagerPopup(with config: LRConfig, using manager: LRManager) {
 		let managerInstalled = FileManager.default.fileExists(atPath: manager.filePath.relativePath)
 		
 		let alertTitle = managerInstalled
-		? "\(manager.name) is already installed"
+		? String.localized("%@ is already installed.", arguments: manager.name)
 		: nil
 		
 		let installActionTitle = managerInstalled 
-		? "Reinstall \(manager.name)"
-		: "Install \(manager.name)"
+		? String.localized("Reinstall %@", arguments: manager.name)
+		: String.localized("Install %@", arguments: manager.name)
 		
 		var actions: [UIAlertAction] = []
 		
 		if managerInstalled {
-			actions.append(UIAlertAction(title: "Open \(manager.name)", style: .default) { _ in
+			actions.append(UIAlertAction(title: .localized("Open %@", arguments: manager.name), style: .default) { _ in
 				UIApplication.shared.openApplication(using: manager.filePath.relativePath)
 			})
 		}

@@ -15,13 +15,13 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 				title: "",
 				items: [
 					SectionItem(
-						title: "Refresh Icon Cache",
+						title: "UICache",
 						action: {
 							LREnvironment.execute(.binpack("/usr/bin/uicache"), ["-a"])
 						}
 					),
 					SectionItem(
-						title: "Restart Springboard",
+						title: "Restart Springboard", // we dont need to change this, its useless
 						action: {
 							LREnvironment.execute(.binpack("/bin/launchctl"), ["kickstart", "-k", "system/com.apple.backboardd"])
 						}
@@ -44,11 +44,11 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 				title: "Other",
 				items: [
 					SectionItem(
-						title: "Device Info",
+						title: .localized("Device Info"),
 						navigationDestination: LRSettingsAboutViewController()
 					),
 					SectionItem(
-						title: "Credits",
+						title: .localized("Credits"),
 						navigationDestination: LRSettingsCreditsViewController()
 					)
 				]
@@ -57,32 +57,41 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 		
 		if LREnvironment.shared.isBootstrapped == .bootstrapped {
 			sections.append((
-				title: "Reset",
+				title: .localized("Reset"),
 				items: [
 					SectionItem(
-						title: "Change Sudo Password",
+						title: .localized("Change Sudo Password"),
 						action: {
 							UIAlertController.showAlertForPasswordWithAuthentication(
 								self,
-								"Authentication is required to change your sudo password.",
-								alertTitle: "Set Password",
-								alertMessage: "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)"
+								.localized("Authentication is required to change your sudo password."),
+								alertTitle: .localized("Set Password"),
+								alertMessage: .localized("Password Explanation")
 							) { password in
 								LREnvironment.shared.resetSudoPassword(with: password)
 							}
 						}
 					),
 					SectionItem(
-						title: "Restore System",
+						title: UIDevice.current.palera1n.canRevertSnapshot
+						? String.localized("Clean FakeFS")
+						: String.localized("Restore System"),
 						action: {
 							
-							let action = UIAlertAction(title: "Restore System", style: .destructive) { _ in
+							let action = UIAlertAction(
+								title: UIDevice.current.palera1n.canRevertSnapshot
+								? String.localized("Clean FakeFS")
+								: String.localized("Restore System"),
+								style: .destructive
+							) { _ in
 								LREnvironment.shared.removeBootstrap()
 							}
 							
 							UIAlertController.showAlertWithCancel(
 								self,
-								title: "Uninstall jailbreak files and other changes made to the operating system, without erasing your data. This will reboot your \(UIDevice.current.marketingModel)",
+								title: UIDevice.current.palera1n.canRevertSnapshot
+								? String.localized("Clean FakeFS Explanation", arguments: UIDevice.current.marketingModel)
+								: String.localized("Restore System Explanation", arguments: UIDevice.current.marketingModel),
 								message: nil,
 								style: .actionSheet,
 								actions: [action]
