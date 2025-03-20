@@ -49,7 +49,7 @@ apple-include:
 	gsed -i -E s/'API_UNAVAILABLE\(.*\)'// $(CUSTOM_INCLUDE_PATH)/xpc/*.h
 	gsed -i 's|// __XPC_INDIRECT__|\n#include "$(TARGET_SYSROOT)/usr/include/bsm/audit.h"\n|' $(CUSTOM_INCLUDE_PATH)/xpc/connection.h
 
-package:
+package: apple-include
 	@rm -rf $(P1_TMP)
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(NAME).xcodeproj' -scheme $(SCHEME) -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \

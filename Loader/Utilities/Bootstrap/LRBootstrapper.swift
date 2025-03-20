@@ -134,7 +134,7 @@ class LRBootstrapper: NSObject {
 		#if !targetEnvironment(simulator) && !DEBUG
 		// jailbreak utilities like Filza will create /var/jb if opened before bootstrapping
 		// so we will forcefully remove it if we are rootless
-		if UIDevice.current.palera1n.palerain_option_rootless {
+		if await UIDevice.current.palera1n.palerain_option_rootless {
 			_ = LREnvironment.execute(.binpack("/bin/rm"), ["-rf", "/var/jb"])
 		}
 		#endif

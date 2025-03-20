@@ -1,3 +1,1 @@
-- Convert project to be compatible with Xcode 15.*
-    - This is so we can build purely with Xcode 15.*, however, due to poor choice when creating the project I chose to use 16. This is a problem mainly because the apple-include is for 15, so it requires 2 xcode versions to compile this app.
 - Come up and implement a new design/feel for the app
