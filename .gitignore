@@ -1,0 +1,6 @@
+*.DS_Store
+Payload
+packages
+apple-include-*
+*UserInterfaceState.xcuserstate
+xcuserdata/

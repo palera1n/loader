@@ -1,0 +1,14 @@
+{
+  "images" : [
+    {
+      "filename" : "palera1nnightly.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "176x176"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

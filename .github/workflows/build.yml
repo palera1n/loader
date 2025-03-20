@@ -1,0 +1,44 @@
+name: Run Makefile
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies (packages)
+        run: |
+          curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
+          sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
+          brew install 7zip gnu-sed
+
+      - name: Compile palera1nLoader
+        run: |
+          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+          gmake apple-include PLATFORM=iphoneos
+          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          gmake package PLATFORM=iphoneos PACKAGE_NAME=palera1nLoader
+
+      - name: Compile palera1nLoaderTV
+        run: |
+          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+          gmake apple-include PLATFORM=appletvos
+          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          gmake package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
+
+      - name: Upload artifact
+        uses: wangyucode/sftp-upload-action@v1.4.8
+        with:
+          host: ${{ secrets.STATIC_FTP_HOST }}
+          port: ${{ secrets.STATIC_FTP_PORT }}
+          username: static
+          password: ${{ secrets.STATIC_FTP_PASS }}
+          forceUpload: true
+          dryRun: false
+          localDir: 'packages/'
+          remoteDir: '/artifacts/loader/universal_lite'
+

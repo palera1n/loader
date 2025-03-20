@@ -1,0 +1,8 @@
+//
+//  Loader.xcconfig
+//  Loader
+//
+//  Created by samara on 9.03.2025.
+//
+
+SYSTEM_HEADER_SEARCH_PATHS = $(PROJECT_DIR)/apple-include$(EFFECTIVE_PLATFORM_NAME)
