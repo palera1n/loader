@@ -8,19 +8,18 @@
 import UIKit.UIApplication
 
 extension UIApplication {
-	public class func getTopViewController(
-		base: UIViewController? = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
-) -> UIViewController? {
-		if let nav = base as? UINavigationController {
-			return getTopViewController(base: nav.visibleViewController)
-			
-		} else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
-			return getTopViewController(base: selected)
-			
-		} else if let presented = base?.presentedViewController {
-			return getTopViewController(base: presented)
+	public class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+		if let navigationController = controller as? UINavigationController {
+			return topViewController(controller: navigationController.visibleViewController)
 		}
-	
-		return base
+		if let tabController = controller as? UITabBarController {
+			if let selected = tabController.selectedViewController {
+				return topViewController(controller: selected)
+			}
+		}
+		if let presented = controller?.presentedViewController {
+			return topViewController(controller: presented)
+		}
+		return controller
 	}
 }

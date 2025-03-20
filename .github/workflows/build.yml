@@ -15,19 +15,17 @@ jobs:
           curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
           sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
           brew install 7zip gnu-sed
+          
+      - name: Use Xcode 15.4
+        run: |
+          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
 
       - name: Compile palera1nLoader
         run: |
-          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
-          gmake apple-include PLATFORM=iphoneos
-          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           gmake package PLATFORM=iphoneos PACKAGE_NAME=palera1nLoader
 
       - name: Compile palera1nLoaderTV
         run: |
-          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
-          gmake apple-include PLATFORM=appletvos
-          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           gmake package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
 
       - name: Upload artifact

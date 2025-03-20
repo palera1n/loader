@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,42 @@
 		33DB517E2D7D9E800060EAC4 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB517D2D7D9E750060EAC4 /* libMobileGestalt.tbd */; };
 		33DB51892D7DA06B0060EAC4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB51882D7DA06B0060EAC4 /* IOKit.framework */; platformFilter = ios; };
 		33DB518B2D7DA0740060EAC4 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB518A2D7DA0740060EAC4 /* CoreServices.framework */; };
+		AF966AAA2D8C6840001BA405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF966A6F2D8C6840001BA405 /* Assets.xcassets */; };
+		AF966AAB2D8C6840001BA405 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AF966A702D8C6840001BA405 /* Localizable.xcstrings */; };
+		AF966AAD2D8C6840001BA405 /* IOKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF966A762D8C6840001BA405 /* IOKit.tbd */; platformFilters = (tvos, ); };
+		AF966AAE2D8C6840001BA405 /* UIApplication+open.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A672D8C6840001BA405 /* UIApplication+open.swift */; };
+		AF966AAF2D8C6840001BA405 /* UIDevice+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A692D8C6840001BA405 /* UIDevice+Info.swift */; };
+		AF966AB02D8C6840001BA405 /* UIDevice+Jailbreak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A6A2D8C6840001BA405 /* UIDevice+Jailbreak.swift */; };
+		AF966AB12D8C6840001BA405 /* String+prefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A6C2D8C6840001BA405 /* String+prefix.swift */; };
+		AF966AB22D8C6840001BA405 /* UIAlertController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A6D2D8C6840001BA405 /* UIAlertController+Alerts.swift */; };
+		AF966AB32D8C6840001BA405 /* LRBootstrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A7A2D8C6840001BA405 /* LRBootstrapper.swift */; };
+		AF966AB42D8C6840001BA405 /* LRBootstrapper+download.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A7B2D8C6840001BA405 /* LRBootstrapper+download.swift */; };
+		AF966AB52D8C6840001BA405 /* LRBootstrapper+status.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A7C2D8C6840001BA405 /* LRBootstrapper+status.swift */; };
+		AF966AB62D8C6840001BA405 /* LRConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A7E2D8C6840001BA405 /* LRConfig.swift */; };
+		AF966AB72D8C6840001BA405 /* LREnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A812D8C6840001BA405 /* LREnvironment.swift */; };
+		AF966AB82D8C6840001BA405 /* LREnvironment+prefixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A822D8C6840001BA405 /* LREnvironment+prefixes.swift */; };
+		AF966AB92D8C6840001BA405 /* LREnvironment+reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A832D8C6840001BA405 /* LREnvironment+reset.swift */; };
+		AF966ABA2D8C6840001BA405 /* LREnvironment+spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A842D8C6840001BA405 /* LREnvironment+spawn.swift */; };
+		AF966ABB2D8C6840001BA405 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = AF966A872D8C6840001BA405 /* jailbreakd.c */; };
+		AF966ABC2D8C6840001BA405 /* JailbreakD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A882D8C6840001BA405 /* JailbreakD.swift */; };
+		AF966ABD2D8C6840001BA405 /* LRStagedLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A8B2D8C6840001BA405 /* LRStagedLoadingIndicator.swift */; };
+		AF966ABE2D8C6840001BA405 /* StepGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A8D2D8C6840001BA405 /* StepGroup.swift */; };
+		AF966ABF2D8C6840001BA405 /* LRStagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A8F2D8C6840001BA405 /* LRStagedViewController.swift */; };
+		AF966AC02D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A902D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift */; };
+		AF966AC12D8C6840001BA405 /* LRStageGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A912D8C6840001BA405 /* LRStageGroupCell.swift */; };
+		AF966AC22D8C6840001BA405 /* LRStageGroupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A922D8C6840001BA405 /* LRStageGroupItemView.swift */; };
+		AF966AC32D8C6840001BA405 /* LRBaseStagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A942D8C6840001BA405 /* LRBaseStagedViewController.swift */; };
+		AF966AC42D8C6840001BA405 /* LRBaseStructuredTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A952D8C6840001BA405 /* LRBaseStructuredTableViewController.swift */; };
+		AF966AC52D8C6840001BA405 /* LRBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A962D8C6840001BA405 /* LRBaseTableViewController.swift */; };
+		AF966AC62D8C6840001BA405 /* LRBootstrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A982D8C6840001BA405 /* LRBootstrapViewController.swift */; };
+		AF966AC72D8C6840001BA405 /* LRSettingsFlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9A2D8C6840001BA405 /* LRSettingsFlagsViewController.swift */; };
+		AF966AC82D8C6840001BA405 /* LRSettingsAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9C2D8C6840001BA405 /* LRSettingsAboutViewController.swift */; };
+		AF966AC92D8C6840001BA405 /* CreditSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9E2D8C6840001BA405 /* CreditSection.swift */; };
+		AF966ACA2D8C6840001BA405 /* LRSettingsCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA02D8C6840001BA405 /* LRSettingsCreditsViewController.swift */; };
+		AF966ACB2D8C6840001BA405 /* LRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA22D8C6840001BA405 /* LRSettingsViewController.swift */; };
+		AF966ACC2D8C6840001BA405 /* LRTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA42D8C6840001BA405 /* LRTabbarController.swift */; };
+		AF966ACD2D8C6840001BA405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA62D8C6840001BA405 /* AppDelegate.swift */; };
+		AF966ACE2D8C6840001BA405 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA82D8C6840001BA405 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,31 +58,50 @@
 		33DB51882D7DA06B0060EAC4 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		33DB518A2D7DA0740060EAC4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		33DB518E2D7DA1720060EAC4 /* Loader.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Loader.xcconfig; sourceTree = "<group>"; };
+		AF966A672D8C6840001BA405 /* UIApplication+open.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+open.swift"; sourceTree = "<group>"; };
+		AF966A692D8C6840001BA405 /* UIDevice+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Info.swift"; sourceTree = "<group>"; };
+		AF966A6A2D8C6840001BA405 /* UIDevice+Jailbreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Jailbreak.swift"; sourceTree = "<group>"; };
+		AF966A6C2D8C6840001BA405 /* String+prefix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+prefix.swift"; sourceTree = "<group>"; };
+		AF966A6D2D8C6840001BA405 /* UIAlertController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Alerts.swift"; sourceTree = "<group>"; };
+		AF966A6F2D8C6840001BA405 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF966A702D8C6840001BA405 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		AF966A722D8C6840001BA405 /* LSApplicationWorkspace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSApplicationWorkspace.h; sourceTree = "<group>"; };
+		AF966A732D8C6840001BA405 /* MobileGestalt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileGestalt.h; sourceTree = "<group>"; };
+		AF966A742D8C6840001BA405 /* posixspawn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = posixspawn.h; sourceTree = "<group>"; };
+		AF966A762D8C6840001BA405 /* IOKit.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = IOKit.tbd; sourceTree = "<group>"; };
+		AF966A772D8C6840001BA405 /* loader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = loader.entitlements; sourceTree = "<group>"; };
+		AF966A782D8C6840001BA405 /* Loader-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Loader-Bridging-Header.h"; sourceTree = "<group>"; };
+		AF966A7A2D8C6840001BA405 /* LRBootstrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBootstrapper.swift; sourceTree = "<group>"; };
+		AF966A7B2D8C6840001BA405 /* LRBootstrapper+download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LRBootstrapper+download.swift"; sourceTree = "<group>"; };
+		AF966A7C2D8C6840001BA405 /* LRBootstrapper+status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LRBootstrapper+status.swift"; sourceTree = "<group>"; };
+		AF966A7E2D8C6840001BA405 /* LRConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRConfig.swift; sourceTree = "<group>"; };
+		AF966A812D8C6840001BA405 /* LREnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LREnvironment.swift; sourceTree = "<group>"; };
+		AF966A822D8C6840001BA405 /* LREnvironment+prefixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LREnvironment+prefixes.swift"; sourceTree = "<group>"; };
+		AF966A832D8C6840001BA405 /* LREnvironment+reset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LREnvironment+reset.swift"; sourceTree = "<group>"; };
+		AF966A842D8C6840001BA405 /* LREnvironment+spawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LREnvironment+spawn.swift"; sourceTree = "<group>"; };
+		AF966A862D8C6840001BA405 /* jailbreakd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jailbreakd.h; sourceTree = "<group>"; };
+		AF966A872D8C6840001BA405 /* jailbreakd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = jailbreakd.c; sourceTree = "<group>"; };
+		AF966A882D8C6840001BA405 /* JailbreakD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JailbreakD.swift; sourceTree = "<group>"; };
+		AF966A8B2D8C6840001BA405 /* LRStagedLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStagedLoadingIndicator.swift; sourceTree = "<group>"; };
+		AF966A8D2D8C6840001BA405 /* StepGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGroup.swift; sourceTree = "<group>"; };
+		AF966A8F2D8C6840001BA405 /* LRStagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStagedViewController.swift; sourceTree = "<group>"; };
+		AF966A902D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LRStagedViewController+UpdateItem.swift"; sourceTree = "<group>"; };
+		AF966A912D8C6840001BA405 /* LRStageGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStageGroupCell.swift; sourceTree = "<group>"; };
+		AF966A922D8C6840001BA405 /* LRStageGroupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStageGroupItemView.swift; sourceTree = "<group>"; };
+		AF966A942D8C6840001BA405 /* LRBaseStagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBaseStagedViewController.swift; sourceTree = "<group>"; };
+		AF966A952D8C6840001BA405 /* LRBaseStructuredTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBaseStructuredTableViewController.swift; sourceTree = "<group>"; };
+		AF966A962D8C6840001BA405 /* LRBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBaseTableViewController.swift; sourceTree = "<group>"; };
+		AF966A982D8C6840001BA405 /* LRBootstrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBootstrapViewController.swift; sourceTree = "<group>"; };
+		AF966A9A2D8C6840001BA405 /* LRSettingsFlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsFlagsViewController.swift; sourceTree = "<group>"; };
+		AF966A9C2D8C6840001BA405 /* LRSettingsAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsAboutViewController.swift; sourceTree = "<group>"; };
+		AF966A9E2D8C6840001BA405 /* CreditSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditSection.swift; sourceTree = "<group>"; };
+		AF966AA02D8C6840001BA405 /* LRSettingsCreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsCreditsViewController.swift; sourceTree = "<group>"; };
+		AF966AA22D8C6840001BA405 /* LRSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsViewController.swift; sourceTree = "<group>"; };
+		AF966AA42D8C6840001BA405 /* LRTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRTabbarController.swift; sourceTree = "<group>"; };
+		AF966AA62D8C6840001BA405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AF966AA72D8C6840001BA405 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF966AA82D8C6840001BA405 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		338843CB2D7D8C20002D07FD /* Exceptions for "Loader" folder in "Loader" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			platformFiltersByRelativePath = {
-				"Supporting Files/IOKit.tbd" = (tvos, );
-			};
-			target = 3388438E2D7D8A26002D07FD /* Loader */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		338843912D7D8A26002D07FD /* Loader */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				338843CB2D7D8C20002D07FD /* Exceptions for "Loader" folder in "Loader" target */,
-			);
-			path = Loader;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3388438C2D7D8A26002D07FD /* Frameworks */ = {
@@ -59,6 +114,7 @@
 				336FA59C2D8C381500E28B8F /* NimbleJSON in Frameworks */,
 				33DB51892D7DA06B0060EAC4 /* IOKit.framework in Frameworks */,
 				336FA59A2D8C381500E28B8F /* NimbleExtensions in Frameworks */,
+				AF966AAD2D8C6840001BA405 /* IOKit.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +124,7 @@
 		338843862D7D8A26002D07FD = {
 			isa = PBXGroup;
 			children = (
-				338843912D7D8A26002D07FD /* Loader */,
+				AF966AA92D8C6840001BA405 /* Loader */,
 				33DB518C2D7DA15D0060EAC4 /* Configuration */,
 				33DB517C2D7D9E740060EAC4 /* Frameworks */,
 				338843902D7D8A26002D07FD /* Products */,
@@ -102,6 +158,240 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		AF966A682D8C6840001BA405 /* UIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A672D8C6840001BA405 /* UIApplication+open.swift */,
+			);
+			path = UIApplication;
+			sourceTree = "<group>";
+		};
+		AF966A6B2D8C6840001BA405 /* UIDevice */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A692D8C6840001BA405 /* UIDevice+Info.swift */,
+				AF966A6A2D8C6840001BA405 /* UIDevice+Jailbreak.swift */,
+			);
+			path = UIDevice;
+			sourceTree = "<group>";
+		};
+		AF966A6E2D8C6840001BA405 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A682D8C6840001BA405 /* UIApplication */,
+				AF966A6B2D8C6840001BA405 /* UIDevice */,
+				AF966A6C2D8C6840001BA405 /* String+prefix.swift */,
+				AF966A6D2D8C6840001BA405 /* UIAlertController+Alerts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AF966A712D8C6840001BA405 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A6F2D8C6840001BA405 /* Assets.xcassets */,
+				AF966A702D8C6840001BA405 /* Localizable.xcstrings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF966A752D8C6840001BA405 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A722D8C6840001BA405 /* LSApplicationWorkspace.h */,
+				AF966A732D8C6840001BA405 /* MobileGestalt.h */,
+				AF966A742D8C6840001BA405 /* posixspawn.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		AF966A792D8C6840001BA405 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A752D8C6840001BA405 /* Headers */,
+				AF966A762D8C6840001BA405 /* IOKit.tbd */,
+				AF966A772D8C6840001BA405 /* loader.entitlements */,
+				AF966A782D8C6840001BA405 /* Loader-Bridging-Header.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AF966A7D2D8C6840001BA405 /* Bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A7A2D8C6840001BA405 /* LRBootstrapper.swift */,
+				AF966A7B2D8C6840001BA405 /* LRBootstrapper+download.swift */,
+				AF966A7C2D8C6840001BA405 /* LRBootstrapper+status.swift */,
+			);
+			path = Bootstrap;
+			sourceTree = "<group>";
+		};
+		AF966A7F2D8C6840001BA405 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A7E2D8C6840001BA405 /* LRConfig.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF966A802D8C6840001BA405 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A7F2D8C6840001BA405 /* Models */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		AF966A852D8C6840001BA405 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A812D8C6840001BA405 /* LREnvironment.swift */,
+				AF966A822D8C6840001BA405 /* LREnvironment+prefixes.swift */,
+				AF966A832D8C6840001BA405 /* LREnvironment+reset.swift */,
+				AF966A842D8C6840001BA405 /* LREnvironment+spawn.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		AF966A892D8C6840001BA405 /* XPC */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A862D8C6840001BA405 /* jailbreakd.h */,
+				AF966A872D8C6840001BA405 /* jailbreakd.c */,
+				AF966A882D8C6840001BA405 /* JailbreakD.swift */,
+			);
+			path = XPC;
+			sourceTree = "<group>";
+		};
+		AF966A8A2D8C6840001BA405 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A7D2D8C6840001BA405 /* Bootstrap */,
+				AF966A802D8C6840001BA405 /* Config */,
+				AF966A852D8C6840001BA405 /* Environment */,
+				AF966A892D8C6840001BA405 /* XPC */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AF966A8C2D8C6840001BA405 /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A8B2D8C6840001BA405 /* LRStagedLoadingIndicator.swift */,
+			);
+			path = Indicator;
+			sourceTree = "<group>";
+		};
+		AF966A8E2D8C6840001BA405 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A8D2D8C6840001BA405 /* StepGroup.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF966A932D8C6840001BA405 /* Bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A8C2D8C6840001BA405 /* Indicator */,
+				AF966A8E2D8C6840001BA405 /* Models */,
+				AF966A8F2D8C6840001BA405 /* LRStagedViewController.swift */,
+				AF966A902D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift */,
+				AF966A912D8C6840001BA405 /* LRStageGroupCell.swift */,
+				AF966A922D8C6840001BA405 /* LRStageGroupItemView.swift */,
+			);
+			path = Bootstrap;
+			sourceTree = "<group>";
+		};
+		AF966A972D8C6840001BA405 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A942D8C6840001BA405 /* LRBaseStagedViewController.swift */,
+				AF966A952D8C6840001BA405 /* LRBaseStructuredTableViewController.swift */,
+				AF966A962D8C6840001BA405 /* LRBaseTableViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AF966A992D8C6840001BA405 /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A982D8C6840001BA405 /* LRBootstrapViewController.swift */,
+			);
+			path = Selection;
+			sourceTree = "<group>";
+		};
+		AF966A9B2D8C6840001BA405 /* Flags */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A9A2D8C6840001BA405 /* LRSettingsFlagsViewController.swift */,
+			);
+			path = Flags;
+			sourceTree = "<group>";
+		};
+		AF966A9D2D8C6840001BA405 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A9B2D8C6840001BA405 /* Flags */,
+				AF966A9C2D8C6840001BA405 /* LRSettingsAboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		AF966A9F2D8C6840001BA405 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A9E2D8C6840001BA405 /* CreditSection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF966AA12D8C6840001BA405 /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A9F2D8C6840001BA405 /* Models */,
+				AF966AA02D8C6840001BA405 /* LRSettingsCreditsViewController.swift */,
+			);
+			path = Credits;
+			sourceTree = "<group>";
+		};
+		AF966AA32D8C6840001BA405 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A9D2D8C6840001BA405 /* About */,
+				AF966AA12D8C6840001BA405 /* Credits */,
+				AF966AA22D8C6840001BA405 /* LRSettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AF966AA52D8C6840001BA405 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A932D8C6840001BA405 /* Bootstrap */,
+				AF966A972D8C6840001BA405 /* Common */,
+				AF966A992D8C6840001BA405 /* Selection */,
+				AF966AA32D8C6840001BA405 /* Settings */,
+				AF966AA42D8C6840001BA405 /* LRTabbarController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF966AA92D8C6840001BA405 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				AF966A6E2D8C6840001BA405 /* Extensions */,
+				AF966A712D8C6840001BA405 /* Resources */,
+				AF966A792D8C6840001BA405 /* Supporting Files */,
+				AF966A8A2D8C6840001BA405 /* Utilities */,
+				AF966AA52D8C6840001BA405 /* Views */,
+				AF966AA62D8C6840001BA405 /* AppDelegate.swift */,
+				AF966AA72D8C6840001BA405 /* Info.plist */,
+				AF966AA82D8C6840001BA405 /* SceneDelegate.swift */,
+			);
+			path = Loader;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,9 +406,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				338843912D7D8A26002D07FD /* Loader */,
 			);
 			name = Loader;
 			packageProductDependencies = (
@@ -147,6 +434,7 @@
 				};
 			};
 			buildConfigurationList = 3388438A2D7D8A26002D07FD /* Build configuration list for PBXProject "Loader" */;
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -158,7 +446,6 @@
 			packageReferences = (
 				336FA5962D8C381400E28B8F /* XCLocalSwiftPackageReference "NimbleKit" */,
 			);
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 338843902D7D8A26002D07FD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -173,6 +460,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF966AAA2D8C6840001BA405 /* Assets.xcassets in Resources */,
+				AF966AAB2D8C6840001BA405 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +472,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF966AAE2D8C6840001BA405 /* UIApplication+open.swift in Sources */,
+				AF966AAF2D8C6840001BA405 /* UIDevice+Info.swift in Sources */,
+				AF966AB02D8C6840001BA405 /* UIDevice+Jailbreak.swift in Sources */,
+				AF966AB12D8C6840001BA405 /* String+prefix.swift in Sources */,
+				AF966AB22D8C6840001BA405 /* UIAlertController+Alerts.swift in Sources */,
+				AF966AB32D8C6840001BA405 /* LRBootstrapper.swift in Sources */,
+				AF966AB42D8C6840001BA405 /* LRBootstrapper+download.swift in Sources */,
+				AF966AB52D8C6840001BA405 /* LRBootstrapper+status.swift in Sources */,
+				AF966AB62D8C6840001BA405 /* LRConfig.swift in Sources */,
+				AF966AB72D8C6840001BA405 /* LREnvironment.swift in Sources */,
+				AF966AB82D8C6840001BA405 /* LREnvironment+prefixes.swift in Sources */,
+				AF966AB92D8C6840001BA405 /* LREnvironment+reset.swift in Sources */,
+				AF966ABA2D8C6840001BA405 /* LREnvironment+spawn.swift in Sources */,
+				AF966ABB2D8C6840001BA405 /* jailbreakd.c in Sources */,
+				AF966ABC2D8C6840001BA405 /* JailbreakD.swift in Sources */,
+				AF966ABD2D8C6840001BA405 /* LRStagedLoadingIndicator.swift in Sources */,
+				AF966ABE2D8C6840001BA405 /* StepGroup.swift in Sources */,
+				AF966ABF2D8C6840001BA405 /* LRStagedViewController.swift in Sources */,
+				AF966AC02D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift in Sources */,
+				AF966AC12D8C6840001BA405 /* LRStageGroupCell.swift in Sources */,
+				AF966AC22D8C6840001BA405 /* LRStageGroupItemView.swift in Sources */,
+				AF966AC32D8C6840001BA405 /* LRBaseStagedViewController.swift in Sources */,
+				AF966AC42D8C6840001BA405 /* LRBaseStructuredTableViewController.swift in Sources */,
+				AF966AC52D8C6840001BA405 /* LRBaseTableViewController.swift in Sources */,
+				AF966AC62D8C6840001BA405 /* LRBootstrapViewController.swift in Sources */,
+				AF966AC72D8C6840001BA405 /* LRSettingsFlagsViewController.swift in Sources */,
+				AF966AC82D8C6840001BA405 /* LRSettingsAboutViewController.swift in Sources */,
+				AF966AC92D8C6840001BA405 /* CreditSection.swift in Sources */,
+				AF966ACA2D8C6840001BA405 /* LRSettingsCreditsViewController.swift in Sources */,
+				AF966ACB2D8C6840001BA405 /* LRSettingsViewController.swift in Sources */,
+				AF966ACC2D8C6840001BA405 /* LRTabbarController.swift in Sources */,
+				AF966ACD2D8C6840001BA405 /* AppDelegate.swift in Sources */,
+				AF966ACE2D8C6840001BA405 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +539,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
 					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
 				);
 				MARKETING_VERSION = 3.0;
@@ -262,6 +588,10 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
+					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
 					"$(PROJECT_DIR)/Loader/Supporting\\ Files",
 				);
 				MARKETING_VERSION = 3.0;
