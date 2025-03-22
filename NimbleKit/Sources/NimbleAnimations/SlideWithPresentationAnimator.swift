@@ -17,7 +17,7 @@ public class SlideWithPresentationAnimator: NSObject, UIViewControllerAnimatedTr
 	}
 	
 	public func transitionDuration(using transitionContext: (any UIViewControllerContextTransitioning)?) -> TimeInterval {
-		return 0.8
+		return 0.7
 	}
 	
 	public func animateTransition(using transitionContext: any UIViewControllerContextTransitioning) {
@@ -53,8 +53,10 @@ public class SlideWithPresentationAnimator: NSObject, UIViewControllerAnimatedTr
 			
 			toView.frame = finalFrame
 			toView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
-			toView.center = CGPoint(x: containerView.center.x,
-									y: containerView.bounds.height + finalFrame.height/2)
+			toView.center = CGPoint(
+				x: containerView.center.x,
+				y: containerView.bounds.height + finalFrame.height/2
+			)
 			
 			fromViewLayer.cornerRadius = displayCornerRadius
 			toViewLayer.cornerRadius = startingCornerRadius
@@ -70,13 +72,17 @@ public class SlideWithPresentationAnimator: NSObject, UIViewControllerAnimatedTr
 			fromViewLayer.add(fromCornerAnimation, forKey: "cornerRadius")
 			fromViewLayer.cornerRadius = startingCornerRadius
 			
-			let animator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext),
-												  dampingRatio: 0.85) {
+			let animator = UIViewPropertyAnimator(
+				duration: transitionDuration(using: transitionContext),
+				dampingRatio: 0.85
+			) {
 				fromView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
 				fromView.alpha = 0.5
 				
-				fromView.center = CGPoint(x: containerView.center.x,
-										  y: -finalFrame.height/2)
+				fromView.center = CGPoint(
+					x: containerView.center.x,
+					y: -finalFrame.height/2
+				)
 				
 				toView.center = containerView.center
 				toView.transform = .identity
@@ -100,8 +106,11 @@ public class SlideWithPresentationAnimator: NSObject, UIViewControllerAnimatedTr
 				toView.frame = finalFrame
 				toView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
 				toView.alpha = 0.5
-				toView.center = CGPoint(x: containerView.center.x,
-										y: -finalFrame.height/2)
+				
+				toView.center = CGPoint(
+					x: containerView.center.x,
+					y: -finalFrame.height/2
+				)
 			}
 			
 			fromViewLayer.cornerRadius = displayCornerRadius
@@ -118,13 +127,17 @@ public class SlideWithPresentationAnimator: NSObject, UIViewControllerAnimatedTr
 			fromViewLayer.add(fromCornerAnimation, forKey: "cornerRadius")
 			fromViewLayer.cornerRadius = startingCornerRadius
 			
-			let animator = UIViewPropertyAnimator(duration: transitionDuration(using: transitionContext),
-												  dampingRatio: 0.85) {
+			let animator = UIViewPropertyAnimator(
+				duration: transitionDuration(using: transitionContext),
+				dampingRatio: 0.85
+			) {
 				fromView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
 				fromView.alpha = 0.5
 				
-				fromView.center = CGPoint(x: containerView.center.x,
-										  y: containerView.bounds.height + finalFrame.height/2)
+				fromView.center = CGPoint(
+					x: containerView.center.x,
+					y: containerView.bounds.height + finalFrame.height/2
+				)
 				
 				toView.center = containerView.center
 				toView.transform = .identity

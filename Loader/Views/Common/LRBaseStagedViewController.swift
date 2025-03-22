@@ -15,9 +15,23 @@ class LRBaseStagedViewController: UIViewController {
 	
 	private var _dataSource: StepDataSource?
 	
-	lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: _createLayout())
+	lazy var collectionView = UICollectionView(
+		frame: .zero,
+		collectionViewLayout: _createLayout()
+	)
+	
+	private let _footerLabel: UILabel = {
+		let label = UILabel()
+		label.font = .preferredFont(forTextStyle: .subheadline)
+		label.textColor = .secondaryLabel
+		label.adjustsFontForContentSizeCategory = true
+		label.numberOfLines = 0
+		label.textAlignment = .center
+		return label
+	}()
 	
 	var steps: [StepGroup] = []
+	var footerString: String = ""
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)
@@ -61,22 +75,30 @@ class LRBaseStagedViewController: UIViewController {
 	}
 	
 	private func _setupCollectionView() {
+		#if os(iOS)
+		collectionView.backgroundColor = .systemBackground
+		#endif
 		collectionView.register(
 			LRStageGroupCell.self,
 			forCellWithReuseIdentifier: String(describing: LRStageGroupCell.self)
 		)
-		#if os(iOS)
-		collectionView.backgroundColor = .systemBackground
-		#endif
 		
 		view.addSubview(collectionView)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		
+		collectionView.addSubview(_footerLabel)
+		_footerLabel.translatesAutoresizingMaskIntoConstraints = false
+		_footerLabel.text = footerString
 		
 		NSLayoutConstraint.activate([
 			collectionView.topAnchor.constraint(equalTo: view.topAnchor),
 			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			
+			_footerLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+			_footerLabel.bottomAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.bottomAnchor, constant: -32),
+			_footerLabel.widthAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 0.7)
 		])
 	}
 	

@@ -231,6 +231,17 @@
         }
       }
     },
+    "Detected partial rootless installation. Please re-jailbreak and try again." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detected partial rootless installation. Please re-jailbreak and try again."
+          }
+        }
+      }
+    },
     "Device Info" : {
       "comment" : "Tableview cell and section title for the about page in the loader",
       "extractionState" : "manual",
@@ -681,36 +692,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "當前的越獄環境不被當前的配置文件支援。\n\n請切換到一個支援的越獄環境或在選項 -> 更改下載網址中更改配置。\n\n平台：%@\n越獄類型：%@\nCF： %d"
-          }
-        }
-      }
-    },
-    "Loader Update" : {
-      "comment" : "You're using a very old version of the loader application",
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This Loader version is too old and may have unforeseen issues. It is recommended that you update to the latest version of palera1n."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このloaderのバージョンは古すぎるため、予期せぬ問題が発生する可能性があります。最新版のpalera1nにアップデートすることをお勧めします。"
-          }
-        },
-        "sq-AL" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Versioni i Aplikacionit Loader eshte shume i vjeter dhe mund te kete probleme te papara. Ju rekomandojme qe ju te shkarkoni versionin me te ri te palera1n."
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此安裝程式版本太舊，可能發生問題。建議更新到最新版的palera1n。"
           }
         }
       }
@@ -1180,6 +1161,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "要求設定密碼"
+          }
+        }
+      }
+    },
+    "This Loader version is too old. It is recommended that you update to latest." : {
+      "comment" : "You're using a very old version of the loader application",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Loader version is too old. It is recommended that you update to latest."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "このloaderのバージョンは古すぎるため、予期せぬ問題が発生する可能性があります。最新版のpalera1nにアップデートすることをお勧めします。"
+          }
+        },
+        "sq-AL" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Versioni i Aplikacionit Loader eshte shume i vjeter dhe mund te kete probleme te papara. Ju rekomandojme qe ju te shkarkoni versionin me te ri te palera1n."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "此安裝程式版本太舊，可能發生問題。建議更新到最新版的palera1n。"
           }
         }
       }

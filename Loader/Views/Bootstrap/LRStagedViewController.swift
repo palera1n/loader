@@ -27,6 +27,7 @@ class LRStagedViewController: LRBaseStagedViewController {
 	}
 	
 	override func setupView() {
+		footerString = "Do not exit the app during this process, it may lead to unforeseen issues."
 		steps = [
 			StepGroup(
 				name: .localized("Download"),
@@ -98,7 +99,7 @@ class LRStagedViewController: LRBaseStagedViewController {
 					#if !targetEnvironment(simulator)
 					UIAlertController.showAlert(
 						self,
-						title: "Error",
+						title: "err",
 						message: error.localizedDescription,
 						actions: []
 					)
@@ -109,10 +110,5 @@ class LRStagedViewController: LRBaseStagedViewController {
 			}
 		}
 	}
-}
-
-extension UICollectionViewDiffableDataSource {
-    func refresh(completion: (() -> Void)? = nil) {
-        self.apply(self.snapshot(), animatingDifferences: true, completion: completion)
-    }
+	
 }

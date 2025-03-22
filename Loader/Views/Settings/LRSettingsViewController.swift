@@ -23,13 +23,17 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 					SectionItem(
 						title: "Restart Springboard", // we dont need to change this, its useless
 						action: {
-							LREnvironment.execute(.binpack("/bin/launchctl"), ["kickstart", "-k", "system/com.apple.backboardd"])
+							self.blackOutController {
+								LREnvironment.execute(.binpack("/bin/launchctl"), ["kickstart", "-k", "system/com.apple.backboardd"])
+							}
 						}
 					),
 					SectionItem(
 						title: "Restart Userspace",
 						action: {
-							LREnvironment.execute(.binpack("/bin/launchctl"), ["reboot", "userspace"])
+							self.blackOutController {
+								LREnvironment.execute(.binpack("/bin/launchctl"), ["reboot", "userspace"])
+							}
 						}
 					),
 					SectionItem(
@@ -76,6 +80,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						title: UIDevice.current.palera1n.canRevertSnapshot
 						? String.localized("Clean FakeFS")
 						: String.localized("Restore System"),
+						tint: .systemRed,
 						action: {
 							
 							let action = UIAlertAction(
@@ -84,7 +89,9 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 								: String.localized("Restore System"),
 								style: .destructive
 							) { _ in
-								LREnvironment.shared.removeBootstrap()
+								self.blackOutController {
+									LREnvironment.shared.removeBootstrap()
+								}
 							}
 							
 							UIAlertController.showAlertWithCancel(

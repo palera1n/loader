@@ -13,6 +13,8 @@ class LRStageGroupItemView: UIView {
             updateIndicatorImage()
         }
     }
+	
+	private let _timerManager = TimerManager()
     
     private let _name: String
     private let _padding: CGFloat
@@ -47,6 +49,14 @@ class LRStageGroupItemView: UIView {
         nameLabel.adjustsFontForContentSizeCategory = true
         return nameLabel
     }()
+	
+	private let _timeLabel: UILabel = {
+		let nameLabel = UILabel()
+		nameLabel.font = .preferredFont(forTextStyle: .subheadline)
+		nameLabel.textColor = .secondaryLabel
+		nameLabel.adjustsFontForContentSizeCategory = true
+		return nameLabel
+	}()
     
     init(_ name: String, padding: CGFloat, status: StepStatus) {
         self._name = name
@@ -79,6 +89,9 @@ class LRStageGroupItemView: UIView {
         addSubview(_label)
         _label.translatesAutoresizingMaskIntoConstraints = false
         _label.text = _name
+		
+		addSubview(_timeLabel)
+		_timeLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             _separator.topAnchor.constraint(equalTo: self.topAnchor),
@@ -98,14 +111,16 @@ class LRStageGroupItemView: UIView {
             _statusImageView.trailingAnchor.constraint(equalTo: _indicator.trailingAnchor),
             _statusImageView.bottomAnchor.constraint(equalTo: _indicator.bottomAnchor),
 			
-			// idk
 			_animatedIndicator.topAnchor.constraint(equalTo: _indicator.topAnchor, constant: 2),
 			_animatedIndicator.leadingAnchor.constraint(equalTo: _indicator.leadingAnchor, constant: 2),
 			_animatedIndicator.trailingAnchor.constraint(equalTo: _indicator.trailingAnchor, constant: -2),
 			_animatedIndicator.bottomAnchor.constraint(equalTo: _indicator.bottomAnchor, constant: -2),
             
             _label.leadingAnchor.constraint(equalTo: _indicator.trailingAnchor, constant: _padding),
-            _label.centerYAnchor.constraint(equalTo: _indicator.centerYAnchor)
+            _label.centerYAnchor.constraint(equalTo: _indicator.centerYAnchor),
+			
+			_timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -_padding),
+			_timeLabel.centerYAnchor.constraint(equalTo: _label.centerYAnchor)
         ])
     }
     
@@ -125,6 +140,8 @@ class LRStageGroupItemView: UIView {
     }
 
     private func _handleInProgressState() {
+		 _timerManager.startTimer(timeInterval: 2.0)
+		
         UIView.animate(withDuration: 0.2) {
             self._statusImageView.alpha = 0
             self._animatedIndicator.alpha = 1
@@ -134,6 +151,10 @@ class LRStageGroupItemView: UIView {
     private func _handleStandardState() {
         _statusImageView.image = UIImage(systemName: status.systemImageName)
         _statusImageView.tintColor = status.tintColor
+		
+		if let elapsed = _timerManager.invalidateTimerWithReturningSeconds() {
+			_timeLabel.text = elapsed
+		}
         
         UIView.animate(withDuration: 0.4,
                       delay: 0,

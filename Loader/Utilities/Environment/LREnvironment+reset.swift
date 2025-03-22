@@ -28,6 +28,8 @@ extension LREnvironment {
 		
 		#if !DEBUG
 		reboot()
+		#else
+		exit(0)
 		#endif
 	}
 	

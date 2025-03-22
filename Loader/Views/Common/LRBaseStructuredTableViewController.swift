@@ -17,6 +17,8 @@ class LRBaseStructuredTableViewController: LRBaseTableViewController {
 		var subtitle: String = ""
 		/// Cell style
 		var style: UITableViewCell.CellStyle = .value1
+		/// Cell tint
+		var tint: UIColor?
 		/// Navigation link, may conflict with `action`
 		var navigationDestination: UIViewController? = nil
 		/// Present new navigation controller
@@ -77,13 +79,9 @@ extension LRBaseStructuredTableViewController {
 			cell.selectionStyle = .default
 		} else if (item.action != nil) {
 			#if os(iOS)
-			if #available(iOS 15.0, *) {
-				cell.textLabel?.textColor = .tintColor
-			} else {
-				cell.textLabel?.textColor = .systemBlue
-			}
+			cell.textLabel?.textColor = item.tint ?? .tintColor
 			#else
-			cell.textLabel?.textColor = .systemBlue
+			cell.textLabel?.textColor = item.tint ?? .systemBlue
 			#endif
 			cell.accessoryType = .none
 			cell.selectionStyle = .default

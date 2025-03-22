@@ -8,6 +8,7 @@
 import UIKit.UIApplication
 
 extension UIApplication {
+	/// This belongs to https://stackoverflow.com/a/30858591
 	public class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
 		if let navigationController = controller as? UINavigationController {
 			return topViewController(controller: navigationController.visibleViewController)

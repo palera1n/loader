@@ -9,6 +9,9 @@
 import Foundation
 
 extension String {
+	// from: https://github.com/NSAntoine/Antoine/blob/main/Antoine/Backend/Extensions/Foundation.swift#L43-L55
+	// was given permission to use any code from antoine as I like - thank you Serena!~
+	
 	static public func localized(_ name: String) -> String {
 		return NSLocalizedString(name, comment: "")
 	}

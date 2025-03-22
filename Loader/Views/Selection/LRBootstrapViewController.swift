@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NimbleAnimations
 import NimbleJSON
 
 // MARK: - Class
@@ -62,33 +61,57 @@ class LRBootstrapViewController: LRBaseTableViewController {
 		}
 	}
 	
-	#warning("may simplify later")
 	private func _notifyUserIfCertainFlags() {
-		if UIDevice.current.palera1n.palerain_option_force_revert {
-			let rebootAction = UIAlertAction(title: .localized("Reboot"), style: .default) { _ in
-				LREnvironment.shared.reboot()
-			}
-			
-			UIAlertController.showAlertWithCancel(
-				self,
+		var alertConfig: (title: String, message: String, buttonTitle: String, action: (() -> Void)?)?
+		
+		switch true {
+		case UIDevice.current.palera1n.palerain_option_force_revert:
+			alertConfig = (
 				title: .localized("You've removed the jailbreak!"),
 				message: .localized("Is Force Reverted", arguments: UIDevice.current.marketingModel),
-				actions: [rebootAction]
+				buttonTitle: .localized("Reboot"),
+				action: {
+					self.blackOutController {
+						LREnvironment.shared.reboot()
+					}
+				}
 			)
+		case UIDevice.current.palera1n.palerain_option_failure || UIDevice.current.palera1n.palerain_option_safemode:
+			alertConfig = (
+				title: "",
+				message: .localized("You've entered safemode by either manually or palera1n saved you from it."),
+				buttonTitle: .localized("Exit"),
+				action: {
+					self.blackOutController {
+						LREnvironment.jbd.exitFailureSafeMode()
+					}
+				}
+			)
+		case LREnvironment.shared.isBootstrapped == .partial_bootstrapped_rootless:
+			alertConfig = (
+				title: "",
+				message: .localized("Detected partial rootless installation. Please re-jailbreak and try again."),
+				buttonTitle: .localized("Reboot"),
+				action: {
+					self.blackOutController {
+						LREnvironment.shared.reboot()
+					}
+				}
+			)
+		default:
+			return
 		}
 		
-		if UIDevice.current.palera1n.palerain_option_failure ||
-			UIDevice.current.palera1n.palerain_option_safemode {
-			
-			let safemodeAction = UIAlertAction(title: .localized("Exit"), style: .default) { _ in
-				LREnvironment.jbd.exitFailureSafeMode()
+		if let config = alertConfig {
+			let action = UIAlertAction(title: config.buttonTitle, style: .default) { _ in
+				config.action?()
 			}
 			
 			UIAlertController.showAlertWithCancel(
 				self,
-				title: "Safemode",
-				message: .localized("You've entered safemode by either manually or palera1n saved you from it."),
-				actions: [safemodeAction]
+				title: config.title,
+				message: config.message,
+				actions: [action]
 			)
 		}
 	}
@@ -100,7 +123,7 @@ class LRBootstrapViewController: LRBaseTableViewController {
 		
 		UIAlertController.showAlertWithCancel(
 			self,
-			title: "err",
+			title: "",
 			message: message,
 			actions: [retry]
 		)
@@ -110,11 +133,11 @@ class LRBootstrapViewController: LRBaseTableViewController {
 // MARK: - Class extension: tableview
 extension LRBootstrapViewController {
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
+		1
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return _data?.content()?.managers.count ?? 0
+		_data?.content()?.managers.count ?? 0
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -138,10 +161,12 @@ extension LRBootstrapViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-		guard let data = _data else { return nil }
-		return data.footer_notice
+		_data?.footer_notice ?? nil
 	}
-	
+}
+
+// MARK: - Class extension: actions
+extension LRBootstrapViewController {
 	private func _showManagerPopup(with config: LRConfig, using manager: LRManager) {
 		let managerInstalled = FileManager.default.fileExists(atPath: manager.filePath.relativePath)
 		
@@ -149,7 +174,7 @@ extension LRBootstrapViewController {
 		? String.localized("%@ is already installed.", arguments: manager.name)
 		: nil
 		
-		let installActionTitle = managerInstalled 
+		let installActionTitle = managerInstalled
 		? String.localized("Reinstall %@", arguments: manager.name)
 		: String.localized("Install %@", arguments: manager.name)
 		
@@ -181,21 +206,10 @@ extension LRBootstrapViewController {
 			manager: manager,
 			shouldBootstrap: LREnvironment.shared.isBootstrapped == .not_bootstrapped
 		)
-
+		
 		let nav = UINavigationController(rootViewController: controller)
 		nav.modalPresentationStyle = .custom
 		nav.transitioningDelegate = self
 		present(nav, animated: true)
-	}
-}
-
-// MARK: - Class extension: animations
-extension LRBootstrapViewController: UIViewControllerTransitioningDelegate {
-	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		SlideWithPresentationAnimator(presenting: true)
-	}
-	
-	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-		SlideWithPresentationAnimator(presenting: false)
 	}
 }
