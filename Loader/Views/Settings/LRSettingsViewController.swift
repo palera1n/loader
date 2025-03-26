@@ -59,6 +59,14 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 			)
 		]
 		
+		addUserDefaultsStringSection(
+			key: "defaultInstallPath",
+			defaultValue: LREnvironment.default_config_url(),
+			sectionTitle: "Download",
+			changeTitle: "Change Download URL",
+			keyboardType: .URL
+		)
+		
 		if LREnvironment.shared.isBootstrapped == .bootstrapped {
 			sections.append((
 				title: .localized("Reset"),
@@ -108,5 +116,6 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 				]
 			))
 		}
+		
 	}
 }

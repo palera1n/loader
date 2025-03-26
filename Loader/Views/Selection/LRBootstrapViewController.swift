@@ -15,7 +15,7 @@ class LRBootstrapViewController: LRBaseTableViewController {
 	private let _activityIndicator = UIActivityIndicatorView(style: .medium)
 	private var _data: LRConfig? = nil
 	private let _dataService = FetchService()
-	private let _dataURL = URL(string: "https://palera.in/loaderv2.json")!
+	private let _dataURL = URL(string: LREnvironment.config_url())!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

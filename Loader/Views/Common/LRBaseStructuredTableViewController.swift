@@ -36,7 +36,6 @@ class LRBaseStructuredTableViewController: LRBaseTableViewController {
 	}
 	
 	func setupSections() {}
-	
 }
 
 // MARK: - Class extension: tableview
@@ -61,6 +60,7 @@ extension LRBaseStructuredTableViewController {
 		?? UITableViewCell(style: item.style, reuseIdentifier: "Cell")
 		
 		cell.textLabel?.text = item.title
+		cell.textLabel?.textColor = .label
 		cell.detailTextLabel?.text = item.subtitle
 		cell.detailTextLabel?.textColor = .secondaryLabel
 		cell.detailTextLabel?.numberOfLines = 0
@@ -106,5 +106,90 @@ extension LRBaseStructuredTableViewController {
 		}
 		
 		tableView.deselectRow(at: indexPath, animated: true)
+	}
+}
+
+extension LRBaseStructuredTableViewController {
+	@discardableResult
+	func addUserDefaultsStringSection(
+		key: String,
+		defaultValue: String,
+		sectionTitle: String,
+		changeTitle: String = "",
+		sectionIndex: Int? = nil,
+		keyboardType: UIKeyboardType = .default
+	) -> String {
+		let userDefaults = UserDefaults.standard
+		let currentValue = userDefaults.string(forKey: key) ?? defaultValue
+		let isModified = currentValue != defaultValue
+		
+		var sectionItems: [SectionItem] = []
+		
+		if isModified {
+			sectionItems = [
+				SectionItem(
+					title: currentValue,
+					style: .subtitle,
+					tint: .secondaryLabel,
+					action: { [weak self] in
+						UIAlertController.showAlertForStringChange(
+							self!,
+							title: changeTitle,
+							currentValue: currentValue,
+							keyboardType: keyboardType,
+							completion: { newValue in
+								userDefaults.set(newValue, forKey: key)
+								self?.setupSections()
+								self?.tableView.reloadData()
+							}
+						)
+					}
+				),
+				SectionItem(
+					title: .localized("Reset Configuration"),
+					style: .subtitle,
+					tint: .systemRed,
+					action: { [weak self] in
+						userDefaults.removeObject(forKey: key)
+						self?.setupSections()
+						self?.tableView.reloadData()
+					}
+				)
+			]
+		} else {
+			sectionItems = [
+				SectionItem(
+					title: changeTitle,
+					style: .value1,
+					tint: .tintColor,
+					action: { [weak self] in
+						UIAlertController.showAlertForStringChange(
+							self!, title: changeTitle,
+							currentValue: currentValue,
+							keyboardType: keyboardType,
+							completion: { newValue in
+								userDefaults.set(newValue, forKey: key)
+								self?.setupSections()
+								self?.tableView.reloadData()
+							}
+						)
+					}
+				)
+			]
+		}
+		
+		let newSection = (title: sectionTitle, items: sectionItems)
+		
+		if let index = sectionIndex {
+			if sections.count > index {
+				sections.insert(newSection, at: index)
+			} else {
+				sections.append(newSection)
+			}
+		} else {
+			sections.append(newSection)
+		}
+		
+		return currentValue
 	}
 }

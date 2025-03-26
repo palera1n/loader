@@ -62,6 +62,7 @@
 		33DB51882D7DA06B0060EAC4 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		33DB518A2D7DA0740060EAC4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		33DB518E2D7DA1720060EAC4 /* Loader.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Loader.xcconfig; sourceTree = "<group>"; };
+		33E658082D93C58400BEDFA5 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		AF966A672D8C6840001BA405 /* UIApplication+open.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+open.swift"; sourceTree = "<group>"; };
 		AF966A692D8C6840001BA405 /* UIDevice+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Info.swift"; sourceTree = "<group>"; };
 		AF966A6A2D8C6840001BA405 /* UIDevice+Jailbreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Jailbreak.swift"; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 		AF966A752D8C6840001BA405 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
+				33E658082D93C58400BEDFA5 /* Macros.h */,
 				AF966A722D8C6840001BA405 /* LSApplicationWorkspace.h */,
 				AF966A732D8C6840001BA405 /* MobileGestalt.h */,
 				AF966A742D8C6840001BA405 /* posixspawn.h */,
@@ -626,6 +628,7 @@
 		};
 		338843A52D7D8A28002D07FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33DB518E2D7DA1720060EAC4 /* Loader.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -689,6 +692,7 @@
 		};
 		338843A62D7D8A28002D07FD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33DB518E2D7DA1720060EAC4 /* Loader.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

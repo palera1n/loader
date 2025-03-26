@@ -27,7 +27,7 @@ extension UIAlertController {
 	) {
 		var actions = actions
 		actions.append(
-			UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+			UIAlertAction(title: .localized("Cancel"), style: .cancel, handler: nil)
 		)
 		
 		showAlert(
@@ -70,18 +70,18 @@ extension UIAlertController {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		
 		alert.addTextField() { (password) in
-			password.placeholder = "Password"
+			password.placeholder = .localized("Password")
 			password.isSecureTextEntry = true
 			password.keyboardType = UIKeyboardType.asciiCapable
 		}
 		
 		alert.addTextField() { (password) in
-			password.placeholder = "Repeat Password"
+			password.placeholder = .localized("Repeat Password")
 			password.isSecureTextEntry = true
 			password.keyboardType = UIKeyboardType.asciiCapable
 		}
 		
-		let confirm = UIAlertAction(title: "Confirm", style: .default) { _ in
+		let confirm = UIAlertAction(title: .localized("Set Password"), style: .default) { _ in
 			let password = alert.textFields?[0].text
 			completion(password!)
 		}; confirm.isEnabled = false
@@ -96,7 +96,7 @@ extension UIAlertController {
 			let passRepeated = alert.textFields?[1].text
 			
 			if !(pass!.count > 253 || passRepeated!.count > 253) {
-				confirm.setValue("Confirm", forKeyPath: "title")
+				confirm.setValue(String.localized("Set Password"), forKeyPath: "title")
 				confirm.isEnabled = !pass!.isEmpty && !passRepeated!.isEmpty && pass == passRepeated
 			}
 		}
@@ -124,12 +124,14 @@ extension UIAlertController {
 		#endif
 		
 		func change() {
-			UIAlertController.showAlertForPassword(
-				presenter,
-				title: alertTitle,
-				message: alertMessage
-			) { password in
-				completion(password)
+			Thread.mainBlock {
+				UIAlertController.showAlertForPassword(
+					presenter,
+					title: alertTitle,
+					message: alertMessage
+				) { password in
+					completion(password)
+				}
 			}
 		}
 		#if os(iOS)
@@ -151,5 +153,44 @@ extension UIAlertController {
 		#else
 		change()
 		#endif
+	}
+	/// Presents an alert to change a string
+	/// - Parameters:
+	///   - presenter: View where its presenting
+	///   - title: Alert title
+	///   - currentValue: Current value you want to change
+	///   - keyboardType: Keyboard type
+	///   - completion: Completes with a string
+	static func showAlertForStringChange(
+		_ presenter: UIViewController,
+		title: String,
+		currentValue: String,
+		keyboardType: UIKeyboardType = .default,
+		completion: @escaping (String) -> Void
+	) {
+		let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+
+		alert.addTextField { textField in
+			textField.text = currentValue
+			textField.keyboardType = keyboardType
+			textField.autocapitalizationType = .none
+			textField.autocorrectionType = .no
+		}
+		
+		let saveAction = UIAlertAction(title: .localized("Set"), style: .default) { [weak alert] _ in
+			guard let textField = alert?.textFields?.first,
+				  let newValue = textField.text, !newValue.isEmpty else {
+				return
+			}
+			
+			completion(newValue)
+		}
+		
+		alert.addAction(UIAlertAction(title: .localized("Cancel"), style: .cancel, handler: nil))
+		alert.addAction(saveAction)
+		
+		Thread.mainBlock {
+			presenter.present(alert, animated: true)
+		}
 	}
 }

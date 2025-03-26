@@ -5,4 +5,8 @@
 //  Created by samara on 9.03.2025.
 //
 
+DOTFILE_PATH                    = "/.installed_palera1n"
+CONFIG_URL                      = "palera.in/loaderv2.json"
+GCC_PREPROCESSOR_DEFINITIONS    = $(inherited) CONFIG_URL='$(CONFIG_URL)' DOTFILE_PATH='$(DOTFILE_PATH)'
+
 SYSTEM_HEADER_SEARCH_PATHS = $(PROJECT_DIR)/apple-include$(EFFECTIVE_PLATFORM_NAME)

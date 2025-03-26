@@ -7,5 +7,6 @@
 #include "LSApplicationWorkspace.h"
 #include "jailbreakd.h"
 #include <IOKit/IOKitLib.h>
+#import "Macros.h"
 
 uint32_t dyld_get_active_platform(void);

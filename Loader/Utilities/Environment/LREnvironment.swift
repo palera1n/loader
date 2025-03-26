@@ -24,7 +24,7 @@ class LREnvironment {
 	var isBootstrapped: bootstrapStatus {
 		#if !targetEnvironment(simulator)
 		let fileManager = FileManager.default
-		let dotfile = "/.installed_palera1n"
+		let dotfile = dotfilePath()
 		
 		if fileManager.fileExists(atPath: .jb_prefix(dotfile)) {
 			return .bootstrapped
@@ -41,4 +41,14 @@ class LREnvironment {
 		return .not_bootstrapped
 	}
 	
+	static func default_config_url() -> String {
+		"https://\(loaderConfigURL())"
+	}
+	
+	static func config_url() -> String {
+		let userDefaults = UserDefaults.standard
+		let defaultValue = self.default_config_url()
+		let installPath = userDefaults.string(forKey: "defaultInstallPath") ?? defaultValue
+		return installPath
+	}
 }
