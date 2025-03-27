@@ -9,15 +9,15 @@ import UIKit.UIDevice
 
 extension UIDevice {
 	struct Flags {
-		/// User specified `-f` (rootful)
+		/// User specified `rootful`
 		var palerain_option_rootful: Bool
-		/// User specified `-l` (rootless)
+		/// User specified `rootless`
 		var palerain_option_rootless: Bool
 		/// System has signed system volum
 		var palerain_option_ssv: Bool
-		/// User specified `--force-revert` (remove jailbreak)
+		/// User specified `remove jailbreak`
 		var palerain_option_force_revert: Bool
-		/// User specified `-s` (safemode)
+		/// User specified `safemode`
 		var palerain_option_safemode: Bool
 		/// If user has happened to have an rsod
 		var palerain_option_failure: Bool
@@ -26,7 +26,6 @@ extension UIDevice {
 		var flags: String {
 			return String(format: "0x%llx", LREnvironment.jbd.getFlags())
 		}
-		
 		/// See flags in a string-list format
 		var flagsList: String {
 			let mirror = Mirror(reflecting: self)
@@ -36,9 +35,11 @@ extension UIDevice {
 				"\(label ?? "unknown"): \(value as? Bool ?? false)"
 			}.joined(separator: "\n")
 		}
-		
-		/// If the device is able to revert the snapshot with fakefs?
-		var canRevertSnapshot: Bool {
+		/// In some scenerios where the user would want to revert the jailbreak in-app
+		/// there are cases where we cannot remove the entire jailbreak through this.
+		/// Mainly, `rootful + ssv ((partial) fakefs)`, so we offer to
+		/// revert the snapshot (and some files in the user partition) only on these installs.
+		var shouldCleanFakefs: Bool {
 			palerain_option_ssv && palerain_option_rootful
 		}
 		

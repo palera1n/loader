@@ -18,7 +18,7 @@ extension LREnvironment {
 	/// Removes bootstrap
 	func removeBootstrap() {
 		let ret = jbd.obliterateJailbreak(
-			revertSnapshot: UIDevice.current.palera1n.canRevertSnapshot
+			cleanFakeFS: UIDevice.current.palera1n.shouldCleanFakefs
 		)
 		jbd.reloadLaunchdJailbreakEnvironment()
 		

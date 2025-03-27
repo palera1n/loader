@@ -86,14 +86,14 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						}
 					),
 					SectionItem(
-						title: UIDevice.current.palera1n.canRevertSnapshot
+						title: UIDevice.current.palera1n.shouldCleanFakefs
 						? String.localized("Clean FakeFS")
 						: String.localized("Restore System"),
 						tint: .systemRed,
 						action: {
 							
 							let action = UIAlertAction(
-								title: UIDevice.current.palera1n.canRevertSnapshot
+								title: UIDevice.current.palera1n.shouldCleanFakefs
 								? String.localized("Clean FakeFS")
 								: String.localized("Restore System"),
 								style: .destructive
@@ -105,7 +105,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 							
 							UIAlertController.showAlertWithCancel(
 								self,
-								title: UIDevice.current.palera1n.canRevertSnapshot
+								title: UIDevice.current.palera1n.shouldCleanFakefs
 								? String.localized("Clean FakeFS Explanation", arguments: UIDevice.current.marketingModel)
 								: String.localized("Restore System Explanation", arguments: UIDevice.current.marketingModel),
 								message: nil,

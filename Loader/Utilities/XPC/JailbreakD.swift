@@ -86,11 +86,11 @@ final class JailbreakD {
 	}
 	
 	@discardableResult
-	static func obliterateJailbreak(revertSnapshot: Bool) -> Int {
+	static func obliterateJailbreak(cleanFakeFS: Bool) -> Int {
 		#if targetEnvironment(simulator)
 		0
 		#else
-		Int(ObliterateJailbreak_impl(revertSnapshot));
+		Int(ObliterateJailbreak_impl(cleanFakeFS));
 		#endif
 	}
 	
