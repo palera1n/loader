@@ -36,12 +36,12 @@ open class LRBaseTableViewController: UITableViewController {
 	open override func viewDidLoad() {
 		super.viewDidLoad()
 		#if os(iOS)
-		self.configureTitleDisplayMode()
+		self._configureTitleDisplayMode()
 		#endif
 	}
 	
 	#if os(iOS)
-	private func configureTitleDisplayMode() {
+	private func _configureTitleDisplayMode() {
 		if isRootViewController() {
 			navigationItem.largeTitleDisplayMode = .always
 			navigationController?.navigationBar.prefersLargeTitles = true
