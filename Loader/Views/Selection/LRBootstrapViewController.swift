@@ -7,6 +7,7 @@
 
 import UIKit
 import NimbleJSON
+import NimbleViewControllers
 
 // MARK: - Class
 class LRBootstrapViewController: LRBaseTableViewController {

@@ -12,10 +12,14 @@ let package = Package(
 	products: [
 		.library(name: "NimbleAnimations", targets: ["NimbleAnimations"]),
 		.library(name: "NimbleExtensions", targets: ["NimbleExtensions"]),
-		.library(name: "NimbleJSON", targets: ["NimbleJSON"])
+		.library(name: "NimbleJSON", targets: ["NimbleJSON"]),
+		.library(name: "NimbleViewControllers", targets: ["NimbleViewControllers"]),
 	],
 	targets: [
 		.target(name: "NimbleAnimations",
+			dependencies: ["NimbleExtensions"]
+		),
+		.target(name: "NimbleViewControllers",
 			dependencies: ["NimbleExtensions"]
 		),
 		.target(name: "NimbleExtensions",

@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: - Class
-class LRBaseStagedViewController: UIViewController {
+open class LRBaseStagedViewController: UIViewController {
 	typealias StepDataSourceSection = Int
 	typealias StepDataSource = UICollectionViewDiffableDataSource<StepDataSourceSection, StepGroup>
 	typealias StepDataSourceSnapshot = NSDiffableDataSourceSnapshot<StepDataSourceSection, StepGroup>
@@ -30,18 +30,18 @@ class LRBaseStagedViewController: UIViewController {
 		return label
 	}()
 	
-	var steps: [StepGroup] = []
-	var footerString: String = ""
+	public var steps: [StepGroup] = []
+	public var footerString: String = ""
 	
-	init() {
+	public init() {
 		super.init(nibName: nil, bundle: nil)
 	}
 	
-	required init?(coder: NSCoder) {
+	required public init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-    override func viewDidLoad() {
+	open override func viewDidLoad() {
         super.viewDidLoad()
 		self.setupView()
 		_setupCollectionView()
@@ -50,8 +50,8 @@ class LRBaseStagedViewController: UIViewController {
 		self.start()
     }
 	
-	func setupView() {}
-	func start() {}
+	open func setupView() {}
+	open func start() {}
 	
 	private func _createLayout() -> UICollectionViewLayout {
 		let itemSize = NSCollectionLayoutSize(
@@ -123,7 +123,7 @@ class LRBaseStagedViewController: UIViewController {
 		_dataSource?.apply(snapshot)
 	}
 	
-	func updateStepItemStatus(_ section: String, item: String, with status: StepStatus) {
+	public func updateStepItemStatus(_ section: String, item: String, with status: StepStatus) {
 		guard let stepIndex = steps.firstIndex(where: { $0.name == section }),
 			  let itemIndex = steps[stepIndex].items.firstIndex(where: { $0.name == item }) else {
 			print("Couldn't find step with name '\(section)' or item with name '\(item)'")
@@ -143,7 +143,7 @@ class LRBaseStagedViewController: UIViewController {
 		cell.updateItemStatus(withId: itemId, to: status)
 	}
 	
-	func updateStepItemStatusForName(named item: String, with status: StepStatus) {
+	public func updateStepItemStatusForName(named item: String, with status: StepStatus) {
 		for (stepIndex, step) in steps.enumerated() {
 			if let itemIndex = step.items.firstIndex(where: { $0.name == item }) {
 				steps[stepIndex].items[itemIndex].status = status
@@ -164,12 +164,12 @@ class LRBaseStagedViewController: UIViewController {
 
 // MARK: - Class extension: collectionview
 extension LRBaseStagedViewController: UICollectionViewDelegate {
-	func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+	public func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 		selectCollectionViewCell(for: indexPath.row)
 		return false
 	}
 	
-	func selectCollectionViewCell(for row: Int) {
+	public func selectCollectionViewCell(for row: Int) {
 		guard let dataSource = _dataSource else { return }
 		
 		let section = IndexPath(row: row, section: 0)

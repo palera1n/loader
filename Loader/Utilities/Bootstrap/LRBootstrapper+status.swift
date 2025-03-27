@@ -5,6 +5,8 @@
 //  Created by samara on 18.03.2025.
 //
 
+import NimbleViewControllers
+
 // MARK: - Class extension: status
 extension LRBootstrapper {
 	public func setItemStatus(_ section: String, item: String, with status: StepStatus) {

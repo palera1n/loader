@@ -8,6 +8,7 @@
 import UIKit
 import NimbleExtensions
 import NimbleJSON
+import NimbleViewControllers
 
 // MARK: - Class
 class LRSettingsCreditsViewController: LRBaseTableViewController {

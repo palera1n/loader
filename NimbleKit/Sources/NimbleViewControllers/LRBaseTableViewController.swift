@@ -9,7 +9,7 @@ import UIKit
 import NimbleExtensions
 
 // MARK: - Class
-public class LRBaseTableViewController: UITableViewController {
+open class LRBaseTableViewController: UITableViewController {
 	private var _didControllerFade = false
 	private var _hideStatusBar = false
 	
@@ -21,7 +21,7 @@ public class LRBaseTableViewController: UITableViewController {
 		#endif
 	}
 	
-	required init?(coder: NSCoder) {
+	required public init?(coder: NSCoder) {
 		#if os(iOS)
 		super.init(style: .insetGrouped)
 		#else
@@ -29,11 +29,11 @@ public class LRBaseTableViewController: UITableViewController {
 		#endif
 	}
 	
-	public override var prefersStatusBarHidden: Bool {
+	open override var prefersStatusBarHidden: Bool {
 		return self._hideStatusBar
 	}
 	
-	public override func viewDidLoad() {
+	open override func viewDidLoad() {
 		super.viewDidLoad()
 		#if os(iOS)
 		self.configureTitleDisplayMode()

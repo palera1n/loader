@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import NimbleViewControllers
 
 // MARK: - Class
 class LRStagedViewController: LRBaseStagedViewController {
 	private var _shouldBootstrap: Bool
 	private let _config: LRConfig
 	private let _manager: LRManager?
-	private var _dataSource: StepDataSource?
 	
 	init(title: String, config: LRConfig, manager: LRManager? = nil, shouldBootstrap: Bool = true) {
 		self._config = config

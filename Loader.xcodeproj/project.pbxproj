@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3331318D2D8EAB50001B35CE /* LRBootstrapViewController+transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3331318C2D8EAB50001B35CE /* LRBootstrapViewController+transition.swift */; };
-		333131902D8ECE3B001B35CE /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3331318F2D8ECE3B001B35CE /* TimerManager.swift */; };
 		336FA5982D8C381500E28B8F /* NimbleAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = 336FA5972D8C381500E28B8F /* NimbleAnimations */; };
 		336FA59A2D8C381500E28B8F /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 336FA5992D8C381500E28B8F /* NimbleExtensions */; };
 		336FA59C2D8C381500E28B8F /* NimbleJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 336FA59B2D8C381500E28B8F /* NimbleJSON */; };
+		339714652D94E1EB0060E08F /* NimbleViewControllers in Frameworks */ = {isa = PBXBuildFile; productRef = 339714642D94E1EB0060E08F /* NimbleViewControllers */; };
 		33DB517E2D7D9E800060EAC4 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB517D2D7D9E750060EAC4 /* libMobileGestalt.tbd */; };
 		33DB51892D7DA06B0060EAC4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB51882D7DA06B0060EAC4 /* IOKit.framework */; platformFilter = ios; };
 		33DB518B2D7DA0740060EAC4 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB518A2D7DA0740060EAC4 /* CoreServices.framework */; };
@@ -33,15 +33,8 @@
 		AF966ABA2D8C6840001BA405 /* LREnvironment+spawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A842D8C6840001BA405 /* LREnvironment+spawn.swift */; };
 		AF966ABB2D8C6840001BA405 /* jailbreakd.c in Sources */ = {isa = PBXBuildFile; fileRef = AF966A872D8C6840001BA405 /* jailbreakd.c */; };
 		AF966ABC2D8C6840001BA405 /* JailbreakD.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A882D8C6840001BA405 /* JailbreakD.swift */; };
-		AF966ABD2D8C6840001BA405 /* LRStagedLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A8B2D8C6840001BA405 /* LRStagedLoadingIndicator.swift */; };
-		AF966ABE2D8C6840001BA405 /* StepGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A8D2D8C6840001BA405 /* StepGroup.swift */; };
 		AF966ABF2D8C6840001BA405 /* LRStagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A8F2D8C6840001BA405 /* LRStagedViewController.swift */; };
 		AF966AC02D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A902D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift */; };
-		AF966AC12D8C6840001BA405 /* LRStageGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A912D8C6840001BA405 /* LRStageGroupCell.swift */; };
-		AF966AC22D8C6840001BA405 /* LRStageGroupItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A922D8C6840001BA405 /* LRStageGroupItemView.swift */; };
-		AF966AC32D8C6840001BA405 /* LRBaseStagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A942D8C6840001BA405 /* LRBaseStagedViewController.swift */; };
-		AF966AC42D8C6840001BA405 /* LRBaseStructuredTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A952D8C6840001BA405 /* LRBaseStructuredTableViewController.swift */; };
-		AF966AC52D8C6840001BA405 /* LRBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A962D8C6840001BA405 /* LRBaseTableViewController.swift */; };
 		AF966AC62D8C6840001BA405 /* LRBootstrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A982D8C6840001BA405 /* LRBootstrapViewController.swift */; };
 		AF966AC72D8C6840001BA405 /* LRSettingsFlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9A2D8C6840001BA405 /* LRSettingsFlagsViewController.swift */; };
 		AF966AC82D8C6840001BA405 /* LRSettingsAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9C2D8C6840001BA405 /* LRSettingsAboutViewController.swift */; };
@@ -55,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		3331318C2D8EAB50001B35CE /* LRBootstrapViewController+transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LRBootstrapViewController+transition.swift"; sourceTree = "<group>"; };
-		3331318F2D8ECE3B001B35CE /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		336FA59D2D8C385900E28B8F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		3388438F2D7D8A26002D07FD /* Loader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DB517D2D7D9E750060EAC4 /* libMobileGestalt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libMobileGestalt.tbd; path = usr/lib/libMobileGestalt.tbd; sourceTree = SDKROOT; };
@@ -87,15 +79,8 @@
 		AF966A862D8C6840001BA405 /* jailbreakd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jailbreakd.h; sourceTree = "<group>"; };
 		AF966A872D8C6840001BA405 /* jailbreakd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = jailbreakd.c; sourceTree = "<group>"; };
 		AF966A882D8C6840001BA405 /* JailbreakD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JailbreakD.swift; sourceTree = "<group>"; };
-		AF966A8B2D8C6840001BA405 /* LRStagedLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStagedLoadingIndicator.swift; sourceTree = "<group>"; };
-		AF966A8D2D8C6840001BA405 /* StepGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepGroup.swift; sourceTree = "<group>"; };
 		AF966A8F2D8C6840001BA405 /* LRStagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStagedViewController.swift; sourceTree = "<group>"; };
 		AF966A902D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LRStagedViewController+UpdateItem.swift"; sourceTree = "<group>"; };
-		AF966A912D8C6840001BA405 /* LRStageGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStageGroupCell.swift; sourceTree = "<group>"; };
-		AF966A922D8C6840001BA405 /* LRStageGroupItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRStageGroupItemView.swift; sourceTree = "<group>"; };
-		AF966A942D8C6840001BA405 /* LRBaseStagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBaseStagedViewController.swift; sourceTree = "<group>"; };
-		AF966A952D8C6840001BA405 /* LRBaseStructuredTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBaseStructuredTableViewController.swift; sourceTree = "<group>"; };
-		AF966A962D8C6840001BA405 /* LRBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBaseTableViewController.swift; sourceTree = "<group>"; };
 		AF966A982D8C6840001BA405 /* LRBootstrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBootstrapViewController.swift; sourceTree = "<group>"; };
 		AF966A9A2D8C6840001BA405 /* LRSettingsFlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsFlagsViewController.swift; sourceTree = "<group>"; };
 		AF966A9C2D8C6840001BA405 /* LRSettingsAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsAboutViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +104,7 @@
 				336FA59C2D8C381500E28B8F /* NimbleJSON in Frameworks */,
 				33DB51892D7DA06B0060EAC4 /* IOKit.framework in Frameworks */,
 				336FA59A2D8C381500E28B8F /* NimbleExtensions in Frameworks */,
+				339714652D94E1EB0060E08F /* NimbleViewControllers in Frameworks */,
 				AF966AAD2D8C6840001BA405 /* IOKit.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,14 +112,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3331318E2D8ECE31001B35CE /* Timer */ = {
-			isa = PBXGroup;
-			children = (
-				3331318F2D8ECE3B001B35CE /* TimerManager.swift */,
-			);
-			path = Timer;
-			sourceTree = "<group>";
-		};
 		338843862D7D8A26002D07FD = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +258,6 @@
 		AF966A8A2D8C6840001BA405 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				3331318E2D8ECE31001B35CE /* Timer */,
 				AF966A7D2D8C6840001BA405 /* Bootstrap */,
 				AF966A802D8C6840001BA405 /* Config */,
 				AF966A852D8C6840001BA405 /* Environment */,
@@ -289,43 +266,13 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		AF966A8C2D8C6840001BA405 /* Indicator */ = {
-			isa = PBXGroup;
-			children = (
-				AF966A8B2D8C6840001BA405 /* LRStagedLoadingIndicator.swift */,
-			);
-			path = Indicator;
-			sourceTree = "<group>";
-		};
-		AF966A8E2D8C6840001BA405 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				AF966A8D2D8C6840001BA405 /* StepGroup.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		AF966A932D8C6840001BA405 /* Bootstrap */ = {
 			isa = PBXGroup;
 			children = (
-				AF966A8C2D8C6840001BA405 /* Indicator */,
-				AF966A8E2D8C6840001BA405 /* Models */,
 				AF966A8F2D8C6840001BA405 /* LRStagedViewController.swift */,
 				AF966A902D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift */,
-				AF966A912D8C6840001BA405 /* LRStageGroupCell.swift */,
-				AF966A922D8C6840001BA405 /* LRStageGroupItemView.swift */,
 			);
 			path = Bootstrap;
-			sourceTree = "<group>";
-		};
-		AF966A972D8C6840001BA405 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				AF966A942D8C6840001BA405 /* LRBaseStagedViewController.swift */,
-				AF966A952D8C6840001BA405 /* LRBaseStructuredTableViewController.swift */,
-				AF966A962D8C6840001BA405 /* LRBaseTableViewController.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		AF966A992D8C6840001BA405 /* Selection */ = {
@@ -385,7 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				AF966A932D8C6840001BA405 /* Bootstrap */,
-				AF966A972D8C6840001BA405 /* Common */,
 				AF966A992D8C6840001BA405 /* Selection */,
 				AF966AA32D8C6840001BA405 /* Settings */,
 				AF966AA42D8C6840001BA405 /* LRTabbarController.swift */,
@@ -428,6 +374,7 @@
 				336FA5972D8C381500E28B8F /* NimbleAnimations */,
 				336FA5992D8C381500E28B8F /* NimbleExtensions */,
 				336FA59B2D8C381500E28B8F /* NimbleJSON */,
+				339714642D94E1EB0060E08F /* NimbleViewControllers */,
 			);
 			productName = Loader;
 			productReference = 3388438F2D7D8A26002D07FD /* Loader.app */;
@@ -503,17 +450,9 @@
 				AF966ABA2D8C6840001BA405 /* LREnvironment+spawn.swift in Sources */,
 				AF966ABB2D8C6840001BA405 /* jailbreakd.c in Sources */,
 				AF966ABC2D8C6840001BA405 /* JailbreakD.swift in Sources */,
-				AF966ABD2D8C6840001BA405 /* LRStagedLoadingIndicator.swift in Sources */,
-				AF966ABE2D8C6840001BA405 /* StepGroup.swift in Sources */,
 				AF966ABF2D8C6840001BA405 /* LRStagedViewController.swift in Sources */,
 				AF966AC02D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift in Sources */,
-				AF966AC12D8C6840001BA405 /* LRStageGroupCell.swift in Sources */,
-				AF966AC22D8C6840001BA405 /* LRStageGroupItemView.swift in Sources */,
-				AF966AC32D8C6840001BA405 /* LRBaseStagedViewController.swift in Sources */,
-				AF966AC42D8C6840001BA405 /* LRBaseStructuredTableViewController.swift in Sources */,
-				AF966AC52D8C6840001BA405 /* LRBaseTableViewController.swift in Sources */,
 				AF966AC62D8C6840001BA405 /* LRBootstrapViewController.swift in Sources */,
-				333131902D8ECE3B001B35CE /* TimerManager.swift in Sources */,
 				AF966AC72D8C6840001BA405 /* LRSettingsFlagsViewController.swift in Sources */,
 				AF966AC82D8C6840001BA405 /* LRSettingsAboutViewController.swift in Sources */,
 				AF966AC92D8C6840001BA405 /* CreditSection.swift in Sources */,
@@ -789,6 +728,10 @@
 		336FA59B2D8C381500E28B8F /* NimbleJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NimbleJSON;
+		};
+		339714642D94E1EB0060E08F /* NimbleViewControllers */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = NimbleViewControllers;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

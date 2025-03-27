@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NimbleViewControllers
 
 // MARK: - Class
 class LRSettingsAboutViewController: LRBaseStructuredTableViewController {

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 // MARK: - Class extension: bootstrapperdelegate
 extension LRStagedViewController: LRBootstrapperDelegate {
 	func updateStepGroupFocus(for section: Int) {
