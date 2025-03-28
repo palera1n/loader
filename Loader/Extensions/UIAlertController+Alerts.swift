@@ -20,6 +20,7 @@ extension UIAlertController {
 	///   - actions: Alert actions
 	static func showAlertWithCancel(
 		_ presenter: UIViewController,
+		_ popoverFromView: UIView? = nil,
 		title: String?,
 		message: String?,
 		style: UIAlertController.Style = .alert,
@@ -32,6 +33,7 @@ extension UIAlertController {
 		
 		showAlert(
 			presenter,
+			popoverFromView,
 			title: title,
 			message: message,
 			style: style,
@@ -46,6 +48,7 @@ extension UIAlertController {
 	///   - actions: Alert actions
 	static func showAlert(
 		_ presenter: UIViewController,
+		_ popoverFromView: UIView? = nil,
 		title: String?,
 		message: String?,
 		style: UIAlertController.Style = .alert,
@@ -53,6 +56,15 @@ extension UIAlertController {
 	) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: style)
 		actions.forEach { alert.addAction($0) }
+		
+		if style == .actionSheet, 
+			let popover = alert.popoverPresentationController,
+			let view = popoverFromView {
+			popover.sourceView = view
+			popover.sourceRect = view.bounds 
+			popover.permittedArrowDirections = .any
+		}
+		
 		presenter.present(alert, animated: true)
 	}
 	/// Presents an alert to change sudo password

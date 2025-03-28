@@ -157,7 +157,11 @@ extension LRBootstrapViewController {
 		let manager = _data?.content()?.managers[indexPath.row]
 		guard let data = _data, let manager = manager else { return }
 
-		self._showManagerPopup(with: data, using: manager)
+		self._showManagerPopup(
+			with: data,
+			using: manager,
+			popoverUIView: tableView.cellForRow(at: indexPath)!
+		)
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
@@ -168,7 +172,11 @@ extension LRBootstrapViewController {
 
 // MARK: - Class extension: actions
 extension LRBootstrapViewController {
-	private func _showManagerPopup(with config: LRConfig, using manager: LRManager) {
+	private func _showManagerPopup(
+		with config: LRConfig,
+		using manager: LRManager,
+		popoverUIView: UIView? = nil
+	) {
 		let managerInstalled = FileManager.default.fileExists(atPath: manager.filePath.relativePath)
 		
 		let alertTitle = managerInstalled
@@ -193,6 +201,7 @@ extension LRBootstrapViewController {
 		
 		UIAlertController.showAlertWithCancel(
 			self,
+			popoverUIView,
 			title: alertTitle,
 			message: nil,
 			style: .actionSheet,
