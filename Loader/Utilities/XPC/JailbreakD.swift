@@ -44,7 +44,7 @@ final class JailbreakD {
 			path, false,
 			password,
 			Bundle.appExecutable,
-			Bundle.appVersionShort,
+			"\(Bundle.appVersionShort) (\(Bundle.bundleVersion)",
 			&resultDescription
 		)
 		

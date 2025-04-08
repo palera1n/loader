@@ -21,4 +21,11 @@ extension Bundle {
 		}
 		return str
 	}
+	
+	static public var bundleVersion: String {
+		guard let str = main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
+			return ""
+		}
+		return str
+	}
 }
