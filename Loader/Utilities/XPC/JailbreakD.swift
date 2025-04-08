@@ -51,11 +51,11 @@ final class JailbreakD {
 		let result: String;
 		if (resultDescription != nil) {
 			result = String(cString: resultDescription);
+			resultDescription.deallocate();
 		} else {
 			result = ""
 		}
 		
-		resultDescription.deallocate();
 		return (Int(retval), result);
 		#endif
 	}
