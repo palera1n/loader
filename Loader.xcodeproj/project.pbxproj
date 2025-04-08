@@ -501,7 +501,7 @@
 					"$(PROJECT_DIR)/Loader/Supporting\\\\\\ Files",
 					"$(PROJECT_DIR)/Loader/Supporting\\\\\\ Files",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = in.palera.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -550,7 +550,7 @@
 					"$(PROJECT_DIR)/Loader/Supporting\\\\\\ Files",
 					"$(PROJECT_DIR)/Loader/Supporting\\\\\\ Files",
 				);
-				MARKETING_VERSION = 3.0;
+				MARKETING_VERSION = 3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = in.palera.loader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIPFLAGS = "-rSTx";
