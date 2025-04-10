@@ -126,7 +126,7 @@ struct LRManager: Codable {
 	func loadIconImage() -> UIImage {
 		guard let data = try? Data(contentsOf: icon),
 			  let image = UIImage(data: data) else {
-			return UIImage(named: "unknown")
+			return UIImage(named: "unknown")!
 		}
 		return image
 	}

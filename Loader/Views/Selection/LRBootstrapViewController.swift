@@ -149,7 +149,7 @@ extension LRBootstrapViewController {
 		
 		cell.textLabel?.text = manager?.name
 		cell.accessoryType = .disclosureIndicator
-		cell.setSectionImage(with: manager?.loadIconImage())
+		cell.setSectionImage(with: manager?.loadIconImage() ?? UIImage(named: "unknown")!)
 		
 		return cell
 	}
