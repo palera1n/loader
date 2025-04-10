@@ -11,7 +11,9 @@ import NimbleExtensions
 // MARK: - Class
 open class LRBaseTableViewController: UITableViewController {
 	private var _didControllerFade = false
+	#if os(iOS)
 	private var _hideStatusBar = false
+	#endif
 	
 	public init() {
 		#if os(iOS)
@@ -29,9 +31,11 @@ open class LRBaseTableViewController: UITableViewController {
 		#endif
 	}
 	
+	#if os(iOS)
 	open override var prefersStatusBarHidden: Bool {
 		return self._hideStatusBar
 	}
+	#endif
 	
 	open override func viewDidLoad() {
 		super.viewDidLoad()
@@ -114,6 +118,8 @@ open class LRBaseTableViewController: UITableViewController {
 	
 	private func _setHideStatusBar(_ bool: Bool) {
 		self._hideStatusBar = bool
+		#if os(iOS)
 		self.setNeedsStatusBarAppearanceUpdate()
+		#endif
 	}
 }
