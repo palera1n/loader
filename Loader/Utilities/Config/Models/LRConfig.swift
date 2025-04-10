@@ -122,6 +122,14 @@ struct LRManager: Codable {
 	/// Package manager install path
 	/// Useful for detecting if it is installed, due to them having a common path we're able to keep track of
 	let filePath: URL
+	
+	func loadIconImage() -> UIImage {
+		guard let data = try? Data(contentsOf: icon),
+			  let image = UIImage(data: data) else {
+			return UIImage(named: "unknown")
+		}
+		return image
+	}
 }
 
 struct LRRepository: Codable {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		331D48B92DA858B1006A37B2 /* UITableView+image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331D48B82DA858B1006A37B2 /* UITableView+image.swift */; };
 		3331318D2D8EAB50001B35CE /* LRBootstrapViewController+transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3331318C2D8EAB50001B35CE /* LRBootstrapViewController+transition.swift */; };
 		336FA5982D8C381500E28B8F /* NimbleAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = 336FA5972D8C381500E28B8F /* NimbleAnimations */; };
 		336FA59A2D8C381500E28B8F /* NimbleExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 336FA5992D8C381500E28B8F /* NimbleExtensions */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		331D48B82DA858B1006A37B2 /* UITableView+image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+image.swift"; sourceTree = "<group>"; };
 		3331318C2D8EAB50001B35CE /* LRBootstrapViewController+transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LRBootstrapViewController+transition.swift"; sourceTree = "<group>"; };
 		336FA59D2D8C385900E28B8F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		3388438F2D7D8A26002D07FD /* Loader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 		AF966A6E2D8C6840001BA405 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				331D48B82DA858B1006A37B2 /* UITableView+image.swift */,
 				AF966A682D8C6840001BA405 /* UIApplication */,
 				AF966A6B2D8C6840001BA405 /* UIDevice */,
 				AF966A6C2D8C6840001BA405 /* String+prefix.swift */,
@@ -443,6 +446,7 @@
 				AF966AB42D8C6840001BA405 /* LRBootstrapper+download.swift in Sources */,
 				AF966AB52D8C6840001BA405 /* LRBootstrapper+status.swift in Sources */,
 				AF966AB62D8C6840001BA405 /* LRConfig.swift in Sources */,
+				331D48B92DA858B1006A37B2 /* UITableView+image.swift in Sources */,
 				AF966AB72D8C6840001BA405 /* LREnvironment.swift in Sources */,
 				3331318D2D8EAB50001B35CE /* LRBootstrapViewController+transition.swift in Sources */,
 				AF966AB82D8C6840001BA405 /* LREnvironment+prefixes.swift in Sources */,
