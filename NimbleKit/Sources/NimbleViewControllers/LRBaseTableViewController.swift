@@ -96,7 +96,9 @@ open class LRBaseTableViewController: UITableViewController {
 			subview.alpha = 0
 		}
 		
+		#if os(iOS)
 		self._setHideStatusBar(true)
+		#endif
 		
 		let animator = UIViewPropertyAnimator(
 			duration: 0.45,
@@ -116,10 +118,10 @@ open class LRBaseTableViewController: UITableViewController {
 		animator.startAnimation()
 	}
 	
+	#if os(iOS)
 	private func _setHideStatusBar(_ bool: Bool) {
 		self._hideStatusBar = bool
-		#if os(iOS)
 		self.setNeedsStatusBarAppearanceUpdate()
-		#endif
 	}
+	#endif
 }
