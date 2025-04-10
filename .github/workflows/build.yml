@@ -23,11 +23,11 @@ jobs:
 
       - name: Compile palera1nLoader
         run: |
-          gmake package PLATFORM=iphoneos PACKAGE_NAME=palera1nLoader
+          make package PLATFORM=iphoneos PACKAGE_NAME=palera1nLoader
 
       - name: Compile palera1nLoaderTV
         run: |
-          gmake package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
+          make package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
