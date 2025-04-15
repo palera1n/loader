@@ -55,6 +55,6 @@ extension UIDevice {
 	}
 	
 	var palera1n: Flags {
-		return Flags()
+		Flags()
 	}
 }

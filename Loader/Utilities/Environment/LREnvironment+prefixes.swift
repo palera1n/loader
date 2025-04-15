@@ -20,10 +20,10 @@ extension LREnvironment {
 	}
 	
 	static func binpack(_ path: String) -> String {
-		return "/cores/binpack" + path
+		"/cores/binpack" + path
 	}
 	
 	static func tmp(_ path: String = "") -> String {
-		return "/tmp/palera1n" + path
+		"/tmp/palera1n" + path
 	}
 }
