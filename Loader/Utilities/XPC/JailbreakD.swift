@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class JailbreakD {
+enum JailbreakD {
 	static func getFlags() -> UInt64 {
 		#if targetEnvironment(simulator)
 //		0xc0002 // rootless
