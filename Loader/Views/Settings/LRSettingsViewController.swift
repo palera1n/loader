@@ -91,7 +91,6 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						: String.localized("Restore System"),
 						tint: .systemRed,
 						action: {
-							
 							let action = UIAlertAction(
 								title: UIDevice.current.palera1n.shouldCleanFakefs
 								? String.localized("Clean FakeFS")
@@ -103,13 +102,17 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 								}
 							}
 							
+							var style: UIAlertController.Style = UIDevice.current.userInterfaceIdiom == .pad
+							? .alert
+							: .actionSheet
+							
 							UIAlertController.showAlertWithCancel(
 								self,
 								title: UIDevice.current.palera1n.shouldCleanFakefs
 								? String.localized("Clean FakeFS Explanation", arguments: UIDevice.current.marketingModel)
 								: String.localized("Restore System Explanation", arguments: UIDevice.current.marketingModel),
 								message: nil,
-								style: .actionSheet,
+								style: style,
 								actions: [action]
 							)
 						}
