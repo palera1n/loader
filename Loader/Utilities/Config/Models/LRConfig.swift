@@ -73,7 +73,7 @@ struct LRConfigContentDetails: Codable {
 	private func _findCompatibleBootstraps() -> LRBootstrap? {
 		let currentCFVersion = UIDevice.current.cfVersion.rounded
 		let availableVersions = bootstraps.map { $0.cfver }
-		
+
 		// If current version is lower than all available bootstraps
 		if let minAvailableVersion = availableVersions.min(), Int(currentCFVersion)! < minAvailableVersion {
 			return nil
@@ -87,6 +87,17 @@ struct LRConfigContentDetails: Codable {
 		// If current version is higher than available bootstraps
 		if let highestVersion = availableVersions.max(), Int(currentCFVersion)! > highestVersion {
 			return bootstraps.filter { $0.cfver == highestVersion }.first
+		}
+		
+		// Get the closest version for the first character in a string 2600 -> 2
+		if #available(iOS 17, *) {
+			if let digit = currentCFVersion.first {
+				let matching = availableVersions.filter { String($0).first == digit }
+				
+				if let closestVersion = matching.min(by: { abs($0 - Int(currentCFVersion)!) < abs($1 - Int(currentCFVersion)!) }) {
+					return bootstraps.filter { $0.cfver == closestVersion }.first
+				}
+			}
 		}
 		
 		return nil
@@ -124,8 +135,10 @@ struct LRManager: Codable {
 	let filePath: URL
 	
 	func loadIconImage() -> UIImage {
-		guard let data = try? Data(contentsOf: icon),
-			  let image = UIImage(data: data) else {
+		guard
+			let data = try? Data(contentsOf: icon),
+			let image = UIImage(data: data)
+		else {
 			return UIImage(named: "unknown")!
 		}
 		return image

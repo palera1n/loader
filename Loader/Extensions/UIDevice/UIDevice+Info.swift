@@ -13,16 +13,16 @@ extension UIDevice {
 		private let _cfVersionNumber = kCFCoreFoundationVersionNumber
 		
 		var standard: String {
-			return "\(Int(floor(_cfVersionNumber)))"
+			"\(Int(floor(_cfVersionNumber)))"
 		}
 		
 		var rounded: String {
-			return "\(Int(floor(_cfVersionNumber / 100) * 100))"
+			"\(Int(floor(_cfVersionNumber / 100) * 100))"
 		}
 	}
 	
 	var cfVersion: CFVersionInfo {
-		return CFVersionInfo()
+		CFVersionInfo()
 	}
 	
 	/// The devices architecture (e.g. arm64).
