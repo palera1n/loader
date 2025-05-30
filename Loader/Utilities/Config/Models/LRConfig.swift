@@ -131,17 +131,24 @@ struct LRManager: Codable {
 	/// Package manager image representation uri
 	let icon: URL
 	/// Package manager install path
-	/// Useful for detecting if it is installed, due to them having a common path we're able to keep track of
 	let filePath: URL
 	
-	func loadIconImage() -> UIImage {
-		guard
-			let data = try? Data(contentsOf: icon),
-			let image = UIImage(data: data)
-		else {
-			return UIImage(named: "unknown")!
-		}
-		return image
+	/// Asynchronously load the icon image
+	func loadIconImage(completion: @escaping (UIImage) -> Void) {
+		URLSession.shared.dataTask(with: icon) { data, response, error in
+			if 
+				let data = data,
+				let image = UIImage(data: data)
+			{
+				DispatchQueue.main.async {
+					completion(image)
+				}
+			} else {
+				DispatchQueue.main.async {
+					completion(UIImage(named: "unknown")!)
+				}
+			}
+		}.resume()
 	}
 }
 

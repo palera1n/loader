@@ -102,7 +102,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 								}
 							}
 							
-							var style: UIAlertController.Style = UIDevice.current.userInterfaceIdiom == .pad
+							let style: UIAlertController.Style = UIDevice.current.userInterfaceIdiom == .pad
 							? .alert
 							: .actionSheet
 							
@@ -194,12 +194,11 @@ extension LRBaseStructuredTableViewController {
 		
 		let newSection = (title: sectionTitle, items: sectionItems)
 		
-		if let index = sectionIndex {
-			if sections.count > index {
-				sections.insert(newSection, at: index)
-			} else {
-				sections.append(newSection)
-			}
+		if 
+			let index = sectionIndex,
+			sections.count > index
+		{
+			sections.insert(newSection, at: index)
 		} else {
 			sections.append(newSection)
 		}

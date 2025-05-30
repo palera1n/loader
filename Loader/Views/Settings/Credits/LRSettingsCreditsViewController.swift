@@ -74,15 +74,15 @@ class LRSettingsCreditsViewController: LRBaseTableViewController {
 // MARK: - Class extension: tableview
 extension LRSettingsCreditsViewController {
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return _data.count
+		_data.count
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return _data[section].data.count
+		_data[section].data.count
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return _data[section].name
+		_data[section].name
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,14 +118,14 @@ extension LRSettingsCreditsViewController {
 
 extension LRSettingsCreditsViewController {
 	private func _openProfileURL(for person: CreditPerson) {
-		if let intent = person.intent,
-		   let intentUrl = URL(string: "https://twitter.com/intent/follow?screen_name=\(intent)"),
-		   UIApplication.shared.canOpenURL(intentUrl) {
+		if 
+			let intent = person.intent,
+			let intentUrl = URL(string: "https://twitter.com/intent/follow?screen_name=\(intent)"),
+			UIApplication.shared.canOpenURL(intentUrl) 
+		{
 			UIApplication.shared.open(intentUrl)
-		} else {
-			if let githubUrl = URL(string: "https://github.com/\(person.github)") {
-				UIApplication.shared.open(githubUrl)
-			}
+		} else if let githubUrl = URL(string: "https://github.com/\(person.github)") {
+			UIApplication.shared.open(githubUrl)
 		}
 	}
 }

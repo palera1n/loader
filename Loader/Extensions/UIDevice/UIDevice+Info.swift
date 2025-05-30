@@ -27,12 +27,12 @@ extension UIDevice {
 	
 	/// The devices architecture (e.g. arm64).
 	var architecture: String {
-		return String(cString: NXGetLocalArchInfo().pointee.name)
+		String(cString: NXGetLocalArchInfo().pointee.name)
 	}
 	
 	/// The devices marketing model (e.g. iPhone 7)
 	var marketingModel: String {
-		return MGCopyAnswer(kMGPhysicalHardwareNameString)?.takeUnretainedValue() as? String ?? "Unknown"
+		MGCopyAnswer(kMGPhysicalHardwareNameString)?.takeUnretainedValue() as? String ?? "Unknown"
 	}
 	
 	var kernelVersion: String {

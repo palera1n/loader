@@ -24,7 +24,7 @@ extension UIDevice {
 		
 		/// See flags in string format
 		var flags: String {
-			return String(format: "0x%llx", LREnvironment.jbd.getFlags())
+			String(format: "0x%llx", LREnvironment.jbd.getFlags())
 		}
 		/// See flags in a string-list format
 		var flagsList: String {
