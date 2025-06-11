@@ -13,18 +13,30 @@ extension LREnvironment {
 	/// - Parameter password: The sudo password you want to use
 	func resetSudoPassword(with password: String) {
 		let dashCommand = "printf \"%s\\n\" \"\(password)\" | \(self.jb_prefix("/usr/sbin/pw")) usermod 501 -h 0"
-		LREnvironment.execute(self.jb_prefix("/usr/bin/dash"), ["-c", dashCommand])
+		Self.execute(.jb_prefix("/usr/bin/dash"), ["-c", dashCommand])
 	}
 	/// Removes bootstrap
 	func removeBootstrap() {
-		let ret = jbd.obliterateJailbreak(
-			cleanFakeFS: UIDevice.current.palera1n.shouldCleanFakefs
-		)
-		jbd.reloadLaunchdJailbreakEnvironment()
+		if
+			#available(iOS 18, *),
+			UIDevice.current.palera1n.palerain_option_rootless
+		{
+			let apps = try? FileManager.default.contentsOfDirectory(atPath: .jb_prefix("/Applications"))
+			
+			if let apps { for app in apps {
+				Self.execute(.binpack("/usr/bin/uicache"), ["-u", app])
+			}}
+		}
 		
-		if ret != 0 {
+		guard
+			jbd.obliterateJailbreak(
+				cleanFakeFS: UIDevice.current.palera1n.shouldCleanFakefs
+			) == 0
+		else {
 			return
 		}
+		
+		jbd.reloadLaunchdJailbreakEnvironment()
 		
 		#if !DEBUG
 		reboot()
@@ -32,8 +44,8 @@ extension LREnvironment {
 		exit(0)
 		#endif
 	}
-	
+	/// Reboots device
 	func reboot() {
-		LREnvironment.execute(.binpack("/bin/launchctl"), ["reboot"])
+		Self.execute(.binpack("/bin/launchctl"), ["reboot"])
 	}
 }
