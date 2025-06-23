@@ -124,8 +124,10 @@ open class LRBaseStagedViewController: UIViewController {
 	}
 	
 	public func updateStepItemStatus(_ section: String, item: String, with status: StepStatus) {
-		guard let stepIndex = steps.firstIndex(where: { $0.name == section }),
-			  let itemIndex = steps[stepIndex].items.firstIndex(where: { $0.name == item }) else {
+		guard
+			let stepIndex = steps.firstIndex(where: { $0.name == section }),
+			let itemIndex = steps[stepIndex].items.firstIndex(where: { $0.name == item })
+		else {
 			print("Couldn't find step with name '\(section)' or item with name '\(item)'")
 			return
 		}

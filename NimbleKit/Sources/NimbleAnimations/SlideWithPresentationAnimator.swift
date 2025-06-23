@@ -17,16 +17,18 @@ public class SlideWithPresentationAnimator: NSObject, UIViewControllerAnimatedTr
 	}
 	
 	public func transitionDuration(using transitionContext: (any UIViewControllerContextTransitioning)?) -> TimeInterval {
-		return 0.7
+		0.7
 	}
 	
 	public func animateTransition(using transitionContext: any UIViewControllerContextTransitioning) {
 		let containerView = transitionContext.containerView
 		
-		guard let toVC = transitionContext.viewController(forKey: .to),
-			  let fromVC = transitionContext.viewController(forKey: .from),
-			  let toView = transitionContext.view(forKey: .to) ?? toVC.view,
-			  let fromView = transitionContext.view(forKey: .from) ?? fromVC.view else {
+		guard
+			let toVC = transitionContext.viewController(forKey: .to),
+			let fromVC = transitionContext.viewController(forKey: .from),
+			let toView = transitionContext.view(forKey: .to) ?? toVC.view,
+			let fromView = transitionContext.view(forKey: .from) ?? fromVC.view
+		else {
 			transitionContext.completeTransition(false)
 			return
 		}

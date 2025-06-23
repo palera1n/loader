@@ -18,8 +18,8 @@ class TimerManager {
 			self.timer = Timer.scheduledTimer(
 				withTimeInterval: timeInterval,
 				repeats: repeats,
-				block: { _ in
-				})
+				block: { _ in }
+			)
 			
 			if let timer = self.timer {
 				RunLoop.current.add(timer, forMode: .common)

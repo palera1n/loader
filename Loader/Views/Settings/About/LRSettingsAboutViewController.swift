@@ -76,13 +76,11 @@ class LRSettingsAboutViewController: LRBaseStructuredTableViewController {
 				items: [
 					SectionItem(
 						title: "boot-manifest-hash",
-						subtitle: device.bootmanifestHash ?? "",
-						style: .subtitle
+						subtitle: device.bootmanifestHash ?? ""
 					),
 					SectionItem(
 						title: "boot-args",
-						subtitle: device.bootArgs,
-						style: .subtitle
+						subtitle: device.bootArgs
 					)
 				]
 			)

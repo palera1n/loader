@@ -17,14 +17,14 @@ class LRTabbarController: UITabBarController {
 	private func _setupTabs() {
 		let sources = self._createNavigation(
 			with: "palera1n",
-			and: UIImage(systemName: "wand.and.stars"),
-			vc: LRBootstrapViewController()
+			using: UIImage(systemName: "wand.and.stars"),
+			controller: LRBootstrapViewController()
 		)
 		
 		let apps = self._createNavigation(
 			with: .localized("Settings"),
-			and: UIImage(systemName: "gear"),
-			vc: LRSettingsViewController()
+			using: UIImage(systemName: "gear"),
+			controller: LRSettingsViewController()
 		)
 		
 		self.setViewControllers([
@@ -33,13 +33,15 @@ class LRTabbarController: UITabBarController {
 		], animated: false)
 	}
 	
-	private func _createNavigation(with title: String, and image: UIImage?, vc: UIViewController) -> UINavigationController {
-		let nav = UINavigationController(rootViewController: vc)
-		
+	private func _createNavigation(
+		with title: String,
+		using image: UIImage?,
+		controller: UIViewController
+	) -> UINavigationController {
+		let nav = UINavigationController(rootViewController: controller)
 		nav.tabBarItem.title = title
 		nav.tabBarItem.image = image
 		nav.viewControllers.first?.navigationItem.title = title
-		
 		return nav
 	}
 }

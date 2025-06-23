@@ -17,14 +17,10 @@ public class FetchService {
 		
 		public var errorDescription: String? {
 			switch self {
-			case .invalidURL:
-				return "The URL is invalid."
-			case .networkError(let error):
-				return "Network error: \(error.localizedDescription)"
-			case .noData:
-				return "No data received."
-			case .parsingError(let error):
-				return "Failed to parse data: \(error.localizedDescription)"
+			case .invalidURL: 				"The URL is invalid."
+			case .networkError(let error): 	"Network error: \(error.localizedDescription)"
+			case .noData: 					"No data received."
+			case .parsingError(let error): 	"Failed to parse data: \(error.localizedDescription)"
 			}
 		}
 	}

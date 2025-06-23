@@ -39,7 +39,6 @@
 		AF966AC62D8C6840001BA405 /* LRBootstrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A982D8C6840001BA405 /* LRBootstrapViewController.swift */; };
 		AF966AC72D8C6840001BA405 /* LRSettingsFlagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9A2D8C6840001BA405 /* LRSettingsFlagsViewController.swift */; };
 		AF966AC82D8C6840001BA405 /* LRSettingsAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9C2D8C6840001BA405 /* LRSettingsAboutViewController.swift */; };
-		AF966AC92D8C6840001BA405 /* CreditSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966A9E2D8C6840001BA405 /* CreditSection.swift */; };
 		AF966ACA2D8C6840001BA405 /* LRSettingsCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA02D8C6840001BA405 /* LRSettingsCreditsViewController.swift */; };
 		AF966ACB2D8C6840001BA405 /* LRSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA22D8C6840001BA405 /* LRSettingsViewController.swift */; };
 		AF966ACC2D8C6840001BA405 /* LRTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF966AA42D8C6840001BA405 /* LRTabbarController.swift */; };
@@ -86,7 +85,6 @@
 		AF966A982D8C6840001BA405 /* LRBootstrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRBootstrapViewController.swift; sourceTree = "<group>"; };
 		AF966A9A2D8C6840001BA405 /* LRSettingsFlagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsFlagsViewController.swift; sourceTree = "<group>"; };
 		AF966A9C2D8C6840001BA405 /* LRSettingsAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsAboutViewController.swift; sourceTree = "<group>"; };
-		AF966A9E2D8C6840001BA405 /* CreditSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditSection.swift; sourceTree = "<group>"; };
 		AF966AA02D8C6840001BA405 /* LRSettingsCreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsCreditsViewController.swift; sourceTree = "<group>"; };
 		AF966AA22D8C6840001BA405 /* LRSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRSettingsViewController.swift; sourceTree = "<group>"; };
 		AF966AA42D8C6840001BA405 /* LRTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRTabbarController.swift; sourceTree = "<group>"; };
@@ -304,18 +302,9 @@
 			path = About;
 			sourceTree = "<group>";
 		};
-		AF966A9F2D8C6840001BA405 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				AF966A9E2D8C6840001BA405 /* CreditSection.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		AF966AA12D8C6840001BA405 /* Credits */ = {
 			isa = PBXGroup;
 			children = (
-				AF966A9F2D8C6840001BA405 /* Models */,
 				AF966AA02D8C6840001BA405 /* LRSettingsCreditsViewController.swift */,
 			);
 			path = Credits;
@@ -459,7 +448,6 @@
 				AF966AC62D8C6840001BA405 /* LRBootstrapViewController.swift in Sources */,
 				AF966AC72D8C6840001BA405 /* LRSettingsFlagsViewController.swift in Sources */,
 				AF966AC82D8C6840001BA405 /* LRSettingsAboutViewController.swift in Sources */,
-				AF966AC92D8C6840001BA405 /* CreditSection.swift in Sources */,
 				AF966ACA2D8C6840001BA405 /* LRSettingsCreditsViewController.swift in Sources */,
 				AF966ACB2D8C6840001BA405 /* LRSettingsViewController.swift in Sources */,
 				AF966ACC2D8C6840001BA405 /* LRTabbarController.swift in Sources */,

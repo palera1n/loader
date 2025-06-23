@@ -44,19 +44,19 @@ public enum StepStatus: String, CaseIterable {
 	
 	var systemImageName: String {
 		switch self {
-		case .pending:     return "circle.dotted"
-		case .inProgress:  return "circle.dashed"
-		case .completed:   return "checkmark.circle.fill"
-		case .failed:      return "xmark.circle.fill"
+		case .pending:		"circle.dotted"
+		case .inProgress:	"circle.dashed"
+		case .completed:	"checkmark.circle.fill"
+		case .failed: 		"xmark.circle.fill"
 		}
 	}
 	
 	var tintColor: UIColor {
 		switch self {
-		case .pending:     return .systemGray.withAlphaComponent(0.4)
-		case .inProgress:  return .systemBlue
-		case .completed:   return .systemGreen
-		case .failed:      return .systemRed
+		case .pending:		.systemGray.withAlphaComponent(0.4)
+		case .inProgress:	.systemBlue
+		case .completed:	.systemGreen
+		case .failed: 		.systemRed
 		}
 	}
 }

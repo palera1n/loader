@@ -737,6 +737,17 @@
         }
       }
     },
+    "Other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      }
+    },
     "Password" : {
       "comment" : "Placeholder text for the first text field in the password prompt",
       "extractionState" : "manual",

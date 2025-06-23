@@ -15,8 +15,6 @@ open class LRBaseStructuredTableViewController: LRBaseTableViewController {
 		public let title: String
 		/// Cell subtitle
 		public var subtitle: String = ""
-		/// Cell style
-		public var style: UITableViewCell.CellStyle = .value1
 		/// Cell tint
 		public var tint: UIColor?
 		/// Navigation link, may conflict with `action`
@@ -30,7 +28,6 @@ open class LRBaseStructuredTableViewController: LRBaseTableViewController {
 		public init(
 			title: String,
 			subtitle: String = "",
-			style: UITableViewCell.CellStyle = .value1,
 			tint: UIColor? = nil,
 			navigationDestination: UIViewController? = nil,
 			presentNavigationDestination: (() -> UINavigationController)? = nil,
@@ -38,7 +35,6 @@ open class LRBaseStructuredTableViewController: LRBaseTableViewController {
 		) {
 			self.title = title
 			self.subtitle = subtitle
-			self.style = style
 			self.tint = tint
 			self.navigationDestination = navigationDestination
 			self.presentNavigationDestination = presentNavigationDestination
@@ -51,7 +47,7 @@ open class LRBaseStructuredTableViewController: LRBaseTableViewController {
 	
 	open override func viewDidLoad() {
 		super.viewDidLoad()
-		self.setupSections()
+		setupSections()
 	}
 	
 	open func setupSections() {}
@@ -60,37 +56,27 @@ open class LRBaseStructuredTableViewController: LRBaseTableViewController {
 // MARK: - Class extension: tableview
 extension LRBaseStructuredTableViewController {
 	open override func numberOfSections(in tableView: UITableView) -> Int {
-		return sections.count
+		sections.count
 	}
 	
 	open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return sections[section].items.count
+		sections[section].items.count
 	}
 	
 	open override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return sections[section].title
+		sections[section].title
 	}
 	
 	open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
 		let section = sections[indexPath.section]
 		let item = section.items[indexPath.row]
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-		?? UITableViewCell(style: item.style, reuseIdentifier: "Cell")
-		
-		cell.textLabel?.text = item.title
-		cell.textLabel?.textColor = .label
-		cell.detailTextLabel?.text = item.subtitle
-		cell.detailTextLabel?.textColor = .secondaryLabel
-		cell.detailTextLabel?.numberOfLines = 0
-		
-		if item.style == .subtitle {
-			#if os(iOS)
-			cell.detailTextLabel?.font = .monospacedSystemFont(ofSize: 12, weight: .regular)
-			#else
-			cell.detailTextLabel?.font = .monospacedSystemFont(ofSize: 24, weight: .regular)
-			#endif
-		}
+		var content = UIListContentConfiguration.valueCell()
+		content.text = item.title
+		content.textProperties.color = .label
+		content.secondaryText = item.subtitle
+		content.secondaryTextProperties.color = .secondaryLabel
 		
 		if (item.navigationDestination != nil) ||
 			(item.presentNavigationDestination != nil) {
@@ -98,11 +84,9 @@ extension LRBaseStructuredTableViewController {
 			cell.selectionStyle = .default
 		} else if (item.action != nil) {
 			#if os(iOS)
-			if #available(iOS 15.0, *) {
-				cell.textLabel?.textColor = item.tint ?? .tintColor
-			}
+			content.textProperties.color = item.tint ?? .tintColor
 			#else
-			cell.textLabel?.textColor = item.tint ?? .systemBlue
+			content.textProperties.color = item.tint ?? .systemBlue
 			#endif
 			cell.accessoryType = .none
 			cell.selectionStyle = .default
@@ -111,6 +95,7 @@ extension LRBaseStructuredTableViewController {
 			cell.selectionStyle = .none
 		}
 		
+		cell.contentConfiguration = content
 		return cell
 	}
 	

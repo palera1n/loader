@@ -10,9 +10,10 @@ import UIKit.UIScreen
 extension UIScreen {
 	/// Physical screen corner radius
 	public var screenCornerRadius: CGFloat {
-		let propertyBase64 = "X2Rpc3BsYXlDb3JuZXJSYWRpdXM="
-		guard let data = Data(base64Encoded: propertyBase64),
-			  let propertyString = String(data: data, encoding: .utf8) else {
+		guard
+			let data = Data(base64Encoded: "X2Rpc3BsYXlDb3JuZXJSYWRpdXM="),
+			let propertyString = String(data: data, encoding: .utf8)
+		else {
 			return 0
 		}
 		

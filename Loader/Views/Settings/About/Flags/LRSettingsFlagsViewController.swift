@@ -21,9 +21,7 @@ class LRSettingsFlagsViewController: LRBaseStructuredTableViewController {
 				title: "",
 				items: [
 					SectionItem(
-						title: "",
-						subtitle: UIDevice.current.palera1n.flagsList,
-						style: .subtitle
+						title: UIDevice.current.palera1n.flagsList
 					),
 				]
 			),

@@ -46,7 +46,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 				]
 			),
 			(
-				title: "Other",
+				title: .localized("Other"),
 				items: [
 					SectionItem(
 						title: .localized("Device Info"),
@@ -63,8 +63,8 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 		addUserDefaultsStringSection(
 			key: "defaultInstallPath",
 			defaultValue: LREnvironment.default_config_url(),
-			sectionTitle: "Download",
-			changeTitle: "Change Download URL",
+			sectionTitle: .localized("Download"),
+			changeTitle: .localized("Change Download URL"),
 			keyboardType: .URL
 		)
 		
@@ -87,14 +87,14 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 					),
 					SectionItem(
 						title: UIDevice.current.palera1n.shouldCleanFakefs
-						? String.localized("Clean FakeFS")
-						: String.localized("Restore System"),
+						? .localized("Clean FakeFS")
+						: .localized("Restore System"),
 						tint: .systemRed,
 						action: {
 							let action = UIAlertAction(
 								title: UIDevice.current.palera1n.shouldCleanFakefs
-								? String.localized("Clean FakeFS")
-								: String.localized("Restore System"),
+								? .localized("Clean FakeFS")
+								: .localized("Restore System"),
 								style: .destructive
 							) { _ in
 								self.blackOutController {
@@ -109,8 +109,8 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 							UIAlertController.showAlertWithCancel(
 								self,
 								title: UIDevice.current.palera1n.shouldCleanFakefs
-								? String.localized("Clean FakeFS Explanation", arguments: UIDevice.current.marketingModel)
-								: String.localized("Restore System Explanation", arguments: UIDevice.current.marketingModel),
+								? .localized("Clean FakeFS Explanation", arguments: UIDevice.current.marketingModel)
+								: .localized("Restore System Explanation", arguments: UIDevice.current.marketingModel),
 								message: nil,
 								style: style,
 								actions: [action]
@@ -143,7 +143,6 @@ extension LRBaseStructuredTableViewController {
 			sectionItems = [
 				SectionItem(
 					title: currentValue,
-					style: .subtitle,
 					tint: .secondaryLabel,
 					action: { [weak self] in
 						UIAlertController.showAlertForStringChange(
@@ -161,7 +160,6 @@ extension LRBaseStructuredTableViewController {
 				),
 				SectionItem(
 					title: .localized("Reset Configuration"),
-					style: .subtitle,
 					tint: .systemRed,
 					action: { [weak self] in
 						userDefaults.removeObject(forKey: key)
@@ -174,7 +172,6 @@ extension LRBaseStructuredTableViewController {
 			sectionItems = [
 				SectionItem(
 					title: changeTitle,
-					style: .value1,
 					tint: .tintColor,
 					action: { [weak self] in
 						UIAlertController.showAlertForStringChange(

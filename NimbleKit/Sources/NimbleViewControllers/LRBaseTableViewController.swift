@@ -33,7 +33,7 @@ open class LRBaseTableViewController: UITableViewController {
 	
 	#if os(iOS)
 	open override var prefersStatusBarHidden: Bool {
-		return self._hideStatusBar
+		self._hideStatusBar
 	}
 	#endif
 	
@@ -42,6 +42,7 @@ open class LRBaseTableViewController: UITableViewController {
 		#if os(iOS)
 		self._configureTitleDisplayMode()
 		#endif
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 	}
 	
 	#if os(iOS)
@@ -55,7 +56,7 @@ open class LRBaseTableViewController: UITableViewController {
 	}
 	
 	private func isRootViewController() -> Bool {
-		return navigationController?.viewControllers.first === self
+		navigationController?.viewControllers.first === self
 	}
 	#endif
 	

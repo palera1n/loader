@@ -10,6 +10,25 @@ import NimbleExtensions
 import NimbleJSON
 import NimbleViewControllers
 
+// MARK: - Class extension: model
+extension LRSettingsCreditsViewController {
+	struct CreditSection: Decodable {
+		let name: String
+		let data: [CreditPerson]
+		
+		struct CreditPerson: Decodable {
+			let name: String
+			let github: String
+			let intent: String?
+			let desc: String?
+		}
+	}
+	
+	struct CreditsData: Decodable {
+		let sections: [CreditSection]
+	}
+}
+
 // MARK: - Class
 class LRSettingsCreditsViewController: LRBaseTableViewController {
 	typealias CreditsDataHandler = Result<CreditsData, Error>
@@ -21,13 +40,12 @@ class LRSettingsCreditsViewController: LRBaseTableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = .localized("Credits")
-		
-		self._setupActivityIndicator()
-		self._load()
+		_setupNavigation()
+		_load()
 	}
 	
-	private func _setupActivityIndicator() {
+	private func _setupNavigation() {
+		title = .localized("Credits")
 		_activityIndicator.hidesWhenStopped = true
 		let activityBarButtonItem = UIBarButtonItem(customView: _activityIndicator)
 		navigationItem.rightBarButtonItem = activityBarButtonItem
@@ -64,7 +82,7 @@ class LRSettingsCreditsViewController: LRBaseTableViewController {
 		
 		UIAlertController.showAlert(
 			self,
-			title: "Error",
+			title: ":(",
 			message: message,
 			actions: [ok, retry]
 		)
@@ -86,39 +104,37 @@ extension LRSettingsCreditsViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
 		let person = _data[indexPath.section].data[indexPath.row]
-
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-		?? UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
 		
-		cell.textLabel?.text = person.name
-		cell.detailTextLabel?.text = "@\(person.github)"
-		#if os(iOS)
-		cell.detailTextLabel?.textColor = .secondaryLabel
-		#endif
 		cell.accessoryType = .disclosureIndicator
 		
+		var content = cell.defaultContentConfiguration()
+		content.text = person.name
+		content.secondaryText = "@\(person.github)"
+		content.secondaryTextProperties.color = .secondaryLabel
+		
 		if let description = person.desc {
-			cell.detailTextLabel?.text = cell.detailTextLabel?.text.map {
+			content.secondaryText = cell.detailTextLabel?.text.map {
 				"\($0) • \(description)"
 			} ?? description
 		}
-				
+		
+		cell.contentConfiguration = content
 		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let person = _data[indexPath.section].data[indexPath.row]
-		
 		self._openProfileURL(for: person)
-
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
 
+// MARK: - Class extension: Open
 extension LRSettingsCreditsViewController {
-	private func _openProfileURL(for person: CreditPerson) {
-		if 
+	private func _openProfileURL(for person: CreditSection.CreditPerson) {
+		if
 			let intent = person.intent,
 			let intentUrl = URL(string: "https://twitter.com/intent/follow?screen_name=\(intent)"),
 			UIApplication.shared.canOpenURL(intentUrl) 

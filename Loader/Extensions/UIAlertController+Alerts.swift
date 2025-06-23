@@ -21,7 +21,7 @@ extension UIAlertController {
 	static func showAlertWithCancel(
 		_ presenter: UIViewController,
 		_ popoverFromView: UIView? = nil,
-		title: String?,
+		title: String? = "",
 		message: String?,
 		style: UIAlertController.Style = .alert,
 		actions: [UIAlertAction]
@@ -190,8 +190,10 @@ extension UIAlertController {
 		}
 		
 		let saveAction = UIAlertAction(title: .localized("Set"), style: .default) { [weak alert] _ in
-			guard let textField = alert?.textFields?.first,
-				  let newValue = textField.text, !newValue.isEmpty else {
+			guard
+				let textField = alert?.textFields?.first,
+				let newValue = textField.text, !newValue.isEmpty
+			else {
 				return
 			}
 			

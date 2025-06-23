@@ -20,17 +20,16 @@ class LRBootstrapViewController: LRBaseTableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		self._notifyUserIfCertainFlags()
-		self._setupActivityIndicator()
-		self._load()
+		_notifyUserIfCertainFlags()
+		_setupNavigation()
+		_load()
+	}
+	
+	private func _setupNavigation() {
 		#if os(iOS)
 		refreshControl = UIRefreshControl()
 		refreshControl?.addTarget(self, action: #selector(self._load), for: .valueChanged)
 		#endif
-	}
-	
-	private func _setupActivityIndicator() {
 		_activityIndicator.hidesWhenStopped = true
 		let activityBarButtonItem = UIBarButtonItem(customView: _activityIndicator)
 		navigationItem.rightBarButtonItem = activityBarButtonItem
@@ -124,7 +123,6 @@ class LRBootstrapViewController: LRBaseTableViewController {
 		
 		UIAlertController.showAlertWithCancel(
 			self,
-			title: "",
 			message: message,
 			actions: [retry]
 		)
@@ -142,17 +140,23 @@ extension LRBootstrapViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
 		let manager = _data?.content()?.managers[indexPath.row]
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-		?? UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
-		
-		cell.textLabel?.text = manager?.name
 		cell.accessoryType = .disclosureIndicator
-		cell.setSectionImage(with: UIImage(named: "unknown")!)
+		
+		var content = cell.defaultContentConfiguration()
+		content.text = manager?.name
+		content = content.applyingSectionImage(UIImage(named: "unknown")!)
+		cell.contentConfiguration = content
 		
 		manager?.loadIconImage { image in
-			cell.setSectionImage(with: image)
+			DispatchQueue.main.async {
+				var updatedContent = cell.defaultContentConfiguration()
+				updatedContent.text = manager?.name
+				updatedContent = updatedContent.applyingSectionImage(image)
+				cell.contentConfiguration = updatedContent
+			}
 		}
 		
 		return cell
@@ -162,11 +166,12 @@ extension LRBootstrapViewController {
 		let manager = _data?.content()?.managers[indexPath.row]
 		guard let data = _data, let manager = manager else { return }
 
-		self._showManagerPopup(
+		_showManagerPopup(
 			with: data,
 			using: manager,
 			popoverUIView: tableView.cellForRow(at: indexPath)!
 		)
+		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 	
@@ -184,13 +189,13 @@ extension LRBootstrapViewController {
 	) {
 		let managerInstalled = FileManager.default.fileExists(atPath: manager.filePath.relativePath)
 		
-		let alertTitle = managerInstalled
-		? String.localized("%@ is already installed.", arguments: manager.name)
+		let alertTitle: String? = managerInstalled
+		? .localized("%@ is already installed.", arguments: manager.name)
 		: nil
 		
-		let installActionTitle = managerInstalled
-		? String.localized("Reinstall %@", arguments: manager.name)
-		: String.localized("Install %@", arguments: manager.name)
+		let installActionTitle: String = managerInstalled
+		? .localized("Reinstall %@", arguments: manager.name)
+		: .localized("Install %@", arguments: manager.name)
 		
 		var actions: [UIAlertAction] = []
 		
