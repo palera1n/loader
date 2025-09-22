@@ -9,7 +9,6 @@ import Foundation
 
 // MARK: - Class extension: download
 extension LRBootstrapper: URLSessionDownloadDelegate {
-	
 	func download(_ urls: [URL], completion: @escaping ([String: Error?]) -> Void) {
 		let sessionConfig = URLSessionConfiguration.default
 		let session = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)

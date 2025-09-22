@@ -183,6 +183,7 @@
 			children = (
 				AF966A6F2D8C6840001BA405 /* Assets.xcassets */,
 				AF966A702D8C6840001BA405 /* Localizable.xcstrings */,
+				AF966AA72D8C6840001BA405 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -340,7 +341,6 @@
 				AF966A8A2D8C6840001BA405 /* Utilities */,
 				AF966AA52D8C6840001BA405 /* Views */,
 				AF966AA62D8C6840001BA405 /* AppDelegate.swift */,
-				AF966AA72D8C6840001BA405 /* Info.plist */,
 				AF966AA82D8C6840001BA405 /* SceneDelegate.swift */,
 			);
 			path = Loader;
@@ -474,7 +474,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEPLOYMENT_POSTPROCESSING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Loader/Info.plist;
+				INFOPLIST_FILE = Loader/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -523,7 +523,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Loader/Info.plist;
+				INFOPLIST_FILE = Loader/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = palera1n;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
