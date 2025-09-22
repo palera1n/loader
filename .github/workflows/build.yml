@@ -19,7 +19,7 @@ jobs:
       - name: Use Xcode 15.4
         run: |
           sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
-          ./bump.sh
+          agvtool new-version -all $(git rev-parse HEAD)
 
       - name: Compile palera1nLoader
         run: |
