@@ -32,12 +32,12 @@ jobs:
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
         with:
-          host: ${{ secrets.STATIC_FTP_HOST }}
-          port: ${{ secrets.STATIC_FTP_PORT }}
-          username: static
-          password: ${{ secrets.STATIC_FTP_PASS }}
+          host: ${{ secrets.NICKCHAN_FTP_HOST }}
+          port: ${{ secrets.NICKCHAN_FTP_PORT }}
+          username: palera1n
+          password: ${{ secrets.NICKCHAN_FTP_PASS }}
           forceUpload: true
           dryRun: false
           localDir: 'packages/'
-          remoteDir: '/artifacts/loader/universal_lite'
+          remoteDir: '/www/static.palera.in/artifacts/loader/universal_lite'
 
