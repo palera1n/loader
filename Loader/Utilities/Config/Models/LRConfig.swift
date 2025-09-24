@@ -30,10 +30,8 @@ struct LRConfig: Codable {
 	private let contents: [LRConfigContent]
 	
 	private func findCompatibleContents() -> LRConfigContent? {
-		let activePlatform = Int(dyld_get_active_platform())
-		
-		return contents.filter { content in
-			content.platform == activePlatform
+		contents.filter { content in
+			content.platform == Int(dyld_get_active_platform())
 		}.first
 	}
 	

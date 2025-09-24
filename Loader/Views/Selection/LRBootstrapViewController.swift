@@ -60,6 +60,18 @@ class LRBootstrapViewController: LRBaseTableViewController {
 				case .success(let data):
 					self._data = data
 					self.tableView.reloadDataWithTransition(with: .transitionCrossDissolve, duration: 0.4)
+					
+					if data.content() == nil {
+						UIAlertController.showAlert(
+							self, 
+							title: "", 
+							message: .localized(
+								"Bootstrap, managers, and configuration is not available for current jailbreak type", 
+								arguments: UIDevice.current.palera1n.palerain_option_rootless ? "rootless" : "rootful"
+							), 
+							actions: [UIAlertAction(title: "OK", style: .cancel)]
+						)
+					}
 				case .failure(let error):
 					self._showError(error.localizedDescription)
 				}

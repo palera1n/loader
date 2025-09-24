@@ -99,7 +99,7 @@ class LRStagedViewController: LRBaseStagedViewController {
 					#if !targetEnvironment(simulator)
 					UIAlertController.showAlert(
 						self,
-						title: ":(",
+						title: "",
 						message: error.localizedDescription,
 						actions: []
 					)

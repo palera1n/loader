@@ -82,7 +82,7 @@ class LRSettingsCreditsViewController: LRBaseTableViewController {
 		
 		UIAlertController.showAlert(
 			self,
-			title: ":(",
+			title: "",
 			message: message,
 			actions: [ok, retry]
 		)

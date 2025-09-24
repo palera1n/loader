@@ -53,6 +53,17 @@
         }
       }
     },
+    "Bootstrap, managers, and configuration is not available for current jailbreak type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bootstrap, managers, and configuration is not available for current jailbreak type \"%@\""
+          }
+        }
+      }
+    },
     "Cancel" : {
       "comment" : "The cancel action for alerts",
       "extractionState" : "manual",
