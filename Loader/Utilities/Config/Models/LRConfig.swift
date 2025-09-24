@@ -30,13 +30,7 @@ struct LRConfig: Codable {
 	private let contents: [LRConfigContent]
 	
 	private func findCompatibleContents() -> LRConfigContent? {
-		#if targetEnvironment(simulator) && os(tvOS)
-		let activePlatform = Int(3) // because I dont have a tv and rely on a sim
-		#elseif targetEnvironment(simulator)
-		let activePlatform = Int(2)
-		#else
 		let activePlatform = Int(dyld_get_active_platform())
-		#endif
 		
 		return contents.filter { content in
 			content.platform == activePlatform

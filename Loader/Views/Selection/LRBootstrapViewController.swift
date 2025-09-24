@@ -17,38 +17,44 @@ class LRBootstrapViewController: LRBaseTableViewController {
 	private var _data: LRConfig? = nil
 	private let _dataService = FetchService()
 	private let _dataURL = URL(string: LREnvironment.config_url())!
-	
+	private var _refreshButton: UIBarButtonItem!
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		_notifyUserIfCertainFlags()
-		_setupNavigation()
 		_load()
+		_setupNavigation()
 	}
 	
 	private func _setupNavigation() {
-		#if os(iOS)
-		refreshControl = UIRefreshControl()
-		refreshControl?.addTarget(self, action: #selector(self._load), for: .valueChanged)
-		#endif
+		_refreshButton = UIBarButtonItem(
+			barButtonSystemItem: .refresh,
+			target: self,
+			action: #selector(self._load)
+		)
+		
 		_activityIndicator.hidesWhenStopped = true
-		let activityBarButtonItem = UIBarButtonItem(customView: _activityIndicator)
-		navigationItem.rightBarButtonItem = activityBarButtonItem
+		navigationItem.rightBarButtonItem = _refreshButton
+	}
+	
+	private func _beginRefreshing() {
+		_activityIndicator.startAnimating()
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: _activityIndicator)
+	}
+
+	private func _endRefreshing() {
+		_activityIndicator.stopAnimating()
+		navigationItem.rightBarButtonItem = _refreshButton
 	}
 	
 	@objc private func _load() {
-		_activityIndicator.startAnimating()
-		#if os(iOS)
-		refreshControl?.beginRefreshing()
-		#endif
+		_beginRefreshing()
 		
 		_dataService.fetch<LRConfig>(from: _dataURL) { [weak self] (result: LRConfigHandler) in
 			guard let self = self else { return }
 
 			DispatchQueue.main.async {
-				self._activityIndicator.stopAnimating()
-				#if os(iOS)
-				self.refreshControl?.endRefreshing()
-				#endif
+				self._endRefreshing()
 				
 				switch result {
 				case .success(let data):
