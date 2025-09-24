@@ -100,7 +100,7 @@ class LRStagedViewController: LRBaseStagedViewController {
 					UIAlertController.showAlert(
 						self,
 						title: "",
-						message: error.localizedDescription,
+						message: "\(error)",
 						actions: []
 					)
 					#else
