@@ -24,10 +24,10 @@ jobs:
       - name: Compile palera1nLoader
         run: |
           make package PLATFORM=iphoneos PACKAGE_NAME=palera1nLoader
-
-      - name: Compile palera1nLoaderTV
-        run: |
           make package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
+
+      - name: Compress Headers
+        run: zip -r packages/patched_headers.zip apple-include-iphoneos apple-include-appletvos 
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8
