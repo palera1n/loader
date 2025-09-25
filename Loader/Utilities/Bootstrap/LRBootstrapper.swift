@@ -18,7 +18,7 @@ protocol LRBootstrapperDelegate {
 
 // MARK: - Class
 class LRBootstrapper: NSObject {
-	public let callback: LRBootstrapperDelegate?
+	let callback: LRBootstrapperDelegate?
 	private var _shouldBootstrap: Bool
 	private let _config: LRConfig?
 	private let _password: String
@@ -30,13 +30,11 @@ class LRBootstrapper: NSObject {
 		case dpkgFailed
 	}
 	
-	public var downloadCompletionHandlers: [URLSessionDownloadTask: (String?, Error?) -> Void] = [:]
-	public var downloadTaskToDestinationMap: [URLSessionDownloadTask: URL] = [:]
-
-	public var lastStatusItem: (section: String, item: String)? = nil
-	
-	public var bootstrapFilePath: String? = nil
-	public var packageFilePaths: [String] = []
+	var downloadCompletionHandlers: [URLSessionDownloadTask: (String?, Error?) -> Void] = [:]
+	var downloadTaskToDestinationMap: [URLSessionDownloadTask: URL] = [:]
+	var lastStatusItem: (section: String, item: String)? = nil
+	var bootstrapFilePath: String? = nil
+	var packageFilePaths: [String] = []
 	
 	init(
 		callback: LRBootstrapperDelegate? = nil,
@@ -55,7 +53,7 @@ class LRBootstrapper: NSObject {
 	
 	// MARK: Download
 	
-	public func prepareFiles() async throws {
+	func prepareFiles() async throws {
 		return try await withCheckedThrowingContinuation { continuation in
 			let dispatchGroup = DispatchGroup()
 			
@@ -126,7 +124,7 @@ class LRBootstrapper: NSObject {
 	
 	// MARK: Bootstrap
 	
-	public func bootstrap() async throws {
+	func bootstrap() async throws {
 		self.setLastItemStatusAndNew(
 			.localized("Bootstrap"),
 			item: .localized("Preparing Environment")
@@ -190,7 +188,7 @@ class LRBootstrapper: NSObject {
 	
 	// MARK: Post bootstrap - packages
 	
-	public func installPackages() async throws {
+	func installPackages() async throws {
 		self.setLastItemStatusAndNew(
 			.localized("Install"),
 			item: .localized("Installing Packages")

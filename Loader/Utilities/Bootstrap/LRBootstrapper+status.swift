@@ -9,14 +9,14 @@ import NimbleViewControllers
 
 // MARK: - Class extension: status
 extension LRBootstrapper {
-	public func setItemStatus(_ section: String, item: String, with status: StepStatus) {
+	func setItemStatus(_ section: String, item: String, with status: StepStatus) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 			self.callback?.updateStepItemStatus(section, item: item, with: status)
 		}
 	}
 	
 	
-	public func setLastItemStatusAndNew(_ section: String, item: String) {
+	func setLastItemStatusAndNew(_ section: String, item: String) {
 		if let last = lastStatusItem {
 			setItemStatus(last.section, item: last.item, with: .completed)
 		}
@@ -25,7 +25,7 @@ extension LRBootstrapper {
 		self.setItemStatus(section, item: item, with: .inProgress)
 	}
 	
-	public func setGroupFocus(for section: Int) {
+	func setGroupFocus(for section: Int) {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
 			self.callback?.updateStepGroupFocus(for: section)
 		}

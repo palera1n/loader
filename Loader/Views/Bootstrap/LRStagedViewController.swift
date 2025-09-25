@@ -104,7 +104,7 @@ class LRStagedViewController: LRBaseStagedViewController {
 						actions: []
 					)
 					#else
-					print(error)
+					print("\(error)")
 					#endif
 				}
 			}

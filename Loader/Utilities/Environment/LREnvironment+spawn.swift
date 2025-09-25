@@ -103,3 +103,23 @@ extension LREnvironment {
 		#endif
 	}
 }
+
+// MARK: - Class extension: nvram
+extension LREnvironment {
+	static func nvram(
+		_ key: String, 
+		_ value: String
+	) -> UInt32 {
+		guard 
+			let keyPtr = strdup(key), 
+				let valuePtr = strdup(value) 
+		else {
+			return 0
+		}
+		defer {
+			free(keyPtr)
+			free(valuePtr)
+		}
+		return nvram_set(keyPtr, valuePtr)
+	}
+}

@@ -16,6 +16,7 @@
 		33DB517E2D7D9E800060EAC4 /* libMobileGestalt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB517D2D7D9E750060EAC4 /* libMobileGestalt.tbd */; };
 		33DB51892D7DA06B0060EAC4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB51882D7DA06B0060EAC4 /* IOKit.framework */; platformFilter = ios; };
 		33DB518B2D7DA0740060EAC4 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DB518A2D7DA0740060EAC4 /* CoreServices.framework */; };
+		57A520D52E8574870090644E /* nvram.c in Sources */ = {isa = PBXBuildFile; fileRef = 57A520D42E8574830090644E /* nvram.c */; };
 		AF966AAA2D8C6840001BA405 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF966A6F2D8C6840001BA405 /* Assets.xcassets */; };
 		AF966AAB2D8C6840001BA405 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AF966A702D8C6840001BA405 /* Localizable.xcstrings */; };
 		AF966AAD2D8C6840001BA405 /* IOKit.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF966A762D8C6840001BA405 /* IOKit.tbd */; platformFilters = (tvos, ); };
@@ -56,6 +57,8 @@
 		33DB518A2D7DA0740060EAC4 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		33DB518E2D7DA1720060EAC4 /* Loader.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Loader.xcconfig; sourceTree = "<group>"; };
 		33E658082D93C58400BEDFA5 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		57A520D42E8574830090644E /* nvram.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = nvram.c; sourceTree = "<group>"; };
+		57A520D62E85748A0090644E /* nvram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = nvram.h; sourceTree = "<group>"; };
 		AF966A672D8C6840001BA405 /* UIApplication+open.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+open.swift"; sourceTree = "<group>"; };
 		AF966A692D8C6840001BA405 /* UIDevice+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Info.swift"; sourceTree = "<group>"; };
 		AF966A6A2D8C6840001BA405 /* UIDevice+Jailbreak.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Jailbreak.swift"; sourceTree = "<group>"; };
@@ -147,6 +150,15 @@
 				33DB518E2D7DA1720060EAC4 /* Loader.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		57A520D32E8574730090644E /* Nvram */ = {
+			isa = PBXGroup;
+			children = (
+				57A520D62E85748A0090644E /* nvram.h */,
+				57A520D42E8574830090644E /* nvram.c */,
+			);
+			path = Nvram;
 			sourceTree = "<group>";
 		};
 		AF966A682D8C6840001BA405 /* UIApplication */ = {
@@ -264,6 +276,7 @@
 				AF966A802D8C6840001BA405 /* Config */,
 				AF966A852D8C6840001BA405 /* Environment */,
 				AF966A892D8C6840001BA405 /* XPC */,
+				57A520D32E8574730090644E /* Nvram */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -446,6 +459,7 @@
 				AF966ABF2D8C6840001BA405 /* LRStagedViewController.swift in Sources */,
 				AF966AC02D8C6840001BA405 /* LRStagedViewController+UpdateItem.swift in Sources */,
 				AF966AC62D8C6840001BA405 /* LRBootstrapViewController.swift in Sources */,
+				57A520D52E8574870090644E /* nvram.c in Sources */,
 				AF966AC72D8C6840001BA405 /* LRSettingsFlagsViewController.swift in Sources */,
 				AF966AC82D8C6840001BA405 /* LRSettingsAboutViewController.swift in Sources */,
 				AF966ACA2D8C6840001BA405 /* LRSettingsCreditsViewController.swift in Sources */,

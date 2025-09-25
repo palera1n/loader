@@ -18,6 +18,10 @@
 	<array>
 		<string>IOUserClient</string>
 	</array>
+	<key>com.apple.private.iokit.system-nvram-allow</key>
+	<true/>
+	<key>com.apple.private.iokit.system-nvram-internal-allow</key>
+	<true/>
 	<key>in.palera.pinfo.kernel-info</key>
 	<true/>
 	<key>in.palera.loader.bootstrapper</key>

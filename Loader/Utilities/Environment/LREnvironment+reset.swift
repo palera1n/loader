@@ -29,9 +29,7 @@ extension LREnvironment {
 		}
 		
 		guard
-			jbd.obliterateJailbreak(
-				cleanFakeFS: UIDevice.current.palera1n.shouldCleanFakefs
-			) == 0
+			jbd.obliterateJailbreak(cleanFakeFS: UIDevice.current.palera1n.shouldCleanFakefs) == 0
 		else {
 			return
 		}
@@ -47,5 +45,22 @@ extension LREnvironment {
 	/// Reboots device
 	func reboot() {
 		Self.execute(.binpack("/bin/launchctl"), ["reboot"])
+	}
+	/// Reboots userspace
+	func rebootUserspace() {
+		Self.execute(.binpack("/bin/launchctl"), ["reboot", "userspace"])
+	}
+	/// UICache
+	func uicacheAll() {
+		Self.execute(.binpack("/usr/bin/uicache"), ["-a"])
+	}
+	/// Restart springboard
+	func respring() {
+		Self.execute(.binpack("/bin/launchctl"), ["kickstart", "-k", "system/com.apple.backboardd"])
+	}
+	/// Enter device into recovery, then reboot
+	func enterRecovery() {
+		_ = Self.nvram("auto-boot", "false")
+		reboot()
 	}
 }

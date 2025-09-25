@@ -18,14 +18,14 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 					SectionItem(
 						title: "UICache",
 						action: {
-							LREnvironment.execute(.binpack("/usr/bin/uicache"), ["-a"])
+							LREnvironment.shared.uicacheAll()
 						}
 					),
 					SectionItem(
-						title: "Restart Springboard", // we dont need to change this, its useless
+						title: "Restart Springboard",
 						action: {
 							self.blackOutController {
-								LREnvironment.execute(.binpack("/bin/launchctl"), ["kickstart", "-k", "system/com.apple.backboardd"])
+								LREnvironment.shared.respring()
 							}
 						}
 					),
@@ -33,7 +33,15 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						title: "Restart Userspace",
 						action: {
 							self.blackOutController {
-								LREnvironment.execute(.binpack("/bin/launchctl"), ["reboot", "userspace"])
+								LREnvironment.shared.rebootUserspace()
+							}
+						}
+					),
+					SectionItem(
+						title: "Enter Recovery",
+						action: {
+							self.blackOutController {
+								LREnvironment.shared.enterRecovery()
 							}
 						}
 					),
