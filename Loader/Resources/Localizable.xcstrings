@@ -11,6 +11,12 @@
             "value" : "%@ is already installed."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ è già installato"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -39,6 +45,12 @@
             "state" : "translated",
             "value" : "Authentication is required to change your sudo password."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’autenticazione è richiesta per cambiare la tua password di sudo"
+          }
         }
       }
     },
@@ -46,6 +58,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bootstrap"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bootstrap"
@@ -61,6 +79,12 @@
             "state" : "translated",
             "value" : "Bootstrap, managers, and configuration is not available for current jailbreak type \"%@\""
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bootstrap, manager e configurazione non sono disponibili per il tipo di jailbreak “%@”"
+          }
         }
       }
     },
@@ -72,6 +96,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cancel"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annulla"
           }
         },
         "ja" : {
@@ -104,6 +134,12 @@
             "value" : "Change Download URL"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia URL Download"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -134,6 +170,12 @@
             "value" : "This will allow you to change where the loader application will download from with a custom URL to a json file, this can change the package manager, bootstrap, and repos included."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questo ti permetterà di cambiare dove l’app del loader scaricherà da un URL personalizzato ad un file json, questo può cambiare il gestore dei pacchetti, il bootstrap e le repo incluse."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -162,6 +204,12 @@
             "state" : "translated",
             "value" : "Change Sudo Password"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambia Password Sudo"
+          }
         }
       }
     },
@@ -173,6 +221,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clean FakeFS"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci FakeFS"
           }
         },
         "ja" : {
@@ -198,6 +252,12 @@
             "value" : "Uninstall jailbreak files, but does not remove FakeFS. This will allow setting up a new jailbreak environment without creating FakeFS again. This will reboot your %@."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disinstalla i file del jailbreak, ma non rimuove il FakeFS. Questo ti permetterà di impostare un nuovo ambiente di jailbreak senza creare il FakeFS ancora. Questo riavvierà il tuo %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -220,6 +280,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Credits"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crediti"
           }
         },
         "ja" : {
@@ -250,6 +316,12 @@
             "state" : "translated",
             "value" : "Detected partial rootless installation. Please re-jailbreak and try again."
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rilevata installazione rootless parziale. Rifai il jailbreak e riprova"
+          }
         }
       }
     },
@@ -261,6 +333,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Device Info"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info Dispositivo"
           }
         },
         "ja" : {
@@ -293,6 +371,12 @@
             "value" : "Done"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fatto"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -318,6 +402,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Download"
@@ -353,6 +443,12 @@
             "value" : "Downloading %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarico %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -383,6 +479,12 @@
             "value" : "Downloading Base System"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarico Sistema Base"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -411,6 +513,12 @@
             "state" : "translated",
             "value" : "Downloading Package Managers"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarico Gestori Pacchetti"
+          }
         }
       }
     },
@@ -421,6 +529,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Downloading Required Packages"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scarico i pacchetti richiesti"
           }
         }
       }
@@ -433,6 +547,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exit"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci"
           }
         },
         "ja" : {
@@ -465,6 +585,12 @@
             "value" : "Exit Safemode"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esci dalla Safemode"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -493,6 +619,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "General"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Generali"
           }
         },
         "ja" : {
@@ -525,6 +657,12 @@
             "value" : "Install"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installa"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -555,6 +693,12 @@
             "value" : "Install %@"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installa %@"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -579,6 +723,12 @@
       "comment" : "Notice in download view when bootstrap is being extracted by palera1n daemon",
       "extractionState" : "manual",
       "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installo Bootstrap di Base"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -595,6 +745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Do not exit the app during this process, it may lead to unforeseen issues."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non uscire dall’app durante questo processo, potrebbe causare problemi."
           }
         },
         "ja" : {
@@ -619,6 +775,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Installing %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installo %@"
           }
         },
         "ja" : {
@@ -651,6 +813,12 @@
             "value" : "Installing Packages"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installo Pacchetti"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -667,6 +835,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You have used the force-revert option when using palera1n, please finish the process by fully rebooting the %@."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai usato l’opzione force-revert quando usi Palera1n, finisci il processo riavviando completamente il %@"
           }
         },
         "ja" : {
@@ -699,6 +873,12 @@
             "value" : "The current jailbreak environment is not supported by the current loader configuration file.\n\nSwitch to a supported jailbreak environment, or change configuration in options -> Change Download URL.\n\nPlatform: %@\nJailbreak type: %@\nCF: %d"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L’ambiente di jailbreak attuale non è supportato dal file di configurazione del loader attuale.     Migra ad un ambiente di jailbreak supportato, o cambia la configurazione nelle opzioni -> Cambia URL Download.                      Piattaforma: %@                                               Tipo di Jailbreak: %@                                     CF: %d "
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -715,6 +895,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Loading"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carico"
           }
         },
         "ja" : {
@@ -745,6 +931,12 @@
             "state" : "translated",
             "value" : "Open %@"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri %@"
+          }
         }
       }
     },
@@ -756,6 +948,12 @@
             "state" : "translated",
             "value" : "Other"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Altro"
+          }
         }
       }
     },
@@ -764,6 +962,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        },
+        "it" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Password"
@@ -799,6 +1003,12 @@
             "value" : "In order to use command line tools like \"sudo\" after jailbreaking, you will need to set a terminal passcode. (This cannot be empty)"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In ordine per usare strumenti di linea di comando come “sudo” dopo il jailbreak, dovrai impostare un codice per il terminale (Non puoi lasciarlo vuoto)"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -827,6 +1037,12 @@
             "state" : "translated",
             "value" : "Preparing Environment"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparo Ambiente"
+          }
         }
       }
     },
@@ -837,6 +1053,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Preparing Repositories"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preparo Repository"
           }
         }
       }
@@ -849,6 +1071,12 @@
             "state" : "translated",
             "value" : "Reboot"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riavvia"
+          }
         }
       }
     },
@@ -860,6 +1088,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Refresj"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiorna"
           }
         },
         "ja" : {
@@ -884,6 +1118,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reinstall %@"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reinstalla %@"
           }
         },
         "ja" : {
@@ -916,6 +1156,12 @@
             "value" : "Repeat Password"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripeti Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -944,6 +1190,12 @@
             "state" : "translated",
             "value" : "Reset"
           }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reimposta"
+          }
         }
       }
     },
@@ -955,6 +1207,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reset Configuration"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reimposta Configurazione"
           }
         },
         "ja" : {
@@ -987,6 +1245,12 @@
             "value" : "Restore System"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ripristina Sistema"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1015,6 +1279,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uninstall jailbreak files and other changes made to the operating system, without erasing your data. This will reboot your %@."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disinstalla i file di jailbreak ed altri cambiamenti fatti al sistema operativo, senza cancellare i tuoi dati. Questo riavvierà il tuo %@."
           }
         },
         "ja" : {
@@ -1047,6 +1317,12 @@
             "value" : "Retry"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riprova"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1075,6 +1351,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Set"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta"
           }
         },
         "ja" : {
@@ -1107,6 +1389,12 @@
             "value" : "Set Password"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1135,6 +1423,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Settings"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostazioni"
           }
         },
         "ja" : {
@@ -1167,6 +1461,12 @@
             "value" : "Show Password Prompt"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostra Prompt Password"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1195,6 +1495,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This Loader version is too old. It is recommended that you update to latest."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questa versione del loader è troppo vecchia. Ti consigliamo di aggiornare all’ultima versione"
           }
         },
         "ja" : {
@@ -1227,6 +1533,12 @@
             "value" : "Too Long"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Troppo Lungo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1255,6 +1567,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Troubleshoot"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problemi"
           }
         },
         "ja" : {
@@ -1287,6 +1605,12 @@
             "value" : "Type"
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo"
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1311,6 +1635,12 @@
       "comment" : "Alert title when current loader version is lower than the minimum loader version in JSON.",
       "extractionState" : "manual",
       "localizations" : {
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiornamento Richiesto"
+          }
+        },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1327,6 +1657,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versione"
           }
         },
         "ja" : {
@@ -1359,6 +1695,12 @@
             "value" : "You've entered safemode by either manually or palera1n saved you from it."
           }
         },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sei entrato nella safemode entrando manualmente o palera1n ti ha salvato da quello."
+          }
+        },
         "ja" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -1386,6 +1728,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "You've removed the jailbreak!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai rimosso il jailbreak!"
           }
         }
       }
