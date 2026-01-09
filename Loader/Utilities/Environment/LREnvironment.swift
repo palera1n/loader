@@ -14,14 +14,22 @@ class LREnvironment {
 	
 	// MARK: Boostrap status
 	
-	enum bootstrapStatus {
+	enum LRBootstrapStatus {
 		case bootstrapped
 		case partial_bootstrapped_rootless
 		case not_bootstrapped
+		
+		var stringValue: String {
+			switch self {
+			case .bootstrapped:						"✓"
+			case .partial_bootstrapped_rootless:	"!"
+			case .not_bootstrapped:					"✗"
+			}
+		}
 	}
 	
 	/// Devices bootstrap status
-	var isBootstrapped: bootstrapStatus {
+	var isBootstrapped: LRBootstrapStatus {
 		#if !targetEnvironment(simulator)
 		let fileManager = FileManager.default
 		let dotfile = dotfilePath()
