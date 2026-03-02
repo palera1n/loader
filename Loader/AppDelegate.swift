@@ -22,6 +22,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
 	}
 	
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+		handle(url: url)
+	}
+	
+	func handle(url: URL) -> Bool {
+		if let host = url.host {
+			if host == "restart-pineboard" || host == "restart-springboard" {
+				LREnvironment.shared.respring()
+			}
+			
+			if host == "userspace-reboot" {
+				LREnvironment.shared.rebootUserspace()
+			}
+			
+			if host == "uicache" {
+				LREnvironment.shared.uicacheAll()
+			}
+			
+			if let config = url.absoluteString.range(of: "/config/") {
+				let fullPath = String(url.absoluteString[config.upperBound...])
+				
+				if let configURL = URL(string: fullPath),
+				   let scheme = configURL.scheme?.lowercased(),
+				   (scheme == "http" || scheme == "https"),
+				   configURL.pathExtension.lowercased() == "json" {
+					UserDefaults.standard.set(fullPath, forKey: "defaultInstallPath")
+				} else {
+					print("The URL must be a valid json URL!")
+				}
+			}
+		}
+
+		return true
+	}
+
 	func applicationWillTerminate(_ application: UIApplication) {
 		self._cleanTmpDir()
 	}
@@ -50,4 +85,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 }
-

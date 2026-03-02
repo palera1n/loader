@@ -24,6 +24,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		window.rootViewController = controller
 		window.makeKeyAndVisible()
 		self.window = window
+		
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+		for context in connectionOptions.urlContexts {
+			_ = appDelegate.handle(url: context.url)
+		}
+	}
+
+	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+		guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+		for context in URLContexts {
+			_ = appDelegate.handle(url: context.url)
+		}
 	}
 }
 
