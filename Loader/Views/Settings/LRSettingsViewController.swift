@@ -11,6 +11,12 @@ import NimbleViewControllers
 // MARK: - Class
 class LRSettingsViewController: LRBaseStructuredTableViewController {
 	override func setupSections() {
+		#if os(tvOS)
+		let restartLabel = "Restart PineBoard"
+		#else
+		let restartLabel = "Restart SpringBoard"
+		#endif
+		
 		sections = [
 			(
 				title: "",
@@ -22,7 +28,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						}
 					),
 					SectionItem(
-						title: "Restart Springboard",
+						title: restartLabel,
 						action: {
 							self.blackOutController {
 								LREnvironment.shared.respring()
