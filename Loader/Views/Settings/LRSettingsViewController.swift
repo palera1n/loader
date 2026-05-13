@@ -22,7 +22,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						}
 					),
 					SectionItem(
-						title: "Restart Springboard",
+						title: .localized("Restart Springboard"),
 						action: {
 							self.blackOutController {
 								LREnvironment.shared.respring()
@@ -30,7 +30,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						}
 					),
 					SectionItem(
-						title: "Restart Userspace",
+						title: .localized("Restart Userspace"),
 						action: {
 							self.blackOutController {
 								LREnvironment.shared.rebootUserspace()
@@ -38,7 +38,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						}
 					),
 					SectionItem(
-						title: "Enter Recovery",
+						title: .localized("Enter Recovery"),
 						action: {
 							self.blackOutController {
 								LREnvironment.shared.enterRecovery()
@@ -46,7 +46,7 @@ class LRSettingsViewController: LRBaseStructuredTableViewController {
 						}
 					),
 					SectionItem(
-						title: "Reload Environment",
+						title: .localized("Reload Environment"),
 						action: {
 							LREnvironment.jbd.reloadLaunchdJailbreakEnvironment()
 						}

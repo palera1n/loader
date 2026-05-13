@@ -31,12 +31,12 @@ class LRSettingsAboutViewController: LRBaseStructuredTableViewController {
 						subtitle: device.palera1n.palerain_option_rootless ? "Rootless" : "Rootful"
 					),
 					SectionItem(
-						title: "Flags",
+						title: .localized("Flags"),
 						subtitle: device.palera1n.flags,
 						navigationDestination: LRSettingsFlagsViewController()
 					),
 					SectionItem(
-						title: "Bootstrapped",
+						title: .localized("Bootstrapped"),
 						subtitle: "\(LREnvironment.shared.isBootstrapped.stringValue)"
 					)
 				]
@@ -49,17 +49,17 @@ class LRSettingsAboutViewController: LRBaseStructuredTableViewController {
 						subtitle: device.systemVersion
 					),
 					SectionItem(
-						title: "Model",
+						title: .localized("Model"),
 						subtitle: device.marketingModel
 					),
 					SectionItem(
-						title: "Architecture",
+						title: .localized("Architecture"),
 						subtitle: device.architecture
 					)
 				]
 			),
 			(
-				title: "System",
+				title: .localized("System"),
 				items: [
 					SectionItem(
 						title: "CF",

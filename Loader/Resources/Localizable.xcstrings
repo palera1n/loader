@@ -37,6 +37,17 @@
         }
       }
     },
+    "Architecture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Architecture"
+          }
+        }
+      }
+    },
     "Authentication is required to change your sudo password." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -84,6 +95,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bootstrap, manager e configurazione non sono disponibili per il tipo di jailbreak “%@”"
+          }
+        }
+      }
+    },
+    "Bootstrapped" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bootstrapped"
           }
         }
       }
@@ -539,6 +561,17 @@
         }
       }
     },
+    "Enter Recovery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Recovery"
+          }
+        }
+      }
+    },
     "Exit" : {
       "comment" : "The exit action for alerts, which would close the application and put you to the home screen",
       "extractionState" : "manual",
@@ -607,6 +640,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "退出安全模式"
+          }
+        }
+      }
+    },
+    "Flags" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flags"
           }
         }
       }
@@ -723,6 +767,12 @@
       "comment" : "Notice in download view when bootstrap is being extracted by palera1n daemon",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installing Base Bootstrap"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
@@ -919,6 +969,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "載入中"
+          }
+        }
+      }
+    },
+    "Model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Model"
           }
         }
       }
@@ -1146,6 +1207,17 @@
         }
       }
     },
+    "Reload Environment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reload Environment"
+          }
+        }
+      }
+    },
     "Repeat Password" : {
       "comment" : "Placeholder text for the second text field in the password prompt",
       "extractionState" : "manual",
@@ -1231,6 +1303,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "重設配置文件"
+          }
+        }
+      }
+    },
+    "Restart Springboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart Springboard"
+          }
+        }
+      }
+    },
+    "Restart Userspace" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart Userspace"
           }
         }
       }
@@ -1487,6 +1581,17 @@
         }
       }
     },
+    "System" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
     "This Loader version is too old. It is recommended that you update to latest." : {
       "comment" : "You're using a very old version of the loader application",
       "extractionState" : "manual",
@@ -1635,6 +1740,12 @@
       "comment" : "Alert title when current loader version is lower than the minimum loader version in JSON.",
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Required"
+          }
+        },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
