@@ -51,6 +51,7 @@ apple-include:
 
 package: apple-include
 	rm -rf $(P1_TMP)
+	rm -rf _build
 
 	set -o pipefail; \
 		xcodebuild \
@@ -66,8 +67,6 @@ package: apple-include
 
 	mkdir -p _build/Payload
 	cp -R _build/Applications/*.app _build/Payload/$(PACKAGE_NAME).app
-	chmod -R 0755 _build/Payload/$(PACKAGE_NAME).app
-	codesign --force --sign - --timestamp=none _build/Payload/$(PACKAGE_NAME).app
 
 	mkdir -p packages
 
