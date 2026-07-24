@@ -7,6 +7,9 @@
 
 import UIKit.UIDevice
 
+fileprivate let _dotfile 	= "/.installed_palera1n"
+fileprivate let _configURL 	= "https://palera.in/loaderv2.json"
+
 // MARK: - Class
 class LREnvironment {
 	typealias jbd = JailbreakD
@@ -32,15 +35,14 @@ class LREnvironment {
 	var isBootstrapped: LRBootstrapStatus {
 		#if !targetEnvironment(simulator)
 		let fileManager = FileManager.default
-		let dotfile = dotfilePath()
-		
-		if fileManager.fileExists(atPath: .jb_prefix(dotfile)) {
+
+		if fileManager.fileExists(atPath: .jb_prefix(_dotfile)) {
 			return .bootstrapped
 		}
 		
 		if UIDevice.current.palera1n.palerain_option_rootless {
 			if let preboot_path = jbd.getPrebootPath() {
-				if fileManager.fileExists(atPath: preboot_path + dotfile) {
+				if fileManager.fileExists(atPath: preboot_path + _dotfile) {
 					return .partial_bootstrapped_rootless
 				}
 			}
@@ -50,7 +52,7 @@ class LREnvironment {
 	}
 	
 	static func default_config_url() -> String {
-		"https://\(loaderConfigURL())"
+		_configURL
 	}
 	
 	static func config_url() -> String {

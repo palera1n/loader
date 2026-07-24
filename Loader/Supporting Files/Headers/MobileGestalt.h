@@ -12,20 +12,7 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 
-#if __cplusplus
-extern "C" {
-#endif
-
-#pragma mark - API
-
 CFPropertyListRef MGCopyAnswer(CFStringRef property);
-
-#pragma mark - Device Information
-
 static const CFStringRef kMGPhysicalHardwareNameString = CFSTR("PhysicalHardwareNameString");
-
-#if __cplusplus
-}
-#endif
 
 #endif /* LIBMOBILEGESTALT_H_ */

@@ -19,7 +19,7 @@ all: package
 
 apple-include:
 	mkdir -p $(CUSTOM_INCLUDE_PATH)/{bsm,objc,os/internal,sys,firehose,CoreFoundation,FSEvents,IOSurface,IOKit/kext,libkern,kern,arm,{mach/,}machine,CommonCrypto,Security,CoreSymbolication,Kernel/{kern,IOKit,libkern},rpc,rpcsvc,xpc/private,ktrace,mach-o,dispatch}
-	cp -af $(MACOSX_SYSROOT)/usr/include/{arpa,bsm,hfs,net,xpc,netinet,servers,timeconv.h,launch.h} $(CUSTOM_INCLUDE_PATH)
+	cp -af $(MACOSX_SYSROOT)/usr/include/{arpa,hfs,net,xpc,netinet,servers,timeconv.h,launch.h} $(CUSTOM_INCLUDE_PATH)
 	cp -af $(MACOSX_SYSROOT)/usr/include/objc/objc-runtime.h $(CUSTOM_INCLUDE_PATH)/objc
 	cp -af $(MACOSX_SYSROOT)/usr/include/libkern/{OSDebug.h,OSKextLib.h,OSReturn.h,OSThermalNotification.h,OSTypes.h,machine} $(CUSTOM_INCLUDE_PATH)/libkern
 	cp -af $(MACOSX_SYSROOT)/usr/include/kern $(CUSTOM_INCLUDE_PATH)
@@ -76,7 +76,7 @@ clean:
 	@rm -rf $(P1_STAGE_DIR)
 	@rm -rf packages
 	@rm -rf out.dmg
-	@rm -rf Payload
+	@rm -rf _build
 	@rm -rf $(CUSTOM_INCLUDE_PATH)
 	@rm -rf $(P1_TMP)
 
