@@ -24,6 +24,7 @@ jobs:
         run: |
           agvtool new-version -all $(git rev-parse HEAD)
           make package PLATFORM=iphoneos PACKAGE_NAME=palera1nLoader
+          make clean
           make package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
 
       - name: Upload artifact
