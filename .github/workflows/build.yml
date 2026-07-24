@@ -27,7 +27,7 @@ jobs:
           make package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
 
       - name: Upload artifact
-        uses: wangyucode/sftp-upload-action@v1.4.8
+        uses: wangyucode/sftp-upload-action@v3
         with:
           host: ${{ secrets.NICKCHAN_FTP_HOST }}
           port: ${{ secrets.NICKCHAN_FTP_PORT }}
