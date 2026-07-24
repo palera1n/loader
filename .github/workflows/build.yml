@@ -5,29 +5,26 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install dependencies (packages)
         run: |
           curl -LO https://github.com/ProcursusTeam/ldid/releases/download/v2.1.5-procursus7/ldid_macosx_x86_64
           sudo install -m755 ldid_macosx_x86_64 /usr/local/bin/ldid
           brew install 7zip gnu-sed
-          
-      - name: Use Xcode 15.4
-        run: |
-          sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
-          agvtool new-version -all $(git rev-parse HEAD)
+
+      - name: Select correct Xcode
+        uses: mobiledevops/xcode-select-version-action@7b50160de7c8bd6a8c4ee2c2e6b5ee0983886c0b
+        with:
+          xcode-select-version: 16.4
 
       - name: Compile palera1nLoader
         run: |
+          agvtool new-version -all $(git rev-parse HEAD)
           make package PLATFORM=iphoneos PACKAGE_NAME=palera1nLoader
           make package PLATFORM=appletvos PACKAGE_NAME=palera1nLoaderTV
-
-      - name: Compress Headers
-        run: zip -r packages/patched_headers.zip apple-include-iphoneos apple-include-appletvos 
 
       - name: Upload artifact
         uses: wangyucode/sftp-upload-action@v1.4.8

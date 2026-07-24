@@ -27,7 +27,7 @@ apple-include:
 	cp -af $(MACOSX_SYSROOT)/System/Library/Frameworks/Kernel.framework/Versions/Current/Headers/sys/disklabel.h $(CUSTOM_INCLUDE_PATH)/sys
 	cp -af $(MACOSX_SYSROOT)/System/Library/Frameworks/IOKit.framework/Headers/{AppleConvergedIPCKeys.h,IOBSD.h,IOCFBundle.h,IOCFPlugIn.h,IOCFURLAccess.h,IOKitServer.h,IORPC.h,IOSharedLock.h,IOUserServer.h,audio,avc,firewire,graphics,hid,hidsystem,i2c,iokitmig.h,kext,ndrvsupport,network,ps,pwr_mgt,sbp2,scsi,serial,storage,stream,usb,video} $(CUSTOM_INCLUDE_PATH)/IOKit
 	cp -af $(MACOSX_SYSROOT)/System/Library/Frameworks/Security.framework/Headers/{mds_schema,oidsalg,SecKeychainSearch,certextensions,Authorization,eisl,SecDigestTransform,SecKeychainItem,oidscrl,cssmcspi,CSCommon,cssmaci,SecCode,CMSDecoder,oidscert,SecRequirement,AuthSession,SecReadTransform,oids,cssmconfig,cssmkrapi,SecPolicySearch,SecAccess,cssmtpi,SecACL,SecEncryptTransform,cssmapi,cssmcli,mds,x509defs,oidsbase,SecSignVerifyTransform,cssmspi,cssmkrspi,SecTask,cssmdli,SecAsn1Coder,cssm,SecTrustedApplication,SecCodeHost,SecCustomTransform,oidsattr,SecIdentitySearch,cssmtype,SecAsn1Types,emmtype,SecTransform,SecTrustSettings,SecStaticCode,emmspi,SecTransformReadTransform,SecKeychain,SecDecodeTransform,CodeSigning,AuthorizationPlugin,cssmerr,AuthorizationTags,CMSEncoder,SecEncodeTransform,SecureDownload,SecAsn1Templates,AuthorizationDB,SecCertificateOIDs,cssmapple}.h $(CUSTOM_INCLUDE_PATH)/Security
-	cp -af $(MACOSX_SYSROOT)/usr/include/{ar,bootstrap,launch,libc,libcharset,localcharset,nlist,NSSystemDirectories,tzfile,vproc}.h $(CUSTOM_INCLUDE_PATH)
+# 	cp -af $(MACOSX_SYSROOT)/usr/include/{ar,bootstrap,launch,libc,libcharset,localcharset,nlist,NSSystemDirectories,tzfile,vproc}.h $(CUSTOM_INCLUDE_PATH)
 	cp -af $(MACOSX_SYSROOT)/usr/include/mach/{*.defs,{mach_vm,shared_region}.h} $(CUSTOM_INCLUDE_PATH)/mach
 	cp -af $(MACOSX_SYSROOT)/usr/include/mach/machine/*.defs $(CUSTOM_INCLUDE_PATH)/mach/machine
 	cp -af $(MACOSX_SYSROOT)/usr/include/rpc/pmap_clnt.h $(CUSTOM_INCLUDE_PATH)/rpc
@@ -35,7 +35,7 @@ apple-include:
 	cp -af $(TARGET_SYSROOT)/usr/include/mach/machine/thread_state.h $(CUSTOM_INCLUDE_PATH)/mach/machine
 	cp -af $(TARGET_SYSROOT)/usr/include/mach/arm $(CUSTOM_INCLUDE_PATH)/mach
 	cp -af $(MACOSX_SYSROOT)/System/Library/Frameworks/IOKit.framework/Headers/* $(CUSTOM_INCLUDE_PATH)/IOKit
-	gsed -E s/'__IOS_PROHIBITED|__TVOS_PROHIBITED|__WATCHOS_PROHIBITED'//g < $(TARGET_SYSROOT)/usr/include/stdlib.h > $(CUSTOM_INCLUDE_PATH)/stdlib.h
+# 	gsed -E s/'__IOS_PROHIBITED|__TVOS_PROHIBITED|__WATCHOS_PROHIBITED'//g < $(TARGET_SYSROOT)/usr/include/stdlib.h > $(CUSTOM_INCLUDE_PATH)/stdlib.h
 	gsed -E s/'__IOS_PROHIBITED|__TVOS_PROHIBITED|__WATCHOS_PROHIBITED'//g < $(TARGET_SYSROOT)/usr/include/time.h > $(CUSTOM_INCLUDE_PATH)/time.h
 	gsed -E s/'__IOS_PROHIBITED|__TVOS_PROHIBITED|__WATCHOS_PROHIBITED'//g < $(TARGET_SYSROOT)/usr/include/unistd.h > $(CUSTOM_INCLUDE_PATH)/unistd.h
 	gsed -E s/'__IOS_PROHIBITED|__TVOS_PROHIBITED|__WATCHOS_PROHIBITED'//g < $(TARGET_SYSROOT)/usr/include/mach/task.h > $(CUSTOM_INCLUDE_PATH)/mach/task.h
@@ -47,31 +47,31 @@ apple-include:
 	gsed -i -E s/'__API_UNAVAILABLE\(.*\)'// $(CUSTOM_INCLUDE_PATH)/IOKit/IOKitLib.h
 	gsed -i -E s/'__API_UNAVAILABLE\(.*\)'// $(CUSTOM_INCLUDE_PATH)/spawn.h
 	gsed -i -E s/'API_UNAVAILABLE\(.*\)'// $(CUSTOM_INCLUDE_PATH)/xpc/*.h
-	gsed -i 's|// __XPC_INDIRECT__|\n#include "$(TARGET_SYSROOT)/usr/include/bsm/audit.h"\n|' $(CUSTOM_INCLUDE_PATH)/xpc/connection.h
+	gsed -i -e 's|// __BLOCKS__|\n#include "$(TARGET_SYSROOT)/usr/include/bsm/audit.h"|' $(CUSTOM_INCLUDE_PATH)/xpc/connection.h
 
 package: apple-include
-	@rm -rf $(P1_TMP)
-	@set -o pipefail; \
-		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project '$(NAME).xcodeproj' -scheme $(SCHEME) -configuration $(CONFIGURATION) -arch arm64 -sdk $(PLATFORM) -derivedDataPath $(P1_TMP) \
-		CODE_SIGNING_ALLOWED=NO DSTROOT=$(P1_TMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
-	@rm -rf Payload
-	@rm -rf $(P1_STAGE_DIR)/
-	@mkdir -p $(P1_STAGE_DIR)/Payload
-ifeq ($(PLATFORM),appletvos)
-	plutil -insert itemId -integer 995367539 $(P1_APP_DIR)/Info.plist
-endif
-	@mv $(P1_APP_DIR) $(P1_STAGE_DIR)/Payload/$(PACKAGE_NAME).app
-	@echo $(P1_TMP)
-	@echo $(P1_STAGE_DIR)
+	rm -rf $(P1_TMP)
 
-	@$(TARGET_CODESIGN) -S$(SCHEME)/Supporting\ Files/loader.entitlements $(P1_STAGE_DIR)/Payload/$(PACKAGE_NAME).app/
+	set -o pipefail; \
+		xcodebuild \
+			-jobs $(shell sysctl -n hw.ncpu) \
+			-project '$(NAME).xcodeproj' \
+			-scheme $(SCHEME) \
+			-configuration $(CONFIGURATION) \
+			-arch arm64 \
+			-sdk $(PLATFORM) \
+			-derivedDataPath $(P1_TMP) \
+			CODE_SIGNING_ALLOWED=NO \
+			ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 
-	@rm -rf $(P1_STAGE_DIR)/Payload/$(PACKAGE_NAME).app/_CodeSignature
-	@ln -sf $(P1_STAGE_DIR)/Payload Payload
-	@rm -rf packages/$(PACKAGE_NAME)
-	@mkdir -p packages
+	mkdir -p _build/Payload
+	cp -R _build/Applications/*.app _build/Payload/$(PACKAGE_NAME).app
+	chmod -R 0755 _build/Payload/$(PACKAGE_NAME).app
+	codesign --force --sign - --timestamp=none _build/Payload/$(PACKAGE_NAME).app
 
-	@zip -r9 packages/$(PACKAGE_NAME).ipa Payload
+	mkdir -p packages
+
+	ditto -c -k --sequesterRsrc --keepParent _build/Payload "packages/$(PACKAGE_NAME).ipa";
 clean:
 	@rm -rf $(P1_STAGE_DIR)
 	@rm -rf packages

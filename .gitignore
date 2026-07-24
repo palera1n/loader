@@ -4,3 +4,4 @@ packages
 apple-include-*
 *UserInterfaceState.xcuserstate
 xcuserdata/
+_build
