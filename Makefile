@@ -62,7 +62,6 @@ package: apple-include
 			-arch arm64 \
 			-sdk $(PLATFORM) \
 			-derivedDataPath $(P1_TMP) \
-			CODE_SIGNING_ALLOWED=NO \
 			ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
 
 	mkdir -p _build/Payload
