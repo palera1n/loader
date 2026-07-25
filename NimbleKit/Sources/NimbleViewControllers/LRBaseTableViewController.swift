@@ -42,11 +42,14 @@ open class LRBaseTableViewController: UITableViewController {
 		#if os(iOS)
 		self._configureTitleDisplayMode()
 		#endif
+		tableView.contentInset.top = 20
 		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
 	}
 	
 	#if os(iOS)
 	private func _configureTitleDisplayMode() {
+		navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance()
+		
 		if isRootViewController() {
 			navigationItem.largeTitleDisplayMode = .always
 			navigationController?.navigationBar.prefersLargeTitles = true

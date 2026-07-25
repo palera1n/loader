@@ -15,9 +15,13 @@ class LRTabbarController: UITabBarController {
 	}
 	
 	private func _setupTabs() {
+		#if os(iOS)
+		tabBar.scrollEdgeAppearance = UITabBarAppearance()
+		#endif
+		
 		let sources = self._createNavigation(
 			with: "palera1n",
-			using: UIImage(systemName: "wand.and.stars"),
+			using: UIImage(systemName: "shippingbox.fill"),
 			controller: LRBootstrapViewController()
 		)
 		

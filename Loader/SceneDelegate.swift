@@ -17,10 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		let controller = LRTabbarController()
 		
 		#if os(iOS)
-		if #available(iOS 15.0, *) {
-			window.tintColor = .label
-		}
+		UITableViewCell.appearance().backgroundColor = .tertiarySystemGroupedBackground
+		UITableView.appearance().backgroundColor = .secondarySystemGroupedBackground
 		#endif
+		
 		window.rootViewController = controller
 		window.makeKeyAndVisible()
 		self.window = window
