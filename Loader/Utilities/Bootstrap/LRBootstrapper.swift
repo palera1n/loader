@@ -24,7 +24,7 @@ class LRBootstrapper: NSObject {
 	private let _password: String
 	private let _manager: LRManager?
 	
-	enum LRBootstrapperError: Error, LocalizedError  {
+	enum LRBootstrapperError: Error, LocalizedError {
 		case downloadFailed(Error)
 		case bootstrapFailed(String)
 		case dpkgFailed
@@ -153,7 +153,7 @@ class LRBootstrapper: NSObject {
 				item: .localized("Installing Base Bootstrap"),
 				with: .failed
 			)
-			throw LRBootstrapperError.bootstrapFailed(resultDescription)
+			throw LRBootstrapperError.bootstrapFailed("\(ret): " + resultDescription)
 		}
 		
 		self.setLastItemStatusAndNew(
@@ -178,7 +178,7 @@ class LRBootstrapper: NSObject {
 					item: .localized("Preparing Repositories"),
 					with: .failed
 				)
-				throw LRBootstrapperError.bootstrapFailed(resultDescription)
+				throw LRBootstrapperError.bootstrapFailed("\(ret): " + resultDescription)
 			}
 		}
 		
